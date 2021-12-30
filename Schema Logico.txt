@@ -1,0 +1,17 @@
+-PK
+/ FK
+
+Aree Tematiche(-Nome Area-)
+Corso(Nome, Descrizione, Presenze min, Max Partetcipanti, Singolo, -IdCorso-, Parole Chiave)
+Statistiche(Min Studenti, Max Studenti, Avg Studenti, Percentuale Media, /IdCorso/)
+Lezioni(Durata, Titolo, Descrizione, Data, Orario, -IdLezione-)
+Studenti(-Matricola-, Nome, Cognome)
+Operatore(-IdOperatore-, Password)
+Prospetto(/IdCorso/, Studenti Ammessi)
+
+Organizzazione(IdLezione, IdCorso)
+Presenza(Matricola, IdLezione)
+Iscrizione(Matricola, IdCorso)
+Tema(Nome Area, IdCorso)
+
+//associazione prospetto - studenti 

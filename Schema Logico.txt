@@ -2,7 +2,7 @@
 / FK
 
 Aree Tematiche(-Nome Area-)
-Corso(Nome, Descrizione, Presenze min, Max Partetcipanti, Singolo, -IdCorso-, Parole Chiave, /IdOperatore/)
+Corso(Nome, Descrizione, Presenze min, Max Partetcipanti, -IdCorso-, Parole Chiave, /IdOperatore/)
 Lezioni(Durata, Titolo, Descrizione, Data, Orario, -IdLezione-)
 Studenti(-Matricola-, Nome, Cognome)
 Operatore(-IdOperatore-, Password)

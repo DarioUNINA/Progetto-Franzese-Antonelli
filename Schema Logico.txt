@@ -3,20 +3,19 @@
 
 Aree Tematiche(-Nome Area-)
 Corso(Nome, Descrizione, Presenze min, Max Partetcipanti, Singolo, -IdCorso-, Parole Chiave, /IdOperatore/)
-Statistiche(Min Studenti, Max Studenti, Avg Studenti, Percentuale Media, /IdCorso/)
 Lezioni(Durata, Titolo, Descrizione, Data, Orario, -IdLezione-)
 Studenti(-Matricola-, Nome, Cognome)
 Operatore(-IdOperatore-, Password)
-Prospetto(/IdCorso/, Studenti Ammessi)
 
 Organizzazione(IdLezione, IdCorso)
 Presenza(Matricola, IdLezione)
 Iscrizione(Ammesso, Matricola, IdCorso) //classe d'associazione
 Tema(Nome Area, IdCorso)
 
-//vincoli
 
-se corso é singolo, l'associazione Organizzazione é 1-* (non é possibile inserire piú di una lezione)
+
+--vincoli--
+
 
 se corso é terminato non é possibile aggiungere lezioni
 
@@ -31,5 +30,9 @@ un operatore non puó tenere piú lezioni contemporaneamente
 un corso non puó avere due lezioni contemporaneamente
 
 unique (matricola, corso) in Iscrizione
+
+uno studente non si puó iscrivere a due lezioni contemporaneamente
+
+
 
 

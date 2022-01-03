@@ -2368,7 +2368,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -187,
-											"top": 148,
+											"top": 132,
 											"height": 13
 										},
 										{
@@ -2378,9 +2378,9 @@
 												"$ref": "AAAAAAF+ISFZhotyMtY="
 											},
 											"font": "Arial;13;1",
-											"left": 413,
-											"top": 511,
-											"width": 115.603515625,
+											"left": 421,
+											"top": 503,
+											"width": 107.603515625,
 											"height": 13,
 											"text": "Iscrizione"
 										},
@@ -2393,7 +2393,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -187,
-											"top": 148,
+											"top": 132,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -2407,15 +2407,15 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -187,
-											"top": 148,
+											"top": 132,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 408,
-									"top": 504,
-									"width": 125.603515625,
+									"left": 416,
+									"top": 496,
+									"width": 117.603515625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF+ISFZhotzH/Q="
@@ -2450,18 +2450,18 @@
 												"$ref": "AAAAAAF+ISI1FY/dlCQ="
 											},
 											"font": "Arial;13;0",
-											"left": 413,
-											"top": 534,
-											"width": 115.603515625,
+											"left": 421,
+											"top": 526,
+											"width": 107.603515625,
 											"height": 13,
 											"text": "+Ammesso",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 408,
-									"top": 529,
-									"width": 125.603515625,
+									"left": 416,
+									"top": 521,
+									"width": 117.603515625,
 									"height": 23
 								},
 								{
@@ -2474,9 +2474,9 @@
 										"$ref": "AAAAAAF+ISFZhYtsgag="
 									},
 									"font": "Arial;13;0",
-									"left": 408,
-									"top": 552,
-									"width": 125.603515625,
+									"left": 416,
+									"top": 544,
+									"width": 117.603515625,
 									"height": 10
 								},
 								{
@@ -2491,7 +2491,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -93.5,
-									"top": 74,
+									"top": 66,
 									"width": 10,
 									"height": 10
 								},
@@ -2507,16 +2507,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -93.5,
-									"top": 74,
+									"top": 66,
 									"width": 10,
 									"height": 10
 								}
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 408,
-							"top": 504,
-							"width": 125.603515625,
+							"left": 416,
+							"top": 496,
+							"width": 117.603515625,
 							"height": 58,
 							"nameCompartment": {
 								"$ref": "AAAAAAF+ISFZhotyMtY="
@@ -2805,12 +2805,12 @@
 						},
 						{
 							"_type": "UMLAssociationClassLinkView",
-							"_id": "AAAAAAF+ISFZh4uHV3I=",
+							"_id": "AAAAAAF+IUvUtXqpf4Q=",
 							"_parent": {
 								"$ref": "AAAAAAFF+qBtyKM79qY="
 							},
 							"model": {
-								"$ref": "AAAAAAF+ISFZhYtweVc="
+								"$ref": "AAAAAAF+IUvUtHqo0mQ="
 							},
 							"font": "Arial;13;0",
 							"head": {
@@ -2820,7 +2820,7 @@
 								"$ref": "AAAAAAF+ISFZhotxJYQ="
 							},
 							"lineStyle": 1,
-							"points": "472:503;475:464"
+							"points": "474:495;475:464"
 						}
 					]
 				},
@@ -3722,6 +3722,19 @@
 							"associationSide": {
 								"$ref": "AAAAAAF+ISFZhYtt7cs="
 							}
+						},
+						{
+							"_type": "UMLAssociationClassLink",
+							"_id": "AAAAAAF+IUvUtHqo0mQ=",
+							"_parent": {
+								"$ref": "AAAAAAF+ISFZhYtsgag="
+							},
+							"classSide": {
+								"$ref": "AAAAAAF+ISFZhYtsgag="
+							},
+							"associationSide": {
+								"$ref": "AAAAAAF+ISFZhYtt7cs="
+							}
 						}
 					],
 					"attributes": [
@@ -3731,7 +3744,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+ISFZhYtsgag="
 							},
-							"name": "Ammesso"
+							"name": "Ammesso",
+							"type": ""
 						}
 					]
 				}

@@ -1,16 +1,16 @@
 -PK
 / FK
 
-Aree Tematiche(-Nome Area-)
-Corso(Nome, Descrizione, Presenze min, Max Partetcipanti, -IdCorso-, Parole Chiave, /IdOperatore/)
-Lezioni(Durata, Titolo, Descrizione, Data, Orario, -IdLezione-)
-Studenti(-Matricola-, Nome, Cognome)
-Operatore(-IdOperatore-, Password)
+aree_tematiche(-nome_area-)
+corso (nome, descrizione, presenze_min, max_partetcipanti, -id_corso-, parole_chiave, /id_operatore/)
+lezioni (durata, titolo, descrizione, data, orario, -id_lezione-)
+studenti (-matricola-, nome, cognome)
+operatore (-id_operatore-, Password)
 
-Organizzazione(IdLezione, IdCorso)
-Presenza(Matricola, IdLezione)
-Iscrizione(Ammesso, Matricola, IdCorso) //classe d'associazione
-Tema(Nome Area, IdCorso)
+organizzazione (/id_lezione/, /id_corso/)
+presenza (/matricola/, /id_lezione/)
+iscrizione (ammesso, /matricola/, /id_corso/)  //classe d'associazione
+tema (/nome_area/, /id_corso/)
 
 
 

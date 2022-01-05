@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS public.corso
         REFERENCES public.operatore (id_operatore) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE
+
 )
 
 TABLESPACE pg_default;

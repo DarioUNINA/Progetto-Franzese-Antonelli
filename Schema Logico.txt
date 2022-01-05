@@ -1,19 +1,20 @@
 -PK
 / FK
 
-Aree Tematiche(-Nome Area-)
-Corso(Nome, Descrizione, Presenze min, Max Partetcipanti, -IdCorso-, Parole Chiave, /IdOperatore/)
-Lezioni(Durata, Titolo, Descrizione, Data, Orario, -IdLezione-, /IdCorso/)
-Studenti(-Matricola-, Nome, Cognome)
-Operatore(-IdOperatore-, Password)
+aree_tematiche(-nome_area-)
+corso (nome, descrizione, presenze_min, max_partetcipanti, -id_corso-, parole_chiave, /id_operatore/)
+lezioni (durata, titolo, descrizione, data, orario, -id_lezione-)
+studenti (-matricola-, nome, cognome)
+operatore (-id_operatore-, Password)
 
-Presenza(Matricola, IdLezione)
-Iscrizione(Ammesso, Matricola, IdCorso) //classe d' associazione
-Tema(Nome Area, IdCorso)
+organizzazione (/id_lezione/, /id_corso/)
+presenza (/matricola/, /id_lezione/)
+iscrizione (ammesso, /matricola/, /id_corso/)  //classe d'associazione
+tema (/nome_area/, /id_corso/)
 
 
 
-vincoli
+--vincoli--
 
 
 se corso é terminato non é possibile aggiungere lezioni
@@ -34,24 +35,4 @@ uno studente non si puó iscrivere a due lezioni contemporaneamente
 
 
 
-CREATE FUNCTION check_inserimento_in_terminato()
-RETURNS TRIGGER AS
-$$
-DECLARE violazione INTEGER;
-BEGIN
-	SELECT COUNT (*) INTO violazione
-	FROM corso s
-	WHERE s.id_corso = NEW.id_corso AND s.terminato = true;
-	
-	IF (violazione>0) THEN
-		DELETE FROM lezioni WHERE id_lezione = NEW.id_lezione;
-		RAISE NOTICE 'Non puo essere aggiunto una lezione ad un corso terminato';
-	END IF;
-	RETURN NEW;
-END
-$$ LANGUAGE plpgsql;
 
-CREATE TRIGGER inserimento_in_terminato
-AFTER INSERT ON lezioni
-FOR EACH ROW
-EXECUTE PROCEDURE check_inserimento_in_terminato();

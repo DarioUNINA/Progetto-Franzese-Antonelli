@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS public.corso
     presenze_min integer NOT NULL,
     max_partecipanti integer NOT NULL,
     parole_chiave character varying COLLATE pg_catalog."default" NOT NULL,
+    terminato boolean NOT NULL DEFAULT false,
     CONSTRAINT "Corso_pkey" PRIMARY KEY (id_corso),
     CONSTRAINT corso_fk1 FOREIGN KEY (id_operatore)
         REFERENCES public.operatore (id_operatore) MATCH SIMPLE
@@ -99,7 +100,12 @@ CREATE TABLE IF NOT EXISTS public.lezioni
     durata character varying COLLATE pg_catalog."default" NOT NULL,
     data date NOT NULL,
     orario character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT "Lezioni_pkey" PRIMARY KEY (id_lezione)
+    id_corso character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "Lezioni_pkey" PRIMARY KEY (id_lezione),
+    CONSTRAINT lezioni_fk1 FOREIGN KEY (id_corso)
+        REFERENCES public.corso (id_corso) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 )
 
 TABLESPACE pg_default;

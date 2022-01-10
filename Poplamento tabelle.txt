@@ -1,209 +1,209 @@
 INSERT INTO aree_tematiche
-VALUES(progrmmazione);
+VALUES('programmazione');
 
 INSERT INTO aree_tematiche
-VALUES(matematica);
+VALUES('matematica');
 
 INSERT INTO aree_tematiche
-VALUES(calcolo);
+VALUES('calcolo');
 
 INSERT INTO aree_tematiche
-VALUES(strutture dati);
+VALUES('strutture dati');
 
 INSERT INTO aree_tematiche
-VALUES(algoritmi);
+VALUES('algoritmi');
 
 
 
 
-INSERT INTO corso
-VALUES(100, 001, ObjectOrientation, corso sul paradigma della programmazione ad oggetti, 10, 80, java);
+INSERT INTO operatori
+VALUES(1, 'sergio');
 
-INSERT INTO corso
-VALUES(200, 002, BasiDati, corso sulla gestione di Database, 5, 70, algebra relazionale);
+INSERT INTO operatori
+VALUES(2, 'adriano');
 
-INSERT INTO corso
-VALUES(300, 003, AlgoritmiStruttureDati, corso sullo complessita di algoritmi e strutture dati, 10, 100, grafi);
+INSERT INTO operatori
+VALUES(3, 'massimo');
 
-INSERT INTO corso
-VALUES(400, 004, ElementiDiInformaticaTeorica, informatica teorica, 1, 50, fsm);
+INSERT INTO operatori
+VALUES(4, 'alessandro');
 
-INSERT INTO corso
-VALUES(500, 006, Programmazione I, Approccio alla programmazione in c++, 5, 100, c++);
+INSERT INTO operatori
+VALUES(5, 'francesco');
 
-INSERT INTO corso
-VALUES(600, 005, Analisi I, teoremi base di Analisi Matematica, 10, 110, funzioni);
-
-INSERT INTO corso
-VALUES(700, 001, IngegneriaDelSoftware, Studio dei software, 10, 100, software);
-
-INSERT INTO corso
-VALUES(800, 002, Algebra, corso algebra lineare e booleana, 5, 90, reticoli, true);
+INSERT INTO operatori
+VALUES(6, 'giuliano');
 
 
 
 
-INSERT INTO iscrizione
-VALUES(true, 1000, 300);
+INSERT INTO corsi
+VALUES(1, 1, 'object_orientation', 'corso sul paradigma della programmazione ad oggetti', 10, 80, 'java');
 
-INSERT INTO iscrizione
-VALUES(false, 1000, 400);
+INSERT INTO corsi
+VALUES(2, 2, 'basi_dati', 'corso sulla gestione di database', 5, 70, 'algebra relazionale');
 
-INSERT INTO iscrizione
-VALUES(false, 2000, 100);
+INSERT INTO corsi
+VALUES(3, 3, 'algoritmi_strutture_dati', 'corso sullo complessita di algoritmi e strutture dati', 10, 100, 'grafi');
 
-INSERT INTO iscrizione
-VALUES(false, 2000, 500);
+INSERT INTO corsi
+VALUES(4, 4, 'elementi_di_informatica_teorica', 'informatica teorica', 1, 50, 'fsm');
 
-INSERT INTO iscrizione
-VALUES(true, 2000, 600);
+INSERT INTO corsi
+VALUES(5, 6, 'programmazione_1', 'approccio alla programmazione in c++', 5, 100, 'c++');
 
-INSERT INTO iscrizione
-VALUES(true, 6000, 600);
+INSERT INTO corsi
+VALUES(6, 5, 'analisi_1', 'teoremi base di analisi matematica', 10, 110, 'funzioni');
 
-INSERT INTO iscrizione
-VALUES(true, 7000, 600);
+INSERT INTO corsi
+VALUES(7, 1, 'ingegneria_del_software', 'studio dei software', 10, 100, 'software');
 
-INSERT INTO iscrizione
-VALUES(true, 7000, 800);
+INSERT INTO corsi
+VALUES(8, 2, 'algebra', 'corso algebra lineare e booleana', 5, 90, 'reticoli', true);
 
-INSERT INTO iscrizione
-VALUES(true, 7000, 200);
-
-INSERT INTO iscrizione
-VALUES(true, 5000, 600);
 
 
 
 
 INSERT INTO lezioni
-VALUES(1, Polinomi, prmimo approccio ai polinomi, 2:00, 06/11/2021, 14:30, 800);
+VALUES(1, 'polinomi', 'prmimo approccio ai polinomi', '2:00', '06/11/2021', '14:30', 8);
 
 INSERT INTO lezioni
-VALUES(10, sommatorie, calcolo delle sommatorie, 2:30, 20/11/2021, 10:30, 600);
+VALUES(2, 'sommatorie', 'calcolo delle sommatorie', '2:30', '20/11/2021', '10:30', 6);
 
 INSERT INTO lezioni
-VALUES(3, algebra relazionale, definizione sintassi, 1:30, 28/09/2021, 8:30, 200);
+VALUES(3, 'algebra relazionale', 'definizione sintassi', '1:30', '28/09/2021', '8:30', 2);
 
 INSERT INTO lezioni
-VALUES(5, array, definizione struttura dell array, 2:00, 14/10/2020, 8:30, 500);
+VALUES(4, 'array', 'definizione struttura dell array', '2:00', '14/10/2020', '8:30', 5);
 
 INSERT INTO lezioni
-VALUES(30, grafi, DFS, 3:00, 01/10/2021, 16:30, 300);
+VALUES(5, 'grafi', 'DFS', '3:00', '01/10/2021', '16:30', 3);
 
 INSERT INTO lezioni
-VALUES(15, alberi, calcolo altezza, 1:00, 01/11/2021, 13:00, 800);
-
-
-
-
-INSERT INTO operatore
-VALUES(001, sergio);
-
-INSERT INTO operatore
-VALUES(002, adriano);
-
-INSERT INTO operatore
-VALUES(003, massimo);
-
-INSERT INTO operatore
-VALUES(004, alessandro);
-
-INSERT INTO operatore
-VALUES(005, francesco);
-
-INSERT INTO operatore
-VALUES(006, giuliano);
-
-
-
-
-INSERT INTO presenza
-VALUES(1000, 15);
-
-INSERT INTO presenza
-VALUES(3000, 3);
-
-INSERT INTO presenza
-VALUES(5000, 30);
-
-INSERT INTO presenza
-VALUES(3000, 5);
-
-INSERT INTO presenza
-VALUES(6000, 10);
-
-INSERT INTO presenza
-VALUES(8000, 1);
+VALUES(6, 'alberi', 'calcolo altezza', '1:00', '01/11/2021', '13:00', 8);
 
 
 
 
 INSERT INTO studenti
-VALUES(1000, antonelli);
+VALUES(1, 'antonelli');
 
 INSERT INTO studenti
-VALUES(2000, franzese);
+VALUES(2, 'franzese');
 
 INSERT INTO studenti
-VALUES(3000, addati);
+VALUES(3, 'addati');
 
 INSERT INTO studenti
-VALUES(4000, ascolese);
+VALUES(4, 'ascolese');
 
 INSERT INTO studenti
-VALUES(5000, negroni);
+VALUES(5, 'negroni');
 
 INSERT INTO studenti
-VALUES(6000, giordano);
+VALUES(6, 'giordano');
 
 INSERT INTO studenti
-VALUES(7000, spavone);
+VALUES(7, 'spavone');
 
 INSERT INTO studenti
-VALUES(8000, criscuolo);
+VALUES(8, 'criscuolo');
 
 INSERT INTO studenti
-VALUES(9000, molinaro);
+VALUES(9, 'molinaro');
 
 INSERT INTO studenti
-VALUES(10000, venturoli);
+VALUES(10, 'venturoli');
+
+
+
+INSERT INTO presenze
+VALUES(1, 6);
+
+INSERT INTO presenze
+VALUES(2, 3);
+
+INSERT INTO presenze
+VALUES(3, 4);
+
+INSERT INTO presenze
+VALUES(4, 1);
+
+INSERT INTO presenze
+VALUES(5, 2);
+
+INSERT INTO presenze
+VALUES(6, 5);
 
 
 
 
-INSERT INTO tema
-VALUES(programmazione, 100);
+INSERT INTO iscrizioni
+VALUES(true, 1, 3);
 
-INSERT INTO tema
-VALUES(strutture dati, 100);
+INSERT INTO iscrizioni
+VALUES(false, 1, 4);
 
-INSERT INTO tema
-VALUES(calcolo, 800);
+INSERT INTO iscrizioni
+VALUES(false, 2, 1);
 
-INSERT INTO tema
-VALUES(matematica, 800);
+INSERT INTO iscrizioni
+VALUES(false, 2, 5);
 
-INSERT INTO tema
-VALUES(matematica, 600);
+INSERT INTO iscrizioni
+VALUES(true, 2, 6);
 
-INSERT INTO tema
-VALUES(calcolo, 600);
+INSERT INTO iscrizioni
+VALUES(true, 6, 6);
 
-INSERT INTO tema
-VALUES(programmazione, 700);
+INSERT INTO iscrizioni
+VALUES(true, 7, 6);
 
-INSERT INTO tema
-VALUES(strutture dati, 300);
+INSERT INTO iscrizioni
+VALUES(true, 7, 8);
 
-INSERT INTO tema
-VALUES(algoritmi, 300);
+INSERT INTO iscrizioni
+VALUES(true, 7, 2);
 
-INSERT INTO tema
-VALUES(programmazione, 500);
+INSERT INTO iscrizioni
+VALUES(true, 5, 6);
 
-INSERT INTO tema
-VALUES(programmazione, 200);
 
-INSERT INTO tema
-VALUES(calcolo, 200);
+
+
+INSERT INTO temi
+VALUES('programmazione', 1);
+
+INSERT INTO temi
+VALUES('strutture dati', 1);
+
+INSERT INTO temi
+VALUES('calcolo', 8);
+
+INSERT INTO temi
+VALUES('matematica', 8);
+
+INSERT INTO temi
+VALUES('matematica', 6);
+
+INSERT INTO temi
+VALUES('calcolo', 6);
+
+INSERT INTO temi
+VALUES('programmazione', 7);
+
+INSERT INTO temi
+VALUES('strutture dati', 3);
+
+INSERT INTO temi
+VALUES('algoritmi', 3);
+
+INSERT INTO temi
+VALUES('programmazione', 5);
+
+INSERT INTO temi
+VALUES('programmazione', 2);
+
+INSERT INTO temi
+VALUES('calcolo', 2);

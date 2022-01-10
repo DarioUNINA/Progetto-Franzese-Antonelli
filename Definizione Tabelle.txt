@@ -32,30 +32,30 @@ ALTER TABLE IF EXISTS public.aree_tematiche
     OWNER to postgres;
 
 
--- Table: public.operatore
+-- Table: public.operatori
 
--- DROP TABLE IF EXISTS public.operatore;
+-- DROP TABLE IF EXISTS public.operatori;
 
-CREATE TABLE IF NOT EXISTS public.operatore
+CREATE TABLE IF NOT EXISTS public.operatori
 (
     id_operatore character varying COLLATE pg_catalog."default" NOT NULL,
     password character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT "Operatore_pkey" PRIMARY KEY (id_operatore)
+    CONSTRAINT "Operatori_pkey" PRIMARY KEY (id_operatore)
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.operatore
+ALTER TABLE IF EXISTS public.operatori
     OWNER to postgres;
 
 
 
 
--- Table: public.corso
+-- Table: public.corsi
 
--- DROP TABLE IF EXISTS public.corso;
+-- DROP TABLE IF EXISTS public.corsi;
 
-CREATE TABLE IF NOT EXISTS public.corso
+CREATE TABLE IF NOT EXISTS public.corsi
 (
     id_corso character varying COLLATE pg_catalog."default" NOT NULL,
     id_operatore character varying COLLATE pg_catalog."default" NOT NULL,
@@ -65,9 +65,9 @@ CREATE TABLE IF NOT EXISTS public.corso
     max_partecipanti integer NOT NULL,
     parole_chiave character varying COLLATE pg_catalog."default" NOT NULL,
     terminato boolean NOT NULL DEFAULT false,
-    CONSTRAINT "Corso_pkey" PRIMARY KEY (id_corso),
-    CONSTRAINT corso_fk1 FOREIGN KEY (id_operatore)
-        REFERENCES public.operatore (id_operatore) MATCH SIMPLE
+    CONSTRAINT "Corsi_pkey" PRIMARY KEY (id_corso),
+    CONSTRAINT corsi_fk1 FOREIGN KEY (id_operatore)
+        REFERENCES public.operatori (id_operatore) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS public.corso
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.corso
+ALTER TABLE IF EXISTS public.corsi
     OWNER to postgres;
 
 
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS public.lezioni
     id_corso character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT "Lezioni_pkey" PRIMARY KEY (id_lezione),
     CONSTRAINT lezioni_fk1 FOREIGN KEY (id_corso)
-        REFERENCES public.corso (id_corso) MATCH SIMPLE
+        REFERENCES public.corsi (id_corso) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE
 )
@@ -107,29 +107,6 @@ ALTER TABLE IF EXISTS public.lezioni
 
 
 
--- Table: public.organizzazione
-
--- DROP TABLE IF EXISTS public.organizzazione;
-
-CREATE TABLE IF NOT EXISTS public.organizzazione
-(
-    id_lezione character varying COLLATE pg_catalog."default" NOT NULL,
-    id_corso character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT organizzazione_unique UNIQUE (id_lezione, id_corso),
-    CONSTRAINT organizzazione_fk1 FOREIGN KEY (id_lezione)
-        REFERENCES public.lezioni (id_lezione) MATCH SIMPLE
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-    CONSTRAINT organizzazione_fk2 FOREIGN KEY (id_corso)
-        REFERENCES public.corso (id_corso) MATCH SIMPLE
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
-)
-
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public.organizzazione
-    OWNER to postgres;
 
 -- Table: public.studenti
 
@@ -149,46 +126,46 @@ ALTER TABLE IF EXISTS public.studenti
 
 
 
--- Table: public.tema
+-- Table: public.temi
 
--- DROP TABLE IF EXISTS public.tema;
+-- DROP TABLE IF EXISTS public.temi;
 
-CREATE TABLE IF NOT EXISTS public.tema
+CREATE TABLE IF NOT EXISTS public.temi
 (
     nome_area character varying COLLATE pg_catalog."default" NOT NULL,
     id_corso character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT tema_unique UNIQUE (nome_area, id_corso),
-    CONSTRAINT tema_fk1 FOREIGN KEY (nome_area)
+    CONSTRAINT temi_unique UNIQUE (nome_area, id_corso),
+    CONSTRAINT temi_fk1 FOREIGN KEY (nome_area)
         REFERENCES public.aree_tematiche (nome_area) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE,
-    CONSTRAINT tema_fk2 FOREIGN KEY (id_corso)
-        REFERENCES public.corso (id_corso) MATCH SIMPLE
+    CONSTRAINT temi_fk2 FOREIGN KEY (id_corso)
+        REFERENCES public.corsi (id_corso) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.tema
+ALTER TABLE IF EXISTS public.temi
     OWNER to postgres;
 
 
 
--- Table: public.presenza
+-- Table: public.presenze
 
--- DROP TABLE IF EXISTS public.presenza;
+-- DROP TABLE IF EXISTS public.presenze;
 
-CREATE TABLE IF NOT EXISTS public.presenza
+CREATE TABLE IF NOT EXISTS public.presenze
 (
     matricola character varying COLLATE pg_catalog."default" NOT NULL,
     id_lezione character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT presenza_unique UNIQUE (matricola, id_lezione),
-    CONSTRAINT presenza_fk1 FOREIGN KEY (matricola)
+    CONSTRAINT presenze_unique UNIQUE (matricola, id_lezione),
+    CONSTRAINT presenze_fk1 FOREIGN KEY (matricola)
         REFERENCES public.studenti (matricola) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE,
-    CONSTRAINT presenza_fk2 FOREIGN KEY (id_lezione)
+    CONSTRAINT presenze_fk2 FOREIGN KEY (id_lezione)
         REFERENCES public.lezioni (id_lezione) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE
@@ -196,25 +173,25 @@ CREATE TABLE IF NOT EXISTS public.presenza
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.presenza
+ALTER TABLE IF EXISTS public.presenze
     OWNER to postgres;
 
 
--- Table: public.iscrizione
+-- Table: public.iscrizioni
 
--- DROP TABLE IF EXISTS public.iscrizione;
+-- DROP TABLE IF EXISTS public.iscrizioni;
 
-CREATE TABLE IF NOT EXISTS public.iscrizione
+CREATE TABLE IF NOT EXISTS public.iscrizioni
 (
     ammesso boolean NOT NULL,
     matricola character varying COLLATE pg_catalog."default" NOT NULL,
     id_corso character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT iscrizione_unique UNIQUE (ammesso, matricola, id_corso),
-    CONSTRAINT iscrizione_fk1 FOREIGN KEY (id_corso)
-        REFERENCES public.corso (id_corso) MATCH SIMPLE
+    CONSTRAINT iscrizioni_unique UNIQUE (ammesso, matricola, id_corso),
+    CONSTRAINT iscrizioni_fk1 FOREIGN KEY (id_corso)
+        REFERENCES public.corsi (id_corso) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE,
-    CONSTRAINT iscrizione_fk2 FOREIGN KEY (matricola)
+    CONSTRAINT iscrizioni_fk2 FOREIGN KEY (matricola)
         REFERENCES public.studenti (matricola) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE CASCADE
@@ -222,7 +199,7 @@ CREATE TABLE IF NOT EXISTS public.iscrizione
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.iscrizione
+ALTER TABLE IF EXISTS public.iscrizioni
     OWNER to postgres;
 
 

@@ -25,7 +25,7 @@ temi (/nome_area/, /id_corso/)
 
 4)un operatore puó modificare solo i corsi di cui é titolare  *DA GESTIRE CON JDBC*
 
-5)un operatore non puó tenere piú lezioni contemporaneamente
+5)un operatore non puó tenere piú lezioni contemporaneamente *DA GESTIRE CON JDBC*
 
 6)un corso non puó avere due lezioni contemporaneamente
 
@@ -35,7 +35,9 @@ temi (/nome_area/, /id_corso/)
 
 9)Non é possibile iscriversi a lezioni giá concluse
 
-10)NOn é possibile iscriversi due volte alla stessa lezione
+10)Non é possibile iscriversi due volte alla stessa lezione
+
+11)Non ci si puó iscrivere a corsi terminati
 
 
 
@@ -80,7 +82,8 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 		WHERE i.id_corso = NEW.id_corso;
 		
 		IF (iscritti > max_p) THEN	
-			DELETE FROM iscrizioni i WHERE i.matricola = NEW.matricola AND i.id_corso = NEW.id_corso;
+			DELETE FROM iscrizioni i 
+			WHERE i.matricola = NEW.matricola AND i.id_corso = NEW.id_corso;
 			RAISE EXCEPTION 'e stato raggiunto il numero massimo di partecipanti al corso';
 		END IF;
 		RETURN NEW;
@@ -98,25 +101,25 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 7) ALTER TABLE iscrizioni
    ADD CONSTRAINT sincola_iscrizione UNIQUE (matricola, id_corso)
    
-9)	CREATE FUNCTION check_data_lezione()
+9)	CREATE OR REPLACE FUNCTION check_data_lezione()
 	RETURNS TRIGGER AS
 	$$
 	DECLARE data_lezione DATE;
 	BEGIN
 		SELECT data INTO data_lezione
 		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
-		WHERE p.id_lezione = NEW.id_lezione
+		WHERE p.id_lezione = NEW.id_lezione;
 		
-		if (data < SELECT CAST( GETDATE() AS Date );) THEN 		/// SICURAMENTE NON FUNZIONA
+		IF (data_lezione < CURRENT_DATE) THEN 
 			DELETE FROM presenze p
-			WHERE p.matricola = NEW.matricola AND p.id_lezione = NEW.id_lezione
-		
+			WHERE p.matricola = NEW.matricola AND p.id_lezione = NEW.id_lezione;
+			RAISE EXCEPTION 'La lezione si e gia conclusa';
 		END IF;
 		RETURN NEW;
 	END
 	$$ LANGUAGE plpgsql;
 	
-	CREATE TRIGGER data_lezioni
+	CREATE OR REPLACE TRIGGER data_lezioni
 	AFTER INSERT ON presenze
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_data_lezione();
@@ -124,3 +127,55 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	
 10) ALTER TABLE presenze
 	ADD CONSTRAINT unique_presenza UNIQUE (matricola, id_lezione)
+	
+8) CREATE FUNCTION check_lezioni_contemporanee()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE violazione INTEGER;
+	BEGIN
+		SELECT COUNT (*) INTO violazione
+		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
+		WHERE new.id_lezione = l.id_lezione AND l.orario IN (
+		
+		SELECT le.orario
+		FROM presenze pr JOIN lezioni le ON pr.id_lezione = le.id_lezione
+		WHERE pr.matricola = NEW.matricola AND le.data = l.data);
+		
+		
+		IF (violazione > 0) THEN	
+			DELETE FROM presenze p 
+			WHERE p.matricola = new.matricola AND p.id_lezione = new.id_lezione;
+			RAISE EXCEPTION 'Ti sei gia iscritto ad una lezione allo stesso orario';
+		END IF;
+		RETURN NEW;
+	END
+	$$ LANGUAGE plpgsql;
+	
+	CREATE TRIGGER lezioni_contemporanee
+	AFTER INSERT ON presenze
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_lezioni_contemporanee();
+	
+11)
+	CREATE FUNCTION check_iscrizione_terminato()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE violazione INTEGER;
+	BEGIN
+		SELECT COUNT (*) INTO violazione 
+		FROM corsi c JOIN iscrizioni i ON c.id_corso = i.id_corso
+		WHERE i.id_corso = new.id_corso AND c.terminato = true;
+		
+		IF violazione > 0 THEN
+		DELETE FROM iscrizioni i WHERE i.matricola = new.matricola AND i.id_corso = new.id_corso;
+		RAISE EXCEPTION 'Il corso gia e terminato';
+		END IF;
+		RETURN NEW;
+	END
+	
+	$$ LANGUAGE plpgsql;
+	
+	CREATE TRIGGER iscrizione_in_terminato
+	AFTER INSERT ON iscrizioni
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_iscrizione_terminato();

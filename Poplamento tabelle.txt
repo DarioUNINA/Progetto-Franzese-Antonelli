@@ -83,6 +83,9 @@ VALUES(5, 'grafi', 'DFS', '3:00', '01/10/2021', '16:30', 3);
 INSERT INTO lezioni
 VALUES(6, 'alberi', 'calcolo altezza', '1:00', '01/11/2021', '13:00', 8);
 
+INSERT INTO lezioni
+VALUES(7, 'complessita computazionale', 'studio della complessita di un algoritmo', '1:30', '28/09/2021', '8:30', 3);
+
 
 
 

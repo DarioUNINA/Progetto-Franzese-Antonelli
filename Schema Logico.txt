@@ -179,3 +179,30 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	AFTER INSERT ON iscrizioni
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_iscrizione_terminato();
+
+12) CREATE FUNCTION check_lezione_iscrizione()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE contatore INTEGER;
+	BEGIN
+		SELECT COUNT (*) INTO contatore
+		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
+		WHERE p.id_lezione = NEW.id_lezione AND l.id_corso IN (
+		
+		SELECT i.id_corso
+		FROM iscrizioni i
+		WHERE i.matricola = NEW.matricola);
+		
+		IF contatore = 0 THEN
+			DELETE FROM presenze p WHERE p.matricola = NEW.matricola AND p.id_lezione = NEW.id_lezione;
+			RAISE EXCEPTION 'Non sei iscritto al corso';
+		END IF;
+		RETURN NEW;
+	END;
+	
+	$$ LANGUAGE plpgsql;
+	
+	CREATE TRIGGER lezione_iscrizione
+	AFTER INSERT ON presenze
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_lezione_iscrizione();

@@ -183,9 +183,9 @@ ALTER TABLE IF EXISTS public.presenze
 
 CREATE TABLE IF NOT EXISTS public.iscrizioni
 (
-    ammesso boolean NOT NULL,
     matricola character varying COLLATE pg_catalog."default" NOT NULL,
     id_corso character varying COLLATE pg_catalog."default" NOT NULL,
+    ammesso boolean NOT NULL DEFAULT false,
     CONSTRAINT iscrizioni_unique UNIQUE (ammesso, matricola, id_corso),
     CONSTRAINT iscrizioni_fk1 FOREIGN KEY (id_corso)
         REFERENCES public.corsi (id_corso) MATCH SIMPLE

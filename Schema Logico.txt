@@ -39,7 +39,7 @@ temi (/nome_area/, /id_corso/)
 
 11)Non ci si puó iscrivere a corsi terminati
 
-
+12)auto incremento dei valori dopo esser stati inseriti
 
 1)
 CREATE FUNCTION check_inserimento_in_terminato()
@@ -206,3 +206,32 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	AFTER INSERT ON presenze
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_lezione_iscrizione();
+	
+	
+12)
+	CREATE SEQUENCE sequenza_id_corso
+	START 1
+	INCREMENT 1
+	OWNED BY corsi.id_corso;
+	
+	--insert into corsi values (nextval('sequenza_id_corso')
+	
+	CREATE SEQUENCE sequenza_id_operatore
+	START 1
+	INCREMENT 1
+	OWNED BY operatori.id_operatore;
+	
+	CREATE SEQUENCE sequenza_nome_area
+	START 1
+	INCREMENT 1
+	OWNED BY aree_tematiche.nome_area;
+	
+	CREATE SEQUENCE sequenza_id_lezione
+	START 1
+	INCREMENT 1
+	OWNED BY lezioni.id_lezione;
+	
+	CREATE SEQUENCE sequenza_matricola
+	START 1
+	INCREMENT 1
+	OWNED BY studenti.matricola;

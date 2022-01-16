@@ -39,7 +39,7 @@ temi (/nome_area/, /id_corso/)
 
 11)Non ci si puó iscrivere a corsi terminati
 
-12)auto incremento dei valori dopo esser stati inseriti
+12)Non è possibile iscriversi ad una lezione se non si è iscritti al corso.
 
 1)
 CREATE FUNCTION check_inserimento_in_terminato()
@@ -65,6 +65,45 @@ FOR EACH ROW
 EXECUTE PROCEDURE check_inserimento_in_terminato();
 
 
+
+2)
+	CREATE OR REPLACE FUNCTION check_ammissione()
+	RETURNS TRIGGER AS 
+	$$
+	DECLARE p_min INTEGER;
+			p_studente INTEGER;
+			nome_corso VARCHAR(100);
+	
+	BEGIN
+	
+		SELECT l.id_corso INTO nome_corso
+		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
+		WHERE p.id_lezione = NEW.id_lezione;
+	
+		SELECT COUNT(*) INTO p_studente
+		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
+		WHERE p.matricola = NEW.matricola
+		AND l.id_corso = nome_corso;
+	
+		SELECT presenze_min INTO p_min
+		FROM corsi c
+		WHERE c.id_corso = nome_corso;
+	
+		IF( p_studente >= p_min ) THEN
+			UPDATE iscrizioni i SET ammesso = TRUE WHERE i.matricola = NEW.matricola AND i.id_corso =  nome_corso;
+		END IF;
+		RETURN NEW;
+	
+	END
+
+	$$ LANGUAGE plpgsql;
+
+	CREATE OR REPLACE TRIGGER ammissione
+	AFTER INSERT ON presenze
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_ammissione();
+
+	
 
 3)
 	CREATE FUNCTION check_max_partecipanti()

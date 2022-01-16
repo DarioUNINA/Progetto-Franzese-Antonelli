@@ -17,22 +17,22 @@ VALUES('algoritmi');
 
 
 INSERT INTO operatori
-VALUES(1, 'sergio');
+VALUES(1, 'sergio','pass');
 
 INSERT INTO operatori
-VALUES(2, 'adriano');
+VALUES(2,'adriano','pass');
 
 INSERT INTO operatori
-VALUES(3, 'massimo');
+VALUES(3, 'massimo','pass');
 
 INSERT INTO operatori
-VALUES(4, 'alessandro');
+VALUES(4, 'alessandro','pass');
 
 INSERT INTO operatori
-VALUES(5, 'francesco');
+VALUES(5, 'francesco','pass');
 
 INSERT INTO operatori
-VALUES(6, 'giuliano');
+VALUES(6, 'giuliano','pass');
 
 
 

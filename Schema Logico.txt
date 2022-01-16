@@ -41,6 +41,12 @@ temi (/nome_area/, /id_corso/)
 
 12)Non è possibile iscriversi ad una lezione se non si è iscritti al corso.
 
+13)Autoincremnto primary key
+
+14)Minimo lunghezza password
+
+15)domanda sicurezza nel caso dimentichi pass
+
 1)
 CREATE FUNCTION check_inserimento_in_terminato()
 RETURNS TRIGGER AS

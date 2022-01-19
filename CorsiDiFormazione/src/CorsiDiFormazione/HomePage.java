@@ -30,6 +30,7 @@ public class HomePage extends JFrame {
 	private JPanel contentPane;
 	private JTextField passwordtextField_;
 	private JTextField NomeUtenteField_1;
+	private static Connessione connessione;
 
 	/**
 	 * Launch the application.
@@ -40,7 +41,10 @@ public class HomePage extends JFrame {
 			public void run() {
 				try {
 					HomePage frame = new HomePage();
-					frame.setVisible(true);
+					frame.setVisible(false);
+					
+					connessione = Connessione.getConnessione();
+					
 					frame.getContentPane().setBackground(Color.	LIGHT_GRAY);
 				} catch (Exception e) {
 					e.printStackTrace();

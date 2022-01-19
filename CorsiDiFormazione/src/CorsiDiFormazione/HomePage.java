@@ -1,4 +1,3 @@
-
 package CorsiDiFormazione;
 
 
@@ -44,31 +43,14 @@ public class HomePage extends JFrame {
 	private JPasswordField passwordField;
 	private Component url;
 	private JTextField PasswordDimenticataTxt;
+	
+	private Controller theController;
 
-	/**
-	 * Launch the application.
-	 */
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					
-					HomePage frame = new HomePage();
-					
-					
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	/**
-	 * Create the frame.
-	 */
-	public HomePage() {
+
+	public HomePage(Controller controller) {
+		
+		theController = controller;
+		
 		setVisible(true);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setResizable(false);
@@ -141,3 +123,4 @@ public class HomePage extends JFrame {
 		RegistrazioneButton.setBackground(SystemColor.controlHighlight);
 	}
 }
+

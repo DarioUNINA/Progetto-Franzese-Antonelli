@@ -23,6 +23,8 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 
 public class HomePage extends JFrame {
 
@@ -30,7 +32,7 @@ public class HomePage extends JFrame {
 	private JPanel contentPane;
 	private JTextField passwordtextField_;
 	private JTextField NomeUtenteField_1;
-	private static Connessione connessione;
+	private final Action action = new SwingAction();
 
 	/**
 	 * Launch the application.
@@ -41,9 +43,7 @@ public class HomePage extends JFrame {
 			public void run() {
 				try {
 					HomePage frame = new HomePage();
-					frame.setVisible(false);
-					
-					connessione = Connessione.getConnessione();
+					frame.setVisible(true);
 					
 					frame.getContentPane().setBackground(Color.	LIGHT_GRAY);
 				} catch (Exception e) {
@@ -83,6 +83,7 @@ public class HomePage extends JFrame {
 		AccediButton.setBackground(Color.WHITE);
 		
 		JButton PasswordDimenticataButton = new JButton("Hai dimenticato la Password?");
+		PasswordDimenticataButton.setAction(action);
 		PasswordDimenticataButton.setBounds(170, 195, 232, 20);
 		contentPane.add(PasswordDimenticataButton);
 		PasswordDimenticataButton.setBackground(Color.WHITE);
@@ -101,5 +102,15 @@ public class HomePage extends JFrame {
 		NomeUtenteField_1.setColumns(10);
 		NomeUtenteField_1.setBounds(223, 79, 127, 20);
 		contentPane.add(NomeUtenteField_1);
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+			
+			System.out.println("ciao");
+		}
 	}
 }

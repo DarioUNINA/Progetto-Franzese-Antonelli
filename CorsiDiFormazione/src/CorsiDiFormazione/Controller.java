@@ -1,14 +1,23 @@
 package CorsiDiFormazione;
 
 public class Controller {
+	
+	//classi dao
 
+	private HomePage homePage;
+	
 	public static void main(String[] args) {
 		
-	//	pagina p = new pagina();
-		
-		//inserimento commento per prova
-		
 
+		
+		Controller controller = new Controller();
+		
+	}
+	
+	public Controller() {
+		
+		homePage = new HomePage(this);
+		
 	}
 
 }

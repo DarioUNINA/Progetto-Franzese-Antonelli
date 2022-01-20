@@ -1,4 +1,4 @@
-package CorsiDiFormazione;
+package dto;
 
 public class Controller {
 	

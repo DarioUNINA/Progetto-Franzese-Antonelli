@@ -7,7 +7,7 @@ aree_tematiche (-nome_area-)
 corsi (nome, descrizione, presenze_min, max_partetcipanti, -id_corso-, parole_chiave, terminato, /id_operatore/)
 lezioni (durata, titolo, descrizione, data, orario, -id_lezione-, /id_corso/)
 studenti (-matricola-, nome, cognome)
-operatori (-id_operatore-, Password)
+operatori (-id_operatore-, nome utente, Password)
 
 
 presenze (/matricola/, /id_lezione/)

@@ -47,8 +47,9 @@ public class HomePage extends JFrame {
 	private Component url;
 	private JTextField NomeUtenteField;
 	private JPasswordField passwordField;
-	
+
 	private Controller theController ;
+	private ImageIcon imageicon;
 	/**
 	 * Launch the application.
 	 */
@@ -57,17 +58,17 @@ public class HomePage extends JFrame {
 	 * Create the frame.
 	 */
 	public HomePage(Controller controller) {
-		
+		imageicon = new ImageIcon("napule.png");
 		theController = controller;
+		setIconImage(imageicon.getImage());
 		
-		setVisible(true);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setResizable(false);
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 813, 490);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(18, 160, 215));
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -149,5 +150,6 @@ public class HomePage extends JFrame {
 		BENVENUTOLabel.setBounds(324, 11, 150, 33);
 		BENVENUTOLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		contentPane.add(BENVENUTOLabel);
+		setVisible(true);
 	}
 }

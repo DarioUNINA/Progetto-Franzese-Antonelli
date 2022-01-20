@@ -1,11 +1,8 @@
-package CorsiDiFormazione;
-
-
+package dto;
 
 public class AreeTematiche {
-	
+
 	private String NomeArea;
-	
 
 	public String getNomeArea() {
 		return NomeArea;
@@ -14,7 +11,7 @@ public class AreeTematiche {
 	public void setNomeArea(String nomeArea) {
 		NomeArea = nomeArea;
 	}
-	
+
 	public AreeTematiche(String NomeArea) {
 		this.NomeArea = NomeArea;
 	}

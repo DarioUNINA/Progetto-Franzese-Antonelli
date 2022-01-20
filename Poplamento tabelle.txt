@@ -93,34 +93,34 @@ VALUES(nextval('sequenza_id_lezione'), 'derivate' , 'studio del calcolo differen
 
 
 INSERT INTO studenti
-VALUES(nextval('sequenza_matricola'), 'antonelli');
+VALUES(nextval('sequenza_matricola'),'renato', 'antonelli');
 
 INSERT INTO studenti
-VALUES(nextval('sequenza_matricola'), 'franzese');
+VALUES(nextval('sequenza_matricola'),'dario', 'franzese');
 
 INSERT INTO studenti
-VALUES(nextval('sequenza_matricola'), 'addati');
+VALUES(nextval('sequenza_matricola'),'gian marco', 'addati');
 
 INSERT INTO studenti
-VALUES(nextval('sequenza_matricola'), 'ascolese');
+VALUES(nextval('sequenza_matricola'),'alessia', 'ascolese');
 
 INSERT INTO studenti
-VALUES(nextval('sequenza_matricola'), 'negroni');
+VALUES(nextval('sequenza_matricola'),'simone', 'negroni');
 
 INSERT INTO studenti
-VALUES(nextval('sequenza_matricola'), 'giordano');
+VALUES(nextval('sequenza_matricola'),'simone', 'giordano');
 
 INSERT INTO studenti
-VALUES(nextval('sequenza_matricola'), 'spavone');
+VALUES(nextval('sequenza_matricola'),'matteo', 'spavone');
 
 INSERT INTO studenti
-VALUES(nextval('sequenza_matricola'), 'criscuolo');
+VALUES(nextval('sequenza_matricola'),'lorenzo', 'criscuolo');
 
 INSERT INTO studenti
-VALUES(nextval('sequenza_matricola'), 'molinaro');
+VALUES(nextval('sequenza_matricola'),'mario', 'molinaro');
 
 INSERT INTO studenti
-VALUES(nextval('sequenza_matricola'), 'venturoli');
+VALUES(nextval('sequenza_matricola'),'assunta', 'venturoli');
 
 
 

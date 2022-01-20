@@ -116,6 +116,7 @@ ALTER TABLE IF EXISTS public.lezioni
 CREATE TABLE IF NOT EXISTS public.studenti
 (
     matricola character varying COLLATE pg_catalog."default" NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
     cognome character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT "Studenti_pkey" PRIMARY KEY (matricola)
 )

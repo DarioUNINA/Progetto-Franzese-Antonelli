@@ -68,7 +68,7 @@ public class HomePage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 813, 490);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(18, 160, 215));
+		contentPane.setBackground(new Color(65, 105, 225));
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -147,6 +147,8 @@ public class HomePage extends JFrame {
 		RegistratiPanel.add(RegistratiButton);
 		
 		JLabel BENVENUTOLabel = new JLabel("BENVENUTO");
+		BENVENUTOLabel.setBackground(new Color(255, 255, 255));
+		BENVENUTOLabel.setForeground(new Color(0, 0, 0));
 		BENVENUTOLabel.setBounds(324, 11, 150, 33);
 		BENVENUTOLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		contentPane.add(BENVENUTOLabel);

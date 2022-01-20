@@ -38,10 +38,10 @@ ALTER TABLE IF EXISTS public.aree_tematiche
 
 CREATE TABLE IF NOT EXISTS public.operatori
 (
-     "user" character varying COLLATE pg_catalog."default" NOT NULL,
+    id_operatore character varying COLLATE pg_catalog."default" NOT NULL,
+    "user" character varying COLLATE pg_catalog."default" NOT NULL,
     password character varying COLLATE pg_catalog."default" NOT NULL,
-    id_operatore integer NOT NULL DEFAULT nextval('operatori_id_operatore_seq'::regclass),
-    CONSTRAINT operatori_pkey PRIMARY KEY (id_operatore)
+    CONSTRAINT "Operatori_pkey" PRIMARY KEY (id_operatore)
 )
 
 TABLESPACE pg_default;
@@ -58,15 +58,15 @@ ALTER TABLE IF EXISTS public.operatori
 
 CREATE TABLE IF NOT EXISTS public.corsi
 (
+    id_corso character varying COLLATE pg_catalog."default" NOT NULL,
+    id_operatore character varying COLLATE pg_catalog."default" NOT NULL,
     nome character varying COLLATE pg_catalog."default" NOT NULL,
     descrizione character varying COLLATE pg_catalog."default" NOT NULL,
     presenze_min integer NOT NULL,
     max_partecipanti integer NOT NULL,
     parole_chiave character varying COLLATE pg_catalog."default" NOT NULL,
     terminato boolean NOT NULL DEFAULT false,
-    id_operatore character varying COLLATE pg_catalog."default" NOT NULL,
-    id_corso integer NOT NULL DEFAULT nextval('corsi_id_corso_seq'::regclass),
-    CONSTRAINT corsi_pkey PRIMARY KEY (id_corso),
+    CONSTRAINT "Corsi_pkey" PRIMARY KEY (id_corso),
     CONSTRAINT corsi_fk1 FOREIGN KEY (id_operatore)
         REFERENCES public.operatori (id_operatore) MATCH SIMPLE
         ON UPDATE CASCADE
@@ -87,14 +87,14 @@ ALTER TABLE IF EXISTS public.corsi
 
 CREATE TABLE IF NOT EXISTS public.lezioni
 (
+    id_lezione character varying COLLATE pg_catalog."default" NOT NULL,
     titolo character varying COLLATE pg_catalog."default" NOT NULL,
     descrizione character varying COLLATE pg_catalog."default" NOT NULL,
     durata character varying COLLATE pg_catalog."default" NOT NULL,
     data date NOT NULL,
     orario character varying COLLATE pg_catalog."default" NOT NULL,
     id_corso character varying COLLATE pg_catalog."default" NOT NULL,
-    id_lezione integer NOT NULL DEFAULT nextval('lezioni_id_lezione_seq'::regclass),
-    CONSTRAINT lezioni_pkey PRIMARY KEY (id_lezione),
+    CONSTRAINT "Lezioni_pkey" PRIMARY KEY (id_lezione),
     CONSTRAINT lezioni_fk1 FOREIGN KEY (id_corso)
         REFERENCES public.corsi (id_corso) MATCH SIMPLE
         ON UPDATE CASCADE
@@ -115,10 +115,9 @@ ALTER TABLE IF EXISTS public.lezioni
 
 CREATE TABLE IF NOT EXISTS public.studenti
 (
-   nome character varying COLLATE pg_catalog."default" NOT NULL,
+    matricola character varying COLLATE pg_catalog."default" NOT NULL,
     cognome character varying COLLATE pg_catalog."default" NOT NULL,
-    matricola integer NOT NULL DEFAULT nextval('studenti_matricola_seq'::regclass),
-    CONSTRAINT studenti_pkey PRIMARY KEY (matricola)
+    CONSTRAINT "Studenti_pkey" PRIMARY KEY (matricola)
 )
 
 TABLESPACE pg_default;
@@ -205,3 +204,26 @@ ALTER TABLE IF EXISTS public.iscrizioni
     OWNER to postgres;
 
 
+	CREATE SEQUENCE sequenza_id_corso
+	START 1
+	INCREMENT 1
+	OWNED BY corsi.id_corso;
+	
+	--insert into corsi values (nextval('sequenza_id_corso')
+	
+	CREATE SEQUENCE sequenza_id_operatore
+	START 1
+	INCREMENT 1
+	OWNED BY operatori.id_operatore;
+	
+	
+	CREATE SEQUENCE sequenza_id_lezione
+	START 1
+	INCREMENT 1
+	OWNED BY lezioni.id_lezione;
+	
+	CREATE SEQUENCE sequenza_matricola
+	START 1
+	INCREMENT 1
+	OWNED BY studenti.matricola;
+	

@@ -266,10 +266,6 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	INCREMENT 1
 	OWNED BY operatori.id_operatore;
 	
-	CREATE SEQUENCE sequenza_nome_area
-	START 1
-	INCREMENT 1
-	OWNED BY aree_tematiche.nome_area;
 	
 	CREATE SEQUENCE sequenza_id_lezione
 	START 1
@@ -280,3 +276,4 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	START 1
 	INCREMENT 1
 	OWNED BY studenti.matricola;
+	

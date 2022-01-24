@@ -79,4 +79,3 @@ public class Corsi {
 		this.IdOperatore = IdOperatore;
 	}
 }
- \\ciao mamma

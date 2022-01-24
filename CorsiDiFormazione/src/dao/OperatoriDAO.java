@@ -20,8 +20,8 @@ public class OperatoriDAO {
 	public boolean LogIn(Operatori op) {
 		
 		try{
-			ResultSet rs = statement.executeQuery("SELECT * FROM operatori WHERE nome = '" + op.getNomeUtente().toLowerCase() +  
-						"' AND password = '" +  op.getPassword().toLowerCase()+ "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM operatori WHERE nome = '" + op.getNomeUtente() +  
+						"' AND password = '" +  op.getPassword()+ "'");
 			
 			return rs.next();
 			

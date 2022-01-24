@@ -38,19 +38,15 @@ public class Controller {
 
 	}
 	
-	public void LogInClicked(String user, String pass) {
-		
+	public boolean LogInClicked(String user, String pass) {
 		
 		Operatori op = new Operatori (user, pass);
-		if(operatoriDAO.LogIn(op))
-			System.out.println("login effettuato");
-		else
-			System.out.println("login non effettuato");
+		return operatoriDAO.LogIn(op);
 		
 	}
 	
 	
-	public void AccediClicked (String nome, String pass) {
+	public boolean AccediClicked (String nome, String pass) {
 		if(nome.isEmpty()) {
 			AlertNomeUtenteNonInserito();
 		}
@@ -60,8 +56,23 @@ public class Controller {
 				AlertPasswordNonInserita();
 			}
 			else
-				LogInClicked(nome, pass);	
+				{
+					if(LogInClicked(nome, pass)) {
+						return true;
+					}else
+					{
+						AlertLogInFallito();
+						return false;
+					}
+						
+						
+				}
 		}
+		return false;
+	}
+	
+	public void AlertLogInFallito() {
+		JOptionPane.showMessageDialog(homePage, "Nome utente o password non validi, riprova.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
 	

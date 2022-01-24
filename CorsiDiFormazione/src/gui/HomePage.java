@@ -111,7 +111,9 @@ public class HomePage extends JFrame {
 				String Nome = NomeUtenteField.getText();
 				String Pass = PasswordField.getText();
 				
-				theController.AccediClicked(Nome, Pass);
+				if(theController.AccediClicked(Nome, Pass)) {}
+					//schermata principale
+				
 				
 			}	
 		});

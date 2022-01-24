@@ -2,28 +2,32 @@ package dto;
 
 public class Presenze {
 
-	private String Matricola;
-	private String IdLezione;
-
-	public Presenze(String Matricola, String IdLezione) {
-		this.Matricola = Matricola;
-		this.IdLezione = IdLezione;
+	private String matricola;
+	private String idLezione;
+	
+	
+	public Presenze(String matricola, String idLezione) {
+		this.matricola = matricola;
+		this.idLezione = idLezione;
 	}
 
+	
 	public String getMatricola() {
-		return Matricola;
+		return matricola;
 	}
 
 	public void setMatricola(String matricola) {
-		Matricola = matricola;
+		this.matricola = matricola;
 	}
 
 	public String getIdLezione() {
-		return IdLezione;
+		return idLezione;
 	}
 
 	public void setIdLezione(String idLezione) {
-		IdLezione = idLezione;
+		this.idLezione = idLezione;
 	}
 
+
+	
 }

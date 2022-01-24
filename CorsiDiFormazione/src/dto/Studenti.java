@@ -2,40 +2,38 @@ package dto;
 
 public class Studenti {
 
-	private String Matricola;
-	private String Nome;
-	private String Cognome;
+	private String matricola;
+	private String nome;
+	private String cognome;
+	
+	public Studenti(String matricola, String nome, String cognome) {
+		this.matricola = matricola;
+		this.nome = nome;
+		this.cognome = cognome;
+	}
 
 	public String getMatricola() {
-		return Matricola;
+		return matricola;
 	}
 
 	public void setMatricola(String matricola) {
-		Matricola = matricola;
+		this.matricola = matricola;
 	}
 
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
 
 	public String getCognome() {
-		return Cognome;
+		return cognome;
 	}
 
 	public void setCognome(String cognome) {
-		Cognome = cognome;
-	}
-
-	public Studenti(String Matricola, String Nome, String Congome) {
-
-		this.Cognome = Cognome;
-		this.Matricola = Matricola;
-		this.Nome = Nome;
-
+		this.cognome = cognome;
 	}
 
 }

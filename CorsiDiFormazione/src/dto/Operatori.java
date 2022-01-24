@@ -2,39 +2,42 @@ package dto;
 
 public class Operatori {
 
-	private String IdOperatore;
-	private String NomeUtente;
-	private String Password;
+	private String idOperatore;
+	private String nomeUtente;
+	private String password;
+	
+	
+	public Operatori(String idOperatore, String nomeUtente, String password) {
+		this.idOperatore = idOperatore;
+		this.nomeUtente = nomeUtente;
+		this.password = password;
+	}
 
+	
 	public String getIdOperatore() {
-		return IdOperatore;
+		return idOperatore;
 	}
 
 	public void setIdOperatore(String idOperatore) {
-		IdOperatore = idOperatore;
+		this.idOperatore = idOperatore;
 	}
 
 	public String getNomeUtente() {
-		return NomeUtente;
+		return nomeUtente;
 	}
 
 	public void setNomeUtente(String nomeUtente) {
-		NomeUtente = nomeUtente;
+		this.nomeUtente = nomeUtente;
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 
-	public Operatori(String IdOperatore, String NomeUtente, String Password) {
-
-		this.IdOperatore = IdOperatore;
-		this.NomeUtente = NomeUtente;
-		this.Password = Password;
-	}
+	
 
 }

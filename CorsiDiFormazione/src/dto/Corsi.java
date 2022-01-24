@@ -2,80 +2,78 @@ package dto;
 
 public class Corsi {
 
-	private String Nome;
-	private String Descrizione;
-	private int PresenzeMin;
-	private int MaxPartecipanti;
-	private String IdCorso;
-	private String ParoleChiave;
-	private boolean Terminato;
-	private String IdOperatore;
-
+	private String nome;
+	private String descrizione;
+	private int presenzeMin;
+	private int maxPartecipanti;
+	private String idCorso;
+	private String paroleChiave;
+	private boolean terminato;
+	private String idOperatore;
+	
+	
+	
+	public Corsi(String nome, String descrizione, int presenzeMin, int maxPartecipanti, String idCorso,
+			String paroleChiave, boolean terminato, String idOperatore) {
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.presenzeMin = presenzeMin;
+		this.maxPartecipanti = maxPartecipanti;
+		this.idCorso = idCorso;
+		this.paroleChiave = paroleChiave;
+		this.terminato = terminato;
+		this.idOperatore = idOperatore;
+	}
+	
+	
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
-
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
-
 	public String getDescrizione() {
-		return Descrizione;
+		return descrizione;
 	}
-
 	public void setDescrizione(String descrizione) {
-		Descrizione = descrizione;
+		this.descrizione = descrizione;
 	}
-
 	public int getPresenzeMin() {
-		return PresenzeMin;
+		return presenzeMin;
 	}
-
 	public void setPresenzeMin(int presenzeMin) {
-		PresenzeMin = presenzeMin;
+		this.presenzeMin = presenzeMin;
 	}
-
 	public int getMaxPartecipanti() {
-		return MaxPartecipanti;
+		return maxPartecipanti;
 	}
-
 	public void setMaxPartecipanti(int maxPartecipanti) {
-		MaxPartecipanti = maxPartecipanti;
+		this.maxPartecipanti = maxPartecipanti;
 	}
-
 	public String getIdCorso() {
-		return IdCorso;
+		return idCorso;
 	}
-
 	public void setIdCorso(String idCorso) {
-		IdCorso = idCorso;
+		this.idCorso = idCorso;
 	}
-
 	public String getParoleChiave() {
-		return ParoleChiave;
+		return paroleChiave;
 	}
-
 	public void setParoleChiave(String paroleChiave) {
-		ParoleChiave = paroleChiave;
+		this.paroleChiave = paroleChiave;
 	}
-
 	public boolean isTerminato() {
-		return Terminato;
+		return terminato;
 	}
-
 	public void setTerminato(boolean terminato) {
-		Terminato = terminato;
+		this.terminato = terminato;
+	}
+	public String getIdOperatore() {
+		return idOperatore;
+	}
+	public void setIdOperatore(String idOperatore) {
+		this.idOperatore = idOperatore;
 	}
 
-	public Corsi(String Nome, String Descrizione, int PresenzeMin, int MaxPartecipanti, String IdCorso,
-			String ParoleChiave, boolean Terminato, String IdOperatore) {
-		this.Nome = Nome;
-		this.Descrizione = Descrizione;
-		this.PresenzeMin = PresenzeMin;
-		this.MaxPartecipanti = MaxPartecipanti;
-		this.IdCorso = IdCorso;
-		this.ParoleChiave = ParoleChiave;
-		this.Terminato = Terminato;
-		this.IdOperatore = IdOperatore;
-	}
+	
 }

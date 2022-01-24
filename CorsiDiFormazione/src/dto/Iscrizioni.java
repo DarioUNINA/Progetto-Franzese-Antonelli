@@ -2,38 +2,40 @@ package dto;
 
 public class Iscrizioni {
 
-	private boolean Ammesso;
-	private String Matricola;
-	private String IdCorso;
-
-	public Iscrizioni(boolean Ammesso, String Matricola, String IdCorso) {
-		this.Ammesso = Ammesso;
-		this.Matricola = Matricola;
-		this.IdCorso = IdCorso;
+	private boolean ammesso;
+	private String matricola;
+	private String idCorso;
+	
+	
+	public Iscrizioni(boolean ammesso, String matricola, String idCorso) {
+		this.ammesso = ammesso;
+		this.matricola = matricola;
+		this.idCorso = idCorso;
 	}
 
 	public boolean isAmmesso() {
-		return Ammesso;
+		return ammesso;
 	}
 
 	public void setAmmesso(boolean ammesso) {
-		Ammesso = ammesso;
+		this.ammesso = ammesso;
 	}
 
 	public String getMatricola() {
-		return Matricola;
+		return matricola;
 	}
 
 	public void setMatricola(String matricola) {
-		Matricola = matricola;
+		this.matricola = matricola;
 	}
 
 	public String getIdCorso() {
-		return IdCorso;
+		return idCorso;
 	}
 
 	public void setIdCorso(String idCorso) {
-		IdCorso = idCorso;
+		this.idCorso = idCorso;
 	}
 
+	
 }

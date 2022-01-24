@@ -2,28 +2,31 @@ package dto;
 
 public class Temi {
 
-	private String NomeArea;
-	private String IdCorso;
-
-	public Temi(String NomeArea, String IdCorso) {
-		this.NomeArea = NomeArea;
-		this.IdCorso = IdCorso;
+	private String nomeArea;
+	private String idCorso;
+	
+		public Temi(String nomeArea, String idCorso) {
+		this.nomeArea = nomeArea;
+		this.idCorso = idCorso;
 	}
 
+		
 	public String getNomeArea() {
-		return NomeArea;
+		return nomeArea;
 	}
 
 	public void setNomeArea(String nomeArea) {
-		NomeArea = nomeArea;
+		this.nomeArea = nomeArea;
 	}
 
 	public String getIdCorso() {
-		return IdCorso;
+		return idCorso;
 	}
 
 	public void setIdCorso(String idCorso) {
-		IdCorso = idCorso;
+		this.idCorso = idCorso;
 	}
+
+	
 
 }

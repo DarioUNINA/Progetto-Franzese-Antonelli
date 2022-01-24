@@ -1,7 +1,7 @@
 package dao;
 
 import java.sql.*;
-import dto.Connessione;
+import dto.AreeTematiche;
 
 public class AreeTematicheDAO {
 	

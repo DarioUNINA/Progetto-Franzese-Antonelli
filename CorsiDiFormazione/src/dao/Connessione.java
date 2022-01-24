@@ -1,9 +1,9 @@
-package dto;
+package dao;
 
 import java.sql.*;
 
 public class Connessione {
-	private static Connection connection = null;
+	private static Connection connection;
 	private static Connessione istanza;
 	private Statement statement;
 

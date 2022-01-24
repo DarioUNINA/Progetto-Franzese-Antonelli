@@ -1,4 +1,4 @@
-package dto;
+package gui;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -46,14 +46,9 @@ public class HomePage extends JFrame {
 	private Controller theController;
 	private ImageIcon imageicon;
 
-	/**
-	 * Launch the application.
-	 */
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public HomePage(Controller controller) {
+		
 		imageicon = new ImageIcon("napule.png");
 		theController = controller;
 		setIconImage(imageicon.getImage());
@@ -131,6 +126,7 @@ public class HomePage extends JFrame {
 			@Override
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				RegistratiButton.setBackground(Color.ORANGE);
+				
 			}
 
 			@Override

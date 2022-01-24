@@ -44,8 +44,7 @@ public class Controller {
 		return operatoriDAO.LogIn(op);
 		
 	}
-	
-	
+
 	public boolean AccediClicked (String nome, String pass) {
 		if(nome.isEmpty()) {
 			AlertNomeUtenteNonInserito();
@@ -74,7 +73,6 @@ public class Controller {
 	public void AlertLogInFallito() {
 		JOptionPane.showMessageDialog(homePage, "Nome utente o password non validi, riprova.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
-	
 	
 	public void AlertNomeUtenteNonInserito() {
 		JOptionPane.showMessageDialog(homePage, "Nome Utente non inserito!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);

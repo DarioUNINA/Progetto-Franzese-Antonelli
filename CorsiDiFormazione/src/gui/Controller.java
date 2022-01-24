@@ -38,7 +38,7 @@ public class Controller {
 
 	}
 	
-	public void AccediClicked(String user, String pass) {
+	public void LogInClicked(String user, String pass) {
 		
 		
 		Operatori op = new Operatori (user, pass);
@@ -47,6 +47,21 @@ public class Controller {
 		else
 			System.out.println("login non effettuato");
 		
+	}
+	
+	
+	public void AccediClicked (String nome, String pass) {
+		if(nome.isEmpty()) {
+			AlertNomeUtenteNonInserito();
+		}
+		else 
+		{
+			if(pass.isEmpty()) {
+				AlertPasswordNonInserita();
+			}
+			else
+				LogInClicked(nome, pass);	
+		}
 	}
 	
 	

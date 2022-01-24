@@ -110,17 +110,9 @@ public class HomePage extends JFrame {
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				String Nome = NomeUtenteField.getText();
 				String Pass = PasswordField.getText();
-				if(Nome.isEmpty()) {
-					theController.AlertNomeUtenteNonInserito();
-				}
-				else 
-				{
-					if(Pass.isEmpty()) {
-						theController.AlertPasswordNonInserita();
-					}
-					else
-						theController.AccediClicked(NomeUtenteField.getText(), PasswordField.getText());	
-				}
+				
+				theController.AccediClicked(Nome, Pass);
+				
 			}	
 		});
 

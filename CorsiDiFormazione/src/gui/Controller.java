@@ -1,6 +1,7 @@
 package gui;
 
 import dao.*;
+import dto.*;
 
 public class Controller {
 
@@ -35,6 +36,15 @@ public class Controller {
 
 	}
 	
+	public void AccediClicked(String user, String pass) {
+		
+		
+		Operatori op = new Operatori (user, pass);
+		if(operatoriDAO.LogIn(op))
+			System.out.println("login effettuato");
+		else
+			System.out.println("login non effettuato");
+		
 	
-
+	}
 }

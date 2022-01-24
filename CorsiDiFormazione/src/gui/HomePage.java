@@ -89,6 +89,10 @@ public class HomePage extends JFrame {
 		LogInPanel.add(PasswordLabel);
 
 		JButton AccediButton = new JButton("ACCEDI");
+		AccediButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		AccediButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -98,6 +102,10 @@ public class HomePage extends JFrame {
 			@Override
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				AccediButton.setBackground(Color.WHITE);
+			}
+			@Override
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				theController.AccediClicked(NomeUtenteField.getText(), passwordField.getText());
 			}
 		});
 

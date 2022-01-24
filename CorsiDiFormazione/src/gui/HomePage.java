@@ -12,6 +12,7 @@ import org.w3c.dom.events.MouseEvent;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
@@ -93,11 +94,12 @@ public class HomePage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
 		AccediButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				AccediButton.setBackground(Color.GREEN);
-			}
+			};
 
 			@Override
 			public void mouseExited(java.awt.event.MouseEvent e) {
@@ -105,8 +107,18 @@ public class HomePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				theController.AccediClicked(NomeUtenteField.getText(), passwordField.getText());
-			}
+				String Nome = NomeUtenteLabel.getText();
+				String Pass = PasswordLabel.getText();
+				if(Nome.isEmpty()) {
+					theController.AlertNomeUtenteNonInserito();
+				}
+				else 
+				{
+					if(Pass.isEmpty()) 
+						theController.AlertPasswordNonInserita();
+				//theController.AccediClicked(NomeUtenteField.getText(), passwordField.getText());	
+				}
+			}	
 		});
 
 		AccediButton.setFont(new Font("Arial", Font.BOLD, 15));
@@ -153,6 +165,11 @@ public class HomePage extends JFrame {
 		BENVENUTOLabel.setBounds(324, 11, 150, 33);
 		BENVENUTOLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		contentPane.add(BENVENUTOLabel);
+		
+	
+		
+		
 		setVisible(true);
 	}
+
 }

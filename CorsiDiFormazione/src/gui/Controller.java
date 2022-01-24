@@ -1,5 +1,7 @@
 package gui;
 
+import javax.swing.JOptionPane;
+
 import dao.*;
 import dto.*;
 
@@ -45,6 +47,15 @@ public class Controller {
 		else
 			System.out.println("login non effettuato");
 		
-	
 	}
+	
+	
+	public void AlertNomeUtenteNonInserito() {
+		JOptionPane.showMessageDialog(homePage, "Nome Utente non inserito!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void AlertPasswordNonInserita() {
+		JOptionPane.showMessageDialog(homePage, "Password non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
 }

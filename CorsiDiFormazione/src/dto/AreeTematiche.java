@@ -2,17 +2,19 @@ package dto;
 
 public class AreeTematiche {
 
-	private String NomeArea;
+	private String nomeArea;
+
+	public AreeTematiche(String nomeArea) {
+		this.nomeArea = nomeArea;
+	}
 
 	public String getNomeArea() {
-		return NomeArea;
+		return nomeArea;
 	}
 
 	public void setNomeArea(String nomeArea) {
-		NomeArea = nomeArea;
+		this.nomeArea = nomeArea;
 	}
 
-	public AreeTematiche(String NomeArea) {
-		this.NomeArea = NomeArea;
-	}
+	
 }

@@ -78,5 +78,5 @@ public class Corsi {
 		this.Terminato = Terminato;
 		this.IdOperatore = IdOperatore;
 	}
-
 }
+ \\ciao mamma

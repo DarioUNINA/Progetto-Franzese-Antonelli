@@ -42,7 +42,7 @@ public class HomePage extends JFrame {
 	private JPanel contentPane;
 	private Component url;
 	private JTextField NomeUtenteField;
-	private JPasswordField passwordField;
+	private JPasswordField PasswordField;
 
 	private Controller theController;
 	private ImageIcon imageicon;
@@ -75,9 +75,9 @@ public class HomePage extends JFrame {
 		LogInPanel.add(NomeUtenteField);
 		NomeUtenteField.setColumns(10);
 
-		passwordField = new JPasswordField();
-		passwordField.setBounds(269, 105, 121, 20);
-		LogInPanel.add(passwordField);
+		PasswordField = new JPasswordField();
+		PasswordField.setBounds(269, 105, 121, 20);
+		LogInPanel.add(PasswordField);
 
 		JLabel NomeUtenteLabel = new JLabel("Nome Utente:");
 		NomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
@@ -90,6 +90,7 @@ public class HomePage extends JFrame {
 		LogInPanel.add(PasswordLabel);
 
 		JButton AccediButton = new JButton("ACCEDI");
+		
 		AccediButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -107,16 +108,18 @@ public class HomePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				String Nome = NomeUtenteLabel.getText();
-				String Pass = PasswordLabel.getText();
+				String Nome = NomeUtenteField.getText();
+				String Pass = PasswordField.getText();
 				if(Nome.isEmpty()) {
 					theController.AlertNomeUtenteNonInserito();
 				}
 				else 
 				{
-					if(Pass.isEmpty()) 
+					if(Pass.isEmpty()) {
 						theController.AlertPasswordNonInserita();
-				//theController.AccediClicked(NomeUtenteField.getText(), passwordField.getText());	
+					}
+					else
+						theController.AccediClicked(NomeUtenteField.getText(), PasswordField.getText());	
 				}
 			}	
 		});

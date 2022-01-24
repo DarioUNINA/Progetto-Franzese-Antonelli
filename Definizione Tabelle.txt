@@ -39,7 +39,7 @@ ALTER TABLE IF EXISTS public.aree_tematiche
 CREATE TABLE IF NOT EXISTS public.operatori
 (
     id_operatore character varying COLLATE pg_catalog."default" NOT NULL,
-    "user" character varying COLLATE pg_catalog."default" NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
     password character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT "Operatori_pkey" PRIMARY KEY (id_operatore)
 )

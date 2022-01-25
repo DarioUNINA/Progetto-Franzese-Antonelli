@@ -99,22 +99,25 @@ public class HomePage extends JFrame {
 		});
 		
 		AccediButton.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				AccediButton.setBackground(Color.GREEN);
 			};
 
-			@Override
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				AccediButton.setBackground(Color.WHITE);
 			}
-			@Override
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				String Nome = NomeUtenteField.getText();
 				String Pass = PasswordField.getText();
 				
-				if(theController.homePageAccediClicked(Nome, Pass)) {}
+				if(theController.homePageAccediClicked(Nome, Pass)) {
+					
+					NomeUtenteField.setText("");
+					PasswordField.setText("");
 					//schermata principale
+				}
+					
+				
 				
 				
 			}	
@@ -126,7 +129,7 @@ public class HomePage extends JFrame {
 
 		JLabel PasswordDimenticataLabel = new JLabel("Hai dimenticato la Password?");
 		PasswordDimenticataLabel.addMouseListener(new MouseAdapter() {
-			@Override
+
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				System.out.println("cambiami");
 			}
@@ -175,7 +178,6 @@ public class HomePage extends JFrame {
 		BENVENUTOLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		contentPane.add(BENVENUTOLabel);
 		
-	
 		
 		
 		setVisible(true);

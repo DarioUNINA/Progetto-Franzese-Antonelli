@@ -15,12 +15,11 @@ public class OperatoriDAO {
 		connessione = Connessione.getConnessione();
 		statement = connessione.getStatement();
 	}
-
 	
 	public boolean LogIn(Operatori op) {
 		
 		try{
-			ResultSet rs = statement.executeQuery("SELECT * FROM operatori WHERE nome = '" + op.getNomeUtente() +  
+			ResultSet rs = statement.executeQuery("SELECT * FROM operatori WHERE nome_utente = '" + op.getNomeUtente() +  
 						"' AND password = '" +  op.getPassword()+ "'");
 			
 			return rs.next();

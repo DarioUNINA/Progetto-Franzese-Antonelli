@@ -51,27 +51,20 @@ public class Controller {
 	}
 
 	public boolean homePageAccediClicked (String nome, String pass) {
-		if(nome.isEmpty()) {
+		if(nome.isEmpty())
 			alertNomeUtenteNonInserito();
-		}
 		else 
-		{
-			if(pass.isEmpty()) {
+			if(pass.isEmpty())
 				alertPasswordNonInserita();
-			}
 			else
+				if(logInClicked(nome, pass))
+					return true;
+				else
 				{
-					if(logInClicked(nome, pass)) {
-						return true;
-					}else
-					{
-						alertLogInFallito();
-						return false;
-					}
-						
-						
+					alertLogInFallito();
+					return false;
 				}
-		}
+
 		return false;
 	}
 	
@@ -94,9 +87,6 @@ public class Controller {
 		else 
 			if(pass.isEmpty())
 				alertPasswordNonInserita();
-			else
-				if(domanda.isEmpty())
-					alertDomandaNonSelezioaata();
 				else
 					if(risposta.isEmpty())
 						alertRispostaNonInserita();
@@ -117,10 +107,6 @@ public class Controller {
 				
 	}
 			
-	public void alertDomandaNonSelezioaata() {
-		JOptionPane.showMessageDialog(homePage, "Domanda di sicurezza non selezionata!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
-		
 	public void alertRispostaNonInserita() {
 		JOptionPane.showMessageDialog(homePage, "Risposta non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}

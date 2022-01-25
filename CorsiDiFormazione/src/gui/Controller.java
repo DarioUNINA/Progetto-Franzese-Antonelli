@@ -89,40 +89,32 @@ public class Controller {
 	
 	public boolean registrazionePageConfermaClicked(String nome, String pass, String domanda, String risposta) {
 		
-		if(nome.isEmpty()) {
+		if(nome.isEmpty())
 			alertNomeUtenteNonInserito();
-		}
 		else 
-		{
-			if(pass.isEmpty()) {
+			if(pass.isEmpty())
 				alertPasswordNonInserita();
-			}
 			else
-				{
-					if(domanda.isEmpty()) {
-						alertDomandaNonSelezioaata();
-					}else
-					{
-						if(risposta.isEmpty()) {
-							alertRispostaNonInserita();
-						}else
-						{
-							if(registrazioneClicked(nome, pass, domanda, risposta))
-								System.out.println(nome);
-						}
-		
-		
+				if(domanda.isEmpty())
+					alertDomandaNonSelezioaata();
+				else
+					if(risposta.isEmpty())
+						alertRispostaNonInserita();
+					else
+						return registrazioneClicked(nome, pass, domanda, risposta);
+		return false;
 	}
 					
 	public boolean registrazioneClicked(String nome, String pass, String domanda, String risposta) {
 		
 		Operatori op = new Operatori(nome, pass);
-		operatoriDAO.insertOperatore(op);
-		DomandeOperatori dop = new DomandeOperatori(operatoriDAO.getIdOperatore(op), domandeSicurezzaDAO.getIdDomanda(domanda), risposta);
-		domandeOperatoriDAO.insertDomandeOperatori(dop);
+		if(!operatoriDAO.insertOperatore(op)) {
+			return false;
+		}
+		DomandeOperatori dop = new DomandeOperatori(domandeSicurezzaDAO.getIdDomanda(domanda), operatoriDAO.getIdOperatore(op), risposta);
 		
-		return true;
-		
+		return domandeOperatoriDAO.insertDomandeOperatori(dop);
+				
 	}
 			
 	public void alertDomandaNonSelezioaata() {

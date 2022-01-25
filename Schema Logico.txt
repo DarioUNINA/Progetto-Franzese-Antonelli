@@ -37,16 +37,16 @@ temi (/nome_area/, /id_corso/)
 
 9)Non é possibile iscriversi a lezioni giá concluse
 
-
 11)Non ci si puó iscrivere a corsi terminati
 
 12)Non è possibile iscriversi ad una lezione se non si è iscritti al corso.
 
 13)Autoincremnto primary key
 
-14)Minimo lunghezza password
+14)Minimo lunghezza password e nome_utente
 
-15)domanda sicurezza nel caso dimentichi pass
+15)Caratteri speciali non ammessi in nome utente e password
+
 
 1)
 CREATE FUNCTION check_inserimento_in_terminato()
@@ -141,11 +141,6 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_max_partecipanti();
 
-6) ALTER TABLE lezioni 
-   ADD CONSTRAINT lezioni_contemporanee UNIQUE (id_corso, orario, data)
-
-7) ALTER TABLE iscrizioni
-   ADD CONSTRAINT sincola_iscrizione UNIQUE (matricola, id_corso)
    
 9)	CREATE OR REPLACE FUNCTION check_data_lezione()
 	RETURNS TRIGGER AS
@@ -251,3 +246,79 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	EXECUTE PROCEDURE check_lezione_iscrizione();
 	
 	
+14)	CREATE FUNCTION check_lunghezza_password()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE index INTEGER;
+			stringa VARCHAR(100);
+	BEGIN
+		SELECT o.password INTO stringa
+		FROM operatori o
+		WHERE o.nome_utente = NEW.nome_utente;
+		
+		stringa = SUBSTRING(stringa, 8, 100);
+		IF(stringa = '')THEN
+			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
+			RAISE SQLSTATE '10001';
+			RAISE EXCEPTION 'La password deve contentere almeno 8 caratteri';
+		END IF;
+		RETURN NEW;
+	END
+	$$ LANGUAGE plpgsql;
+
+	CREATE TRIGGER lunghezza_password_violata
+	AFTER INSERT ON operatori
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_lunghezza_password();
+	
+	
+	
+	
+	CREATE FUNCTION check_lunghezza_nome_utente()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE index INTEGER;
+			stringa VARCHAR(100);
+	BEGIN
+		SELECT o.nome_utente INTO stringa
+		FROM operatori o
+		WHERE o.nome_utente = NEW.nome_utente;
+		
+		stringa = SUBSTRING(stringa, 8, 100);
+		IF(stringa = '')THEN
+			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
+			RAISE SQLSTATE '10002';
+			RAISE EXCEPTION 'Il nome utente deve contentere almeno 8 caratteri';
+		END IF;
+		RETURN NEW;
+	END
+	$$ LANGUAGE plpgsql;
+
+	CREATE TRIGGER lunghezza_nome_utente_violata
+	AFTER INSERT ON operatori
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_lunghezza_nome_utente();
+	
+15)CREATE FUNCTION check_caratteri_speciali_nome_utente()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE violazione INTEGER;
+	BEGIN
+		SELECT COUNT(*) INTO violazione
+		FROM operatori o
+		WHERE o.nome_utente = NEW.nome_utente AND 
+			( o.nome_utente like '%!%' OR o.nome_utente like '%@%' OR o.nome_utente like '%#%' OR o.nome_utente like '%$%');
+		
+		IF(violazione>1)THEN
+			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
+			RAISE SQLSTATE '10003';
+			RAISE EXCEPTION 'Il nome utente non puo contenere caratteri speciali';
+		END IF;
+		RETURN NEW;
+	END
+	
+
+	CREATE TRIGGER nome_utente_caratteri_speciali
+	AFTER INSERT ON operatori
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_caratteri_speciali_nome_utente();

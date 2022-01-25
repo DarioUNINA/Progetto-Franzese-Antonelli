@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.CompoundBorder;
@@ -146,7 +148,8 @@ public class RegistrazionePage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				if(theController.registrazionePageConfermaClicked("mario", "pass", "dove sei nato? ", "milano"));
-					System.out.println("e andato tutto bene");
+					alertConfermaRegistrazione();
+				//System.out.println("e andato tutto bene");
 					
 				
 			}
@@ -160,6 +163,24 @@ public class RegistrazionePage extends JFrame {
 			}
 		});
 		
+		
 		setVisible(true);
+	}
+	public void alertConfermaRegistrazione() {
+		Object[] opzioni = {"HomePage","GestioneCorsi!"};
+		int n = JOptionPane.showOptionDialog(this,
+					"Come si vuole procedere?",
+					"REGISTRAZIONE EFFETTUATA ",
+					JOptionPane.YES_NO_OPTION,
+					JOptionPane.QUESTION_MESSAGE,
+					null, //non usa un'icona personalizzata
+					opzioni, //i titoli dei pulsanti
+					opzioni[0]); //titolo del pulsante 
+		
+		if(n==0) {
+			HomePage HP = new HomePage(theController);
+			setVisible(false);	
+		}else
+			System.out.println("ciao");
 	}
 }

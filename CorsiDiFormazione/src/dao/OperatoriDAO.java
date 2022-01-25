@@ -53,14 +53,13 @@ public class OperatoriDAO {
 	public boolean insertOperatore(Operatori op) {
 		
 		try {
-			statement.executeQuery("INSERT INTO operatori VALUES (nextval('sequenza_id_operatore'), '" + op.getNomeUtente() +  
+			statement.execute("INSERT INTO operatori VALUES (nextval('sequenza_id_operatore'), '" + op.getNomeUtente() +  
 							"', '" +  op.getPassword()+ "');");
-			
 			return true;
 		
 		}catch(SQLException e) {
 			
-			//da gestire
+			e.printStackTrace();
 			return false;
 		}
 	}

@@ -20,7 +20,17 @@ public class DomandeOperatoriDAO {
 	
 	public boolean insertDomandeOperatori(DomandeOperatori dop){
 		
-		ResultSet rs = statement.executeQuery("INSERT INTO domande_operatori VALUES ('")
+		try {
+			System.out.println(dop.getIdDomanda() +  " " +  dop.getIdOperatore() + dop.getRisposta());
+			statement.execute("INSERT INTO domande_operatori VALUES ('" + dop.getRisposta() + "' , '" + dop.getIdDomanda() + 
+					"', '" + dop.getIdOperatore() + "')");
+			
+			return true;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 		
 		
 		

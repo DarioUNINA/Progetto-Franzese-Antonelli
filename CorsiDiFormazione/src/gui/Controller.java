@@ -111,7 +111,4 @@ public class Controller {
 		JOptionPane.showMessageDialog(homePage, "Risposta non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void alertConfermaRegistrazione() {
-		
-	}
 }

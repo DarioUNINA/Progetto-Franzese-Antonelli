@@ -56,7 +56,8 @@ public class RegistrazionePage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				theController.registrazionePageConfermaClicked();
+				if(theController.registrazionePageConfermaClicked("a", "b", "c", "d"))
+					System.out.println("ciao");
 				
 			}
 		});

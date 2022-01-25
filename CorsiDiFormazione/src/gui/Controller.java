@@ -108,6 +108,7 @@ public class Controller {
 						}else
 						{
 							if(registrazioneClicked(nome, pass, domanda, risposta))
+								System.out.println(nome);
 						}
 		
 		

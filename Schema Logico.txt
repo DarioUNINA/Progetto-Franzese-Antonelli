@@ -7,7 +7,7 @@ aree_tematiche (-nome_area-)
 corsi (nome, descrizione, presenze_min, max_partetcipanti, -id_corso-, parole_chiave, terminato, /id_operatore/)
 lezioni (durata, titolo, descrizione, data, orario, -id_lezione-, /id_corso/)
 studenti (-matricola-, nome, cognome)
-operatori (-id_operatore-, nome utente, Password)
+operatori (-id_operatore-, nome_utente, Password)
 domande_operatori(/id_operatore/, /id_domanda/, risposta)
 domande_sicurezza(-id_domanda-)
 
@@ -37,7 +37,6 @@ temi (/nome_area/, /id_corso/)
 
 9)Non é possibile iscriversi a lezioni giá concluse
 
-10)Non é possibile iscriversi due volte alla stessa lezione
 
 11)Non ci si puó iscrivere a corsi terminati
 
@@ -171,9 +170,6 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_data_lezione();
 	
-	
-10) ALTER TABLE presenze
-	ADD CONSTRAINT unique_presenza UNIQUE (matricola, id_lezione)
 	
 8) CREATE FUNCTION check_lezioni_contemporanee()
 	RETURNS TRIGGER AS

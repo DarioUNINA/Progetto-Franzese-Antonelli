@@ -205,12 +205,59 @@ ALTER TABLE IF EXISTS public.iscrizioni
     OWNER to postgres;
 
 
+
+
+-- Table: public.domande_sicurezza
+
+-- DROP TABLE IF EXISTS public.domande_sicurezza;
+
+CREATE TABLE IF NOT EXISTS public.domande_sicurezza
+(
+    domanda character varying COLLATE pg_catalog."default" NOT NULL,
+    id_domanda character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT domande_sicurezza_pkey PRIMARY KEY (id_domanda)
+	
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.domande_sicurezza
+    OWNER to postgres;
+	
+	
+	
+-- Table: public.domande_operatori
+
+-- DROP TABLE IF EXISTS public.domande_operatori;
+
+CREATE TABLE IF NOT EXISTS public.domande_operatori
+(
+    risposta character varying COLLATE pg_catalog."default" NOT NULL,
+    id_domanda character varying COLLATE pg_catalog."default" NOT NULL,
+	id_operatore character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT domande_operatori_pkey PRIMARY KEY (id_domanda, id_operatore, risposta),
+	CONSTRAINT domande_operatori_fk1 FOREIGN KEY (id_operatore)
+        REFERENCES public.operatori (id_operatore) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	CONSTRAINT domande_operatori_fk2 FOREIGN KEY (id_domanda)
+        REFERENCES public.domande_sicurezza (id_domanda) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.domande_operatori
+    OWNER to postgres;
+	
+	
+--Sequenze Primary Key
+
 	CREATE SEQUENCE sequenza_id_corso
 	START 1
 	INCREMENT 1
 	OWNED BY corsi.id_corso;
-	
-	--insert into corsi values (nextval('sequenza_id_corso')
 	
 	CREATE SEQUENCE sequenza_id_operatore
 	START 1
@@ -227,4 +274,11 @@ ALTER TABLE IF EXISTS public.iscrizioni
 	START 1
 	INCREMENT 1
 	OWNED BY studenti.matricola;
+	
+	CREATE SEQUENCE sequenza_id_domanda
+	START 1
+	INCREMENT 1
+	OWNED BY domande_sicurezza.id_domanda;
+	
+	
 	

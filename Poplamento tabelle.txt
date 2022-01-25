@@ -213,3 +213,34 @@ VALUES('programmazione', 2);
 
 INSERT INTO temi
 VALUES('calcolo', 2);
+
+
+
+INSERT INTO domande_sicurezza
+VALUES ('Dove sei nato? ' , nextval('sequenza_id_domanda'));
+
+INSERT INTO domande_sicurezza
+VALUES ('Come si chiama il tuo/la tua primo/a genito/a ?' , nextval('sequenza_id_domanda'));
+
+INSERT INTO domande_sicurezza
+VALUES ('Come si chiama il tuo animale domestico? ' , nextval('sequenza_id_domanda'));
+
+
+INSERT INTO domande_operatori
+VALUES('Napoli', '1', '1');
+
+INSERT INTO domande_operatori
+VALUES('Kappa', '3', '2');
+
+INSERT INTO domande_operatori
+VALUES('Luca', '2', '3');
+
+INSERT INTO domande_operatori
+VALUES('Napoli', '1', '4');
+
+INSERT INTO domande_operatori
+VALUES('Giulia', '2', '5');
+
+INSERT INTO domande_operatori
+VALUES('kira', '3', '6');
+

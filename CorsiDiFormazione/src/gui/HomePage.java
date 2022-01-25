@@ -108,7 +108,7 @@ public class HomePage extends JFrame {
 			}
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				String Nome = NomeUtenteField.getText();
-				String Pass = PasswordField.getText();
+			String Pass = PasswordField.getText();
 				
 				if(theController.homePageAccediClicked(Nome, Pass)) {
 					

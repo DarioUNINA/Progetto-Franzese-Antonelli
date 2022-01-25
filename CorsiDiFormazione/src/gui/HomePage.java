@@ -111,7 +111,7 @@ public class HomePage extends JFrame {
 				String Nome = NomeUtenteField.getText();
 				String Pass = PasswordField.getText();
 				
-				if(theController.AccediClicked(Nome, Pass)) {}
+				if(theController.homePageAccediClicked(Nome, Pass)) {}
 					//schermata principale
 				
 				
@@ -139,6 +139,10 @@ public class HomePage extends JFrame {
 		RegistratiPanel.setLayout(null);
 
 		JButton RegistratiButton = new JButton("REGISTRATI");
+		RegistratiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		RegistratiButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -149,6 +153,11 @@ public class HomePage extends JFrame {
 			@Override
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				RegistratiButton.setBackground(Color.WHITE);
+			}
+			@Override
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				RegistrazionePage rp = new RegistrazionePage(theController);
+				setVisible(false);
 			}
 		});
 

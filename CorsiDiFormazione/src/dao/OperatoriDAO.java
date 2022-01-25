@@ -30,9 +30,39 @@ public class OperatoriDAO {
 			return false;
 		}
 		
-		
-		
-		
-		
 	}
+
+
+	public String getIdOperatore(Operatori op) {
+		
+		try {
+			ResultSet rs = statement.executeQuery("SELECT o.id_operatore FROM operatori o WHERE nome = '" + op.getNomeUtente() +  
+							"' AND password = '" +  op.getPassword()+ "'");
+			
+			rs.next();
+			return rs.getString("id_operatore");
+		
+		}catch(SQLException e) {
+			
+			//da gestire
+			return " ";
+		}
+	}
+	
+	
+	public boolean insertOperatore(Operatori op) {
+		
+		try {
+			statement.executeQuery("INSERT INTO operatori VALUES (nextval('sequenza_id_operatore'), '" + op.getNomeUtente() +  
+							"', '" +  op.getPassword()+ "');");
+			
+			return true;
+		
+		}catch(SQLException e) {
+			
+			//da gestire
+			return false;
+		}
+	}
+	
 }

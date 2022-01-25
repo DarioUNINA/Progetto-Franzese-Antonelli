@@ -217,13 +217,13 @@ VALUES('calcolo', 2);
 
 
 INSERT INTO domande_sicurezza
-VALUES ('dove sei nato? ' , nextval('sequenza_id_domanda'));
+VALUES ('dove sei nato?' , nextval('sequenza_id_domanda'));
 
 INSERT INTO domande_sicurezza
 VALUES ('come si chiama il tuo primo genito ?' , nextval('sequenza_id_domanda'));
 
 INSERT INTO domande_sicurezza
-VALUES ('come si chiama il tuo animale domestico? ' , nextval('sequenza_id_domanda'));
+VALUES ('come si chiama il tuo animale domestico?' , nextval('sequenza_id_domanda'));
 
 
 INSERT INTO domande_operatori

@@ -67,7 +67,7 @@ public class HomePage extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel LogInPanel = new JPanel();
-		LogInPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		LogInPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		LogInPanel.setBounds(69, 55, 662, 270);
 		contentPane.add(LogInPanel);
 		LogInPanel.setLayout(null);
@@ -139,7 +139,7 @@ public class HomePage extends JFrame {
 		LogInPanel.add(PasswordDimenticataLabel);
 
 		JPanel RegistratiPanel = new JPanel();
-		RegistratiPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		RegistratiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		RegistratiPanel.setBounds(69, 348, 662, 47);
 		contentPane.add(RegistratiPanel);
 		RegistratiPanel.setLayout(null);

@@ -18,6 +18,8 @@ import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RegistrazionePage extends JFrame {
 
@@ -55,8 +57,23 @@ public class RegistrazionePage extends JFrame {
 		RegistrazionePanel.setLayout(null);
 		
 		JButton IndietroButton = new JButton("INDIETRO");
+		IndietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				IndietroButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				IndietroButton.setBackground(Color.WHITE);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				HomePage HP = new HomePage(theController);
+				setVisible(false);
+			}
+		});
 		IndietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		IndietroButton.setBounds(23, 361, 105, 23);
+		IndietroButton.setBounds(23, 361, 121, 23);
 		RegistrazionePanel.add(IndietroButton);
 		
 		NomeTextField = new JTextField();
@@ -69,7 +86,11 @@ public class RegistrazionePage extends JFrame {
 		RegistrazionePanel.add(PasswordTextField);
 		PasswordTextField.setColumns(10);
 		
-		JComboBox DomandeComboBox = new JComboBox();
+		
+		String[] domandeStrings = {"dove sei nato?", "come si chiama il tuo primo genito ?", "come si chiama il tuo animale domestico?" };
+		
+		JComboBox DomandeComboBox = new JComboBox(domandeStrings);
+		DomandeComboBox.setMaximumRowCount(3);
 		DomandeComboBox.setBounds(46, 217, 297, 32);
 		RegistrazionePanel.add(DomandeComboBox);
 		
@@ -104,13 +125,13 @@ public class RegistrazionePage extends JFrame {
 		RegistrazionePanel.add(ConfermaButton);
 		
 		JLabel PromeoriaLabel = new JLabel("La Password deve contenere almeno 6 caratteri!");
-		PromeoriaLabel.setForeground(new Color(0, 0, 255));
-		PromeoriaLabel.setBounds(439, 141, 242, 14);
+		PromeoriaLabel.setForeground(Color.RED);
+		PromeoriaLabel.setBounds(413, 141, 287, 14);
 		RegistrazionePanel.add(PromeoriaLabel);
 		
 		JLabel NonCaratteriSpecialiLabel = new JLabel("I Dati non devono contenere caratteri Speciali (!,\",@)");
-		NonCaratteriSpecialiLabel.setForeground(Color.BLUE);
-		NonCaratteriSpecialiLabel.setBounds(67, 141, 276, 14);
+		NonCaratteriSpecialiLabel.setForeground(Color.RED);
+		NonCaratteriSpecialiLabel.setBounds(46, 141, 297, 14);
 		RegistrazionePanel.add(NonCaratteriSpecialiLabel);
 		
 		JLabel ISCRIVITILabel = new JLabel("ISCRIVITI");
@@ -119,13 +140,23 @@ public class RegistrazionePage extends JFrame {
 		ISCRIVITILabel.setBackground(Color.WHITE);
 		ISCRIVITILabel.setBounds(325, 11, 97, 33);
 		RegistrazionePanel.add(ISCRIVITILabel);
+		
 		ConfermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
 				if(theController.registrazionePageConfermaClicked("mario", "pass", "dove sei nato? ", "milano"));
 					System.out.println("e andato tutto bene");
+					
 				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ConfermaButton.setBackground(Color.GREEN);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ConfermaButton.setBackground(Color.WHITE);
 			}
 		});
 		

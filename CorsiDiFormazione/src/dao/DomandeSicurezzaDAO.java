@@ -1,6 +1,8 @@
 package dao;
 
 import java.sql.*;
+
+import dto.DomandeOperatori;
 import dto.DomandeSicurezza;
 
 public class DomandeSicurezzaDAO {
@@ -29,6 +31,19 @@ public class DomandeSicurezzaDAO {
 			return " ";
 		}
 		
+	}
+	
+	public String getDomandaUtente(DomandeOperatori dop) {
+		
+		try {
+			ResultSet rs = statement.executeQuery("SELECT ds.domanda FROM domande_sicurezza ds WHERE ds.id_domanda = '" + dop.getIdDomanda() + "'");
+	
+			rs.next();
+			return rs.getString("domanda");
+			
+		} catch (Exception e) {
+			return " ";
+		}
 	}
 
 

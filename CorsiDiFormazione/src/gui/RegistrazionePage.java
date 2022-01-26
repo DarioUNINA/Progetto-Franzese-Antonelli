@@ -71,7 +71,7 @@ public class RegistrazionePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				HomePage HP = new HomePage(theController);
+				LogIn LI = new LogIn(theController);
 				setVisible(false);
 			}
 		});
@@ -207,7 +207,7 @@ public class RegistrazionePage extends JFrame {
 					opzioni[0]); //titolo del pulsante 
 		
 		if(n==0) {
-			HomePage HP = new HomePage(theController);
+			LogIn HP = new LogIn(theController);
 			setVisible(false);	
 		}else
 			System.out.println("ciao");

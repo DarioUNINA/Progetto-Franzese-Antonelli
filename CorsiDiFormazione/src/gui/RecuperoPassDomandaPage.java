@@ -121,6 +121,11 @@ public class RecuperoPassDomandaPage extends JFrame {
 		list.setBounds(84, 231, -19, -33);
 		RecuperoPanel.add(list);
 		
+		JLabel RispostaLabel = new JLabel("Inserire Risposta:");
+		RispostaLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		RispostaLabel.setBounds(10, 106, 131, 14);
+		RecuperoPanel.add(RispostaLabel);
+		
 		setVisible(true);
 	}
 }

@@ -100,6 +100,7 @@ public class RecuperoPassPage extends JFrame {
 					alertNomeUtenteNonInserito();
 				else	
 					if(theController.CheckNomeClicked(Nome)) {
+						//theController funzione per ricavarti domande operatori
 						RecuperoPassDomandaPage rpd = new RecuperoPassDomandaPage(theController);
 						setVisible(false);
 					}
@@ -122,7 +123,7 @@ public class RecuperoPassPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				HomePage HP = new HomePage(theController);
+				LogIn LI = new LogIn(theController);
 				setVisible(false);
 			}
 		});

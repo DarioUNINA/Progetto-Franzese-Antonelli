@@ -7,7 +7,7 @@ import dto.*;
 
 public class Controller {
 
-	private HomePage homePage;
+	private LogIn logIn;
 	private CorsiDAO corsiDAO;
 	private AreeTematicheDAO areeTematicheDAO;
 	private IscrizioniDAO iscrizioniDAO;
@@ -39,7 +39,7 @@ public class Controller {
 		domandeOperatoriDAO = new DomandeOperatoriDAO();
 		
 		
-		homePage = new HomePage(this);
+		logIn = new LogIn(this);
 
 	}
 	
@@ -66,5 +66,11 @@ public class Controller {
 		return domandeOperatoriDAO.insertDomandeOperatori(dop);			
 	}
 		
-	
+//	public String operatoreInserito(String Nome) {
+//		
+//		Operatori op = new Operatori(Nome);
+//		DomandeOperatori dop = new DomandeOperatori(domandeOperatoriDAO.getIdDomanda2(op),op.getNomeUtente());
+//		
+//		return DomandeSicurezzaDAO.getDomandaUtente(dop);
+//	}
 }

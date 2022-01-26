@@ -17,22 +17,22 @@ VALUES('algoritmi');
 
 
 INSERT INTO operatori
-VALUES(nextval('sequenza_id_operatore'), 'sergio','pass');
+VALUES(nextval('sequenza_id_operatore'), 'sergio','password');
 
 INSERT INTO operatori
-VALUES(nextval('sequenza_id_operatore'),'adriano','pass');
+VALUES(nextval('sequenza_id_operatore'),'adriano','password');
 
 INSERT INTO operatori
-VALUES(nextval('sequenza_id_operatore'), 'massimo','pass');
+VALUES(nextval('sequenza_id_operatore'), 'massimo','password');
 
 INSERT INTO operatori
-VALUES(nextval('sequenza_id_operatore'), 'alessandro','pass');
+VALUES(nextval('sequenza_id_operatore'), 'alessandro','password');
 
 INSERT INTO operatori
-VALUES(nextval('sequenza_id_operatore'), 'francesco','pass');
+VALUES(nextval('sequenza_id_operatore'), 'francesco','password');
 
 INSERT INTO operatori
-VALUES(nextval('sequenza_id_operatore'), 'giuliano','pass');
+VALUES(nextval('sequenza_id_operatore'), 'giuliano','password');
 
 
 

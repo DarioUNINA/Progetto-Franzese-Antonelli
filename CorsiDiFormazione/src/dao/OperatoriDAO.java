@@ -76,4 +76,19 @@ public class OperatoriDAO {
 		}
 	}
 	
+	public String getIdOperatore2(Operatori op) {
+			
+		try {
+			ResultSet rs = statement.executeQuery("SELECT o.id_operatore FROM operatori o WHERE o.nome_utente = '" + op.getNomeUtente() + "'");
+			
+			rs.next();
+			return rs.getString("id_operatore");
+		
+		}catch(SQLException e) {
+			
+			//da gestire
+			return "";
+		}
+	}
+	
 }

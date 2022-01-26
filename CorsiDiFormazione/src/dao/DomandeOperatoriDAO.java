@@ -3,6 +3,7 @@ package dao;
 
 import java.sql.*;
 import dto.DomandeOperatori;
+import dto.Operatori;
 
 public class DomandeOperatoriDAO {
 	
@@ -31,8 +32,21 @@ public class DomandeOperatoriDAO {
 			return false;
 		}
 		
-		
-		
-		
 	}
+		public String getIdDomanda2(Operatori op) {
+			
+			try {
+				ResultSet rs = statement.executeQuery("SELECT do.id_domanda FROM operatori o  JOIN domande_operatori do ON o.id_operatore = do.id_operatore ");
+				
+				rs.next();
+				return rs.getString("id_domanda");
+			
+			}catch(SQLException e) {
+				
+				//da gestire
+				return "";
+			}
+		}
+		
+		
 }

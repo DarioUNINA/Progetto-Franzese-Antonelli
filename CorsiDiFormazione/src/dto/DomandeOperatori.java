@@ -38,4 +38,9 @@ public class DomandeOperatori {
 		this.risposta = risposta;
 	}
 	
+	public DomandeOperatori(String idDomanda, String idOperatore) {
+		this.idDomanda = idDomanda;
+		this.idOperatore = idOperatore;
+	}
+	
 }

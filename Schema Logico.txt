@@ -144,7 +144,8 @@ temi (/nome_area/, /id_corso/)
 	EXECUTE PROCEDURE check_max_partecipanti();
 
    
---9)	CREATE OR REPLACE FUNCTION check_data_lezione()
+--9)	
+	CREATE OR REPLACE FUNCTION check_data_lezione()
 	RETURNS TRIGGER AS
 	$$
 	DECLARE data_lezione DATE;
@@ -169,7 +170,8 @@ temi (/nome_area/, /id_corso/)
 	EXECUTE PROCEDURE check_data_lezione();
 	
 	
---8) CREATE FUNCTION check_lezioni_contemporanee()
+--8) 
+	CREATE FUNCTION check_lezioni_contemporanee()
 	RETURNS TRIGGER AS
 	$$
 	DECLARE violazione INTEGER;
@@ -223,7 +225,8 @@ temi (/nome_area/, /id_corso/)
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_iscrizione_terminato();
 
---12) CREATE FUNCTION check_lezione_iscrizione()
+--12) 
+	CREATE FUNCTION check_lezione_iscrizione()
 	RETURNS TRIGGER AS
 	$$
 	DECLARE contatore INTEGER;
@@ -252,7 +255,8 @@ temi (/nome_area/, /id_corso/)
 	EXECUTE PROCEDURE check_lezione_iscrizione();
 	
 	
---14)	CREATE FUNCTION check_lunghezza_password()
+--14)	
+	CREATE FUNCTION check_lunghezza_password()
 	RETURNS TRIGGER AS
 	$$
 	DECLARE index INTEGER;
@@ -262,7 +266,7 @@ temi (/nome_area/, /id_corso/)
 		FROM operatori o
 		WHERE o.nome_utente = NEW.nome_utente;
 		
-		stringa = SUBSTRING(stringa, 8, 100);
+		stringa = SUBSTRING(stringa, 6, 100);
 		IF(stringa = '')THEN
 			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
 			RAISE SQLSTATE '10001';
@@ -290,7 +294,7 @@ temi (/nome_area/, /id_corso/)
 		FROM operatori o
 		WHERE o.nome_utente = NEW.nome_utente;
 		
-		stringa = SUBSTRING(stringa, 8, 100);
+		stringa = SUBSTRING(stringa, 4, 100);
 		IF(stringa = '')THEN
 			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
 			RAISE SQLSTATE '10002';

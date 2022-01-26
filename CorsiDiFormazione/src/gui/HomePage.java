@@ -194,7 +194,7 @@ public class HomePage extends JFrame {
 	}
 
 	public void alertLogInFallito() {
-	JOptionPane.showMessageDialog(this, "Nome utente o password non validi, riprova.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	JOptionPane.showMessageDialog(this, "Nome utente o password non trovati, riprova.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 
 	public void alertNomeUtenteNonInserito() {

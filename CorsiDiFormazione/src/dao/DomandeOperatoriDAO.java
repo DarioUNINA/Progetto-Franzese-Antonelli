@@ -21,7 +21,7 @@ public class DomandeOperatoriDAO {
 	public boolean insertDomandeOperatori(DomandeOperatori dop){
 		
 		try {
-			System.out.println(dop.getIdDomanda() +  " " +  dop.getIdOperatore() + dop.getRisposta());
+			System.out.println("l'id della domanda e " + dop.getIdDomanda() +  " l'id dell operatore e " +  dop.getIdOperatore() + dop.getRisposta());
 			statement.execute("INSERT INTO domande_operatori VALUES ('" + dop.getRisposta() + "' , '" + dop.getIdDomanda() + 
 					"', '" + dop.getIdOperatore() + "')");
 			

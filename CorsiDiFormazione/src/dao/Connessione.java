@@ -24,7 +24,6 @@ public class Connessione {
 
 			String url = "jdbc:postgresql://localhost:5432/CorsiDiFormazioneDB";
 			connection = DriverManager.getConnection(url, "postgres", "password");
-			System.out.println("Connessione effettuata con successo");
 
 		} catch (SQLException e) {
 

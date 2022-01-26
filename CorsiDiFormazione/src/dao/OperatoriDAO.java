@@ -35,8 +35,8 @@ public class OperatoriDAO {
 	public String getIdOperatore(Operatori op) {
 		
 		try {
-			ResultSet rs = statement.executeQuery("SELECT o.id_operatore FROM operatori o WHERE nome = '" + op.getNomeUtente() +  
-							"' AND password = '" +  op.getPassword()+ "'");
+			ResultSet rs = statement.executeQuery("SELECT o.id_operatore FROM operatori o WHERE o.nome_utente = '" + op.getNomeUtente() +  
+							"' AND o.password = '" +  op.getPassword()+ "'");
 			
 			rs.next();
 			return rs.getString("id_operatore");
@@ -44,7 +44,7 @@ public class OperatoriDAO {
 		}catch(SQLException e) {
 			
 			//da gestire
-			return " ";
+			return "";
 		}
 	}
 	

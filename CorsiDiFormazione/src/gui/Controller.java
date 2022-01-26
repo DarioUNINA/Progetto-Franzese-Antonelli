@@ -50,6 +50,10 @@ public class Controller {
 		
 	}
 	
+	public boolean CheckNomeClicked(String user) {
+		Operatori op = new Operatori(user);
+		return operatoriDAO.CheckNome(op);
+	}
 	
 	public boolean registrazioneClicked(String nome, String pass, String domanda, String risposta) {
 		

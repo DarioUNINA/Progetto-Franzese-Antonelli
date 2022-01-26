@@ -17,8 +17,10 @@ public class Operatori {
 		this.nomeUtente = nomeUtente;
 		this.password = password;
 	}
-
-
+	
+	public Operatori(String nomeUtente) {
+		this.nomeUtente = nomeUtente;
+	}
 	
 	public String getIdOperatore() {
 		return idOperatore;

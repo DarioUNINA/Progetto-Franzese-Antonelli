@@ -18,6 +18,8 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -31,13 +33,10 @@ public class RecuperoPassPage extends JFrame {
 	private JPanel contentPane;
 	private Component url;
 	private JTextField NomeUtenteField;
-	private JPasswordField PasswordField;
 
 	private Controller theController;
 	private ImageIcon imageicon;
-	private JTextField DomandaText;
 	private JTextField NomeUtenteText;
-	private JTextField RispostaText;
 	
 	
 	
@@ -74,11 +73,6 @@ public class RecuperoPassPage extends JFrame {
 		RECUPEROPASSWORDLabel.setBounds(139, 11, 268, 33);
 		RecuperoPanel.add(RECUPEROPASSWORDLabel);
 		
-		JLabel DomandaTextLabel = new JLabel("");
-		DomandaTextLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		DomandaTextLabel.setBounds(211, 123, 159, 14);
-		RecuperoPanel.add(DomandaTextLabel);		
-		
 		JLabel NomeUtenteLabel = new JLabel("Nome Utente:");
 		NomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		NomeUtenteLabel.setBounds(100, 80, 101, 14);
@@ -88,21 +82,6 @@ public class RecuperoPassPage extends JFrame {
 		NomeUtenteText.setColumns(10);
 		NomeUtenteText.setBounds(211, 78, 121, 20);
 		RecuperoPanel.add(NomeUtenteText);
-		
-		JLabel DomandaDiSicurezzaLabel = new JLabel("Domanda Di Sicurezza =");
-		DomandaDiSicurezzaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		DomandaDiSicurezzaLabel.setBounds(22, 122, 179, 14);
-		RecuperoPanel.add(DomandaDiSicurezzaLabel);
-		
-		JLabel RispostaDiSicurezzaLabel = new JLabel("Risposta Di Sicurezza:");
-		RispostaDiSicurezzaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		RispostaDiSicurezzaLabel.setBounds(42, 164, 159, 14);
-		RecuperoPanel.add(RispostaDiSicurezzaLabel);
-		
-		RispostaText = new JTextField();
-		RispostaText.setColumns(10);
-		RispostaText.setBounds(211, 162, 121, 20);
-		RecuperoPanel.add(RispostaText);
 		
 		JButton ConfermaButton = new JButton("CONFERMA");
 		ConfermaButton.addMouseListener(new MouseAdapter() {
@@ -114,10 +93,21 @@ public class RecuperoPassPage extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				ConfermaButton.setBackground(Color.WHITE);
 			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String Nome = NomeUtenteText.getText();
+				if(Nome.isEmpty()) 
+					alertNomeUtenteNonInserito();
+				else	
+					if(theController.CheckNomeClicked(Nome)) {
+						RecuperoPassDomandaPage rpd = new RecuperoPassDomandaPage(theController);
+						setVisible(false);
+					}
+			}
 		});
 		
 		ConfermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		ConfermaButton.setBounds(211, 220, 121, 27);
+		ConfermaButton.setBounds(211, 148, 121, 27);
 		RecuperoPanel.add(ConfermaButton);
 		
 		JButton IndietroButton = new JButton("INDIETRO");
@@ -132,7 +122,7 @@ public class RecuperoPassPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				HomePage HP = new HomePage(co);
+				HomePage HP = new HomePage(theController);
 				setVisible(false);
 			}
 		});
@@ -145,5 +135,9 @@ public class RecuperoPassPage extends JFrame {
 		
 		
 		setVisible(true);
+	}
+	
+	public void alertNomeUtenteNonInserito() {
+		JOptionPane.showMessageDialog(this, "Nome Utente non inserito!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 }

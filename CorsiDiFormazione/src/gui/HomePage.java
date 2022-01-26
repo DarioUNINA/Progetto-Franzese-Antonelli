@@ -172,7 +172,7 @@ public class HomePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				RegistrazionePage rp = new RegistrazionePage(controller);
+				RegistrazionePage rp = new RegistrazionePage(theController);
 				setVisible(false);
 			}
 		});

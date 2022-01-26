@@ -2400,9 +2400,9 @@
 										"$ref": "AAAAAAF+ISFZhYtug1c="
 									},
 									"font": "Arial;13;0",
-									"left": 353,
+									"left": 352,
 									"top": 352,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -2462,9 +2462,9 @@
 										"$ref": "AAAAAAF+ISFZhYtvAqk="
 									},
 									"font": "Arial;13;0",
-									"left": 565,
+									"left": 564,
 									"top": 468,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -3368,12 +3368,12 @@
 										"$ref": "AAAAAAF+kRXmDEZaGUA="
 									},
 									"font": "Arial;13;0",
-									"left": 78,
-									"top": 320,
+									"left": 80,
+									"top": 312,
 									"width": 7.22998046875,
 									"height": 13,
-									"alpha": -0.5235987755982988,
-									"distance": 25,
+									"alpha": -0.718384278324985,
+									"distance": 17.029386365926403,
 									"hostEdge": {
 										"$ref": "AAAAAAF+kRXmDEZd8Kk="
 									},
@@ -3430,12 +3430,12 @@
 										"$ref": "AAAAAAF+kRXmDEZbkw4="
 									},
 									"font": "Arial;13;0",
-									"left": 79,
-									"top": 339,
+									"left": 80,
+									"top": 351,
 									"width": 7.22998046875,
 									"height": 13,
-									"alpha": 0.5235987755982988,
-									"distance": 25,
+									"alpha": 0.9111673454061373,
+									"distance": 15,
 									"hostEdge": {
 										"$ref": "AAAAAAF+kRXmDEZd8Kk="
 									},
@@ -3640,11 +3640,11 @@
 									},
 									"font": "Arial;13;0",
 									"left": 79,
-									"top": 448,
+									"top": 440,
 									"width": 7.22998046875,
 									"height": 13,
-									"alpha": -0.5235987755982988,
-									"distance": 25,
+									"alpha": -0.8015255738739262,
+									"distance": 18.384776310850235,
 									"hostEdge": {
 										"$ref": "AAAAAAF+kRX1bEbrqtM="
 									},
@@ -3702,11 +3702,11 @@
 									},
 									"font": "Arial;13;0",
 									"left": 80,
-									"top": 467,
+									"top": 479,
 									"width": 7.22998046875,
 									"height": 13,
-									"alpha": 0.5235987755982988,
-									"distance": 25,
+									"alpha": 0.9491238305944778,
+									"distance": 15.811388300841896,
 									"hostEdge": {
 										"$ref": "AAAAAAF+kRX1bEbrqtM="
 									},
@@ -4828,7 +4828,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF+jkpeKUlb36w="
 							},
-							"name": "idDomanda"
+							"name": "idDomanda",
+							"type": ""
 						}
 					]
 				},

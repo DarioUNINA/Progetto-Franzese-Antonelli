@@ -149,7 +149,8 @@ public class RegistrazionePage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				String NomeU = NomeTextField.getText();
 				String Pass = PasswordTextField.getText();
-				String DomandaSicurezza = DomandeComboBox.getToolTipText();
+				String DomandaSicurezza = DomandeComboBox.getToolTipText(); //DA CONTROLLARE
+				
 				String RispostaSicurezza = RispostaSicurezzaField.getText();
 				
 				if(NomeU.isEmpty())

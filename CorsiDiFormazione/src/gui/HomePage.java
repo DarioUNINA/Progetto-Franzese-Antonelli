@@ -107,6 +107,7 @@ public class HomePage extends JFrame {
 				AccediButton.setBackground(Color.WHITE);
 			}
 			public void mouseClicked(java.awt.event.MouseEvent e) {
+				
 				String Nome = NomeUtenteField.getText();
 				String Pass = PasswordField.getText();
 				
@@ -119,11 +120,13 @@ public class HomePage extends JFrame {
 						if(!controller.logInClicked(Nome, Pass))
 							alertLogInFallito();
 						else
-							System.out.println("login riuscito");
+						{
+							NomeUtenteField.setText("");
+							PasswordField.setText("");
+							//cambio pagina
+						}
 					
 				
-				NomeUtenteField.setText("");
-				PasswordField.setText("");
 	
 			}	
 		});
@@ -136,7 +139,7 @@ public class HomePage extends JFrame {
 		PasswordDimenticataLabel.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				RecuperoPassPage rpp = new RecuperoPassPage(controller);
+				RecuperoPassPage rpp = new RecuperoPassPage(theController);
 				setVisible(false);
 			}
 		});

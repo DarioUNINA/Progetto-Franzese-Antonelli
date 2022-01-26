@@ -34,10 +34,10 @@ public class RegistrazionePage extends JFrame {
 	private ImageIcon imageicon;
 
 
-	public RegistrazionePage(Controller c) {
+	public RegistrazionePage(Controller controller) {
 		
 		
-		theController = c;
+		theController = controller;
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -71,7 +71,7 @@ public class RegistrazionePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				HomePage HP = new HomePage(c);
+				HomePage HP = new HomePage(theController);
 				setVisible(false);
 			}
 		});
@@ -161,7 +161,7 @@ public class RegistrazionePage extends JFrame {
 							if(RispostaSicurezza.isEmpty())
 								alertRispostaNonInserita();
 							else
-								if(c.registrazioneClicked(NomeU, Pass, DomandaSicurezza, RispostaSicurezza))
+								if(theController.registrazioneClicked(NomeU, Pass, DomandaSicurezza, RispostaSicurezza))
 									alertConfermaRegistrazione();
 					
 				

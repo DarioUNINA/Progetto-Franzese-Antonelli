@@ -4,50 +4,41 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.JLabel;
-import javax.swing.JButton;
 import java.awt.Font;
-import javax.swing.JTextPane;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
-public class RecuperoPassPage extends JFrame {
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+public class RecuperoPassDomandaPage extends JFrame {
 
 	private JPanel contentPane;
 	private Component url;
-	private JTextField NomeUtenteField;
 
 	private Controller theController;
 	private ImageIcon imageicon;
-	private JTextField NomeUtenteText;
+	private JTextField DomandaText;
+	private JTextField RispostaDomandaField;
 	
-	
-	
-	public RecuperoPassPage(Controller co) {
+
+	public RecuperoPassDomandaPage(Controller con) {
+		
 		setResizable(false);
 		
 		
 		imageicon = new ImageIcon("napule.png");
-		theController = co;
+		theController = con;
 		setIconImage(imageicon.getImage());
-
+		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,7 +55,6 @@ public class RecuperoPassPage extends JFrame {
 		RecuperoPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(RecuperoPanel);
 		RecuperoPanel.setLayout(null);
-
 		
 		JLabel RECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
 		RECUPEROPASSWORDLabel.setForeground(Color.BLACK);
@@ -72,16 +62,6 @@ public class RecuperoPassPage extends JFrame {
 		RECUPEROPASSWORDLabel.setBackground(Color.WHITE);
 		RECUPEROPASSWORDLabel.setBounds(139, 11, 268, 33);
 		RecuperoPanel.add(RECUPEROPASSWORDLabel);
-		
-		JLabel NomeUtenteLabel = new JLabel("Nome Utente:");
-		NomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		NomeUtenteLabel.setBounds(100, 80, 101, 14);
-		RecuperoPanel.add(NomeUtenteLabel);
-		
-		NomeUtenteText = new JTextField();
-		NomeUtenteText.setColumns(10);
-		NomeUtenteText.setBounds(211, 78, 121, 20);
-		RecuperoPanel.add(NomeUtenteText);
 		
 		JButton ConfermaButton = new JButton("CONFERMA");
 		ConfermaButton.addMouseListener(new MouseAdapter() {
@@ -95,14 +75,7 @@ public class RecuperoPassPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Nome = NomeUtenteText.getText();
-				if(Nome.isEmpty()) 
-					alertNomeUtenteNonInserito();
-				else	
-					if(theController.CheckNomeClicked(Nome)) {
-						RecuperoPassDomandaPage rpd = new RecuperoPassDomandaPage(theController);
-						setVisible(false);
-					}
+				
 			}
 		});
 		
@@ -122,7 +95,7 @@ public class RecuperoPassPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				HomePage HP = new HomePage(theController);
+				RecuperoPassPage rpp = new RecuperoPassPage(theController);
 				setVisible(false);
 			}
 		});
@@ -131,13 +104,17 @@ public class RecuperoPassPage extends JFrame {
 		IndietroButton.setBounds(10, 273, 121, 23);
 		RecuperoPanel.add(IndietroButton);
 		
+		JLabel DoamandaLabel = new JLabel("");
+		DoamandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		DoamandaLabel.setBounds(139, 77, 268, 14);
+		RecuperoPanel.add(DoamandaLabel);
 		
-		
+		RispostaDomandaField = new JTextField();
+		RispostaDomandaField.setFont(new Font("Arial", Font.BOLD, 15));
+		RispostaDomandaField.setBounds(139, 102, 268, 20);
+		RecuperoPanel.add(RispostaDomandaField);
+		RispostaDomandaField.setColumns(10);
 		
 		setVisible(true);
-	}
-	
-	public void alertNomeUtenteNonInserito() {
-		JOptionPane.showMessageDialog(this, "Nome Utente non inserito!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 }

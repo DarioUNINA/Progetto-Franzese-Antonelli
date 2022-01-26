@@ -48,32 +48,33 @@ temi (/nome_area/, /id_corso/)
 15)Caratteri speciali non ammessi in nome utente e password
 
 
-1)
-CREATE FUNCTION check_inserimento_in_terminato()
-RETURNS TRIGGER AS
-$$
-DECLARE violazione INTEGER;
-BEGIN
-	SELECT COUNT (*) INTO violazione
-	FROM corso s
-	WHERE s.id_corso = NEW.id_corso AND s.terminato = true;
-	
-	IF (violazione>0) THEN
-		DELETE FROM lezioni WHERE id_lezione = NEW.id_lezione;
-		RAISE EXCEPTION ' ATTENZIONE : il corso e termianto';
-	END IF;
-	RETURN NEW;
-END
-$$ LANGUAGE plpgsql;
+--1)
+	CREATE FUNCTION check_inserimento_in_terminato()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE violazione INTEGER;
+	BEGIN
+		SELECT COUNT (*) INTO violazione
+		FROM corso s
+		WHERE s.id_corso = NEW.id_corso AND s.terminato = true;
+		
+		IF (violazione>0) THEN
+			RAISE SQLSTATE '10005';
+			DELETE FROM lezioni WHERE id_lezione = NEW.id_lezione;
+			RAISE EXCEPTION ' ATTENZIONE : il corso e termianto';
+		END IF;
+		RETURN NEW;
+	END
+	$$ LANGUAGE plpgsql;
 
-CREATE TRIGGER inserimento_in_terminato
-AFTER INSERT ON lezioni
-FOR EACH ROW
-EXECUTE PROCEDURE check_inserimento_in_terminato();
+	CREATE TRIGGER inserimento_in_terminato
+	AFTER INSERT ON lezioni
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_inserimento_in_terminato();
 
 
 
-2)
+--2)
 	CREATE OR REPLACE FUNCTION check_ammissione()
 	RETURNS TRIGGER AS 
 	$$
@@ -112,7 +113,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 
 	
 
-3)
+--3)
 	CREATE FUNCTION check_max_partecipanti()
 	RETURNS TRIGGER AS
 	$$
@@ -130,6 +131,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 		IF (iscritti > max_p) THEN	
 			DELETE FROM iscrizioni i 
 			WHERE i.matricola = NEW.matricola AND i.id_corso = NEW.id_corso;
+			RAISE SQLSTATE '10006';
 			RAISE EXCEPTION 'e stato raggiunto il numero massimo di partecipanti al corso';
 		END IF;
 		RETURN NEW;
@@ -142,7 +144,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	EXECUTE PROCEDURE check_max_partecipanti();
 
    
-9)	CREATE OR REPLACE FUNCTION check_data_lezione()
+--9)	CREATE OR REPLACE FUNCTION check_data_lezione()
 	RETURNS TRIGGER AS
 	$$
 	DECLARE data_lezione DATE;
@@ -154,6 +156,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 		IF (data_lezione < CURRENT_DATE) THEN 
 			DELETE FROM presenze p
 			WHERE p.matricola = NEW.matricola AND p.id_lezione = NEW.id_lezione;
+			RAISE SQLSTATE '10007';
 			RAISE EXCEPTION 'La lezione si e gia conclusa';
 		END IF;
 		RETURN NEW;
@@ -166,7 +169,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	EXECUTE PROCEDURE check_data_lezione();
 	
 	
-8) CREATE FUNCTION check_lezioni_contemporanee()
+--8) CREATE FUNCTION check_lezioni_contemporanee()
 	RETURNS TRIGGER AS
 	$$
 	DECLARE violazione INTEGER;
@@ -183,6 +186,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 		IF (violazione > 0) THEN	
 			DELETE FROM presenze p 
 			WHERE p.matricola = new.matricola AND p.id_lezione = new.id_lezione;
+			RAISE SQLSTATE '10008';
 			RAISE EXCEPTION 'Ti sei gia iscritto ad una lezione allo stesso orario';
 		END IF;
 		RETURN NEW;
@@ -194,7 +198,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_lezioni_contemporanee();
 	
-11)
+--11)
 	CREATE FUNCTION check_iscrizione_terminato()
 	RETURNS TRIGGER AS
 	$$
@@ -206,6 +210,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 		
 		IF violazione > 0 THEN
 		DELETE FROM iscrizioni i WHERE i.matricola = new.matricola AND i.id_corso = new.id_corso;
+		RAISE SQLSTATE '10009';
 		RAISE EXCEPTION 'Il corso gia e terminato';
 		END IF;
 		RETURN NEW;
@@ -218,7 +223,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_iscrizione_terminato();
 
-12) CREATE FUNCTION check_lezione_iscrizione()
+--12) CREATE FUNCTION check_lezione_iscrizione()
 	RETURNS TRIGGER AS
 	$$
 	DECLARE contatore INTEGER;
@@ -233,6 +238,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 		
 		IF contatore = 0 THEN
 			DELETE FROM presenze p WHERE p.matricola = NEW.matricola AND p.id_lezione = NEW.id_lezione;
+			RAISE SQLSTATE '10010';
 			RAISE EXCEPTION 'Non sei iscritto al corso';
 		END IF;
 		RETURN NEW;
@@ -246,7 +252,7 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	EXECUTE PROCEDURE check_lezione_iscrizione();
 	
 	
-14)	CREATE FUNCTION check_lunghezza_password()
+--14)	CREATE FUNCTION check_lunghezza_password()
 	RETURNS TRIGGER AS
 	$$
 	DECLARE index INTEGER;
@@ -299,7 +305,8 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_lunghezza_nome_utente();
 	
-15)CREATE FUNCTION check_caratteri_speciali_nome_utente()
+--15)
+	CREATE FUNCTION check_caratteri_speciali_nome_utente()
 	RETURNS TRIGGER AS
 	$$
 	DECLARE violazione INTEGER;
@@ -309,16 +316,41 @@ EXECUTE PROCEDURE check_inserimento_in_terminato();
 		WHERE o.nome_utente = NEW.nome_utente AND 
 			( o.nome_utente like '%!%' OR o.nome_utente like '%@%' OR o.nome_utente like '%#%' OR o.nome_utente like '%$%');
 		
-		IF(violazione>1)THEN
+		IF(violazione>0)THEN
 			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
 			RAISE SQLSTATE '10003';
 			RAISE EXCEPTION 'Il nome utente non puo contenere caratteri speciali';
 		END IF;
 		RETURN NEW;
 	END
-	
+	$$ LANGUAGE plpgsql;
 
 	CREATE TRIGGER nome_utente_caratteri_speciali
 	AFTER INSERT ON operatori
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_caratteri_speciali_nome_utente();
+	
+	
+	
+	CREATE FUNCTION check_caratteri_speciali_password()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE violazione INTEGER;
+	BEGIN
+		SELECT COUNT(*) INTO violazione
+		FROM operatori o
+		WHERE o.password like '%!%' OR o.password like '%@%' OR o.password like '%#%' OR o.password like '%$%';
+		
+		IF(violazione>0)THEN
+			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
+			RAISE SQLSTATE '10004';
+			RAISE EXCEPTION 'La password non puo contenere caratteri speciali';
+		END IF;
+		RETURN NEW;
+	END
+	$$ LANGUAGE plpgsql;
+
+	CREATE TRIGGER password_caratteri_speciali
+	AFTER INSERT ON operatori
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_caratteri_speciali_password();

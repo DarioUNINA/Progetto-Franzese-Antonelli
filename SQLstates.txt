@@ -1,0 +1,21 @@
+10005 inserimetno in terminato
+
+10004 caratteri speciali password
+
+10003 caratteri speciali nome utente
+
+10002 lunghezza nome utente
+
+10001 lunghezza password
+
+10006 max partecipanti
+
+10007 lezione passata
+
+10008 lezioni contemporanee
+
+10009 iscrizione in corso terminato
+
+10010 iscrizione in corso non iscritto
+
+

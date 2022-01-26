@@ -96,6 +96,7 @@ public class RegistrazionePage extends JFrame {
 		DomandeComboBox.setMaximumRowCount(3);
 		DomandeComboBox.setBounds(46, 217, 297, 32);
 		RegistrazionePanel.add(DomandeComboBox);
+			
 		
 		RispostaSicurezzaField = new JTextField();
 		RispostaSicurezzaField.setBounds(403, 217, 297, 32);
@@ -149,9 +150,10 @@ public class RegistrazionePage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				String NomeU = NomeTextField.getText();
 				String Pass = PasswordTextField.getText();
-				String DomandaSicurezza = DomandeComboBox.getToolTipText();
+				String DomandaSicurezza = DomandeComboBox.getSelectedItem().toString();
 				String RispostaSicurezza = RispostaSicurezzaField.getText();
 				
+				System.out.println(DomandaSicurezza);
 				if(NomeU.isEmpty())
 					alertNomeUtenteNonInserito();
 				else 

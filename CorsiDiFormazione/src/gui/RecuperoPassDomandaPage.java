@@ -18,6 +18,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
 
 public class RecuperoPassDomandaPage extends JFrame {
 
@@ -114,6 +116,10 @@ public class RecuperoPassDomandaPage extends JFrame {
 		RispostaDomandaField.setBounds(139, 102, 268, 20);
 		RecuperoPanel.add(RispostaDomandaField);
 		RispostaDomandaField.setColumns(10);
+		
+		JList list = new JList();
+		list.setBounds(84, 231, -19, -33);
+		RecuperoPanel.add(list);
 		
 		setVisible(true);
 	}

@@ -22,6 +22,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class RegistrazionePage extends JFrame {
 
@@ -52,7 +53,7 @@ public class RegistrazionePage extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel RegistrazionePanel = new JPanel();
-		RegistrazionePanel.setBackground(UIManager.getColor("Button.light"));
+		RegistrazionePanel.setBackground(SystemColor.control);
 		RegistrazionePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		RegistrazionePanel.setBounds(29, 29, 745, 395);
 		contentPane.add(RegistrazionePanel);
@@ -70,7 +71,7 @@ public class RegistrazionePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				HomePage HP = new HomePage(theController);
+				HomePage HP = new HomePage(c);
 				setVisible(false);
 			}
 		});
@@ -146,13 +147,26 @@ public class RegistrazionePage extends JFrame {
 		ConfermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				String NomeU = NomeTextField.getText();
+				String Pass = PasswordTextField.getText();
+				String DomandaSicurezza = DomandeComboBox.getToolTipText();
+				String RispostaSicurezza = RispostaSicurezzaField.getText();
 				
-				if(theController.registrazionePageConfermaClicked("mario", "pass", "dove sei nato? ", "milano"));
-					alertConfermaRegistrazione();
-				//System.out.println("e andato tutto bene");
+				if(NomeU.isEmpty())
+					alertNomeUtenteNonInserito();
+				else 
+					if(Pass.isEmpty())
+						alertPasswordNonInserita();
+						else
+							if(RispostaSicurezza.isEmpty())
+								alertRispostaNonInserita();
+							else
+								if(c.registrazioneClicked(NomeU, Pass, DomandaSicurezza, RispostaSicurezza))
+									alertConfermaRegistrazione();
 					
 				
 			}
+			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				ConfermaButton.setBackground(Color.GREEN);
@@ -166,6 +180,19 @@ public class RegistrazionePage extends JFrame {
 		
 		setVisible(true);
 	}
+	
+	public void alertNomeUtenteNonInserito() {
+		JOptionPane.showMessageDialog(this, "Nome Utente non inserito!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertPasswordNonInserita() {
+		JOptionPane.showMessageDialog(this, "Password non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertRispostaNonInserita() {
+		JOptionPane.showMessageDialog(this, "Risposta non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
 	public void alertConfermaRegistrazione() {
 		Object[] opzioni = {"HomePage","GestioneCorsi!"};
 		int n = JOptionPane.showOptionDialog(this,

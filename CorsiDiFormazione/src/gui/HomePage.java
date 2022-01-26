@@ -108,18 +108,23 @@ public class HomePage extends JFrame {
 			}
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				String Nome = NomeUtenteField.getText();
-			String Pass = PasswordField.getText();
+				String Pass = PasswordField.getText();
 				
-				if(theController.homePageAccediClicked(Nome, Pass)) {
+				if(Nome.isEmpty())
+					alertNomeUtenteNonInserito();
+				else 
+					if(Pass.isEmpty())
+						alertPasswordNonInserita();
+					else
+						if(!controller.logInClicked(Nome, Pass))
+							alertLogInFallito();
+						else
+							System.out.println("login riuscito");
 					
-					NomeUtenteField.setText("");
-					PasswordField.setText("");
-					//schermata principale
-				}
-					
 				
-				
-				
+				NomeUtenteField.setText("");
+				PasswordField.setText("");
+	
 			}	
 		});
 
@@ -131,9 +136,11 @@ public class HomePage extends JFrame {
 		PasswordDimenticataLabel.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				System.out.println("cambiami");
+				RecuperoPassPage rpp = new RecuperoPassPage(controller);
+				setVisible(false);
 			}
 		});
+		
 		PasswordDimenticataLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		PasswordDimenticataLabel.setBounds(227, 211, 207, 14);
 		LogInPanel.add(PasswordDimenticataLabel);
@@ -162,7 +169,7 @@ public class HomePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				RegistrazionePage rp = new RegistrazionePage(theController);
+				RegistrazionePage rp = new RegistrazionePage(controller);
 				setVisible(false);
 			}
 		});
@@ -181,6 +188,18 @@ public class HomePage extends JFrame {
 		
 		
 		setVisible(true);
+	}
+
+	public void alertLogInFallito() {
+	JOptionPane.showMessageDialog(this, "Nome utente o password non validi, riprova.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+
+	public void alertNomeUtenteNonInserito() {
+	JOptionPane.showMessageDialog(this, "Nome Utente non inserito!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+
+	public void alertPasswordNonInserita() {
+	JOptionPane.showMessageDialog(this, "Password non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 
 }

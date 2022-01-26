@@ -49,52 +49,8 @@ public class Controller {
 		return operatoriDAO.LogIn(op);
 		
 	}
-
-	public boolean homePageAccediClicked (String nome, String pass) {
-		if(nome.isEmpty())
-			alertNomeUtenteNonInserito();
-		else 
-			if(pass.isEmpty())
-				alertPasswordNonInserita();
-			else
-				if(logInClicked(nome, pass))
-					return true;
-				else
-				{
-					alertLogInFallito();
-					return false;
-				}
-
-		return false;
-	}
 	
-	public void alertLogInFallito() {
-		JOptionPane.showMessageDialog(homePage, "Nome utente o password non validi, riprova.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
 	
-	public void alertNomeUtenteNonInserito() {
-		JOptionPane.showMessageDialog(homePage, "Nome Utente non inserito!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
-	
-	public void alertPasswordNonInserita() {
-		JOptionPane.showMessageDialog(homePage, "Password non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
-	
-	public boolean registrazionePageConfermaClicked(String nome, String pass, String domanda, String risposta) {
-		
-		if(nome.isEmpty())
-			alertNomeUtenteNonInserito();
-		else 
-			if(pass.isEmpty())
-				alertPasswordNonInserita();
-				else
-					if(risposta.isEmpty())
-						alertRispostaNonInserita();
-					else
-						return registrazioneClicked(nome, pass, domanda, risposta);
-		return false;
-	}
-					
 	public boolean registrazioneClicked(String nome, String pass, String domanda, String risposta) {
 		
 		Operatori op = new Operatori(nome, pass);
@@ -103,12 +59,8 @@ public class Controller {
 		}
 		DomandeOperatori dop = new DomandeOperatori(domandeSicurezzaDAO.getIdDomanda(domanda), operatoriDAO.getIdOperatore(op), risposta);
 		
-		return domandeOperatoriDAO.insertDomandeOperatori(dop);
-				
+		return domandeOperatoriDAO.insertDomandeOperatori(dop);			
 	}
-			
-	public void alertRispostaNonInserita() {
-		JOptionPane.showMessageDialog(homePage, "Risposta non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
+		
 	
 }

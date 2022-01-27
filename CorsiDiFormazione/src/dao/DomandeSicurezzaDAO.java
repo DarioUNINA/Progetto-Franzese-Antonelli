@@ -46,9 +46,9 @@ public class DomandeSicurezzaDAO {
 		}
 	}
 
-	public String[] getDOomande() {
-		
-		return domande;
-		
-	}
+//	public String[] getDOomande() {
+//		
+//		return domande;
+//		
+//	}
 }

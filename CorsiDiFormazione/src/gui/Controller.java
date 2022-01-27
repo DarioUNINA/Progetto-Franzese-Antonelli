@@ -74,11 +74,11 @@ public class Controller {
 //		return DomandeSicurezzaDAO.getDomandaUtente(dop);
 //	}
 	
-	public String[] getDomandeSicurezza() {
-		
-		return domandeSicurezzaDAO.getDomande();
-	}
-	
+//	public String[] getDomandeSicurezza() {
+//		
+//		return domandeSicurezzaDAO.getDomande();
+//	}
+//	
 }
 
 

@@ -73,7 +73,11 @@ public class RecuperoPassDomandaPage extends JFrame {
 		ConfermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(theController.confermaRispostaSicurezzaClicked(RispostaDomandaField.getText(), nomeUtente))
+				if(theController.confermaRispostaSicurezzaClicked(RispostaDomandaField.getText(), nomeUtente)) {
+					ModificaPasswordPage pg = new ModificaPasswordPage(theController, nomeUtente);
+					setVisible(false);
+				}
+
 			}
 		});
 		ConfermaButton.addMouseListener(new MouseAdapter() {

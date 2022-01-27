@@ -70,7 +70,14 @@ public class DomandeOperatoriDAO {
 			
 			try {
 				
-				ResultSet rs = statement.executeQuery("SELECT FROM domande_sicurezza"); //da completare
+				ResultSet rs = statement.executeQuery("SELECT FROM domande_sicurezza ds JOIN domande_operatori "
+						+ "dop ON ds.id_domanda = dop.id_domanda WHERE dop.id_operatore = '" + id_operatore + "' AND dop.risposta = '" + Risposta + "'"); //da completare
+				
+				return rs.next();
+			}catch(SQLException e) {
+				
+				e.printStackTrace();
+				return false;
 			}
 		}
 }

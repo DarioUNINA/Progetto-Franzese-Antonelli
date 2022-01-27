@@ -91,9 +91,36 @@ public class Controller {
 	public boolean confermaRispostaSicurezzaClicked(String Risposta, String NomeUtente) {
 		
 		Operatori op = new Operatori(NomeUtente);
-		return domandeOperatoriDAO.checkRisposta(Risposta, operatoriDAO.getIdOperatoreNoPassword(op)); //da completare
+		return domandeOperatoriDAO.checkRisposta(Risposta, operatoriDAO.getIdOperatoreNoPassword(op));
 		
 	}
+
+	public boolean confermaCambioPassword(String nomeUtente, String pass) {
+
+		return operatoriDAO.modificaPassword(nomeUtente, pass);
+	}
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

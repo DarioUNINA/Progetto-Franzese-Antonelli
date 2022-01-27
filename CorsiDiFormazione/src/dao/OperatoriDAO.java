@@ -31,7 +31,6 @@ public class OperatoriDAO {
 		
 	}
 
-
 	public String getIdOperatore(Operatori op) {
 		
 		try {
@@ -48,7 +47,6 @@ public class OperatoriDAO {
 		}
 	}
 	
-	
 	public boolean insertOperatore(Operatori op) {
 		
 		try {
@@ -62,7 +60,6 @@ public class OperatoriDAO {
 			return false;
 		}
 	}
-	
 	
 	public boolean CheckNome(Operatori op) {
 		
@@ -91,4 +88,17 @@ public class OperatoriDAO {
 		}
 	}
 	
+	public boolean modificaPassword(String nome, String pass) {
+		
+		try {
+			
+				return !statement.execute("UPDATE operatori SET password = '" + pass + "' WHERE nome_utente = '" + nome + "'" );
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		
+		
+	}
 }

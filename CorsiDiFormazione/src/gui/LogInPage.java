@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.w3c.dom.events.MouseEvent;
 
+import dto.Operatori;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -92,12 +94,6 @@ public class LogInPage extends JFrame {
 		LogInPanel.add(PasswordLabel);
 
 		JButton AccediButton = new JButton("ACCEDI");
-		
-		AccediButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
 		AccediButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				AccediButton.setBackground(Color.GREEN);
@@ -121,11 +117,13 @@ public class LogInPage extends JFrame {
 							alertLogInFallito();
 						else
 						{
-							NomeUtenteField.setText("");
-							PasswordField.setText("");
+							Operatori op = new Operatori(Nome, Pass);
+							HomePage hp = new HomePage(theController,op);
+							setVisible(false);
 						}
 					
-				
+				NomeUtenteField.setText("");
+				PasswordField.setText("");
 	
 			}	
 		});

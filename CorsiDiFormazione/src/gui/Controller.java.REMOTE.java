@@ -67,7 +67,7 @@ public class Controller {
 		
 		return domandeOperatoriDAO.insertDomandeOperatori(dop);			
 	}
-		
+	
 
 	public Vector<String> getDomandeSicurezza() {
 		
@@ -84,13 +84,8 @@ public class Controller {
 	public boolean confermaRispostaSicurezzaClicked(String Risposta, String NomeUtente) {
 		
 		Operatori op = new Operatori(NomeUtente);
-		return domandeOperatoriDAO.checkRisposta(Risposta, operatoriDAO.getIdOperatoreNoPassword(op));
+		return domandeOperatoriDAO.checkRisposta(Risposta, operatoriDAO.getIdOperatoreNoPassword(op)); //da completare
 		
-	}
-
-	public boolean confermaCambioPassword(String nomeUtente, String pass) {
-
-		return operatoriDAO.modificaPassword(nomeUtente, pass);
 	}
 
 }

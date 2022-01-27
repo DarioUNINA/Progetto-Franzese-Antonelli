@@ -68,7 +68,14 @@ public class Controller {
 		return domandeOperatoriDAO.insertDomandeOperatori(dop);			
 	}
 		
-
+//	public String operatoreInserito(String Nome) {
+//		
+//		Operatori op = new Operatori(Nome);
+//		DomandeOperatori dop = new DomandeOperatori(domandeOperatoriDAO.getIdDomanda2(op),op.getNomeUtente());
+//		
+//		return DomandeSicurezzaDAO.getDomandaUtente(dop);
+//	}
+	
 	public Vector<String> getDomandeSicurezza() {
 		
 		return domandeSicurezzaDAO.getDomande();
@@ -92,6 +99,27 @@ public class Controller {
 
 		return operatoriDAO.modificaPassword(nomeUtente, pass);
 	}
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

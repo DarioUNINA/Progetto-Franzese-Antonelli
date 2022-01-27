@@ -151,7 +151,7 @@ public class HomePage extends JFrame {
 		ParolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		Filtri.add(ParolaChiaveLabel);
 		
-		JComboBox AreaTematicaComboBox = new JComboBox();
+		JComboBox AreaTematicaComboBox = new JComboBox(theController.setAreaTematicaComboBox());
 		AreaTematicaComboBox.setBounds(117, 43, 105, 22);
 		Filtri.add(AreaTematicaComboBox);
 		

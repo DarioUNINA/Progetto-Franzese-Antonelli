@@ -66,7 +66,7 @@ public class HomePage extends JFrame {
 		BenvenutoLabel.setFont(new Font("Arial", Font.BOLD, 30));
 		BenvenutoLabel.setBounds(10, -2, 352, 44);
 		panel.add(BenvenutoLabel);
-		BenvenutoLabel.setText("Benvenuto, " + operatore.getNomeUtente());
+		BenvenutoLabel.setText("Benvenuto, " + operatore.getNomeUtente().toUpperCase());
 		
 		JButton ImpostazioniButton = new JButton("IMPOSTAZIONI");
 		ImpostazioniButton.addMouseListener(new MouseAdapter() {

@@ -19,66 +19,52 @@ public class DomandeOperatoriDAO {
 	}
 
 	
-	public boolean insertDomandeOperatori(DomandeOperatori dop){
+	public String insertDomandeOperatori(DomandeOperatori dop){
 		
 		try {
-			System.out.println("l'id della domanda e " + dop.getIdDomanda() +  " l'id dell operatore e " +  dop.getIdOperatore() + dop.getRisposta());
 			statement.execute("INSERT INTO domande_operatori VALUES ('" + dop.getRisposta() + "' , '" + dop.getIdDomanda() + 
 					"', '" + dop.getIdOperatore() + "')");
 			
-			return true;
+			return "0";
 		}catch(SQLException e) {
-			e.printStackTrace();
-			return false;
+			return e.getSQLState();
 		}
 		
 	}
-		public String getIdDomanda2(Operatori op) {
+	
+	public String getDomandaOperatore(String id) {
+		
+		try {
 			
-			try {
-				ResultSet rs = statement.executeQuery("SELECT do.id_domanda FROM operatori o  JOIN domande_operatori do ON o.id_operatore = do.id_operatore ");
-				
-				rs.next();
-				return rs.getString("id_domanda");
+			ResultSet rs = statement.executeQuery("SELECT ds.domanda FROM domande_sicurezza ds JOIN domande_operatori dop ON dop.id_domanda = ds.id_domanda"
+					+ " WHERE dop.id_operatore = '" + id + "'" );
 			
-			}catch(SQLException e) {
-				
-				//da gestire
-				return "";
-			}
+			rs.next();
+			return rs.getString("domanda");
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return "Errore";
 		}
+	}
 		
+	public boolean checkRisposta(String Risposta, String id_operatore) {
 		
-		public String getDomandaOperatore(String id) {
-			System.out.println("l id e " + id);
+		try {
 			
-			try {
-				
-				ResultSet rs = statement.executeQuery("SELECT ds.domanda FROM domande_sicurezza ds JOIN domande_operatori dop ON dop.id_domanda = ds.id_domanda"
-						+ " WHERE dop.id_operatore = '" + id + "'" );
-				
-				rs.next();
-				return rs.getString("domanda");
-			}catch(SQLException e) {
-				e.printStackTrace();
-				return"";
-			}
-		}
-		
-		
-		public boolean checkRisposta(String Risposta, String id_operatore) {
+			ResultSet rs = statement.executeQuery("SELECT FROM domande_sicurezza ds JOIN domande_operatori "
+					+ "dop ON ds.id_domanda = dop.id_domanda WHERE dop.id_operatore = '" 
+					+ id_operatore + "' AND dop.risposta = '" + Risposta + "'");
 			
-			try {
-				
-				ResultSet rs = statement.executeQuery("SELECT FROM domande_sicurezza ds JOIN domande_operatori "
-						+ "dop ON ds.id_domanda = dop.id_domanda WHERE dop.id_operatore = '" + id_operatore + "' AND dop.risposta = '" + Risposta + "'"); //da completare
-				
-				return rs.next();
-			}catch(SQLException e) {
-				
-				e.printStackTrace();
-				return false;
-			}
+			return rs.next();
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return false;
 		}
+	}
+	
+	
+	
+	
 }
 

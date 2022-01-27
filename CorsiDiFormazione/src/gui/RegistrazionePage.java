@@ -27,6 +27,7 @@ import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import dto.Operatori;
 
 public class RegistrazionePage extends JFrame {
 
@@ -132,10 +133,10 @@ public class RegistrazionePage extends JFrame {
 		ConfermaButton.setBounds(310, 288, 128, 32);
 		RegistrazionePanel.add(ConfermaButton);
 		
-		JLabel PromeoriaLabel = new JLabel("La Password deve contenere almeno 6 caratteri!");
-		PromeoriaLabel.setForeground(Color.RED);
-		PromeoriaLabel.setBounds(413, 141, 287, 14);
-		RegistrazionePanel.add(PromeoriaLabel);
+		JLabel promemoriaLabel = new JLabel("La Password deve contenere almeno 6 caratteri!");
+		promemoriaLabel.setForeground(Color.RED);
+		promemoriaLabel.setBounds(413, 141, 287, 14);
+		RegistrazionePanel.add(promemoriaLabel);
 		
 		JLabel NonCaratteriSpecialiLabel = new JLabel("I Dati non devono contenere caratteri Speciali (!,\",@)");
 		NonCaratteriSpecialiLabel.setForeground(Color.RED);
@@ -167,10 +168,15 @@ public class RegistrazionePage extends JFrame {
 							if(RispostaSicurezza.isEmpty())
 								alertRispostaNonInserita();
 							else
-								if(theController.registrazioneClicked(NomeU, Pass, DomandaSicurezza, RispostaSicurezza))
+							{
+								String state = theController.registrazioneClicked(NomeU, Pass, DomandaSicurezza, RispostaSicurezza);
+								
+								if(state.equals("0"))
 									alertConfermaRegistrazione();
-					
-				
+								else
+									alertErroreRegsistrazione(state);
+							}
+									
 			}
 			
 			@Override
@@ -200,7 +206,7 @@ public class RegistrazionePage extends JFrame {
 	}
 	
 	public void alertConfermaRegistrazione() {
-		Object[] opzioni = {"HomePage","GestioneCorsi!"};
+		Object[] opzioni = {"Log In","Home Page"};
 		int n = JOptionPane.showOptionDialog(this,
 					"Come si vuole procedere?",
 					"REGISTRAZIONE EFFETTUATA ",
@@ -213,7 +219,27 @@ public class RegistrazionePage extends JFrame {
 		if(n==0) {
 			LogInPage HP = new LogInPage(theController);
 			setVisible(false);	
-		}else
-			System.out.println("ciao");
+		}else {
+			Operatori op = new Operatori (NomeTextField.getText(), PasswordTextField.getText());
+			HomePage hp = new HomePage(theController, op);
+		}
+			
+	}
+
+	public void alertErroreRegsistrazione(String state) {
+		
+		if(state.equals("10004")) 
+			JOptionPane.showMessageDialog(this, "La password non deve contenere caratteri speciali!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			if(state.equals("10003"))
+				JOptionPane.showMessageDialog(this, "Il Nome utente non deve contenere caratteri speciali!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+			else 
+				if(state.equals("10001"))
+					JOptionPane.showMessageDialog(this, "La password deve essere lunga almeno 6 caratteri","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+				else
+					if(state.equals("10002"))
+						JOptionPane.showMessageDialog(this, "Il nome utente deve essere lungo almeno 4 caratteri","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+					else
+						JOptionPane.showMessageDialog(this, "Errore durante la registrazione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 }

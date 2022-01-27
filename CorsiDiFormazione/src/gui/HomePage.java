@@ -118,6 +118,12 @@ public class HomePage extends JFrame {
 		Filtri.setLayout(null);
 		
 		JButton ResetFiltriButton = new JButton("RESET");
+		ResetFiltriButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		ResetFiltriButton.setBounds(10, 219, 89, 23);
 		ResetFiltriButton.setFont(new Font("Arial", Font.BOLD, 15));
 		Filtri.add(ResetFiltriButton);
@@ -156,7 +162,7 @@ public class HomePage extends JFrame {
 		JComboBox AreaTematicaComboBox = new JComboBox(theController.setAreaTematicaComboBox());
 		AreaTematicaComboBox.setBounds(117, 43, 105, 22);
 		Filtri.add(AreaTematicaComboBox);
-		
+				
 		JComboBox AnnoComboBox = new JComboBox();
 		AnnoComboBox.setBounds(117, 82, 105, 22);
 		Filtri.add(AnnoComboBox);

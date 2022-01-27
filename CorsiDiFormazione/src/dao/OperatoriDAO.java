@@ -1,6 +1,9 @@
 package dao;
 
 import java.sql.*;
+
+import javax.swing.JOptionPane;
+
 import dto.Operatori;
 
 public class OperatoriDAO {
@@ -19,6 +22,7 @@ public class OperatoriDAO {
 	public boolean LogIn(Operatori op) {
 		
 		try{
+			
 			ResultSet rs = statement.executeQuery("SELECT * FROM operatori WHERE nome_utente = '" + op.getNomeUtente() +  
 						"' AND password = '" +  op.getPassword()+ "'");
 			
@@ -34,6 +38,7 @@ public class OperatoriDAO {
 	public String getIdOperatore(Operatori op) {
 		
 		try {
+			
 			ResultSet rs = statement.executeQuery("SELECT o.id_operatore FROM operatori o WHERE o.nome_utente = '" + op.getNomeUtente() +  
 							"' AND o.password = '" +  op.getPassword()+ "'");
 			
@@ -42,22 +47,21 @@ public class OperatoriDAO {
 		
 		}catch(SQLException e) {
 			
-			//da gestire
+			System.out.println(e);
 			return "";
 		}
 	}
 	
-	public boolean insertOperatore(Operatori op) {
+	public String insertOperatore(Operatori op) {
 		
 		try {
 			statement.execute("INSERT INTO operatori VALUES (nextval('sequenza_id_operatore'), '" + op.getNomeUtente() +  
 							"', '" +  op.getPassword()+ "');");
-			return true;
+			return "0";
 		
 		}catch(SQLException e) {
 			
-			e.printStackTrace();
-			return false;
+			return e.getSQLState();
 		}
 	}
 	

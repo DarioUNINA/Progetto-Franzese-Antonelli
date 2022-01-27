@@ -27,7 +27,7 @@ public class Connessione {
 
 		} catch (SQLException e) {
 
-			System.out.println(e);
+			System.out.println(e.getMessage());
 			System.out.println("Tentativo di connessione fallito");
 
 		}

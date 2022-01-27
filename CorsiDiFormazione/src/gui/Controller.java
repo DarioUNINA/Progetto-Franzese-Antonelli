@@ -53,22 +53,26 @@ public class Controller {
 	}
 	
 	public boolean CheckNomeClicked(String user) {
+		
 		Operatori op = new Operatori(user);
 		return operatoriDAO.CheckNome(op);
+		
 	}
 	
-	public boolean registrazioneClicked(String nome, String pass, String domanda, String risposta) {
+	public String registrazioneClicked(String nome, String pass, String domanda, String risposta) {
 		
 		Operatori op = new Operatori(nome, pass);
-		if(!operatoriDAO.insertOperatore(op)) {
-			return false;
-		}
+		
+		String state = operatoriDAO.insertOperatore(op);
+		if(!state.equals("0"))
+			return state;
+		
 		DomandeOperatori dop = new DomandeOperatori(domandeSicurezzaDAO.getIdDomanda(domanda), operatoriDAO.getIdOperatore(op), risposta);
 		
-		return domandeOperatoriDAO.insertDomandeOperatori(dop);			
+		return domandeOperatoriDAO.insertDomandeOperatori(dop);	
+		
 	}
 		
-
 	public Vector<String> getDomandeSicurezza() {
 		
 		return domandeSicurezzaDAO.getDomande();
@@ -77,8 +81,8 @@ public class Controller {
 	public String setDomandaLabelRecuperoPassPage(String nome) {
 		
 		Operatori op = new Operatori(nome);
-		
 		return domandeOperatoriDAO.getDomandaOperatore(operatoriDAO.getIdOperatoreNoPassword(op));
+	
 	}
 	
 	public boolean confermaRispostaSicurezzaClicked(String Risposta, String NomeUtente) {

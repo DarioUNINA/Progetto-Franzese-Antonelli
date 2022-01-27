@@ -19,6 +19,7 @@ public class AreeTematicheDAO {
 	}
 
 	public Vector<String> getAree(){
+		
 		Vector<String> aree = new Vector<String>();
 		
 		try {
@@ -32,7 +33,7 @@ public class AreeTematicheDAO {
 			
 			return aree;
 		}catch(SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 			return aree;
 		}
 		

@@ -26,10 +26,11 @@ public class DomandeSicurezzaDAO {
 			
 			rs.next();
 			return rs.getString("id_domanda");
+			
 		}catch(SQLException e) {
-			//da gestire
+			
 			e.printStackTrace();
-			return " ";
+			return "Errore";
 		}
 		
 	}
@@ -61,6 +62,7 @@ public class DomandeSicurezzaDAO {
 			return domande;
 			
 		}catch(SQLException e) {
+			
 			e.printStackTrace();
 			return domande;
 		}
@@ -70,4 +72,6 @@ public class DomandeSicurezzaDAO {
 		
 	}
 
+	
+	
 }

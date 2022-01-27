@@ -9,7 +9,7 @@ lezioni (durata, titolo, descrizione, data, orario, -id_lezione-, /id_corso/)
 studenti (-matricola-, nome, cognome)
 operatori (-id_operatore-, nome_utente, Password)
 domande_operatori(/id_operatore/, /id_domanda/, risposta)
-domande_sicurezza(-id_domanda-)
+domande_sicurezza(-id_domanda-, domanda)
 
 
 presenze (/matricola/, /id_lezione/)

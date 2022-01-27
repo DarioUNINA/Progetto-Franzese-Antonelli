@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.Vector;
+
 import javax.swing.JOptionPane;
 
 import dao.*;
@@ -65,20 +67,27 @@ public class Controller {
 		
 		return domandeOperatoriDAO.insertDomandeOperatori(dop);			
 	}
-		
-//	public String operatoreInserito(String Nome) {
-//		
-//		Operatori op = new Operatori(Nome);
-//		DomandeOperatori dop = new DomandeOperatori(domandeOperatoriDAO.getIdDomanda2(op),op.getNomeUtente());
-//		
-//		return DomandeSicurezzaDAO.getDomandaUtente(dop);
-//	}
 	
-//	public String[] getDomandeSicurezza() {
-//		
-//		return domandeSicurezzaDAO.getDomande();
-//	}
-//	
+
+	public Vector<String> getDomandeSicurezza() {
+		
+		return domandeSicurezzaDAO.getDomande();
+	}
+	
+	public String setDomandaLabelRecuperoPassPage(String nome) {
+		
+		Operatori op = new Operatori(nome);
+		
+		return domandeOperatoriDAO.getDomandaOperatore(operatoriDAO.getIdOperatoreNoPassword(op));
+	}
+	
+	public boolean confermaRispostaSicurezzaClicked(String Risposta, String NomeUtente) {
+		
+		Operatori op = new Operatori(NomeUtente);
+		return domandeOperatoriDAO.checkRisposta(Risposta, operatoriDAO.getIdOperatoreNoPassword(op)); //da completare
+		
+	}
+
 }
 
 

@@ -49,4 +49,33 @@ public class DomandeOperatoriDAO {
 		}
 		
 		
+		public String getDomandaOperatore(String id) {
+			System.out.println("l id e " + id);
+			
+			try {
+				
+				ResultSet rs = statement.executeQuery("SELECT ds.domanda FROM domande_sicurezza ds JOIN domande_operatori dop ON dop.id_domanda = ds.id_domanda"
+						+ " WHERE dop.id_operatore = '" + id + "'" );
+				
+				rs.next();
+				return rs.getString("domanda");
+			}catch(SQLException e) {
+				e.printStackTrace();
+				return"";
+			}
+		}
+		
+		
+//		public boolean checkRisposta(String Risposta, String id_operatore) {
+//			
+//			try {
+//				ResultSet rs = statement.executeQuery("SELECT FROM domande_sicurezza"); //da completare
+//			} catch (Exception e) {
+//				
+//			}
+			
+				
+		//	}
+				
 }
+

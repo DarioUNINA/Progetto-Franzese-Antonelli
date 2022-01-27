@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.*;
+import java.util.Vector;
 
 import dto.DomandeOperatori;
 import dto.DomandeSicurezza;
@@ -42,13 +43,31 @@ public class DomandeSicurezzaDAO {
 			return rs.getString("domanda");
 			
 		} catch (Exception e) {
-			return " ";
+			return "";
 		}
 	}
 
-//	public String[] getDOomande() {
-//		
-//		return domande;
-//		
-//	}
+	public Vector<String> getDomande() {
+		
+		Vector<String> domande = new Vector<String>();
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT * FROM domande_sicurezza");
+			
+			while(rs.next())
+				domande.add(rs.getString(1));
+
+			return domande;
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return domande;
+		}
+
+		
+		
+		
+	}
+
 }

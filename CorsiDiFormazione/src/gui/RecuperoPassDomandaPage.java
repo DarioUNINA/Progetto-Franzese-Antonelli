@@ -20,6 +20,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RecuperoPassDomandaPage extends JFrame {
 
@@ -27,18 +29,20 @@ public class RecuperoPassDomandaPage extends JFrame {
 	private Component url;
 
 	private Controller theController;
+	private String nomeUtente;
+	
 	private ImageIcon imageicon;
 	private JTextField DomandaText;
 	private JTextField RispostaDomandaField;
 	
 
-	public RecuperoPassDomandaPage(Controller con) {
+	public RecuperoPassDomandaPage(Controller controller, String nome) {
+		
+		nomeUtente = nome;
+		theController = controller;
 		
 		setResizable(false);
-		
-		
 		imageicon = new ImageIcon("napule.png");
-		theController = con;
 		setIconImage(imageicon.getImage());
 		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -66,6 +70,12 @@ public class RecuperoPassDomandaPage extends JFrame {
 		RecuperoPanel.add(RECUPEROPASSWORDLabel);
 		
 		JButton ConfermaButton = new JButton("CONFERMA");
+		ConfermaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(theController.confermaRispostaSicurezzaClicked(RispostaDomandaField.getText(), nomeUtente))
+			}
+		});
 		ConfermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -82,7 +92,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		});
 		
 		ConfermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		ConfermaButton.setBounds(211, 148, 121, 27);
+		ConfermaButton.setBounds(202, 171, 121, 27);
 		RecuperoPanel.add(ConfermaButton);
 		
 		JButton IndietroButton = new JButton("INDIETRO");
@@ -106,14 +116,14 @@ public class RecuperoPassDomandaPage extends JFrame {
 		IndietroButton.setBounds(10, 273, 121, 23);
 		RecuperoPanel.add(IndietroButton);
 		
-		JLabel DoamandaLabel = new JLabel("");
+		JLabel DoamandaLabel = new JLabel(theController.setDomandaLabelRecuperoPassPage(nomeUtente));
 		DoamandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		DoamandaLabel.setBounds(139, 77, 268, 14);
+		DoamandaLabel.setBounds(139, 79, 268, 14);
 		RecuperoPanel.add(DoamandaLabel);
 		
 		RispostaDomandaField = new JTextField();
 		RispostaDomandaField.setFont(new Font("Arial", Font.BOLD, 15));
-		RispostaDomandaField.setBounds(139, 102, 268, 20);
+		RispostaDomandaField.setBounds(216, 140, 220, 20);
 		RecuperoPanel.add(RispostaDomandaField);
 		RispostaDomandaField.setColumns(10);
 		
@@ -123,7 +133,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		
 		JLabel RispostaLabel = new JLabel("Inserire Risposta:");
 		RispostaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		RispostaLabel.setBounds(10, 106, 131, 14);
+		RispostaLabel.setBounds(73, 143, 131, 14);
 		RecuperoPanel.add(RispostaLabel);
 		
 		setVisible(true);

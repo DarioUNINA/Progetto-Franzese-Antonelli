@@ -96,7 +96,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		});
 		
 		ConfermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		ConfermaButton.setBounds(202, 171, 121, 27);
+		ConfermaButton.setBounds(212, 171, 121, 27);
 		RecuperoPanel.add(ConfermaButton);
 		
 		JButton IndietroButton = new JButton("INDIETRO");
@@ -120,14 +120,14 @@ public class RecuperoPassDomandaPage extends JFrame {
 		IndietroButton.setBounds(10, 273, 121, 23);
 		RecuperoPanel.add(IndietroButton);
 		
-		JLabel DoamandaLabel = new JLabel(theController.setDomandaLabelRecuperoPassPage(nomeUtente));
+		JLabel DoamandaLabel = new JLabel("Domanda Di Sicurezza:    " + theController.setDomandaLabelRecuperoPassPage(nomeUtente));
 		DoamandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		DoamandaLabel.setBounds(139, 79, 268, 14);
+		DoamandaLabel.setBounds(73, 79, 465, 14);
 		RecuperoPanel.add(DoamandaLabel);
 		
 		RispostaDomandaField = new JTextField();
 		RispostaDomandaField.setFont(new Font("Arial", Font.BOLD, 15));
-		RispostaDomandaField.setBounds(216, 140, 220, 20);
+		RispostaDomandaField.setBounds(202, 140, 220, 20);
 		RecuperoPanel.add(RispostaDomandaField);
 		RispostaDomandaField.setColumns(10);
 		

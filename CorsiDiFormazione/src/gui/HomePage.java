@@ -28,6 +28,7 @@ import javax.swing.JList;
 import java.awt.List;
 import java.awt.ScrollPane;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import java.awt.Button;
 import javax.swing.JCheckBox;
@@ -99,8 +100,9 @@ public class HomePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				LogInPage LI = new LogInPage(theController);
-				setVisible(false);
+				
+				alertReturnToLogIn();
+				
 			}
 		});
 
@@ -217,4 +219,24 @@ public class HomePage extends JFrame {
 		
 		setVisible(true);
 	}
+	
+	
+	public void alertReturnToLogIn() {
+		Object[] opzioni = {"Sì"};
+		
+		int n = JOptionPane.showOptionDialog(this,
+				"Sei sicuro di voler uscire?",
+				"CONFERMA DI USCITA",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				opzioni,
+				opzioni[0]);
+		if(n==0) {
+			LogInPage LI = new LogInPage(theController);
+			setVisible(false);
+		}
+			
+		}
+	
 }

@@ -38,7 +38,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseWheelEvent;
 import javax.swing.border.LineBorder;
 
-public class LogIn extends JFrame {
+public class LogInPage extends JFrame {
 
 	private JPanel contentPane;
 	private Component url;
@@ -49,7 +49,7 @@ public class LogIn extends JFrame {
 	private ImageIcon imageicon;
 
 	
-	public LogIn(Controller controller) {
+	public LogInPage(Controller controller) {
 		
 		imageicon = new ImageIcon("napule.png");
 		theController = controller;

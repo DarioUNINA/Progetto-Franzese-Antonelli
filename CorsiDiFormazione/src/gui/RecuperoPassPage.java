@@ -123,7 +123,7 @@ public class RecuperoPassPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				LogIn LI = new LogIn(theController);
+				LogInPage LI = new LogInPage(theController);
 				setVisible(false);
 			}
 		});

@@ -12,6 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -71,7 +73,7 @@ public class RegistrazionePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				LogIn LI = new LogIn(theController);
+				LogInPage LI = new LogInPage(theController);
 				setVisible(false);
 			}
 		});
@@ -89,8 +91,8 @@ public class RegistrazionePage extends JFrame {
 		RegistrazionePanel.add(PasswordTextField);
 		PasswordTextField.setColumns(10);
 		
-		
-		String[] domandeStrings = {"dove sei nato?", "come si chiama il tuo primo genito ?", "come si chiama il tuo animale domestico?" };
+	//	String[] domandeStrings = {"dove sei nato?", "come si chiama il tuo primo genito ?", "come si chiama il tuo animale domestico?" };
+		String[] domandeStrings = theController.getDomandeSicurezza();
 		
 		JComboBox DomandeComboBox = new JComboBox(domandeStrings);
 		DomandeComboBox.setMaximumRowCount(3);
@@ -207,7 +209,7 @@ public class RegistrazionePage extends JFrame {
 					opzioni[0]); //titolo del pulsante 
 		
 		if(n==0) {
-			LogIn HP = new LogIn(theController);
+			LogInPage HP = new LogInPage(theController);
 			setVisible(false);	
 		}else
 			System.out.println("ciao");

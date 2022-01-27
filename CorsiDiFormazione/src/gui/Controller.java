@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.Vector;
+
 import javax.swing.JOptionPane;
 
 import dao.*;
@@ -74,11 +76,24 @@ public class Controller {
 //		return DomandeSicurezzaDAO.getDomandaUtente(dop);
 //	}
 	
-	public String[] getDomandeSicurezza() {
+	public Vector<String> getDomandeSicurezza() {
 		
 		return domandeSicurezzaDAO.getDomande();
 	}
 	
+	public String setDomandaLabelRecuperoPassPage(String nome) {
+		
+		Operatori op = new Operatori(nome);
+		
+		return domandeOperatoriDAO.getDomandaOperatore(operatoriDAO.getIdOperatoreNoPassword(op));
+	}
+	
+	public boolean confermaRispostaSicurezzaClicked(String Risposta, String NomeUtente) {
+		
+		Operatori op = new Operatori(NomeUtente);
+		return domandeOperatoriDAO.checkRisposta(Risposta, operatoriDAO.getIdOperatoreNoPassword(op)); //da completare
+		
+	}
 }
 
 

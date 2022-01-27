@@ -8,11 +8,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.AbstractListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -91,14 +93,14 @@ public class RegistrazionePage extends JFrame {
 		RegistrazionePanel.add(PasswordTextField);
 		PasswordTextField.setColumns(10);
 		
-	//	String[] domandeStrings = {"dove sei nato?", "come si chiama il tuo primo genito ?", "come si chiama il tuo animale domestico?" };
-		String[] domandeStrings = theController.getDomandeSicurezza();
+		Vector<String> domande = new Vector();
 		
-		JComboBox DomandeComboBox = new JComboBox(domandeStrings);
+		domande = theController.getDomandeSicurezza();
+		
+		JComboBox DomandeComboBox = new JComboBox(domande);
 		DomandeComboBox.setMaximumRowCount(3);
 		DomandeComboBox.setBounds(46, 217, 297, 32);
 		RegistrazionePanel.add(DomandeComboBox);
-			
 		
 		RispostaSicurezzaField = new JTextField();
 		RispostaSicurezzaField.setBounds(403, 217, 297, 32);

@@ -92,6 +92,11 @@ public class Controller {
 
 		return operatoriDAO.modificaPassword(nomeUtente, pass);
 	}
+	
+	public Vector<String> setAreaTematicaComboBox() {
+		
+		return areeTematicheDAO.getAree();
+	}
 
 }
 

@@ -34,7 +34,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 	
 	private ImageIcon imageicon;
 	private JTextField DomandaText;
-	private JTextField RispostaDomandaField;
+	private JTextField rispostaDomandaField;
 	
 
 	public RecuperoPassDomandaPage(Controller controller, String nome) {
@@ -56,25 +56,25 @@ public class RecuperoPassDomandaPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel RecuperoPanel = new JPanel();
-		RecuperoPanel.setBackground(SystemColor.control);
-		RecuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		RecuperoPanel.setBounds(10, 11, 548, 307);
-		contentPane.add(RecuperoPanel);
-		RecuperoPanel.setLayout(null);
+		JPanel recuperoPanel = new JPanel();
+		recuperoPanel.setBackground(SystemColor.control);
+		recuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		recuperoPanel.setBounds(10, 11, 548, 307);
+		contentPane.add(recuperoPanel);
+		recuperoPanel.setLayout(null);
 		
-		JLabel RECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
-		RECUPEROPASSWORDLabel.setForeground(Color.BLACK);
-		RECUPEROPASSWORDLabel.setFont(new Font("Arial", Font.BOLD, 22));
-		RECUPEROPASSWORDLabel.setBackground(Color.WHITE);
-		RECUPEROPASSWORDLabel.setBounds(139, 11, 268, 33);
-		RecuperoPanel.add(RECUPEROPASSWORDLabel);
+		JLabel rECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
+		rECUPEROPASSWORDLabel.setForeground(Color.BLACK);
+		rECUPEROPASSWORDLabel.setFont(new Font("Arial", Font.BOLD, 22));
+		rECUPEROPASSWORDLabel.setBackground(Color.WHITE);
+		rECUPEROPASSWORDLabel.setBounds(139, 11, 268, 33);
+		recuperoPanel.add(rECUPEROPASSWORDLabel);
 		
-		JButton ConfermaButton = new JButton("CONFERMA");
-		ConfermaButton.addActionListener(new ActionListener() {
+		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String state  = theController.confermaRispostaSicurezzaClicked(RispostaDomandaField.getText(), nomeUtente);
+				String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText(), nomeUtente);
 
 				if(state.equals("0")) {
 					ModificaPasswordPage pg = new ModificaPasswordPage(theController, nomeUtente);
@@ -84,14 +84,14 @@ public class RecuperoPassDomandaPage extends JFrame {
 			}
 		});
 
-			ConfermaButton.addMouseListener(new MouseAdapter() {
+			confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ConfermaButton.setBackground(Color.GREEN);
+				confermaButton.setBackground(Color.GREEN);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ConfermaButton.setBackground(Color.WHITE);
+				confermaButton.setBackground(Color.WHITE);
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -99,19 +99,19 @@ public class RecuperoPassDomandaPage extends JFrame {
 			}
 		});
 		
-		ConfermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		ConfermaButton.setBounds(212, 171, 121, 27);
-		RecuperoPanel.add(ConfermaButton);
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaButton.setBounds(212, 171, 121, 27);
+		recuperoPanel.add(confermaButton);
 		
-		JButton IndietroButton = new JButton("INDIETRO");
-		IndietroButton.addMouseListener(new MouseAdapter() {
+		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				IndietroButton.setBackground(Color.ORANGE);
+				indietroButton.setBackground(Color.ORANGE);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				IndietroButton.setBackground(Color.WHITE);
+				indietroButton.setBackground(Color.WHITE);
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -120,29 +120,25 @@ public class RecuperoPassDomandaPage extends JFrame {
 			}
 		});
 		
-		IndietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		IndietroButton.setBounds(10, 273, 121, 23);
-		RecuperoPanel.add(IndietroButton);
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(10, 273, 121, 23);
+		recuperoPanel.add(indietroButton);
 		
-		JLabel DoamandaLabel = new JLabel("Domanda Di Sicurezza: " + theController.setDomandaLabelRecuperoPassPage(nomeUtente));
-		DoamandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		DoamandaLabel.setBounds(73, 79, 465, 14);
-		RecuperoPanel.add(DoamandaLabel);
+		JLabel domandaLabel = new JLabel("Domanda Di Sicurezza: " + theController.setDomandaLabelRecuperoPassPage(nomeUtente));
+		domandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		domandaLabel.setBounds(73, 79, 465, 14);
+		recuperoPanel.add(domandaLabel);
 		
-		RispostaDomandaField = new JTextField();
-		RispostaDomandaField.setFont(new Font("Arial", Font.BOLD, 15));
-		RispostaDomandaField.setBounds(202, 140, 220, 20);
-		RecuperoPanel.add(RispostaDomandaField);
-		RispostaDomandaField.setColumns(10);
+		rispostaDomandaField = new JTextField();
+		rispostaDomandaField.setFont(new Font("Arial", Font.BOLD, 15));
+		rispostaDomandaField.setBounds(202, 140, 220, 20);
+		recuperoPanel.add(rispostaDomandaField);
+		rispostaDomandaField.setColumns(10);
 		
-		JList list = new JList();
-		list.setBounds(84, 231, -19, -33);
-		RecuperoPanel.add(list);
-		
-		JLabel RispostaLabel = new JLabel("Inserire Risposta:");
-		RispostaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		RispostaLabel.setBounds(73, 143, 131, 14);
-		RecuperoPanel.add(RispostaLabel);
+		JLabel rispostaLabel = new JLabel("Inserire Risposta:");
+		rispostaLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		rispostaLabel.setBounds(73, 143, 131, 14);
+		recuperoPanel.add(rispostaLabel);
 		
 		setVisible(true);
 	}

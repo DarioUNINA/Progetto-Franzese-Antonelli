@@ -33,9 +33,9 @@ public class RegistrazionePage extends JFrame {
 
 	private JPanel contentPane;
 	private Controller theController;
-	private JTextField NomeTextField;
-	private JTextField PasswordTextField;
-	private JTextField RispostaSicurezzaField;
+	private JTextField nomeTextField;
+	private JTextField passwordTextField;
+	private JTextField rispostaSicurezzaField;
 	private ImageIcon imageicon;
 
 
@@ -57,22 +57,22 @@ public class RegistrazionePage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel RegistrazionePanel = new JPanel();
-		RegistrazionePanel.setBackground(SystemColor.control);
-		RegistrazionePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		RegistrazionePanel.setBounds(29, 29, 745, 395);
-		contentPane.add(RegistrazionePanel);
-		RegistrazionePanel.setLayout(null);
+		JPanel registrazionePanel = new JPanel();
+		registrazionePanel.setBackground(SystemColor.control);
+		registrazionePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		registrazionePanel.setBounds(29, 29, 745, 395);
+		contentPane.add(registrazionePanel);
+		registrazionePanel.setLayout(null);
 		
-		JButton IndietroButton = new JButton("INDIETRO");
-		IndietroButton.addMouseListener(new MouseAdapter() {
+		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				IndietroButton.setBackground(Color.ORANGE);
+				indietroButton.setBackground(Color.ORANGE);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				IndietroButton.setBackground(Color.WHITE);
+				indietroButton.setBackground(Color.WHITE);
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -80,83 +80,83 @@ public class RegistrazionePage extends JFrame {
 				setVisible(false);
 			}
 		});
-		IndietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		IndietroButton.setBounds(23, 361, 121, 23);
-		RegistrazionePanel.add(IndietroButton);
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(23, 361, 121, 23);
+		registrazionePanel.add(indietroButton);
 		
-		NomeTextField = new JTextField();
-		NomeTextField.setBounds(46, 110, 297, 32);
-		RegistrazionePanel.add(NomeTextField);
-		NomeTextField.setColumns(10);
+		nomeTextField = new JTextField();
+		nomeTextField.setBounds(46, 110, 297, 32);
+		registrazionePanel.add(nomeTextField);
+		nomeTextField.setColumns(10);
 		
-		PasswordTextField = new JTextField();
-		PasswordTextField.setBounds(403, 110, 297, 32);
-		RegistrazionePanel.add(PasswordTextField);
-		PasswordTextField.setColumns(10);
+		passwordTextField = new JTextField();
+		passwordTextField.setBounds(403, 110, 297, 32);
+		registrazionePanel.add(passwordTextField);
+		passwordTextField.setColumns(10);
 		
 		Vector<String> domande = new Vector();
 		
 		domande = theController.getDomandeSicurezza();
 		
-		JComboBox DomandeComboBox = new JComboBox(domande);
-		DomandeComboBox.setMaximumRowCount(3);
-		DomandeComboBox.setBounds(46, 217, 297, 32);
-		RegistrazionePanel.add(DomandeComboBox);
+		JComboBox domandeComboBox = new JComboBox(domande);
+		domandeComboBox.setMaximumRowCount(3);
+		domandeComboBox.setBounds(46, 217, 297, 32);
+		registrazionePanel.add(domandeComboBox);
 		
-		RispostaSicurezzaField = new JTextField();
-		RispostaSicurezzaField.setBounds(403, 217, 297, 32);
-		RegistrazionePanel.add(RispostaSicurezzaField);
-		RispostaSicurezzaField.setColumns(10);
+		rispostaSicurezzaField = new JTextField();
+		rispostaSicurezzaField.setBounds(403, 217, 297, 32);
+		registrazionePanel.add(rispostaSicurezzaField);
+		rispostaSicurezzaField.setColumns(10);
 		
-		JLabel InserireRispostaLabel = new JLabel("Inserire Risposta");
-		InserireRispostaLabel.setBounds(489, 177, 128, 39);
-		RegistrazionePanel.add(InserireRispostaLabel);
-		InserireRispostaLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		JLabel inserireRispostaLabel = new JLabel("Inserire Risposta");
+		inserireRispostaLabel.setBounds(489, 177, 128, 39);
+		registrazionePanel.add(inserireRispostaLabel);
+		inserireRispostaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JLabel NuovaPasswordLabel = new JLabel("Inserire Password");
-		NuovaPasswordLabel.setBounds(489, 72, 128, 39);
-		RegistrazionePanel.add(NuovaPasswordLabel);
-		NuovaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		JLabel nuovaPasswordLabel = new JLabel("Inserire Password");
+		nuovaPasswordLabel.setBounds(489, 72, 128, 39);
+		registrazionePanel.add(nuovaPasswordLabel);
+		nuovaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JLabel NuovoNomeUtenteLabel = new JLabel("Inserire Nome Utente");
-		NuovoNomeUtenteLabel.setBounds(120, 72, 161, 39);
-		RegistrazionePanel.add(NuovoNomeUtenteLabel);
-		NuovoNomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		JLabel nuovoNomeUtenteLabel = new JLabel("Inserire Nome Utente");
+		nuovoNomeUtenteLabel.setBounds(120, 72, 161, 39);
+		registrazionePanel.add(nuovoNomeUtenteLabel);
+		nuovoNomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JLabel ScegliereDomandaLabel = new JLabel("Scegliere Domanda di Sicurezza");
-		ScegliereDomandaLabel.setBounds(76, 177, 242, 39);
-		RegistrazionePanel.add(ScegliereDomandaLabel);
-		ScegliereDomandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		JLabel scegliereDomandaLabel = new JLabel("Scegliere Domanda di Sicurezza");
+		scegliereDomandaLabel.setBounds(76, 177, 242, 39);
+		registrazionePanel.add(scegliereDomandaLabel);
+		scegliereDomandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JButton ConfermaButton = new JButton("CONFERMA");
-		ConfermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		ConfermaButton.setBounds(310, 288, 128, 32);
-		RegistrazionePanel.add(ConfermaButton);
+		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaButton.setBounds(310, 288, 128, 32);
+		registrazionePanel.add(confermaButton);
 		
 		JLabel promemoriaLabel = new JLabel("La Password deve contenere almeno 6 caratteri!");
 		promemoriaLabel.setForeground(Color.RED);
 		promemoriaLabel.setBounds(413, 141, 287, 14);
-		RegistrazionePanel.add(promemoriaLabel);
+		registrazionePanel.add(promemoriaLabel);
 		
-		JLabel NonCaratteriSpecialiLabel = new JLabel("I Dati non devono contenere caratteri Speciali (!,\",@)");
-		NonCaratteriSpecialiLabel.setForeground(Color.RED);
-		NonCaratteriSpecialiLabel.setBounds(46, 141, 297, 14);
-		RegistrazionePanel.add(NonCaratteriSpecialiLabel);
+		JLabel nonCaratteriSpecialiLabel = new JLabel("I Dati non devono contenere caratteri Speciali (!,\",@)");
+		nonCaratteriSpecialiLabel.setForeground(Color.RED);
+		nonCaratteriSpecialiLabel.setBounds(46, 141, 297, 14);
+		registrazionePanel.add(nonCaratteriSpecialiLabel);
 		
-		JLabel ISCRIVITILabel = new JLabel("ISCRIVITI");
-		ISCRIVITILabel.setForeground(Color.BLACK);
-		ISCRIVITILabel.setFont(new Font("Arial", Font.BOLD, 22));
-		ISCRIVITILabel.setBackground(Color.WHITE);
-		ISCRIVITILabel.setBounds(325, 11, 97, 33);
-		RegistrazionePanel.add(ISCRIVITILabel);
+		JLabel iSCRIVITILabel = new JLabel("ISCRIVITI");
+		iSCRIVITILabel.setForeground(Color.BLACK);
+		iSCRIVITILabel.setFont(new Font("Arial", Font.BOLD, 22));
+		iSCRIVITILabel.setBackground(Color.WHITE);
+		iSCRIVITILabel.setBounds(325, 11, 97, 33);
+		registrazionePanel.add(iSCRIVITILabel);
 		
-		ConfermaButton.addMouseListener(new MouseAdapter() {
+		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String NomeU = NomeTextField.getText();
-				String Pass = PasswordTextField.getText();
-				String DomandaSicurezza = DomandeComboBox.getSelectedItem().toString();
-				String RispostaSicurezza = RispostaSicurezzaField.getText();
+				String NomeU = nomeTextField.getText();
+				String Pass = passwordTextField.getText();
+				String DomandaSicurezza = domandeComboBox.getSelectedItem().toString();
+				String RispostaSicurezza = rispostaSicurezzaField.getText();
 				
 				System.out.println(DomandaSicurezza);
 				if(NomeU.isEmpty())
@@ -181,11 +181,11 @@ public class RegistrazionePage extends JFrame {
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ConfermaButton.setBackground(Color.GREEN);
+				confermaButton.setBackground(Color.GREEN);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ConfermaButton.setBackground(Color.WHITE);
+				confermaButton.setBackground(Color.WHITE);
 			}
 		});
 		
@@ -220,7 +220,7 @@ public class RegistrazionePage extends JFrame {
 			LogInPage HP = new LogInPage(theController);
 			setVisible(false);	
 		}else {
-			Operatori op = new Operatori (NomeTextField.getText(), PasswordTextField.getText());
+			Operatori op = new Operatori (nomeTextField.getText(), passwordTextField.getText());
 			HomePage hp = new HomePage(theController, op);
 		}
 			

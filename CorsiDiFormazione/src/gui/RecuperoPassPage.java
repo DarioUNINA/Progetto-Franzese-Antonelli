@@ -36,7 +36,7 @@ public class RecuperoPassPage extends JFrame {
 
 	private Controller theController;
 	private ImageIcon imageicon;
-	private JTextField NomeUtenteText;
+	private JTextField nomeUtenteText;
 	
 	
 	
@@ -58,44 +58,44 @@ public class RecuperoPassPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel RecuperoPanel = new JPanel();
-		RecuperoPanel.setBackground(SystemColor.control);
-		RecuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		RecuperoPanel.setBounds(10, 11, 548, 307);
-		contentPane.add(RecuperoPanel);
-		RecuperoPanel.setLayout(null);
+		JPanel recuperoPanel = new JPanel();
+		recuperoPanel.setBackground(SystemColor.control);
+		recuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		recuperoPanel.setBounds(10, 11, 548, 307);
+		contentPane.add(recuperoPanel);
+		recuperoPanel.setLayout(null);
 
 		
-		JLabel RECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
-		RECUPEROPASSWORDLabel.setForeground(Color.BLACK);
-		RECUPEROPASSWORDLabel.setFont(new Font("Arial", Font.BOLD, 22));
-		RECUPEROPASSWORDLabel.setBackground(Color.WHITE);
-		RECUPEROPASSWORDLabel.setBounds(139, 11, 268, 33);
-		RecuperoPanel.add(RECUPEROPASSWORDLabel);
+		JLabel rECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
+		rECUPEROPASSWORDLabel.setForeground(Color.BLACK);
+		rECUPEROPASSWORDLabel.setFont(new Font("Arial", Font.BOLD, 22));
+		rECUPEROPASSWORDLabel.setBackground(Color.WHITE);
+		rECUPEROPASSWORDLabel.setBounds(139, 11, 268, 33);
+		recuperoPanel.add(rECUPEROPASSWORDLabel);
 		
-		JLabel NomeUtenteLabel = new JLabel("Nome Utente:");
-		NomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		NomeUtenteLabel.setBounds(100, 80, 101, 14);
-		RecuperoPanel.add(NomeUtenteLabel);
+		JLabel nomeUtenteLabel = new JLabel("Nome Utente:");
+		nomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		nomeUtenteLabel.setBounds(100, 80, 101, 14);
+		recuperoPanel.add(nomeUtenteLabel);
 		
-		NomeUtenteText = new JTextField();
-		NomeUtenteText.setColumns(10);
-		NomeUtenteText.setBounds(211, 78, 121, 20);
-		RecuperoPanel.add(NomeUtenteText);
+		nomeUtenteText = new JTextField();
+		nomeUtenteText.setColumns(10);
+		nomeUtenteText.setBounds(211, 78, 121, 20);
+		recuperoPanel.add(nomeUtenteText);
 		
-		JButton ConfermaButton = new JButton("CONFERMA");
-		ConfermaButton.addMouseListener(new MouseAdapter() {
+		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ConfermaButton.setBackground(Color.GREEN);
+				confermaButton.setBackground(Color.GREEN);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ConfermaButton.setBackground(Color.WHITE);
+				confermaButton.setBackground(Color.WHITE);
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Nome = NomeUtenteText.getText();
+				String Nome = nomeUtenteText.getText();
 				if(Nome.isEmpty()) 
 					alertNomeUtenteNonInserito();
 				else {
@@ -111,19 +111,19 @@ public class RecuperoPassPage extends JFrame {
 			}
 		});
 		
-		ConfermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		ConfermaButton.setBounds(211, 148, 121, 27);
-		RecuperoPanel.add(ConfermaButton);
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaButton.setBounds(211, 148, 121, 27);
+		recuperoPanel.add(confermaButton);
 		
-		JButton IndietroButton = new JButton("INDIETRO");
-		IndietroButton.addMouseListener(new MouseAdapter() {
+		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				IndietroButton.setBackground(Color.ORANGE);
+				indietroButton.setBackground(Color.ORANGE);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				IndietroButton.setBackground(Color.WHITE);
+				indietroButton.setBackground(Color.WHITE);
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -132,9 +132,9 @@ public class RecuperoPassPage extends JFrame {
 			}
 		});
 		
-		IndietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		IndietroButton.setBounds(10, 273, 121, 23);
-		RecuperoPanel.add(IndietroButton);
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(10, 273, 121, 23);
+		recuperoPanel.add(indietroButton);
 		
 		
 		

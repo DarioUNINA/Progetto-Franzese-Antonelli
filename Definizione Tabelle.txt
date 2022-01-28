@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS public.corsi
     parole_chiave character varying COLLATE pg_catalog."default" NOT NULL,
     anno character varying COLLATE pg_catalog."default" NOT NULL,
     terminato boolean NOT NULL DEFAULT false,
+	CONSTRAINT nome_corsi_unique UNIQUE (nome),
     CONSTRAINT "Corsi_pkey" PRIMARY KEY (id_corso),
     CONSTRAINT corsi_fk1 FOREIGN KEY (id_operatore)
         REFERENCES public.operatori (id_operatore) MATCH SIMPLE

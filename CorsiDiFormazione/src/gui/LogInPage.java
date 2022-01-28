@@ -117,7 +117,7 @@ public class LogInPage extends JFrame {
 							alertLogInFallito();
 						else
 						{
-							Operatori op = new Operatori(Nome, Pass);
+							Operatori op = theController.getOperatore(Nome);
 							HomePage hp = new HomePage(theController,op);
 							setVisible(false);
 						}

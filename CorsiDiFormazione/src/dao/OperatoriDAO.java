@@ -106,11 +106,30 @@ public class OperatoriDAO {
 					return "-1";
 		}catch(SQLException e) {
 		
-			System.out.println("ha dato errore");
 			return e.getSQLState();
 		}
 		
-		
-		
+	}
+	
+	
+	public Operatori getOperatore(String nome) {
+			
+		Operatori op = new Operatori(nome);
+			
+		try {
+				
+				ResultSet rs = statement.executeQuery("SELECT * FROM operatori o WHERE o.nome_utente = '" + nome + "'");
+				
+				rs.next();
+				op.setIdOperatore(rs.getString("id_operatore"));
+				op.setPassword(rs.getString("password"));
+				
+				return op;
+			}catch(SQLException e) {
+				
+				e.printStackTrace();
+				return op;
+		}
+			
 	}
 }

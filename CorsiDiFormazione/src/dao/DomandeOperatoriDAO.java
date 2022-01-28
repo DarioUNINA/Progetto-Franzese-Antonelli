@@ -51,7 +51,6 @@ public class DomandeOperatoriDAO {
 		
 		try {
 			
-			
 			ResultSet rs = statement.executeQuery("SELECT FROM domande_sicurezza ds JOIN domande_operatori "
 					+ "dop ON ds.id_domanda = dop.id_domanda WHERE dop.id_operatore = '" 
 					+ id_operatore + "' AND dop.risposta = '" + Risposta + "'");

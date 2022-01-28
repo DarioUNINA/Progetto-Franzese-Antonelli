@@ -102,6 +102,17 @@ public class Controller {
 		return areeTematicheDAO.getAree();
 	}
 
+	Operatori getOperatore(String nome) {
+		
+		return operatoriDAO.getOperatore(nome);
+	}
+	
+	public Vector<Corsi> getCorsiOperatore(Operatori op){
+		
+		return corsiDAO.getCorsiOperatore(op);
+		
+		
+	}
 }
 
 

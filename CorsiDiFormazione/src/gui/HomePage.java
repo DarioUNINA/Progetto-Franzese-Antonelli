@@ -182,6 +182,15 @@ public class HomePage extends JFrame {
 		addDeleteCorsi.add(aggiungiCorsoButton);
 		
 		JButton eliminaCorsoButton = new JButton("ELIMINA CORSO");
+		eliminaCorsoButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				EliminaCorsoPage ep = new EliminaCorsoPage(theController, operatore);
+				setVisible(false);
+				
+			}
+		});
 		eliminaCorsoButton.setBounds(22, 41, 212, 25);
 		addDeleteCorsi.add(eliminaCorsoButton);
 		eliminaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));

@@ -120,7 +120,6 @@ public class ModificaPasswordPage extends JFrame {
 								alertPasswordCambiata();
 								LogInPage pg = new LogInPage(theController);
 								setVisible(false);
-								
 							
 							}else
 								alertErroreCambioPassword(state);
@@ -152,7 +151,7 @@ public class ModificaPasswordPage extends JFrame {
 					if(state.equals("10001"))
 						JOptionPane.showMessageDialog(this, "La password deve essere lunga almeno 6 caratteri","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 					else
-						JOptionPane.showMessageDialog(this, "Errore durante la registrazione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(this, "Errore durante la modifica della password","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 		}		
 }
 

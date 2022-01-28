@@ -158,7 +158,6 @@ public class RegistrazionePage extends JFrame {
 				String DomandaSicurezza = domandeComboBox.getSelectedItem().toString();
 				String RispostaSicurezza = rispostaSicurezzaField.getText().toLowerCase();
 				
-				System.out.println(DomandaSicurezza);
 				if(NomeU.isEmpty())
 					alertNomeUtenteNonInserito();
 				else 
@@ -193,18 +192,6 @@ public class RegistrazionePage extends JFrame {
 		setVisible(true);
 	}
 	
-	public void alertNomeUtenteNonInserito() {
-		JOptionPane.showMessageDialog(this, "Nome Utente non inserito!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
-	
-	public void alertPasswordNonInserita() {
-		JOptionPane.showMessageDialog(this, "Password non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
-	
-	public void alertRispostaNonInserita() {
-		JOptionPane.showMessageDialog(this, "Risposta non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
-	
 	public void alertConfermaRegistrazione() {
 		Object[] opzioni = {"Log In","Home Page"};
 		int n = JOptionPane.showOptionDialog(this,
@@ -226,6 +213,19 @@ public class RegistrazionePage extends JFrame {
 			
 	}
 
+	
+	public void alertNomeUtenteNonInserito() {
+		JOptionPane.showMessageDialog(this, "Nome Utente non inserito!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertPasswordNonInserita() {
+		JOptionPane.showMessageDialog(this, "Password non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertRispostaNonInserita() {
+		JOptionPane.showMessageDialog(this, "Risposta non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
 	public void alertErroreRegsistrazione(String state) {
 		
 		if(state.equals("10004")) 

@@ -153,10 +153,10 @@ public class RegistrazionePage extends JFrame {
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String NomeU = nomeTextField.getText();
-				String Pass = passwordTextField.getText();
+				String NomeU = nomeTextField.getText().toLowerCase();
+				String Pass = passwordTextField.getText().toLowerCase();
 				String DomandaSicurezza = domandeComboBox.getSelectedItem().toString();
-				String RispostaSicurezza = rispostaSicurezzaField.getText();
+				String RispostaSicurezza = rispostaSicurezzaField.getText().toLowerCase();
 				
 				System.out.println(DomandaSicurezza);
 				if(NomeU.isEmpty())

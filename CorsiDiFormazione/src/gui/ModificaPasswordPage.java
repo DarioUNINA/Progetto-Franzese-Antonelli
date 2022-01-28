@@ -27,8 +27,8 @@ public class ModificaPasswordPage extends JFrame {
 	
 	private Controller theController;
 	private String nomeUtente;
-	private JTextField PasswordField;
-	private JTextField ConfermaPasswordField;
+	private JTextField passwordField;
+	private JTextField confermaPasswordField;
 	private ImageIcon imageicon;
 	private Component url;
 	
@@ -52,59 +52,59 @@ public class ModificaPasswordPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel RecuperoPanel = new JPanel();
-		RecuperoPanel.setBackground(SystemColor.control);
-		RecuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		RecuperoPanel.setBounds(10, 11, 548, 307);
-		contentPane.add(RecuperoPanel);
-		RecuperoPanel.setLayout(null);
+		JPanel recuperoPanel = new JPanel();
+		recuperoPanel.setBackground(SystemColor.control);
+		recuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		recuperoPanel.setBounds(10, 11, 548, 307);
+		contentPane.add(recuperoPanel);
+		recuperoPanel.setLayout(null);
 		
-		ConfermaPasswordField = new JTextField();
-		ConfermaPasswordField.setBounds(195, 129, 167, 20);
-		RecuperoPanel.add(ConfermaPasswordField);
-		ConfermaPasswordField.setColumns(10);
+		confermaPasswordField = new JTextField();
+		confermaPasswordField.setBounds(195, 129, 167, 20);
+		recuperoPanel.add(confermaPasswordField);
+		confermaPasswordField.setColumns(10);
 		
-		JButton ConfermaButton = new JButton("CONFERMA");
-		ConfermaButton.addMouseListener(new MouseAdapter() {
+		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ConfermaButton.setBackground(Color.GREEN);
+				confermaButton.setBackground(Color.GREEN);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ConfermaButton.setBackground(Color.WHITE);
+				confermaButton.setBackground(Color.WHITE);
 			}
 		});
-		ConfermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		ConfermaButton.setBounds(195, 175, 162, 31);
-		RecuperoPanel.add(ConfermaButton);
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaButton.setBounds(195, 175, 162, 31);
+		recuperoPanel.add(confermaButton);
 		
-		PasswordField = new JTextField();
-		PasswordField.setBounds(195, 88, 167, 20);
-		RecuperoPanel.add(PasswordField);
-		PasswordField.setColumns(10);
+		passwordField = new JTextField();
+		passwordField.setBounds(195, 88, 167, 20);
+		recuperoPanel.add(passwordField);
+		passwordField.setColumns(10);
 		
 		JLabel modificaPasswordLabel = new JLabel("MODIFICA PASSWORD");
 		modificaPasswordLabel.setForeground(Color.BLACK);
 		modificaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		modificaPasswordLabel.setBackground(Color.WHITE);
 		modificaPasswordLabel.setBounds(139, 11, 268, 33);
-		RecuperoPanel.add(modificaPasswordLabel);
+		recuperoPanel.add(modificaPasswordLabel);
 		
 		JLabel inserirePasswordLabel = new JLabel("   Inserire Nuova Password:");
 		inserirePasswordLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		inserirePasswordLabel.setBounds(41, 91, 154, 14);
-		RecuperoPanel.add(inserirePasswordLabel);
+		inserirePasswordLabel.setBounds(0, 91, 195, 14);
+		recuperoPanel.add(inserirePasswordLabel);
 		
-		JLabel ConfermaPasswordLabel = new JLabel("Conferma Password:");
-		ConfermaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		ConfermaPasswordLabel.setBounds(41, 132, 154, 14);
-		RecuperoPanel.add(ConfermaPasswordLabel);
-		ConfermaButton.addActionListener(new ActionListener() {
+		JLabel confermaPasswordLabel = new JLabel("Conferma Password:");
+		confermaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		confermaPasswordLabel.setBounds(51, 131, 154, 14);
+		recuperoPanel.add(confermaPasswordLabel);
+		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String pass = PasswordField.getText().toLowerCase();
-				String cpass = ConfermaPasswordField.getText().toLowerCase();
+				String pass = passwordField.getText().toLowerCase();
+				String cpass = confermaPasswordField.getText().toLowerCase();
 				
 				if(!pass.equals(cpass))
 					alertPasswordNonCorrispondenti();

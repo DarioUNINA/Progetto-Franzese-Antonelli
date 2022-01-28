@@ -104,8 +104,8 @@ public class LogInPage extends JFrame {
 			}
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				
-				String Nome = nomeUtenteField.getText();
-				String Pass = passwordField.getText();
+				String Nome = nomeUtenteField.getText().toLowerCase();
+				String Pass = passwordField.getText().toLowerCase();
 				
 				if(Nome.isEmpty())
 					alertNomeUtenteNonInserito();

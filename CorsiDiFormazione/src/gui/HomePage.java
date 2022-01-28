@@ -41,7 +41,7 @@ public class HomePage extends JFrame {
 	private Controller theController;
 	private ImageIcon imageicon;
 	private Operatori operatore;
-	private JTextField ParoleChiaveTextField;
+	private JTextField paroleChiaveTextField;
 	
 	public HomePage(Controller cont, Operatori operatore) {
 		
@@ -60,43 +60,43 @@ public class HomePage extends JFrame {
 		setContentPane(SfondoPane);
 		SfondoPane.setLayout(null);
 		
-		JPanel Benvenuto = new JPanel();
-		Benvenuto.setBackground(SystemColor.control);
-		Benvenuto.setBounds(10, 11, 777, 77);
-		SfondoPane.add(Benvenuto);
-		Benvenuto.setLayout(null);
+		JPanel benvenuto = new JPanel();
+		benvenuto.setBackground(SystemColor.control);
+		benvenuto.setBounds(10, 11, 777, 77);
+		SfondoPane.add(benvenuto);
+		benvenuto.setLayout(null);
 		
-		JLabel BenvenutoLabel = new JLabel("");
-		BenvenutoLabel.setFont(new Font("Arial", Font.BOLD, 30));
-		BenvenutoLabel.setBounds(10, -2, 352, 44);
-		Benvenuto.add(BenvenutoLabel);
-		BenvenutoLabel.setText("Benvenuto, " + operatore.getNomeUtente().toUpperCase());
+		JLabel benvenutoLabel = new JLabel("");
+		benvenutoLabel.setFont(new Font("Arial", Font.BOLD, 30));
+		benvenutoLabel.setBounds(10, -2, 352, 44);
+		benvenuto.add(benvenutoLabel);
+		benvenutoLabel.setText("Benvenuto, " + operatore.getNomeUtente().toUpperCase());
 		
-		JButton ImpostazioniButton = new JButton("IMPOSTAZIONI");
-		ImpostazioniButton.addMouseListener(new MouseAdapter() {
+		JButton impostazioniButton = new JButton("IMPOSTAZIONI");
+		impostazioniButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ImpostazioniButton.setBackground(Color.ORANGE);
+				impostazioniButton.setBackground(Color.ORANGE);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ImpostazioniButton.setBackground(Color.WHITE);
+				impostazioniButton.setBackground(Color.WHITE);
 			}
 		});
-		ImpostazioniButton.setFont(new Font("Arial", Font.BOLD, 15));
-		ImpostazioniButton.setBounds(615, 11, 152, 23);
-		Benvenuto.add(ImpostazioniButton);
+		impostazioniButton.setFont(new Font("Arial", Font.BOLD, 15));
+		impostazioniButton.setBounds(615, 11, 152, 23);
+		benvenuto.add(impostazioniButton);
 		
-		JButton EsciButton = new JButton("ESCI");
-		EsciButton.addMouseListener(new MouseAdapter() {
+		JButton esciButton = new JButton("ESCI");
+		esciButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				EsciButton.setBackground(Color.RED);
+				esciButton.setBackground(Color.RED);
 			}
 		
 			@Override
 			public void mouseExited(MouseEvent e) {
-				EsciButton.setBackground(Color.WHITE);
+				esciButton.setBackground(Color.WHITE);
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -107,121 +107,136 @@ public class HomePage extends JFrame {
 		});
 
 		
-		EsciButton.setFont(new Font("Arial", Font.BOLD, 15));
-		EsciButton.setBounds(615, 43, 152, 23);
-		Benvenuto.add(EsciButton);
+		esciButton.setFont(new Font("Arial", Font.BOLD, 15));
+		esciButton.setBounds(615, 43, 152, 23);
+		benvenuto.add(esciButton);
 		
-		JPanel Filtri = new JPanel();
-		Filtri.setBackground(SystemColor.control);
-		Filtri.setBounds(10, 99, 232, 253);
-		SfondoPane.add(Filtri);
-		Filtri.setLayout(null);
+		JPanel filtri = new JPanel();
+		filtri.setBackground(SystemColor.control);
+		filtri.setBounds(10, 99, 261, 253);
+		SfondoPane.add(filtri);
+		filtri.setLayout(null);
 		
-		JButton ResetFiltriButton = new JButton("RESET");
-		ResetFiltriButton.addMouseListener(new MouseAdapter() {
+		JLabel filtriLabel = new JLabel("FILTRI:");
+		filtriLabel.setBounds(10, 11, 212, 23);
+		filtriLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		filtri.add(filtriLabel);
+		
+		JLabel areaTematicaLabel = new JLabel("Area Tematica:");
+		areaTematicaLabel.setBounds(10, 47, 89, 14);
+		areaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 12));
+		filtri.add(areaTematicaLabel);
+		
+		JLabel annoLabel = new JLabel("Anno:");
+		annoLabel.setBounds(10, 86, 89, 14);
+		annoLabel.setFont(new Font("Arial", Font.BOLD, 12));
+		annoLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		filtri.add(annoLabel);
+		
+		JLabel terminatoLabel = new JLabel("Terminato:");
+		terminatoLabel.setBounds(10, 128, 89, 14);
+		terminatoLabel.setFont(new Font("Arial", Font.BOLD, 12));
+		filtri.add(terminatoLabel);
+		
+		JLabel parolaChiaveLabel = new JLabel("Parola Chiave:");
+		parolaChiaveLabel.setBounds(10, 170, 89, 14);
+		parolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 12));
+		filtri.add(parolaChiaveLabel);
+		
+		JComboBox areaTematicaComboBox = new JComboBox(theController.setAreaTematicaComboBox());
+		areaTematicaComboBox.setBounds(117, 43, 134, 22);
+		filtri.add(areaTematicaComboBox);
+				
+		JComboBox annoComboBox = new JComboBox();
+		annoComboBox.setBounds(117, 82, 134, 22);
+		filtri.add(annoComboBox);
+		
+		JCheckBox terminatoCheckBox = new JCheckBox("SI");
+		terminatoCheckBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				if(terminatoCheckBox.getSelectedObjects() != null)
+					terminatoCheckBox.setForeground(Color.GREEN);
+				else
+					terminatoCheckBox.setForeground(Color.BLACK);
 			}
 		});
-		ResetFiltriButton.setBounds(10, 219, 89, 23);
-		ResetFiltriButton.setFont(new Font("Arial", Font.BOLD, 15));
-		Filtri.add(ResetFiltriButton);
+		terminatoCheckBox.setFont(new Font("Arial", Font.BOLD, 15));
+		terminatoCheckBox.setBounds(117, 124, 46, 23);
+		filtri.add(terminatoCheckBox);
 		
-		JButton FiltraButton = new JButton("FILTRA");
-		FiltraButton.setBounds(133, 219, 89, 23);
-		FiltraButton.setFont(new Font("Arial", Font.BOLD, 15));
-		Filtri.add(FiltraButton);
+		paroleChiaveTextField = new JTextField();
+		paroleChiaveTextField.setBounds(117, 167, 134, 20);
+		filtri.add(paroleChiaveTextField);
+		paroleChiaveTextField.setColumns(10);
 		
-		JLabel FiltriLabel = new JLabel("FILTRI:");
-		FiltriLabel.setBounds(10, 11, 212, 23);
-		FiltriLabel.setFont(new Font("Arial", Font.BOLD, 18));
-		Filtri.add(FiltriLabel);
+		JPanel addDeleteCorsi = new JPanel();
+		addDeleteCorsi.setBackground(SystemColor.control);
+		addDeleteCorsi.setBounds(10, 363, 261, 77);
+		SfondoPane.add(addDeleteCorsi);
+		addDeleteCorsi.setLayout(null);
 		
-		JLabel AreaTematicaLabel = new JLabel("Area Tematica:");
-		AreaTematicaLabel.setBounds(10, 47, 89, 14);
-		AreaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 12));
-		Filtri.add(AreaTematicaLabel);
+		JButton aggiungiCorsoButton = new JButton("AGGIUNGI CORSO");
+		aggiungiCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		aggiungiCorsoButton.setBounds(22, 11, 212, 25);
+		addDeleteCorsi.add(aggiungiCorsoButton);
 		
-		JLabel AnnoLabel = new JLabel("Anno:");
-		AnnoLabel.setBounds(10, 86, 89, 14);
-		AnnoLabel.setFont(new Font("Arial", Font.BOLD, 12));
-		AnnoLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		Filtri.add(AnnoLabel);
+		JButton eliminaCorsoButton = new JButton("ELIMINA CORSO");
+		eliminaCorsoButton.setBounds(22, 41, 212, 25);
+		addDeleteCorsi.add(eliminaCorsoButton);
+		eliminaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JLabel TerminatoLabel = new JLabel("Terminato:");
-		TerminatoLabel.setBounds(10, 128, 89, 14);
-		TerminatoLabel.setFont(new Font("Arial", Font.BOLD, 12));
-		Filtri.add(TerminatoLabel);
+		JPanel corsi = new JPanel();
+		corsi.setBackground(SystemColor.control);
+		corsi.setBounds(281, 99, 506, 166);
+		SfondoPane.add(corsi);
+		corsi.setLayout(null);
 		
-		JLabel ParolaChiaveLabel = new JLabel("Parola Chiave:");
-		ParolaChiaveLabel.setBounds(10, 170, 89, 14);
-		ParolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 12));
-		Filtri.add(ParolaChiaveLabel);
+		List corsiList = new List();
+		corsiList.setBounds(10, 10, 222, 146);
+		corsi.add(corsiList);
 		
-		JComboBox AreaTematicaComboBox = new JComboBox(theController.setAreaTematicaComboBox());
-		AreaTematicaComboBox.setBounds(117, 43, 105, 22);
-		Filtri.add(AreaTematicaComboBox);
-				
-		JComboBox AnnoComboBox = new JComboBox();
-		AnnoComboBox.setBounds(117, 82, 105, 22);
-		Filtri.add(AnnoComboBox);
+		JPanel gestione = new JPanel();
+		gestione.setBackground(SystemColor.control);
+		gestione.setBounds(281, 274, 506, 166);
+		SfondoPane.add(gestione);
+		gestione.setLayout(null);
 		
-		JCheckBox TerminatoCheckBox = new JCheckBox("SI");
-		TerminatoCheckBox.setBounds(117, 124, 46, 23);
-		Filtri.add(TerminatoCheckBox);
+		JButton gestioneCorsiButton = new JButton("GESTIONE CORSI");
+		gestioneCorsiButton.setFont(new Font("Arial", Font.BOLD, 13));
+		gestioneCorsiButton.setBounds(322, 26, 174, 22);
+		gestione.add(gestioneCorsiButton);
 		
-		ParoleChiaveTextField = new JTextField();
-		ParoleChiaveTextField.setBounds(117, 167, 105, 20);
-		Filtri.add(ParoleChiaveTextField);
-		ParoleChiaveTextField.setColumns(10);
+		JButton gestioneLezioniButton = new JButton("GESTIONE LEZIONI");
+		gestioneLezioniButton.setFont(new Font("Arial", Font.BOLD, 13));
+		gestioneLezioniButton.setBounds(322, 71, 174, 22);
+		gestione.add(gestioneLezioniButton);
 		
-		JPanel AddDeleteCorsi = new JPanel();
-		AddDeleteCorsi.setBackground(SystemColor.control);
-		AddDeleteCorsi.setBounds(10, 363, 232, 77);
-		SfondoPane.add(AddDeleteCorsi);
-		AddDeleteCorsi.setLayout(null);
+		JButton gestioneStudentiButton = new JButton("GESTIONE STUDENTI");
+		gestioneStudentiButton.setFont(new Font("Arial", Font.BOLD, 13));
+		gestioneStudentiButton.setBounds(322, 115, 174, 22);
+		gestione.add(gestioneStudentiButton);
 		
-		JButton AggiungiCorsoButton = new JButton("AGGIUNGI CORSO");
-		AggiungiCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
-		AggiungiCorsoButton.setBounds(10, 11, 212, 25);
-		AddDeleteCorsi.add(AggiungiCorsoButton);
+		JButton resetFiltriButton = new JButton("RESET");
+		resetFiltriButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				areaTematicaComboBox.setSelectedIndex(0);
+				terminatoCheckBox.setSelected(false);
+				terminatoCheckBox.setForeground(Color.BLACK);
+				paroleChiaveTextField.setText("");
+				}
+		});
+		resetFiltriButton.setForeground(Color.RED);
+		resetFiltriButton.setBounds(10, 219, 89, 23);
+		resetFiltriButton.setFont(new Font("Arial", Font.BOLD, 15));
+		filtri.add(resetFiltriButton);
 		
-		JButton EliminaCorsoButton = new JButton("ELIMINA CORSO");
-		EliminaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
-		EliminaCorsoButton.setBounds(10, 41, 212, 25);
-		AddDeleteCorsi.add(EliminaCorsoButton);
-		
-		JPanel Corsi = new JPanel();
-		Corsi.setBackground(SystemColor.control);
-		Corsi.setBounds(252, 99, 535, 166);
-		SfondoPane.add(Corsi);
-		Corsi.setLayout(null);
-		
-		List CorsiList = new List();
-		CorsiList.setBounds(10, 10, 222, 146);
-		Corsi.add(CorsiList);
-		
-		JPanel Gestione = new JPanel();
-		Gestione.setBackground(SystemColor.control);
-		Gestione.setBounds(252, 274, 535, 166);
-		SfondoPane.add(Gestione);
-		Gestione.setLayout(null);
-		
-		JButton GestioneCorsiButton = new JButton("GESTIONE CORSI");
-		GestioneCorsiButton.setFont(new Font("Arial", Font.BOLD, 13));
-		GestioneCorsiButton.setBounds(351, 26, 174, 22);
-		Gestione.add(GestioneCorsiButton);
-		
-		JButton GestioneLezioniButton = new JButton("GESTIONE LEZIONI");
-		GestioneLezioniButton.setFont(new Font("Arial", Font.BOLD, 13));
-		GestioneLezioniButton.setBounds(351, 72, 174, 22);
-		Gestione.add(GestioneLezioniButton);
-		
-		JButton GestioneStudentiButton = new JButton("GESTIONE STUDENTI");
-		GestioneStudentiButton.setFont(new Font("Arial", Font.BOLD, 13));
-		GestioneStudentiButton.setBounds(351, 115, 174, 22);
-		Gestione.add(GestioneStudentiButton);
+		JButton filtraButton = new JButton("FILTRA");
+		filtraButton.setForeground(new Color(65, 105, 225));
+		filtraButton.setBounds(162, 219, 89, 23);
+		filtraButton.setFont(new Font("Arial", Font.BOLD, 15));
+		filtri.add(filtraButton);
 		
 		setVisible(true);
 	}

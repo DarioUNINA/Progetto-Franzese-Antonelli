@@ -128,25 +128,25 @@ INSERT INTO presenze
 VALUES(1, 6);
 
 INSERT INTO presenze
-VALUES(2, 3);
+VALUES(2, 2);
 
 INSERT INTO presenze
-VALUES(3, 4);
+VALUES(2, 8);
 
 INSERT INTO presenze
-VALUES(4, 1);
+VALUES(6, 2);
 
 INSERT INTO presenze
-VALUES(5, 2);
+VALUES(7, 6);
 
 INSERT INTO presenze
-VALUES(6, 5);
+VALUES(5, 8);
 
 
 
 
 INSERT INTO iscrizioni
-VALUES(1, 3);
+VALUES(1, 6);
 
 INSERT INTO iscrizioni
 VALUES(1, 4);

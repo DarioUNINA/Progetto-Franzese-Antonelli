@@ -111,18 +111,24 @@ public class ModificaPasswordPage extends JFrame {
 				else 
 					if (pass.isEmpty())
 						alertInserirePassword();
-					else
-						if(theController.confermaCambioPassword(nomeUtente, pass)) {
+					else {
+						
+							String state = theController.confermaCambioPassword(nomeUtente, pass);
 							
-							alertPasswordCambiata();
-							LogInPage pg = new LogInPage(theController);
-							setVisible(false);
+							if(state.equals("0")) {
+								
+								alertPasswordCambiata();
+								LogInPage pg = new LogInPage(theController);
+								setVisible(false);
+								
 							
-						}else
-							alertErroreCambioPassword(state);
+							}else
+								alertErroreCambioPassword(state);
+					}
 				
 			}
 		});
+	
 		setVisible(true);
 	}
 	

@@ -96,14 +96,18 @@ public class OperatoriDAO {
 		}
 	}
 	
-	public boolean modificaPassword(String nome, String pass) {
+	public String modificaPassword(String nome, String pass) {
 		
 		try {
 			
-				return !statement.execute("UPDATE operatori SET password = '" + pass + "' WHERE nome_utente = '" + nome + "'" );
+				if(!statement.execute("UPDATE operatori SET password = '" + pass + "' WHERE nome_utente = '" + nome + "'" ))
+					return "0";
+				else
+					return "-1";
 		}catch(SQLException e) {
-			e.printStackTrace();
-			return false;
+		
+			System.out.println("ha dato errore");
+			return e.getSQLState();
 		}
 		
 		

@@ -151,7 +151,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 	public void alertRispostaNonValida(String state) {
 		
 		if(state.equals("-1"))
-			JOptionPane.showMessageDialog(this, "Password Errata","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Risposta Errata","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 		else
 			JOptionPane.showMessageDialog(this, "E\' stato riscontarto un errore","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 

@@ -92,7 +92,7 @@ public class Controller {
 		
 	}
 
-	public boolean confermaCambioPassword(String nomeUtente, String pass) {
+	public String confermaCambioPassword(String nomeUtente, String pass) {
 
 		return operatoriDAO.modificaPassword(nomeUtente, pass);
 	}

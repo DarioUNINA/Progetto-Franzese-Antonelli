@@ -47,7 +47,7 @@ INSERT INTO corsi
 VALUES(nextval('sequenza_id_corso'), 3, 'algoritmi_strutture_dati', 'corso sullo complessita di algoritmi e strutture dati', 10, 100, 'grafi', '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 4, 'elementi_di_informatica_teorica', 'informatica teorica', 1, 50, 'fsm', '2019', true);
+VALUES(nextval('sequenza_id_corso'), 4, 'elementi_di_informatica_teorica', 'informatica teorica', 1, 50, 'fsm', '2019');
 
 INSERT INTO corsi
 VALUES(nextval('sequenza_id_corso'), 6, 'programmazione_1', 'approccio alla programmazione in c++', 5, 100, 'c++', '2020');
@@ -59,17 +59,17 @@ INSERT INTO corsi
 VALUES(nextval('sequenza_id_corso'), 1, 'ingegneria_del_software', 'studio dei software', 10, 100, 'software', '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 2, 'algebra', 'corso algebra lineare e booleana', 5, 90, 'reticoli', '2018', true);
+VALUES(nextval('sequenza_id_corso'), 2, 'algebra', 'corso algebra lineare e booleana', 5, 90, 'reticoli', '2018');
 
 
 
 
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'polinomi', 'prmimo approccio ai polinomi', '2:00', '06/11/2021', '14:30', 8);
+VALUES(nextval('sequenza_id_lezione'), 'polinomi', 'prmimo approccio ai polinomi', '2:00', '06/11/2018', '14:30', 8);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'sommatorie', 'calcolo delle sommatorie', '2:30', '20/11/2021', '10:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'sommatorie', 'calcolo delle sommatorie', '2:30', '20/11/2020', '10:30', 6);
 
 INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'algebra relazionale', 'definizione sintassi', '1:30', '28/09/2021', '8:30', 2);
@@ -81,13 +81,13 @@ INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'grafi', 'DFS', '3:00', '01/10/2021', '16:30', 3);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'alberi', 'calcolo altezza', '1:00', '01/11/2021', '13:00', 8);
+VALUES(nextval('sequenza_id_lezione'), 'alberi', 'calcolo altezza', '1:00', '01/11/2018', '13:00', 8);
 
 INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'complessita computazionale', 'studio della complessita di un algoritmo', '1:30', '28/09/2021', '8:30', 3);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'derivate' , 'studio del calcolo differenziale', '1:30', '14/06/2022', '8:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'derivate' , 'studio del calcolo differenziale', '1:30', '14/06/2020', '8:30', 6);
 
 
 
@@ -121,6 +121,7 @@ VALUES(nextval('sequenza_matricola'),'mario', 'molinaro');
 
 INSERT INTO studenti
 VALUES(nextval('sequenza_matricola'),'assunta', 'venturoli');
+
 
 
 
@@ -216,6 +217,7 @@ VALUES('calcolo', 2);
 
 
 
+
 INSERT INTO domande_sicurezza
 VALUES ('dove sei nato?' , nextval('sequenza_id_domanda'));
 
@@ -224,6 +226,8 @@ VALUES ('come si chiama il tuo primo genito ?' , nextval('sequenza_id_domanda'))
 
 INSERT INTO domande_sicurezza
 VALUES ('come si chiama il tuo animale domestico?' , nextval('sequenza_id_domanda'));
+
+
 
 
 INSERT INTO domande_operatori

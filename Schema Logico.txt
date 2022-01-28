@@ -4,7 +4,7 @@
 -classi-
 
 aree_tematiche (-nome_area-)
-corsi (nome, descrizione, presenze_min, max_partetcipanti, -id_corso-, parole_chiave, terminato, /id_operatore/)
+corsi (nome, descrizione, presenze_min, max_partetcipanti, -id_corso-, parole_chiave, terminato, /id_operatore/, anno)
 lezioni (durata, titolo, descrizione, data, orario, -id_lezione-, /id_corso/)
 studenti (-matricola-, nome, cognome)
 operatori (-id_operatore-, nome_utente, Password)
@@ -55,13 +55,13 @@ temi (/nome_area/, /id_corso/)
 	DECLARE violazione INTEGER;
 	BEGIN
 		SELECT COUNT (*) INTO violazione
-		FROM corso s
+		FROM corsi s
 		WHERE s.id_corso = NEW.id_corso AND s.terminato = true;
 		
 		IF (violazione>0) THEN
 			RAISE SQLSTATE '10005';
-			DELETE FROM lezioni WHERE id_lezione = NEW.id_lezione;
-			RAISE EXCEPTION ' ATTENZIONE : il corso e termianto';
+			ROLLBACK;
+			RAISE EXCEPTION 'ATTENZIONE : il corso e termianto';
 		END IF;
 		RETURN NEW;
 	END
@@ -129,9 +129,8 @@ temi (/nome_area/, /id_corso/)
 		WHERE i.id_corso = NEW.id_corso;
 		
 		IF (iscritti > max_p) THEN	
-			DELETE FROM iscrizioni i 
-			WHERE i.matricola = NEW.matricola AND i.id_corso = NEW.id_corso;
 			RAISE SQLSTATE '10006';
+			ROLLBACK;
 			RAISE EXCEPTION 'e stato raggiunto il numero massimo di partecipanti al corso';
 		END IF;
 		RETURN NEW;
@@ -155,9 +154,8 @@ temi (/nome_area/, /id_corso/)
 		WHERE p.id_lezione = NEW.id_lezione;
 		
 		IF (data_lezione < CURRENT_DATE) THEN 
-			DELETE FROM presenze p
-			WHERE p.matricola = NEW.matricola AND p.id_lezione = NEW.id_lezione;
 			RAISE SQLSTATE '10007';
+			ROLLBACK;
 			RAISE EXCEPTION 'La lezione si e gia conclusa';
 		END IF;
 		RETURN NEW;
@@ -186,9 +184,8 @@ temi (/nome_area/, /id_corso/)
 		
 		
 		IF (violazione > 0) THEN	
-			DELETE FROM presenze p 
-			WHERE p.matricola = new.matricola AND p.id_lezione = new.id_lezione;
 			RAISE SQLSTATE '10008';
+			ROLLBACK;
 			RAISE EXCEPTION 'Ti sei gia iscritto ad una lezione allo stesso orario';
 		END IF;
 		RETURN NEW;
@@ -211,8 +208,8 @@ temi (/nome_area/, /id_corso/)
 		WHERE i.id_corso = new.id_corso AND c.terminato = true;
 		
 		IF violazione > 0 THEN
-		DELETE FROM iscrizioni i WHERE i.matricola = new.matricola AND i.id_corso = new.id_corso;
 		RAISE SQLSTATE '10009';
+		ROLLBACK;
 		RAISE EXCEPTION 'Il corso gia e terminato';
 		END IF;
 		RETURN NEW;
@@ -240,8 +237,8 @@ temi (/nome_area/, /id_corso/)
 		WHERE i.matricola = NEW.matricola);
 		
 		IF contatore = 0 THEN
-			DELETE FROM presenze p WHERE p.matricola = NEW.matricola AND p.id_lezione = NEW.id_lezione;
 			RAISE SQLSTATE '10010';
+			ROLLBACK;
 			RAISE EXCEPTION 'Non sei iscritto al corso';
 		END IF;
 		RETURN NEW;
@@ -268,8 +265,8 @@ temi (/nome_area/, /id_corso/)
 		
 		stringa = SUBSTRING(stringa, 6, 100);
 		IF(stringa = '')THEN
-			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
 			RAISE SQLSTATE '10001';
+			ROLLBACK;
 			RAISE EXCEPTION 'La password deve contentere almeno 8 caratteri';
 		END IF;
 		RETURN NEW;
@@ -296,8 +293,8 @@ temi (/nome_area/, /id_corso/)
 		
 		stringa = SUBSTRING(stringa, 4, 100);
 		IF(stringa = '')THEN
-			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
 			RAISE SQLSTATE '10002';
+			ROLLBACK;
 			RAISE EXCEPTION 'Il nome utente deve contentere almeno 8 caratteri';
 		END IF;
 		RETURN NEW;
@@ -321,8 +318,8 @@ temi (/nome_area/, /id_corso/)
 			( o.nome_utente like '%!%' OR o.nome_utente like '%@%' OR o.nome_utente like '%#%' OR o.nome_utente like '%$%');
 		
 		IF(violazione>0)THEN
-			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
 			RAISE SQLSTATE '10003';
+			ROLLBACK;
 			RAISE EXCEPTION 'Il nome utente non puo contenere caratteri speciali';
 		END IF;
 		RETURN NEW;
@@ -346,8 +343,8 @@ temi (/nome_area/, /id_corso/)
 		WHERE o.password like '%!%' OR o.password like '%@%' OR o.password like '%#%' OR o.password like '%$%';
 		
 		IF(violazione>0)THEN
-			DELETE from operatori o WHERE o.nome_utente = NEW.nome_utente;
 			RAISE SQLSTATE '10004';
+			ROLLBACK;
 			RAISE EXCEPTION 'La password non puo contenere caratteri speciali';
 		END IF;
 		RETURN NEW;
@@ -358,3 +355,28 @@ temi (/nome_area/, /id_corso/)
 	AFTER INSERT ON operatori
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_caratteri_speciali_password();
+	
+--16) Trigger per gli update
+		
+
+	CREATE TRIGGER update_nome_utente_caratteri_speciali
+	AFTER UPDATE ON operatori
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_caratteri_speciali_nome_utente();
+	
+	
+	CREATE TRIGGER update_password_caratteri_speciali
+	AFTER UPDATE ON operatori
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_caratteri_speciali_password();
+	
+	CREATE TRIGGER update_lunghezza_password_violata
+	AFTER UPDATE ON operatori
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_lunghezza_password();
+	
+	CREATE TRIGGER update_lunghezza_nome_utente_violata
+	AFTER UPDATE ON operatori
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_lunghezza_nome_utente();
+	

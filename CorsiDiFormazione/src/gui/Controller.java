@@ -101,7 +101,16 @@ public class Controller {
 		
 		return areeTematicheDAO.getAree();
 	}
-
+	
+	public Vector<String> setAnnoComboBox(){
+		
+		return corsiDAO.getAnno();
+	}
+	
+	public Vector<Corsi> setCorsiFiltrati(String areaTematica, String anno, boolean terminato, String parolaChiave){
+		
+		return corsiDAO.addFiltri(areaTematica, anno, terminato, parolaChiave);
+	}
 	Operatori getOperatore(String nome) {
 		
 		return operatoriDAO.getOperatore(nome);

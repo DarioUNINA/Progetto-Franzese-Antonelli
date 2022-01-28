@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dto.Corsi;
 import dto.Operatori;
 
 import java.awt.SystemColor;
@@ -20,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
+
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
@@ -147,7 +150,7 @@ public class HomePage extends JFrame {
 		areaTematicaComboBox.setBounds(117, 43, 134, 22);
 		filtri.add(areaTematicaComboBox);
 				
-		JComboBox annoComboBox = new JComboBox();
+		JComboBox annoComboBox = new JComboBox(theController.setAnnoComboBox());
 		annoComboBox.setBounds(117, 82, 134, 22);
 		filtri.add(annoComboBox);
 		
@@ -231,6 +234,7 @@ public class HomePage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				areaTematicaComboBox.setSelectedIndex(0);
+				annoComboBox.setSelectedIndex(0);
 				terminatoCheckBox.setSelected(false);
 				terminatoCheckBox.setForeground(Color.BLACK);
 				paroleChiaveTextField.setText("");
@@ -242,6 +246,28 @@ public class HomePage extends JFrame {
 		filtri.add(resetFiltriButton);
 		
 		JButton filtraButton = new JButton("FILTRA");
+		filtraButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String areaTematica = areaTematicaComboBox.getSelectedItem().toString();
+				String anno = annoComboBox.getSelectedItem().toString();
+				boolean terminato ; 
+				if(terminatoCheckBox.isSelected())
+					terminato = true;
+				else
+					terminato = false;
+				
+				String parolaChiave = paroleChiaveTextField.getText();	
+				
+				
+				Vector<Corsi> prova;
+				
+				prova = theController.setCorsiFiltrati(areaTematica, anno, terminato, parolaChiave);
+				
+				//System.out.println(prova.get(0).getAnno());
+					
+			}
+		});
 		filtraButton.setForeground(new Color(65, 105, 225));
 		filtraButton.setBounds(162, 219, 89, 23);
 		filtraButton.setFont(new Font("Arial", Font.BOLD, 15));

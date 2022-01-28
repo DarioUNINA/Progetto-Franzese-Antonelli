@@ -8,19 +8,24 @@ public class Corsi {
 	private int maxPartecipanti;
 	private String idCorso;
 	private String paroleChiave;
+	private String anno;
 	private boolean terminato;
 	private String idOperatore;
 	
 	
 	
+	public Corsi() {
+	}
+
 	public Corsi(String nome, String descrizione, int presenzeMin, int maxPartecipanti, String idCorso,
-			String paroleChiave, boolean terminato, String idOperatore) {
+			String paroleChiave, String anno, boolean terminato, String idOperatore) {
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.presenzeMin = presenzeMin;
 		this.maxPartecipanti = maxPartecipanti;
 		this.idCorso = idCorso;
 		this.paroleChiave = paroleChiave;
+		this.anno = anno;
 		this.terminato = terminato;
 		this.idOperatore = idOperatore;
 	}
@@ -65,6 +70,12 @@ public class Corsi {
 	}
 	public void setParoleChiave(String paroleChiave) {
 		this.paroleChiave = paroleChiave;
+	}
+	public String getAnno() {
+		return anno;
+	}
+	public void setAnno(String anno) {
+		this.anno = anno;
 	}
 	public boolean isTerminato() {
 		return terminato;

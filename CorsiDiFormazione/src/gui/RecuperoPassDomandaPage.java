@@ -120,7 +120,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		IndietroButton.setBounds(10, 273, 121, 23);
 		RecuperoPanel.add(IndietroButton);
 		
-		JLabel DoamandaLabel = new JLabel("Domanda Di Sicurezza:    " + theController.setDomandaLabelRecuperoPassPage(nomeUtente));
+		JLabel DoamandaLabel = new JLabel("Domanda Di Sicurezza: " + theController.setDomandaLabelRecuperoPassPage(nomeUtente));
 		DoamandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		DoamandaLabel.setBounds(73, 79, 465, 14);
 		RecuperoPanel.add(DoamandaLabel);

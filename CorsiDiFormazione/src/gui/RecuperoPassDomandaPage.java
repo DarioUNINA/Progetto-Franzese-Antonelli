@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -73,14 +74,17 @@ public class RecuperoPassDomandaPage extends JFrame {
 		ConfermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(theController.confermaRispostaSicurezzaClicked(RispostaDomandaField.getText(), nomeUtente)) {
+				String state  = theController.confermaRispostaSicurezzaClicked(RispostaDomandaField.getText(), nomeUtente);
+
+				if(state.equals("0")) {
 					ModificaPasswordPage pg = new ModificaPasswordPage(theController, nomeUtente);
 					setVisible(false);
-				}
-
+				}else
+					alertRispostaNonValida(state);
 			}
 		});
-		ConfermaButton.addMouseListener(new MouseAdapter() {
+
+			ConfermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				ConfermaButton.setBackground(Color.GREEN);
@@ -142,4 +146,19 @@ public class RecuperoPassDomandaPage extends JFrame {
 		
 		setVisible(true);
 	}
+	
+	
+	public void alertRispostaNonValida(String state) {
+		
+		if(state.equals("-1"))
+			JOptionPane.showMessageDialog(this, "Password Errata","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			JOptionPane.showMessageDialog(this, "E\' stato riscontarto un errore","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+
+		
+		
+	}
+	
+	
 }

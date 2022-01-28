@@ -84,17 +84,17 @@ public class ModificaPasswordPage extends JFrame {
 		RecuperoPanel.add(PasswordField);
 		PasswordField.setColumns(10);
 		
-		JLabel RECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
-		RECUPEROPASSWORDLabel.setForeground(Color.BLACK);
-		RECUPEROPASSWORDLabel.setFont(new Font("Arial", Font.BOLD, 22));
-		RECUPEROPASSWORDLabel.setBackground(Color.WHITE);
-		RECUPEROPASSWORDLabel.setBounds(139, 11, 268, 33);
-		RecuperoPanel.add(RECUPEROPASSWORDLabel);
+		JLabel modificaPasswordLabel = new JLabel("MODIFICA PASSWORD");
+		modificaPasswordLabel.setForeground(Color.BLACK);
+		modificaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 22));
+		modificaPasswordLabel.setBackground(Color.WHITE);
+		modificaPasswordLabel.setBounds(139, 11, 268, 33);
+		RecuperoPanel.add(modificaPasswordLabel);
 		
-		JLabel InserirePasswordLabel = new JLabel("   Inserire Password:");
-		InserirePasswordLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		InserirePasswordLabel.setBounds(41, 91, 154, 14);
-		RecuperoPanel.add(InserirePasswordLabel);
+		JLabel inserirePasswordLabel = new JLabel("   Inserire Nuova Password:");
+		inserirePasswordLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		inserirePasswordLabel.setBounds(41, 91, 154, 14);
+		RecuperoPanel.add(inserirePasswordLabel);
 		
 		JLabel ConfermaPasswordLabel = new JLabel("Conferma Password:");
 		ConfermaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 14));
@@ -119,7 +119,7 @@ public class ModificaPasswordPage extends JFrame {
 							setVisible(false);
 							
 						}else
-							alertErroreCambioPassword();
+							alertErroreCambioPassword(state);
 				
 			}
 		});
@@ -138,9 +138,16 @@ public class ModificaPasswordPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Inserire una password","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void alertErroreCambioPassword() {
-		JOptionPane.showMessageDialog(this, "Non e' stato possibile cambiare la password","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-		}
+	public void alertErroreCambioPassword(String state) {
+		
+			if(state.equals("10004")) 
+				JOptionPane.showMessageDialog(this, "La password non deve contenere caratteri speciali!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+				else 
+					if(state.equals("10001"))
+						JOptionPane.showMessageDialog(this, "La password deve essere lunga almeno 6 caratteri","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+					else
+						JOptionPane.showMessageDialog(this, "Errore durante la registrazione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		}		
 }
 
 	

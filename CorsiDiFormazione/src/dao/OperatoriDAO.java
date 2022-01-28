@@ -65,15 +65,19 @@ public class OperatoriDAO {
 		}
 	}
 	
-	public boolean CheckNome(Operatori op) {
+	public String CheckNome(Operatori op) {
 		
 		try {
 			ResultSet rs = statement.executeQuery("SELECT o.id_operatore FROM operatori o WHERE nome_utente = '" + op.getNomeUtente() + "'");
 			
-			return rs.next();
+			if(rs.next())
+				return "0";
+			else
+				return "-1";
 		}catch(SQLException e) {
+			
 			e.printStackTrace();
-			return false;
+			return "-1";
 		}
 	}
 	

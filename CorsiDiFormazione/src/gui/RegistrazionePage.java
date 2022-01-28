@@ -240,6 +240,9 @@ public class RegistrazionePage extends JFrame {
 					if(state.equals("10002"))
 						JOptionPane.showMessageDialog(this, "Il nome utente deve essere lungo almeno 4 caratteri","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 					else
-						JOptionPane.showMessageDialog(this, "Errore durante la registrazione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+						if(state.equals("23505"))
+							JOptionPane.showMessageDialog(this, "Il nome utente gia esiste, riprova","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+						else
+							JOptionPane.showMessageDialog(this, "Errore durante la registrazione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 }

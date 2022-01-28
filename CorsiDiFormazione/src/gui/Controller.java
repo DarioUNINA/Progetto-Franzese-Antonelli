@@ -52,7 +52,7 @@ public class Controller {
 		
 	}
 	
-	public boolean CheckNomeClicked(String user) {
+	public String CheckNomeClicked(String user) {
 		
 		Operatori op = new Operatori(user);
 		return operatoriDAO.CheckNome(op);
@@ -85,7 +85,7 @@ public class Controller {
 	
 	}
 	
-	public boolean confermaRispostaSicurezzaClicked(String Risposta, String NomeUtente) {
+	public String confermaRispostaSicurezzaClicked(String Risposta, String NomeUtente) {
 		
 		Operatori op = new Operatori(NomeUtente);
 		return domandeOperatoriDAO.checkRisposta(Risposta, operatoriDAO.getIdOperatoreNoPassword(op));

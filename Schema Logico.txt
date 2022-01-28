@@ -55,13 +55,13 @@ temi (/nome_area/, /id_corso/)
 	DECLARE violazione INTEGER;
 	BEGIN
 		SELECT COUNT (*) INTO violazione
-		FROM corso s
+		FROM corsi s
 		WHERE s.id_corso = NEW.id_corso AND s.terminato = true;
 		
 		IF (violazione>0) THEN
 			RAISE SQLSTATE '10005';
 			ROLLBACK;
-			RAISE EXCEPTION ' ATTENZIONE : il corso e termianto';
+			RAISE EXCEPTION 'ATTENZIONE : il corso e termianto';
 		END IF;
 		RETURN NEW;
 	END

@@ -38,28 +38,28 @@ VALUES(nextval('sequenza_id_operatore'), 'giuliano','password');
 
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 1, 'object_orientation', 'corso sul paradigma della programmazione ad oggetti', 10, 80, 'java');
+VALUES(nextval('sequenza_id_corso'), 1, 'object_orientation', 'corso sul paradigma della programmazione ad oggetti', 10, 80, 'java', '2020');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 2, 'basi_dati', 'corso sulla gestione di database', 5, 70, 'algebra relazionale');
+VALUES(nextval('sequenza_id_corso'), 2, 'basi_dati', 'corso sulla gestione di database', 5, 70, 'algebra relazionale', '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 3, 'algoritmi_strutture_dati', 'corso sullo complessita di algoritmi e strutture dati', 10, 100, 'grafi');
+VALUES(nextval('sequenza_id_corso'), 3, 'algoritmi_strutture_dati', 'corso sullo complessita di algoritmi e strutture dati', 10, 100, 'grafi', '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 4, 'elementi_di_informatica_teorica', 'informatica teorica', 1, 50, 'fsm');
+VALUES(nextval('sequenza_id_corso'), 4, 'elementi_di_informatica_teorica', 'informatica teorica', 1, 50, 'fsm', '2019', true);
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 6, 'programmazione_1', 'approccio alla programmazione in c++', 5, 100, 'c++');
+VALUES(nextval('sequenza_id_corso'), 6, 'programmazione_1', 'approccio alla programmazione in c++', 5, 100, 'c++', '2020');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 5, 'analisi_1', 'teoremi base di analisi matematica', 10, 110, 'funzioni');
+VALUES(nextval('sequenza_id_corso'), 5, 'analisi_1', 'teoremi base di analisi matematica', 10, 110, 'funzioni', '2020');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 1, 'ingegneria_del_software', 'studio dei software', 10, 100, 'software');
+VALUES(nextval('sequenza_id_corso'), 1, 'ingegneria_del_software', 'studio dei software', 10, 100, 'software', '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 2, 'algebra', 'corso algebra lineare e booleana', 5, 90, 'reticoli', true);
+VALUES(nextval('sequenza_id_corso'), 2, 'algebra', 'corso algebra lineare e booleana', 5, 90, 'reticoli', '2018', true);
 
 
 

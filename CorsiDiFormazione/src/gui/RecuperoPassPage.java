@@ -95,7 +95,7 @@ public class RecuperoPassPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Nome = nomeUtenteText.getText();
+				String Nome = nomeUtenteText.getText().toLowerCase();
 				if(Nome.isEmpty()) 
 					alertNomeUtenteNonInserito();
 				else {

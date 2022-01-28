@@ -74,7 +74,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText(), nomeUtente);
+				String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText().toLowerCase(), nomeUtente);
 
 				if(state.equals("0")) {
 					ModificaPasswordPage pg = new ModificaPasswordPage(theController, nomeUtente);

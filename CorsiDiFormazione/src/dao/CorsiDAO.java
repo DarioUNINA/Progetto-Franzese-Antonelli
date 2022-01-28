@@ -45,7 +45,7 @@ public class CorsiDAO {
 		
 		String query;
 		
-		query = "SELECT * FROM corsi c JOIN temi t on c.id_corso = t.id_corso WHERE ";
+		query = "SELECT * FROM corsi c JOIN temi t ON c.id_corso = t.id_corso WHERE ";
 		
 		if(!areaTematica.equals(""))
 			query = query + " c.nome_area = '" + areaTematica +  "'  AND ";
@@ -64,8 +64,9 @@ public class CorsiDAO {
 			ResultSet rs = statement.executeQuery(query);
 			
 			while(rs.next()) {
-				
+				 System.out.println(query);
 				c.setIdCorso(rs.getString("id_corso"));
+				c.setIdOperatore(rs.getString("id_operatore"));
 				c.setIdOperatore(rs.getString("nome"));
 				c.setDescrizione(rs.getString("descrizione"));
 				c.setPresenzeMin(rs.getInt("presenze_min"));
@@ -73,7 +74,7 @@ public class CorsiDAO {
 				c.setParoleChiave(rs.getString("parole_chiave"));
 				c.setAnno(rs.getString("anno"));
 				c.setTerminato(rs.getBoolean("terminato"));
-				
+				//System.out.println(c.getIdCorso() + " "+ c.getIdOperatore() +" "+ c.getNome() + " "+c.getDescrizione() + " "+c.getPresenzeMin()  +" "+ c.getMaxPartecipanti() + " "+c.getParoleChiave() +" "+ c.getAnno()   );
 				corsiFiltrati.add(c);
 				
 			}

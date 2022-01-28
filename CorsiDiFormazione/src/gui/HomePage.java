@@ -255,7 +255,7 @@ public class HomePage extends JFrame {
 				
 				prova = theController.setCorsiFiltrati(areaTematica, anno, terminato, parolaChiave);
 				
-				
+				//System.out.println(prova.get(0).getAnno());
 					
 			}
 		});

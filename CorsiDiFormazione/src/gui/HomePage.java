@@ -39,7 +39,7 @@ import javax.swing.JTextField;
 
 public class HomePage extends JFrame {
 
-	private JPanel SfondoPane;
+	private JPanel sfondoPane;
 	private Component url;
 	private Controller theController;
 	private ImageIcon imageicon;
@@ -57,16 +57,16 @@ public class HomePage extends JFrame {
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 813, 490);
-		SfondoPane = new JPanel();
-		SfondoPane.setBackground(new Color(65, 105, 225));
-		SfondoPane.setBorder(null);
-		setContentPane(SfondoPane);
-		SfondoPane.setLayout(null);
+		sfondoPane = new JPanel();
+		sfondoPane.setBackground(new Color(65, 105, 225));
+		sfondoPane.setBorder(null);
+		setContentPane(sfondoPane);
+		sfondoPane.setLayout(null);
 		
 		JPanel benvenuto = new JPanel();
 		benvenuto.setBackground(SystemColor.control);
 		benvenuto.setBounds(10, 11, 777, 77);
-		SfondoPane.add(benvenuto);
+		sfondoPane.add(benvenuto);
 		benvenuto.setLayout(null);
 		
 		JLabel benvenutoLabel = new JLabel("");
@@ -84,6 +84,11 @@ public class HomePage extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				impostazioniButton.setBackground(Color.WHITE);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Impostazioni imp = new Impostazioni(theController, operatore);
+				setVisible(false);
 			}
 		});
 		impostazioniButton.setFont(new Font("Arial", Font.BOLD, 15));
@@ -117,7 +122,7 @@ public class HomePage extends JFrame {
 		JPanel filtri = new JPanel();
 		filtri.setBackground(SystemColor.control);
 		filtri.setBounds(10, 99, 261, 253);
-		SfondoPane.add(filtri);
+		sfondoPane.add(filtri);
 		filtri.setLayout(null);
 		
 		JLabel filtriLabel = new JLabel("FILTRI:");
@@ -176,7 +181,7 @@ public class HomePage extends JFrame {
 		JPanel addDeleteCorsi = new JPanel();
 		addDeleteCorsi.setBackground(SystemColor.control);
 		addDeleteCorsi.setBounds(10, 363, 261, 77);
-		SfondoPane.add(addDeleteCorsi);
+		sfondoPane.add(addDeleteCorsi);
 		addDeleteCorsi.setLayout(null);
 		
 		JButton aggiungiCorsoButton = new JButton("AGGIUNGI CORSO");
@@ -201,7 +206,7 @@ public class HomePage extends JFrame {
 		JPanel corsi = new JPanel();
 		corsi.setBackground(SystemColor.control);
 		corsi.setBounds(281, 99, 506, 166);
-		SfondoPane.add(corsi);
+		sfondoPane.add(corsi);
 		corsi.setLayout(null);
 		
 		List corsiList = new List();
@@ -211,7 +216,7 @@ public class HomePage extends JFrame {
 		JPanel gestione = new JPanel();
 		gestione.setBackground(SystemColor.control);
 		gestione.setBounds(281, 274, 506, 166);
-		SfondoPane.add(gestione);
+		sfondoPane.add(gestione);
 		gestione.setLayout(null);
 		
 		JButton gestioneCorsiButton = new JButton("GESTIONE CORSI");

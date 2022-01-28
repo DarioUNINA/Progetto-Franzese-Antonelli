@@ -118,9 +118,12 @@ public class Controller {
 	
 	public Vector<Corsi> getCorsiOperatore(Operatori op){
 		
-		return corsiDAO.getCorsiOperatore(op);
-		
-		
+		return corsiDAO.getCorsiOperatore(op);		
+	}
+	
+	public String confermaCambioNomeUtente(String nomeUtente, String vecchioNome) {
+
+		return operatoriDAO.modificaNomeUtente(nomeUtente, vecchioNome);
 	}
 }
 

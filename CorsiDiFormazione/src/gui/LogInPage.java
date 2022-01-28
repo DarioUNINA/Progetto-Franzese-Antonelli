@@ -57,6 +57,12 @@ public class LogInPage extends JFrame {
 		theController = controller;
 		setIconImage(imageicon.getImage());
 
+		this.setLocationRelativeTo(null);
+		
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+//		this.setLocation((screenSize.width / 2) - (this.getWidth() / 2 ), (screenSize.height / 2 ) - (this.getHeight() / 2 ));
+		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setResizable(false);
 		setTitle("GESTIONE CORSI DI FORMAZIONE");

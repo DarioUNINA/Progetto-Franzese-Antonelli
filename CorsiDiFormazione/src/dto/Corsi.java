@@ -30,11 +30,6 @@ public class Corsi {
 		this.idOperatore = idOperatore;
 	}
 	
-	public Corsi() {
-		
-	}
-	
-	
 	public String getNome() {
 		return nome;
 	}

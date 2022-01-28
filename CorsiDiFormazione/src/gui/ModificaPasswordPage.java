@@ -47,7 +47,7 @@ public class ModificaPasswordPage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(65, 105, 225));
+		contentPane.setBackground(Color.orange);
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -88,7 +88,7 @@ public class ModificaPasswordPage extends JFrame {
 		modificaPasswordLabel.setForeground(Color.BLACK);
 		modificaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		modificaPasswordLabel.setBackground(Color.WHITE);
-		modificaPasswordLabel.setBounds(139, 11, 268, 33);
+		modificaPasswordLabel.setBounds(154, 11, 268, 33);
 		recuperoPanel.add(modificaPasswordLabel);
 		
 		JLabel inserirePasswordLabel = new JLabel("   Inserire Nuova Password:");

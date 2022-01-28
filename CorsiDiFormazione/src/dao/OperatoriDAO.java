@@ -132,4 +132,19 @@ public class OperatoriDAO {
 		}
 			
 	}
+	
+	public String modificaNomeUtente(String nuovoNome, String vecchioNome) {
+		
+		try {
+			
+				if(!statement.execute("UPDATE operatori SET nome_utente = '" + nuovoNome + "' WHERE nome_utente = '" + vecchioNome + "'" ))
+					return "0";
+				else
+					return "-1";
+		}catch(SQLException e) {
+		
+			return e.getSQLState();
+		}
+		
+	}
 }

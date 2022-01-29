@@ -39,7 +39,7 @@ public class CorsiDAO {
 		}
 	}
 	
-	public Vector<Corsi> addFiltri(String areaTematica, String anno, boolean terminato, String parolaChiave) {
+	public Vector<Corsi> addFiltri(String areaTematica, String anno, boolean terminatoSi, boolean terminatoNo, String parolaChiave) {
 		
 		Vector<Corsi> corsiFiltrati = new Vector<Corsi>();
 		
@@ -57,7 +57,15 @@ public class CorsiDAO {
 		if(!parolaChiave.equals(""))
 			query = query + " parole_chiave = '" + parolaChiave + "' AND ";
 		
-		query = query + " c.terminato = '"  + terminato + "'";
+		if(terminatoSi)
+			if(!terminatoNo) 
+				query = query + " terminato = true AND";
+		
+		if(terminatoNo)
+			if(!terminatoSi)
+				query = query + " terminato = false AND";
+			
+		query = query + "1926=1926";
 		
 		try {
 			

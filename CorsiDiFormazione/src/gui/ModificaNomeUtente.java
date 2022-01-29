@@ -126,7 +126,7 @@ public class ModificaNomeUtente extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Impostazioni imp = new Impostazioni(theController, operatore);
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
 				setVisible(false);
 			}
 			@Override

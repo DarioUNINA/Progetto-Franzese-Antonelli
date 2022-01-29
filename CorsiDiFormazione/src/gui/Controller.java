@@ -107,9 +107,9 @@ public class Controller {
 		return corsiDAO.getAnno();
 	}
 	
-	public Vector<Corsi> setCorsiFiltrati(String areaTematica, String anno, boolean terminato, String parolaChiave){
+	public Vector<Corsi> setCorsiFiltrati(String areaTematica, String anno, boolean terminatoSi, boolean terminatoNo, String parolaChiave){
 		
-		return corsiDAO.addFiltri(areaTematica, anno, terminato, parolaChiave);
+		return corsiDAO.addFiltri(areaTematica, anno, terminatoSi, terminatoNo, parolaChiave);
 	}
 	
 	Operatori getOperatore(String nome) {

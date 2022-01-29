@@ -173,20 +173,20 @@ public class HomePage extends JFrame {
 		terminatoCheckBoxSi.setBounds(117, 124, 46, 23);
 		filtri.add(terminatoCheckBoxSi);
 		
-		JCheckBox terminatoChechBoxNo = new JCheckBox("NO");
-		terminatoChechBoxNo.addMouseListener(new MouseAdapter() {
+		JCheckBox terminatoCheckBoxNo = new JCheckBox("NO");
+		terminatoCheckBoxNo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(terminatoChechBoxNo.getSelectedObjects() != null)
-					terminatoChechBoxNo.setForeground(Color.RED);
+				if(terminatoCheckBoxNo.getSelectedObjects() != null)
+					terminatoCheckBoxNo.setForeground(Color.RED);
 				else
-					terminatoChechBoxNo.setForeground(Color.BLACK);
+					terminatoCheckBoxNo.setForeground(Color.BLACK);
 				
 			}
 		});
-		terminatoChechBoxNo.setFont(new Font("Arial", Font.BOLD, 15));
-		terminatoChechBoxNo.setBounds(202, 124, 49, 23);
-		filtri.add(terminatoChechBoxNo);
+		terminatoCheckBoxNo.setFont(new Font("Arial", Font.BOLD, 15));
+		terminatoCheckBoxNo.setBounds(202, 124, 49, 23);
+		filtri.add(terminatoCheckBoxNo);
 		
 		paroleChiaveTextField = new JTextField();
 		paroleChiaveTextField.setBounds(117, 167, 134, 20);
@@ -259,8 +259,8 @@ public class HomePage extends JFrame {
 				terminatoCheckBoxSi.setSelected(false);
 				terminatoCheckBoxSi.setForeground(Color.BLACK);
 				paroleChiaveTextField.setText("");
-				terminatoChechBoxNo.setSelected(false);
-				terminatoChechBoxNo.setForeground(Color.BLACK);			}
+				terminatoCheckBoxNo.setSelected(false);
+				terminatoCheckBoxNo.setForeground(Color.BLACK);			}
 		});
 		resetFiltriButton.setForeground(Color.RED);
 		resetFiltriButton.setBounds(10, 219, 89, 23);
@@ -274,17 +274,23 @@ public class HomePage extends JFrame {
 				
 				String areaTematica = areaTematicaComboBox.getSelectedItem().toString();
 				String anno = annoComboBox.getSelectedItem().toString();
-				boolean terminato ; 
+				boolean terminatoSi , terminatoNo; 
+				
 				if(terminatoCheckBoxSi.isSelected())
-					terminato = true;
+					terminatoSi = true;
 				else
-					terminato = false;
+					terminatoSi = false;
+				
+				if(terminatoCheckBoxNo.isSelected())
+					terminatoNo = true;
+				else
+					terminatoNo = false;
 				
 				String parolaChiave = paroleChiaveTextField.getText();	
 				
 				Vector<Corsi> prova;
 				
-				prova = theController.setCorsiFiltrati(areaTematica, anno, terminato, parolaChiave);
+				prova = theController.setCorsiFiltrati(areaTematica, anno, terminatoSi, terminatoNo, parolaChiave);
 					
 			}
 		});

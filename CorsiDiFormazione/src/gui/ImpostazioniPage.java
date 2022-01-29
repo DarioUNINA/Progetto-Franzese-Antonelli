@@ -23,7 +23,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Impostazioni extends JFrame {
+public class ImpostazioniPage extends JFrame {
 
 	private JPanel contentPane;
 	private Controller theController;
@@ -31,7 +31,7 @@ public class Impostazioni extends JFrame {
 	private ImageIcon imageicon;
 	private Operatori operatore;
 	
-	public Impostazioni(Controller controller, Operatori operatore) {
+	public ImpostazioniPage(Controller controller, Operatori operatore) {
 		
 		theController = controller;
 
@@ -117,3 +117,4 @@ public class Impostazioni extends JFrame {
 			
 	
 }
+

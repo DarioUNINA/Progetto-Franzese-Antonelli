@@ -48,42 +48,45 @@ public class CorsiDAO {
 		query = "SELECT * FROM corsi c JOIN temi t ON c.id_corso = t.id_corso WHERE ";
 		
 		if(!areaTematica.equals(""))
-			query = query + " c.nome_area = '" + areaTematica +  "'  AND ";
+			query = query + " t.nome_area = '" + areaTematica +  "'  AND ";
 		
 		if(!anno.equals("")) 
 			query = query + " c.anno = '" +  anno + "'  AND ";
 	
 		
 		if(!parolaChiave.equals(""))
-			query = query + "parole_chiave = '" + parolaChiave + "' AND";
+			query = query + " parole_chiave = '" + parolaChiave + "' AND ";
 		
-		query = query + "c.terminato = '"  + terminato + "'";
+		query = query + " c.terminato = '"  + terminato + "'";
 		
 		try {
 			
 			ResultSet rs = statement.executeQuery(query);
-			System.out.println("prova");
+			
 			while(rs.next()) {
-				System.out.println("prova");
+
 				Corsi c = new Corsi();
+				
 				c.setIdCorso(rs.getString("id_corso"));
 				c.setIdOperatore(rs.getString("id_operatore"));
-				c.setIdOperatore(rs.getString("nome"));
+				c.setNome(rs.getString("nome"));
 				c.setDescrizione(rs.getString("descrizione"));
 				c.setPresenzeMin(rs.getInt("presenze_min"));
 				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
 				c.setParoleChiave(rs.getString("parole_chiave"));
 				c.setAnno(rs.getString("anno"));
 				c.setTerminato(rs.getBoolean("terminato"));
-				System.out.println(c.getIdCorso() + " "+ c.getIdOperatore() +" "+ c.getNome() + " "+c.getDescrizione() + " "+c.getPresenzeMin()  +" "+ c.getMaxPartecipanti() + " "+c.getParoleChiave() +" "+ c.getAnno()   );
+				
 				corsiFiltrati.add(c);
+				rs.next();
 				
 			}
-			
-			
+				
 			return corsiFiltrati;
-		} catch (Exception e) {
-			System.out.println("prova6");
+		
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
 			return corsiFiltrati;
 		}
 	}
@@ -91,7 +94,6 @@ public class CorsiDAO {
 	public Vector<Corsi> getCorsiOperatore(Operatori op){
 		
 		Vector<Corsi> corsi = new Vector<Corsi>();
-		
 		
 		
 		try {

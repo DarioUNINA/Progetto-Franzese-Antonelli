@@ -87,7 +87,7 @@ public class HomePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Impostazioni imp = new Impostazioni(theController, operatore);
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
 				setVisible(false);
 			}
 		});
@@ -271,6 +271,7 @@ public class HomePage extends JFrame {
 		filtraButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				String areaTematica = areaTematicaComboBox.getSelectedItem().toString();
 				String anno = annoComboBox.getSelectedItem().toString();
 				boolean terminato ; 
@@ -280,7 +281,6 @@ public class HomePage extends JFrame {
 					terminato = false;
 				
 				String parolaChiave = paroleChiaveTextField.getText();	
-				
 				
 				Vector<Corsi> prova;
 				

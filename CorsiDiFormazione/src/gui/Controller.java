@@ -111,6 +111,7 @@ public class Controller {
 		
 		return corsiDAO.addFiltri(areaTematica, anno, terminato, parolaChiave);
 	}
+	
 	Operatori getOperatore(String nome) {
 		
 		return operatoriDAO.getOperatore(nome);
@@ -127,10 +128,10 @@ public class Controller {
 		return operatoriDAO.modificaNomeUtente(nomeUtente, vecchio);
 	}
 	
-	public void eliminaCorso(Operatori operatore) {
+	public void eliminaCorso(String nomeCorso) {
 		
-		operatoriDAO.eliminaCorso(operatore);
-	
+		operatoriDAO.eliminaCorsiImpostazioni(nomeCorso);
+
 	}
 
 	public Operatori getOperatoreRecuperoPass(String nome) {

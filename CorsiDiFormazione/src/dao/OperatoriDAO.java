@@ -167,7 +167,7 @@ public class OperatoriDAO {
 		}
 	}
 	
-	public String eliminaCorsi(String nomeCorso) {
+	public String eliminaCorsiImpostazioni(String nomeCorso) {
 		
 		try {
 			
@@ -178,7 +178,7 @@ public class OperatoriDAO {
 			
 			
 		} catch (SQLException e) {
-
+			return e.getSQLState();
 		}
 	}
 }

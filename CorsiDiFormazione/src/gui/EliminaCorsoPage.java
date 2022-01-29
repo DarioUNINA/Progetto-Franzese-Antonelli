@@ -1,6 +1,5 @@
 package gui;
 
-import dto.Corsi;
 
 import java.awt.BorderLayout;
 

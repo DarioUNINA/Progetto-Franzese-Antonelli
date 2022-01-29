@@ -33,7 +33,6 @@ public class RecuperoPassPage extends JFrame {
 	private JPanel contentPane;
 	private Component url;
 	private JTextField NomeUtenteField;
-
 	private Controller theController;
 	private ImageIcon imageicon;
 	private JTextField nomeUtenteText;
@@ -41,6 +40,7 @@ public class RecuperoPassPage extends JFrame {
 	
 	
 	public RecuperoPassPage(Controller co) {
+		
 		setResizable(false);
 		
 		
@@ -95,14 +95,17 @@ public class RecuperoPassPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				String Nome = nomeUtenteText.getText().toLowerCase();
+				
 				if(Nome.isEmpty()) 
 					alertNomeUtenteNonInserito();
 				else {
 						String state = theController.CheckNomeClicked(Nome.toLowerCase());
 						
 						if(state.equals("0")) {
-							RecuperoPassDomandaPage rpd = new RecuperoPassDomandaPage(theController, Nome);
+							
+							RecuperoPassDomandaPage rpd = new RecuperoPassDomandaPage(theController, theController.getOperatoreRecuperoPass(Nome));
 							setVisible(false);
 						}else
 							alertUtenteNonTrovato();

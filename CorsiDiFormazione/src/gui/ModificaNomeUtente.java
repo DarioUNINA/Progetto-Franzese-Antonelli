@@ -108,12 +108,12 @@ public class ModificaNomeUtente extends JFrame {
 						alertInserireNomeUtente();
 					else {
 						
-							String state = theController.confermaCambioNomeUtente(nomeU, operatore.getNomeUtente());
+							String state = theController.confermaCambioNomeUtente(nomeU, operatore);
 							
 							if(state.equals("0")) {
 								
 								alertNomeUtenteCambiato();
-								LogInPage pg = new LogInPage(theController);
+								HomePage hp = new HomePage(theController, operatore);
 								setVisible(false);
 							
 							}else
@@ -121,6 +121,26 @@ public class ModificaNomeUtente extends JFrame {
 					}
 			}
 		});
+		
+		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Impostazioni imp = new Impostazioni(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				indietroButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				indietroButton.setBackground(Color.WHITE);
+			}
+		});
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(10, 273, 121, 23);
+		modificaNomeUtentePanel.add(indietroButton);
 		
 		setVisible(true);
 	}

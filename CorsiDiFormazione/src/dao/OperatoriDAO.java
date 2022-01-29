@@ -96,11 +96,11 @@ public class OperatoriDAO {
 		}
 	}
 	
-	public String modificaPassword(String nome, String pass) {
+	public String modificaPassword(Operatori op, String pass) {
 		
 		try {
 			
-				if(!statement.execute("UPDATE operatori SET password = '" + pass + "' WHERE nome_utente = '" + nome + "'" ))
+				if(!statement.execute("UPDATE operatori SET password = '" + pass + "' WHERE nome_utente = '" + op.getNomeUtente() + "'" ))
 					return "0";
 				else
 					return "-1";
@@ -133,11 +133,11 @@ public class OperatoriDAO {
 			
 	}
 	
-	public String modificaNomeUtente(String nuovoNome, String vecchioNome) {
+	public String modificaNomeUtente(String nuovoNome, Operatori vecchio) {
 		
 		try {
 			
-				if(!statement.execute("UPDATE operatori SET nome_utente = '" + nuovoNome + "' WHERE nome_utente = '" + vecchioNome + "'" ))
+				if(!statement.execute("UPDATE operatori SET nome_utente = '" + nuovoNome + "' WHERE nome_utente = '" + vecchio.getNomeUtente() + "'" ))
 					return "0";
 				else
 					return "-1";
@@ -146,5 +146,39 @@ public class OperatoriDAO {
 			return e.getSQLState();
 		}
 		
+	}
+	
+	public Operatori getOperatoreRecuperoPass(String nome) {
+		
+		Operatori op = new Operatori(nome);
+			
+		try {
+				
+				ResultSet rs = statement.executeQuery("SELECT * FROM operatori o WHERE o.nome_utente = '" + nome + "'");
+				
+				rs.next();
+				op.setIdOperatore(rs.getString("id_operatore"));
+				
+				return op;
+			}catch(SQLException e) {
+				
+				e.printStackTrace();
+				return op;
+		}
+	}
+	
+	public String eliminaCorsiImpostazioni(String nomeCorso) {
+		
+		try {
+			
+			if(!statement.execute("DELETE FROM corsi WHERE nome = '" + nomeCorso + "'" ))
+				return "0";
+			else
+				return "-1";
+			
+			
+		} catch (SQLException e) {
+			return e.getSQLState();
+		}
 	}
 }

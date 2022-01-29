@@ -9,8 +9,12 @@ import java.awt.SystemColor;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import dto.Operatori;
+
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,16 +30,16 @@ public class ModificaPasswordPage extends JFrame {
 	private JPanel contentPane;
 	
 	private Controller theController;
-	private String nomeUtente;
+	private Operatori operatore;
 	private JTextField passwordField;
 	private JTextField confermaPasswordField;
 	private ImageIcon imageicon;
 	private Component url;
 	
-	public ModificaPasswordPage(Controller controller, String nomeUtente) {
+	public ModificaPasswordPage(Controller controller, Operatori operatore) {
 		
 		theController = controller;
-		this.nomeUtente = nomeUtente;
+		this.operatore = operatore;
 		
 		
 		setResizable(false);
@@ -59,7 +63,7 @@ public class ModificaPasswordPage extends JFrame {
 		contentPane.add(recuperoPanel);
 		recuperoPanel.setLayout(null);
 		
-		confermaPasswordField = new JTextField();
+		confermaPasswordField = new JPasswordField();
 		confermaPasswordField.setBounds(195, 129, 167, 20);
 		recuperoPanel.add(confermaPasswordField);
 		confermaPasswordField.setColumns(10);
@@ -79,7 +83,7 @@ public class ModificaPasswordPage extends JFrame {
 		confermaButton.setBounds(195, 175, 162, 31);
 		recuperoPanel.add(confermaButton);
 		
-		passwordField = new JTextField();
+		passwordField = new JPasswordField();
 		passwordField.setBounds(195, 88, 167, 20);
 		recuperoPanel.add(passwordField);
 		passwordField.setColumns(10);
@@ -112,18 +116,21 @@ public class ModificaPasswordPage extends JFrame {
 					if (pass.isEmpty())
 						alertInserirePassword();
 					else {
-						
-							String state = theController.confermaCambioPassword(nomeUtente, pass);
 							
-							if(state.equals("0")) {
-								
-								alertPasswordCambiata();
-								LogInPage pg = new LogInPage(theController);
-								setVisible(false);
-							
-							}else
-								alertErroreCambioPassword(state);
-					}
+							String state = theController.confermaCambioPassword(operatore, pass);
+														
+								if(state.equals("0")) {
+									alertPasswordCambiata();
+
+									if(operatore.getPassword() == null) { 
+										LogInPage pg = new LogInPage(theController);
+									}else {
+										HomePage hp = new HomePage(theController, theController.getOperatore(operatore.getNomeUtente()));
+									}
+									setVisible(false);
+								}else
+									alertErroreCambioPassword(state);
+						}
 				
 			}
 		});
@@ -137,7 +144,7 @@ public class ModificaPasswordPage extends JFrame {
 	
 	public void alertPasswordCambiata() {
 		JOptionPane.showMessageDialog(this, "Password cambiata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
-		}
+	}
 	
 	public void alertInserirePassword() {
 		JOptionPane.showMessageDialog(this, "Inserire una password","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);

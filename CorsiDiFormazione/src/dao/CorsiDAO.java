@@ -78,7 +78,6 @@ public class CorsiDAO {
 				c.setTerminato(rs.getBoolean("terminato"));
 				
 				corsiFiltrati.add(c);
-				rs.next();
 				
 			}
 				

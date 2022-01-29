@@ -238,12 +238,14 @@ public class HomePage extends JFrame {
 		resetFiltriButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				areaTematicaComboBox.setSelectedIndex(0);
 				annoComboBox.setSelectedIndex(0);
 				terminatoCheckBox.setSelected(false);
 				terminatoCheckBox.setForeground(Color.BLACK);
 				paroleChiaveTextField.setText("");
-				}
+		
+			}
 		});
 		resetFiltriButton.setForeground(Color.RED);
 		resetFiltriButton.setBounds(10, 219, 89, 23);
@@ -268,7 +270,6 @@ public class HomePage extends JFrame {
 				Vector<Corsi> prova;
 				
 				prova = theController.setCorsiFiltrati(areaTematica, anno, terminato, parolaChiave);
-				
 					
 			}
 		});

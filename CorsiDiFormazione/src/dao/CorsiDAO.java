@@ -42,7 +42,6 @@ public class CorsiDAO {
 	public Vector<Corsi> addFiltri(String areaTematica, String anno, boolean terminato, String parolaChiave) {
 		
 		Vector<Corsi> corsiFiltrati = new Vector<Corsi>();
-		Corsi c = new Corsi();
 		
 		String query;
 		
@@ -63,9 +62,10 @@ public class CorsiDAO {
 		try {
 			
 			ResultSet rs = statement.executeQuery(query);
-			
+			System.out.println("prova");
 			while(rs.next()) {
-				 System.out.println(query);
+				System.out.println("prova");
+				Corsi c = new Corsi();
 				c.setIdCorso(rs.getString("id_corso"));
 				c.setIdOperatore(rs.getString("id_operatore"));
 				c.setIdOperatore(rs.getString("nome"));
@@ -75,7 +75,7 @@ public class CorsiDAO {
 				c.setParoleChiave(rs.getString("parole_chiave"));
 				c.setAnno(rs.getString("anno"));
 				c.setTerminato(rs.getBoolean("terminato"));
-				//System.out.println(c.getIdCorso() + " "+ c.getIdOperatore() +" "+ c.getNome() + " "+c.getDescrizione() + " "+c.getPresenzeMin()  +" "+ c.getMaxPartecipanti() + " "+c.getParoleChiave() +" "+ c.getAnno()   );
+				System.out.println(c.getIdCorso() + " "+ c.getIdOperatore() +" "+ c.getNome() + " "+c.getDescrizione() + " "+c.getPresenzeMin()  +" "+ c.getMaxPartecipanti() + " "+c.getParoleChiave() +" "+ c.getAnno()   );
 				corsiFiltrati.add(c);
 				
 			}
@@ -83,6 +83,7 @@ public class CorsiDAO {
 			
 			return corsiFiltrati;
 		} catch (Exception e) {
+			System.out.println("prova6");
 			return corsiFiltrati;
 		}
 	}

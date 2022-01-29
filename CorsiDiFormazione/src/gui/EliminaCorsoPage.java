@@ -76,7 +76,7 @@ public class EliminaCorsoPage extends JFrame {
 		selezionaCorsoLabel.setBounds(138, 75, 267, 23);
 		eliminaCorsoPanel.add(selezionaCorsoLabel);
 		
-		JComboBox corsiComboBox = new JComboBox(theController.getModelCorsiOperatore(operatore));
+		JComboBox corsiComboBox = new JComboBox(theController.getCorsiOperatore(operatore));
 		corsiComboBox.setBounds(193, 122, 165, 22);
 		eliminaCorsoPanel.add(corsiComboBox);
 		
@@ -98,11 +98,6 @@ public class EliminaCorsoPage extends JFrame {
 		eliminaCorsoPanel.add(confermaButton);
 
 		
-		
-		
-		
-		
-		
 		setVisible(true);
 	}
 	
@@ -111,9 +106,6 @@ public class EliminaCorsoPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Selezionare un corso!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void alertConfermaEliminazioneCorso(String corso){
-		
-	}
 	
 	public void alertConfermaEliminazioneCorso(String corso) {
 		Object[] opzioni = {"Sì"};

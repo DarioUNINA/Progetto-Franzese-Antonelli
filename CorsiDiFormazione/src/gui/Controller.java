@@ -127,16 +127,15 @@ public class Controller {
 		return operatoriDAO.modificaNomeUtente(nomeUtente, vecchioNome);
 	}
 	
-	
-	public DefaultComboBoxModel<Corsi> getModelCorsiOperatore(Operatori op){
+	public void eliminaCorso(Operatori operatore) {
 		
-		DefaultComboBoxModel<Corsi> modello = new DefaultComboBoxModel<Corsi>();
+		operatoriDAO.eliminaCorso(operatore);
 		
-		modello.addAll(this.getCorsiOperatore(op));
-		
-		return modello;
 		
 	}
+
+
+
 }
 
 

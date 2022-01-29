@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import javax.swing.*;
 import java.awt.Component;
 import java.awt.EventQueue;
 
@@ -59,9 +60,9 @@ public class LogInPage extends JFrame {
 
 		this.setLocationRelativeTo(null);
 		
-		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	//	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-//		this.setLocation((screenSize.width / 2) - (this.getWidth() / 2 ), (screenSize.height / 2 ) - (this.getHeight() / 2 ));
+	//	this.setLocation((screenSize.width / 2) - (this.getWidth() / 2 ), (screenSize.height / 2 ) - (this.getHeight() / 2 ));
 		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setResizable(false);

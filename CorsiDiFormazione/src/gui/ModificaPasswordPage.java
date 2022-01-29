@@ -119,16 +119,9 @@ public class ModificaPasswordPage extends JFrame {
 							
 							String state = theController.confermaCambioPassword(operatore, pass);
 														
-								if(state.equals("0")) {
+								if(state.equals("0"))
 									alertPasswordCambiata();
-
-									if(operatore.getPassword() == null) { 
-										LogInPage pg = new LogInPage(theController);
-									}else {
-										HomePage hp = new HomePage(theController, theController.getOperatore(operatore.getNomeUtente()));
-									}
-									setVisible(false);
-								}else
+								else
 									alertErroreCambioPassword(state);
 						}
 				
@@ -144,6 +137,12 @@ public class ModificaPasswordPage extends JFrame {
 	
 	public void alertPasswordCambiata() {
 		JOptionPane.showMessageDialog(this, "Password cambiata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
+		if(operatore.getPassword() == null) { 
+			LogInPage pg = new LogInPage(theController);
+		}else {
+			HomePage hp = new HomePage(theController, theController.getOperatore(operatore.getNomeUtente()));
+		}
+		setVisible(false);
 	}
 	
 	public void alertInserirePassword() {

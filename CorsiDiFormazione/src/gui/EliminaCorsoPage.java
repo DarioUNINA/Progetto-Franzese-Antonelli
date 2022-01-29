@@ -138,6 +138,8 @@ public class EliminaCorsoPage extends JFrame {
 				opzioni[0]);
 		if(n==0) {
 			theController.eliminaCorso(corso);
+			HomePage hp = new HomePage(theController, operatore);
+			setVisible(false);
 		}
 			
 		}

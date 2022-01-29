@@ -1,14 +1,19 @@
 package gui;
 
+import dto.Corsi;
+
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Component;
 
 import dto.Operatori;
 import java.awt.EventQueue;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +23,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.util.ArrayList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class EliminaCorsoPage extends JFrame {
 
@@ -68,21 +76,60 @@ public class EliminaCorsoPage extends JFrame {
 		selezionaCorsoLabel.setBounds(138, 75, 267, 23);
 		eliminaCorsoPanel.add(selezionaCorsoLabel);
 		
+		JComboBox corsiComboBox = new JComboBox(theController.getModelCorsiOperatore(operatore));
+		corsiComboBox.setBounds(193, 122, 165, 22);
+		eliminaCorsoPanel.add(corsiComboBox);
+		
 		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(corsiComboBox.getSelectedItem()==null)
+					alertCorsoNonSelezionato();
+				else
+					alertConfermaEliminazioneCorso(corsiComboBox.getSelectedItem().toString());
+					
+				
+			}
+		});
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(193, 170, 165, 33);
 		eliminaCorsoPanel.add(confermaButton);
+
 		
-		JComboBox corsiComboBox = new JComboBox(theController.getCorsiOperatore(operatore));
-		corsiComboBox.setBounds(193, 122, 165, 22);
-		eliminaCorsoPanel.add(corsiComboBox);
+		
+		
+		
+		
 		
 		setVisible(true);
 	}
 	
 	
+	public void alertCorsoNonSelezionato() {
+		JOptionPane.showMessageDialog(this, "Selezionare un corso!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
 	
+	public void alertConfermaEliminazioneCorso(String corso){
+		
+	}
 	
-	
+	public void alertConfermaEliminazioneCorso(String corso) {
+		Object[] opzioni = {"Sì"};
+		
+		int n = JOptionPane.showOptionDialog(this,
+				"Sei sicuro di voler eliminare il corso " + corso + " ?",
+				"CONFERMA DI USCITA",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				opzioni,
+				opzioni[0]);
+		if(n==0) {
+			theController.eliminaCorso(corso);
+		}
+			
+		}
 		
 }

@@ -84,6 +84,11 @@ public class Corsi {
 	public void setIdOperatore(String idOperatore) {
 		this.idOperatore = idOperatore;
 	}
+	
+	public String toString() {
+		
+		return this.nome;
+	}
 
 	
 }

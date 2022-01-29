@@ -2,6 +2,7 @@ package gui;
 
 import java.util.Vector;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 import dao.*;
@@ -124,6 +125,17 @@ public class Controller {
 	public String confermaCambioNomeUtente(String nomeUtente, String vecchioNome) {
 
 		return operatoriDAO.modificaNomeUtente(nomeUtente, vecchioNome);
+	}
+	
+	
+	public DefaultComboBoxModel<Corsi> getModelCorsiOperatore(Operatori op){
+		
+		DefaultComboBoxModel<Corsi> modello = new DefaultComboBoxModel<Corsi>();
+		
+		modello.addAll(this.getCorsiOperatore(op));
+		
+		return modello;
+		
 	}
 }
 

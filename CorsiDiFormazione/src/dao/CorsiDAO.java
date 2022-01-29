@@ -91,7 +91,7 @@ public class CorsiDAO {
 		
 		Vector<Corsi> corsi = new Vector<Corsi>();
 		
-		Corsi c = new Corsi();
+		
 		
 		try {
 			
@@ -99,10 +99,11 @@ public class CorsiDAO {
 					+ " WHERE op.id_operatore = '"+ op.getIdOperatore() + "'");
 			
 			while(rs.next()) {
-				
+
+				Corsi c = new Corsi();
 				c.setNome(rs.getString("nome"));
-				
 				corsi.add(c);
+				
 			}
 			
 			return corsi;

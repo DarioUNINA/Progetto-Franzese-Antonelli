@@ -79,23 +79,22 @@ public class Controller {
 		return domandeSicurezzaDAO.getDomande();
 	}
 	
-	public String setDomandaLabelRecuperoPassPage(String nome) {
-		
-		Operatori op = new Operatori(nome);
-		return domandeOperatoriDAO.getDomandaOperatore(operatoriDAO.getIdOperatoreNoPassword(op));
+	public String setDomandaLabelRecuperoPassPage(Operatori operatore) {
+
+		return domandeOperatoriDAO.getDomandaOperatore(operatoriDAO.getIdOperatoreNoPassword(operatore));
 	
 	}
 	
-	public String confermaRispostaSicurezzaClicked(String Risposta, String NomeUtente) {
+	public String confermaRispostaSicurezzaClicked(String Risposta, Operatori operatore) {
 		
-		Operatori op = new Operatori(NomeUtente);
-		return domandeOperatoriDAO.checkRisposta(Risposta, operatoriDAO.getIdOperatoreNoPassword(op));
+
+		return domandeOperatoriDAO.checkRisposta(Risposta, operatoriDAO.getIdOperatoreNoPassword(operatore));
 		
 	}
 
-	public String confermaCambioPassword(String nomeUtente, String pass) {
+	public String confermaCambioPassword(Operatori op, String pass) {
 
-		return operatoriDAO.modificaPassword(nomeUtente, pass);
+		return operatoriDAO.modificaPassword(op, pass);
 	}
 	
 	public Vector<String> setAreaTematicaComboBox() {
@@ -122,19 +121,22 @@ public class Controller {
 		return corsiDAO.getCorsiOperatore(op);		
 	}
 	
-	public String confermaCambioNomeUtente(String nomeUtente, String vecchioNome) {
+	public String confermaCambioNomeUtente(String nomeUtente, Operatori vecchio) {
+		
 
-		return operatoriDAO.modificaNomeUtente(nomeUtente, vecchioNome);
+		return operatoriDAO.modificaNomeUtente(nomeUtente, vecchio);
 	}
 	
 	public void eliminaCorso(Operatori operatore) {
 		
 		operatoriDAO.eliminaCorso(operatore);
-		
-		
+	
 	}
 
-
+	public Operatori getOperatoreRecuperoPass(String nome) {
+		
+		return operatoriDAO.getOperatoreRecuperoPass(nome);
+	}
 
 }
 

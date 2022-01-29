@@ -72,7 +72,7 @@ public class Impostazioni extends JFrame {
 		modificaPasswordButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ModificaPasswordPage mpp = new ModificaPasswordPage(theController, operatore.getNomeUtente());
+				ModificaPasswordPage mpp = new ModificaPasswordPage(theController, operatore);
 				setVisible(false);
 			}
 		});

@@ -159,19 +159,34 @@ public class HomePage extends JFrame {
 		annoComboBox.setBounds(117, 82, 134, 22);
 		filtri.add(annoComboBox);
 		
-		JCheckBox terminatoCheckBox = new JCheckBox("SI");
-		terminatoCheckBox.addMouseListener(new MouseAdapter() {
+		JCheckBox terminatoCheckBoxSi = new JCheckBox("SI");
+		terminatoCheckBoxSi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(terminatoCheckBox.getSelectedObjects() != null)
-					terminatoCheckBox.setForeground(Color.GREEN);
+				if(terminatoCheckBoxSi.getSelectedObjects() != null)
+					terminatoCheckBoxSi.setForeground(Color.GREEN);
 				else
-					terminatoCheckBox.setForeground(Color.BLACK);
+					terminatoCheckBoxSi.setForeground(Color.BLACK);
 			}
 		});
-		terminatoCheckBox.setFont(new Font("Arial", Font.BOLD, 15));
-		terminatoCheckBox.setBounds(117, 124, 46, 23);
-		filtri.add(terminatoCheckBox);
+		terminatoCheckBoxSi.setFont(new Font("Arial", Font.BOLD, 15));
+		terminatoCheckBoxSi.setBounds(117, 124, 46, 23);
+		filtri.add(terminatoCheckBoxSi);
+		
+		JCheckBox terminatoChechBoxNo = new JCheckBox("NO");
+		terminatoChechBoxNo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(terminatoChechBoxNo.getSelectedObjects() != null)
+					terminatoChechBoxNo.setForeground(Color.RED);
+				else
+					terminatoChechBoxNo.setForeground(Color.BLACK);
+				
+			}
+		});
+		terminatoChechBoxNo.setFont(new Font("Arial", Font.BOLD, 15));
+		terminatoChechBoxNo.setBounds(202, 124, 49, 23);
+		filtri.add(terminatoChechBoxNo);
 		
 		paroleChiaveTextField = new JTextField();
 		paroleChiaveTextField.setBounds(117, 167, 134, 20);
@@ -240,9 +255,11 @@ public class HomePage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				areaTematicaComboBox.setSelectedIndex(0);
 				annoComboBox.setSelectedIndex(0);
-				terminatoCheckBox.setSelected(false);
-				terminatoCheckBox.setForeground(Color.BLACK);
+				terminatoCheckBoxSi.setSelected(false);
+				terminatoCheckBoxSi.setForeground(Color.BLACK);
 				paroleChiaveTextField.setText("");
+				terminatoChechBoxNo.setSelected(false);
+				terminatoChechBoxNo.setForeground(Color.BLACK);
 				}
 		});
 		resetFiltriButton.setForeground(Color.RED);
@@ -257,7 +274,7 @@ public class HomePage extends JFrame {
 				String areaTematica = areaTematicaComboBox.getSelectedItem().toString();
 				String anno = annoComboBox.getSelectedItem().toString();
 				boolean terminato ; 
-				if(terminatoCheckBox.isSelected())
+				if(terminatoCheckBoxSi.isSelected())
 					terminato = true;
 				else
 					terminato = false;
@@ -276,6 +293,8 @@ public class HomePage extends JFrame {
 		filtraButton.setBounds(162, 219, 89, 23);
 		filtraButton.setFont(new Font("Arial", Font.BOLD, 15));
 		filtri.add(filtraButton);
+		
+		
 		
 		setVisible(true);
 	}
@@ -298,5 +317,4 @@ public class HomePage extends JFrame {
 		}
 			
 		}
-	
 }

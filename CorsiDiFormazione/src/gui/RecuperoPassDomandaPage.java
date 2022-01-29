@@ -18,6 +18,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import dto.Operatori;
+
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
@@ -30,16 +33,16 @@ public class RecuperoPassDomandaPage extends JFrame {
 	private Component url;
 
 	private Controller theController;
-	private String nomeUtente;
+	private Operatori operatore;
 	
 	private ImageIcon imageicon;
 	private JTextField DomandaText;
 	private JTextField rispostaDomandaField;
 	
 
-	public RecuperoPassDomandaPage(Controller controller, String nome) {
+	public RecuperoPassDomandaPage(Controller controller, Operatori operatore) {
 		
-		nomeUtente = nome;
+		this.operatore = operatore;
 		theController = controller;
 		
 		setResizable(false);
@@ -74,10 +77,10 @@ public class RecuperoPassDomandaPage extends JFrame {
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText().toLowerCase(), nomeUtente);
+				String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText().toLowerCase(), operatore);
 
 				if(state.equals("0")) {
-					ModificaPasswordPage pg = new ModificaPasswordPage(theController, nomeUtente);
+					ModificaPasswordPage pg = new ModificaPasswordPage(theController, operatore);
 					setVisible(false);
 				}else
 					alertRispostaNonValida(state);
@@ -124,7 +127,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		recuperoPanel.add(indietroButton);
 		
-		JLabel domandaLabel = new JLabel("Domanda Di Sicurezza: " + theController.setDomandaLabelRecuperoPassPage(nomeUtente));
+		JLabel domandaLabel = new JLabel("Domanda Di Sicurezza: " + theController.setDomandaLabelRecuperoPassPage(operatore));
 		domandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		domandaLabel.setBounds(73, 79, 465, 14);
 		recuperoPanel.add(domandaLabel);

@@ -11,8 +11,6 @@ import javax.swing.border.EmptyBorder;
 
 import org.w3c.dom.events.MouseEvent;
 
-import dto.Operatori;
-
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -123,9 +121,8 @@ public class LogInPage extends JFrame {
 						if(!controller.logInClicked(Nome, Pass))
 							alertLogInFallito();
 						else
-						{
-							Operatori op = theController.getOperatore(Nome);
-							HomePage hp = new HomePage(theController,op);
+						{							
+							HomePage hp = new HomePage(theController,theController.getOperatore(Nome));
 							setVisible(false);
 						}
 					

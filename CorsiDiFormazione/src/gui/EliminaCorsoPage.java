@@ -97,6 +97,25 @@ public class EliminaCorsoPage extends JFrame {
 		confermaButton.setBounds(193, 170, 165, 33);
 		eliminaCorsoPanel.add(confermaButton);
 
+		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				HomePage hp = new HomePage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				indietroButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				indietroButton.setBackground(Color.WHITE);
+			}
+		});
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(10, 273, 121, 23);
+		eliminaCorsoPanel.add(indietroButton);
 		
 		setVisible(true);
 	}

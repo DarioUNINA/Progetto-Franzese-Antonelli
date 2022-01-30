@@ -232,8 +232,22 @@ public class CreazioneCorsoPage extends JFrame {
 		JComboBox areaTematicaComboBox = new JComboBox((theController.setAreaTematicaComboBox()));
 		areaTematicaComboBox.setBounds(373, 136, 134, 22);
 		creaCorsoPanel.add(areaTematicaComboBox);
-	setVisible(true);
-}
+		
+		JLabel areaTematicaLabel = new JLabel("Area Tematica:");
+		areaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		areaTematicaLabel.setBounds(267, 139, 104, 14);
+		creaCorsoPanel.add(areaTematicaLabel);
+		
+		descrizioneTextField = new JTextField();
+		descrizioneTextField.setFont(new Font("Arial", Font.BOLD, 11));
+		descrizioneTextField.setColumns(10);
+		descrizioneTextField.setBounds(373, 170, 134, 20);
+		creaCorsoPanel.add(descrizioneTextField);
+		
+		setVisible(true);
+	}
+	
+	
 	public void alertErroreInserimentoPresenzeMin() {
 		JOptionPane.showMessageDialog(this, "Le presenze minime inserite non sono valide","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
@@ -241,13 +255,7 @@ public class CreazioneCorsoPage extends JFrame {
 	public void alertInserimentoEffettuato() {
 		
 		JOptionPane.showMessageDialog(this, "Corso aggiunto correttamente","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
-		
-		
-		JLabel areaTematicaLabel = new JLabel("Area Tematica:");
-		areaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		areaTematicaLabel.setBounds(267, 139, 104, 14);
-		creaCorsoPanel.add(areaTematicaLabel);
-		
+
 		HomePage hp = new HomePage(theController, operatore);
 		setVisible(false);
 	}
@@ -261,28 +269,15 @@ public class CreazioneCorsoPage extends JFrame {
 	}
 
 	public void alertInserimentoNonEffettuato(String state) {
-		
-		descrizioneTextField = new JTextField();
-		descrizioneTextField.setFont(new Font("Arial", Font.BOLD, 11));
-		descrizioneTextField.setColumns(10);
-		descrizioneTextField.setBounds(373, 170, 134, 20);
-		creaCorsoPanel.add(descrizioneTextField);
-		
+
 		if(state.equals("-1")) {
 			
 			JOptionPane.showMessageDialog(this, "Errore sconosciuto, impossibile creare il corso ","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-
 		}
 		else {
 			JOptionPane.showMessageDialog(this, "Impossibile creare il corso: codice errore " +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 		}
 			
 	}
-	
-	
-		
-		
-		
-		setVisible(true);
-	}
+
 }

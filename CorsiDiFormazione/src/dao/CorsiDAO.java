@@ -65,8 +65,8 @@ public class CorsiDAO {
 			if(!terminatoSi)
 				query = query + " terminato = false AND";
 			
-		query = query + " c.id_operatore = '" + idOperatore + "'";
-	//	query = query + " 1926=1926";
+	//	query = query + " c.id_operatore = '" + idOperatore + "'";
+		query = query + " 1926=1926";
 		try {
 			
 			ResultSet rs = statement.executeQuery(query);

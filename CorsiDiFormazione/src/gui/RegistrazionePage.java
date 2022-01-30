@@ -85,11 +85,13 @@ public class RegistrazionePage extends JFrame {
 		registrazionePanel.add(indietroButton);
 		
 		nomeTextField = new JTextField();
+		nomeTextField.setFont(new Font("Arial", Font.BOLD, 13));
 		nomeTextField.setBounds(46, 110, 297, 32);
 		registrazionePanel.add(nomeTextField);
 		nomeTextField.setColumns(10);
 		
 		passwordTextField = new JTextField();
+		passwordTextField.setFont(new Font("Arial", Font.BOLD, 13));
 		passwordTextField.setBounds(403, 110, 297, 32);
 		registrazionePanel.add(passwordTextField);
 		passwordTextField.setColumns(10);
@@ -99,11 +101,13 @@ public class RegistrazionePage extends JFrame {
 		domande = theController.getDomandeSicurezza();
 		
 		JComboBox domandeComboBox = new JComboBox(domande);
+		domandeComboBox.setFont(new Font("Arial", Font.BOLD, 13));
 		domandeComboBox.setMaximumRowCount(3);
 		domandeComboBox.setBounds(46, 217, 297, 32);
 		registrazionePanel.add(domandeComboBox);
 		
 		rispostaSicurezzaField = new JTextField();
+		rispostaSicurezzaField.setFont(new Font("Arial", Font.BOLD, 13));
 		rispostaSicurezzaField.setBounds(403, 217, 297, 32);
 		registrazionePanel.add(rispostaSicurezzaField);
 		rispostaSicurezzaField.setColumns(10);

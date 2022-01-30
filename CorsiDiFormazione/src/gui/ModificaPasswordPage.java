@@ -64,6 +64,7 @@ public class ModificaPasswordPage extends JFrame {
 		recuperoPanel.setLayout(null);
 		
 		confermaPasswordField = new JPasswordField();
+		confermaPasswordField.setFont(new Font("Arial", Font.BOLD, 13));
 		confermaPasswordField.setBounds(195, 129, 167, 20);
 		recuperoPanel.add(confermaPasswordField);
 		confermaPasswordField.setColumns(10);
@@ -84,6 +85,7 @@ public class ModificaPasswordPage extends JFrame {
 		recuperoPanel.add(confermaButton);
 		
 		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("Arial", Font.BOLD, 13));
 		passwordField.setBounds(195, 88, 167, 20);
 		recuperoPanel.add(passwordField);
 		passwordField.setColumns(10);

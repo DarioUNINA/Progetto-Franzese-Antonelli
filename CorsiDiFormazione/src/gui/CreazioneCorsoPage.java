@@ -24,6 +24,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
+import javax.swing.JComboBox;
+import java.util.Vector;
 
 public class CreazioneCorsoPage extends JFrame {
 	
@@ -39,6 +41,7 @@ public class CreazioneCorsoPage extends JFrame {
 	private JTextField maxPartecipantiTextField;
 	private JTextField paroleChiaveTextBox;
 	private JTextField annoTextField;
+	private JTextField descrizioneTextField;
 	
 	public CreazioneCorsoPage(Controller controller, Operatori operatore) {
 		
@@ -66,40 +69,48 @@ public class CreazioneCorsoPage extends JFrame {
 		creaCorsoPanel.setLayout(null);
 		
 		nomeTextField = new JTextField();
+		nomeTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		nomeTextField.setBounds(168, 66, 86, 20);
 		nomeTextField.setColumns(10);
 		creaCorsoPanel.add(nomeTextField);
 		
 		presenzeMinTextField = new JTextField();
+		presenzeMinTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		presenzeMinTextField.setBounds(168, 101, 86, 20);
 		presenzeMinTextField.setColumns(10);
 		creaCorsoPanel.add(presenzeMinTextField);
 		
 		maxPartecipantiTextField = new JTextField();
+		maxPartecipantiTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		maxPartecipantiTextField.setBounds(168, 137, 86, 20);
 		maxPartecipantiTextField.setColumns(10);
 		creaCorsoPanel.add(maxPartecipantiTextField);
 		
 		paroleChiaveTextBox = new JTextField();
+		paroleChiaveTextBox.setFont(new Font("Arial", Font.BOLD, 11));
 		paroleChiaveTextBox.setBounds(168, 170, 86, 20);
 		paroleChiaveTextBox.setColumns(10);
 		creaCorsoPanel.add(paroleChiaveTextBox);
 		
 		JCheckBox terminatoCheckBox = new JCheckBox("SI");
+		terminatoCheckBox.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(terminatoCheckBox.getSelectedObjects() != null)
+					terminatoCheckBox.setForeground(Color.GREEN);
+				else
+					terminatoCheckBox.setForeground(Color.BLACK);
+			}
+		});
 		terminatoCheckBox.setFont(new Font("Arial", Font.BOLD, 15));
 		terminatoCheckBox.setBounds(383, 99, 39, 23);
 		creaCorsoPanel.add(terminatoCheckBox);
 		
 		annoTextField = new JTextField();
+		annoTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		annoTextField.setBounds(373, 66, 86, 20);
 		annoTextField.setColumns(10);
 		creaCorsoPanel.add(annoTextField);
-		
-		JTextPane descrizioneTextPane = new JTextPane();
-		descrizioneTextPane.setFont(new Font("Arial", Font.BOLD, 12));
-		descrizioneTextPane.setBounds(373, 137, 148, 53);
-		descrizioneTextPane.setBorder(new LineBorder(Color.BLACK));
-		creaCorsoPanel.add(descrizioneTextPane);
 		
 		JButton indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
@@ -137,7 +148,7 @@ public class CreazioneCorsoPage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				String nome = nomeTextField.getText();
-				String descrizione = descrizioneTextPane.getText();
+				String descrizione = descrizioneTextField.getText();
 				String paroleChiave = paroleChiaveTextBox.getText();
 				String anno = annoTextField.getText();
 				String presenzeMin = presenzeMinTextField.getText();
@@ -192,7 +203,7 @@ public class CreazioneCorsoPage extends JFrame {
 		
 		JLabel annoLabel = new JLabel("Anno:");
 		annoLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		annoLabel.setBounds(331, 68, 45, 14);
+		annoLabel.setBounds(329, 68, 45, 14);
 		creaCorsoPanel.add(annoLabel);
 		
 		JLabel terminatoLabel = new JLabel("Terminato?");
@@ -200,10 +211,25 @@ public class CreazioneCorsoPage extends JFrame {
 		terminatoLabel.setBounds(296, 103, 81, 14);
 		creaCorsoPanel.add(terminatoLabel);
 		
-		JLabel descrizioneLabel = new JLabel("Descrizione:");
+		JLabel descrizioneLabel = new JLabel(" Descrizione:");
 		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		descrizioneLabel.setBounds(283, 139, 89, 14);
+		descrizioneLabel.setBounds(277, 172, 97, 14);
 		creaCorsoPanel.add(descrizioneLabel);
+		
+		JComboBox areaTematicaComboBox = new JComboBox((theController.setAreaTematicaComboBox()));
+		areaTematicaComboBox.setBounds(373, 136, 134, 22);
+		creaCorsoPanel.add(areaTematicaComboBox);
+		
+		JLabel areaTematicaLabel = new JLabel("Area Tematica:");
+		areaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		areaTematicaLabel.setBounds(267, 139, 104, 14);
+		creaCorsoPanel.add(areaTematicaLabel);
+		
+		descrizioneTextField = new JTextField();
+		descrizioneTextField.setFont(new Font("Arial", Font.BOLD, 11));
+		descrizioneTextField.setColumns(10);
+		descrizioneTextField.setBounds(373, 170, 134, 20);
+		creaCorsoPanel.add(descrizioneTextField);
 		
 		
 		

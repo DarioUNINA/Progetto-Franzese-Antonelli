@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Operatori;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
@@ -23,6 +24,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JComboBox;
 import java.util.Vector;
@@ -160,14 +162,25 @@ public class CreazioneCorsoPage extends JFrame {
 				else
 					terminato = false;
 				
-				if(theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore()).equals("0"))
-					System.out.println("aggiunto");
+				if(!NumberUtils.isDigits(presenzeMin))
+					alertErroreInserimentoPresenzeMin();
 				else
-					System.out.println("non aggiugno");
+					if(!NumberUtils.isDigits(maxPartecipanti))
+						alertErroreInserimentoMaxPartecipanti();
+					else
+						if(!NumberUtils.isDigits(anno))
+							alertErroreInserimentoAnno();
+						else {
+								String state = theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore());
+									
+								if(state.equals("0"))
+									alertInserimentoEffettuato();
+								else
+									alertInserimentoNonEffettuato(state);
+						}
+							
 				
-				
-				
-			}
+			}	
 			
 		});
 		avantiButton.setFont(new Font("Arial", Font.BOLD, 15));
@@ -219,11 +232,35 @@ public class CreazioneCorsoPage extends JFrame {
 		JComboBox areaTematicaComboBox = new JComboBox((theController.setAreaTematicaComboBox()));
 		areaTematicaComboBox.setBounds(373, 136, 134, 22);
 		creaCorsoPanel.add(areaTematicaComboBox);
+	setVisible(true);
+}
+	public void alertErroreInserimentoPresenzeMin() {
+		JOptionPane.showMessageDialog(this, "Le presenze minime inserite non sono valide","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertInserimentoEffettuato() {
+		
+		JOptionPane.showMessageDialog(this, "Corso aggiunto correttamente","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
+		
 		
 		JLabel areaTematicaLabel = new JLabel("Area Tematica:");
 		areaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		areaTematicaLabel.setBounds(267, 139, 104, 14);
 		creaCorsoPanel.add(areaTematicaLabel);
+		
+		HomePage hp = new HomePage(theController, operatore);
+		setVisible(false);
+	}
+	
+	public void alertErroreInserimentoMaxPartecipanti() {
+		JOptionPane.showMessageDialog(this, "Il massimo numero di partecipanti inserito non e' valido","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertErroreInserimentoAnno() {
+		JOptionPane.showMessageDialog(this, "L'anno inserito non e' valido","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+
+	public void alertInserimentoNonEffettuato(String state) {
 		
 		descrizioneTextField = new JTextField();
 		descrizioneTextField.setFont(new Font("Arial", Font.BOLD, 11));
@@ -231,6 +268,18 @@ public class CreazioneCorsoPage extends JFrame {
 		descrizioneTextField.setBounds(373, 170, 134, 20);
 		creaCorsoPanel.add(descrizioneTextField);
 		
+		if(state.equals("-1")) {
+			
+			JOptionPane.showMessageDialog(this, "Errore sconosciuto, impossibile creare il corso ","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+		}
+		else {
+			JOptionPane.showMessageDialog(this, "Impossibile creare il corso: codice errore " +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		}
+			
+	}
+	
+	
 		
 		
 		

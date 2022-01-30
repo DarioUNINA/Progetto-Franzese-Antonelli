@@ -139,6 +139,7 @@ public class ModificaPasswordPage extends JFrame {
 	
 	public void alertPasswordCambiata() {
 		JOptionPane.showMessageDialog(this, "Password cambiata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
+		
 		if(operatore.getPassword() == null) { 
 			LogInPage pg = new LogInPage(theController);
 		}else {

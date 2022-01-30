@@ -243,12 +243,11 @@ public class HomePage extends JFrame {
 		corsiPanel.setBounds(281, 99, 506, 166);
 		sfondoPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
-		
-		
-		corsiList = new JList(theController.setCorsiFiltrati("", "", false, false, "", operatore.getIdOperatore()));
+
+		corsiList = new JList(theController.getCorsiOperatore(operatore));
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		corsiList.setVisibleRowCount(10);
-		corsiList.setBounds(10, 11, 222, 114);
+		corsiList.setBounds(10, 11, 222, 146);
 		corsiPanel.add(corsiList);
 		
 		

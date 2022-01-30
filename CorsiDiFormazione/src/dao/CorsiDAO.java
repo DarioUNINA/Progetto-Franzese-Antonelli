@@ -43,31 +43,31 @@ public class CorsiDAO {
 		
 		Vector<Corsi> corsiFiltrati = new Vector<Corsi>();
 		
-		String query;
-		
-		query = "SELECT * FROM corsi c JOIN temi t ON c.id_corso = t.id_corso WHERE ";
+		String query = "SELECT * FROM corsi c ";
 		
 		if(!areaTematica.equals(""))
-			query = query + " t.nome_area = '" + areaTematica +  "'  AND ";
+			query = query + "JOIN temi te ON c.id_corso = te.id_corso WHERE te.nome_area = '" + areaTematica +  "'  AND ";
+		else
+			query = query + "WHERE";
 		
 		if(!anno.equals("")) 
 			query = query + " c.anno = '" +  anno + "'  AND ";
 	
-		
 		if(!parolaChiave.equals(""))
-			query = query + " parole_chiave = '" + parolaChiave + "' AND ";
+			query = query + " c.parole_chiave = '" + parolaChiave + "' AND ";
 		
 		if(terminatoSi)
 			if(!terminatoNo) 
-				query = query + " terminato = true AND";
+
+				query = query + " c.terminato = true AND";
 		
 		if(terminatoNo)
 			if(!terminatoSi)
-				query = query + " terminato = false AND";
+
+				query = query + " c.terminato = false AND";
+		
 			
-	//	query = query + " c.id_operatore = '" + idOperatore + "'";
-		query = query + " 1926=1926";
-		try {
+		query = query + " c.id_operatore = '" + idOperatore + "'";		try {
 			
 			ResultSet rs = statement.executeQuery(query);
 			
@@ -105,13 +105,21 @@ public class CorsiDAO {
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT co.nome FROM corsi co JOIN operatori op ON co.id_operatore = op.id_operatore"
-					+ " WHERE op.id_operatore = '"+ op.getIdOperatore() + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM corsi co  WHERE co.id_operatore = '"+ op.getIdOperatore() + "'");
 			
 			while(rs.next()) {
 
 				Corsi c = new Corsi();
 				c.setNome(rs.getString("nome"));
+				c.setAnno(rs.getString("anno"));
+				c.setDescrizione(rs.getString("descrizione"));
+				c.setIdCorso(rs.getString("id_corso"));
+				c.setIdOperatore(op.getIdOperatore());
+				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
+				c.setParoleChiave(rs.getString("parole_chiave"));
+				c.setPresenzeMin(rs.getInt("presenze_min"));
+				c.setTerminato(rs.getBoolean("terminato"));
+
 				corsi.add(c);
 				
 			}
@@ -135,20 +143,19 @@ public class CorsiDAO {
 		
 		try {
 			
-			if(!statement.execute("INSERT INTO corsi VALUES (nextval('sequenza_id_lezione'), '" + idOperatore + "' , '" + nome + "' , '" + descrizione
+			if(!statement.execute("INSERT INTO corsi VALUES (nextval('sequenza_id_corso'), '" + idOperatore + "' , '" + nome + "' , '" + descrizione
 					+ "', '" + presenzeMin + "', '" + maxPartecipanti + "' , '" + paroleChiave + "' , '" + anno + "')" ))
 				return "0";
 			else 
 				return "-1";
 		}catch(SQLException e) {
 			
-			e.printStackTrace();
 			return e.getSQLState();
 		}
 		
 	}
 
-
+	//da completare
 
 
 }

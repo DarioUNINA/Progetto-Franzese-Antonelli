@@ -248,7 +248,8 @@ public class HomePage extends JFrame {
 		ElencoCorsiScrollPane.setBounds(217, 11, 15, 146);
 		corsiPanel.add(ElencoCorsiScrollPane);
 		
-		corsiList = new JList(theController.setCorsiFiltrati("", "", false, false, "", operatore.getIdOperatore()));
+	//	corsiList = new JList(theController.setCorsiFiltrati("", "", false, false, "", operatore.getIdOperatore()));
+		corsiList = new JList(theController.getCorsiOperatore(operatore));
 		corsiList.setVisibleRowCount(10);
 		corsiList.setBounds(10, 11, 222, 146);
 		corsiPanel.add(corsiList);

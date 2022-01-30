@@ -21,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
@@ -45,11 +46,13 @@ public class HomePage extends JFrame {
 	private ImageIcon imageicon;
 	private Operatori operatore;
 	private JTextField paroleChiaveTextField;
+	private JList corsiList;
 	
 	public HomePage(Controller cont, Operatori operatore) {
 		
 		imageicon = new ImageIcon("napule.png");
 		theController = cont;
+		this.operatore = operatore;
 		setIconImage(imageicon.getImage());
 
 		getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -218,15 +221,16 @@ public class HomePage extends JFrame {
 		addDeleteCorsi.add(eliminaCorsoButton);
 		eliminaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JPanel corsi = new JPanel();
-		corsi.setBackground(SystemColor.control);
-		corsi.setBounds(281, 99, 506, 166);
-		sfondoPane.add(corsi);
-		corsi.setLayout(null);
+		JPanel corsiPanel = new JPanel();
+		corsiPanel.setBackground(SystemColor.control);
+		corsiPanel.setBounds(281, 99, 506, 166);
+		sfondoPane.add(corsiPanel);
+		corsiPanel.setLayout(null);
 		
-		List corsiList = new List();
+		corsiList = new JList(theController.setCorsiFiltrati("", "", false, false, "", operatore.getIdOperatore()));
+		corsiList.setVisibleRowCount(10);
 		corsiList.setBounds(10, 10, 222, 146);
-		corsi.add(corsiList);
+		corsiPanel.add(corsiList);
 		
 		JPanel gestione = new JPanel();
 		gestione.setBackground(SystemColor.control);
@@ -260,7 +264,9 @@ public class HomePage extends JFrame {
 				terminatoCheckBoxSi.setForeground(Color.BLACK);
 				paroleChiaveTextField.setText("");
 				terminatoCheckBoxNo.setSelected(false);
-				terminatoCheckBoxNo.setForeground(Color.BLACK);			}
+				terminatoCheckBoxNo.setForeground(Color.BLACK);			
+				
+			}
 		});
 		resetFiltriButton.setForeground(Color.RED);
 		resetFiltriButton.setBounds(10, 219, 89, 23);
@@ -274,6 +280,8 @@ public class HomePage extends JFrame {
 				
 				String areaTematica = areaTematicaComboBox.getSelectedItem().toString();
 				String anno = annoComboBox.getSelectedItem().toString();
+				String parolaChiave = paroleChiaveTextField.getText();
+				
 				boolean terminatoSi , terminatoNo; 
 				
 				if(terminatoCheckBoxSi.isSelected())
@@ -286,12 +294,8 @@ public class HomePage extends JFrame {
 				else
 					terminatoNo = false;
 				
-				String parolaChiave = paroleChiaveTextField.getText();	
+				corsiList.setListData(theController.setCorsiFiltrati(areaTematica, anno, terminatoSi, terminatoNo, parolaChiave, operatore.getIdOperatore()));
 				
-				Vector<Corsi> prova;
-				
-				prova = theController.setCorsiFiltrati(areaTematica, anno, terminatoSi, terminatoNo, parolaChiave);
-					
 			}
 		});
 		filtraButton.setForeground(new Color(65, 105, 225));

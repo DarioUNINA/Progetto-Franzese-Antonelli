@@ -39,7 +39,7 @@ public class CorsiDAO {
 		}
 	}
 	
-	public Vector<Corsi> addFiltri(String areaTematica, String anno, boolean terminatoSi, boolean terminatoNo, String parolaChiave) {
+	public Vector<Corsi> addFiltri(String areaTematica, String anno, boolean terminatoSi, boolean terminatoNo, String parolaChiave, String idOperatore) {
 		
 		Vector<Corsi> corsiFiltrati = new Vector<Corsi>();
 		
@@ -65,7 +65,7 @@ public class CorsiDAO {
 			if(!terminatoSi)
 				query = query + " terminato = false AND";
 			
-		query = query + "1926=1926";
+		query = query + " c.id_operatore = '" + idOperatore + "'";
 		
 		try {
 			
@@ -76,7 +76,7 @@ public class CorsiDAO {
 				Corsi c = new Corsi();
 				
 				c.setIdCorso(rs.getString("id_corso"));
-				c.setIdOperatore(rs.getString("id_operatore"));
+				c.setIdOperatore(idOperatore);
 				c.setNome(rs.getString("nome"));
 				c.setDescrizione(rs.getString("descrizione"));
 				c.setPresenzeMin(rs.getInt("presenze_min"));

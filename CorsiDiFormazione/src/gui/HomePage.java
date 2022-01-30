@@ -64,11 +64,12 @@ public class HomePage extends JFrame {
 		setBounds(100, 100, 813, 490);
 		sfondoPane = new JPanel();
 		sfondoPane.setBackground(new Color(65, 105, 225));
-		sfondoPane.setBorder(null);
+		sfondoPane.setBorder(new LineBorder(Color.BLACK));
 		setContentPane(sfondoPane);
 		sfondoPane.setLayout(null);
 		
 		JPanel benvenuto = new JPanel();
+		benvenuto.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		benvenuto.setBackground(SystemColor.control);
 		benvenuto.setBounds(10, 11, 777, 77);
 		sfondoPane.add(benvenuto);
@@ -125,6 +126,7 @@ public class HomePage extends JFrame {
 		benvenuto.add(esciButton);
 		
 		JPanel filtri = new JPanel();
+		filtri.setBorder(new LineBorder(Color.BLACK, 2));
 		filtri.setBackground(SystemColor.control);
 		filtri.setBounds(10, 99, 261, 253);
 		sfondoPane.add(filtri);
@@ -199,6 +201,7 @@ public class HomePage extends JFrame {
 		paroleChiaveTextField.setColumns(10);
 		
 		JPanel addDeleteCorsi = new JPanel();
+		addDeleteCorsi.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		addDeleteCorsi.setBackground(SystemColor.control);
 		addDeleteCorsi.setBounds(10, 363, 261, 77);
 		sfondoPane.add(addDeleteCorsi);
@@ -233,6 +236,7 @@ public class HomePage extends JFrame {
 		eliminaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		JPanel corsiPanel = new JPanel();
+		corsiPanel.setBorder(new LineBorder(Color.BLACK, 2));
 		corsiPanel.setBackground(SystemColor.control);
 		corsiPanel.setBounds(281, 99, 506, 166);
 		sfondoPane.add(corsiPanel);
@@ -250,6 +254,7 @@ public class HomePage extends JFrame {
 		corsiPanel.add(corsiList);
 		
 		JPanel gestione = new JPanel();
+		gestione.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		gestione.setBackground(SystemColor.control);
 		gestione.setBounds(281, 274, 506, 166);
 		sfondoPane.add(gestione);

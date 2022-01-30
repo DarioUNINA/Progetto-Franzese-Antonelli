@@ -53,7 +53,7 @@ public class RegistrazionePage extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(65, 105, 225));
 		contentPane.setForeground(Color.DARK_GRAY);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		

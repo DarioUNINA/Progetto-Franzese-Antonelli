@@ -54,7 +54,7 @@ public class RecuperoPassPage extends JFrame {
 		setBounds(100, 100, 584, 368);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.orange);
-		contentPane.setBorder(null);
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		

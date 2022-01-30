@@ -69,7 +69,7 @@ public class LogInPage extends JFrame {
 		setBounds(100, 100, 813, 490);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(65, 105, 225));
-		contentPane.setBorder(null);
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 

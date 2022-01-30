@@ -45,7 +45,6 @@ public class CorsiDAO {
 		
 		String query = "SELECT * FROM corsi c ";
 		
-		
 		if(!areaTematica.equals(""))
 			query = query + "JOIN temi te ON c.id_corso = te.id_corso WHERE te.nome_area = '" + areaTematica +  "'  AND ";
 		else
@@ -59,16 +58,16 @@ public class CorsiDAO {
 		
 		if(terminatoSi)
 			if(!terminatoNo) 
+
 				query = query + " c.terminato = true AND";
 		
 		if(terminatoNo)
 			if(!terminatoSi)
+
 				query = query + " c.terminato = false AND";
 		
 			
-		query = query + " c.id_operatore = '" + idOperatore + "'";
-		
-		try {
+		query = query + " c.id_operatore = '" + idOperatore + "'";		try {
 			
 			ResultSet rs = statement.executeQuery(query);
 			

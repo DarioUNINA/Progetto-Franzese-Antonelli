@@ -79,6 +79,7 @@ public class RecuperoPassPage extends JFrame {
 		recuperoPanel.add(nomeUtenteLabel);
 		
 		nomeUtenteText = new JTextField();
+		nomeUtenteText.setFont(new Font("Arial", Font.BOLD, 13));
 		nomeUtenteText.setColumns(10);
 		nomeUtenteText.setBounds(211, 78, 121, 20);
 		recuperoPanel.add(nomeUtenteText);

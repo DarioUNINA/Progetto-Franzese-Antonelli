@@ -153,8 +153,10 @@ public class Controller {
 	
 	
 
-	
-	
+	public AreeTematiche setAreaTematica() {
+		
+		return areeTematicheDAO.getAreeTematiche();
+	}
 	
 }
 

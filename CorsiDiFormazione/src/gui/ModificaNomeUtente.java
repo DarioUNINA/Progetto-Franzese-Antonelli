@@ -74,11 +74,13 @@ public class ModificaNomeUtente extends JFrame {
 		
 		//173, 79, 214, 20
 		nuovoNomeUtenteTextField = new JTextField();
+		nuovoNomeUtenteTextField.setFont(new Font("Arial", Font.BOLD, 13));
 		nuovoNomeUtenteTextField.setBounds(179, 104, 192, 20);
 		modificaNomeUtentePanel.add(nuovoNomeUtenteTextField);
 		nuovoNomeUtenteTextField.setColumns(10);
 		
 		confermaNuovoNomeUtenteTextField = new JTextField();
+		confermaNuovoNomeUtenteTextField.setFont(new Font("Arial", Font.BOLD, 13));
 		confermaNuovoNomeUtenteTextField.setColumns(10);
 		confermaNuovoNomeUtenteTextField.setBounds(179, 184, 192, 20);
 		modificaNomeUtentePanel.add(confermaNuovoNomeUtenteTextField);

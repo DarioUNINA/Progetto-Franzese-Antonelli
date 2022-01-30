@@ -36,9 +36,30 @@ public class AreeTematicheDAO {
 			e.getMessage();
 			return aree;
 		}
-		
-		
 	}
+	
+	
+	public AreeTematiche getAreeTematiche(){
+			
+			AreeTematiche at = new AreeTematiche();
+			
+			try {
+				ResultSet rs = statement.executeQuery("SELECT * FROM aree_tematiche");
+				
+				at.setNomeArea("");
+				
+				while(rs.next()) {
+					at.setNomeArea(rs.getString(1));
+				}
+				
+				return at;
+			}catch(SQLException e) {
+				e.getMessage();
+				return at;
+			}
+	}
+	
+	
 	
 	
 	

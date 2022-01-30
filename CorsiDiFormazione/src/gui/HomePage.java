@@ -39,6 +39,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.ListSelectionModel;
 
 public class HomePage extends JFrame {
 
@@ -196,6 +197,7 @@ public class HomePage extends JFrame {
 		filtri.add(terminatoCheckBoxNo);
 		
 		paroleChiaveTextField = new JTextField();
+		paroleChiaveTextField.setFont(new Font("Arial", Font.BOLD, 13));
 		paroleChiaveTextField.setBounds(117, 167, 134, 20);
 		filtri.add(paroleChiaveTextField);
 		paroleChiaveTextField.setColumns(10);
@@ -242,17 +244,21 @@ public class HomePage extends JFrame {
 		sfondoPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
 		
-		JScrollPane ElencoCorsiScrollPane = new JScrollPane(corsiList);
-		ElencoCorsiScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		ElencoCorsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		ElencoCorsiScrollPane.setBounds(217, 11, 15, 146);
-		corsiPanel.add(ElencoCorsiScrollPane);
-		
-	//	corsiList = new JList(theController.setCorsiFiltrati("", "", false, false, "", operatore.getIdOperatore()));
+		JScrollPane corsiScrollPane = new JScrollPane();
+		corsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		corsiScrollPane.setBounds(10, 11, 222, 114);
+		corsiPanel.add(corsiScrollPane);
+
 		corsiList = new JList(theController.getCorsiOperatore(operatore));
+		corsiScrollPane.setViewportView(corsiList);
+		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		corsiList.setVisibleRowCount(10);
-		corsiList.setBounds(10, 11, 222, 146);
-		corsiPanel.add(corsiList);
+	
+
+		JButton selezionaButton = new JButton("SELEZIONA");
+		selezionaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		selezionaButton.setBounds(20, 133, 199, 22);
+		corsiPanel.add(selezionaButton);
 		
 		JPanel gestione = new JPanel();
 		gestione.setBorder(new LineBorder(new Color(0, 0, 0), 2));

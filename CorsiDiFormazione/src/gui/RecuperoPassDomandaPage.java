@@ -133,7 +133,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		recuperoPanel.add(domandaLabel);
 		
 		rispostaDomandaField = new JTextField();
-		rispostaDomandaField.setFont(new Font("Arial", Font.BOLD, 15));
+		rispostaDomandaField.setFont(new Font("Arial", Font.BOLD, 13));
 		rispostaDomandaField.setBounds(202, 140, 220, 20);
 		recuperoPanel.add(rispostaDomandaField);
 		rispostaDomandaField.setColumns(10);

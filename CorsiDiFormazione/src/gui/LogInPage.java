@@ -80,11 +80,13 @@ public class LogInPage extends JFrame {
 		logInPanel.setLayout(null);
 
 		nomeUtenteField = new JTextField();
+		nomeUtenteField.setFont(new Font("Arial", Font.BOLD, 11));
 		nomeUtenteField.setBounds(269, 55, 121, 20);
 		logInPanel.add(nomeUtenteField);
 		nomeUtenteField.setColumns(10);
 
 		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("Arial", Font.BOLD, 11));
 		passwordField.setBounds(269, 105, 121, 20);
 		logInPanel.add(passwordField);
 
@@ -121,7 +123,7 @@ public class LogInPage extends JFrame {
 						if(!controller.logInClicked(Nome, Pass))
 							alertLogInFallito();
 						else
-						{							
+						{			
 							HomePage hp = new HomePage(theController,theController.getOperatore(Nome));
 							setVisible(false);
 						}

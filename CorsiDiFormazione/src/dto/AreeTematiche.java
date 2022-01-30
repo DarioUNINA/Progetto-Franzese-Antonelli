@@ -4,6 +4,9 @@ public class AreeTematiche {
 
 	private String nomeArea;
 
+	public AreeTematiche() {
+	}
+	
 	public AreeTematiche(String nomeArea) {
 		this.nomeArea = nomeArea;
 	}

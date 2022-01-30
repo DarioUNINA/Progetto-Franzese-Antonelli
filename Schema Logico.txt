@@ -47,6 +47,8 @@ temi (/nome_area/, /id_corso/)
 
 15)Caratteri speciali non ammessi in nome utente e password
 
+16) attivate trigger su update
+
 
 --1)
 	CREATE FUNCTION check_inserimento_in_terminato()

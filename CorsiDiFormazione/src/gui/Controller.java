@@ -139,10 +139,19 @@ public class Controller {
 		return operatoriDAO.getOperatoreRecuperoPass(nome);
 	}
 	
-	public String aggiungiCorsoClicked(String nome, String descrizione, String paroleChiave, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idOperatore) {
+	public String aggiungiCorsoClicked(String nome, String descrizione, String paroleChiave, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idOperatore, String[] areeTematiche) {
 		
-		return corsiDAO.aggiungiCorso(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, idOperatore);
+		String state = corsiDAO.aggiungiCorso(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, idOperatore);
+		
+		if(state.equals("0"))
+			return temiDAO.inserisciTemi(corsiDAO.getIdCorso(nome), areeTematiche);
+		else
+			return state;
+			
+			
 	}
+	
+	
 
 	
 	

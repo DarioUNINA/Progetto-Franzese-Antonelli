@@ -151,12 +151,27 @@ public class CorsiDAO {
 				return "-1";
 		}catch(SQLException e) {
 			
+			e.printStackTrace();
 			return e.getSQLState();
 		}
 		
 	}
 
-	//da completare
-
+	public String getIdCorso(String nome) {
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT c.id_corso FROM corsi c WHERE c.nome = '" + nome + "'");
+			
+			rs.next();
+			
+			return rs.getString("id_corso");
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return "";
+			
+		}
+	}
 
 }

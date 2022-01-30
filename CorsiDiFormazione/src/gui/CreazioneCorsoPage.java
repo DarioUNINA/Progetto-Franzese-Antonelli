@@ -160,10 +160,11 @@ public class CreazioneCorsoPage extends JFrame {
 						if(!NumberUtils.isDigits(anno))
 							alertErroreInserimentoAnno();
 						else {
-								String state = theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore());
+								String[] prova = {"programmazione", "matematica"};
+	/*manca l'array di temi */	String state = theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore(), prova);
 									
 								if(state.equals("0"))
-									alertInserimentoEffettuato();
+	/*da aggiungere toLowerCase*/								alertInserimentoEffettuato();
 								else
 									alertInserimentoNonEffettuato(state);
 						}

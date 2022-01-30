@@ -135,13 +135,14 @@ public class CorsiDAO {
 		
 		try {
 			
-			if(!statement.execute("INSERT INTO corsi VALUES (nextval('sequenza_id_lezione'), " + idOperatore + " , " + nome + " , " + descrizione
-					+ ", " + presenzeMin + " , " + maxPartecipanti + " , " + paroleChiave + " , " + anno + ")" ))
+			if(!statement.execute("INSERT INTO corsi VALUES (nextval('sequenza_id_lezione'), '" + idOperatore + "' , '" + nome + "' , '" + descrizione
+					+ "', '" + presenzeMin + "', '" + maxPartecipanti + "' , '" + paroleChiave + "' , '" + anno + "')" ))
 				return "0";
 			else 
 				return "-1";
 		}catch(SQLException e) {
 			
+			e.printStackTrace();
 			return e.getSQLState();
 		}
 		

@@ -66,7 +66,7 @@ public class CorsiDAO {
 				query = query + " terminato = false AND";
 			
 		query = query + " c.id_operatore = '" + idOperatore + "'";
-		
+	//	query = query + " 1926=1926";
 		try {
 			
 			ResultSet rs = statement.executeQuery(query);
@@ -128,4 +128,26 @@ public class CorsiDAO {
 		
 		
 	}
+
+	public String aggiungiCorso(String nome, String descrizione, String paroleChiave, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idOperatore) {
+		
+		String state;
+		
+		try {
+			
+			if(!statement.execute("INSERT INTO corsi VALUES (nextval('sequenza_id_lezione'), " + idOperatore + " , " + nome + " , " + descrizione
+					+ ", " + presenzeMin + " , " + maxPartecipanti + " , " + paroleChiave + " , " + anno + ")" ))
+				return "0";
+			else 
+				return "-1";
+		}catch(SQLException e) {
+			
+			return e.getSQLState();
+		}
+		
+	}
+
+
+
+
 }

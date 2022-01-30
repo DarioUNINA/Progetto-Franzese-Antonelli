@@ -37,6 +37,8 @@ import javax.swing.JScrollBar;
 import java.awt.Button;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class HomePage extends JFrame {
 
@@ -203,6 +205,15 @@ public class HomePage extends JFrame {
 		addDeleteCorsi.setLayout(null);
 		
 		JButton aggiungiCorsoButton = new JButton("AGGIUNGI CORSO");
+		aggiungiCorsoButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				CreazioneCorsoPage ccp = new CreazioneCorsoPage(theController, operatore);
+				setVisible(false);
+				
+			}
+		});
 		aggiungiCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
 		aggiungiCorsoButton.setBounds(22, 11, 212, 25);
 		addDeleteCorsi.add(aggiungiCorsoButton);
@@ -227,9 +238,15 @@ public class HomePage extends JFrame {
 		sfondoPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
 		
+		JScrollPane ElencoCorsiScrollPane = new JScrollPane(corsiList);
+		ElencoCorsiScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		ElencoCorsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		ElencoCorsiScrollPane.setBounds(217, 11, 15, 146);
+		corsiPanel.add(ElencoCorsiScrollPane);
+		
 		corsiList = new JList(theController.setCorsiFiltrati("", "", false, false, "", operatore.getIdOperatore()));
 		corsiList.setVisibleRowCount(10);
-		corsiList.setBounds(10, 10, 222, 146);
+		corsiList.setBounds(10, 11, 222, 146);
 		corsiPanel.add(corsiList);
 		
 		JPanel gestione = new JPanel();

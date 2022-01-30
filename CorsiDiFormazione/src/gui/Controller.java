@@ -138,7 +138,15 @@ public class Controller {
 		
 		return operatoriDAO.getOperatoreRecuperoPass(nome);
 	}
+	
+	public String aggiungiCorsoClicked(String nome, String descrizione, String paroleChiave, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idOperatore) {
+		
+		return corsiDAO.aggiungiCorso(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, idOperatore);
+	}
 
+	
+	
+	
 }
 
 

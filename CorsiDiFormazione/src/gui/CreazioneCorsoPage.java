@@ -12,11 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import dto.AreeTematiche;
 import dto.Operatori;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -27,6 +29,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JComboBox;
+
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class CreazioneCorsoPage extends JFrame {
@@ -224,25 +228,33 @@ public class CreazioneCorsoPage extends JFrame {
 		terminatoLabel.setBounds(296, 103, 81, 14);
 		creaCorsoPanel.add(terminatoLabel);
 		
-		JLabel descrizioneLabel = new JLabel(" Descrizione:");
+		JLabel descrizioneLabel = new JLabel("  Descrizione:");
 		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		descrizioneLabel.setBounds(277, 172, 97, 14);
+		descrizioneLabel.setBounds(68, 202, 97, 14);
 		creaCorsoPanel.add(descrizioneLabel);
-		
-		JComboBox areaTematicaComboBox = new JComboBox((theController.setAreaTematicaComboBox()));
-		areaTematicaComboBox.setBounds(373, 136, 134, 22);
-		creaCorsoPanel.add(areaTematicaComboBox);
 		
 		JLabel areaTematicaLabel = new JLabel("Area Tematica:");
 		areaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		areaTematicaLabel.setBounds(267, 139, 104, 14);
+		areaTematicaLabel.setBounds(344, 138, 104, 14);
 		creaCorsoPanel.add(areaTematicaLabel);
 		
 		descrizioneTextField = new JTextField();
 		descrizioneTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		descrizioneTextField.setColumns(10);
-		descrizioneTextField.setBounds(373, 170, 134, 20);
+		descrizioneTextField.setBounds(168, 201, 86, 20);
 		creaCorsoPanel.add(descrizioneTextField);
+		
+		
+		
+//		ArrayList<JCheckBox> arrayList = new ArrayList<JCheckBox>();
+//		
+//		for (AreeTematiche areaTematica : theController.setAreaTematica()) {
+//			arrayList.add(new JCheckBox(areaTematica.getNomeArea().toUpperCase()));		
+//		}
+//		
+//		DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+//		model.addAll(arrayList);
+//		getAreeTematicheFiltriList().setModel(model);
 		
 		setVisible(true);
 	}

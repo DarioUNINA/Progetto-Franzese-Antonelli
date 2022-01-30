@@ -243,24 +243,16 @@ public class HomePage extends JFrame {
 		corsiPanel.setBounds(281, 99, 506, 166);
 		sfondoPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
+		
+		JScrollPane corsiScrollPane = new JScrollPane();
+		corsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		corsiScrollPane.setBounds(10, 11, 222, 114);
+		corsiPanel.add(corsiScrollPane);
 
 		corsiList = new JList(theController.getCorsiOperatore(operatore));
+		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		corsiList.setVisibleRowCount(10);
-		corsiList.setBounds(10, 11, 222, 146);
-		corsiPanel.add(corsiList);
-		
-		
-		JScrollPane elencoCorsiScrollPane = new JScrollPane(); 
-		elencoCorsiScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);  
-		elencoCorsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);         
-		elencoCorsiScrollPane.setVisible(true);
-		elencoCorsiScrollPane.setBounds(232, 11, 15, 114);   
-		corsiPanel.add(elencoCorsiScrollPane);
-		
-
-		elencoCorsiScrollPane.setViewportView(corsiList);
-		corsiPanel.repaint();
 	
 
 		JButton selezionaButton = new JButton("SELEZIONA");

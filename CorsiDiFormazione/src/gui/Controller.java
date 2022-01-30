@@ -144,8 +144,10 @@ public class Controller {
 		return corsiDAO.aggiungiCorso(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, idOperatore);
 	}
 
-	
-	
+	public AreeTematiche setAreaTematica() {
+		
+		return areeTematicheDAO.getAreeTematiche();
+	}
 	
 }
 

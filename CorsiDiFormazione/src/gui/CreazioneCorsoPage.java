@@ -14,7 +14,6 @@ import javax.swing.border.LineBorder;
 
 
 import dto.Operatori;
-import org.apache.commons.lang3.math.NumberUtils;
 
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;

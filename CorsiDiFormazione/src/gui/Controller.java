@@ -164,7 +164,7 @@ public class Controller {
 		}
 	}
 	
-	public Vector<String> setStudenti(){
+	public Vector<Studenti> setStudenti(){
 		
 		return studentiDAO.getStudenti();
 	}

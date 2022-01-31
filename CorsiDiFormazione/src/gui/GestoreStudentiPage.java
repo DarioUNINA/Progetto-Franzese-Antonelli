@@ -111,9 +111,7 @@ public class GestoreStudentiPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				String matricola = studentiComboBox.getSelectedItem().toString();
-				System.out.println(matricola);
-				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore, theController.setSingoloStudente(matricola));
+	//			PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore, theController.setSingoloStudente(studentiComboBox.getItemAt(0)));
 				setVisible(false);
 			}
 		});

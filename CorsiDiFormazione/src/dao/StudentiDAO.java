@@ -21,18 +21,18 @@ public class StudentiDAO {
 	}
 	
 	
-	public Vector<String> getStudenti(){
+	public Vector<Studenti> getStudenti(){
 		
-		Vector<String> studenti = new Vector<String>();
+		Vector<Studenti> studenti = new Vector<Studenti>();
 		
 		try {
 			ResultSet rs = statement.executeQuery("SELECT s.matricola FROM studenti s");
 			
 
-			studenti.add("");
-			
 			while(rs.next()) {
-				studenti.add(rs.getString(1));
+				
+				Studenti s = new Studenti(rs.getString("matricola"), rs.getString("nome"), rs.getString("cognome"));
+				studenti.add(s);
 			}
 			
 			return studenti;

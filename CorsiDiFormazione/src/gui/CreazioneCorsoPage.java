@@ -25,12 +25,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JComboBox;
 
 import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.JScrollPane;
 
 public class CreazioneCorsoPage extends JFrame {
 	
@@ -64,14 +66,15 @@ public class CreazioneCorsoPage extends JFrame {
 		setContentPane(creazioneCorsiPanel);
 		getContentPane().setBackground(Color.ORANGE);
 		creazioneCorsiPanel.setLayout(null);
-			
-
+		
 		JPanel creaCorsoPanel = new JPanel();
 		creaCorsoPanel.setBounds(10, 11, 548, 307);
 		creaCorsoPanel.setBackground(SystemColor.control);
 		creaCorsoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		creazioneCorsiPanel.add(creaCorsoPanel);
 		creaCorsoPanel.setLayout(null);
+		
+		
 		
 		nomeTextField = new JTextField();
 		nomeTextField.setFont(new Font("Arial", Font.BOLD, 11));
@@ -165,13 +168,13 @@ public class CreazioneCorsoPage extends JFrame {
 				else
 					terminato = false;
 				
-				if(!NumberUtils.isDigits(presenzeMin))
+				if(theController.isDigits(presenzeMin))
 					alertErroreInserimentoPresenzeMin();
 				else
-					if(!NumberUtils.isDigits(maxPartecipanti))
+					if(theController.isDigits(maxPartecipanti))
 						alertErroreInserimentoMaxPartecipanti();
 					else
-						if(!NumberUtils.isDigits(anno))
+						if(theController.isDigits(anno))
 							alertErroreInserimentoAnno();
 						else {
 								String[] prova = {"programmazione", "matematica"};
@@ -244,17 +247,16 @@ public class CreazioneCorsoPage extends JFrame {
 		descrizioneTextField.setBounds(168, 201, 86, 20);
 		creaCorsoPanel.add(descrizioneTextField);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(344, 168, 115, 81);
+		creaCorsoPanel.add(scrollPane_1);
 		
+		JCheckBoxList listaTemi = new JCheckBoxList();
+		scrollPane_1.setViewportView(listaTemi);
+		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
+		listaTemi.setVisibleRowCount(10);
+		listaTemi.setVisible(true);
 		
-//		ArrayList<JCheckBox> arrayList = new ArrayList<JCheckBox>();
-//		
-//		for (AreeTematiche areaTematica : theController.setAreaTematica()) {
-//			arrayList.add(new JCheckBox(areaTematica.getNomeArea().toUpperCase()));		
-//		}
-//		
-//		DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
-//		model.addAll(arrayList);
-//		getAreeTematicheFiltriList().setModel(model);
 		
 		setVisible(true);
 	}

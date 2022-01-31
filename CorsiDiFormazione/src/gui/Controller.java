@@ -151,13 +151,18 @@ public class Controller {
 			
 	}
 	
-	
-//
-//	public AreeTematiche setAreaTematica() {
-//		
-//		return areeTematicheDAO.getAreeTematiche();
-//	}
-	
+	public boolean isDigits(String stringa) {
+		
+		try {
+			
+			Integer.parseInt(stringa);
+			
+			return true;
+		}catch(NumberFormatException e) {
+			
+			return false;
+		}
+	}
 }
 
 

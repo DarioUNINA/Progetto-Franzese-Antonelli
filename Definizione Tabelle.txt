@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS public.corsi
     terminato boolean NOT NULL DEFAULT false,
 	CONSTRAINT nome_corsi_unique UNIQUE (nome),
     CONSTRAINT "Corsi_pkey" PRIMARY KEY (id_corso),
+	CONSTRAINT caratteri_anno CHECK (anno SIMILAR TO '[1-2][0-9][0-9][0-9]'),
     CONSTRAINT corsi_fk1 FOREIGN KEY (id_operatore)
         REFERENCES public.operatori (id_operatore) MATCH SIMPLE
         ON UPDATE CASCADE

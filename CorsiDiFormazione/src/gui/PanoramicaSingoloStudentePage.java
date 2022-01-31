@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import dto.Corsi;
 import dto.Operatori;
 import dto.Studenti;
 
@@ -35,6 +36,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	private Operatori operatore;
 	private JTable corsiAmmessiLable;
 	private Studenti studente;
+	private JList lezioniList;
 	
 	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore, Studenti studente) {
 		
@@ -108,21 +110,13 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiScrollPane.setBounds(10, 36, 165, 240);
 		corsiPanel.add(corsiScrollPane);
 		
-		JList corsiList = new JList(theController.setCorsiStudente(studente));
+		JList<Corsi> corsiList = new JList<Corsi>(theController.setCorsiStudente(studente));
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setVisibleRowCount(10);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JButton confermaButton = new JButton("CONFERMA");
-		confermaButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//String id_corso = corsiList.getSe
-			}
-		});
-		confermaButton.setFont(new Font("Arial", Font.BOLD, 12));
-		confermaButton.setBounds(31, 287, 119, 30);
-		corsiPanel.add(confermaButton);
+		
+		
 		JPanel lezioniPanel = new JPanel();
 		lezioniPanel.setLayout(null);
 		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -139,10 +133,23 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		lezioniScrollPane.setBounds(10, 36, 165, 294);
 		lezioniPanel.add(lezioniScrollPane);
 		
-		JList lezioniList = new JList();
+		
+		lezioniList = new JList();
 		lezioniScrollPane.setViewportView(lezioniList);
 		lezioniList.setVisibleRowCount(10);
 		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
+		
+		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String id_corso = corsiList.getSelectedValue().getIdCorso();
+				lezioniList.setListData(theController.setAllLezioniDelCorso(id_corso));
+			}
+		});
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 12));
+		confermaButton.setBounds(31, 287, 119, 30);
+		corsiPanel.add(confermaButton);
 		
 		JPanel corsiAmmessoPanel = new JPanel();
 		corsiAmmessoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));

@@ -178,6 +178,12 @@ public class Controller {
 		
 		 return studentiDAO.getCorsiStudente(s);		
 	}
+	
+	
+	public Vector<Lezioni> setAllLezioniDelCorso(String id_corso) {
+		
+		return lezioniDAO.getAllLezioniDelCorso(id_corso);
+	}
 
 }
 

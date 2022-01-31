@@ -45,7 +45,7 @@ public class StudentiDAO {
 	public  Studenti getSingoloStudente(String matricola){
 		
 		Studenti studente = new Studenti();
-		System.out.println(matricola);
+		
 		try {
 			
 			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s WHERE s.matricola = '" + matricola + "'");

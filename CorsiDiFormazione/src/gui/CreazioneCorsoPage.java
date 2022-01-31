@@ -28,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.JComboBox;
 
 import java.util.ArrayList;
@@ -247,14 +248,18 @@ public class CreazioneCorsoPage extends JFrame {
 		descrizioneTextField.setBounds(168, 201, 86, 20);
 		creaCorsoPanel.add(descrizioneTextField);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(344, 168, 115, 81);
-		creaCorsoPanel.add(scrollPane_1);
 		
-		JCheckBoxList listaTemi = new JCheckBoxList();
-		scrollPane_1.setViewportView(listaTemi);
-		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
-		listaTemi.setVisibleRowCount(10);
+		JScrollPane corsiScrollPane = new JScrollPane();
+		corsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		corsiScrollPane.setBounds(296, 167, 227, 97);
+		creaCorsoPanel.add(corsiScrollPane);
+		
+				
+				
+				JCheckBoxList listaTemi = new JCheckBoxList();
+				corsiScrollPane.setViewportView(listaTemi);
+				listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
+				listaTemi.setVisibleRowCount(10);
 		listaTemi.setVisible(true);
 		
 		

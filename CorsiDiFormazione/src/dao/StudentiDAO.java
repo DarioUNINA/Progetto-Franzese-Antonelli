@@ -74,13 +74,23 @@ public class StudentiDAO {
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT co.nome FROM iscrizioni i JOIN corsi co ON co.id_corso = i.id_corso WHERE i.matricola = '"+ s.getMatricola() + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM iscrizioni i JOIN corsi co ON co.id_corso = i.id_corso WHERE i.matricola = '"+ s.getMatricola() + "'");
 			
 			
 			while(rs.next()) {
 
 				Corsi c = new Corsi();
+				c.setIdCorso(rs.getString("id_corso"));
+				c.setIdOperatore(rs.getString("id_operatore"));
 				c.setNome(rs.getString("nome"));
+				c.setDescrizione(rs.getString("descrizione"));
+				c.setPresenzeMin(rs.getInt("presenze_min"));
+				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
+				c.setParoleChiave(rs.getString("parole_chiave"));
+				c.setAnno(rs.getString("anno"));
+				c.setTerminato(rs.getBoolean("terminato"));
+				
+				
 
 				corsi.add(c);	
 			}

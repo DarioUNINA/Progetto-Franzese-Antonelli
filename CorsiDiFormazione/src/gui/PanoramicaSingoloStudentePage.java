@@ -91,64 +91,74 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		indietroButton.setBounds(615, 43, 152, 23);
 		studentePanel.add(indietroButton);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel.setBounds(10, 99, 185, 341);
-		sfondoPane.add(panel);
-		panel.setLayout(null);
+		JPanel corsiPanel = new JPanel();
+		corsiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		corsiPanel.setBounds(10, 99, 185, 341);
+		sfondoPane.add(corsiPanel);
+		corsiPanel.setLayout(null);
 		
 		JLabel elencoCorsiLabel = new JLabel("ELENCO CORSI:");
 		elencoCorsiLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		elencoCorsiLabel.setBounds(31, 11, 131, 14);
-		panel.add(elencoCorsiLabel);
+		corsiPanel.add(elencoCorsiLabel);
 		
-		JButton btnNewButton = new JButton("CONFERMA");
-		btnNewButton.setFont(new Font("Arial", Font.BOLD, 12));
-		btnNewButton.setBounds(31, 287, 119, 30);
-		panel.add(btnNewButton);
-		
+	
 		JScrollPane corsiScrollPane = new JScrollPane();
 		corsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		corsiScrollPane.setBounds(10, 36, 165, 240);
-		panel.add(corsiScrollPane);
+		corsiPanel.add(corsiScrollPane);
 		
 		JList corsiList = new JList(theController.setCorsiStudente(studente));
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setVisibleRowCount(10);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel_1.setBounds(227, 99, 185, 341);
-		sfondoPane.add(panel_1);
+		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//String id_corso = corsiList.getSe
+			}
+		});
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 12));
+		confermaButton.setBounds(31, 287, 119, 30);
+		corsiPanel.add(confermaButton);
+		JPanel lezioniPanel = new JPanel();
+		lezioniPanel.setLayout(null);
+		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		lezioniPanel.setBounds(227, 99, 185, 341);
+		sfondoPane.add(lezioniPanel);
 		
 		JLabel elencoLezioniLabel = new JLabel("ELENCO LEZIONI:");
 		elencoLezioniLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		elencoLezioniLabel.setBounds(31, 11, 131, 14);
-		panel_1.add(elencoLezioniLabel);
+		lezioniPanel.add(elencoLezioniLabel);
+		
+		JScrollPane lezioniScrollPane = new JScrollPane();
+		lezioniScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		lezioniScrollPane.setBounds(10, 36, 165, 294);
+		lezioniPanel.add(lezioniScrollPane);
 		
 		JList lezioniList = new JList();
+		lezioniScrollPane.setViewportView(lezioniList);
 		lezioniList.setVisibleRowCount(10);
 		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
-		lezioniList.setBounds(10, 36, 165, 294);
-		panel_1.add(lezioniList);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel_2.setBounds(440, 99, 347, 341);
-		sfondoPane.add(panel_2);
-		panel_2.setLayout(null);
+		JPanel corsiAmmessoPanel = new JPanel();
+		corsiAmmessoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		corsiAmmessoPanel.setBounds(440, 99, 347, 341);
+		sfondoPane.add(corsiAmmessoPanel);
+		corsiAmmessoPanel.setLayout(null);
 		
-		JLabel lblCorsiAllaQuale = new JLabel("CORSI ALLA QUALE E' AMMESSO ");
-		lblCorsiAllaQuale.setBounds(53, 11, 246, 14);
-		panel_2.add(lblCorsiAllaQuale);
-		lblCorsiAllaQuale.setFont(new Font("Arial", Font.BOLD, 15));
+		JLabel corsiAmmessoLabel = new JLabel("CORSI ALLA QUALE SI E' AMMESSI ");
+		corsiAmmessoLabel.setBounds(49, 11, 263, 14);
+		corsiAmmessoPanel.add(corsiAmmessoLabel);
+		corsiAmmessoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		corsiAmmessiLable = new JTable();
 		corsiAmmessiLable.setBorder(new LineBorder(Color.ORANGE));
 		corsiAmmessiLable.setBounds(10, 180, 327, -127);
-		panel_2.add(corsiAmmessiLable);
+		corsiAmmessoPanel.add(corsiAmmessiLable);
 		
 		JButton iscriviAdUnCorsoButton = new JButton("ISCRIVI AD UN CORSO");
 		iscriviAdUnCorsoButton.addMouseListener(new MouseAdapter() {
@@ -160,7 +170,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		});
 		iscriviAdUnCorsoButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		iscriviAdUnCorsoButton.setBounds(10, 222, 162, 35);
-		panel_2.add(iscriviAdUnCorsoButton);
+		corsiAmmessoPanel.add(iscriviAdUnCorsoButton);
 		
 		JButton disiscriviDaUnCorsoButton = new JButton("DISISCRIVI DA UN CORSO");
 		disiscriviDaUnCorsoButton.addMouseListener(new MouseAdapter() {
@@ -172,7 +182,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		});
 		disiscriviDaUnCorsoButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		disiscriviDaUnCorsoButton.setBounds(175, 222, 162, 35);
-		panel_2.add(disiscriviDaUnCorsoButton);
+		corsiAmmessoPanel.add(disiscriviDaUnCorsoButton);
 		
 		JButton prenotaLezioneButton = new JButton("PRENOTA LEZIONE");
 		prenotaLezioneButton.addMouseListener(new MouseAdapter() {
@@ -184,7 +194,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		});
 		prenotaLezioneButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		prenotaLezioneButton.setBounds(10, 279, 162, 35);
-		panel_2.add(prenotaLezioneButton);
+		corsiAmmessoPanel.add(prenotaLezioneButton);
 		
 		JButton annullaPrenotazioneButton = new JButton("ANNULLA PRENOTAZIONE");
 		annullaPrenotazioneButton.addMouseListener(new MouseAdapter() {
@@ -196,7 +206,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		});
 		annullaPrenotazioneButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		annullaPrenotazioneButton.setBounds(175, 279, 162, 35);
-		panel_2.add(annullaPrenotazioneButton);
+		corsiAmmessoPanel.add(annullaPrenotazioneButton);
 		
 		setVisible(true);
 	}

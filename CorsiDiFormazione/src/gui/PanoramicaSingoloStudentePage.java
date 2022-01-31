@@ -15,12 +15,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Operatori;
+import dto.Studenti;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JList;
 import java.util.Vector;
 import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JScrollPane;
 
 public class PanoramicaSingoloStudentePage extends JFrame {
 
@@ -30,8 +34,9 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	private ImageIcon imageicon;
 	private Operatori operatore;
 	private JTable corsiAmmessiLable;
+	private Studenti studente;
 	
-	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore) {
+	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore, Studenti studente) {
 		
 		imageicon = new ImageIcon("napule.png");
 		theController = cont;
@@ -50,6 +55,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		sfondoPane.setLayout(null);
 		
 		
+		
 		JPanel studentePanel = new JPanel();
 		studentePanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		studentePanel.setBackground(SystemColor.control);
@@ -57,21 +63,22 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		sfondoPane.add(studentePanel);
 		studentePanel.setLayout(null);
 		
-		JLabel studenteLabel = new JLabel("STUDENTE: " );
+		JLabel studenteLabel = new JLabel("");
 		studenteLabel.setFont(new Font("Arial", Font.BOLD, 30));
-		studenteLabel.setBounds(10, 0, 352, 44);
+		studenteLabel.setBounds(10, 0, 528, 44);
 		studentePanel.add(studenteLabel);
+		studenteLabel.setText("STUDENTE: " + studente.getMatricola() + ", " + studente.getCognome().toUpperCase());
 		
-		JButton esciButton = new JButton("ESCI");
-		esciButton.addMouseListener(new MouseAdapter() {
+		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				esciButton.setBackground(Color.RED);
+				indietroButton.setBackground(Color.RED);
 			}
 		
 			@Override
 			public void mouseExited(MouseEvent e) {
-				esciButton.setBackground(Color.WHITE);
+				indietroButton.setBackground(Color.WHITE);
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -80,9 +87,9 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 				
 			}
 		});
-		esciButton.setFont(new Font("Arial", Font.BOLD, 15));
-		esciButton.setBounds(615, 43, 152, 23);
-		studentePanel.add(esciButton);
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(615, 43, 152, 23);
+		studentePanel.add(indietroButton);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -100,11 +107,15 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		btnNewButton.setBounds(31, 287, 119, 30);
 		panel.add(btnNewButton);
 		
-		JList corsiList = new JList();
+		JScrollPane corsiScrollPane = new JScrollPane();
+		corsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		corsiScrollPane.setBounds(10, 36, 165, 240);
+		panel.add(corsiScrollPane);
+		
+		JList corsiList = new JList(theController.setCorsiStudente(studente));
+		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setVisibleRowCount(10);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
-		corsiList.setBounds(10, 36, 165, 240);
-		panel.add(corsiList);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);

@@ -6,6 +6,9 @@ public class Studenti {
 	private String nome;
 	private String cognome;
 	
+	public Studenti() {
+		
+	}
 	public Studenti(String matricola, String nome, String cognome) {
 		this.matricola = matricola;
 		this.nome = nome;

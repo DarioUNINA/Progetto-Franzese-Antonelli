@@ -37,6 +37,7 @@ public class EliminaCorsoPage extends JFrame {
 
 	
 	public EliminaCorsoPage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		theController = controller;
 		this.operatore = operatore;

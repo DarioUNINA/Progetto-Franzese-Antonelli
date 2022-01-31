@@ -34,6 +34,7 @@ public class CreazioneLezionePage extends JFrame {
 	private JTextField descrizioneTextField;
 	
 	public CreazioneLezionePage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		
 		this.operatore = operatore;

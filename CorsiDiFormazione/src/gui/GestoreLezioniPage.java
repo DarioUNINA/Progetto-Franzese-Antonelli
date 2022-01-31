@@ -31,6 +31,7 @@ public class GestoreLezioniPage extends JFrame {
 	private Operatori operatore;
 	
 	public GestoreLezioniPage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		
 		theController = controller;

@@ -30,6 +30,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 
 	
 	public AggiungiStudenteCorsoPage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		theController = controller;
 

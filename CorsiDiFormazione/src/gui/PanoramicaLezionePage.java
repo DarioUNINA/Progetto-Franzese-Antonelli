@@ -34,6 +34,7 @@ public class PanoramicaLezionePage extends JFrame {
 	private Operatori operatore;
 
 	public PanoramicaLezionePage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		
 		theController = controller;

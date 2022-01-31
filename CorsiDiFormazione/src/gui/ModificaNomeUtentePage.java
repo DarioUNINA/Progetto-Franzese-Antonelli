@@ -32,6 +32,7 @@ public class ModificaNomeUtentePage extends JFrame {
 	private JTextField confermaNuovoNomeUtenteTextField;
 	
 	public ModificaNomeUtentePage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		theController = controller;
 

@@ -29,6 +29,7 @@ public class AnnullaPrenotazionePage extends JFrame {
 	private Operatori operatore;
 	
 	public AnnullaPrenotazionePage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		theController = controller;
 

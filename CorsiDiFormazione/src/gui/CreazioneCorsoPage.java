@@ -52,6 +52,7 @@ public class CreazioneCorsoPage extends JFrame {
 	private JTextField descrizioneTextField;
 	
 	public CreazioneCorsoPage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		this.operatore = operatore;
 		theController = controller;

@@ -32,6 +32,7 @@ public class GestoreStudentiPage extends JFrame {
 
 	
 	public GestoreStudentiPage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		theController = controller;
 
@@ -88,7 +89,7 @@ public class GestoreStudentiPage extends JFrame {
 		studenteLabel.setBounds(111, 123, 77, 14);
 		selzionaStudentiPanel.add(studenteLabel);
 		
-		JComboBox studentiComboBox = new JComboBox();
+		JComboBox studentiComboBox = new JComboBox(theController.setStudenti());
 		studentiComboBox.setBounds(198, 120, 157, 22);
 		selzionaStudentiPanel.add(studentiComboBox);
 		
@@ -109,7 +110,10 @@ public class GestoreStudentiPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore);
+				
+				String matricola = studentiComboBox.getSelectedItem().toString();
+				System.out.println(matricola);
+				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore, theController.setSingoloStudente(matricola));
 				setVisible(false);
 			}
 		});

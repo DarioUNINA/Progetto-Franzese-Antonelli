@@ -32,6 +32,7 @@ public class ImpostazioniPage extends JFrame {
 	private Operatori operatore;
 	
 	public ImpostazioniPage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		theController = controller;
 

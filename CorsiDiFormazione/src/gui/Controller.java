@@ -163,6 +163,22 @@ public class Controller {
 			return false;
 		}
 	}
+	
+	public Vector<String> setStudenti(){
+		
+		return studentiDAO.getStudenti();
+	}
+	
+	Studenti setSingoloStudente(String matricola){
+		
+		return studentiDAO.getSingoloStudente(matricola);
+	}
+	
+	public Vector<Corsi> setCorsiStudente(Studenti s){
+		
+		 return studentiDAO.getCorsiStudente(s);		
+	}
+
 }
 
 

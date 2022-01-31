@@ -29,6 +29,7 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 	private Operatori operatore;
 	
 	public DisiscriviStudenteCorsoPage(Controller controller, Operatori operatore) {
+		setResizable(false);
 		
 		theController = controller;
 

@@ -64,7 +64,7 @@ public class CreazioneCorsoPage extends JFrame {
 		creazioneCorsiPanel = new JPanel();
 		creazioneCorsiPanel.setBorder(new LineBorder(Color.BLACK));
 		setContentPane(creazioneCorsiPanel);
-		getContentPane().setBackground(Color.ORANGE);
+		getContentPane().setBackground(new Color(65, 105, 225));
 		creazioneCorsiPanel.setLayout(null);
 		
 		JPanel creaCorsoPanel = new JPanel();

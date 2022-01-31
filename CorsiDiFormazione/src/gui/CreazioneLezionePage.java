@@ -48,7 +48,7 @@ public class CreazioneLezionePage extends JFrame {
 		creazioneLezioniPanel = new JPanel();
 		creazioneLezioniPanel.setBorder(new LineBorder(Color.BLACK));
 		setContentPane(creazioneLezioniPanel);
-		getContentPane().setBackground(Color.ORANGE);
+		getContentPane().setBackground(new Color(65, 105, 225));
 		creazioneLezioniPanel.setLayout(null);
 			
 

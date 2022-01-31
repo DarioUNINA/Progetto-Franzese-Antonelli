@@ -46,7 +46,7 @@ public class PanoramicaLezionePage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.orange);
+		contentPane.setBackground(new Color(65, 105, 225));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -59,7 +59,7 @@ public class PanoramicaLezionePage extends JFrame {
 		gestoreLezioniPanel.setLayout(null);
 		
 		JLabel gestoreLezioniLabel = new JLabel("PANORAMICA LEZIONI");
-		gestoreLezioniLabel.setForeground(new Color(65, 105, 225));
+		gestoreLezioniLabel.setForeground(Color.RED);
 		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		gestoreLezioniLabel.setBackground(Color.WHITE);
 		gestoreLezioniLabel.setBounds(157, 11, 243, 33);

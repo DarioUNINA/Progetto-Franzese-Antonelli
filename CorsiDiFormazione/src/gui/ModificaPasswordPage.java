@@ -51,7 +51,7 @@ public class ModificaPasswordPage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.orange);
+		contentPane.setBackground(new Color(65, 105, 225));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

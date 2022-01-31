@@ -21,7 +21,7 @@ import dto.Operatori;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class ModificaNomeUtente extends JFrame {
+public class ModificaNomeUtentePage extends JFrame {
 
 	private JPanel contentPane;
 	private Controller theController;
@@ -31,7 +31,7 @@ public class ModificaNomeUtente extends JFrame {
 	private JTextField nuovoNomeUtenteTextField;
 	private JTextField confermaNuovoNomeUtenteTextField;
 	
-	public ModificaNomeUtente(Controller controller, Operatori operatore) {
+	public ModificaNomeUtentePage(Controller controller, Operatori operatore) {
 		
 		theController = controller;
 

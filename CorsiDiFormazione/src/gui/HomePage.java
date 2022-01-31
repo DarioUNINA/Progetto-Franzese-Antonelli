@@ -273,11 +273,41 @@ public class HomePage extends JFrame {
 		gestione.add(gestioneCorsiButton);
 		
 		JButton gestioneLezioniButton = new JButton("GESTIONE LEZIONI");
+		gestioneLezioniButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GestoreLezioniPage gs = new GestoreLezioniPage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				gestioneLezioniButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestioneLezioniButton.setBackground(Color.WHITE);
+			}
+		});
 		gestioneLezioniButton.setFont(new Font("Arial", Font.BOLD, 13));
 		gestioneLezioniButton.setBounds(322, 71, 174, 22);
 		gestione.add(gestioneLezioniButton);
 		
 		JButton gestioneStudentiButton = new JButton("GESTIONE STUDENTI");
+		gestioneStudentiButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GestoreStudentiPage gs = new GestoreStudentiPage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				gestioneStudentiButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestioneStudentiButton.setBackground(Color.WHITE);
+			}
+		});
 		gestioneStudentiButton.setFont(new Font("Arial", Font.BOLD, 13));
 		gestioneStudentiButton.setBounds(322, 115, 174, 22);
 		gestione.add(gestioneStudentiButton);

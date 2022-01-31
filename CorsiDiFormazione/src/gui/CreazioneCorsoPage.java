@@ -139,24 +139,24 @@ public class CreazioneCorsoPage extends JFrame {
 		creaCorsoPanel.add(indietroButton);
 		
 		
-		JButton avantiButton = new JButton("AVANTI");
-		avantiButton.addMouseListener(new MouseAdapter() {
+		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				avantiButton.setBackground(Color.GREEN);
+				confermaButton.setBackground(Color.GREEN);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				avantiButton.setBackground(Color.WHITE);
+				confermaButton.setBackground(Color.WHITE);
 			}
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				String nome = nomeTextField.getText();
-				String descrizione = descrizioneTextField.getText();
-				String paroleChiave = paroleChiaveTextBox.getText();
-				String anno = annoTextField.getText();
+				String nome = nomeTextField.getText().toLowerCase();
+				String descrizione = descrizioneTextField.getText().toLowerCase();
+				String paroleChiave = paroleChiaveTextBox.getText().toLowerCase();
+				String anno = annoTextField.getText().toLowerCase();
 				String presenzeMin = presenzeMinTextField.getText();
 				String maxPartecipanti = maxPartecipantiTextField.getText();
 				boolean terminato;
@@ -179,7 +179,7 @@ public class CreazioneCorsoPage extends JFrame {
 	/*manca l'array di temi */	String state = theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore(), prova);
 									
 								if(state.equals("0"))
-	/*da aggiungere toLowerCase*/								alertInserimentoEffettuato();
+									alertInserimentoEffettuato();
 								else
 									alertInserimentoNonEffettuato(state);
 						}
@@ -188,9 +188,9 @@ public class CreazioneCorsoPage extends JFrame {
 			}	
 			
 		});
-		avantiButton.setFont(new Font("Arial", Font.BOLD, 15));
-		avantiButton.setBounds(417, 273, 121, 23);
-		creaCorsoPanel.add(avantiButton);
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaButton.setBounds(417, 273, 121, 23);
+		creaCorsoPanel.add(confermaButton);
 		
 		JLabel creazioneCorsoLabel = new JLabel("CREAZIONE CORSO");
 		creazioneCorsoLabel.setForeground(Color.BLACK);

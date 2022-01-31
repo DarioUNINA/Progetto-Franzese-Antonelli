@@ -1,5 +1,6 @@
 package dto;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Lezioni {
@@ -10,11 +11,13 @@ public class Lezioni {
 	private String orario;
 	private String idCorso;
 	private String idLezione;
-	private LocalDate data;
+	private Date data;
 	
+	public Lezioni() {
+	}
 	
 	public Lezioni(String durata, String titolo, String descrizione, String orario, String idCorso, String idLezione,
-			LocalDate data) {
+			Date data) {
 		this.durata = durata;
 		this.titolo = titolo;
 		this.descrizione = descrizione;
@@ -72,13 +75,17 @@ public class Lezioni {
 		this.idLezione = idLezione;
 	}
 
-	public LocalDate getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(LocalDate data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
+	
+	public String toString() {
+		return this.titolo;
 
+	}
 	
 }

@@ -21,8 +21,10 @@ public class StudentiDAO {
 	}
 	
 	
+
 	public Vector<Studenti> getStudenti(){
 		
+
 		Vector<Studenti> studenti = new Vector<Studenti>();
 		
 		try {
@@ -31,6 +33,7 @@ public class StudentiDAO {
 
 			while(rs.next()) {
 				
+
 				Studenti s = new Studenti(rs.getString("matricola"), rs.getString("nome"), rs.getString("cognome"));
 				studenti.add(s);
 			}
@@ -45,7 +48,8 @@ public class StudentiDAO {
 	public  Studenti getSingoloStudente(String matricola){
 		
 		Studenti studente = new Studenti();
-		System.out.println(matricola);
+
+		
 		try {
 			
 			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s WHERE s.matricola = '" + matricola + "'");

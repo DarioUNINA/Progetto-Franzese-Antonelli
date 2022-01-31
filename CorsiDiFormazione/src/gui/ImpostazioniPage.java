@@ -37,10 +37,9 @@ public class ImpostazioniPage extends JFrame {
 
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
-		
+		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
-		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
 		contentPane = new JPanel();
@@ -60,7 +59,7 @@ public class ImpostazioniPage extends JFrame {
 		modificaNomeUtenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ModificaNomeUtente mnu = new ModificaNomeUtente(theController, operatore);
+				ModificaNomeUtentePage mnu = new ModificaNomeUtentePage(theController, operatore);
 				setVisible(false);
 			}
 		});

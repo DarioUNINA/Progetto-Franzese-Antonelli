@@ -184,6 +184,11 @@ public class Controller {
 		
 		return lezioniDAO.getAllLezioniDelCorso(id_corso);
 	}
+	
+	public Vector<Corsi> setIscrizioneCorsiStudente(String matricola, String id_operatore){
+		
+		return iscrizioniDAO.getIscrizioneCorsiStudente(matricola, id_operatore);
+	}
 
 }
 

@@ -162,6 +162,9 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessoPanel.add(corsiAmmessoLabel);
 		corsiAmmessoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
+		
+		String[] nomeColonne = {"Corso", "Numero Presenze"};
+		
 		corsiAmmessiLable = new JTable();
 		corsiAmmessiLable.setBorder(new LineBorder(Color.ORANGE));
 		corsiAmmessiLable.setBounds(10, 180, 327, -127);
@@ -171,7 +174,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		iscriviAdUnCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				AggiungiStudenteCorsoPage asc = new AggiungiStudenteCorsoPage(theController, operatore);
+				AggiungiStudenteCorsoPage asc = new AggiungiStudenteCorsoPage(theController, operatore, studente);
 				setVisible(false);
 			}
 		});

@@ -270,6 +270,8 @@ public class CreazioneCorsoPage extends JFrame {
 		creaCorsoPanel.add(corsiScrollPane);
 				
 		listaTemi = new JCheckBoxList();
+		//DA COMPLETARE
+		listaTemi.setModel(null);
 		corsiScrollPane.setViewportView(listaTemi);
 		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
 		listaTemi.setVisibleRowCount(10);

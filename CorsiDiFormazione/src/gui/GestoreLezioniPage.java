@@ -142,6 +142,7 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniScrollPane.setBounds(10, 40, 201, 162);
 		lezioniPanel.add(lezioniScrollPane);
 		
+		lezioniList = new JList<Lezioni>();
 		lezioniScrollPane.setViewportView(lezioniList);
 		lezioniList.setVisibleRowCount(10);
 		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));

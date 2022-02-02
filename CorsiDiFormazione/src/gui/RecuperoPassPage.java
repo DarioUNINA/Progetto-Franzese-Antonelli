@@ -30,14 +30,17 @@ import java.awt.event.KeyEvent;
 
 public class RecuperoPassPage extends JFrame {
 
-	private JPanel contentPane;
-	private Component url;
-	private JTextField NomeUtenteField;
 	private Controller theController;
+	
+	private Component url;
 	private ImageIcon imageicon;
+	private JPanel contentPane;
+	private JPanel recuperoPanel;
+	private JLabel rECUPEROPASSWORDLabel;
+	private JLabel nomeUtenteLabel;
 	private JTextField nomeUtenteText;
-	
-	
+	private JButton confermaButton;
+	private JButton indietroButton;	
 	
 	public RecuperoPassPage(Controller co) {
 		
@@ -58,22 +61,21 @@ public class RecuperoPassPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel recuperoPanel = new JPanel();
+		recuperoPanel = new JPanel();
 		recuperoPanel.setBackground(SystemColor.control);
 		recuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		recuperoPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(recuperoPanel);
 		recuperoPanel.setLayout(null);
-
 		
-		JLabel rECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
+		rECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
 		rECUPEROPASSWORDLabel.setForeground(Color.BLACK);
 		rECUPEROPASSWORDLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		rECUPEROPASSWORDLabel.setBackground(Color.WHITE);
 		rECUPEROPASSWORDLabel.setBounds(139, 11, 268, 33);
 		recuperoPanel.add(rECUPEROPASSWORDLabel);
 		
-		JLabel nomeUtenteLabel = new JLabel("Nome Utente:");
+		nomeUtenteLabel = new JLabel("Nome Utente:");
 		nomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		nomeUtenteLabel.setBounds(100, 80, 101, 14);
 		recuperoPanel.add(nomeUtenteLabel);
@@ -84,7 +86,7 @@ public class RecuperoPassPage extends JFrame {
 		nomeUtenteText.setBounds(211, 78, 121, 20);
 		recuperoPanel.add(nomeUtenteText);
 		
-		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("CONFERMA");
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -119,7 +121,7 @@ public class RecuperoPassPage extends JFrame {
 		confermaButton.setBounds(211, 148, 121, 27);
 		recuperoPanel.add(confermaButton);
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {

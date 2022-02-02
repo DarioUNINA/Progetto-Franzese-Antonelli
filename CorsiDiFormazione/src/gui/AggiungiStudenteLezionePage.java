@@ -36,12 +36,19 @@ public class AggiungiStudenteLezionePage extends JFrame {
 	private JPanel contentPane;
 	private Component url;
 	private ImageIcon imageicon;
+<<<<<<< HEAD
 	private JPanel selzionaStudentiPanel;
 	private JLabel selezionaStudenteLabel;
 	private JButton indietroButton;
 	private JLabel studenteLabel;
 	JButton confermaButton;
 	
+=======
+	private Operatori operatore;
+	private Lezioni lezione;
+	private JComboBox<Studenti> studentiComboBox;
+	private Vector<Studenti> elencoStudenti;
+>>>>>>> 1fda4efdd353d62dda7e012e5ca39cc234b58a6f
 	
 	public AggiungiStudenteLezionePage(Controller controller, Operatori operatore, Lezioni lezione) {
 		setResizable(false);
@@ -103,9 +110,9 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		studenteLabel.setBounds(111, 123, 77, 14);
 		selzionaStudentiPanel.add(studenteLabel);
 		
-		Vector<Studenti> elencoStudenti = new Vector<Studenti>(theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione()));
+		elencoStudenti =(theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione()));
 		
-		JComboBox<Studenti> studentiComboBox = new JComboBox<Studenti>(elencoStudenti);
+		studentiComboBox = new JComboBox<Studenti>(elencoStudenti);
 		studentiComboBox.setBounds(198, 120, 157, 22);
 		selzionaStudentiPanel.add(studentiComboBox);
 		

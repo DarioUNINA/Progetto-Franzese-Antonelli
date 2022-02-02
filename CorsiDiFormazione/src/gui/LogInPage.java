@@ -41,14 +41,21 @@ import javax.swing.border.LineBorder;
 
 public class LogInPage extends JFrame {
 
-	private JPanel contentPane;
+	private Controller theController;
+	
+	private ImageIcon imageicon;
 	private Component url;
+	private JPanel contentPane;
+	private JPanel logInPanel;
 	private JTextField nomeUtenteField;
 	private JPasswordField passwordField;
-
-	private Controller theController;
-	private ImageIcon imageicon;
-
+	private JLabel nomeUtenteLabel;
+	private JLabel passwordLabel;
+	private JButton accediButton;
+	private JLabel passwordDimenticataLabel;
+	private JPanel registratiPanel;
+	private JButton registratiButton;
+	private JLabel bENVENUTOLabel;
 	
 	public LogInPage(Controller controller) {
 		
@@ -73,7 +80,7 @@ public class LogInPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JPanel logInPanel = new JPanel();
+		logInPanel = new JPanel();
 		logInPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		logInPanel.setBounds(69, 55, 662, 270);
 		contentPane.add(logInPanel);
@@ -90,17 +97,17 @@ public class LogInPage extends JFrame {
 		passwordField.setBounds(269, 105, 121, 20);
 		logInPanel.add(passwordField);
 
-		JLabel nomeUtenteLabel = new JLabel("Nome Utente:");
+		nomeUtenteLabel = new JLabel("Nome Utente:");
 		nomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		nomeUtenteLabel.setBounds(154, 57, 101, 14);
 		logInPanel.add(nomeUtenteLabel);
 
-		JLabel passwordLabel = new JLabel("      Password:");
+		passwordLabel = new JLabel("      Password:");
 		passwordLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		passwordLabel.setBounds(154, 107, 101, 14);
 		logInPanel.add(passwordLabel);
 
-		JButton accediButton = new JButton("ACCEDI");
+		accediButton = new JButton("ACCEDI");
 		accediButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				accediButton.setBackground(Color.GREEN);
@@ -138,7 +145,7 @@ public class LogInPage extends JFrame {
 		accediButton.setBounds(269, 151, 121, 27);
 		logInPanel.add(accediButton);
 
-		JLabel passwordDimenticataLabel = new JLabel("Hai dimenticato la Password?");
+		passwordDimenticataLabel = new JLabel("Hai dimenticato la Password?");
 		passwordDimenticataLabel.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -151,13 +158,13 @@ public class LogInPage extends JFrame {
 		passwordDimenticataLabel.setBounds(227, 211, 207, 14);
 		logInPanel.add(passwordDimenticataLabel);
 
-		JPanel registratiPanel = new JPanel();
+		registratiPanel = new JPanel();
 		registratiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		registratiPanel.setBounds(69, 348, 662, 47);
 		contentPane.add(registratiPanel);
 		registratiPanel.setLayout(null);
 
-		JButton registratiButton = new JButton("REGISTRATI");
+		registratiButton = new JButton("REGISTRATI");
 		registratiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -184,7 +191,7 @@ public class LogInPage extends JFrame {
 		registratiButton.setFont(new Font("Arial", Font.BOLD, 15));
 		registratiPanel.add(registratiButton);
 
-		JLabel bENVENUTOLabel = new JLabel("BENVENUTO");
+		bENVENUTOLabel = new JLabel("BENVENUTO");
 		bENVENUTOLabel.setBackground(new Color(255, 255, 255));
 		bENVENUTOLabel.setForeground(new Color(0, 0, 0));
 		bENVENUTOLabel.setBounds(324, 11, 150, 33);

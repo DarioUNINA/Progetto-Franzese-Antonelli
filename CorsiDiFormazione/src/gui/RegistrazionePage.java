@@ -33,15 +33,28 @@ import dto.Operatori;
 
 public class RegistrazionePage extends JFrame {
 
-	private Vector<DomandeSicurezza> domande;
+	
 	private Controller theController;
 	
-	private JTextField nomeTextField;
-	private JTextField passwordTextField;
-	private JTextField rispostaSicurezzaField;
 	private ImageIcon imageicon;
 	private JPanel contentPane;
+	private JPanel registrazionePanel;
+	private JButton indietroButton;
+	private JTextField nomeTextField;
+	private JTextField passwordTextField;
+	private JComboBox domandeComboBox;
+	private JTextField rispostaSicurezzaField;
+	private JLabel inserireRispostaLabel;
+	private JLabel nuovaPasswordLabel;
+	private JLabel nuovoNomeUtenteLabel;
+	private JLabel scegliereDomandaLabel;
+	private JButton confermaButton;
+	private JLabel promemoriaLabel;
+	private JLabel nonCaratteriSpecialiLabel;
+	private JLabel iSCRIVITILabel;
 	
+	
+	private Vector<DomandeSicurezza> domande;
 
 
 	public RegistrazionePage(Controller controller) {
@@ -63,14 +76,14 @@ public class RegistrazionePage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel registrazionePanel = new JPanel();
+		registrazionePanel = new JPanel();
 		registrazionePanel.setBackground(SystemColor.control);
 		registrazionePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		registrazionePanel.setBounds(29, 29, 745, 395);
 		contentPane.add(registrazionePanel);
 		registrazionePanel.setLayout(null);
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -104,7 +117,7 @@ public class RegistrazionePage extends JFrame {
 		
 		
 				
-		JComboBox domandeComboBox = new JComboBox(domande);
+		domandeComboBox = new JComboBox(domande);
 		domandeComboBox.setFont(new Font("Arial", Font.BOLD, 13));
 		domandeComboBox.setMaximumRowCount(3);
 		domandeComboBox.setBounds(46, 217, 297, 32);
@@ -116,42 +129,42 @@ public class RegistrazionePage extends JFrame {
 		registrazionePanel.add(rispostaSicurezzaField);
 		rispostaSicurezzaField.setColumns(10);
 		
-		JLabel inserireRispostaLabel = new JLabel("Inserire Risposta");
+		inserireRispostaLabel = new JLabel("Inserire Risposta");
 		inserireRispostaLabel.setBounds(489, 177, 128, 39);
 		registrazionePanel.add(inserireRispostaLabel);
 		inserireRispostaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JLabel nuovaPasswordLabel = new JLabel("Inserire Password");
+		nuovaPasswordLabel = new JLabel("Inserire Password");
 		nuovaPasswordLabel.setBounds(489, 72, 128, 39);
 		registrazionePanel.add(nuovaPasswordLabel);
 		nuovaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JLabel nuovoNomeUtenteLabel = new JLabel("Inserire Nome Utente");
+		nuovoNomeUtenteLabel = new JLabel("Inserire Nome Utente");
 		nuovoNomeUtenteLabel.setBounds(120, 72, 161, 39);
 		registrazionePanel.add(nuovoNomeUtenteLabel);
 		nuovoNomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JLabel scegliereDomandaLabel = new JLabel("Scegliere Domanda di Sicurezza");
+		scegliereDomandaLabel = new JLabel("Scegliere Domanda di Sicurezza");
 		scegliereDomandaLabel.setBounds(76, 177, 242, 39);
 		registrazionePanel.add(scegliereDomandaLabel);
 		scegliereDomandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("CONFERMA");
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(310, 288, 128, 32);
 		registrazionePanel.add(confermaButton);
 		
-		JLabel promemoriaLabel = new JLabel("La Password deve contenere almeno 6 caratteri!");
+		promemoriaLabel = new JLabel("La Password deve contenere almeno 6 caratteri!");
 		promemoriaLabel.setForeground(Color.RED);
 		promemoriaLabel.setBounds(413, 141, 287, 14);
 		registrazionePanel.add(promemoriaLabel);
 		
-		JLabel nonCaratteriSpecialiLabel = new JLabel("I Dati non devono contenere caratteri Speciali (!,\",@)");
+		nonCaratteriSpecialiLabel = new JLabel("I Dati non devono contenere caratteri Speciali (!,\",@)");
 		nonCaratteriSpecialiLabel.setForeground(Color.RED);
 		nonCaratteriSpecialiLabel.setBounds(46, 141, 297, 14);
 		registrazionePanel.add(nonCaratteriSpecialiLabel);
 		
-		JLabel iSCRIVITILabel = new JLabel("ISCRIVITI");
+		iSCRIVITILabel = new JLabel("ISCRIVITI");
 		iSCRIVITILabel.setForeground(Color.BLACK);
 		iSCRIVITILabel.setFont(new Font("Arial", Font.BOLD, 22));
 		iSCRIVITILabel.setBackground(Color.WHITE);

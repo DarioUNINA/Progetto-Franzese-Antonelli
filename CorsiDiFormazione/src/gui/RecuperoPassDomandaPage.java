@@ -33,10 +33,14 @@ public class RecuperoPassDomandaPage extends JFrame {
 	private Controller theController;
 	private Operatori operatore;
 	
-	private JPanel contentPane;
 	private Component url;
 	private ImageIcon imageicon;
-	private JTextField DomandaText;
+	private JPanel contentPane;
+	private JPanel recuperoPanel;
+	private JLabel rECUPEROPASSWORDLabel;
+	private JButton confermaButton;
+	private JButton indietroButton;
+	private JLabel domandaLabel;
 	private JTextField rispostaDomandaField;
 	
 
@@ -59,21 +63,21 @@ public class RecuperoPassDomandaPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel recuperoPanel = new JPanel();
+		recuperoPanel = new JPanel();
 		recuperoPanel.setBackground(SystemColor.control);
 		recuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		recuperoPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(recuperoPanel);
 		recuperoPanel.setLayout(null);
 		
-		JLabel rECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
+		rECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
 		rECUPEROPASSWORDLabel.setForeground(Color.BLACK);
 		rECUPEROPASSWORDLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		rECUPEROPASSWORDLabel.setBackground(Color.WHITE);
 		rECUPEROPASSWORDLabel.setBounds(139, 11, 268, 33);
 		recuperoPanel.add(rECUPEROPASSWORDLabel);
 		
-		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("CONFERMA");
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -106,7 +110,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		confermaButton.setBounds(212, 171, 121, 27);
 		recuperoPanel.add(confermaButton);
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -127,7 +131,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		recuperoPanel.add(indietroButton);
 		
-		JLabel domandaLabel = new JLabel("Domanda Di Sicurezza: " + theController.setDomandaLabelRecuperoPassPage(operatore));
+		domandaLabel = new JLabel("Domanda Di Sicurezza: " + theController.setDomandaLabelRecuperoPassPage(operatore));
 		domandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		domandaLabel.setBounds(73, 79, 465, 14);
 		recuperoPanel.add(domandaLabel);

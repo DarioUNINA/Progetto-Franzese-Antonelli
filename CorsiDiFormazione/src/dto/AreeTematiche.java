@@ -19,5 +19,8 @@ public class AreeTematiche {
 		this.nomeArea = nomeArea;
 	}
 
-	
+	public String toString() {
+		return nomeArea;
+		
+	}
 }

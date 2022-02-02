@@ -97,9 +97,9 @@ public class Controller {
 		return operatoriDAO.modificaPassword(op, pass);
 	}
 	
-	public Vector<String> setAreaTematicaComboBox() {
+	public Vector<AreeTematiche> setAreaTematicaComboBox() {
 		
-		return areeTematicheDAO.getAree();
+		return areeTematicheDAO.getAllAreeTematiche();
 	}
 	
 	public Vector<String> setAnnoComboBox(){
@@ -207,7 +207,7 @@ public class Controller {
 	
 	public Vector<AreeTematiche> getAllAreeTematiche(){
 		
-		return areeTematicheDAO.getAreeTematiche()
+		return areeTematicheDAO.getAllAreeTematiche();
 	}
 
 }

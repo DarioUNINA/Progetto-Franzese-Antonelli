@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dto.AreeTematiche;
 import dto.Corsi;
 import dto.Operatori;
 
@@ -60,8 +61,8 @@ public class HomePage extends JFrame {
 	private JLabel terminatoLabel;
 	private JLabel parolaChiaveLabel;
 	private JLabel areaTematica;
-	private JComboBox areaTematicaComboBox;
-	private JComboBox annoComboBox;
+	private JComboBox<AreeTematiche> areaTematicaComboBox;
+	private JComboBox<String> annoComboBox;
 	private JCheckBox terminatoCheckBoxSi;
 	private JCheckBox terminatoCheckBoxNo;
 	private JTextField paroleChiaveTextField;
@@ -70,7 +71,7 @@ public class HomePage extends JFrame {
 	private JButton eliminaCorsoButton;
 	private JPanel corsiPanel;
 	private JScrollPane corsiScrollPane;	
-	private JList corsiList;
+	private JList<Corsi> corsiList;
 	private JButton selezionaButton;
 	private JPanel gestione;
 	private JButton gestioneCorsiButton;
@@ -188,11 +189,11 @@ public class HomePage extends JFrame {
 		parolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		filtri.add(parolaChiaveLabel);
 		
-		areaTematicaComboBox = new JComboBox(theController.setAreaTematicaComboBox());
+		areaTematicaComboBox = new JComboBox<AreeTematiche>(theController.setAreaTematicaComboBox());
 		areaTematicaComboBox.setBounds(117, 43, 134, 22);
 		filtri.add(areaTematicaComboBox);
 				
-		annoComboBox = new JComboBox(theController.setAnnoComboBox());
+		annoComboBox = new JComboBox<String>(theController.setAnnoComboBox());
 		annoComboBox.setBounds(117, 82, 134, 22);
 		filtri.add(annoComboBox);
 		
@@ -278,7 +279,7 @@ public class HomePage extends JFrame {
 		corsiScrollPane.setBounds(10, 11, 222, 114);
 		corsiPanel.add(corsiScrollPane);
 
-		corsiList = new JList(theController.getCorsiOperatore(operatore));
+		corsiList = new JList<Corsi>(theController.getCorsiOperatore(operatore));
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		corsiList.setVisibleRowCount(10);

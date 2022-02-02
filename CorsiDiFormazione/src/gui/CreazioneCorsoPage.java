@@ -12,9 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-
+import dto.AreeTematiche;
 import dto.Operatori;
-import dto.Temi;
 
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
@@ -40,7 +39,7 @@ public class CreazioneCorsoPage extends JFrame {
 	
 	private Controller theController;
 	private Operatori operatore;
-	private Vector<Temi> areeTematiche;
+	private Vector<AreeTematiche> areeTematiche;
 	
 	private ImageIcon imageicon;
 	private Component url;

@@ -18,17 +18,17 @@ public class AreeTematicheDAO {
 		statement = connessione.getStatement();
 	}
 
-	public Vector<String> getAree(){
+	public Vector<AreeTematiche> getAllAreeTematiche(){
 		
-		Vector<String> aree = new Vector<String>();
+		Vector<AreeTematiche> aree = new Vector<AreeTematiche>();
+		AreeTematiche area;
 		
 		try {
 			ResultSet rs = statement.executeQuery("SELECT * FROM aree_tematiche");
 			
-			aree.add("");
-			
 			while(rs.next()) {
-				aree.add(rs.getString(1));
+				area = new AreeTematiche(rs.getString(1));
+				aree.add(area);
 			}
 			
 			return aree;
@@ -37,30 +37,6 @@ public class AreeTematicheDAO {
 			return aree;
 		}
 	}
-	
-	
-	public AreeTematiche getAreeTematiche(){
-			
-			AreeTematiche at = new AreeTematiche();
-			
-			try {
-				ResultSet rs = statement.executeQuery("SELECT * FROM aree_tematiche");
-				
-				at.setNomeArea("");
-				
-				while(rs.next()) {
-					at.setNomeArea(rs.getString(1));
-				}
-				
-				return at;
-			}catch(SQLException e) {
-				e.getMessage();
-				return at;
-			}
-	}
-	
-	
-	
 	
 	
 	

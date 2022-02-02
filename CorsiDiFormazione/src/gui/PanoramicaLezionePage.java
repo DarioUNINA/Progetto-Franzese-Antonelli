@@ -20,10 +20,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import dto.Lezioni;
 import dto.Operatori;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
 
 public class PanoramicaLezionePage extends JFrame {
 
@@ -32,8 +34,9 @@ public class PanoramicaLezionePage extends JFrame {
 	private Component url;
 	private ImageIcon imageicon;
 	private Operatori operatore;
+	private Lezioni lezione;
 
-	public PanoramicaLezionePage(Controller controller, Operatori operatore) {
+	public PanoramicaLezionePage(Controller controller, Operatori operatore, Lezioni lezione) {
 		setResizable(false);
 		
 		
@@ -60,7 +63,7 @@ public class PanoramicaLezionePage extends JFrame {
 		gestoreLezioniPanel.setLayout(null);
 		
 		JLabel gestoreLezioniLabel = new JLabel("PANORAMICA LEZIONI");
-		gestoreLezioniLabel.setForeground(Color.RED);
+		gestoreLezioniLabel.setForeground(Color.BLACK);
 		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		gestoreLezioniLabel.setBackground(Color.WHITE);
 		gestoreLezioniLabel.setBounds(157, 11, 243, 33);
@@ -72,14 +75,17 @@ public class PanoramicaLezionePage extends JFrame {
 		contentPane.add(studentiPanel);
 		studentiPanel.setLayout(null);
 		
-		JLabel selezionaCorsoLabel = new JLabel("Studenti Iscritti");
-		selezionaCorsoLabel.setBounds(21, 7, 114, 18);
-		selezionaCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		studentiPanel.add(selezionaCorsoLabel);
+		JLabel studentiIscrittiLabel = new JLabel("Studenti Iscritti");
+		studentiIscrittiLabel.setBounds(21, 7, 114, 18);
+		studentiIscrittiLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		studentiPanel.add(studentiIscrittiLabel);
+		
+		JScrollPane studentiScrollPane = new JScrollPane();
+		studentiScrollPane.setBounds(10, 36, 143, 166);
+		studentiPanel.add(studentiScrollPane);
 		
 		JList studentiList = new JList();
-		studentiList.setBounds(10, 36, 143, 166);
-		studentiPanel.add(studentiList);
+		studentiScrollPane.setViewportView(studentiList);
 		studentiList.setVisibleRowCount(10);
 		studentiList.setFont(new Font("Arial", Font.BOLD, 15));
 		
@@ -115,14 +121,14 @@ public class PanoramicaLezionePage extends JFrame {
 		dettagliLezioneLabel.setBounds(127, 11, 124, 18);
 		lezioniPanel.add(dettagliLezioneLabel);
 		
-		JLabel titoloLabel = new JLabel("Titolo:");
+		JLabel titoloLabel = new JLabel("Titolo: " + lezione.getTitolo() );
 		titoloLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		titoloLabel.setBounds(10, 57, 45, 18);
+		titoloLabel.setBounds(10, 57, 195, 18);
 		lezioniPanel.add(titoloLabel);
 		
-		JLabel dataLabel = new JLabel("Data:");
+		JLabel dataLabel = new JLabel("Data: " + lezione.getData());
 		dataLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		dataLabel.setBounds(215, 97, 36, 18);
+		dataLabel.setBounds(215, 97, 150, 18);
 		lezioniPanel.add(dataLabel);
 		
 		JLabel descrizioneLabel = new JLabel("Descrizione:");
@@ -130,25 +136,28 @@ public class PanoramicaLezionePage extends JFrame {
 		descrizioneLabel.setBounds(10, 135, 124, 18);
 		lezioniPanel.add(descrizioneLabel);
 		
-		JLabel durataLabel = new JLabel("Durata:");
+		JLabel durataLabel = new JLabel("Durata: " + lezione.getDurata());
 		durataLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		durataLabel.setBounds(200, 57, 51, 18);
+		durataLabel.setBounds(215, 57, 150, 18);
 		lezioniPanel.add(durataLabel);
 		
-		JLabel orarioLabel = new JLabel("Orario:");
+		JLabel orarioLabel = new JLabel("Orario: " + lezione.getOrario());
 		orarioLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		orarioLabel.setBounds(10, 97, 51, 18);
+		orarioLabel.setBounds(10, 97, 195, 18);
 		lezioniPanel.add(orarioLabel);
 		
 		JTextPane descrizioneTextPane = new JTextPane();
+		descrizioneTextPane.setBackground(SystemColor.control);
+		descrizioneTextPane.setFont(new Font("Arial", Font.BOLD, 15));
 		descrizioneTextPane.setBounds(102, 133, 263, 69);
 		lezioniPanel.add(descrizioneTextPane);
+		descrizioneTextPane.setText(lezione.getDescrizione());
 		
 		JButton aggiungiStudenteLezioneButton = new JButton("AGGIUNGI STUDENTE ALLA LEZIONE");
 		aggiungiStudenteLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				AggiungiStudenteLezionePage asl = new AggiungiStudenteLezionePage(theController, operatore);
+				AggiungiStudenteLezionePage asl = new AggiungiStudenteLezionePage(theController, operatore, lezione);
 				setVisible(false);
 			}
 		});

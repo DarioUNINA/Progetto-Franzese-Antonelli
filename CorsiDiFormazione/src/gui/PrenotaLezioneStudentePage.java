@@ -15,6 +15,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Operatori;
+import dto.Studenti;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -27,9 +29,9 @@ public class PrenotaLezioneStudentePage extends JFrame {
 	private Component url;
 	private ImageIcon imageicon;
 	private Operatori operatore;
-
+	private Studenti studente;
 	
-	public PrenotaLezioneStudentePage(Controller controller, Operatori operatore) {
+	public PrenotaLezioneStudentePage(Controller controller, Operatori operatore, Studenti studente) {
 		setResizable(false);
 		
 		theController = controller;
@@ -65,7 +67,7 @@ public class PrenotaLezioneStudentePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore);
+				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore, studente);
 				setVisible(false);
 			}
 			@Override
@@ -92,7 +94,7 @@ public class PrenotaLezioneStudentePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ConfermaPrenotaLezionePage cpls = new ConfermaPrenotaLezionePage(theController, operatore);
+				ConfermaPrenotaLezionePage cpls = new ConfermaPrenotaLezionePage(theController, operatore, studente);
 				setVisible(false);
 			}
 		});
@@ -105,7 +107,7 @@ public class PrenotaLezioneStudentePage extends JFrame {
 		selezionareCorsoLabel.setBounds(51, 131, 136, 23);
 		prenotaLezioneStudentiPanel.add(selezionareCorsoLabel);
 		
-		JComboBox corsiComboBox = new JComboBox();
+		JComboBox corsiComboBox = new JComboBox(theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore()));
 		corsiComboBox.setBounds(193, 132, 163, 22);
 		prenotaLezioneStudentiPanel.add(corsiComboBox);
 		

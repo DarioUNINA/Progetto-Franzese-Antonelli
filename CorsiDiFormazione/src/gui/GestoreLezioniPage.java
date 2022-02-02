@@ -20,7 +20,12 @@ import javax.swing.border.LineBorder;
 
 import dto.Operatori;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.util.Vector;
+import javax.swing.JScrollPane;
+import dto.Corsi;
+import dto.Lezioni;
 
 public class GestoreLezioniPage extends JFrame {
 
@@ -29,6 +34,7 @@ public class GestoreLezioniPage extends JFrame {
 	private Component url;
 	private ImageIcon imageicon;
 	private Operatori operatore;
+	private JList lezioniList;
 	
 	public GestoreLezioniPage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -74,14 +80,15 @@ public class GestoreLezioniPage extends JFrame {
 		selezionaCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		corsiPanel.add(selezionaCorsoLabel);
 		
-		JComboBox corsiComboBox = new JComboBox();
-		corsiComboBox.setBounds(10, 36, 143, 22);
-		corsiPanel.add(corsiComboBox);
+		JScrollPane corsiScrollPane = new JScrollPane();
+		corsiScrollPane.setBounds(10, 36, 143, 134);
+		corsiPanel.add(corsiScrollPane);
 		
-		JButton confermaCorsoButton = new JButton("CONFERMA");
-		confermaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
-		confermaCorsoButton.setBounds(21, 179, 121, 23);
-		corsiPanel.add(confermaCorsoButton);
+		JList<Corsi> corsiList = new JList<Corsi>(theController.getCorsiOperatore(operatore));
+		corsiScrollPane.setViewportView(corsiList);
+		corsiList.setBorder(new LineBorder(new Color(0, 0, 0)));
+		corsiList.setVisibleRowCount(10);
+		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		JButton indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
@@ -110,37 +117,52 @@ public class GestoreLezioniPage extends JFrame {
 		contentPane.add(lezioniPanel);
 		lezioniPanel.setLayout(null);
 		
-		JList corsiList = new JList();
-		corsiList.setVisibleRowCount(10);
-		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
-		corsiList.setBounds(10, 37, 203, 136);
-		lezioniPanel.add(corsiList);
+		JScrollPane lezioniScrollPane = new JScrollPane();
+		lezioniScrollPane.setBounds(10, 40, 201, 162);
+		lezioniPanel.add(lezioniScrollPane);
+		
+		JList<Lezioni> lezioniList = new JList<Lezioni>();
+		lezioniScrollPane.setViewportView(lezioniList);
+		lezioniList.setVisibleRowCount(10);
+		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
+		lezioniList.setBorder(new LineBorder(new Color(0, 0, 0)));
+		
+		JButton confermaCorsoButton = new JButton("CONFERMA");
+		confermaCorsoButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String id_corso = corsiList.getSelectedValue().getIdCorso();
+				if(theController.setAllLezioniDelCorso(id_corso).isEmpty())
+					alertNessunaLezioneDisponibile();
+				else
+					lezioniList.setListData(theController.setAllLezioniDelCorso(id_corso));
+			}
+		});
+		confermaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaCorsoButton.setBounds(21, 179, 121, 23);
+		corsiPanel.add(confermaCorsoButton);
 		
 		JLabel elencoLezioneDelCorsoLabel = new JLabel("Elenco Lezione del Corso:");
 		elencoLezioneDelCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		elencoLezioneDelCorsoLabel.setBounds(10, 11, 203, 18);
 		lezioniPanel.add(elencoLezioneDelCorsoLabel);
 		
-		JButton selezionaLezioneButton = new JButton("SELEZIONA");
-		selezionaLezioneButton.setBounds(50, 179, 121, 23);
-		lezioniPanel.add(selezionaLezioneButton);
-		selezionaLezioneButton.setFont(new Font("Arial", Font.BOLD, 15));
-		
 		JButton panormaicaLezioneButton = new JButton("PANORAMICA");
 		panormaicaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore);
+				String lezioneSelezionata = lezioniList.getSelectedValue().getTitolo();
+				PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, theController.getLezione(lezioneSelezionata));
 				setVisible(false);
 			}
 		});
 		panormaicaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		panormaicaLezioneButton.setBounds(223, 66, 142, 23);
+		panormaicaLezioneButton.setBounds(223, 73, 142, 23);
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		JButton eliminaLezioneButton = new JButton("ELIMINA");
 		eliminaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		eliminaLezioneButton.setBounds(223, 124, 142, 23);
+		eliminaLezioneButton.setBounds(223, 147, 142, 23);
 		lezioniPanel.add(eliminaLezioneButton);
 		
 		JButton aggiungiLezioneButton_1 = new JButton("AGGIUNGI LEZIONE");
@@ -157,5 +179,8 @@ public class GestoreLezioniPage extends JFrame {
 		
 		setVisible(true);
 	}
-
+	
+	public void alertNessunaLezioneDisponibile() {
+		JOptionPane.showMessageDialog(this, "Non ci sono lezione per il Corso selezionato.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+	}
 }

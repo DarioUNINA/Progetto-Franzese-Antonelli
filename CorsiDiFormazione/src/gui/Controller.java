@@ -176,7 +176,7 @@ public class Controller {
 	
 	public Vector<Corsi> setCorsiStudente(Studenti s){
 		
-		 return studentiDAO.getCorsiStudente(s);		
+		 return corsiDAO.getCorsiStudente(s);		
 	}
 	
 	
@@ -188,6 +188,21 @@ public class Controller {
 	public Vector<Corsi> setIscrizioneCorsiStudente(String matricola, String id_operatore){
 		
 		return iscrizioniDAO.getIscrizioneCorsiStudente(matricola, id_operatore);
+	}
+	
+	public Vector<Corsi> setDisiscrizioneCorsiStudente(String matricola, String id_operatore){
+		
+		return iscrizioniDAO.getDisiscrizioneCorsiStudente(matricola, id_operatore);
+	}
+	
+	Lezioni getLezione(String titolo) {
+		
+		return lezioniDAO.getLezioni(titolo);
+	}
+	
+	public Vector<Studenti> getStudentiCorso(String id_corso, String id_lezione){
+		
+		return studentiDAO.getStudentiCorso(id_corso, id_lezione);
 	}
 
 }

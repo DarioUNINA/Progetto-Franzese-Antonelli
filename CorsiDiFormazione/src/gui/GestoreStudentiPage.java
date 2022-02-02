@@ -14,6 +14,8 @@ import javax.swing.border.LineBorder;
 
 import dto.Operatori;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -94,6 +96,16 @@ public class GestoreStudentiPage extends JFrame {
 		selzionaStudentiPanel.add(studentiComboBox);
 		
 		JButton eliminaStudenteButton = new JButton("ELIMINA STUDENTE");
+		eliminaStudenteButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String studenteSelezionato = studentiComboBox.getSelectedItem().toString();
+				if(studenteSelezionato.isEmpty()) {
+					alertStudenteNonSelezionato();
+				}else
+					alertSeiSicuroDiVolerEliminareStudente();//da fare la query per l'eliminazione
+			}
+		});
 		eliminaStudenteButton.setForeground(Color.RED);
 		eliminaStudenteButton.setFont(new Font("Arial", Font.BOLD, 11));
 		eliminaStudenteButton.setBounds(290, 169, 140, 33);
@@ -126,4 +138,26 @@ public class GestoreStudentiPage extends JFrame {
 		
 		setVisible(true);
 	}
+	
+	public void alertStudenteNonSelezionato() {
+		JOptionPane.showMessageDialog(this, "Studente Non Selezionato.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertSeiSicuroDiVolerEliminareStudente() {
+		Object[] opzioni = {"Sì"};
+		
+		int n = JOptionPane.showOptionDialog(this,
+				"Sei sicuro di voler eliminare lo studente ?",
+				"CONFERMA ELIMINAZIONE",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				opzioni,
+				opzioni[0]);
+		if(n==0) {
+			HomePage hp = new HomePage(theController, operatore);
+			setVisible(false);
+		}
+			
+		}
 }

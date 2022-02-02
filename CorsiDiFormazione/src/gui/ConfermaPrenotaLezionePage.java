@@ -17,6 +17,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Operatori;
+import dto.Studenti;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 
@@ -27,9 +29,9 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 	private Component url;
 	private ImageIcon imageicon;
 	private Operatori operatore;
+	private Studenti studente;
 	
-	
-	public ConfermaPrenotaLezionePage(Controller controller, Operatori operatore) {
+	public ConfermaPrenotaLezionePage(Controller controller, Operatori operatore, Studenti studente) {
 		setResizable(false);
 		
 		theController = controller;
@@ -65,7 +67,7 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PrenotaLezioneStudentePage pls = new PrenotaLezioneStudentePage(theController, operatore);
+				PrenotaLezioneStudentePage pls = new PrenotaLezioneStudentePage(theController, operatore, studente);
 				setVisible(false);
 			}
 			@Override

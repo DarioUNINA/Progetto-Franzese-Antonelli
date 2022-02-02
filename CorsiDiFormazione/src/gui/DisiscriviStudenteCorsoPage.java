@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Operatori;
+import dto.Studenti;
 
 public class DisiscriviStudenteCorsoPage extends JFrame {
 
@@ -27,8 +28,9 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 	private Component url;
 	private ImageIcon imageicon;
 	private Operatori operatore;
+	private Studenti studente;
 	
-	public DisiscriviStudenteCorsoPage(Controller controller, Operatori operatore) {
+	public DisiscriviStudenteCorsoPage(Controller controller, Operatori operatore, Studenti studente) {
 		setResizable(false);
 		
 		theController = controller;
@@ -64,7 +66,7 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore);
+				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore, studente);
 				setVisible(false);
 			}
 			@Override
@@ -103,13 +105,14 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		selezionareCorsoLabel.setBounds(51, 131, 136, 23);
 		disiscriviLezioneStudentiPanel.add(selezionareCorsoLabel);
 		
-		JComboBox corsiComboBox = new JComboBox();
+		JComboBox corsiComboBox = new JComboBox(theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore()));
 		corsiComboBox.setBounds(193, 132, 163, 22);
 		disiscriviLezioneStudentiPanel.add(corsiComboBox);
 		
-		JLabel lblNewLabel = new JLabel("modifica con matricola studente");
-		lblNewLabel.setBounds(250, 40, 163, 14);
-		disiscriviLezioneStudentiPanel.add(lblNewLabel);
+		JLabel datiStudenteLabel = new JLabel("STUDENTE:" + studente.getMatricola() + ", " + studente.getCognome() + ", " + studente.getNome());
+		datiStudenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		datiStudenteLabel.setBounds(51, 55, 414, 14);
+		disiscriviLezioneStudentiPanel.add(datiStudenteLabel);
 		
 		setVisible(true);
 	}

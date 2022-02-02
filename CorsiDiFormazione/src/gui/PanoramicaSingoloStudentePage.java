@@ -186,7 +186,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		disiscriviDaUnCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				DisiscriviStudenteCorsoPage dsc = new DisiscriviStudenteCorsoPage(cont, operatore);
+				DisiscriviStudenteCorsoPage dsc = new DisiscriviStudenteCorsoPage(theController, operatore, studente);
 				setVisible(false);
 			}
 		});
@@ -198,7 +198,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		prenotaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PrenotaLezioneStudentePage pls = new PrenotaLezioneStudentePage(theController, operatore);
+				PrenotaLezioneStudentePage pls = new PrenotaLezioneStudentePage(theController, operatore, studente);
 				setVisible(false);
 			}
 		});
@@ -210,7 +210,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		annullaPrenotazioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				AnnullaPrenotazionePage ap = new AnnullaPrenotazionePage(theController, operatore);
+				AnnullaPrenotazionePage ap = new AnnullaPrenotazionePage(theController, operatore, studente);
 				setVisible(false);
 			}
 		});

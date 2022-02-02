@@ -52,4 +52,33 @@ public class LezioniDAO {
 				return lezioni;
 		}
 	}
+	
+	public Lezioni getLezioni(String titolo){
+		
+		Lezioni lezione = new Lezioni();
+		
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT * FROM lezioni le  WHERE le.titolo = '"+  titolo + "'");
+			
+			rs.next();
+			lezione.setIdLezione(rs.getString("id_lezione"));
+			lezione.setTitolo(titolo);
+			lezione.setDescrizione(rs.getString("descrizione"));
+			lezione.setDurata(rs.getString("durata"));
+			lezione.setData(rs.getDate("data"));
+			lezione.setOrario(rs.getString("orario"));
+			lezione.setIdCorso(rs.getString("id_corso"));
+
+
+			return lezione;
+			
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return lezione;
+		}			
+
+	}	
 }

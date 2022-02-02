@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,7 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import dto.Lezioni;
 import dto.Operatori;
+import dto.Studenti;
 
 public class AggiungiStudenteLezionePage extends JFrame {
 
@@ -27,9 +30,9 @@ public class AggiungiStudenteLezionePage extends JFrame {
 	private Component url;
 	private ImageIcon imageicon;
 	private Operatori operatore;
-
+	private Lezioni lezione;
 	
-	public AggiungiStudenteLezionePage(Controller controller, Operatori operatore) {
+	public AggiungiStudenteLezionePage(Controller controller, Operatori operator, Lezioni lezione) {
 		setResizable(false);
 		
 		theController = controller;
@@ -65,7 +68,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore);
+				PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, lezione);
 				setVisible(false);
 			}
 			@Override
@@ -87,7 +90,9 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		studenteLabel.setBounds(111, 123, 77, 14);
 		selzionaStudentiPanel.add(studenteLabel);
 		
-		JComboBox studentiComboBox = new JComboBox();
+		Vector<Studenti> elencoStudenti = new Vector<Studenti>(theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione()));
+		
+		JComboBox<Studenti> studentiComboBox = new JComboBox<Studenti>(elencoStudenti);
 		studentiComboBox.setBounds(198, 120, 157, 22);
 		selzionaStudentiPanel.add(studentiComboBox);
 		
@@ -95,10 +100,6 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(370, 273, 168, 23);
 		selzionaStudentiPanel.add(confermaButton);
-		
-		JLabel lblNewLabel_1 = new JLabel("Dettagli lezione");
-		lblNewLabel_1.setBounds(30, 76, 137, 14);
-		selzionaStudentiPanel.add(lblNewLabel_1);
 		
 		setVisible(true);
 	}

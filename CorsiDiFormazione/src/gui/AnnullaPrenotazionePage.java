@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Operatori;
+import dto.Studenti;
 
 public class AnnullaPrenotazionePage extends JFrame {
 
@@ -27,8 +28,9 @@ public class AnnullaPrenotazionePage extends JFrame {
 	private Component url;
 	private ImageIcon imageicon;
 	private Operatori operatore;
+	private Studenti studente;
 	
-	public AnnullaPrenotazionePage(Controller controller, Operatori operatore) {
+	public AnnullaPrenotazionePage(Controller controller, Operatori operatore,Studenti studente) {
 		setResizable(false);
 		
 		theController = controller;
@@ -64,7 +66,7 @@ public class AnnullaPrenotazionePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore);
+				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore, studente);
 				setVisible(false);
 			}
 			@Override
@@ -91,7 +93,7 @@ public class AnnullaPrenotazionePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ConfermaAnnullaPrenotazionePage cap = new ConfermaAnnullaPrenotazionePage(theController, operatore);
+				ConfermaAnnullaPrenotazionePage cap = new ConfermaAnnullaPrenotazionePage(theController, operatore, studente);
 				setVisible(false);
 			}
 		});

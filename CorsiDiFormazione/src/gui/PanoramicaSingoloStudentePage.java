@@ -46,6 +46,8 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		imageicon = new ImageIcon("napule.png");
 		theController = cont;
 		this.operatore = operatore;
+		this.studente = studente;
+		
 		setIconImage(imageicon.getImage());
 
 		getContentPane().setBackground(Color.LIGHT_GRAY);

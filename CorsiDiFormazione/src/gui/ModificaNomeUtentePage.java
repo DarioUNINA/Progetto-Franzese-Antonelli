@@ -35,7 +35,8 @@ public class ModificaNomeUtentePage extends JFrame {
 		setResizable(false);
 		
 		theController = controller;
-
+		this.operatore = operatore;
+		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		

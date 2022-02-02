@@ -25,11 +25,19 @@ import java.awt.event.MouseEvent;
 
 public class ImpostazioniPage extends JFrame {
 
-	private JPanel contentPane;
 	private Controller theController;
+	private Operatori operatore;
+	
 	private Component url;
 	private ImageIcon imageicon;
-	private Operatori operatore;
+	private JPanel contentPane;
+	private JPanel impostazioniPanel;
+	private JButton modificaNomeUtenteButton;
+	private JButton modificaPasswordButton;
+	private JButton eliminaProfiloButton;
+	private JLabel impostazioniLabel;
+	private JButton indietroButton;
+	
 	
 	public ImpostazioniPage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -50,14 +58,14 @@ public class ImpostazioniPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel impostazioniPanel = new JPanel();
+		impostazioniPanel = new JPanel();
 		impostazioniPanel.setBackground(SystemColor.control);
 		impostazioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		impostazioniPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(impostazioniPanel);
 		impostazioniPanel.setLayout(null);
 		
-		JButton modificaNomeUtenteButton = new JButton("MODIFICA NOME UTENTE");
+		modificaNomeUtenteButton = new JButton("MODIFICA NOME UTENTE");
 		modificaNomeUtenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -69,7 +77,7 @@ public class ImpostazioniPage extends JFrame {
 		modificaNomeUtenteButton.setBounds(152, 71, 237, 30);
 		impostazioniPanel.add(modificaNomeUtenteButton);
 		
-		JButton modificaPasswordButton = new JButton("MODIFICA PASSWORD");
+		modificaPasswordButton = new JButton("MODIFICA PASSWORD");
 		modificaPasswordButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -81,19 +89,19 @@ public class ImpostazioniPage extends JFrame {
 		modificaPasswordButton.setBounds(152, 143, 237, 30);
 		impostazioniPanel.add(modificaPasswordButton);
 		
-		JButton eliminaProfiloButton = new JButton("ELIMINA PROFILO");
+		eliminaProfiloButton = new JButton("ELIMINA PROFILO");
 		eliminaProfiloButton.setFont(new Font("Arial", Font.BOLD, 15));
 		eliminaProfiloButton.setBounds(155, 218, 234, 30);
 		impostazioniPanel.add(eliminaProfiloButton);
 		
-		JLabel impostazioniLabel = new JLabel("IMPOSTAZIONI");
+		impostazioniLabel = new JLabel("IMPOSTAZIONI");
 		impostazioniLabel.setForeground(new Color(65, 105, 225));
 		impostazioniLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		impostazioniLabel.setBackground(Color.WHITE);
 		impostazioniLabel.setBounds(195, 11, 163, 33);
 		impostazioniPanel.add(impostazioniLabel);
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import dto.Corsi;
 import dto.Operatori;
 import dto.Studenti;
 
@@ -24,12 +26,24 @@ import javax.swing.JComboBox;
 
 public class PrenotaLezioneStudentePage extends JFrame {
 
-	private JPanel contentPane;
+	
 	private Controller theController;
-	private Component url;
-	private ImageIcon imageicon;
 	private Operatori operatore;
 	private Studenti studente;
+	private JComboBox<Corsi> corsiComboBox;
+	private Vector <Corsi> corsi;
+	
+	private Component url;
+	private ImageIcon imageicon;
+	private JPanel contentPane;
+	private JPanel prenotaLezioneStudentiPanel;
+	private JLabel prenotazioneLezioneLabel;
+	private JButton indietroButton;
+	private JLabel selezionareCorsoLabel;
+	
+	
+	
+	
 	
 	public PrenotaLezioneStudentePage(Controller controller, Operatori operatore, Studenti studente) {
 		setResizable(false);
@@ -37,7 +51,10 @@ public class PrenotaLezioneStudentePage extends JFrame {
 		theController = controller;
 		this.operatore = operatore;
 		this.studente = studente;
-
+		
+		corsi= theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
+		corsiComboBox = new JComboBox<Corsi>(corsi);
+		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
@@ -51,21 +68,22 @@ public class PrenotaLezioneStudentePage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel prenotaLezioneStudentiPanel = new JPanel();
+		JButton confermaButton;
+		prenotaLezioneStudentiPanel = new JPanel();
 		prenotaLezioneStudentiPanel.setBackground(SystemColor.control);
 		prenotaLezioneStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		prenotaLezioneStudentiPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(prenotaLezioneStudentiPanel);
 		prenotaLezioneStudentiPanel.setLayout(null);
 		
-		JLabel prenotazioneLezioneLabel = new JLabel("PRENOTAZIONE LEZIONE");
+		prenotazioneLezioneLabel = new JLabel("PRENOTAZIONE LEZIONE");
 		prenotazioneLezioneLabel.setForeground(new Color(65, 105, 225));
 		prenotazioneLezioneLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		prenotazioneLezioneLabel.setBackground(Color.WHITE);
 		prenotazioneLezioneLabel.setBounds(138, 11, 279, 33);
 		prenotaLezioneStudentiPanel.add(prenotazioneLezioneLabel);
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -85,7 +103,7 @@ public class PrenotaLezioneStudentePage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		prenotaLezioneStudentiPanel.add(indietroButton);
 		
-		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("CONFERMA");
 		confermaButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				confermaButton.setBackground(Color.GREEN);
@@ -104,12 +122,11 @@ public class PrenotaLezioneStudentePage extends JFrame {
 		confermaButton.setBounds(417, 274, 121, 23);
 		prenotaLezioneStudentiPanel.add(confermaButton);
 		
-		JLabel selezionareCorsoLabel = new JLabel("Selezionare corso:");
+		selezionareCorsoLabel = new JLabel("Selezionare corso:");
 		selezionareCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		selezionareCorsoLabel.setBounds(51, 131, 136, 23);
 		prenotaLezioneStudentiPanel.add(selezionareCorsoLabel);
 		
-		JComboBox corsiComboBox = new JComboBox(theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore()));
 		corsiComboBox.setBounds(193, 132, 163, 22);
 		prenotaLezioneStudentiPanel.add(corsiComboBox);
 		

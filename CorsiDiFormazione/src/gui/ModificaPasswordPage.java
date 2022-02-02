@@ -27,14 +27,20 @@ import java.awt.event.MouseEvent;
 
 public class ModificaPasswordPage extends JFrame {
 
-	private JPanel contentPane;
 	
 	private Controller theController;
 	private Operatori operatore;
-	private JTextField passwordField;
-	private JTextField confermaPasswordField;
+	
 	private ImageIcon imageicon;
 	private Component url;
+	private JPanel contentPane;
+	private JPanel recuperoPanel;
+	private JTextField confermaPasswordField;;
+	private JButton confermaButton;
+	private JTextField passwordField;
+	private JLabel modificaPasswordLabel;
+	private JLabel inserirePasswordLabel;
+	private JLabel confermaPasswordLabel;
 	
 	public ModificaPasswordPage(Controller controller, Operatori operatore) {
 		
@@ -56,7 +62,7 @@ public class ModificaPasswordPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel recuperoPanel = new JPanel();
+		recuperoPanel = new JPanel();
 		recuperoPanel.setBackground(SystemColor.control);
 		recuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		recuperoPanel.setBounds(10, 11, 548, 307);
@@ -69,7 +75,7 @@ public class ModificaPasswordPage extends JFrame {
 		recuperoPanel.add(confermaPasswordField);
 		confermaPasswordField.setColumns(10);
 		
-		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("CONFERMA");
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -90,19 +96,19 @@ public class ModificaPasswordPage extends JFrame {
 		recuperoPanel.add(passwordField);
 		passwordField.setColumns(10);
 		
-		JLabel modificaPasswordLabel = new JLabel("MODIFICA PASSWORD");
+		modificaPasswordLabel = new JLabel("MODIFICA PASSWORD");
 		modificaPasswordLabel.setForeground(Color.BLACK);
 		modificaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		modificaPasswordLabel.setBackground(Color.WHITE);
 		modificaPasswordLabel.setBounds(154, 11, 268, 33);
 		recuperoPanel.add(modificaPasswordLabel);
 		
-		JLabel inserirePasswordLabel = new JLabel("   Inserire Nuova Password:");
+		inserirePasswordLabel = new JLabel("   Inserire Nuova Password:");
 		inserirePasswordLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		inserirePasswordLabel.setBounds(0, 91, 195, 14);
 		recuperoPanel.add(inserirePasswordLabel);
 		
-		JLabel confermaPasswordLabel = new JLabel("Conferma Password:");
+		confermaPasswordLabel = new JLabel("Conferma Password:");
 		confermaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 14));
 		confermaPasswordLabel.setBounds(51, 131, 154, 14);
 		recuperoPanel.add(confermaPasswordLabel);

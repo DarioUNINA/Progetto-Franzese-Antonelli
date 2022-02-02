@@ -31,6 +31,8 @@ public class AggiungiStudenteLezionePage extends JFrame {
 	private ImageIcon imageicon;
 	private Operatori operatore;
 	private Lezioni lezione;
+	private JComboBox<Studenti> studentiComboBox;
+	private Vector<Studenti> elencoStudenti;
 	
 	public AggiungiStudenteLezionePage(Controller controller, Operatori operatore, Lezioni lezione) {
 		setResizable(false);
@@ -92,9 +94,9 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		studenteLabel.setBounds(111, 123, 77, 14);
 		selzionaStudentiPanel.add(studenteLabel);
 		
-		Vector<Studenti> elencoStudenti = new Vector<Studenti>(theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione()));
+		elencoStudenti =(theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione()));
 		
-		JComboBox<Studenti> studentiComboBox = new JComboBox<Studenti>(elencoStudenti);
+		studentiComboBox = new JComboBox<Studenti>(elencoStudenti);
 		studentiComboBox.setBounds(198, 120, 157, 22);
 		selzionaStudentiPanel.add(studentiComboBox);
 		

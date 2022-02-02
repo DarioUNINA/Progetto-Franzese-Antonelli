@@ -23,13 +23,21 @@ import javax.swing.JButton;
 
 public class ModificaNomeUtentePage extends JFrame {
 
-	private JPanel contentPane;
 	private Controller theController;
+	private Operatori operatore;
+	
 	private Component url;
 	private ImageIcon imageicon;
-	private Operatori operatore;
+	private JPanel contentPane;
+	private JPanel modificaNomeUtentePanel;
+	private JLabel modificaNomeUtenteLabel;
+	private JLabel nuovoNomeUtenteLabel;
+	private JLabel confermaNuovoNomeLabel;
 	private JTextField nuovoNomeUtenteTextField;
 	private JTextField confermaNuovoNomeUtenteTextField;
+	private JButton confermaButton;
+	private JButton indietroButton;
+	
 	
 	public ModificaNomeUtentePage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -50,31 +58,30 @@ public class ModificaNomeUtentePage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel modificaNomeUtentePanel = new JPanel();
+		modificaNomeUtentePanel = new JPanel();
 		modificaNomeUtentePanel.setBackground(SystemColor.control);
 		modificaNomeUtentePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		modificaNomeUtentePanel.setBounds(10, 11, 548, 307);
 		contentPane.add(modificaNomeUtentePanel);
 		modificaNomeUtentePanel.setLayout(null);
 		
-		JLabel modificaNomeUtenteLabel = new JLabel("MODIFICA NOME UTENTE");
+		modificaNomeUtenteLabel = new JLabel("MODIFICA NOME UTENTE");
 		modificaNomeUtenteLabel.setForeground(Color.BLACK);
 		modificaNomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		modificaNomeUtenteLabel.setBackground(Color.WHITE);
 		modificaNomeUtenteLabel.setBounds(134, 11, 279, 33);
 		modificaNomeUtentePanel.add(modificaNomeUtenteLabel);
 		
-		JLabel nuovoNomeUtenteLabel = new JLabel("Inserire nuovo Nome Utente:");
+		nuovoNomeUtenteLabel = new JLabel("Inserire nuovo Nome Utente:");
 		nuovoNomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		nuovoNomeUtenteLabel.setBounds(173, 79, 214, 20);
 		modificaNomeUtentePanel.add(nuovoNomeUtenteLabel);
 		
-		JLabel confermaNuovoNomeLabel = new JLabel("Conferma Nome Utente:");
+		confermaNuovoNomeLabel = new JLabel("Conferma Nome Utente:");
 		confermaNuovoNomeLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaNuovoNomeLabel.setBounds(187, 164, 192, 20);
 		modificaNomeUtentePanel.add(confermaNuovoNomeLabel);
 		
-		//173, 79, 214, 20
 		nuovoNomeUtenteTextField = new JTextField();
 		nuovoNomeUtenteTextField.setFont(new Font("Arial", Font.BOLD, 13));
 		nuovoNomeUtenteTextField.setBounds(179, 104, 192, 20);
@@ -87,7 +94,7 @@ public class ModificaNomeUtentePage extends JFrame {
 		confermaNuovoNomeUtenteTextField.setBounds(179, 184, 192, 20);
 		modificaNomeUtentePanel.add(confermaNuovoNomeUtenteTextField);
 		
-		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("CONFERMA");
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(194, 230, 162, 31);
 		modificaNomeUtentePanel.add(confermaButton);
@@ -126,7 +133,7 @@ public class ModificaNomeUtentePage extends JFrame {
 			}
 		});
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

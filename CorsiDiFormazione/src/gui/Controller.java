@@ -209,6 +209,11 @@ public class Controller {
 		
 		return areeTematicheDAO.getAllAreeTematiche();
 	}
+	
+	public Vector<Studenti> getAllStudentiIscrittiAllaLezione(String id_lezione) {//da finire
+		
+		return studentiDAO.getAllStudentiIscrittiAllaLezione(id_lezione);
+	}
 
 }
 

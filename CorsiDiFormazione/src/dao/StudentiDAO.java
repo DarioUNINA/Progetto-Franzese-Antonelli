@@ -103,5 +103,36 @@ public class StudentiDAO {
 		
 	}
 	
+	public Vector<Studenti> getAllStudentiIscrittiAllaLezione(String id_lezione){
+		
+		Vector<Studenti> studente = new Vector<Studenti>();
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN presenze pre ON s.i");//da finire
+			
+			while(rs.next()) {
+
+				Studenti s = new Studenti();
+				s.setMatricola(rs.getString("matricola"));
+				s.setNome(rs.getString("nome"));	
+				s.setCognome(rs.getString("cognome"));
+
+				studente.add(s);
+				
+			}
+			
+			return studente;
+			
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return studente;
+		}
+		
+		
+		
+	}
+	
 	
 }

@@ -88,8 +88,9 @@ public class HomePage extends JFrame {
 		this.operatore = operatore;
 		setIconImage(imageicon.getImage());
 
-		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setResizable(false);
+		
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 813, 490);

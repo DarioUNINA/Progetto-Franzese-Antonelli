@@ -22,6 +22,8 @@ import javax.swing.border.LineBorder;
 
 import dto.Lezioni;
 import dto.Operatori;
+import dto.Studenti;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
@@ -33,7 +35,7 @@ public class PanoramicaLezionePage extends JFrame {
 	private Controller theController;
 	private Operatori operatore;
 	private Lezioni lezione;
-	
+	private Vector<Studenti> studenti;
 	private JList studentiList;
 	
 	private Component url;
@@ -63,6 +65,10 @@ public class PanoramicaLezionePage extends JFrame {
 		theController = controller;
 		this.operatore = operatore;
 		this.lezione = lezione;
+		
+		studenti = theController.getAllStudentiIscrittiAllaLezione(lezione.getIdLezione());
+		
+		
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -129,7 +135,7 @@ public class PanoramicaLezionePage extends JFrame {
 		});
 		
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(395, 295, 163, 23);
+		indietroButton.setBounds(10, 295, 163, 23);
 		contentPane.add(indietroButton);
 		
 		lezioniPanel = new JPanel();
@@ -183,7 +189,7 @@ public class PanoramicaLezionePage extends JFrame {
 				setVisible(false);
 			}
 		});
-		aggiungiStudenteLezioneButton.setBounds(10, 296, 244, 23);
+		aggiungiStudenteLezioneButton.setBounds(314, 295, 244, 23);
 		contentPane.add(aggiungiStudenteLezioneButton);
 		aggiungiStudenteLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
 		

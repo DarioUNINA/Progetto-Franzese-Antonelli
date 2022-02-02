@@ -87,5 +87,5 @@ public class Lezioni {
 		return this.titolo;
 
 	}
-	
+
 }

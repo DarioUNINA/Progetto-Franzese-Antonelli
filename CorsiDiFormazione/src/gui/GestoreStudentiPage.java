@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Operatori;
+import dto.Studenti;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -20,6 +21,8 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
+
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -31,6 +34,8 @@ public class GestoreStudentiPage extends JFrame {
 	private Component url;
 	private ImageIcon imageicon;
 	private Operatori operatore;
+	private JComboBox<Studenti> studentiComboBox;
+	private Vector<Studenti> studenti;
 
 	
 	public GestoreStudentiPage(Controller controller, Operatori operatore) {
@@ -38,10 +43,12 @@ public class GestoreStudentiPage extends JFrame {
 		
 		theController = controller;
 		this.operatore = operatore;
+		studenti = theController.setStudenti();
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
+		
 		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,7 +99,7 @@ public class GestoreStudentiPage extends JFrame {
 		studenteLabel.setBounds(111, 123, 77, 14);
 		selzionaStudentiPanel.add(studenteLabel);
 		
-		JComboBox studentiComboBox = new JComboBox(theController.setStudenti());
+		studentiComboBox = new JComboBox<Studenti>(studenti);
 		studentiComboBox.setBounds(198, 120, 157, 22);
 		selzionaStudentiPanel.add(studentiComboBox);
 		

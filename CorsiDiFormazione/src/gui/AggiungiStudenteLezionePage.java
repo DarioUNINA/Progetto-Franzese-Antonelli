@@ -25,12 +25,23 @@ import dto.Studenti;
 
 public class AggiungiStudenteLezionePage extends JFrame {
 
-	private JPanel contentPane;
+	private Operatori operatore;
 	private Controller theController;
+	private Lezioni lezione;
+	
+
+	
+	
+
+	private JPanel contentPane;
 	private Component url;
 	private ImageIcon imageicon;
-	private Operatori operatore;
-	private Lezioni lezione;
+	private JPanel selzionaStudentiPanel;
+	private JLabel selezionaStudenteLabel;
+	private JButton indietroButton;
+	private JLabel studenteLabel;
+	JButton confermaButton;
+	
 	
 	public AggiungiStudenteLezionePage(Controller controller, Operatori operatore, Lezioni lezione) {
 		setResizable(false);
@@ -52,21 +63,21 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel selzionaStudentiPanel = new JPanel();
+		selzionaStudentiPanel = new JPanel();
 		selzionaStudentiPanel.setBackground(SystemColor.control);
 		selzionaStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		selzionaStudentiPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(selzionaStudentiPanel);
 		selzionaStudentiPanel.setLayout(null);
 		
-		JLabel selezionaStudenteLabel = new JLabel("SELEZIONA STUDENTE");
+		selezionaStudenteLabel = new JLabel("SELEZIONA STUDENTE");
 		selezionaStudenteLabel.setForeground(new Color(65, 105, 225));
 		selezionaStudenteLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		selezionaStudenteLabel.setBackground(Color.WHITE);
 		selezionaStudenteLabel.setBounds(147, 11, 260, 33);
 		selzionaStudentiPanel.add(selezionaStudenteLabel);
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -87,7 +98,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		indietroButton.setBounds(10, 273, 168, 23);
 		selzionaStudentiPanel.add(indietroButton);
 		
-		JLabel studenteLabel = new JLabel("Studente:");
+		studenteLabel = new JLabel("Studente:");
 		studenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		studenteLabel.setBounds(111, 123, 77, 14);
 		selzionaStudentiPanel.add(studenteLabel);
@@ -98,7 +109,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		studentiComboBox.setBounds(198, 120, 157, 22);
 		selzionaStudentiPanel.add(studentiComboBox);
 		
-		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("CONFERMA");
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(370, 273, 168, 23);
 		selzionaStudentiPanel.add(confermaButton);

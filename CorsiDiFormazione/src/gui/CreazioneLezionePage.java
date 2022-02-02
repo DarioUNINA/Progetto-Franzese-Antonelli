@@ -22,16 +22,26 @@ import javax.swing.JTextField;
 
 public class CreazioneLezionePage extends JFrame {
 
-	private JPanel creazioneLezioniPanel;
 	private Controller theController;
 	private Operatori operatore;
-	private Component url;
+	
 	private ImageIcon imageicon;
+	private JPanel creazioneLezioniPanel;
+	private Component url;
 	private JTextField titoloTextField;
 	private JTextField durataTextField;
 	private JTextField orarioTextField;
 	private JTextField dataTextField;
 	private JTextField descrizioneTextField;
+	private JPanel creaLezionePanel;
+	private JLabel creazioneLezioneLabel;
+	private JLabel titoloLabel;
+	private JLabel durataLabel;
+	private JLabel orarioLabel;
+	private JLabel dataLabel;
+	private JLabel descrizioneLabel;
+	private JButton indietroButton;
+	private JButton confermaButton;
 	
 	public CreazioneLezionePage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -54,46 +64,46 @@ public class CreazioneLezionePage extends JFrame {
 		creazioneLezioniPanel.setLayout(null);
 			
 
-		JPanel creaLezionePanel = new JPanel();
+		creaLezionePanel = new JPanel();
 		creaLezionePanel.setBounds(10, 11, 548, 307);
 		creaLezionePanel.setBackground(SystemColor.control);
 		creaLezionePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		creazioneLezioniPanel.add(creaLezionePanel);
 		creaLezionePanel.setLayout(null);
 		
-		JLabel creazioneLezioneLabel = new JLabel("CREAZIONE LEZIONE");
+		creazioneLezioneLabel = new JLabel("CREAZIONE LEZIONE");
 		creazioneLezioneLabel.setForeground(Color.BLACK);
 		creazioneLezioneLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		creazioneLezioneLabel.setBackground(Color.WHITE);
 		creazioneLezioneLabel.setBounds(159, 11, 227, 33);
 		creaLezionePanel.add(creazioneLezioneLabel);
 		
-		JLabel titoloLabel = new JLabel("Titolo:");
+		titoloLabel = new JLabel("Titolo:");
 		titoloLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		titoloLabel.setBounds(58, 75, 45, 18);
 		creaLezionePanel.add(titoloLabel);
 		
-		JLabel durataLabel = new JLabel("Durata:");
+		durataLabel = new JLabel("Durata:");
 		durataLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		durataLabel.setBounds(52, 119, 51, 18);
 		creaLezionePanel.add(durataLabel);
 		
-		JLabel orarioLabel = new JLabel("Orario:");
+		orarioLabel = new JLabel("Orario:");
 		orarioLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		orarioLabel.setBounds(265, 75, 51, 18);
 		creaLezionePanel.add(orarioLabel);
 		
-		JLabel dataLabel = new JLabel("Data:");
+		dataLabel = new JLabel("Data:");
 		dataLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		dataLabel.setBounds(280, 119, 36, 18);
 		creaLezionePanel.add(dataLabel);
 		
-		JLabel descrizioneLabel = new JLabel("Descrizione:");
+		descrizioneLabel = new JLabel("Descrizione:");
 		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		descrizioneLabel.setBounds(58, 175, 124, 18);
 		creaLezionePanel.add(descrizioneLabel);
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -113,7 +123,7 @@ public class CreazioneLezionePage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		creaLezionePanel.add(indietroButton);
 		
-		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("CONFERMA");
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -167,5 +177,6 @@ public class CreazioneLezionePage extends JFrame {
 		descrizioneTextField.setBounds(159, 175, 270, 20);
 		creaLezionePanel.add(descrizioneTextField);
 		
+		setVisible(true);
 	}
 }

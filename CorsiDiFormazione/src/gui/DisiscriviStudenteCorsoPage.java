@@ -22,13 +22,21 @@ import dto.Operatori;
 import dto.Studenti;
 
 public class DisiscriviStudenteCorsoPage extends JFrame {
-
-	private JPanel contentPane;
+	
 	private Controller theController;
-	private Component url;
-	private ImageIcon imageicon;
 	private Operatori operatore;
 	private Studenti studente;
+	
+	private ImageIcon imageicon;
+	private Component url;
+	private JPanel contentPane;
+	private JPanel disiscriviLezioneStudentiPanel;
+	private JLabel aggiungiStudenteAlCorsoLabel;
+	private JButton indietroButton;
+	private JButton eliminaButton;
+	private JLabel selezionareCorsoLabel;
+	private JComboBox corsiComboBox;
+	private JLabel datiStudenteLabel;
 	
 	public DisiscriviStudenteCorsoPage(Controller controller, Operatori operatore, Studenti studente) {
 		setResizable(false);
@@ -50,21 +58,21 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel disiscriviLezioneStudentiPanel = new JPanel();
+		disiscriviLezioneStudentiPanel = new JPanel();
 		disiscriviLezioneStudentiPanel.setBackground(SystemColor.control);
 		disiscriviLezioneStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		disiscriviLezioneStudentiPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(disiscriviLezioneStudentiPanel);
 		disiscriviLezioneStudentiPanel.setLayout(null);
 		
-		JLabel aggiungiStudenteAlCorsoLabel = new JLabel("DISISCRIVI STUDENTE DAL CORSO");
+		aggiungiStudenteAlCorsoLabel = new JLabel("DISISCRIVI STUDENTE DAL CORSO");
 		aggiungiStudenteAlCorsoLabel.setForeground(new Color(65, 105, 225));
 		aggiungiStudenteAlCorsoLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		aggiungiStudenteAlCorsoLabel.setBackground(Color.WHITE);
 		aggiungiStudenteAlCorsoLabel.setBounds(86, 11, 385, 33);
 		disiscriviLezioneStudentiPanel.add(aggiungiStudenteAlCorsoLabel);
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -84,7 +92,7 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		disiscriviLezioneStudentiPanel.add(indietroButton);
 		
-		JButton eliminaButton = new JButton("ELIMINA");
+		eliminaButton = new JButton("ELIMINA");
 		eliminaButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				eliminaButton.setBackground(Color.GREEN);
@@ -102,16 +110,16 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		eliminaButton.setBounds(417, 274, 121, 23);
 		disiscriviLezioneStudentiPanel.add(eliminaButton);
 		
-		JLabel selezionareCorsoLabel = new JLabel("Selezionare corso:");
+		selezionareCorsoLabel = new JLabel("Selezionare corso:");
 		selezionareCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		selezionareCorsoLabel.setBounds(51, 131, 136, 23);
 		disiscriviLezioneStudentiPanel.add(selezionareCorsoLabel);
 		
-		JComboBox corsiComboBox = new JComboBox(theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore()));
+		corsiComboBox = new JComboBox(theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore()));
 		corsiComboBox.setBounds(193, 132, 163, 22);
 		disiscriviLezioneStudentiPanel.add(corsiComboBox);
 		
-		JLabel datiStudenteLabel = new JLabel("STUDENTE:" + studente.getMatricola() + ", " + studente.getCognome() + ", " + studente.getNome());
+		datiStudenteLabel = new JLabel("STUDENTE:" + studente.getMatricola() + ", " + studente.getCognome() + ", " + studente.getNome());
 		datiStudenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		datiStudenteLabel.setBounds(51, 55, 414, 14);
 		disiscriviLezioneStudentiPanel.add(datiStudenteLabel);

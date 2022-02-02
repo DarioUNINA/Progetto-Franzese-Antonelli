@@ -23,12 +23,21 @@ import dto.Studenti;
 
 public class AggiungiStudenteCorsoPage extends JFrame {
 
-	private JPanel contentPane;
-	private Controller theController;
-	private Component url;
-	private ImageIcon imageicon;
 	private Operatori operatore;
 	private Studenti studente;
+	private Controller theController;
+
+	private JPanel contentPane;
+	private Component url;
+	private ImageIcon imageicon;
+	private JPanel prenotaLezioneStudentiPanel;
+	private JLabel aggiungiStudenteAlCorsoLabel;
+	private JButton indietroButton;
+	private JButton aggiungiButton;
+	private JLabel selezionareCorsoLabel;
+	private JComboBox corsiComboBox;
+	private JLabel datiStudenteLabel;
+	
 
 	
 	public AggiungiStudenteCorsoPage(Controller controller, Operatori operatore, Studenti studente) {
@@ -51,21 +60,20 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel prenotaLezioneStudentiPanel = new JPanel();
 		prenotaLezioneStudentiPanel.setBackground(SystemColor.control);
 		prenotaLezioneStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		prenotaLezioneStudentiPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(prenotaLezioneStudentiPanel);
 		prenotaLezioneStudentiPanel.setLayout(null);
 		
-		JLabel aggiungiStudenteAlCorsoLabel = new JLabel("AGGIUNGI STUDENTE AL CORSO");
+		aggiungiStudenteAlCorsoLabel = new JLabel("AGGIUNGI STUDENTE AL CORSO");
 		aggiungiStudenteAlCorsoLabel.setForeground(new Color(65, 105, 225));
 		aggiungiStudenteAlCorsoLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		aggiungiStudenteAlCorsoLabel.setBackground(Color.WHITE);
 		aggiungiStudenteAlCorsoLabel.setBounds(98, 11, 367, 33);
 		prenotaLezioneStudentiPanel.add(aggiungiStudenteAlCorsoLabel);
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -85,7 +93,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		prenotaLezioneStudentiPanel.add(indietroButton);
 		
-		JButton aggiungiButton = new JButton("AGGIUGI");
+		aggiungiButton = new JButton("AGGIUGI");
 		aggiungiButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				aggiungiButton.setBackground(Color.GREEN);
@@ -103,16 +111,16 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		aggiungiButton.setBounds(417, 274, 121, 23);
 		prenotaLezioneStudentiPanel.add(aggiungiButton);
 		
-		JLabel selezionareCorsoLabel = new JLabel("Selezionare corso:");
+		selezionareCorsoLabel = new JLabel("Selezionare corso:");
 		selezionareCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		selezionareCorsoLabel.setBounds(51, 131, 136, 23);
 		prenotaLezioneStudentiPanel.add(selezionareCorsoLabel);
 		
-		JComboBox corsiComboBox = new JComboBox(theController.setIscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore()));
+		corsiComboBox = new JComboBox(theController.setIscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore()));
 		corsiComboBox.setBounds(193, 132, 163, 22);
 		prenotaLezioneStudentiPanel.add(corsiComboBox);
 		
-		JLabel datiStudenteLabel = new JLabel("STUDENTE:" + studente.getMatricola() + ", " + studente.getCognome() + ", " + studente.getNome());
+		datiStudenteLabel = new JLabel("STUDENTE:" + studente.getMatricola() + ", " + studente.getCognome() + ", " + studente.getNome());
 		datiStudenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		datiStudenteLabel.setBounds(51, 55, 414, 14);
 		prenotaLezioneStudentiPanel.add(datiStudenteLabel);

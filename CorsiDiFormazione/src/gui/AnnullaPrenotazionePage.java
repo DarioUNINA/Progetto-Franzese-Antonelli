@@ -23,12 +23,19 @@ import dto.Studenti;
 
 public class AnnullaPrenotazionePage extends JFrame {
 
-	private JPanel contentPane;
 	private Controller theController;
-	private Component url;
-	private ImageIcon imageicon;
 	private Operatori operatore;
 	private Studenti studente;
+	
+	private JPanel contentPane;
+	private ImageIcon imageicon;
+	private JPanel annullaLezioneStudentiPanel;
+	private Component url;
+	private JLabel annullaPrenotazioneLezioneLabel;
+	private JButton indietroButton;
+	private JButton confermaButton;
+	private JLabel selezionareCorsoLabel;
+	private JComboBox corsiComboBox;
 	
 	public AnnullaPrenotazionePage(Controller controller, Operatori operatore,Studenti studente) {
 		setResizable(false);
@@ -50,21 +57,21 @@ public class AnnullaPrenotazionePage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel annullaLezioneStudentiPanel = new JPanel();
+		annullaLezioneStudentiPanel = new JPanel();
 		annullaLezioneStudentiPanel.setBackground(SystemColor.control);
 		annullaLezioneStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		annullaLezioneStudentiPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(annullaLezioneStudentiPanel);
 		annullaLezioneStudentiPanel.setLayout(null);
 		
-		JLabel annullaPrenotazioneLezioneLabel = new JLabel("ANNULLA PRENOTAZIONE ");
+		annullaPrenotazioneLezioneLabel = new JLabel("ANNULLA PRENOTAZIONE ");
 		annullaPrenotazioneLezioneLabel.setForeground(new Color(65, 105, 225));
 		annullaPrenotazioneLezioneLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		annullaPrenotazioneLezioneLabel.setBackground(Color.WHITE);
 		annullaPrenotazioneLezioneLabel.setBounds(127, 11, 301, 33);
 		annullaLezioneStudentiPanel.add(annullaPrenotazioneLezioneLabel);
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -84,7 +91,7 @@ public class AnnullaPrenotazionePage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		annullaLezioneStudentiPanel.add(indietroButton);
 		
-		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("CONFERMA");
 		confermaButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				confermaButton.setBackground(Color.GREEN);
@@ -103,12 +110,12 @@ public class AnnullaPrenotazionePage extends JFrame {
 		confermaButton.setBounds(417, 274, 121, 23);
 		annullaLezioneStudentiPanel.add(confermaButton);
 		
-		JLabel selezionareCorsoLabel = new JLabel("Selezionare corso:");
+		selezionareCorsoLabel = new JLabel("Selezionare corso:");
 		selezionareCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		selezionareCorsoLabel.setBounds(51, 131, 136, 23);
 		annullaLezioneStudentiPanel.add(selezionareCorsoLabel);
 		
-		JComboBox corsiComboBox = new JComboBox();
+		corsiComboBox = new JComboBox();
 		corsiComboBox.setBounds(193, 132, 163, 22);
 		annullaLezioneStudentiPanel.add(corsiComboBox);
 		

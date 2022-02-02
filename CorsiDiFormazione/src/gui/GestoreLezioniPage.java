@@ -29,12 +29,30 @@ import dto.Lezioni;
 
 public class GestoreLezioniPage extends JFrame {
 
-	private JPanel contentPane;
+	
 	private Controller theController;
-	private Component url;
-	private ImageIcon imageicon;
 	private Operatori operatore;
-	private JList lezioniList;
+	private JList<Lezioni> lezioniList;
+	private JList<Corsi> corsiList;
+	private Vector<Corsi> corsi;
+	
+	private ImageIcon imageicon;
+	private JPanel contentPane;
+	private Component url;
+	private JPanel gestoreLezioniPanel;
+	private JLabel gestoreLezioniLabel;
+	private JPanel corsiPanel;
+	private JScrollPane corsiScrollPane;
+	private JLabel selezionaCorsoLabel;
+	private JScrollPane lezioniScrollPane;
+	private JPanel lezioniPanel;
+	private JButton confermaCorsoButton;
+	private JLabel elencoLezioneDelCorsoLabel;
+	private JButton panormaicaLezioneButton;
+	private JButton eliminaLezioneButton;
+	private JButton aggiungiLezioneButton_1;
+	private JButton indietroButton;
+	
 	
 	public GestoreLezioniPage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -42,6 +60,8 @@ public class GestoreLezioniPage extends JFrame {
 		
 		theController = controller;
 		this.operatore = operatore;
+		corsi = theController.getCorsiOperatore(operatore);
+		corsiList = new JList<Corsi>(corsi);
 
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -56,42 +76,42 @@ public class GestoreLezioniPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel gestoreLezioniPanel = new JPanel();
+		gestoreLezioniPanel = new JPanel();
 		gestoreLezioniPanel.setBackground(SystemColor.control);
 		gestoreLezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		gestoreLezioniPanel.setBounds(10, 11, 548, 49);
 		contentPane.add(gestoreLezioniPanel);
 		gestoreLezioniPanel.setLayout(null);
 		
-		JLabel gestoreLezioniLabel = new JLabel("GESTIONE LEZIONI");
+		gestoreLezioniLabel = new JLabel("GESTIONE LEZIONI");
 		gestoreLezioniLabel.setForeground(new Color(65, 105, 225));
 		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		gestoreLezioniLabel.setBackground(Color.WHITE);
 		gestoreLezioniLabel.setBounds(164, 11, 223, 33);
 		gestoreLezioniPanel.add(gestoreLezioniLabel);
 		
-		JPanel corsiPanel = new JPanel();
+		corsiPanel = new JPanel();
 		corsiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		corsiPanel.setBounds(10, 71, 163, 213);
 		contentPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
 		
-		JLabel selezionaCorsoLabel = new JLabel("Seleziona Corso:");
+		selezionaCorsoLabel = new JLabel("Seleziona Corso:");
 		selezionaCorsoLabel.setBounds(21, 7, 121, 18);
 		selezionaCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		corsiPanel.add(selezionaCorsoLabel);
 		
-		JScrollPane corsiScrollPane = new JScrollPane();
+		corsiScrollPane = new JScrollPane();
 		corsiScrollPane.setBounds(10, 36, 143, 134);
 		corsiPanel.add(corsiScrollPane);
 		
-		JList<Corsi> corsiList = new JList<Corsi>(theController.getCorsiOperatore(operatore));
+		
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		corsiList.setVisibleRowCount(10);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -112,23 +132,22 @@ public class GestoreLezioniPage extends JFrame {
 		indietroButton.setBounds(395, 295, 163, 23);
 		contentPane.add(indietroButton);
 		
-		JPanel lezioniPanel = new JPanel();
+		lezioniPanel = new JPanel();
 		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		lezioniPanel.setBounds(183, 71, 375, 213);
 		contentPane.add(lezioniPanel);
 		lezioniPanel.setLayout(null);
 		
-		JScrollPane lezioniScrollPane = new JScrollPane();
+		lezioniScrollPane = new JScrollPane();
 		lezioniScrollPane.setBounds(10, 40, 201, 162);
 		lezioniPanel.add(lezioniScrollPane);
 		
-		JList<Lezioni> lezioniList = new JList<Lezioni>();
 		lezioniScrollPane.setViewportView(lezioniList);
 		lezioniList.setVisibleRowCount(10);
 		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
 		lezioniList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JButton confermaCorsoButton = new JButton("CONFERMA");
+		confermaCorsoButton = new JButton("CONFERMA");
 		confermaCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -143,12 +162,12 @@ public class GestoreLezioniPage extends JFrame {
 		confermaCorsoButton.setBounds(21, 179, 121, 23);
 		corsiPanel.add(confermaCorsoButton);
 		
-		JLabel elencoLezioneDelCorsoLabel = new JLabel("Elenco Lezione del Corso:");
+		elencoLezioneDelCorsoLabel = new JLabel("Elenco Lezione del Corso:");
 		elencoLezioneDelCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		elencoLezioneDelCorsoLabel.setBounds(10, 11, 203, 18);
 		lezioniPanel.add(elencoLezioneDelCorsoLabel);
 		
-		JButton panormaicaLezioneButton = new JButton("PANORAMICA");
+		panormaicaLezioneButton = new JButton("PANORAMICA");
 		panormaicaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -161,12 +180,13 @@ public class GestoreLezioniPage extends JFrame {
 		panormaicaLezioneButton.setBounds(223, 73, 142, 23);
 		lezioniPanel.add(panormaicaLezioneButton);
 		
-		JButton eliminaLezioneButton = new JButton("ELIMINA");
+		eliminaLezioneButton = new JButton("ELIMINA");
 		eliminaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
 		eliminaLezioneButton.setBounds(223, 147, 142, 23);
 		lezioniPanel.add(eliminaLezioneButton);
 		
-		JButton aggiungiLezioneButton_1 = new JButton("AGGIUNGI LEZIONE");
+		
+		aggiungiLezioneButton_1 = new JButton("AGGIUNGI LEZIONE");
 		aggiungiLezioneButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

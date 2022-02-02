@@ -30,23 +30,46 @@ import javax.swing.JScrollPane;
 
 public class PanoramicaSingoloStudentePage extends JFrame {
 
-	private JList<Corsi> corsiList;
+	
 	private Controller theController;
 	private Operatori operatore;
-	
-	private JPanel sfondoPane;
-	private Component url;
-	private ImageIcon imageicon;
-	private JTable corsiAmmessiLable;
+	private JList<Corsi> corsiList;
 	private Studenti studente;
 	private JList<Lezioni> lezioniList;
+	private String[] nomeColonne = {"Corso", "Numero Presenze"};
+	private Vector<Corsi> corsi;
+	private Vector<Lezioni> lezioni;
+	
+	private ImageIcon imageicon;
+	private JPanel sfondoPane;
+	private Component url;
+	private JPanel studentePanel;
+	private JLabel studenteLabel;
+	private JButton indietroButton;
+	private JLabel elencoCorsiLabel;
+	private JPanel corsiPanel;
+	private JScrollPane corsiScrollPane;
+	private JPanel lezioniPanel;
+	private JLabel elencoLezioniLabel;
+	private JScrollPane lezioniScrollPane;
+	private JPanel corsiAmmessoPanel;
+	private JButton confermaButton;
+	private JLabel corsiAmmessoLabel;
+	private JButton iscriviAdUnCorsoButton;
+	private JButton annullaPrenotazioneButton;
+	private JButton disiscriviDaUnCorsoButton;
+	private JButton prenotaLezioneButton;
+	private JTable corsiAmmessiLable;
+	
 	
 	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore, Studenti studente) {
 		
-		imageicon = new ImageIcon("napule.png");
 		theController = cont;
 		this.operatore = operatore;
 		this.studente = studente;
+		corsiList = new JList<Corsi> (corsi);
+		corsi = theController.setCorsiStudente(studente);
+		imageicon = new ImageIcon("napule.png");
 		
 		setIconImage(imageicon.getImage());
 
@@ -61,22 +84,20 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		setContentPane(sfondoPane);
 		sfondoPane.setLayout(null);
 		
-		
-		
-		JPanel studentePanel = new JPanel();
+		studentePanel = new JPanel();
 		studentePanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		studentePanel.setBackground(SystemColor.control);
 		studentePanel.setBounds(10, 11, 777, 77);
 		sfondoPane.add(studentePanel);
 		studentePanel.setLayout(null);
 		
-		JLabel studenteLabel = new JLabel("");
+		studenteLabel = new JLabel("");
 		studenteLabel.setFont(new Font("Arial", Font.BOLD, 30));
 		studenteLabel.setBounds(10, 0, 528, 44);
 		studentePanel.add(studenteLabel);
 		studenteLabel.setText("STUDENTE: " + studente.getMatricola() + ", " + studente.getCognome().toUpperCase());
 		
-		JButton indietroButton = new JButton("INDIETRO");
+		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -98,53 +119,46 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		indietroButton.setBounds(615, 43, 152, 23);
 		studentePanel.add(indietroButton);
 		
-		JPanel corsiPanel = new JPanel();
+		corsiPanel = new JPanel();
 		corsiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		corsiPanel.setBounds(10, 99, 185, 341);
 		sfondoPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
 		
-		JLabel elencoCorsiLabel = new JLabel("ELENCO CORSI:");
+		elencoCorsiLabel = new JLabel("ELENCO CORSI:");
 		elencoCorsiLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		elencoCorsiLabel.setBounds(31, 11, 131, 14);
 		corsiPanel.add(elencoCorsiLabel);
 		
-	
-		JScrollPane corsiScrollPane = new JScrollPane();
+		corsiScrollPane = new JScrollPane();
 		corsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		corsiScrollPane.setBounds(10, 36, 165, 240);
 		corsiPanel.add(corsiScrollPane);
 		
-		JList<Corsi> corsiList = new JList<Corsi>(theController.setCorsiStudente(studente));
+		
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setVisibleRowCount(10);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		
-		
-		JPanel lezioniPanel = new JPanel();
 		lezioniPanel.setLayout(null);
 		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		lezioniPanel.setBounds(227, 99, 185, 341);
 		sfondoPane.add(lezioniPanel);
 		
-		JLabel elencoLezioniLabel = new JLabel("ELENCO LEZIONI:");
+		elencoLezioniLabel = new JLabel("ELENCO LEZIONI:");
 		elencoLezioniLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		elencoLezioniLabel.setBounds(31, 11, 131, 14);
 		lezioniPanel.add(elencoLezioniLabel);
 		
-		JScrollPane lezioniScrollPane = new JScrollPane();
 		lezioniScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		lezioniScrollPane.setBounds(10, 36, 165, 294);
 		lezioniPanel.add(lezioniScrollPane);
 		
-		
-		lezioniList = new JList();
 		lezioniScrollPane.setViewportView(lezioniList);
 		lezioniList.setVisibleRowCount(10);
 		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JButton confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("CONFERMA");
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -156,26 +170,22 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		confermaButton.setBounds(31, 287, 119, 30);
 		corsiPanel.add(confermaButton);
 		
-		JPanel corsiAmmessoPanel = new JPanel();
 		corsiAmmessoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		corsiAmmessoPanel.setBounds(440, 99, 347, 341);
 		sfondoPane.add(corsiAmmessoPanel);
 		corsiAmmessoPanel.setLayout(null);
 		
-		JLabel corsiAmmessoLabel = new JLabel("CORSI ALLA QUALE SI E' AMMESSI ");
+		corsiAmmessoLabel = new JLabel("CORSI ALLA QUALE SI E' AMMESSI ");
 		corsiAmmessoLabel.setBounds(49, 11, 263, 14);
 		corsiAmmessoPanel.add(corsiAmmessoLabel);
 		corsiAmmessoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		
-		String[] nomeColonne = {"Corso", "Numero Presenze"};
-		
-		corsiAmmessiLable = new JTable();
 		corsiAmmessiLable.setBorder(new LineBorder(Color.ORANGE));
 		corsiAmmessiLable.setBounds(10, 180, 327, -127);
 		corsiAmmessoPanel.add(corsiAmmessiLable);
 		
-		JButton iscriviAdUnCorsoButton = new JButton("ISCRIVI AD UN CORSO");
+		iscriviAdUnCorsoButton = new JButton("ISCRIVI AD UN CORSO");
 		iscriviAdUnCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -187,7 +197,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		iscriviAdUnCorsoButton.setBounds(10, 222, 162, 35);
 		corsiAmmessoPanel.add(iscriviAdUnCorsoButton);
 		
-		JButton disiscriviDaUnCorsoButton = new JButton("DISISCRIVI DA UN CORSO");
+		disiscriviDaUnCorsoButton = new JButton("DISISCRIVI DA UN CORSO");
 		disiscriviDaUnCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -199,7 +209,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		disiscriviDaUnCorsoButton.setBounds(175, 222, 162, 35);
 		corsiAmmessoPanel.add(disiscriviDaUnCorsoButton);
 		
-		JButton prenotaLezioneButton = new JButton("PRENOTA LEZIONE");
+		prenotaLezioneButton = new JButton("PRENOTA LEZIONE");
 		prenotaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -211,7 +221,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		prenotaLezioneButton.setBounds(10, 279, 162, 35);
 		corsiAmmessoPanel.add(prenotaLezioneButton);
 		
-		JButton annullaPrenotazioneButton = new JButton("ANNULLA PRENOTAZIONE");
+		annullaPrenotazioneButton = new JButton("ANNULLA PRENOTAZIONE");
 		annullaPrenotazioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

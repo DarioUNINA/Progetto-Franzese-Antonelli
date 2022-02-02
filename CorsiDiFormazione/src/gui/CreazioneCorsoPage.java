@@ -196,8 +196,8 @@ public class CreazioneCorsoPage extends JFrame {
 						if(theController.isDigits(anno))
 							alertErroreInserimentoAnno();
 						else {
-								String[] prova = {"programmazione", "matematica"};
-	/*manca l'array di temi */	String state = theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore(), prova);
+								
+								String state = theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore(), areeTematiche);
 									
 								if(state.equals("0"))
 									alertInserimentoEffettuato();
@@ -270,6 +270,8 @@ public class CreazioneCorsoPage extends JFrame {
 		creaCorsoPanel.add(corsiScrollPane);
 				
 		listaTemi = new JCheckBoxList();
+		//DA COMPLETARE
+		listaTemi.setModel(null);
 		corsiScrollPane.setViewportView(listaTemi);
 		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
 		listaTemi.setVisibleRowCount(10);

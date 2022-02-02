@@ -1,6 +1,9 @@
 package dao;
 
 import java.sql.*;
+import java.util.Vector;
+
+import dto.AreeTematiche;
 import dto.Temi;
 
 public class TemiDAO {
@@ -17,12 +20,12 @@ public class TemiDAO {
 	}
 
 	
-	public String inserisciTemi(String idCorso, String [] areeTematiche) {
+	public String inserisciTemi(String idCorso, Vector<AreeTematiche> areeTematiche) {
 		
 		try {
 			
-			for(String area:areeTematiche) 
-				statement.execute("INSERT INTO temi VALUES('"+ area + "','" + idCorso + "')");
+			for(AreeTematiche area:areeTematiche) 
+				statement.execute("INSERT INTO temi VALUES('"+ area.getNomeArea() + "','" + idCorso + "')");
 			return "0";
 
 		}catch(SQLException e) {

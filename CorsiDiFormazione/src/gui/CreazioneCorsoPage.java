@@ -40,7 +40,7 @@ public class CreazioneCorsoPage extends JFrame {
 	
 	private Controller theController;
 	private Operatori operatore;
-	private Vector<Temi> temi;
+	private Vector<Temi> areeTematiche;
 	
 	private ImageIcon imageicon;
 	private Component url;
@@ -72,6 +72,7 @@ public class CreazioneCorsoPage extends JFrame {
 		
 		this.operatore = operatore;
 		theController = controller;
+		areeTematiche = theController.getAllAreeTematiche(); 
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());

@@ -196,8 +196,6 @@ public  Vector<Corsi> getCorsiStudente(Studenti s){
 				c.setAnno(rs.getString("anno"));
 				c.setTerminato(rs.getBoolean("terminato"));
 				
-				
-
 				corsi.add(c);	
 			}
 			

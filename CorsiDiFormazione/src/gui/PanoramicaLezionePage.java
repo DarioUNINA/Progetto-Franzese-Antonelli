@@ -34,6 +34,8 @@ public class PanoramicaLezionePage extends JFrame {
 	private Operatori operatore;
 	private Lezioni lezione;
 	
+	private JList studentiList;
+	
 	private Component url;
 	private ImageIcon imageicon;
 	private JPanel contentPane;
@@ -42,7 +44,6 @@ public class PanoramicaLezionePage extends JFrame {
 	private JPanel studentiPanel;
 	private JLabel studentiIscrittiLabel;
 	private JScrollPane studentiScrollPane;
-	private JList studentiList;
 	private JButton indietroButton;
 	private JPanel lezioniPanel;
 	private JLabel dettagliLezioneLabel;

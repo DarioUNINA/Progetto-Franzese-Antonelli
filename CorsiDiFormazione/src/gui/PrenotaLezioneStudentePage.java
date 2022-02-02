@@ -39,6 +39,7 @@ public class PrenotaLezioneStudentePage extends JFrame {
 	private JPanel prenotaLezioneStudentiPanel;
 	private JLabel prenotazioneLezioneLabel;
 	private JButton indietroButton;
+	private JButton confermaButton;
 	private JLabel selezionareCorsoLabel;
 	
 	
@@ -67,8 +68,7 @@ public class PrenotaLezioneStudentePage extends JFrame {
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton confermaButton;
+
 		prenotaLezioneStudentiPanel = new JPanel();
 		prenotaLezioneStudentiPanel.setBackground(SystemColor.control);
 		prenotaLezioneStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));

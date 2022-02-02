@@ -62,6 +62,7 @@ public class RegistrazionePage extends JFrame {
 		
 		theController = controller;
 		domande = theController.getDomandeSicurezza();
+		domandeComboBox = new JComboBox(domande);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -75,7 +76,7 @@ public class RegistrazionePage extends JFrame {
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		registrazionePanel = new JPanel();
 		registrazionePanel.setBackground(SystemColor.control);
 		registrazionePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
@@ -115,9 +116,6 @@ public class RegistrazionePage extends JFrame {
 		registrazionePanel.add(passwordTextField);
 		passwordTextField.setColumns(10);
 		
-		
-				
-		domandeComboBox = new JComboBox(domande);
 		domandeComboBox.setFont(new Font("Arial", Font.BOLD, 13));
 		domandeComboBox.setMaximumRowCount(3);
 		domandeComboBox.setBounds(46, 217, 297, 32);

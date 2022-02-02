@@ -32,10 +32,12 @@ public class AggiungiStudenteLezionePage extends JFrame {
 	private Operatori operatore;
 	private Lezioni lezione;
 	
-	public AggiungiStudenteLezionePage(Controller controller, Operatori operator, Lezioni lezione) {
+	public AggiungiStudenteLezionePage(Controller controller, Operatori operatore, Lezioni lezione) {
 		setResizable(false);
 		
 		theController = controller;
+		this.operatore= operatore;
+		this.lezione = lezione;
 
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());

@@ -56,6 +56,7 @@ public class CreazioneCorsoPage extends JFrame {
 		
 		this.operatore = operatore;
 		theController = controller;
+		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		

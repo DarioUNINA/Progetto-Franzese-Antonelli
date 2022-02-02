@@ -41,6 +41,8 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		
 		theController = controller;
+		this.operatore= operatore;
+		this.lezione = lezione;
 
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());

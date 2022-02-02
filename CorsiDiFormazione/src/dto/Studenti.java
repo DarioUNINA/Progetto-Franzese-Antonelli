@@ -39,4 +39,7 @@ public class Studenti {
 		this.cognome = cognome;
 	}
 
+	public String toString() {
+		return this.matricola + " " +  this.nome + " " +  this.cognome;
+	}
 }

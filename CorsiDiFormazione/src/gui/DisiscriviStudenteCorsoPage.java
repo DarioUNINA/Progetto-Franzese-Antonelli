@@ -34,6 +34,8 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		setResizable(false);
 		
 		theController = controller;
+		this.operatore = operatore;
+		this.studente = studente;
 
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());

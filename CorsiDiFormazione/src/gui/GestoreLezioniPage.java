@@ -41,6 +41,7 @@ public class GestoreLezioniPage extends JFrame {
 		
 		
 		theController = controller;
+		this.operatore = operatore;
 
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());

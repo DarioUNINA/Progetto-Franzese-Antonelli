@@ -29,12 +29,12 @@ import java.awt.event.ActionEvent;
 
 public class RecuperoPassDomandaPage extends JFrame {
 
-	private JPanel contentPane;
-	private Component url;
-
+	
 	private Controller theController;
 	private Operatori operatore;
 	
+	private JPanel contentPane;
+	private Component url;
 	private ImageIcon imageicon;
 	private JTextField DomandaText;
 	private JTextField rispostaDomandaField;

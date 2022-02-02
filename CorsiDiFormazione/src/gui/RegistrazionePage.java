@@ -27,22 +27,28 @@ import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+
+import dto.DomandeSicurezza;
 import dto.Operatori;
 
 public class RegistrazionePage extends JFrame {
 
-	private JPanel contentPane;
+	private Vector<DomandeSicurezza> domande;
 	private Controller theController;
+	
 	private JTextField nomeTextField;
 	private JTextField passwordTextField;
 	private JTextField rispostaSicurezzaField;
 	private ImageIcon imageicon;
+	private JPanel contentPane;
+	
 
 
 	public RegistrazionePage(Controller controller) {
 		
 		
 		theController = controller;
+		domande = theController.getDomandeSicurezza();
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -96,10 +102,8 @@ public class RegistrazionePage extends JFrame {
 		registrazionePanel.add(passwordTextField);
 		passwordTextField.setColumns(10);
 		
-		Vector<String> domande = new Vector();
 		
-		domande = theController.getDomandeSicurezza();
-		
+				
 		JComboBox domandeComboBox = new JComboBox(domande);
 		domandeComboBox.setFont(new Font("Arial", Font.BOLD, 13));
 		domandeComboBox.setMaximumRowCount(3);

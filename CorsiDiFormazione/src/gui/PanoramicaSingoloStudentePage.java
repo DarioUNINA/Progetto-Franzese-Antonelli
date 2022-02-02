@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Corsi;
+import dto.Lezioni;
 import dto.Operatori;
 import dto.Studenti;
 
@@ -29,14 +30,16 @@ import javax.swing.JScrollPane;
 
 public class PanoramicaSingoloStudentePage extends JFrame {
 
+	private JList<Corsi> corsiList;
+	private Controller theController;
+	private Operatori operatore;
+	
 	private JPanel sfondoPane;
 	private Component url;
-	private Controller theController;
 	private ImageIcon imageicon;
-	private Operatori operatore;
 	private JTable corsiAmmessiLable;
 	private Studenti studente;
-	private JList lezioniList;
+	private JList<Lezioni> lezioniList;
 	
 	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore, Studenti studente) {
 		

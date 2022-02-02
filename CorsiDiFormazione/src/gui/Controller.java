@@ -74,7 +74,7 @@ public class Controller {
 		
 	}
 		
-	public Vector<String> getDomandeSicurezza() {
+	public Vector<DomandeSicurezza> getDomandeSicurezza() {
 		
 		return domandeSicurezzaDAO.getDomande();
 	}

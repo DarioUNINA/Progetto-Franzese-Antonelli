@@ -48,16 +48,22 @@ public class DomandeSicurezzaDAO {
 		}
 	}
 
-	public Vector<String> getDomande() {
+	public Vector<DomandeSicurezza> getDomande() {
 		
-		Vector<String> domande = new Vector<String>();
+		Vector<DomandeSicurezza> domande = new Vector<DomandeSicurezza>();
+		
+		DomandeSicurezza ds;
 		
 		try {
 			
 			ResultSet rs = statement.executeQuery("SELECT * FROM domande_sicurezza");
 			
-			while(rs.next())
-				domande.add(rs.getString(1));
+			while(rs.next()) {
+				
+				ds = new DomandeSicurezza();
+				ds.setDomanda(rs.getString(1));
+				domande.add(ds);
+			}
 
 			return domande;
 			

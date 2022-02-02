@@ -31,15 +31,11 @@ public class GestoreStudentiPage extends JFrame {
 	
 	private Controller theController;
 	private Operatori operatore;
-	
-	private Component url;
-	private ImageIcon imageicon;
-<<<<<<< HEAD
-	private Operatori operatore;
 	private JComboBox<Studenti> studentiComboBox;
 	private Vector<Studenti> studenti;
-
-=======
+	
+	private ImageIcon imageicon;
+	private Component url;
 	private JPanel contentPane;
 	private JPanel selzionaStudentiPanel;
 	private JLabel selezionaStudenteLabel;
@@ -48,7 +44,7 @@ public class GestoreStudentiPage extends JFrame {
 	private JButton eliminaStudenteButton;
 	private JButton panoramicaButton;
 	private JButton creaStudenteButton;
->>>>>>> 1fda4efdd353d62dda7e012e5ca39cc234b58a6f
+
 	
 	public GestoreStudentiPage(Controller controller, Operatori operatore) {
 		setResizable(false);

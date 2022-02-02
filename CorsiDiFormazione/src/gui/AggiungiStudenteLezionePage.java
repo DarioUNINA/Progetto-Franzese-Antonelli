@@ -25,30 +25,21 @@ import dto.Studenti;
 
 public class AggiungiStudenteLezionePage extends JFrame {
 
-	private Operatori operatore;
 	private Controller theController;
-	private Lezioni lezione;
-	
-
-	
-	
-
-	private JPanel contentPane;
-	private Component url;
-	private ImageIcon imageicon;
-<<<<<<< HEAD
-	private JPanel selzionaStudentiPanel;
-	private JLabel selezionaStudenteLabel;
-	private JButton indietroButton;
-	private JLabel studenteLabel;
-	JButton confermaButton;
-	
-=======
 	private Operatori operatore;
 	private Lezioni lezione;
 	private JComboBox<Studenti> studentiComboBox;
 	private Vector<Studenti> elencoStudenti;
->>>>>>> 1fda4efdd353d62dda7e012e5ca39cc234b58a6f
+	
+	private JPanel contentPane;
+	private Component url;
+	private ImageIcon imageicon;
+	private JPanel selzionaStudentiPanel;
+	private JLabel selezionaStudenteLabel;
+	private JButton indietroButton;
+	private JLabel studenteLabel;
+	private JButton confermaButton;
+	
 	
 	public AggiungiStudenteLezionePage(Controller controller, Operatori operatore, Lezioni lezione) {
 		setResizable(false);
@@ -56,6 +47,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		theController = controller;
 		this.operatore= operatore;
 		this.lezione = lezione;
+		elencoStudenti = theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione());
 
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -109,8 +101,6 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		studenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		studenteLabel.setBounds(111, 123, 77, 14);
 		selzionaStudentiPanel.add(studenteLabel);
-		
-		elencoStudenti =(theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione()));
 		
 		studentiComboBox = new JComboBox<Studenti>(elencoStudenti);
 		studentiComboBox.setBounds(198, 120, 157, 22);

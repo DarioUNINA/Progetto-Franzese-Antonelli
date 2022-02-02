@@ -60,7 +60,7 @@ public class RecuperoPassPage extends JFrame {
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		recuperoPanel = new JPanel();
 		recuperoPanel.setBackground(SystemColor.control);
 		recuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
@@ -80,7 +80,6 @@ public class RecuperoPassPage extends JFrame {
 		nomeUtenteLabel.setBounds(100, 80, 101, 14);
 		recuperoPanel.add(nomeUtenteLabel);
 		
-		nomeUtenteText = new JTextField();
 		nomeUtenteText.setFont(new Font("Arial", Font.BOLD, 13));
 		nomeUtenteText.setColumns(10);
 		nomeUtenteText.setBounds(211, 78, 121, 20);

@@ -67,6 +67,7 @@ public class GestoreStudentiPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		selzionaStudentiPanel = new JPanel();
 		selzionaStudentiPanel.setBackground(SystemColor.control);
 		selzionaStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		selzionaStudentiPanel.setBounds(10, 11, 548, 307);

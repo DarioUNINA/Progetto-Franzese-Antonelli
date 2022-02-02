@@ -100,12 +100,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				confermaButton.setBackground(Color.WHITE);
 			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
-		});
-		
+			});
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(212, 171, 121, 27);
 		recuperoPanel.add(confermaButton);
@@ -126,7 +121,6 @@ public class RecuperoPassDomandaPage extends JFrame {
 				setVisible(false);
 			}
 		});
-		
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 273, 121, 23);
 		recuperoPanel.add(indietroButton);

@@ -67,8 +67,10 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		theController = cont;
 		this.operatore = operatore;
 		this.studente = studente;
-		corsiList = new JList<Corsi> (corsi);
+		
 		corsi = theController.setCorsiStudente(studente);
+		corsiList = new JList<Corsi> (corsi);
+		
 		imageicon = new ImageIcon("napule.png");
 		
 		setIconImage(imageicon.getImage());
@@ -135,11 +137,12 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiScrollPane.setBounds(10, 36, 165, 240);
 		corsiPanel.add(corsiScrollPane);
 		
-		
+
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setVisibleRowCount(10);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		
+		lezioniPanel = new JPanel();
 		lezioniPanel.setLayout(null);
 		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		lezioniPanel.setBounds(227, 99, 185, 341);
@@ -150,6 +153,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		elencoLezioniLabel.setBounds(31, 11, 131, 14);
 		lezioniPanel.add(elencoLezioniLabel);
 		
+		lezioniScrollPane = new JScrollPane();
 		lezioniScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		lezioniScrollPane.setBounds(10, 36, 165, 294);
 		lezioniPanel.add(lezioniScrollPane);
@@ -170,6 +174,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		confermaButton.setBounds(31, 287, 119, 30);
 		corsiPanel.add(confermaButton);
 		
+		corsiAmmessoPanel = new JPanel();
 		corsiAmmessoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		corsiAmmessoPanel.setBounds(440, 99, 347, 341);
 		sfondoPane.add(corsiAmmessoPanel);
@@ -180,7 +185,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessoPanel.add(corsiAmmessoLabel);
 		corsiAmmessoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		
+		corsiAmmessiLable = new JTable();
 		corsiAmmessiLable.setBorder(new LineBorder(Color.ORANGE));
 		corsiAmmessiLable.setBounds(10, 180, 327, -127);
 		corsiAmmessoPanel.add(corsiAmmessiLable);

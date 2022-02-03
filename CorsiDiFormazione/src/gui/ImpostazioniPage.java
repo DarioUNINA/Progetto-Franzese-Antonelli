@@ -9,6 +9,7 @@ import java.awt.SystemColor;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -90,6 +91,12 @@ public class ImpostazioniPage extends JFrame {
 		impostazioniPanel.add(modificaPasswordButton);
 		
 		eliminaProfiloButton = new JButton("ELIMINA PROFILO");
+		eliminaProfiloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				alertConfermaEliminaProfilo();
+			}
+		});
 		eliminaProfiloButton.setFont(new Font("Arial", Font.BOLD, 15));
 		eliminaProfiloButton.setBounds(155, 218, 234, 30);
 		impostazioniPanel.add(eliminaProfiloButton);
@@ -125,6 +132,36 @@ public class ImpostazioniPage extends JFrame {
 		setVisible(true);
 	}
 			
+	public void alertConfermaEliminaProfilo() {
+		
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel("Per Eliminare il profilo è necessario inserire la Password di sicurezza:");
+		JPasswordField pass = new JPasswordField(10);
+		panel.add(label);
+		panel.add(pass);
+		String[] options = new String[]{"OK", "Cancel"};
+		int option = JOptionPane.showOptionDialog(null, panel, "Elimina Profilo",
+		                         JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+		                         null, options, options[1]);
+		
+		if(option == 0) // pressing OK button
+		{
+		    if(operatore.getPassword().compareTo( pass.getPassword().toString())==0){
+		    	alertEliminazioneEseguitaConSuccesso();
+		    	LogInPage li = new LogInPage(theController);
+		    }else {
+		    	alertPasswordErrata();
+		    }
+		    
+		}
+	}
 	
+	public void alertEliminazioneEseguitaConSuccesso() {
+		JOptionPane.showMessageDialog(this, "Account eliminato con successo","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertPasswordErrata() {
+		JOptionPane.showMessageDialog(this, "Password errata","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
 }
 

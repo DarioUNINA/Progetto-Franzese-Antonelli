@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -120,6 +121,8 @@ public class AggiungiStudenteLezionePage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				theController.aggiungiStudenteLezioneClicked(elencoStudenti.get((studentiComboBox.getSelectedIndex())).getMatricola() ,lezione.getIdLezione());
+				alertStudenteAggiuntoCorrettamente();
+				PanoramicaLezionePage  plp = new PanoramicaLezionePage(controller, operatore, lezione);
 			}
 			
 		});
@@ -129,6 +132,10 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
+	}
+	
+	public void alertStudenteAggiuntoCorrettamente() {
+		JOptionPane.showMessageDialog(this, "Studente aggiunto correttamente alle lezione.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 
 }

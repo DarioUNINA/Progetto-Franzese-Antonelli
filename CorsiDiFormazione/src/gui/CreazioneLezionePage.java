@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import dto.Corsi;
 import dto.Operatori;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -43,7 +44,7 @@ public class CreazioneLezionePage extends JFrame {
 	private JButton indietroButton;
 	private JButton confermaButton;
 	
-	public CreazioneLezionePage(Controller controller, Operatori operatore) {
+	public CreazioneLezionePage(Controller controller, Operatori operatore, Corsi corso) {
 		setResizable(false);
 		
 		

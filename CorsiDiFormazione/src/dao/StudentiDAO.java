@@ -109,7 +109,7 @@ public class StudentiDAO {
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN presenze pre ON s.i");//da finire
+			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN presenze pre ON s.matricola = pre.matricola WHERE pre.id_lezione = '" + id_lezione + "'");
 			
 			while(rs.next()) {
 

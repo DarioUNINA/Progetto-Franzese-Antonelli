@@ -15,5 +15,21 @@ public class PresenzeDAO {
 		statement = connessione.getStatement();
 	}
 
-
+	
+	public String aggiungiStudenteLezione(String matricola, String id_lezione) {
+		
+		//String state;
+		
+		try {
+			
+			if(!statement.execute("INSERT INTO presenze VALUES ('" + matricola +"', '" + id_lezione +"')"))
+				return "0";
+			else 
+				return "-1";
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+	}
 }

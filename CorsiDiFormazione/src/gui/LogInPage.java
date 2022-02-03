@@ -111,7 +111,7 @@ public class LogInPage extends JFrame {
 		accediButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				accediButton.setBackground(Color.GREEN);
-			};
+			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				accediButton.setBackground(Color.WHITE);

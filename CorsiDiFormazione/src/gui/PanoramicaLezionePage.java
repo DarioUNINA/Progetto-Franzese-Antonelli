@@ -36,7 +36,7 @@ public class PanoramicaLezionePage extends JFrame {
 	private Operatori operatore;
 	private Lezioni lezione;
 	private Vector<Studenti> studenti;
-	private JList studentiList;
+	private JList<Studenti> studentiList;
 	
 	private Component url;
 	private ImageIcon imageicon;
@@ -67,8 +67,7 @@ public class PanoramicaLezionePage extends JFrame {
 		this.lezione = lezione;
 		
 		studenti = theController.getAllStudentiIscrittiAllaLezione(lezione.getIdLezione());
-		
-		
+		studentiList = new JList<Studenti>(studenti);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -112,10 +111,10 @@ public class PanoramicaLezionePage extends JFrame {
 		studentiScrollPane.setBounds(10, 36, 143, 166);
 		studentiPanel.add(studentiScrollPane);
 		
-		studentiList = new JList();
 		studentiScrollPane.setViewportView(studentiList);
 		studentiList.setVisibleRowCount(10);
 		studentiList.setFont(new Font("Arial", Font.BOLD, 15));
+		studentiList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.addMouseListener(new MouseAdapter() {

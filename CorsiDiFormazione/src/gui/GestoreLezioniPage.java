@@ -49,7 +49,7 @@ public class GestoreLezioniPage extends JFrame {
 	private JLabel elencoLezioneDelCorsoLabel;
 	private JButton panormaicaLezioneButton;
 	private JButton eliminaLezioneButton;
-	private JButton aggiungiLezioneButton_1;
+	private JButton aggiungiLezioneButton;
 	private JButton indietroButton;
 	private JScrollPane corsiScrollPane;
 	private JScrollPane lezioniScrollPane;
@@ -133,7 +133,7 @@ public class GestoreLezioniPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(corsiList.isSelectionEmpty()) {
-					alertNessunCOrsoSelezionato();
+					alertNessunCorsoSelezionato();
 				}else {
 					String id_corso = corsiList.getSelectedValue().getIdCorso();
 					if(theController.setAllLezioniDelCorso(id_corso).isEmpty())
@@ -180,6 +180,25 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
+		eliminaLezioneButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				eliminaLezioneButton.setBackground(Color.RED);
+			}
+		
+			@Override
+			public void mouseExited(MouseEvent e) {
+				eliminaLezioneButton.setBackground(Color.WHITE);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(lezioniList.isSelectionEmpty()) {
+					alertNessunaLezioneSelezionataElimina();
+				}else {
+					alertConfermaEliminazionelezione(lezioniList.getSelectedValue().getTitolo());
+				}
+			}
+		});
 		eliminaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
 		eliminaLezioneButton.setBounds(314, 100, 179, 37);
 		lezioniPanel.add(eliminaLezioneButton);
@@ -195,17 +214,29 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		
-		aggiungiLezioneButton_1 = new JButton("AGGIUNGI LEZIONE");
-		aggiungiLezioneButton_1.addMouseListener(new MouseAdapter() {
+		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
+		aggiungiLezioneButton.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				aggiungiLezioneButton.setBackground(Color.GREEN);
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				aggiungiLezioneButton.setBackground(Color.WHITE);
+			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				CreazioneLezionePage clp = new CreazioneLezionePage(theController, operatore);
-				setVisible(false);
+				if(corsiList.isSelectionEmpty()) {
+					alertNessunCorsoSelezionatoAggiungiLezione();
+				}else {
+					String id_corso = corsiList.getSelectedValue().getIdCorso().toString();		
+					CreazioneLezionePage clp = new CreazioneLezionePage(theController, operatore, theController.getCorso(id_corso));
+					setVisible(false);
+				}
 			}
 		});
-		aggiungiLezioneButton_1.setBounds(565, 418, 222, 23);
-		contentPane.add(aggiungiLezioneButton_1);
-		aggiungiLezioneButton_1.setFont(new Font("Arial", Font.BOLD, 15));
+		aggiungiLezioneButton.setBounds(565, 418, 222, 23);
+		contentPane.add(aggiungiLezioneButton);
+		aggiungiLezioneButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		setVisible(true);
 	}
@@ -218,7 +249,33 @@ public class GestoreLezioniPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Selezionare una lezione per poter visualizzarne la paronamica.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
 	
-	public void alertNessunCOrsoSelezionato() {
+	public void alertNessunCorsoSelezionato() {
 		JOptionPane.showMessageDialog(this, "Selezionare un corso per poter visualizzarne le Lezioni.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+	}
+	
+	public void alertNessunaLezioneSelezionataElimina() {
+		JOptionPane.showMessageDialog(this, "Selezionare una lezione per poter eliminarla.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+	}
+	
+	public void alertNessunCorsoSelezionatoAggiungiLezione() {
+		JOptionPane.showMessageDialog(this, "Selezionare un corso per poter aggiungerne una Lezione.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+	}
+	
+	public void alertConfermaEliminazionelezione(String lezione) {
+		Object[] opzioni = {"Sì"};
+		
+		int n = JOptionPane.showOptionDialog(this,
+				"Sei sicuro di voler eliminare la lezione " + lezione + " ?",
+				"CONFERMA DI ELIMINAZIONE",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				opzioni,
+				opzioni[0]);
+		if(n==0) {
+			theController.eliminaLezione(lezione);
+			HomePage hp = new HomePage(theController, operatore);
+			setVisible(false);
+		}
 	}
 }

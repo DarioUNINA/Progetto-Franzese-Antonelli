@@ -210,9 +210,30 @@ public class Controller {
 		return areeTematicheDAO.getAllAreeTematiche();
 	}
 	
-	public Vector<Studenti> getAllStudentiIscrittiAllaLezione(String id_lezione) {//da finire
+	public Vector<Studenti> getAllStudentiIscrittiAllaLezione(String id_lezione) {
 		
 		return studentiDAO.getAllStudentiIscrittiAllaLezione(id_lezione);
+	}
+	
+	public String aggiungiStudenteLezioneClicked(String matricola, String id_lezione) {//da finire
+		
+		String state = presenzeDAO.aggiungiStudenteLezione(matricola, id_lezione);
+		
+		if(state.equals("0"))
+			return "operazione eseguita con successo";
+		else
+			return state;		
+	}
+
+
+	public void eliminaLezione(String titolo) {
+	
+		lezioniDAO.eliminaLezioneGestoreLezioni(titolo);
+	}
+	
+	Corsi getCorso(String id_corso) {
+		
+		return corsiDAO.getCorso(id_corso);
 	}
 
 }

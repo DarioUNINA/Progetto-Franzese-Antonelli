@@ -81,4 +81,19 @@ public class LezioniDAO {
 		}			
 
 	}	
+	
+	public String eliminaLezioneGestoreLezioni(String titolo) {
+		
+		try {
+			
+			if(!statement.execute("DELETE FROM lezioni WHERE titolo = '" + titolo + "'" ))
+				return "0";
+			else
+				return "-1";
+			
+			
+		} catch (SQLException e) {
+			return e.getSQLState();
+		}
+	}
 }

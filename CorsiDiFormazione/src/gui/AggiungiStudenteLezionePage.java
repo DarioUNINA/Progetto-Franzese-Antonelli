@@ -47,8 +47,10 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		theController = controller;
 		this.operatore= operatore;
 		this.lezione = lezione;
+		
 		elencoStudenti = theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione());
-
+		studentiComboBox = new JComboBox<Studenti>(elencoStudenti);
+		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
@@ -102,11 +104,25 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		studenteLabel.setBounds(111, 123, 77, 14);
 		selzionaStudentiPanel.add(studenteLabel);
 		
-		studentiComboBox = new JComboBox<Studenti>(elencoStudenti);
+		
 		studentiComboBox.setBounds(198, 120, 157, 22);
 		selzionaStudentiPanel.add(studentiComboBox);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				confermaButton.setBackground(Color.GREEN);
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				confermaButton.setBackground(Color.WHITE);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				theController.aggiungiStudenteLezioneClicked("non so cosa mettere" ,lezione.getIdLezione());
+			}
+			
+		});
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(370, 273, 168, 23);
 		selzionaStudentiPanel.add(confermaButton);

@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.Vector;
 
 import dto.Corsi;
+import dto.Lezioni;
 import dto.Operatori;
 import dto.Studenti;
 
@@ -140,7 +141,7 @@ public class CorsiDAO {
 
 	public String aggiungiCorso(String nome, String descrizione, String paroleChiave, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idOperatore) {
 		
-		String state;
+		//String state;
 		
 		try {
 			
@@ -206,5 +207,36 @@ public  Vector<Corsi> getCorsiStudente(Studenti s){
 			return corsi;
 		}
 	}
+
+public Corsi getCorso(String id_corso){
+	
+	Corsi corso = new Corsi();
+	
+	
+	try {
+		
+		ResultSet rs = statement.executeQuery("SELECT * FROM corsi c  WHERE c.id_corso = '"+  id_corso + "'");
+		
+		rs.next();
+		corso.setIdCorso(rs.getString("id_corso"));
+		corso.setIdOperatore(rs.getString("id_operatore"));
+		corso.setNome(rs.getString("nome"));
+		corso.setDescrizione(rs.getString("descrizione"));
+		corso.setPresenzeMin(rs.getInt("presenze_min"));
+		corso.setMaxPartecipanti(rs.getInt("max_partecipanti"));
+		corso.setParoleChiave(rs.getString("parole_chiave"));
+		corso.setAnno(rs.getString("anno"));
+		corso.setTerminato(rs.getBoolean("terminato"));
+
+
+		return corso;
+		
+	}catch(SQLException e) {
+		
+		e.printStackTrace();
+		return corso;
+	}			
+
+}
 
 }

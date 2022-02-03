@@ -3,6 +3,8 @@ package gui;
 import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
 import dao.*;
@@ -234,6 +236,25 @@ public class Controller {
 	Corsi getCorso(String id_corso) {
 		
 		return corsiDAO.getCorso(id_corso);
+	}
+	
+	public DefaultListModel <JCheckBox> setModelCheckBox (Vector<AreeTematiche> areeTematiche){
+		
+		Vector<JCheckBox> checkBoxList = new Vector<JCheckBox>();
+		JCheckBox checkBox;
+		
+		for(AreeTematiche area:areeTematiche) {
+			checkBox = new JCheckBox(area.getNomeArea());
+			checkBoxList.add(checkBox);
+		}
+		
+		DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+		model.addAll(checkBoxList);
+		
+		return model;
+		
+		
+		
 	}
 
 }

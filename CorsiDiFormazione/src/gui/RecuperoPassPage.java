@@ -80,6 +80,7 @@ public class RecuperoPassPage extends JFrame {
 		nomeUtenteLabel.setBounds(100, 80, 101, 14);
 		recuperoPanel.add(nomeUtenteLabel);
 		
+		nomeUtenteText = new JTextField();
 		nomeUtenteText.setFont(new Font("Arial", Font.BOLD, 13));
 		nomeUtenteText.setColumns(10);
 		nomeUtenteText.setBounds(211, 78, 121, 20);
@@ -141,9 +142,7 @@ public class RecuperoPassPage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		recuperoPanel.add(indietroButton);
 		
-		
-		
-		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	

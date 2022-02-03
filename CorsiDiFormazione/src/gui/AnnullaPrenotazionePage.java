@@ -119,6 +119,7 @@ public class AnnullaPrenotazionePage extends JFrame {
 		corsiComboBox.setBounds(193, 132, 163, 22);
 		annullaLezioneStudentiPanel.add(corsiComboBox);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

@@ -124,6 +124,7 @@ public class EliminaCorsoPage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		eliminaCorsoPanel.add(indietroButton);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	

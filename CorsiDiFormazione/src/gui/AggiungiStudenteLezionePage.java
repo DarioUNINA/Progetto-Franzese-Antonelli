@@ -119,7 +119,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				theController.aggiungiStudenteLezioneClicked("non so cosa mettere" ,lezione.getIdLezione());
+				theController.aggiungiStudenteLezioneClicked(elencoStudenti.get((studentiComboBox.getSelectedIndex())).getMatricola() ,lezione.getIdLezione());
 			}
 			
 		});
@@ -127,6 +127,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		confermaButton.setBounds(370, 273, 168, 23);
 		selzionaStudentiPanel.add(confermaButton);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

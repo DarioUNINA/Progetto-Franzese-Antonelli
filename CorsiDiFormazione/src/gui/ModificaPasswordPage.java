@@ -41,6 +41,7 @@ public class ModificaPasswordPage extends JFrame {
 	private JLabel modificaPasswordLabel;
 	private JLabel inserirePasswordLabel;
 	private JLabel confermaPasswordLabel;
+	private JButton indietroButton;
 	
 	public ModificaPasswordPage(Controller controller, Operatori operatore) {
 		
@@ -112,6 +113,26 @@ public class ModificaPasswordPage extends JFrame {
 		confermaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 14));
 		confermaPasswordLabel.setBounds(51, 131, 154, 14);
 		recuperoPanel.add(confermaPasswordLabel);
+		
+		indietroButton = new JButton("INDIETRO");
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ImpostazioniPage hp = new ImpostazioniPage(theController, operatore);
+				setVisible(false);
+			}
+		});
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		indietroButton.setBounds(10, 265, 123, 31);
+		recuperoPanel.add(indietroButton);
+		
+		if(operatore.getPassword() == null)
+			indietroButton.setVisible(false);
+			
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -135,7 +156,9 @@ public class ModificaPasswordPage extends JFrame {
 				
 			}
 		});
-	
+		
+		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	
@@ -149,7 +172,7 @@ public class ModificaPasswordPage extends JFrame {
 		if(operatore.getPassword() == null) { 
 			LogInPage pg = new LogInPage(theController);
 		}else {
-			HomePage hp = new HomePage(theController, theController.getOperatore(operatore.getNomeUtente()));
+			HomePage hp = new HomePage(theController, operatore);
 		}
 		setVisible(false);
 	}

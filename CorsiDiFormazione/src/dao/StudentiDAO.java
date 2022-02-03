@@ -28,7 +28,7 @@ public class StudentiDAO {
 		Vector<Studenti> studenti = new Vector<Studenti>();
 		
 		try {
-			ResultSet rs = statement.executeQuery("SELECT s.matricola FROM studenti s");
+			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s");
 			
 
 			while(rs.next()) {

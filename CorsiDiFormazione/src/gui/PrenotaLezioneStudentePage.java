@@ -130,6 +130,7 @@ public class PrenotaLezioneStudentePage extends JFrame {
 		corsiComboBox.setBounds(193, 132, 163, 22);
 		prenotaLezioneStudentiPanel.add(corsiComboBox);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

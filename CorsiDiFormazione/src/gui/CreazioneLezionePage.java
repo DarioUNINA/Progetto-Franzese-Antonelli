@@ -178,6 +178,7 @@ public class CreazioneLezionePage extends JFrame {
 		descrizioneTextField.setBounds(159, 175, 270, 20);
 		creaLezionePanel.add(descrizioneTextField);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 }

@@ -207,7 +207,7 @@ public class RegistrazionePage extends JFrame {
 			}
 		});
 		
-		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	

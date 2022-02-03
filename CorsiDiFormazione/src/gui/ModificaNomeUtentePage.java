@@ -153,6 +153,7 @@ public class ModificaNomeUtentePage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		modificaNomeUtentePanel.add(indietroButton);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	

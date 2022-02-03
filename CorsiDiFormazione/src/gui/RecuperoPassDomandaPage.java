@@ -141,6 +141,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		rispostaLabel.setBounds(73, 143, 131, 14);
 		recuperoPanel.add(rispostaLabel);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	

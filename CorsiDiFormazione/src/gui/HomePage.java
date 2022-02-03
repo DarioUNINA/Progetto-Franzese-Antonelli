@@ -393,7 +393,7 @@ public class HomePage extends JFrame {
 		filtri.add(filtraButton);
 		
 		
-		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	

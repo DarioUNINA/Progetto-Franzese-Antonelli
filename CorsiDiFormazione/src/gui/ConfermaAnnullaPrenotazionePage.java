@@ -116,6 +116,7 @@ public class ConfermaAnnullaPrenotazionePage extends JFrame {
 		lezioniComboBox.setBounds(193, 132, 163, 22);
 		annullaPrenotaLezioneStudentiPanel.add(lezioniComboBox);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

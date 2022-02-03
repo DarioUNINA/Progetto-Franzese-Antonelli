@@ -60,6 +60,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		prenotaLezioneStudentiPanel = new JPanel();
 		prenotaLezioneStudentiPanel.setBackground(SystemColor.control);
 		prenotaLezioneStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		prenotaLezioneStudentiPanel.setBounds(10, 11, 548, 307);
@@ -125,6 +126,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		datiStudenteLabel.setBounds(51, 55, 414, 14);
 		prenotaLezioneStudentiPanel.add(datiStudenteLabel);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

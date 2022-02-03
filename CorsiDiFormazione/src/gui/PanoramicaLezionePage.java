@@ -192,6 +192,7 @@ public class PanoramicaLezionePage extends JFrame {
 		contentPane.add(aggiungiStudenteLezioneButton);
 		aggiungiStudenteLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 }

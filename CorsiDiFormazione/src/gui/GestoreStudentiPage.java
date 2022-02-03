@@ -139,7 +139,7 @@ public class GestoreStudentiPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				//PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore, theController.setSingoloStudente(studentiComboBox.getItemAt(0)));
+				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore, studenti.get(studentiComboBox.getSelectedIndex()));
 				setVisible(false);
 			}
 		});
@@ -152,6 +152,7 @@ public class GestoreStudentiPage extends JFrame {
 		creaStudenteButton.setBounds(370, 273, 168, 23);
 		selzionaStudentiPanel.add(creaStudenteButton);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	

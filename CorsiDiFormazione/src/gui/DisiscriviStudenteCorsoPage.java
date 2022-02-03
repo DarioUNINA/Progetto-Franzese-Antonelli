@@ -124,6 +124,7 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		datiStudenteLabel.setBounds(51, 55, 414, 14);
 		disiscriviLezioneStudentiPanel.add(datiStudenteLabel);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

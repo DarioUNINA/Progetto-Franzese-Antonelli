@@ -238,6 +238,7 @@ public class GestoreLezioniPage extends JFrame {
 		contentPane.add(aggiungiLezioneButton);
 		aggiungiLezioneButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	

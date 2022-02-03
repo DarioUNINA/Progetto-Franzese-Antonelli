@@ -1,8 +1,5 @@
 package gui;
 
-import javax.swing.JCheckBox;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
 import java.awt.Component;
 
 
@@ -12,6 +9,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import java.awt.event.*;
+import java.util.Vector;
 
 @SuppressWarnings("serial")
 public class JCheckBoxList extends JList<JCheckBox> {
@@ -57,4 +55,19 @@ public class JCheckBoxList extends JList<JCheckBox> {
       return checkbox;
     }
   }
+  
+  public Vector<String> getList(DefaultListModel<JCheckBox> model) {
+	  
+	  Vector <String> temi = new Vector <String>() ;
+	  
+	  for(int i=0;i<model.getSize();i++) {
+		  if(model.getElementAt(i).isSelected())
+			  temi.add(model.getElementAt(i).getText());
+	  }
+	  
+	  return temi;
+	  
+  }
+  
+  
 }

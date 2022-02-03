@@ -63,7 +63,7 @@ public class LogInPage extends JFrame {
 		theController = controller;
 		setIconImage(imageicon.getImage());
 
-		this.setLocationRelativeTo(null);
+	
 		
 	//	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -199,7 +199,7 @@ public class LogInPage extends JFrame {
 		contentPane.add(bENVENUTOLabel);
 		
 		
-		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

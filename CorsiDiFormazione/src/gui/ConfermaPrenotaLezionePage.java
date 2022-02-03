@@ -115,6 +115,7 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		lezioniComboBox.setBounds(193, 132, 163, 22);
 		confermaPrenotaLezioneStudentiPanel.add(lezioniComboBox);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

@@ -271,13 +271,14 @@ public class CreazioneCorsoPage extends JFrame {
 				
 		listaTemi = new JCheckBoxList();
 		//DA COMPLETARE
-		listaTemi.setModel(null);
+		
+		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
 		corsiScrollPane.setViewportView(listaTemi);
 		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
 		listaTemi.setVisibleRowCount(10);
 		listaTemi.setVisible(true);
 		
-		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	

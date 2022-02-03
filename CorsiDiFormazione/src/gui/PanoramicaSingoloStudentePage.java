@@ -117,6 +117,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 				
 			}
 		});
+		
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(615, 43, 152, 23);
 		studentePanel.add(indietroButton);
@@ -159,6 +160,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		lezioniPanel.add(lezioniScrollPane);
 		
 		lezioniScrollPane.setViewportView(lezioniList);
+		lezioniList = new JList();
 		lezioniList.setVisibleRowCount(10);
 		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
 		
@@ -238,6 +240,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		annullaPrenotazioneButton.setBounds(175, 279, 162, 35);
 		corsiAmmessoPanel.add(annullaPrenotazioneButton);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 }

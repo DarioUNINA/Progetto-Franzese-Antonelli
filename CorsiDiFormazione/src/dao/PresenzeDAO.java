@@ -17,9 +17,7 @@ public class PresenzeDAO {
 
 	
 	public String aggiungiStudenteLezione(String matricola, String id_lezione) {
-		
-		//String state;
-		
+				
 		try {
 			
 			if(!statement.execute("INSERT INTO presenze VALUES ('" + matricola +"', '" + id_lezione +"')"))

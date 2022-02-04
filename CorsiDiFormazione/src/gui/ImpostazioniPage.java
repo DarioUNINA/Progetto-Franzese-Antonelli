@@ -146,22 +146,44 @@ public class ImpostazioniPage extends JFrame {
 		
 		if(option == 0) // pressing OK button
 		{
-		    if(operatore.getPassword().compareTo( pass.getPassword().toString())==0){
-		    	alertEliminazioneEseguitaConSuccesso();
-		    	LogInPage li = new LogInPage(theController);
-		    }else {
-		    	alertPasswordErrata();
-		    }
+			String password = pass.getText();
+		    if(operatore.getPassword().equals(password))
+		    	alertEliminazioneEseguita();
+		    else 
+		    	if(password.equals(""))
+		    		alertInserirePassword();
+		    	else
+		    		alertPasswordErrata();
 		    
 		}
 	}
 	
-	public void alertEliminazioneEseguitaConSuccesso() {
-		JOptionPane.showMessageDialog(this, "Account eliminato con successo","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
+	public void alertEliminazioneEseguita() {
+		
+		String state = theController.eliminaOperatore(operatore);
+				
+		if(state.equals("0")) {
+			JOptionPane.showMessageDialog(this, "Account eliminato con successo","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
+		}
+			
+		
+		else
+			alertErroreEliminazione(state);
+	}
+	
+	public void alertInserirePassword() {
+		JOptionPane.showMessageDialog(this, "Inserire la password","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
 	public void alertPasswordErrata() {
 		JOptionPane.showMessageDialog(this, "Password errata","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertErroreEliminazione(String state) {
+		if(state.equals("-1"))
+			JOptionPane.showMessageDialog(this, "Impossibile eliminare l'operatore.\nErrore sconosciuto " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			JOptionPane.showMessageDialog(this, "Impossibile eliminare l'operatore.\nCodice d'errore " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 }
 

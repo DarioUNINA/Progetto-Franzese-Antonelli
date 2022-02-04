@@ -217,14 +217,9 @@ public class Controller {
 		return studentiDAO.getAllStudentiIscrittiAllaLezione(id_lezione);
 	}
 	
-	public String aggiungiStudenteLezioneClicked(String matricola, String id_lezione) {//da finire
-		
-		String state = presenzeDAO.aggiungiStudenteLezione(matricola, id_lezione);
-		
-		if(state.equals("0"))
-			return "operazione eseguita con successo";
-		else
-			return state;		
+	public String aggiungiStudenteLezioneClicked(String matricola, String id_lezione) {		
+		return presenzeDAO.aggiungiStudenteLezione(matricola, id_lezione);
+			
 	}
 
 
@@ -253,7 +248,11 @@ public class Controller {
 		
 		return model;
 		
+	}
+	
+	public String eliminaOperatore(Operatori operatore) {
 		
+		return operatoriDAO.eliminaOperatore(operatore);
 		
 	}
 

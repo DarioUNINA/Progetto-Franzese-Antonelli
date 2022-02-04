@@ -186,7 +186,7 @@ public class OperatoriDAO {
 		
 		try {
 			
-			if(!statement.execute("DELETE FROM opearatori WHERE id_operatore = '" + operatore.getIdOperatore() + "'" ))
+			if(!statement.execute("DELETE FROM operatori WHERE id_operatore = '" + operatore.getIdOperatore() + "'" ))
 				return "0";
 			else
 				return "-1";

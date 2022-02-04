@@ -255,6 +255,11 @@ public class Controller {
 		return operatoriDAO.eliminaOperatore(operatore);
 		
 	}
+	
+	public void eliminaStudente(String matricola) {
+		
+		studentiDAO.eliminaStudente(matricola);
+	}
 
 }
 

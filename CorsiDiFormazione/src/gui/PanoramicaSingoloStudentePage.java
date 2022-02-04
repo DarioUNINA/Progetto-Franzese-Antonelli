@@ -23,6 +23,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
@@ -138,10 +140,29 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiScrollPane.setBounds(10, 36, 165, 240);
 		corsiPanel.add(corsiScrollPane);
 		
-
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setVisibleRowCount(10);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
+		
+		confermaButton = new JButton("CONFERMA");
+		confermaButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(corsiList.isSelectionEmpty()) {
+					alertNessunCorsoSelezionato();
+				}else{
+					if(theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso()).isEmpty()) {
+						alertNessunaLezioneDisponibile();
+						/*Settare la lista vuota? se seleziono un corso, visualizzo le lezioni e dopo clicco su un corso che non ha 
+						  lezioni mi esce l'option pane e vorrei che la lista delle lezioni ritornasse "bianca", dimmi tu se ci sta come cosa*/
+					}else
+						lezioniList.setListData(theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso()));
+				}
+			}
+		});
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 12));
+		confermaButton.setBounds(31, 287, 119, 30);
+		corsiPanel.add(confermaButton);
 		
 		lezioniPanel = new JPanel();
 		lezioniPanel.setLayout(null);
@@ -159,22 +180,10 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		lezioniScrollPane.setBounds(10, 36, 165, 294);
 		lezioniPanel.add(lezioniScrollPane);
 		
+		lezioniList = new JList<Lezioni>();
 		lezioniScrollPane.setViewportView(lezioniList);
-		lezioniList = new JList();
 		lezioniList.setVisibleRowCount(10);
 		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
-		
-		confermaButton = new JButton("CONFERMA");
-		confermaButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String id_corso = corsiList.getSelectedValue().getIdCorso();
-				lezioniList.setListData(theController.setAllLezioniDelCorso(id_corso));
-			}
-		});
-		confermaButton.setFont(new Font("Arial", Font.BOLD, 12));
-		confermaButton.setBounds(31, 287, 119, 30);
-		corsiPanel.add(confermaButton);
 		
 		corsiAmmessoPanel = new JPanel();
 		corsiAmmessoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -242,5 +251,13 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
+	}
+	
+	public void alertNessunCorsoSelezionato() {
+		JOptionPane.showMessageDialog(this, "Selezionare un corso per poter visualizzarne le Lezioni.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+	}
+	
+	public void alertNessunaLezioneDisponibile() {
+		JOptionPane.showMessageDialog(this, "Non ci sono lezioni per il Corso selezionato.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
 }

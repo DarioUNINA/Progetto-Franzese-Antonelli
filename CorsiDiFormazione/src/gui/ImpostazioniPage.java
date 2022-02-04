@@ -164,6 +164,8 @@ public class ImpostazioniPage extends JFrame {
 				
 		if(state.equals("0")) {
 			JOptionPane.showMessageDialog(this, "Account eliminato con successo","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
+			LogInPage lip = new LogInPage(theController);
+			setVisible(false);
 		}
 			
 		

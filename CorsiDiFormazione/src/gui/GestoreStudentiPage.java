@@ -115,11 +115,7 @@ public class GestoreStudentiPage extends JFrame {
 		eliminaStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String studenteSelezionato = studentiComboBox.getSelectedItem().toString();
-				if(studenteSelezionato.isEmpty()) {
-					alertStudenteNonSelezionato();
-				}else
-					alertSeiSicuroDiVolerEliminareStudente();//da fare la query per l'eliminazione
+					alertSeiSicuroDiVolerEliminareStudente();
 			}
 		});
 		eliminaStudenteButton.setForeground(Color.RED);
@@ -172,6 +168,8 @@ public class GestoreStudentiPage extends JFrame {
 				opzioni,
 				opzioni[0]);
 		if(n==0) {
+			
+			theController.eliminaStudente(studenti.get(studentiComboBox.getSelectedIndex()).getMatricola());
 			HomePage hp = new HomePage(theController, operatore);
 			setVisible(false);
 		}

@@ -1,0 +1,63 @@
+COSE DA FARE PROGETTO: 
+
+LEGGENDA [svolto ma bisogna gestire gli state  o altre cose]
+
+1) GESTIONE CREAZIONE CORSO ( CreazioneCorsoPage ): 
+   Verificare la funzionalità della query,i vari option pane sui campi
+   nei quale l'operatore inserisce i valori.
+
+
+   [GESTIONE ELIMINA STUDENTE ( GestoreStudentiPage ):]
+   [Option pane già creato bisogna solo effettuare la chiamata al] 
+   [metodo che conterrà la query e scrivere il metodo.]
+
+
+2) CREA STUDENTE ( GestoreStudentiPage ):
+   Creare completamente la pagina( da fare assieme per decidere come gestirla),
+   gestirne la creazione.
+
+
+   [PANORAMICA SINGOLO STUDENTE ( PanoramicaSingoloStudentePage ): ]
+   [Popolare la JList delle lezioni dopo aver selezionato il corso.]
+   VEDI RIGA 156 DELLA PAGINA PANORAMICA SINGOLO STUDENTE.
+
+
+3) PANORAMICA SINGOLO STUDENTE ( PanoramicaSingoloStudentePage ): 
+   Popolare la tabella dei corsi con i vari dettagli dei corsi alla quale
+   lo studente è iscritto.
+
+4) ISCIRVI STUDENTE AD UN CORSO(  AggiungiStudenteCorsoPage ): 
+   Popolare la combo box nella quale appariranno i corsi del professore 
+   alla quale è possibile iscriver lo studente e gestire l'effettiva 
+   iscrizione al corso tramite query, option pane ecc.
+
+5) DISISCIRVI STUDENTE DA UN CORSO ( DisiscriviStudenteCorsoPage ): 
+   Popolare la combo box nella quale appariranno i corsi del professore 
+   alla quale lo studente partecipa e lo si può disiscrivere. 
+   Gestire l'effettiva disiscrizione dal corso tramite query, option pane ecc.
+
+6) PRENOTAZIONE LEZIONE ( PrenotaLezioneStudentePag ): 
+   Popolare la combo box nella quale appariranno le lezioni del corso 
+   selezionato alla quale è possibile effettuare la prenotazione, 
+   gestire l'effettiva prenotazione  tramite query, option pane ecc.
+
+7) ANNULLA PRENOTAZIONE LEZIONE ( AnnullaPrenotazionePage ):
+   Popolare la combo box nella quale appariranno le lezioni del corso 
+   selezionato alla quale si vuole annulare la la prenotazione, 
+   gestire l'effettivo annullamento tramite query, option pane ecc.
+
+8) POPOLAMENTO TABELE HOMEPAGE ( HomePage ):
+    Popolamento tabelle( da fare assieme per decidere come gestirla).
+
+9) GESTIRE CREAZIOEN LEZIONE ( CreazioneLezionePage ):
+    Implementare le funzionalità per orario, data e durata.
+    Gestire l'effettiva creazione della lezione tramite metodi, query ecc
+
+10) GEESTIONE E CREAZIONE COMPLETA DI (gestore corso):
+    Da fare assime MockUp.
+
+11) SET DI TUTTI I BOTTONI BIANCHI/GRIGI (devo ancora scegliere)
+
+12)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
+   ad esempio ho notato che eliminazione operatore è un motodo String 
+   poiche abbiamo gestito lo state ma alcuni elimina sono void

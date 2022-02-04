@@ -42,7 +42,6 @@ public class LezioniDAO {
 					l.setIdCorso(id_corso);
 
 					lezioni.add(l);
-					
 				}
 		
 				return lezioni;

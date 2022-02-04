@@ -129,9 +129,22 @@ public class StudentiDAO {
 			e.printStackTrace();
 			return studente;
 		}
+	
+	}
+	
+	public String eliminaStudente(String matricola) {
 		
-		
-		
+		try {
+			
+			if(!statement.execute("DELETE FROM studenti WHERE matricola = '" + matricola + "'" ))
+				return "0";
+			else
+				return "-1";
+				
+		} catch (SQLException e) {
+			
+			return e.getSQLState();
+		}
 	}
 	
 	

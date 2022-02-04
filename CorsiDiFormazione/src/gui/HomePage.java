@@ -41,6 +41,7 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.ListSelectionModel;
+import com.toedter.components.JLocaleChooser;
 
 public class HomePage extends JFrame {
 	
@@ -82,7 +83,8 @@ public class HomePage extends JFrame {
 	
 
 	public HomePage(Controller cont, Operatori operatore) {
-		
+		setAlwaysOnTop(true);
+		this.getContentPane().setBackground(Color.BLUE);
 		imageicon = new ImageIcon("napule.png");
 		theController = cont;
 		this.operatore = operatore;

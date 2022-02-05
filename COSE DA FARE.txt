@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 COSE DA FARE PROGETTO: 
 
-LEGGENDA [svolto ma bisogna gestire gli state  o altre cose]
+LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 
 1) GESTIONE CREAZIONE CORSO ( CreazioneCorsoPage ): 
    Verificare la funzionalità della query,i vari option pane sui campi

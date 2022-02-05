@@ -382,3 +382,27 @@ temi (/nome_area/, /id_corso/)
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_lunghezza_nome_utente();
 	
+--17) 
+	CREATE OR REPLACE FUNCTION check_eliminazione_presenza()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE data_lezione DATE;
+	BEGIN
+		SELECT data INTO data_lezione
+		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
+		WHERE p.id_lezione = OLD.id_lezione;
+		
+		IF (data_lezione < CURRENT_DATE) THEN 
+			RAISE SQLSTATE '10011';
+			ROLLBACK;
+			RAISE EXCEPTION 'La lezione si e gia conclusa';
+		END IF;
+		RETURN OLD;
+	END
+	$$ LANGUAGE plpgsql;
+	
+	CREATE OR REPLACE TRIGGER eliminazione_presenza
+	AFTER DELETE ON presenze
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_eliminazione_presenza();
+	

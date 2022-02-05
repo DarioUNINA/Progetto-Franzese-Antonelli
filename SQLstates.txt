@@ -18,4 +18,6 @@
 
 10010 iscrizione in corso non iscritto
 
+10011 eliminazione presenza di lezione terminata
+
 

@@ -88,7 +88,7 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PrenotaLezioneStudentePage pls = new PrenotaLezioneStudentePage(theController, operatore, studente);
+				PanoramicaSingoloStudentePage page = new PanoramicaSingoloStudentePage(theController, operatore, studente);
 				setVisible(false);
 			}
 			@Override
@@ -141,18 +141,19 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		confermaPrenotaLezioneStudentiPanel.add(lezioniComboBox);
 		
 		setLocationRelativeTo(null);
-		setVisible(true);
+		
 		
 		if(lezioniComboBox.getSelectedItem() == null) {
 			alertNonCiSonolezioniDisponibili();
 			PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
 			setVisible(false);
-		}
+		}else
+			setVisible(true);
 		
 	}
 	
 	public void alertNonCiSonolezioniDisponibili() {
-		JOptionPane.showMessageDialog(this, "Lo studente è gia iscritto alle lezioni del corso: "+ corso.getNome().toUpperCase() + "!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Non ci sono lezioni disponibili"+ corso.getNome().toUpperCase() + "!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
 	public void alertStudenteAggiuntoCorrettamente() {
@@ -160,7 +161,16 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 	}
 	
 	public void alertErroreIscrizioneAllaLezione(String state) {
+		if(state=="-1")	
 			JOptionPane.showMessageDialog(this, "Errore durante l'iscrizione alla lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			if(state.equals("10007"))
+				JOptionPane.showMessageDialog(this, "Non e' possibile iscriversi a lezioni gia' concluse","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+			else
+				JOptionPane.showMessageDialog(this, "Errore durante l'iscrizione alla lezione.\nCodice d'errore "+ state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+				
+	
 	}
 
 }

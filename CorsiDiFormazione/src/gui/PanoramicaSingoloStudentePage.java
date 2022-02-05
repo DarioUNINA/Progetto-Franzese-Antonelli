@@ -230,8 +230,10 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if(corsiList.getSelectedValue() == null)
 					alertNessunCorsoSelezionato();
-				else
-					
+				else {
+					ConfermaPrenotaLezionePage page = new ConfermaPrenotaLezionePage(theController, operatore, studente, corsiList.getSelectedValue());
+					setVisible(false);
+				}
 					
 			}
 		});
@@ -336,7 +338,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		if(state == "-1")
 			JOptionPane.showMessageDialog(this, "Impossibile annullare la prenotazione a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 		else
-			if(state == "10011")
+			if(state.equals("10011"))
 				JOptionPane.showMessageDialog(this, "ATTENZIONE: la lezione giá e stata effettuata, impossibile eliminare la prenotazione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 			else
 				JOptionPane.showMessageDialog(this, "Impossibile annullare la prenotazione.\nCodice d'errore: " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);

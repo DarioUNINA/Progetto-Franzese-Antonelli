@@ -116,8 +116,7 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 				
 				if(state.equals("0")) {
 					alertStudenteDisiscrittoCorrettamente();
-					PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
-					setVisible(false);
+					
 				}else
 					alertErroreDisiscrizioneStudente(state);
 				
@@ -154,6 +153,23 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Lo studente non è iscritto a nessun corso del professore: " + operatore.getNomeUtente().toUpperCase()  + "!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
+	public void alertStudenteDisiscrittoCorrettamente() {
+		
+		JOptionPane.showMessageDialog(this, "Disiscrizione effettuata correttamente", "<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
+		PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+		setVisible(false);
+	}
+	
+	public void alertErroreDisiscrizioneStudente(String state) {
+		
+		if(state == "-1")
+			JOptionPane.showMessageDialog(this, "Impossibile effettuare l'operazione a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			JOptionPane.showMessageDialog(this, "Impossibile effettuare l'operazione.\nCodice d'errore: " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+		
+	}
+
 	
 	
 }

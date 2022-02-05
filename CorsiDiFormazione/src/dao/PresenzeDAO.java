@@ -36,7 +36,7 @@ public class PresenzeDAO {
 		
 		try {
 			
-			if(!statement.execute("DELET FROM presenze WHERE matricola = '" + matricola +"'AND id_lezione = '" + idLezione +"'"))
+			if(!statement.execute("DELETE FROM presenze WHERE matricola = '" + matricola +"'AND id_lezione = '" + idLezione +"'"))
 				return "0";
 			else 
 				return "-1";

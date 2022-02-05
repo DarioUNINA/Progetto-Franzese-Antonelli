@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS public.lezioni
     descrizione character varying COLLATE pg_catalog."default" NOT NULL,
     durata time without time zone COLLATE pg_catalog."default" NOT NULL,
     data date NOT NULL,
-    orario character varying COLLATE pg_catalog."default" NOT NULL,
+    orario time NOT NULL,
     id_corso character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT "Lezioni_pkey" PRIMARY KEY (id_lezione),
 	CONSTRAINT lezioni_contemporanee UNIQUE (id_corso, orario, data),

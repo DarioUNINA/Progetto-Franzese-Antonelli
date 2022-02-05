@@ -170,9 +170,22 @@ public class GestoreStudentiPage extends JFrame {
 		if(n==0) {
 			
 			theController.eliminaStudente(studenti.get(studentiComboBox.getSelectedIndex()).getMatricola());
-			HomePage hp = new HomePage(theController, operatore);
-			setVisible(false);
-		}
+			alertEliminazioneStudenteEffettuata();
 			
 		}
+			
+	}
+	
+	public void alertEliminazioneStudenteEffettuata() {
+		
+		JOptionPane.showMessageDialog(this, "Studente eliminato con successo","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
+		studenti = theController.setStudenti();
+
+		studentiComboBox.removeAllItems();
+		
+		for(Studenti s:studenti) 
+			studentiComboBox.addItem(s);
+		
+		
+	}
 }

@@ -21,6 +21,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import com.toedter.calendar.JCalendar;
 
 public class CreazioneLezionePage extends JFrame {
 
@@ -170,6 +171,10 @@ public class CreazioneLezionePage extends JFrame {
 		orarioComboBox = new JComboBox(new Object[]{});
 		orarioComboBox.setBounds(326, 74, 103, 22);
 		creaLezionePanel.add(orarioComboBox);
+		
+		JCalendar calendar = new JCalendar();
+		calendar.setBounds(326, 107, 184, 153);
+		creaLezionePanel.add(calendar);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

@@ -23,6 +23,9 @@ public class AreeTematicheDAO {
 		Vector<AreeTematiche> aree = new Vector<AreeTematiche>();
 		AreeTematiche area;
 		
+		area = new AreeTematiche();
+		aree.add(area);
+		
 		try {
 			ResultSet rs = statement.executeQuery("SELECT * FROM aree_tematiche");
 			

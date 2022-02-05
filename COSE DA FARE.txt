@@ -1,6 +1,6 @@
 COSE DA FARE PROGETTO: 
 
-LEGGENDA [svolto ma bisogna gestire gli state  o altre cose]
+LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 
 1) GESTIONE CREAZIONE CORSO ( CreazioneCorsoPage ): 
    Verificare la funzionalità della query,i vari option pane sui campi
@@ -15,11 +15,6 @@ LEGGENDA [svolto ma bisogna gestire gli state  o altre cose]
 2) CREA STUDENTE ( GestoreStudentiPage ):
    Creare completamente la pagina( da fare assieme per decidere come gestirla),
    gestirne la creazione.
-
-
-   [PANORAMICA SINGOLO STUDENTE ( PanoramicaSingoloStudentePage ): ]
-   [Popolare la JList delle lezioni dopo aver selezionato il corso.]
-   VEDI RIGA 156 DELLA PAGINA PANORAMICA SINGOLO STUDENTE.
 
 
 3) PANORAMICA SINGOLO STUDENTE ( PanoramicaSingoloStudentePage ): 

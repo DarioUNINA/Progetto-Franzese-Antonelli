@@ -80,14 +80,20 @@ public class HomePage extends JFrame {
 	private JButton gestioneStudentiButton;
 	private JButton resetFiltriButton;
 	private JButton filtraButton;
+	private Vector<AreeTematiche> areeTematiche;
+	private Vector<Corsi> corsi;
 	
 
 	public HomePage(Controller cont, Operatori operatore) {
-		setAlwaysOnTop(true);
-		this.getContentPane().setBackground(Color.BLUE);
-		imageicon = new ImageIcon("napule.png");
+
+		
 		theController = cont;
 		this.operatore = operatore;
+		corsi = theController.getCorsiOperatore(operatore);
+		areeTematiche = theController.setAreaTematicaComboBox();
+		
+		this.getContentPane().setBackground(Color.BLUE);
+		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 
 		setResizable(false);
@@ -192,7 +198,7 @@ public class HomePage extends JFrame {
 		parolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		filtri.add(parolaChiaveLabel);
 		
-		areaTematicaComboBox = new JComboBox<AreeTematiche>(theController.setAreaTematicaComboBox());
+		areaTematicaComboBox = new JComboBox<AreeTematiche>(areeTematiche);
 		areaTematicaComboBox.setBounds(117, 43, 134, 22);
 		filtri.add(areaTematicaComboBox);
 				
@@ -282,7 +288,7 @@ public class HomePage extends JFrame {
 		corsiScrollPane.setBounds(10, 11, 222, 114);
 		corsiPanel.add(corsiScrollPane);
 
-		corsiList = new JList<Corsi>(theController.getCorsiOperatore(operatore));
+		corsiList = new JList<Corsi>(corsi);
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		corsiList.setVisibleRowCount(10);
@@ -369,7 +375,13 @@ public class HomePage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				String areaTematica = areaTematicaComboBox.getSelectedItem().toString();
+				String areaTematica;
+				
+				if(areaTematicaComboBox.getSelectedIndex()==0)
+					areaTematica = "";
+				else
+					areaTematica = areaTematicaComboBox.getItemAt(areaTematicaComboBox.getSelectedIndex()).getNomeArea();
+				
 				String anno = annoComboBox.getSelectedItem().toString();
 				String parolaChiave = paroleChiaveTextField.getText();
 				

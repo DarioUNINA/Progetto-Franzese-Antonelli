@@ -151,12 +151,11 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 				if(corsiList.isSelectionEmpty()) {
 					alertNessunCorsoSelezionato();
 				}else{
-					if(theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso()).isEmpty()) {
+					
+					lezioniList.setListData(theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso()));
+					
+					if(theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso()).isEmpty())
 						alertNessunaLezioneDisponibile();
-						/*Settare la lista vuota? se seleziono un corso, visualizzo le lezioni e dopo clicco su un corso che non ha 
-						  lezioni mi esce l'option pane e vorrei che la lista delle lezioni ritornasse "bianca", dimmi tu se ci sta come cosa*/
-					}else
-						lezioniList.setListData(theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso()));
 				}
 			}
 		});

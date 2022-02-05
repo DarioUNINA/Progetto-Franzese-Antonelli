@@ -49,6 +49,8 @@ temi (/nome_area/, /id_corso/)
 
 16) attivate trigger su update
 
+17) eliminazione di una lezione giá terminata
+
 
 --1)
 	CREATE FUNCTION check_inserimento_in_terminato()
@@ -122,7 +124,7 @@ temi (/nome_area/, /id_corso/)
 	DECLARE iscritti INTEGER;
 			max_p INTEGER;
 	BEGIN
-		SELECT COUNT matricola INTO iscritti
+		SELECT COUNT (matricola) INTO iscritti
 		FROM iscrizioni i JOIN corsi c ON i.id_corso = c.id_corso
 		WHERE i.id_corso = new.id_corso;
 		

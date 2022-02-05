@@ -95,4 +95,38 @@ public class LezioniDAO {
 			return e.getSQLState();
 		}
 	}
+	
+	public Vector<Lezioni> iscirizioneStudenteLezioniDelCorso(String matricola, String id_corso) {
+		
+		Vector<Lezioni> lezioni = new Vector<Lezioni>();
+		
+		try {
+				
+				ResultSet rs = statement.executeQuery("SELECT * FROM lezioni l WHERE l.id_corso = '" + id_corso + "' AND l.id_lezione NOT IN " 
+													 + "( SELECT pre.id_lezione FROM presenze pre WHERE matricola = '" + matricola + "')");
+				
+				
+				while(rs.next()) {
+
+					Lezioni l = new Lezioni();
+					l.setIdLezione(rs.getString("id_lezione"));
+					l.setTitolo(rs.getString("titolo"));
+					l.setDescrizione(rs.getString("descrizione"));
+					l.setDurata(rs.getString("durata"));
+					l.setData(rs.getDate("data"));
+					l.setOrario(rs.getString("orario"));
+					l.setIdCorso(id_corso);
+
+					lezioni.add(l);
+				}
+		
+				return lezioni;
+			}catch(SQLException e) {
+				
+				e.printStackTrace();
+				return lezioni;
+		}
+	}
+	
+	
 }

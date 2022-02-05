@@ -16,10 +16,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Corsi;
+import dto.Lezioni;
 import dto.Operatori;
 import dto.Studenti;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -53,7 +56,7 @@ public class PrenotaLezioneStudentePage extends JFrame {
 		this.operatore = operatore;
 		this.studente = studente;
 		
-		corsi= theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
+		corsi = theController.setCorsiStudenteDelOperatore(studente.getMatricola(), operatore.getIdOperatore());
 		corsiComboBox = new JComboBox<Corsi>(corsi);
 		
 		imageicon = new ImageIcon("napule.png");
@@ -114,7 +117,8 @@ public class PrenotaLezioneStudentePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ConfermaPrenotaLezionePage cpls = new ConfermaPrenotaLezionePage(theController, operatore, studente);
+				ConfermaPrenotaLezionePage cpls = new ConfermaPrenotaLezionePage(theController, operatore, studente, corsi.get(corsiComboBox.getSelectedIndex()));
+				
 				setVisible(false);
 			}
 		});
@@ -132,6 +136,15 @@ public class PrenotaLezioneStudentePage extends JFrame {
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
+		
+		if(corsiComboBox.getSelectedItem() == null) {
+			alertNonCiSonoCorsiDisponibili();
+			PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+			setVisible(false);
+		}
 	}
-
+	
+	public void alertNonCiSonoCorsiDisponibili() {
+		JOptionPane.showMessageDialog(this, "Lo studente non è iscritto a nessun corso del professore: " + operatore.getNomeUtente().toUpperCase()  + "!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
 }

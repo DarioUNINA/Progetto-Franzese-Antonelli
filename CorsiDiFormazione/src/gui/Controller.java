@@ -218,6 +218,7 @@ public class Controller {
 	}
 	
 	public String aggiungiStudenteLezioneClicked(String matricola, String id_lezione) {		
+		
 		return presenzeDAO.aggiungiStudenteLezione(matricola, id_lezione);
 			
 	}
@@ -260,6 +261,28 @@ public class Controller {
 		
 		studentiDAO.eliminaStudente(matricola);
 	}
+	
+	public String aggiungiStudenteCorso(String matricola, String id_corso) {
+		
+		return iscrizioniDAO.aggiungiStudenteCorso(matricola, id_corso);
+			
+	}
+	
+	public String disiscriviStudenteCorso(String matricola, String id_corso) {
+		
+		return iscrizioniDAO.disiscriviStudenteCorso(matricola,id_corso);
+	}
+	
+	public Vector<Lezioni> iscirizioneStudenteLezioniDelCorso(String matricola, String id_corso) {
+		
+		return lezioniDAO.iscirizioneStudenteLezioniDelCorso(matricola, id_corso);
+	}
+	
+	public Vector<Corsi> setCorsiStudenteDelOperatore(String matricola, String id_operatore){
+		
+		 return corsiDAO.setCorsiStudenteDelOperatore(matricola, id_operatore);		
+	}
+	
 
 }
 

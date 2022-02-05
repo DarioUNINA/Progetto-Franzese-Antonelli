@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,17 +17,25 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import dto.Corsi;
+import dto.Lezioni;
 import dto.Operatori;
 import dto.Studenti;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 
 public class ConfermaPrenotaLezionePage extends JFrame {
 
 	private Operatori operatore;
 	private Studenti studente;
+	private Corsi corso;
 	private Controller theController;
+	
+	private JComboBox<Lezioni> lezioniComboBox;
+	private Vector <Lezioni> lezioni;
 	
 	private ImageIcon imageicon;
 	private JPanel contentPane;
@@ -36,14 +45,17 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 	private JButton indietroButton;
 	private JButton confermaButton;
 	private JLabel selezionareLezioneLabel;
-	private JComboBox lezioniComboBox;
 	
-	public ConfermaPrenotaLezionePage(Controller controller, Operatori operatore, Studenti studente) {
+	public ConfermaPrenotaLezionePage(Controller controller, Operatori operatore, Studenti studente, Corsi corso) {
 		setResizable(false);
 		
 		theController = controller;
 		this.operatore = operatore;
 		this.studente = studente;
+		this.corso = corso;
+		
+		lezioni = theController.iscirizioneStudenteLezioniDelCorso(studente.getMatricola(), corso.getIdCorso());
+		lezioniComboBox = new JComboBox<Lezioni>(lezioni);
 
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -101,6 +113,20 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				confermaButton.setBackground(Color.WHITE);
 			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				String state = theController.aggiungiStudenteLezioneClicked(studente.getMatricola(), lezioni.get(lezioniComboBox.getSelectedIndex()).getIdLezione());
+				
+				if(state.equals("0")) {
+					alertStudenteAggiuntoCorrettamente();
+					PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+					setVisible(false);
+				}else
+					alertErroreIscrizioneAllaLezione(state);
+				
+			}
 		});
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(417, 274, 121, 23);
@@ -111,12 +137,30 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		selezionareLezioneLabel.setBounds(42, 131, 145, 23);
 		confermaPrenotaLezioneStudentiPanel.add(selezionareLezioneLabel);
 		
-		lezioniComboBox = new JComboBox();
 		lezioniComboBox.setBounds(193, 132, 163, 22);
 		confermaPrenotaLezioneStudentiPanel.add(lezioniComboBox);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
+		
+		if(lezioniComboBox.getSelectedItem() == null) {
+			alertNonCiSonolezioniDisponibili();
+			PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+			setVisible(false);
+		}
+		
+	}
+	
+	public void alertNonCiSonolezioniDisponibili() {
+		JOptionPane.showMessageDialog(this, "Lo studente è gia iscritto alle lezioni del corso: "+ corso.getNome().toUpperCase() + "!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertStudenteAggiuntoCorrettamente() {
+		JOptionPane.showMessageDialog(this, "Studente aggiunto correttamente alla lezione.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertErroreIscrizioneAllaLezione(String state) {
+			JOptionPane.showMessageDialog(this, "Errore durante l'iscrizione alla lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 
 }

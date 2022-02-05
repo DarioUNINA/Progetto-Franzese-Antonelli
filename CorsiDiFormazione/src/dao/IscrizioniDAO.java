@@ -24,7 +24,7 @@ public class IscrizioniDAO {
 		Vector<Corsi> corsi = new Vector<Corsi>();
 		
 		try {
-			ResultSet rs = statement.executeQuery("(SELECT * FROM corsi con WHERE con.id_operatore = '" + id_operatore + "' AND con.nome NOT IN "
+			ResultSet rs = statement.executeQuery("SELECT * FROM corsi con WHERE con.id_operatore = '" + id_operatore + "' AND con.nome NOT IN "
 												+ "(SELECT co.nome FROM corsi co JOIN iscrizioni i ON co.id_corso = i.id_corso WHERE i.matricola = '"+ matricola + "')");
 			
 			while(rs.next()) {
@@ -58,7 +58,7 @@ public Vector<Corsi> getDisiscrizioneCorsiStudente(String matricola, String id_o
 		Vector<Corsi> corsi = new Vector<Corsi>();
 		
 		try {
-			ResultSet rs = statement.executeQuery("(SELECT * FROM corsi con WHERE con.id_operatore = '" + id_operatore + "' AND con.nome IN "
+			ResultSet rs = statement.executeQuery("SELECT * FROM corsi con WHERE con.id_operatore = '" + id_operatore + "' AND con.nome IN "
 												+ "(SELECT co.nome FROM corsi co JOIN iscrizioni i ON co.id_corso = i.id_corso WHERE i.matricola = '"+ matricola + "')");
 			
 			while(rs.next()) {
@@ -85,5 +85,35 @@ public Vector<Corsi> getDisiscrizioneCorsiStudente(String matricola, String id_o
 			return corsi;
 		}
 		
+	}
+
+	public String aggiungiStudenteCorso(String matricola, String id_corso) {
+	
+		try {
+		
+			if(!statement.execute("INSERT INTO iscrizioni VALUES ('" + matricola +"', '" + id_corso +"')"))
+				return "0";
+			else 
+				return "-1";
+		
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+	}
+	
+	public String disiscriviStudenteCorso(String matricola, String id_corso) {
+		
+		try {
+		
+			if(!statement.execute("DELETE FROM iscrizioni WHERE matricola = '" + matricola + "' AND id_corso = '" +  id_corso + "'"))
+				return "0";
+			else 
+				return "-1";
+		
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return e.getSQLState();
+		}
 	}
 }

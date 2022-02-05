@@ -8,16 +8,19 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import dto.Corsi;
 import dto.Operatori;
 import dto.Studenti;
 
@@ -26,6 +29,8 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 	private Controller theController;
 	private Operatori operatore;
 	private Studenti studente;
+	private Vector<Corsi> corsi;
+	private JComboBox<Corsi> corsiComboBox;
 	
 	private ImageIcon imageicon;
 	private Component url;
@@ -35,7 +40,6 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 	private JButton indietroButton;
 	private JButton eliminaButton;
 	private JLabel selezionareCorsoLabel;
-	private JComboBox corsiComboBox;
 	private JLabel datiStudenteLabel;
 	
 	public DisiscriviStudenteCorsoPage(Controller controller, Operatori operatore, Studenti studente) {
@@ -45,6 +49,10 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		this.operatore = operatore;
 		this.studente = studente;
 
+		corsi =theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
+		corsiComboBox = new JComboBox<Corsi>(corsi);
+		
+		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
@@ -104,6 +112,15 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				String state = theController.disiscriviStudenteCorso(studente.getMatricola(), corsi.get(corsiComboBox.getSelectedIndex()).getIdCorso());
+				
+				if(state.equals("0")) {
+					alertStudenteDisiscrittoCorrettamente();
+					PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+					setVisible(false);
+				}else
+					alertErroreDisiscrizioneStudente(state);
+				
 			}
 		});
 		eliminaButton.setFont(new Font("Arial", Font.BOLD, 15));
@@ -115,17 +132,34 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		selezionareCorsoLabel.setBounds(51, 131, 136, 23);
 		disiscriviLezioneStudentiPanel.add(selezionareCorsoLabel);
 		
-		corsiComboBox = new JComboBox(theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore()));
 		corsiComboBox.setBounds(193, 132, 163, 22);
 		disiscriviLezioneStudentiPanel.add(corsiComboBox);
 		
-		datiStudenteLabel = new JLabel("STUDENTE:" + studente.getMatricola() + ", " + studente.getCognome() + ", " + studente.getNome());
+		datiStudenteLabel = new JLabel("STUDENTE:  " + studente.getMatricola() + ",  " + studente.getCognome().toUpperCase() + ",  " + studente.getNome().toUpperCase());
 		datiStudenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		datiStudenteLabel.setBounds(51, 55, 414, 14);
+		datiStudenteLabel.setBounds(51, 106, 414, 14);
 		disiscriviLezioneStudentiPanel.add(datiStudenteLabel);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
+		
+		if(corsiComboBox.getSelectedItem() == null) {
+			alertNonCiSonoCorsiDisponibili();
+			PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+			setVisible(false);
+		}
 	}
 
+	public void alertNonCiSonoCorsiDisponibili() {
+		JOptionPane.showMessageDialog(this, "Lo studente non è iscritto a nessun corso del professore: " + operatore.getNomeUtente().toUpperCase()  + "!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertStudenteDisiscrittoCorrettamente() {
+		JOptionPane.showMessageDialog(this, "Studente disiscritto correttamente!","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertErroreDisiscrizioneStudente(String state) {
+			JOptionPane.showMessageDialog(this, "Errore durante l'iscrizione al corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
 }

@@ -81,11 +81,11 @@ public class LezioniDAO {
 
 	}	
 	
-	public String eliminaLezioneGestoreLezioni(String titolo) {
+	public String eliminaLezioneGestoreLezioni(String idLezione) {
 		
 		try {
 			
-			if(!statement.execute("DELETE FROM lezioni WHERE titolo = '" + titolo + "'" ))
+			if(!statement.execute("DELETE FROM lezioni WHERE id_lezione = '" + idLezione + "'" ))
 				return "0";
 			else
 				return "-1";

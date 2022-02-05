@@ -49,7 +49,7 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		this.operatore = operatore;
 		this.studente = studente;
 
-		corsi =theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
+		corsi = theController.setDisiscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
 		corsiComboBox = new JComboBox<Corsi>(corsi);
 		
 		
@@ -154,12 +154,6 @@ public class DisiscriviStudenteCorsoPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Lo studente non è iscritto a nessun corso del professore: " + operatore.getNomeUtente().toUpperCase()  + "!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void alertStudenteDisiscrittoCorrettamente() {
-		JOptionPane.showMessageDialog(this, "Studente disiscritto correttamente!","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
-	}
 	
-	public void alertErroreDisiscrizioneStudente(String state) {
-			JOptionPane.showMessageDialog(this, "Errore durante l'iscrizione al corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
 	
 }

@@ -224,9 +224,9 @@ public class Controller {
 	}
 
 
-	public void eliminaLezione(String titolo) {
+	public String eliminaLezione(String idLezione) {
 	
-		lezioniDAO.eliminaLezioneGestoreLezioni(titolo);
+		return lezioniDAO.eliminaLezioneGestoreLezioni(idLezione);
 	}
 	
 	Corsi getCorso(String id_corso) {
@@ -284,6 +284,10 @@ public class Controller {
 	}
 	
 
+	public String eliminaPrenotazione(String idLezione, String matricola){
+		
+		return presenzeDAO.eliminaPresenza(idLezione, matricola);
+	}
 }
 
 

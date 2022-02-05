@@ -30,4 +30,20 @@ public class PresenzeDAO {
 			return e.getSQLState();
 		}
 	}
+	
+	
+	public String eliminaPresenza(String idLezione, String matricola) {
+		
+		try {
+			
+			if(!statement.execute("DELET FROM presenze WHERE matricola = '" + matricola +"'AND id_lezione = '" + idLezione +"'"))
+				return "0";
+			else 
+				return "-1";
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+	}
 }

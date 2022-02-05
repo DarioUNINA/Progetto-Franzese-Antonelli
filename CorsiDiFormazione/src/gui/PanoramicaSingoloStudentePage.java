@@ -216,8 +216,8 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		disiscriviDaUnCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				DisiscriviStudenteCorsoPage dsc = new DisiscriviStudenteCorsoPage(theController, operatore, studente);
-				setVisible(false);
+
+					GestioneDisiscrizione();
 			}
 		});
 		disiscriviDaUnCorsoButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -228,8 +228,11 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		prenotaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PrenotaLezioneStudentePage pls = new PrenotaLezioneStudentePage(theController, operatore, studente);
-				setVisible(false);
+				if(corsiList.getSelectedValue() == null)
+					alertNessunCorsoSelezionato();
+				else
+					
+					
 			}
 		});
 		prenotaLezioneButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -240,8 +243,10 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		annullaPrenotazioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				AnnullaPrenotazionePage ap = new AnnullaPrenotazionePage(theController, operatore, studente);
-				setVisible(false);
+				if(lezioniList.getSelectedValue() == null)
+					alertNessunaLezioneSelezionata();
+				else
+					alertConfermaAnnullaPrenotazione();
 			}
 		});
 		annullaPrenotazioneButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -253,10 +258,90 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	}
 	
 	public void alertNessunCorsoSelezionato() {
-		JOptionPane.showMessageDialog(this, "Selezionare un corso per poter visualizzarne le Lezioni.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+		JOptionPane.showMessageDialog(this, "Selezionare un corso.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
 	
 	public void alertNessunaLezioneDisponibile() {
 		JOptionPane.showMessageDialog(this, "Non ci sono lezioni per il Corso selezionato.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+	}
+	
+	public void GestioneDisiscrizione() {
+		
+		if(corsiList.isSelectionEmpty())
+			alertNessunCorsoSelezionato();
+		else {
+			
+			String state = theController.disiscriviStudenteCorso(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
+			
+			if(state.equals("0")) 
+				alertStudenteDisiscrittoCorrettamente();
+			else
+				alertErroreDisiscrizioneStudente(state);
+		}
+		
+	}
+	
+	
+	
+	public void alertStudenteDisiscrittoCorrettamente() {
+		
+		JOptionPane.showMessageDialog(this, "Studente disiscritto correttamente!","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
+		corsi = theController.setCorsiStudente(studente);
+		corsiList.setListData(corsi);
+	}
+	
+	public void alertErroreDisiscrizioneStudente(String state) {
+		if(state=="-1")
+			JOptionPane.showMessageDialog(this, "Errore sconosciuto durante l'iscrizione al corso" + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			JOptionPane.showMessageDialog(this, "Errore durante l'iscrizione al corso, codice errore: " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertNessunaLezioneSelezionata() {
+		JOptionPane.showMessageDialog(this, "Selezionare una lezione.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+	}
+	
+	public void alertConfermaAnnullaPrenotazione() {
+		
+		Object[] opzioni = {"Sì"};
+		
+		int n = JOptionPane.showOptionDialog(this,
+				"Sei sicuro di voler annullare la prenotazione selezionata?",
+				"CONFERMA DI ANNULLAMENTO",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				opzioni,
+				opzioni[0]);
+		if(n==0) {
+			
+			String state = theController.eliminaPrenotazione(lezioniList.getSelectedValue().getIdLezione(), studente.getMatricola());
+			
+			if(state == "0")
+				alertPrenotazioneAnnullata();
+			else
+				alertErroreEliminazionePrenotazione(state);
+		}
+	}
+	
+	public void alertPrenotazioneAnnullata() {
+		
+		JOptionPane.showMessageDialog(this, "Prenotazione annullata correttamente","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
+		corsi = theController.setCorsiStudente(studente);
+		corsiList.setListData(corsi);
+	}
+	
+	public void alertErroreEliminazionePrenotazione(String state) {
+		
+		if(state == "-1")
+			JOptionPane.showMessageDialog(this, "Impossibile annullare la prenotazione a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			if(state == "10011")
+				JOptionPane.showMessageDialog(this, "ATTENZIONE: la lezione giá e stata effettuata, impossibile eliminare la prenotazione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+			else
+				JOptionPane.showMessageDialog(this, "Impossibile annullare la prenotazione.\nCodice d'errore: " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+			
+			
 	}
 }

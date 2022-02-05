@@ -195,7 +195,7 @@ public class GestoreLezioniPage extends JFrame {
 				if(lezioniList.isSelectionEmpty()) {
 					alertNessunaLezioneSelezionataElimina();
 				}else {
-					alertConfermaEliminazionelezione(lezioniList.getSelectedValue().getTitolo());
+					alertConfermaEliminazionelezione(lezioniList.getSelectedValue().getIdLezione());
 				}
 			}
 		});
@@ -262,11 +262,11 @@ public class GestoreLezioniPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Selezionare un corso per poter aggiungerne una Lezione.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
 	
-	public void alertConfermaEliminazionelezione(String lezione) {
+	public void alertConfermaEliminazionelezione(String idLezione) {
 		Object[] opzioni = {"Sì"};
 		
 		int n = JOptionPane.showOptionDialog(this,
-				"Sei sicuro di voler eliminare la lezione " + lezione + " ?",
+				"Sei sicuro di voler eliminare la lezione selezionata ?",
 				"CONFERMA DI ELIMINAZIONE",
 				JOptionPane.YES_NO_CANCEL_OPTION,
 				JOptionPane.QUESTION_MESSAGE,
@@ -274,9 +274,37 @@ public class GestoreLezioniPage extends JFrame {
 				opzioni,
 				opzioni[0]);
 		if(n==0) {
-			theController.eliminaLezione(lezione);
-			HomePage hp = new HomePage(theController, operatore);
-			setVisible(false);
+			
+			String state = theController.eliminaLezione(idLezione);
+			
+			if(state == "0") {
+				alertEliminazioneEffettuata();
+			}else
+				alertEliminazioneFallita(state);
+			
+				
+			
+			
 		}
 	}
+	
+	public void alertEliminazioneEffettuata() {
+		
+		JOptionPane.showMessageDialog(this, "Lezione eliminata correttamente","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
+		HomePage hp = new HomePage(theController, operatore);
+		setVisible(false);
+		
+	}
+	
+	
+	public void alertEliminazioneFallita(String state) {
+		
+		if(state == "-1")
+			JOptionPane.showMessageDialog(this, "Lezione non eliminata a causa di un errore sconosciuto ", "<ERRORE>", JOptionPane.WARNING_MESSAGE);
+		else
+			JOptionPane.showMessageDialog(this, "Lezione non eliminata.\nCodice d'errore: " + state,"<ERRORE>", JOptionPane.WARNING_MESSAGE);
+		
+	}
+	
+	
 }

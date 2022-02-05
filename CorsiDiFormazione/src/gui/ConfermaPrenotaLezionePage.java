@@ -167,7 +167,10 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 			if(state.equals("10007"))
 				JOptionPane.showMessageDialog(this, "Non e' possibile iscriversi a lezioni gia' concluse","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 			else
-				JOptionPane.showMessageDialog(this, "Errore durante l'iscrizione alla lezione.\nCodice d'errore "+ state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+				if(state.equals("10008"))
+					JOptionPane.showMessageDialog(this, "ATTENZIONE: sei gia' iscritto a una lezione contemporanea a quella selezionata","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+				else
+					JOptionPane.showMessageDialog(this, "Errore durante l'iscrizione alla lezione.\nCodice d'errore "+ state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
 				
 	

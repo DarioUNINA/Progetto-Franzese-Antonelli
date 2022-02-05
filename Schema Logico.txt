@@ -180,7 +180,7 @@ temi (/nome_area/, /id_corso/)
 	BEGIN
 		SELECT COUNT (*) INTO violazione
 		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
-		WHERE new.id_lezione = l.id_lezione AND l.orario IN (
+		WHERE p.matricola = NEW.matricola AND new.id_lezione = l.id_lezione AND l.orario IN (
 		
 		SELECT le.orario
 		FROM presenze pr JOIN lezioni le ON pr.id_lezione = le.id_lezione
@@ -190,7 +190,7 @@ temi (/nome_area/, /id_corso/)
 		IF (violazione > 0) THEN	
 			RAISE SQLSTATE '10008';
 			ROLLBACK;
-			RAISE EXCEPTION 'Ti sei gia iscritto ad una lezione allo stesso orario';
+			RAISE EXCEPTION 'Ti sei gia iscritto ad una lezione in contemporanea';
 		END IF;
 		RETURN NEW;
 	END

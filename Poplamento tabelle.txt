@@ -89,6 +89,9 @@ VALUES(nextval('sequenza_id_lezione'), 'complessita computazionale', 'studio del
 INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'derivate' , 'studio del calcolo differenziale', '1:30', '14/06/2020', '8:30', 6);
 
+INSERT INTO lezioni
+VALUES(nextval('sequenza_id_lezione'), 'eccezioni' , 'gestione delle exception', '14:30', '14/06/2023', '8:30', 1);
+
 
 
 

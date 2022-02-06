@@ -173,9 +173,11 @@ temi (/nome_area/, /id_corso/)
 	
 	
 --8) 
+	
 	DECLARE violazione INTEGER;
 			startt TIME WITHOUT TIME ZONE;
 			endt TIME WITHOUT TIME ZONE;
+            datat DATE;
 	BEGIN
 		
 		SELECT l.orario INTO startt
@@ -185,25 +187,22 @@ temi (/nome_area/, /id_corso/)
 		SELECT l.orario+l.durata INTO endt
 		FROM lezioni l
 		WHERE new.id_lezione = l.id_lezione;
-		
+        
+		SELECT l.data into datat
+		FROM lezioni l
+		WHERE new.id_lezione = l.id_lezione;
 		
 		SELECT COUNT (*) INTO violazione
 		FROM presenze pr JOIN lezioni le ON pr.id_lezione = le.id_lezione
-		WHERE pr.matricola = NEW.matricola AND  (le.orario BETWEEN startt AND endt) AND le.data = (
-		
-		SELECT l.data
-		FROM lezioni l
-		WHERE new.id_lezione = l.id_lezione);
-		
-		
-		IF (violazione > 1) THEN	
+		WHERE pr.matricola = NEW.matricola AND le.data = datat AND ((le.orario BETWEEN startt AND endt) OR (le.orario+le.durata BETWEEN startt AND endt) OR (le.orario < startt AND le.orario+le.durata > endt)); 	
+    
+        IF (violazione > 1) THEN	
 			RAISE SQLSTATE '10008';
 			ROLLBACK;
 			RAISE EXCEPTION 'Ti sei gia iscritto ad una lezione in contemporanea';
 		END IF;
 		RETURN NEW;
-	END
-	;
+	END;
 	
 --11)
 	CREATE FUNCTION check_iscrizione_terminato()

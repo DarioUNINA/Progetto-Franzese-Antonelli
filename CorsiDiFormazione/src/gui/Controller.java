@@ -176,9 +176,9 @@ public class Controller {
 		return studentiDAO.getSingoloStudente(matricola);
 	}
 	
-	public Vector<Corsi> setCorsiStudente(Studenti s){
+	public Vector<Corsi> setCorsiStudente(String matricola, String id_operatore){
 		
-		 return corsiDAO.getCorsiStudente(s);		
+		 return corsiDAO.getCorsiStudente(matricola, id_operatore);		
 	}
 	
 	

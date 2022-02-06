@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -89,7 +90,7 @@ public class PanoramicaLezionePage extends JFrame {
 		contentPane.add(gestoreLezioniPanel);
 		gestoreLezioniPanel.setLayout(null);
 		
-		gestoreLezioniLabel = new JLabel("PANORAMICA LEZIONI");
+		gestoreLezioniLabel = new JLabel("PANORAMICA LEZIONE");
 		gestoreLezioniLabel.setForeground(Color.BLACK);
 		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		gestoreLezioniLabel.setBackground(Color.WHITE);
@@ -184,8 +185,12 @@ public class PanoramicaLezionePage extends JFrame {
 		aggiungiStudenteLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				AggiungiStudenteLezionePage asl = new AggiungiStudenteLezionePage(theController, operatore, lezione);
-				setVisible(false);
+				if(theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione()).isEmpty()) {
+					alertNonCiSonoStudenti();
+				}else {
+					AggiungiStudenteLezionePage asl = new AggiungiStudenteLezionePage(theController, operatore, lezione);
+					setVisible(false);
+				}
 			}
 		});
 		aggiungiStudenteLezioneButton.setBounds(314, 295, 244, 23);
@@ -194,6 +199,10 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
+	}
+	
+	public void alertNonCiSonoStudenti() {
+		JOptionPane.showMessageDialog(this, "Non ci sono Studenti da poter aggiungere alla lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 }
 

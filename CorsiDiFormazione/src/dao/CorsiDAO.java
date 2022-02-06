@@ -173,13 +173,13 @@ public class CorsiDAO {
 		}
 	}
 	
-public  Vector<Corsi> getCorsiStudente(Studenti s){
+public  Vector<Corsi> getCorsiStudente(String matricola, String id_operatore){
 		
 		Vector<Corsi> corsi = new Vector<Corsi>();
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT * FROM iscrizioni i JOIN corsi co ON co.id_corso = i.id_corso WHERE i.matricola = '"+ s.getMatricola() + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM iscrizioni i JOIN corsi co ON co.id_corso = i.id_corso WHERE i.matricola = '"+ matricola + "' AND co.id_operatore = '" + id_operatore + "'");
 			
 			
 			while(rs.next()) {

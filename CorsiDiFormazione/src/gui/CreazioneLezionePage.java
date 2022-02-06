@@ -42,7 +42,7 @@ public class CreazioneLezionePage extends JFrame {
 	private JLabel descrizioneLabel;
 	private JButton indietroButton;
 	private JButton confermaButton;
-	private JComboBox dutrataComboBox;
+	private JComboBox durataComboBox;
 	private JComboBox orarioComboBox;
 	
 	public CreazioneLezionePage(Controller controller, Operatori operatore, Corsi corso) {
@@ -84,27 +84,27 @@ public class CreazioneLezionePage extends JFrame {
 		
 		titoloLabel = new JLabel("Titolo:");
 		titoloLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		titoloLabel.setBounds(58, 75, 45, 18);
+		titoloLabel.setBounds(16, 52, 45, 18);
 		creaLezionePanel.add(titoloLabel);
 		
 		durataLabel = new JLabel("Durata:");
 		durataLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		durataLabel.setBounds(52, 119, 51, 18);
+		durataLabel.setBounds(10, 140, 51, 18);
 		creaLezionePanel.add(durataLabel);
 		
 		orarioLabel = new JLabel("Orario:");
 		orarioLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		orarioLabel.setBounds(265, 75, 51, 18);
+		orarioLabel.setBounds(10, 94, 51, 18);
 		creaLezionePanel.add(orarioLabel);
 		
 		dataLabel = new JLabel("Data:");
 		dataLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		dataLabel.setBounds(280, 119, 36, 18);
+		dataLabel.setBounds(264, 55, 36, 18);
 		creaLezionePanel.add(dataLabel);
 		
 		descrizioneLabel = new JLabel("Descrizione:");
 		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		descrizioneLabel.setBounds(58, 175, 124, 18);
+		descrizioneLabel.setBounds(10, 185, 124, 18);
 		creaLezionePanel.add(descrizioneLabel);
 		
 		indietroButton = new JButton("INDIETRO");
@@ -141,9 +141,9 @@ public class CreazioneLezionePage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				String titolo = titoloTextField.getText().toLowerCase();
 				String descrizione = descrizioneTextField.getText().toLowerCase();
-				String data;
-				String orario;
-				String durata;
+				String orarioLezione = orarioComboBox.getSelectedItem().toString();
+				String durataLezione = durataComboBox.getSelectedItem().toString();
+				
 				
 			}
 		});	
@@ -154,26 +154,27 @@ public class CreazioneLezionePage extends JFrame {
 		titoloTextField = new JTextField();
 		titoloTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		titoloTextField.setColumns(10);
-		titoloTextField.setBounds(113, 76, 103, 20);
+		titoloTextField.setBounds(71, 53, 103, 20);
 		creaLezionePanel.add(titoloTextField);
 		
 		descrizioneTextField = new JTextField();
 		descrizioneTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		descrizioneTextField.setColumns(10);
-		descrizioneTextField.setBounds(159, 175, 270, 20);
+		descrizioneTextField.setBounds(105, 186, 170, 20);
 		creaLezionePanel.add(descrizioneTextField);
 		
 		String [] durate = {"01:00", "01:30", "02:00", "02:30", "03:00"};
-		dutrataComboBox = new JComboBox(durate);
-		dutrataComboBox.setBounds(113, 118, 103, 22);
-		creaLezionePanel.add(dutrataComboBox);
+		durataComboBox = new JComboBox(durate);
+		durataComboBox.setBounds(71, 139, 103, 22);
+		creaLezionePanel.add(durataComboBox);
 		
-		orarioComboBox = new JComboBox(new Object[]{});
-		orarioComboBox.setBounds(326, 74, 103, 22);
+		String [] orario = {"08:30", "11:00", "14:00", "16:30"};
+		orarioComboBox = new JComboBox(orario);
+		orarioComboBox.setBounds(71, 93, 103, 22);
 		creaLezionePanel.add(orarioComboBox);
 		
 		JCalendar calendar = new JCalendar();
-		calendar.setBounds(326, 107, 184, 153);
+		calendar.setBounds(310, 55, 228, 151);
 		creaLezionePanel.add(calendar);
 		
 		setLocationRelativeTo(null);

@@ -128,7 +128,7 @@ temi (/nome_area/, /id_corso/)
 		FROM iscrizioni i JOIN corsi c ON i.id_corso = c.id_corso
 		WHERE i.id_corso = new.id_corso;
 		
-		SELECT max_partetcipanti INTO max_p
+		SELECT c.max_partecipanti INTO max_p
 		FROM iscrizioni i JOIN corsi c ON i.id_corso = c.id_corso
 		WHERE i.id_corso = NEW.id_corso;
 		
@@ -173,33 +173,37 @@ temi (/nome_area/, /id_corso/)
 	
 	
 --8) 
-	CREATE FUNCTION check_lezioni_contemporanee()
-	RETURNS TRIGGER AS
-	$$
 	DECLARE violazione INTEGER;
+			startt TIME WITHOUT TIME ZONE;
+			endt TIME WITHOUT TIME ZONE;
 	BEGIN
+		
+		SELECT l.orario INTO startt
+		FROM lezioni l
+		WHERE new.id_lezione = l.id_lezione;
+		
+		SELECT l.orario+l.durata INTO endt
+		FROM lezioni l
+		WHERE new.id_lezione = l.id_lezione;
+		
+		
 		SELECT COUNT (*) INTO violazione
-		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
-		WHERE p.matricola = NEW.matricola AND new.id_lezione = l.id_lezione AND l.orario IN (
-		
-		SELECT le.orario
 		FROM presenze pr JOIN lezioni le ON pr.id_lezione = le.id_lezione
-		WHERE pr.matricola = NEW.matricola AND le.data = l.data);
+		WHERE pr.matricola = NEW.matricola AND  (le.orario BETWEEN startt AND endt) AND le.data = (
+		
+		SELECT l.data
+		FROM lezioni l
+		WHERE new.id_lezione = l.id_lezione);
 		
 		
-		IF (violazione > 0) THEN	
+		IF (violazione > 1) THEN	
 			RAISE SQLSTATE '10008';
 			ROLLBACK;
 			RAISE EXCEPTION 'Ti sei gia iscritto ad una lezione in contemporanea';
 		END IF;
 		RETURN NEW;
 	END
-	$$ LANGUAGE plpgsql;
-	
-	CREATE TRIGGER lezioni_contemporanee
-	AFTER INSERT ON presenze
-	FOR EACH ROW
-	EXECUTE PROCEDURE check_lezioni_contemporanee();
+	;
 	
 --11)
 	CREATE FUNCTION check_iscrizione_terminato()
@@ -407,4 +411,7 @@ temi (/nome_area/, /id_corso/)
 	AFTER DELETE ON presenze
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_eliminazione_presenza();
+	
+
+	
 	

@@ -152,9 +152,9 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 					alertNessunCorsoSelezionato();
 				}else{
 					
-					lezioniList.setListData(theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso()));
+					lezioniList.setListData(theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso()));
 					
-					if(theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso()).isEmpty())
+					if(corsiList.getSelectedValue()==null)
 						alertNessunaLezioneDisponibile();
 				}
 			}

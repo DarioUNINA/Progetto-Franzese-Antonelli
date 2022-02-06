@@ -288,6 +288,11 @@ public class Controller {
 		
 		return presenzeDAO.eliminaPresenza(idLezione, matricola);
 	}
+	
+	public Vector<Lezioni> getPresenzeStudente(String matricola, String id_corso) {
+		
+		return lezioniDAO.getPresenzeStudente(matricola, id_corso);
+	}
 }
 
 

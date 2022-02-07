@@ -162,12 +162,12 @@ public class LezioniDAO {
 	}
 
 	
-	public String creaLezione(String titolo, String descrizione, Time orario, Time durata, Date data, String idCorso) {
+	public String creaLezione(Lezioni lezione) {
 		
 		try {
 			
-			if(!statement.execute("INSERT INTO lezioni VALUES (nextval('sequenza_id_lezione'),'" + titolo + "', '" + descrizione + "', '" + durata.getHours() + ":"+ durata.getMinutes() + 
-					 "', '" + data.getDay()+ "/" + data.getMonth() + "/" + data.getYear() + "', " + orario.getHours() + ":" + orario.getMinutes() + ",'" + idCorso + "')"))
+			if(!statement.execute("INSERT INTO lezioni VALUES (nextval('sequenza_id_lezione'),'" + lezione.getTitolo() + "', '" + lezione.getDescrizione() + "', '" + lezione.getDurata().getHours() + ":"+ lezione.getDurata().getMinutes() + 
+					 "', '" + lezione.getData() +  "', '" + lezione.getOrario().getHours() + ":" + lezione.getOrario().getMinutes() + "','" + lezione.getIdCorso() + "')"))
 				return "0";
 			else
 				return "-1";

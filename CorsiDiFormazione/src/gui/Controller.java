@@ -330,7 +330,9 @@ public class Controller {
 	
 	public String creaLezione(String titolo, String descrizione, Time orario, Time durata, Date data, String idCorso) {
 		
-		return lezioniDAO.creaLezione(titolo, descrizione , orario, durata, data, idCorso);
+		Lezioni lezione = new Lezioni(durata, titolo , descrizione, orario, idCorso, data);
+		
+		return lezioniDAO.creaLezione(lezione);
 	}
 
 }

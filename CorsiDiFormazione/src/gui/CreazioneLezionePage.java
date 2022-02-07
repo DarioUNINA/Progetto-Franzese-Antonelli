@@ -174,6 +174,8 @@ public class CreazioneLezionePage extends JFrame {
 				
 				if(state.equals("0"))
 					alertInserimentoEffettuato();
+				else
+					alertInserimentoFallito(state);
 					
 				
 				
@@ -203,4 +205,16 @@ public class CreazioneLezionePage extends JFrame {
 	public void alertInserimentoEffettuato() {
 		JOptionPane.showMessageDialog(this, "Lezione creata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
 		}
+	
+	public void alertInserimentoFallito(String state) {
+		
+		if(state.equals("10012"))
+			JOptionPane.showMessageDialog(this, "ATTENZIONE: ha gia creato una lezione in contemporanea, si prega di modificare l'orario","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			if(state.equals("23505"))
+				JOptionPane.showMessageDialog(this, "Attenzione, esiste gia una lezione con lo stesso titolo.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+			else
+				JOptionPane.showMessageDialog(this, "Impossibile creare la lezione a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+	}
 }

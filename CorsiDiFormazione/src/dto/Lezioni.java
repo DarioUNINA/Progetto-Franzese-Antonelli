@@ -26,6 +26,17 @@ public class Lezioni {
 		this.idLezione = idLezione;
 		this.data = data;
 	}
+	
+	public Lezioni(Time durata, String titolo, String descrizione, Time orario, String idCorso,	Date data) {
+		
+		this.durata = durata;
+		this.titolo = titolo;
+		this.descrizione = descrizione;
+		this.orario = orario;
+		this.idCorso = idCorso;
+		this.idLezione = idLezione;
+		this.data = data;
+	}
 
 	public Time getDurata() {
 		return durata;

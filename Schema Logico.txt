@@ -51,6 +51,8 @@ temi (/nome_area/, /id_corso/)
 
 17) eliminazione di una lezione giá terminata
 
+18) un professore non puó creare lezioni in contemporanea ad altre sue lezioni
+
 
 --1)
 	CREATE FUNCTION check_inserimento_in_terminato()
@@ -174,6 +176,9 @@ temi (/nome_area/, /id_corso/)
 	
 --8) 
 	
+	CREATE FUNCTION check_presenza_contemporanea()
+	RETURNS TRIGGER AS
+	$$
 	DECLARE violazione INTEGER;
 			startt TIME WITHOUT TIME ZONE;
 			endt TIME WITHOUT TIME ZONE;
@@ -202,7 +207,14 @@ temi (/nome_area/, /id_corso/)
 			RAISE EXCEPTION 'Ti sei gia iscritto ad una lezione in contemporanea';
 		END IF;
 		RETURN NEW;
-	END;
+	END
+	
+	$$ LANGUAGE plpgsql;
+	
+	CREATE TRIGGER presenza_contemporanea
+	AFTER INSERT ON iscrizioni
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_presenza_contemporanea();
 	
 --11)
 	CREATE FUNCTION check_iscrizione_terminato()
@@ -412,5 +424,43 @@ temi (/nome_area/, /id_corso/)
 	EXECUTE PROCEDURE check_eliminazione_presenza();
 	
 
+--18)
+	CREATE FUNCTION check_creazione_lezione_contemporanea()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE violazione INTEGER;
+			startt TIME WITHOUT TIME ZONE;
+			endt TIME WITHOUT TIME ZONE;
+            datat DATE;
+	BEGIN
+		
+		SELECT l.orario INTO startt
+		FROM lezioni l
+		WHERE new.id_lezione = l.id_lezione;
+		
+		SELECT l.orario+l.durata INTO endt
+		FROM lezioni l
+		WHERE new.id_lezione = l.id_lezione;
+        
+		SELECT l.data into datat
+		FROM lezioni l
+		WHERE new.id_lezione = l.id_lezione;
+		
+		SELECT COUNT (*) INTO violazione
+		FROM lezioni le
+		WHERE le.id_corso = NEW.id_corso AND le.data = datat AND ((le.orario BETWEEN startt AND endt) OR (le.orario+le.durata BETWEEN startt AND endt) OR (le.orario < startt AND le.orario+le.durata > endt)); 	
+    
+        IF (violazione > 1) THEN	
+			RAISE SQLSTATE '10012';
+			ROLLBACK;
+			RAISE EXCEPTION 'Hai gia lezioni allo stesso orario dello stesso giorno';
+		END IF;
+		RETURN NEW;
+	END
 	
+	$$ LANGUAGE plpgsql;
 	
+	CREATE TRIGGER creazione_lezione_contemporanea
+	AFTER INSERT ON lezioni
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_creazione_lezione_contemporanea();

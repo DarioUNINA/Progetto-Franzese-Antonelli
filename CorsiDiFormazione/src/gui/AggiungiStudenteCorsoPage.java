@@ -163,7 +163,10 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		
 		if(state.equals("10009")) 
 			JOptionPane.showMessageDialog(this, "Non puoi iscirvere uno studente ad un corso terminato!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-		else 
-			JOptionPane.showMessageDialog(this, "Errore durante l'iscrizione al corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			if(state.equals("10006"))
+				JOptionPane.showMessageDialog(this, "Non e stato possibile effettuare l'iscrizione perche'e' stato raggiunto il numero massimo di partecipanti ammessi al corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+			else
+				JOptionPane.showMessageDialog(this, "Errore sconsciuto durante l'iscrizione al corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 }

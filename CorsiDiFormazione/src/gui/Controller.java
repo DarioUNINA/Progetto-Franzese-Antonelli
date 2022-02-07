@@ -1,6 +1,8 @@
 package gui;
 
+import java.sql.Time;
 import java.util.Vector;
+import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -292,6 +294,43 @@ public class Controller {
 	public Vector<Lezioni> getPresenzeStudente(String matricola, String id_corso) {
 		
 		return lezioniDAO.getPresenzeStudente(matricola, id_corso);
+	}
+	
+	
+	public Vector<Time> getDurate(){
+		
+		Vector<Time> durate = new Vector<Time>();
+		
+		Time durata = new Time(1, 00, 00);
+		durate.add(durata);
+		durata = new Time(1, 30, 00);
+		durate.add(durata);
+		durata = new Time(2, 00, 00);
+		durate.add(durata);
+		
+		return durate;
+	}
+	
+	
+	public Vector<Time> getOrario(){
+		
+		Vector<Time> orari = new Vector<Time>();
+		
+		Time orario = new Time(8, 30, 00);
+		orari.add(orario);
+		orario = new Time(11, 00, 00);
+		orari.add(orario);
+		orario = new Time(14, 00, 00);
+		orari.add(orario);
+		orario = new Time(16, 30, 00);
+		orari.add(orario);
+		
+		return orari;
+	}
+	
+	public String creaLezione(String titolo, String descrizione, Time orario, Time durata, Date data, String idCorso) {
+		
+		return lezioniDAO.creaLezione(titolo, descrizione , orario, durata, data, idCorso);
 	}
 }
 

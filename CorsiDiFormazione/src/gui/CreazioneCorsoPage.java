@@ -71,7 +71,8 @@ public class CreazioneCorsoPage extends JFrame {
 		
 		this.operatore = operatore;
 		theController = controller;
-		areeTematiche = theController.getAllAreeTematiche(); 
+		areeTematiche = theController.getAllAreeTematiche();
+		areeTematiche.remove(0);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -187,13 +188,13 @@ public class CreazioneCorsoPage extends JFrame {
 				else
 					terminato = false;
 				
-				if(theController.isDigits(presenzeMin))
+				if(!theController.isDigits(presenzeMin))
 					alertErroreInserimentoPresenzeMin();
 				else
-					if(theController.isDigits(maxPartecipanti))
+					if(!theController.isDigits(maxPartecipanti))
 						alertErroreInserimentoMaxPartecipanti();
 					else
-						if(theController.isDigits(anno))
+						if(!theController.isDigits(anno))
 							alertErroreInserimentoAnno();
 						else {
 								
@@ -305,14 +306,14 @@ public class CreazioneCorsoPage extends JFrame {
 
 	public void alertInserimentoNonEffettuato(String state) {
 
-		if(state.equals("-1")) {
-			
+		if(state.equals("-1")) 
 			JOptionPane.showMessageDialog(this, "Errore sconosciuto, impossibile creare il corso ","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-		}
-		else {
-			JOptionPane.showMessageDialog(this, "Impossibile creare il corso: codice errore " +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-		}
-			
+		else 
+			if(state.equals("23505"))
+				JOptionPane.showMessageDialog(this, "Impossibile creare il corso, esiste gia' un corso con lo stesso nome" +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+			else
+				JOptionPane.showMessageDialog(this, "Impossibile creare il corso: codice errore " +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
 	}
 
 }

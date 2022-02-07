@@ -1,14 +1,14 @@
 package dto;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.util.Date;
+import java.sql.Time;
 
 public class Lezioni {
 
-	private String durata;
+	private	Time durata;
 	private String titolo;
 	private String descrizione;
-	private String orario;
+	private Time orario;
 	private String idCorso;
 	private String idLezione;
 	private Date data;
@@ -16,7 +16,7 @@ public class Lezioni {
 	public Lezioni() {
 	}
 	
-	public Lezioni(String durata, String titolo, String descrizione, String orario, String idCorso, String idLezione,
+	public Lezioni(Time durata, String titolo, String descrizione, Time orario, String idCorso, String idLezione,
 			Date data) {
 		this.durata = durata;
 		this.titolo = titolo;
@@ -27,11 +27,11 @@ public class Lezioni {
 		this.data = data;
 	}
 
-	public String getDurata() {
+	public Time getDurata() {
 		return durata;
 	}
 
-	public void setDurata(String durata) {
+	public void setDurata(Time durata) {
 		this.durata = durata;
 	}
 
@@ -51,11 +51,11 @@ public class Lezioni {
 		this.descrizione = descrizione;
 	}
 
-	public String getOrario() {
+	public Time getOrario() {
 		return orario;
 	}
 
-	public void setOrario(String orario) {
+	public void setOrario(Time orario) {
 		this.orario = orario;
 	}
 

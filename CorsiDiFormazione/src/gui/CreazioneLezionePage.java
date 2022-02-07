@@ -7,6 +7,9 @@ import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
+import java.sql.Time;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -17,6 +20,8 @@ import javax.swing.border.LineBorder;
 import dto.Corsi;
 import dto.Operatori;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -42,15 +47,21 @@ public class CreazioneLezionePage extends JFrame {
 	private JLabel descrizioneLabel;
 	private JButton indietroButton;
 	private JButton confermaButton;
-	private JComboBox durataComboBox;
-	private JComboBox orarioComboBox;
+	private JComboBox<Time> durataComboBox;
+	private JComboBox<Time> orarioComboBox;
+	private Vector<Time> durate;
+	private Vector<Time> orari;
+	private JCalendar calendario;
+	
+	
 	
 	public CreazioneLezionePage(Controller controller, Operatori operatore, Corsi corso) {
 		setResizable(false);
 		
-		
 		this.operatore = operatore;
 		theController = controller;
+		durate = theController.getDurate();
+		orari = theController.getOrario();
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -65,8 +76,6 @@ public class CreazioneLezionePage extends JFrame {
 		getContentPane().setBackground(new Color(65, 105, 225));
 		creazioneLezioniPanel.setLayout(null);
 			
-
-		
 		
 		creaLezionePanel = new JPanel();
 		creaLezionePanel.setBounds(10, 11, 548, 307);
@@ -74,6 +83,10 @@ public class CreazioneLezionePage extends JFrame {
 		creaLezionePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		creazioneLezioniPanel.add(creaLezionePanel);
 		creaLezionePanel.setLayout(null);
+		
+		calendario = new JCalendar();
+		calendario.setBounds(310, 55, 228, 151);
+		creaLezionePanel.add(calendario);
 		
 		creazioneLezioneLabel = new JLabel("CREAZIONE LEZIONE");
 		creazioneLezioneLabel.setForeground(Color.BLACK);
@@ -127,6 +140,15 @@ public class CreazioneLezionePage extends JFrame {
 		indietroButton.setBounds(10, 273, 121, 23);
 		creaLezionePanel.add(indietroButton);
 		
+
+		durataComboBox = new JComboBox<Time>(durate);
+		durataComboBox.setBounds(71, 139, 103, 22);
+		creaLezionePanel.add(durataComboBox);
+		
+		orarioComboBox = new JComboBox<Time>(orari);
+		orarioComboBox.setBounds(71, 93, 103, 22);
+		creaLezionePanel.add(orarioComboBox);
+		
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -139,10 +161,18 @@ public class CreazioneLezionePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				String titolo = titoloTextField.getText().toLowerCase();
 				String descrizione = descrizioneTextField.getText().toLowerCase();
-				String orarioLezione = orarioComboBox.getSelectedItem().toString();
-				String durataLezione = durataComboBox.getSelectedItem().toString();
+				Time orarioLezione = (Time)orarioComboBox.getSelectedItem();
+				Time durataLezione = (Time)durataComboBox.getSelectedItem();
+				Date data = calendario.getDate();
+				
+				String state = theController.creaLezione(titolo, descrizione, orarioLezione, durataLezione, data, corso.getIdCorso());
+				
+				if(state.equals("0"))
+					alertInserimentoEffettuato();
+					
 				
 				
 			}
@@ -162,22 +192,13 @@ public class CreazioneLezionePage extends JFrame {
 		descrizioneTextField.setColumns(10);
 		descrizioneTextField.setBounds(105, 186, 170, 20);
 		creaLezionePanel.add(descrizioneTextField);
-		
-		String [] durate = {"01:00", "01:30", "02:00", "02:30", "03:00"};
-		durataComboBox = new JComboBox(durate);
-		durataComboBox.setBounds(71, 139, 103, 22);
-		creaLezionePanel.add(durataComboBox);
-		
-		String [] orario = {"08:30", "11:00", "14:00", "16:30"};
-		orarioComboBox = new JComboBox(orario);
-		orarioComboBox.setBounds(71, 93, 103, 22);
-		creaLezionePanel.add(orarioComboBox);
-		
-		JCalendar calendar = new JCalendar();
-		calendar.setBounds(310, 55, 228, 151);
-		creaLezionePanel.add(calendar);
+	
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
+	
+	public void alertInserimentoEffettuato() {
+		JOptionPane.showMessageDialog(this, "Lezione creata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
+		}
 }

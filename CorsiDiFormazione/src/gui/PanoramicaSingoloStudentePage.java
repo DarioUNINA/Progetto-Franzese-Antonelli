@@ -144,7 +144,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiList.setVisibleRowCount(10);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		confermaButton = new JButton("CONFERMA");
+		confermaButton = new JButton("MOSTRA PRENOTAZIONI");
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -163,7 +163,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 			}
 		});
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 12));
-		confermaButton.setBounds(31, 287, 119, 30);
+		confermaButton.setBounds(20, 287, 131, 43);
 		corsiPanel.add(confermaButton);
 		
 		lezioniPanel = new JPanel();
@@ -172,7 +172,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		lezioniPanel.setBounds(227, 99, 185, 341);
 		sfondoPane.add(lezioniPanel);
 		
-		elencoLezioniLabel = new JLabel("ELENCO LEZIONI:");
+		elencoLezioniLabel = new JLabel("PRENOTAZIONI EFFETTUATE");
 		elencoLezioniLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		elencoLezioniLabel.setBounds(31, 11, 131, 14);
 		lezioniPanel.add(elencoLezioniLabel);

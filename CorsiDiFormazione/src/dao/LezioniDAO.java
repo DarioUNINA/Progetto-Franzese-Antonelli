@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.*;
 import java.util.Vector;
+import java.util.Date;
 
 import dto.Corsi;
 import dto.Lezioni;
@@ -36,9 +37,9 @@ public class LezioniDAO {
 					l.setIdLezione(rs.getString("id_lezione"));
 					l.setTitolo(rs.getString("titolo"));
 					l.setDescrizione(rs.getString("descrizione"));
-					l.setDurata(rs.getString("durata"));
+					l.setDurata(rs.getTime("durata"));
 					l.setData(rs.getDate("data"));
-					l.setOrario(rs.getString("orario"));
+					l.setOrario(rs.getTime("orario"));
 					l.setIdCorso(id_corso);
 
 					lezioni.add(l);
@@ -65,9 +66,9 @@ public class LezioniDAO {
 			lezione.setIdLezione(rs.getString("id_lezione"));
 			lezione.setTitolo(titolo);
 			lezione.setDescrizione(rs.getString("descrizione"));
-			lezione.setDurata(rs.getString("durata"));
+			lezione.setDurata(rs.getTime("durata"));
 			lezione.setData(rs.getDate("data"));
-			lezione.setOrario(rs.getString("orario"));
+			lezione.setOrario(rs.getTime("orario"));
 			lezione.setIdCorso(rs.getString("id_corso"));
 
 
@@ -112,9 +113,9 @@ public class LezioniDAO {
 					l.setIdLezione(rs.getString("id_lezione"));
 					l.setTitolo(rs.getString("titolo"));
 					l.setDescrizione(rs.getString("descrizione"));
-					l.setDurata(rs.getString("durata"));
+					l.setDurata(rs.getTime("durata"));
 					l.setData(rs.getDate("data"));
-					l.setOrario(rs.getString("orario"));
+					l.setOrario(rs.getTime("orario"));
 					l.setIdCorso(id_corso);
 
 					lezioni.add(l);
@@ -128,7 +129,7 @@ public class LezioniDAO {
 		}
 	}
 	
-public Vector<Lezioni> getPresenzeStudente(String matricola, String id_corso) {
+	public Vector<Lezioni> getPresenzeStudente(String matricola, String id_corso) {
 		
 		Vector<Lezioni> lezioni = new Vector<Lezioni>();
 		
@@ -144,9 +145,9 @@ public Vector<Lezioni> getPresenzeStudente(String matricola, String id_corso) {
 					l.setIdLezione(rs.getString("id_lezione"));
 					l.setTitolo(rs.getString("titolo"));
 					l.setDescrizione(rs.getString("descrizione"));
-					l.setDurata(rs.getString("durata"));
+					l.setDurata(rs.getTime("durata"));
 					l.setData(rs.getDate("data"));
-					l.setOrario(rs.getString("orario"));
+					l.setOrario(rs.getTime("orario"));
 					l.setIdCorso(id_corso);
 
 					lezioni.add(l);
@@ -158,6 +159,23 @@ public Vector<Lezioni> getPresenzeStudente(String matricola, String id_corso) {
 				e.printStackTrace();
 				return lezioni;
 		}
+	}
+
+	
+	public String creaLezione(String titolo, String descrizione, Time orario, Time durata, Date data, String idCorso) {
+		
+		try {
+			
+			if(!statement.execute("INSERT INTO lezioni VALUES (nextval('sequenza_id_lezione'),'" + titolo + "', '" + descrizione + "', '" + durata.getHours() + ":"+ durata.getMinutes() + 
+					 "', '" + data.getDay()+ "/" + data.getMonth() + "/" + data.getYear() + "', " + orario.getHours() + ":" + orario.getMinutes() + ",'" + idCorso + "')"))
+				return "0";
+			else
+				return "-1";
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+		
 	}
 	
 }

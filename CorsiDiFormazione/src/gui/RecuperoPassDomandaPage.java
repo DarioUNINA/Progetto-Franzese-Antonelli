@@ -106,6 +106,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		recuperoPanel.add(confermaButton);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -131,8 +132,9 @@ public class RecuperoPassDomandaPage extends JFrame {
 		recuperoPanel.add(domandaLabel);
 		
 		rispostaDomandaField = new JTextField();
+		rispostaDomandaField.setBackground(Color.WHITE);
 		rispostaDomandaField.setFont(new Font("Arial", Font.BOLD, 13));
-		rispostaDomandaField.setBounds(202, 140, 220, 20);
+		rispostaDomandaField.setBounds(202, 140, 205, 20);
 		recuperoPanel.add(rispostaDomandaField);
 		rispostaDomandaField.setColumns(10);
 		

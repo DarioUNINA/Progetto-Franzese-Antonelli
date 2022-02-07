@@ -85,6 +85,7 @@ public class RegistrazionePage extends JFrame {
 		registrazionePanel.setLayout(null);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -148,6 +149,7 @@ public class RegistrazionePage extends JFrame {
 		scegliereDomandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(310, 288, 128, 32);
 		registrazionePanel.add(confermaButton);

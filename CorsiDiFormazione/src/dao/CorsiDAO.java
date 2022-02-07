@@ -173,7 +173,7 @@ public class CorsiDAO {
 		}
 	}
 	
-public  Vector<Corsi> getCorsiStudente(String matricola, String id_operatore){
+	public  Vector<Corsi> getCorsiStudente(String matricola, String id_operatore){
 		
 		Vector<Corsi> corsi = new Vector<Corsi>();
 		
@@ -269,4 +269,5 @@ public  Vector<Corsi>setCorsiStudenteDelOperatore(String matricola, String id_op
 			return corsi;
 		}
 	}
+
 }

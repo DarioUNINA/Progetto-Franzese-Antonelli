@@ -30,7 +30,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.JList;
-import java.awt.List;
+
 import java.awt.ScrollPane;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
@@ -42,6 +42,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.ListSelectionModel;
 import com.toedter.components.JLocaleChooser;
+import java.awt.Checkbox;
 
 public class HomePage extends JFrame {
 	
@@ -86,7 +87,6 @@ public class HomePage extends JFrame {
 
 	public HomePage(Controller cont, Operatori operatore) {
 
-		
 		theController = cont;
 		this.operatore = operatore;
 		corsi = theController.getCorsiOperatore(operatore);
@@ -122,6 +122,7 @@ public class HomePage extends JFrame {
 		benvenutoLabel.setText("Benvenuto, " + operatore.getNomeUtente().toUpperCase());
 		
 		impostazioniButton = new JButton("IMPOSTAZIONI");
+		impostazioniButton.setBackground(Color.WHITE);
 		impostazioniButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -142,6 +143,7 @@ public class HomePage extends JFrame {
 		benvenuto.add(impostazioniButton);
 		
 		esciButton = new JButton("ESCI");
+		esciButton.setBackground(Color.WHITE);
 		esciButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -159,8 +161,6 @@ public class HomePage extends JFrame {
 				
 			}
 		});
-
-		
 		esciButton.setFont(new Font("Arial", Font.BOLD, 15));
 		esciButton.setBounds(615, 43, 152, 23);
 		benvenuto.add(esciButton);
@@ -249,6 +249,7 @@ public class HomePage extends JFrame {
 		addDeleteCorsi.setLayout(null);
 		
 		aggiungiCorsoButton = new JButton("AGGIUNGI CORSO");
+		aggiungiCorsoButton.setBackground(Color.WHITE);
 		aggiungiCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -263,6 +264,7 @@ public class HomePage extends JFrame {
 		addDeleteCorsi.add(aggiungiCorsoButton);
 		
 		eliminaCorsoButton = new JButton("ELIMINA CORSO");
+		eliminaCorsoButton.setBackground(Color.WHITE);
 		eliminaCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -294,6 +296,7 @@ public class HomePage extends JFrame {
 		corsiList.setVisibleRowCount(10);
 	
 		selezionaButton = new JButton("SELEZIONA");
+		selezionaButton.setBackground(Color.WHITE);
 		selezionaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		selezionaButton.setBounds(20, 133, 199, 22);
 		corsiPanel.add(selezionaButton);
@@ -306,11 +309,13 @@ public class HomePage extends JFrame {
 		gestione.setLayout(null);
 		
 		gestioneCorsiButton = new JButton("GESTIONE CORSI");
+		gestioneCorsiButton.setBackground(Color.WHITE);
 		gestioneCorsiButton.setFont(new Font("Arial", Font.BOLD, 13));
 		gestioneCorsiButton.setBounds(322, 26, 174, 22);
 		gestione.add(gestioneCorsiButton);
 		
 		gestioneLezioniButton = new JButton("GESTIONE LEZIONI");
+		gestioneLezioniButton.setBackground(Color.WHITE);
 		gestioneLezioniButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -331,6 +336,7 @@ public class HomePage extends JFrame {
 		gestione.add(gestioneLezioniButton);
 		
 		gestioneStudentiButton = new JButton("GESTIONE STUDENTI");
+		gestioneStudentiButton.setBackground(Color.WHITE);
 		gestioneStudentiButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -343,7 +349,7 @@ public class HomePage extends JFrame {
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				gestioneStudentiButton.setBackground(Color.WHITE);
+				gestioneStudentiButton.setBackground(Color.white);
 			}
 		});
 		gestioneStudentiButton.setFont(new Font("Arial", Font.BOLD, 13));
@@ -351,6 +357,7 @@ public class HomePage extends JFrame {
 		gestione.add(gestioneStudentiButton);
 		
 		resetFiltriButton = new JButton("RESET");
+		resetFiltriButton.setBackground(Color.WHITE);
 		resetFiltriButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -371,6 +378,7 @@ public class HomePage extends JFrame {
 		filtri.add(resetFiltriButton);
 		
 		filtraButton = new JButton("FILTRA");
+		filtraButton.setBackground(Color.WHITE);
 		filtraButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

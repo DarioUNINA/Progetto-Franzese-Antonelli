@@ -77,6 +77,7 @@ public class ModificaPasswordPage extends JFrame {
 		confermaPasswordField.setColumns(10);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -115,6 +116,7 @@ public class ModificaPasswordPage extends JFrame {
 		recuperoPanel.add(confermaPasswordLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

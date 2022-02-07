@@ -62,12 +62,6 @@ public class LogInPage extends JFrame {
 		imageicon = new ImageIcon("napule.png");
 		theController = controller;
 		setIconImage(imageicon.getImage());
-
-	
-		
-	//	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-	//	this.setLocation((screenSize.width / 2) - (this.getWidth() / 2 ), (screenSize.height / 2 ) - (this.getHeight() / 2 ));
 		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setResizable(false);
@@ -108,6 +102,7 @@ public class LogInPage extends JFrame {
 		logInPanel.add(passwordLabel);
 
 		accediButton = new JButton("ACCEDI");
+		accediButton.setBackground(Color.WHITE);
 		accediButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				accediButton.setBackground(Color.GREEN);
@@ -165,6 +160,7 @@ public class LogInPage extends JFrame {
 		registratiPanel.setLayout(null);
 
 		registratiButton = new JButton("REGISTRATI");
+		registratiButton.setBackground(Color.WHITE);
 		registratiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

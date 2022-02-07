@@ -82,6 +82,7 @@ public class GestoreStudentiPage extends JFrame {
 		selzionaStudentiPanel.add(selezionaStudenteLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -124,6 +125,7 @@ public class GestoreStudentiPage extends JFrame {
 		selzionaStudentiPanel.add(eliminaStudenteButton);
 		
 		panoramicaButton = new JButton("PANORAMICA");
+		panoramicaButton.setBackground(Color.WHITE);
 		panoramicaButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				panoramicaButton.setBackground(Color.GREEN);
@@ -144,6 +146,7 @@ public class GestoreStudentiPage extends JFrame {
 		selzionaStudentiPanel.add(panoramicaButton);
 		
 		creaStudenteButton = new JButton("CREA STUDENTE");
+		creaStudenteButton.setBackground(Color.WHITE);
 		creaStudenteButton.setFont(new Font("Arial", Font.BOLD, 15));
 		creaStudenteButton.setBounds(370, 273, 168, 23);
 		selzionaStudentiPanel.add(creaStudenteButton);

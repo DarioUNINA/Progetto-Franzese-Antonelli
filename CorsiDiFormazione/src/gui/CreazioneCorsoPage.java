@@ -141,6 +141,7 @@ public class CreazioneCorsoPage extends JFrame {
 		creaCorsoPanel.add(annoTextField);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -162,6 +163,7 @@ public class CreazioneCorsoPage extends JFrame {
 		
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {

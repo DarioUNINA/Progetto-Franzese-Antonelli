@@ -82,6 +82,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		prenotaLezioneStudentiPanel.add(aggiungiStudenteAlCorsoLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -102,6 +103,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		prenotaLezioneStudentiPanel.add(indietroButton);
 		
 		aggiungiButton = new JButton("AGGIUGI");
+		aggiungiButton.setBackground(Color.WHITE);
 		aggiungiButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				aggiungiButton.setBackground(Color.GREEN);

@@ -88,6 +88,7 @@ public class EliminaCorsoPage extends JFrame {
 		eliminaCorsoPanel.add(corsiComboBox);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -105,6 +106,7 @@ public class EliminaCorsoPage extends JFrame {
 		eliminaCorsoPanel.add(confermaButton);
 
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -29,7 +29,5 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 7) GEESTIONE E CREAZIONE COMPLETA DI (gestore corso):
    Da fare assieme MockUp.
 
-8)SET DI TUTTI I BOTTONI BIANCHI/GRIGI (devo ancora scegliere)
-
 9)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
    ad esempio ho notato che eliminazione operatore è un motodo String

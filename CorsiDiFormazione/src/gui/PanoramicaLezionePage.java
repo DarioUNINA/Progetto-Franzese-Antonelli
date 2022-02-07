@@ -118,6 +118,7 @@ public class PanoramicaLezionePage extends JFrame {
 		studentiList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -182,6 +183,7 @@ public class PanoramicaLezionePage extends JFrame {
 		descrizioneTextPane.setText(lezione.getDescrizione());
 		
 		aggiungiStudenteLezioneButton = new JButton("AGGIUNGI STUDENTE ALLA LEZIONE");
+		aggiungiStudenteLezioneButton.setBackground(Color.WHITE);
 		aggiungiStudenteLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -67,6 +67,7 @@ public class ImpostazioniPage extends JFrame {
 		impostazioniPanel.setLayout(null);
 		
 		modificaNomeUtenteButton = new JButton("MODIFICA NOME UTENTE");
+		modificaNomeUtenteButton.setBackground(Color.WHITE);
 		modificaNomeUtenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -79,6 +80,7 @@ public class ImpostazioniPage extends JFrame {
 		impostazioniPanel.add(modificaNomeUtenteButton);
 		
 		modificaPasswordButton = new JButton("MODIFICA PASSWORD");
+		modificaPasswordButton.setBackground(Color.WHITE);
 		modificaPasswordButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -91,6 +93,8 @@ public class ImpostazioniPage extends JFrame {
 		impostazioniPanel.add(modificaPasswordButton);
 		
 		eliminaProfiloButton = new JButton("ELIMINA PROFILO");
+		eliminaProfiloButton.setForeground(Color.RED);
+		eliminaProfiloButton.setBackground(Color.WHITE);
 		eliminaProfiloButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -109,6 +113,7 @@ public class ImpostazioniPage extends JFrame {
 		impostazioniPanel.add(impostazioniLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

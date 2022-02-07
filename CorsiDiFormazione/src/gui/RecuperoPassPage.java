@@ -87,6 +87,7 @@ public class RecuperoPassPage extends JFrame {
 		recuperoPanel.add(nomeUtenteText);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {

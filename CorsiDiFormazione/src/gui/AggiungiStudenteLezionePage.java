@@ -80,6 +80,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		selzionaStudentiPanel.add(selezionaStudenteLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -110,6 +111,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		selzionaStudentiPanel.add(studentiComboBox);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				confermaButton.setBackground(Color.GREEN);

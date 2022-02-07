@@ -102,6 +102,7 @@ public class GestoreLezioniPage extends JFrame {
 		corsiPanel.add(selezionaCorsoLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -129,6 +130,7 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniPanel.setLayout(null);
 		
 		confermaCorsoButton = new JButton("CONFERMA");
+		confermaCorsoButton.setBackground(Color.WHITE);
 		confermaCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -163,6 +165,7 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniPanel.add(elencoLezioneDelCorsoLabel);
 		
 		panormaicaLezioneButton = new JButton("PANORAMICA");
+		panormaicaLezioneButton.setBackground(Color.WHITE);
 		panormaicaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -180,6 +183,8 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
+		eliminaLezioneButton.setForeground(Color.RED);
+		eliminaLezioneButton.setBackground(Color.WHITE);
 		eliminaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -215,6 +220,7 @@ public class GestoreLezioniPage extends JFrame {
 		
 		
 		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
+		aggiungiLezioneButton.setBackground(Color.WHITE);
 		aggiungiLezioneButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				aggiungiLezioneButton.setBackground(Color.GREEN);

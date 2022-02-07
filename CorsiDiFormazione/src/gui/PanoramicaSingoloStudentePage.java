@@ -7,12 +7,15 @@ import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.module.Configuration;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import dto.Corsi;
 import dto.Lezioni;
@@ -29,6 +32,7 @@ import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 public class PanoramicaSingoloStudentePage extends JFrame {
 
@@ -40,6 +44,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	private JList<Lezioni> lezioniList;
 	private String[] nomeColonne = {"Corso", "Numero Presenze"};
 	private Vector<Corsi> corsi;
+	private Vector<Corsi> corsiAmmessi;
 	private Vector<Lezioni> lezioni;
 	
 	private ImageIcon imageicon;
@@ -61,7 +66,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	private JButton annullaPrenotazioneButton;
 	private JButton disiscriviDaUnCorsoButton;
 	private JButton prenotaLezioneButton;
-	private JTable corsiAmmessiLable;
+	private JTable corsiAmmessiTable;
 	
 	
 	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore, Studenti studente) {
@@ -145,6 +150,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		confermaButton = new JButton("MOSTRA PRENOTAZIONI");
+		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -162,24 +168,24 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 				}
 			}
 		});
-		confermaButton.setFont(new Font("Arial", Font.BOLD, 12));
-		confermaButton.setBounds(20, 287, 131, 43);
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 10));
+		confermaButton.setBounds(10, 287, 165, 43);
 		corsiPanel.add(confermaButton);
 		
 		lezioniPanel = new JPanel();
 		lezioniPanel.setLayout(null);
 		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		lezioniPanel.setBounds(227, 99, 185, 341);
+		lezioniPanel.setBounds(205, 99, 225, 341);
 		sfondoPane.add(lezioniPanel);
 		
 		elencoLezioniLabel = new JLabel("PRENOTAZIONI EFFETTUATE");
-		elencoLezioniLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		elencoLezioniLabel.setBounds(31, 11, 131, 14);
+		elencoLezioniLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		elencoLezioniLabel.setBounds(10, 11, 205, 14);
 		lezioniPanel.add(elencoLezioniLabel);
 		
 		lezioniScrollPane = new JScrollPane();
 		lezioniScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		lezioniScrollPane.setBounds(10, 36, 165, 294);
+		lezioniScrollPane.setBounds(10, 36, 205, 294);
 		lezioniPanel.add(lezioniScrollPane);
 		
 		lezioniList = new JList<Lezioni>();
@@ -198,12 +204,46 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessoPanel.add(corsiAmmessoLabel);
 		corsiAmmessoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		corsiAmmessiLable = new JTable();
-		corsiAmmessiLable.setBorder(new LineBorder(Color.ORANGE));
-		corsiAmmessiLable.setBounds(10, 180, 327, -127);
-		corsiAmmessoPanel.add(corsiAmmessiLable);
+		corsiAmmessiTable = new JTable();
+		corsiAmmessiTable.setBackground(Color.LIGHT_GRAY);
+		corsiAmmessiTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		corsiAmmessiTable.setBounds(10, 180, 327, -127);
+		corsiAmmessoPanel.add(corsiAmmessiTable);
+		
+		corsiAmmessiTable.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"CORSO", "DESCRIZIONE", "AMMESSO?"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				Object.class, String.class, Object.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				true, false, true
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		corsiAmmessiTable.getColumnModel().getColumn(1).setResizable(false);
+		corsiAmmessiTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+		corsiAmmessiTable.setRowSelectionAllowed(false);
+		corsiAmmessiTable.setFont(new Font("Microsoft YaheiUI", Font.PLAIN, 14));
+		corsiAmmessiTable.setGridColor(Color.GREEN);
+		corsiAmmessiTable.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
 		iscriviAdUnCorsoButton = new JButton("ISCRIVI AD UN CORSO");
+		iscriviAdUnCorsoButton.setBackground(Color.WHITE);
 		iscriviAdUnCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -216,6 +256,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessoPanel.add(iscriviAdUnCorsoButton);
 		
 		disiscriviDaUnCorsoButton = new JButton("DISISCRIVI DA UN CORSO");
+		disiscriviDaUnCorsoButton.setBackground(Color.WHITE);
 		disiscriviDaUnCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -228,6 +269,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessoPanel.add(disiscriviDaUnCorsoButton);
 		
 		prenotaLezioneButton = new JButton("PRENOTA LEZIONE");
+		prenotaLezioneButton.setBackground(Color.WHITE);
 		prenotaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -245,6 +287,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessoPanel.add(prenotaLezioneButton);
 		
 		annullaPrenotazioneButton = new JButton("ANNULLA PRENOTAZIONE");
+		annullaPrenotazioneButton.setBackground(Color.WHITE);
 		annullaPrenotazioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

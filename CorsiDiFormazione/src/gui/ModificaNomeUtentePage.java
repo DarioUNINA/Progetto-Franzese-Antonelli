@@ -95,6 +95,7 @@ public class ModificaNomeUtentePage extends JFrame {
 		modificaNomeUtentePanel.add(confermaNuovoNomeUtenteTextField);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(194, 230, 162, 31);
 		modificaNomeUtentePanel.add(confermaButton);
@@ -134,6 +135,7 @@ public class ModificaNomeUtentePage extends JFrame {
 		});
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

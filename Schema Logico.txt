@@ -212,7 +212,7 @@ temi (/nome_area/, /id_corso/)
 	$$ LANGUAGE plpgsql;
 	
 	CREATE TRIGGER presenza_contemporanea
-	AFTER INSERT ON iscrizioni
+	AFTER INSERT ON presenze
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_presenza_contemporanea();
 	

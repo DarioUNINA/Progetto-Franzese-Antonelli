@@ -160,7 +160,19 @@ public class CreazioneCorsoPage extends JFrame {
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 273, 121, 23);
 		creaCorsoPanel.add(indietroButton);
+
+		corsiScrollPane = new JScrollPane();
+		corsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		corsiScrollPane.setBounds(296, 167, 227, 97);
+		creaCorsoPanel.add(corsiScrollPane);
 		
+		listaTemi = new JCheckBoxList();
+		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
+		corsiScrollPane.setViewportView(listaTemi);
+		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
+		listaTemi.setVisibleRowCount(10);
+		listaTemi.setVisible(true);
+
 		
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.setBackground(Color.WHITE);
@@ -185,6 +197,8 @@ public class CreazioneCorsoPage extends JFrame {
 				String maxPartecipanti = maxPartecipantiTextField.getText();
 				boolean terminato;
 				
+				Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);
+				
 				if(terminatoCheckBox.isSelected())
 					terminato = true;
 				else
@@ -200,7 +214,7 @@ public class CreazioneCorsoPage extends JFrame {
 							alertErroreInserimentoAnno();
 						else {
 								
-								String state = theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore(), areeTematiche);
+								String state = theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore(), aree);
 									
 								if(state.equals("0"))
 									alertInserimentoEffettuato();
@@ -267,19 +281,6 @@ public class CreazioneCorsoPage extends JFrame {
 		descrizioneTextField.setBounds(168, 201, 86, 20);
 		creaCorsoPanel.add(descrizioneTextField);
 		
-		corsiScrollPane = new JScrollPane();
-		corsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		corsiScrollPane.setBounds(296, 167, 227, 97);
-		creaCorsoPanel.add(corsiScrollPane);
-				
-		listaTemi = new JCheckBoxList();
-		//DA COMPLETARE
-		
-		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
-		corsiScrollPane.setViewportView(listaTemi);
-		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
-		listaTemi.setVisibleRowCount(10);
-		listaTemi.setVisible(true);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

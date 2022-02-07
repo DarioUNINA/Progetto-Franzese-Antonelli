@@ -90,11 +90,11 @@ public class PanoramicaLezionePage extends JFrame {
 		contentPane.add(gestoreLezioniPanel);
 		gestoreLezioniPanel.setLayout(null);
 		
-		gestoreLezioniLabel = new JLabel("PANORAMICA LEZIONE");
+		gestoreLezioniLabel = new JLabel("                        PANORAMICA LEZIONE");
 		gestoreLezioniLabel.setForeground(Color.BLACK);
 		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		gestoreLezioniLabel.setBackground(Color.WHITE);
-		gestoreLezioniLabel.setBounds(157, 11, 243, 33);
+		gestoreLezioniLabel.setBounds(10, 11, 528, 33);
 		gestoreLezioniPanel.add(gestoreLezioniLabel);
 		
 		studentiPanel = new JPanel();
@@ -176,6 +176,7 @@ public class PanoramicaLezionePage extends JFrame {
 		lezioniPanel.add(orarioLabel);
 		
 		descrizioneTextPane = new JTextPane();
+		descrizioneTextPane.setEditable(false);
 		descrizioneTextPane.setBackground(SystemColor.control);
 		descrizioneTextPane.setFont(new Font("Arial", Font.BOLD, 15));
 		descrizioneTextPane.setBounds(102, 133, 263, 69);

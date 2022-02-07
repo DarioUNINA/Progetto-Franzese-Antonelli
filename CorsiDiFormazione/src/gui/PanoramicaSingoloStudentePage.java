@@ -326,16 +326,8 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		if(corsiList.isSelectionEmpty())
 			alertNessunCorsoSelezionato();
-		else {
-			
-			String state = theController.disiscriviStudenteCorso(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
-			
-			if(state.equals("0")) 
-				alertStudenteDisiscrittoCorrettamente();
-			else
-				alertErroreDisiscrizioneStudente(state);
-		}
-		
+		else 
+			alertConfermaEliminazioneIscrizione();
 	}
 	
 	
@@ -388,6 +380,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiList.setListData(corsi);
 	}
 	
+	
 	public void alertErroreEliminazionePrenotazione(String state) {
 		
 		if(state == "-1")
@@ -398,7 +391,29 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 			else
 				JOptionPane.showMessageDialog(this, "Impossibile annullare la prenotazione.\nCodice d'errore: " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
+	}
+	
+	
+	public void alertConfermaEliminazioneIscrizione() {
+		
+		Object[] opzioni = {"Sì", "No"};
+		
+		int n = JOptionPane.showOptionDialog(this,
+				"Sei sicuro di voler eliminare l'iscrizione al corso " + corsiList.getSelectedValue().getNome() + " ?",
+				"CONFERMA DI ANNULLAMENTO",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				opzioni,
+				opzioni[0]);
+		if(n==0) {
 			
+			String state = theController.disiscriviStudenteCorso(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
 			
+			if(state.equals("0")) 
+				alertStudenteDisiscrittoCorrettamente();
+			else
+				alertErroreDisiscrizioneStudente(state);
+		}
 	}
 }

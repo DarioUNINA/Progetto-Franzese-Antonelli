@@ -176,9 +176,6 @@ public class CreazioneLezionePage extends JFrame {
 					alertInserimentoEffettuato();
 				else
 					alertInserimentoFallito(state);
-					
-				
-				
 			}
 		});	
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
@@ -203,8 +200,13 @@ public class CreazioneLezionePage extends JFrame {
 	}
 	
 	public void alertInserimentoEffettuato() {
+		
 		JOptionPane.showMessageDialog(this, "Lezione creata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
-		}
+	
+		GestoreLezioniPage page = new GestoreLezioniPage(theController, operatore);
+		setVisible(false);
+		
+	}
 	
 	public void alertInserimentoFallito(String state) {
 		

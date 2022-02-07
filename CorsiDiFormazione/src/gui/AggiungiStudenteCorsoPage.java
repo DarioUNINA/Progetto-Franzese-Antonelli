@@ -119,8 +119,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 				
 				if(state.equals("0")) {
 					alertStudenteIscrittoCorrettamente();
-					PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
-					setVisible(false);
+					
 				}else
 					alertErroreIscrizioneStudente(state);
 			}
@@ -154,11 +153,16 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 	}
 	
 	public void alertNonCiSonoCorsiDisponibili() {
+	
 		JOptionPane.showMessageDialog(this, "Non ci sono corsi disponibili dove poter iscrivere lo studente!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+		setVisible(false);
 	}
 	
 	public void alertStudenteIscrittoCorrettamente() {
-		JOptionPane.showMessageDialog(this, "Studente iscritto correttamente!","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Studente iscritto correttamente!","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
+		PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+		setVisible(false);
 	}
 	
 	public void alertErroreIscrizioneStudente(String state) {

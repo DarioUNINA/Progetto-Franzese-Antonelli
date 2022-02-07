@@ -2,6 +2,7 @@ package gui;
 
 import java.sql.Time;
 import java.util.Vector;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
@@ -333,6 +334,17 @@ public class Controller {
 		Lezioni lezione = new Lezioni(durata, titolo , descrizione, orario, idCorso, data);
 		
 		return lezioniDAO.creaLezione(lezione);
+	}
+	
+	public Vector<AreeTematiche> getAreeSelezionate(JCheckBoxList box, Vector<AreeTematiche> aree){
+		
+		Vector<AreeTematiche> vettore = new Vector<AreeTematiche>();
+		
+		for(int i=0;i<aree.size();i++)
+			if(box.getModel().getElementAt(i).isSelected())
+				vettore.add(aree.get(i));
+		
+		return vettore;
 	}
 
 }

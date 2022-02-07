@@ -22,10 +22,6 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 5) POPOLAMENTO TABELE HOMEPAGE ( HomePage ):
    Popolamento tabelle( da fare assieme per decidere come gestirla).
 
-6) GESTIRE CREAZIONE LEZIONE ( CreazioneLezionePage ):
-   Implementare le funzionalità per orario, data e durata.
-   Gestire l'effettiva creazione della lezione tramite metodi, query ecc
-
 7) GEESTIONE E CREAZIONE COMPLETA DI (gestore corso):
    Da fare assieme MockUp.
 
@@ -33,3 +29,7 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 
 9)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
    ad esempio ho notato che eliminazione operatore è un motodo String
+   
+ 10) aggiungere filtri a gestione lezioni
+ 
+ 11) impostare indietro da conferma creazione lezioni

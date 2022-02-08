@@ -433,7 +433,7 @@ public class HomePage extends JFrame {
 				else
 					terminatoNo = false;
 
-				corsiList.setListData(theController.setCorsiFiltrati(areaTematica, anno, terminatoSi, terminatoNo, parolaChiave, operatore.getIdOperatore()));
+				corsiList.setListData(theController.setCorsiFiltrati(aree, anno, terminatoSi, terminatoNo, parole, operatore.getIdOperatore()));
 				
 			}
 		});

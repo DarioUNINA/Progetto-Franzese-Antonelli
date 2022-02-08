@@ -203,15 +203,8 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
-		eliminaLezioneButton.addActionListener(new ActionListener() {
 		eliminaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		
-		});
-
-		public void actionPerformed(ActionEvent e) {
 		eliminaLezioneButton.setForeground(Color.BLACK);
-			}
-		eliminaLezioneButton.setForeground(Color.RED);
 		eliminaLezioneButton.setBackground(Color.WHITE);
 		eliminaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -247,23 +240,16 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		JButton filtraButton = new JButton("filtra");
-		filtraButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		filtraButton.setBounds(446, 209, 89, 23);
 		lezioniPanel.add(filtraButton);
 		
-		JButton btnNewButton_1 = new JButton("Reset");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setBounds(457, 249, 89, 23);
-		lezioniPanel.add(btnNewButton_1);
+		JButton resetButton = new JButton("Reset");
+		
+		resetButton.setBounds(457, 249, 89, 23);
+		lezioniPanel.add(resetButton);
 		
 		mesiScrollPane = new JScrollPane();
-		mesiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		mesiScrollPane.setBounds(310, 84, 203, 62);
 		lezioniPanel.add(mesiScrollPane);
 		
@@ -276,7 +262,6 @@ public class GestoreLezioniPage extends JFrame {
 		mesiList.setVisible(true);
 		
 		giorniScrollPane = new JScrollPane();
-		giorniScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		giorniScrollPane.setBounds(310, 11, 203, 62);
 		lezioniPanel.add(giorniScrollPane);
 		

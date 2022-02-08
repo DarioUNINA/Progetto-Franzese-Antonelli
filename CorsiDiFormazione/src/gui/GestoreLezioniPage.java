@@ -36,6 +36,9 @@ public class GestoreLezioniPage extends JFrame {
 	private Operatori operatore;
 	private Vector<Corsi> corsi;
 	private Vector<Lezioni> lezioni;
+	private Vector<String> mesi;
+	private Vector<String> giorni;
+	
 	
 	private ImageIcon imageicon;
 	private JList<Lezioni> lezioniList;
@@ -70,6 +73,10 @@ public class GestoreLezioniPage extends JFrame {
 		this.operatore = operatore;
 		corsi = theController.getCorsiOperatore(operatore);
 		corsiList = new JList<Corsi>(corsi);
+		mesi = theController.getMesi();
+		giorni = theController.getGiorni();
+		
+		
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -81,7 +88,7 @@ public class GestoreLezioniPage extends JFrame {
 		setBounds(100, 100, 813, 490);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(65, 105, 225));
-		contentPane.setBorder(new LineBorder(Color.BLACK));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -194,7 +201,7 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		panormaicaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		panormaicaLezioneButton.setBounds(268, 287, 179, 37);
+		panormaicaLezioneButton.setBounds(142, 295, 116, 29);
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
@@ -221,11 +228,11 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		eliminaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		eliminaLezioneButton.setBounds(268, 242, 179, 37);
+		eliminaLezioneButton.setBounds(10, 295, 116, 29);
 		lezioniPanel.add(eliminaLezioneButton);
 		
 		lezioniScrollPane = new JScrollPane();
-		lezioniScrollPane.setBounds(10, 40, 248, 284);
+		lezioniScrollPane.setBounds(10, 40, 248, 250);
 		lezioniPanel.add(lezioniScrollPane);
 		
 		lezioniList = new JList<Lezioni>();
@@ -234,38 +241,59 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
 		lezioniList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JButton filtraButton = new JButton("filtra");
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel.setBounds(268, 0, 277, 335);
+		lezioniPanel.add(panel);
+		panel.setLayout(null);
 		
-		filtraButton.setBounds(446, 209, 89, 23);
-		lezioniPanel.add(filtraButton);
+		JLabel lblFiltri = new JLabel("FILTRI PER LEZIONI");
+		lblFiltri.setBounds(64, 0, 144, 18);
+		lblFiltri.setFont(new Font("Arial", Font.BOLD, 15));
+		panel.add(lblFiltri);
 		
-		JButton resetButton = new JButton("Reset");
+		JLabel mesiLabel_1 = new JLabel("Giorni:");
+		mesiLabel_1.setBounds(7, 22, 48, 18);
+		panel.add(mesiLabel_1);
+		mesiLabel_1.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		resetButton.setBounds(457, 249, 89, 23);
-		lezioniPanel.add(resetButton);
+		JLabel mesiLabel = new JLabel("Mesi:");
+		mesiLabel.setBounds(148, 22, 38, 18);
+		panel.add(mesiLabel);
+		mesiLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		
+		JButton filtraButton = new JButton("FILTRA");
+		filtraButton.setBounds(172, 301, 71, 23);
+		panel.add(filtraButton);
+		filtraButton.setForeground(Color.RED);
+		filtraButton.setFont(new Font("Arial", Font.BOLD, 12));
+		
+		JButton resetButton = new JButton("RESET");
+		resetButton.setBounds(30, 301, 69, 23);
+		panel.add(resetButton);
+		resetButton.setFont(new Font("Arial", Font.BOLD, 12));
+		resetButton.setForeground(new Color(65, 105, 225));
+		
+		giorniScrollPane = new JScrollPane();
+		giorniScrollPane.setBounds(7, 40, 120, 131);
+		panel.add(giorniScrollPane);
+		
+		giorniList = new JCheckBoxList();
+		giorniScrollPane.setViewportView(giorniList);
+		giorniList.setModel(theController.setModelCheckBoxString(giorni));
+		giorniList.setFont(new Font("Arial", Font.BOLD, 15));
+		giorniList.setVisibleRowCount(10);
 		
 		mesiScrollPane = new JScrollPane();
-		mesiScrollPane.setBounds(310, 84, 203, 62);
-		lezioniPanel.add(mesiScrollPane);
+		mesiScrollPane.setBounds(148, 40, 120, 131);
+		panel.add(mesiScrollPane);
 		
 		mesiList = new JCheckBoxList();
-		Vector<String> mesi = theController.getMesi();
+		mesiScrollPane.setViewportView(mesiList);
 		mesiList.setModel(theController.setModelCheckBoxString(mesi));
-		mesiScrollPane.setColumnHeaderView(mesiList);
 		mesiList.setFont(new Font("Arial", Font.BOLD, 15));
 		mesiList.setVisibleRowCount(10);
 		mesiList.setVisible(true);
-		
-		giorniScrollPane = new JScrollPane();
-		giorniScrollPane.setBounds(310, 11, 203, 62);
-		lezioniPanel.add(giorniScrollPane);
-		
-		giorniList = new JCheckBoxList();
-		Vector<String> giorni = theController.getGiorni();
-		mesiList.setModel(theController.setModelCheckBoxString(giorni));
-		giorniScrollPane.setViewportView(giorniList);
-		giorniList.setFont(new Font("Arial", Font.BOLD, 15));
-		giorniList.setVisibleRowCount(10);
 		giorniList.setVisible(true);
 		
 		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");

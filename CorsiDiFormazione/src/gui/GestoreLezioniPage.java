@@ -70,11 +70,11 @@ public class GestoreLezioniPage extends JFrame {
 		this.operatore = operatore;
 		corsi = theController.getCorsiOperatore(operatore);
 		corsiList = new JList<Corsi>(corsi);
-		corsiList.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
+	//	corsiList.addListSelectionListener(new ListSelectionListener() {
+	//		public void valueChanged(ListSelectionEvent e) {
 				
-			}
-		});
+	//		}
+	//	});
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -205,10 +205,12 @@ public class GestoreLezioniPage extends JFrame {
 		eliminaLezioneButton = new JButton("ELIMINA");
 		eliminaLezioneButton.addActionListener(new ActionListener() {
 		eliminaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			public void actionPerformed(ActionEvent e) {
+		
+		});
+
+		public void actionPerformed(ActionEvent e) {
 		eliminaLezioneButton.setForeground(Color.BLACK);
 			}
-		});
 		eliminaLezioneButton.setForeground(Color.RED);
 		eliminaLezioneButton.setBackground(Color.WHITE);
 		eliminaLezioneButton.addMouseListener(new MouseAdapter() {

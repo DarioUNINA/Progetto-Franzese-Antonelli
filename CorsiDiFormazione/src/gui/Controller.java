@@ -389,28 +389,12 @@ public class Controller {
 	
 	public DefaultListModel <JCheckBox> setModelCheckBoxString(Vector<String> mesi){
 		
-	
-	public Vector<ParoleChiave> getParoleSelezionate(JCheckBoxList box, Vector<ParoleChiave> parole){
-		
-		Vector<ParoleChiave> vettore = new Vector<ParoleChiave>();
-		
-		for(int i=0;i<parole.size();i++)
-			if(box.getModel().getElementAt(i).isSelected())
-				vettore.add(parole.get(i));
-		
-		return vettore;
-	}
-
 		Vector<JCheckBox> checkBoxList = new Vector<JCheckBox>();
-	public Vector<ParoleChiave> getAllParoleChiave(){
+	
 		JCheckBox checkBox;
-		
-		
-		return paroleChiaveDAO.getAllParoleChiave();
-		for(String s:mesi) {
-	}
-			checkBox = new JCheckBox(s);
 
+		for(String s:mesi) {
+			checkBox = new JCheckBox(s);
 			checkBoxList.add(checkBox);
 		}
 		
@@ -421,6 +405,22 @@ public class Controller {
 		
 	}
 	
+	public Vector<ParoleChiave> getParoleSelezionate(JCheckBoxList box, Vector<ParoleChiave> parole){
+		
+	Vector<ParoleChiave> vettore = new Vector<ParoleChiave>();
+	
+	for(int i=0;i<parole.size();i++)
+		if(box.getModel().getElementAt(i).isSelected())
+			vettore.add(parole.get(i));
+	
+	return vettore;
+	}
+
+	public Vector<ParoleChiave> getAllParoleChiave(){
+	
+		return paroleChiaveDAO.getAllParoleChiave();
+	
+	}
 	
 	public Vector<String> getGiorni(){
 		
@@ -433,5 +433,3 @@ public class Controller {
 	}
 
 }
-
-

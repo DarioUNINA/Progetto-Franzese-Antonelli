@@ -29,6 +29,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
+import java.awt.Cursor;
 
 public class PanoramicaLezionePage extends JFrame {
 
@@ -118,6 +119,7 @@ public class PanoramicaLezionePage extends JFrame {
 		studentiList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -184,6 +186,7 @@ public class PanoramicaLezionePage extends JFrame {
 		descrizioneTextPane.setText(lezione.getDescrizione());
 		
 		aggiungiStudenteLezioneButton = new JButton("AGGIUNGI STUDENTE ALLA LEZIONE");
+		aggiungiStudenteLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		aggiungiStudenteLezioneButton.setBackground(Color.WHITE);
 		aggiungiStudenteLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override

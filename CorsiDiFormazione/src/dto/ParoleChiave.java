@@ -4,10 +4,10 @@ public class ParoleChiave {
 	private String parolaChiave;
 
 	
-	public void ParoleChiave() {
+	public ParoleChiave() {
 	}
 		
-	public void ParoleChiave(String parolaChiave) {
+	public  ParoleChiave(String parolaChiave) {
 		this.parolaChiave = parolaChiave;
 	}
 	
@@ -19,6 +19,9 @@ public class ParoleChiave {
 		this.parolaChiave = parolaChiave;
 	}
 	
-	
+	public String toString() {
+		return parolaChiave;
+		
+	}
 
 }

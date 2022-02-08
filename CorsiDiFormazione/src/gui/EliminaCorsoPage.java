@@ -25,6 +25,7 @@ import java.awt.SystemColor;
 import java.util.ArrayList;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Cursor;
 
 public class EliminaCorsoPage extends JFrame {
 
@@ -88,6 +89,7 @@ public class EliminaCorsoPage extends JFrame {
 		eliminaCorsoPanel.add(corsiComboBox);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -106,6 +108,7 @@ public class EliminaCorsoPage extends JFrame {
 		eliminaCorsoPanel.add(confermaButton);
 
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override

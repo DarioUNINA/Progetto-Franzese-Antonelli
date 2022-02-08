@@ -20,6 +20,7 @@ import javax.swing.border.LineBorder;
 import dto.Operatori;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.Cursor;
 
 public class ModificaNomeUtentePage extends JFrame {
 
@@ -95,6 +96,7 @@ public class ModificaNomeUtentePage extends JFrame {
 		modificaNomeUtentePanel.add(confermaNuovoNomeUtenteTextField);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(194, 230, 162, 31);
@@ -135,6 +137,7 @@ public class ModificaNomeUtentePage extends JFrame {
 		});
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override

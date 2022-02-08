@@ -38,6 +38,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseWheelEvent;
 import javax.swing.border.LineBorder;
+import java.awt.Cursor;
 
 public class LogInPage extends JFrame {
 
@@ -102,6 +103,7 @@ public class LogInPage extends JFrame {
 		logInPanel.add(passwordLabel);
 
 		accediButton = new JButton("ACCEDI");
+		accediButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		accediButton.setBackground(Color.WHITE);
 		accediButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -141,6 +143,7 @@ public class LogInPage extends JFrame {
 		logInPanel.add(accediButton);
 
 		passwordDimenticataLabel = new JLabel("Hai dimenticato la Password?");
+		passwordDimenticataLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		passwordDimenticataLabel.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -160,6 +163,7 @@ public class LogInPage extends JFrame {
 		registratiPanel.setLayout(null);
 
 		registratiButton = new JButton("REGISTRATI");
+		registratiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		registratiButton.setBackground(Color.WHITE);
 		registratiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

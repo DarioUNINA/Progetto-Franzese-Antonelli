@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Cursor;
 
 public class ModificaPasswordPage extends JFrame {
 
@@ -77,6 +78,7 @@ public class ModificaPasswordPage extends JFrame {
 		confermaPasswordField.setColumns(10);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -116,6 +118,7 @@ public class ModificaPasswordPage extends JFrame {
 		recuperoPanel.add(confermaPasswordLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override

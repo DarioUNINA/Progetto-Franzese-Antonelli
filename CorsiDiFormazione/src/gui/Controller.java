@@ -26,6 +26,8 @@ public class Controller {
 	private TemiDAO temiDAO;
 	private DomandeSicurezzaDAO domandeSicurezzaDAO;
 	private DomandeOperatoriDAO domandeOperatoriDAO;
+	private ParoleChiaveDAO paroleChiaveDAO;
+	private CaratterizzaDAO caratterizzaDAO;
 
 	public static void main(String[] args) {
 
@@ -45,7 +47,7 @@ public class Controller {
 		temiDAO = new TemiDAO();
 		domandeSicurezzaDAO = new DomandeSicurezzaDAO ();
 		domandeOperatoriDAO = new DomandeOperatoriDAO();
-		
+		paroleChiaveDAO = new ParoleChiaveDAO();
 		
 		logIn = new LogInPage(this);
 
@@ -112,9 +114,9 @@ public class Controller {
 		return corsiDAO.getAnno();
 	}
 	
-	public Vector<Corsi> setCorsiFiltrati(String areaTematica, String anno, boolean terminatoSi, boolean terminatoNo, String parolaChiave, String idOperatore){
+	public Vector<Corsi> setCorsiFiltrati(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore){
 		
-		return corsiDAO.addFiltri(areaTematica, anno, terminatoSi, terminatoNo, parolaChiave, idOperatore);
+		return corsiDAO.addFiltri(area, anno, terminatoSi, terminatoNo, parole, idOperatore);
 	}
 	
 	Operatori getOperatore(String nome) {
@@ -254,6 +256,23 @@ public class Controller {
 		
 	}
 	
+	public DefaultListModel <JCheckBox> setModelCheckBoxParole (Vector<ParoleChiave> paroleChiave){
+		
+		Vector<JCheckBox> checkBoxList = new Vector<JCheckBox>();
+		JCheckBox checkBox;
+		
+		for(ParoleChiave parola:paroleChiave) {
+			checkBox = new JCheckBox(parola.getParolaChiave());
+			checkBoxList.add(checkBox);
+		}
+		
+		DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+		model.addAll(checkBoxList);
+		
+		return model;
+		
+	}
+
 	public String eliminaOperatore(Operatori operatore) {
 		
 		return operatoriDAO.eliminaOperatore(operatore);
@@ -347,9 +366,20 @@ public class Controller {
 		return vettore;
 	}
 	
-public Vector<AreeTematiche> getAllAreeTematiche(){
+	public Vector<ParoleChiave> getParoleSelezionate(JCheckBoxList box, Vector<ParoleChiave> parole){
 		
-		return areeTematicheDAO.getAllAreeTematiche();
+		Vector<ParoleChiave> vettore = new Vector<ParoleChiave>();
+		
+		for(int i=0;i<parole.size();i++)
+			if(box.getModel().getElementAt(i).isSelected())
+				vettore.add(parole.get(i));
+		
+		return vettore;
+	}
+
+	public Vector<ParoleChiave> getAllParoleChiave(){
+		
+		return paroleChiaveDAO.getAllParoleChiave();
 	}
 
 }

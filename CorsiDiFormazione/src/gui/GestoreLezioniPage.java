@@ -27,6 +27,7 @@ import javax.swing.JScrollPane;
 import dto.Corsi;
 import dto.Lezioni;
 import java.awt.FlowLayout;
+import java.awt.Cursor;
 
 public class GestoreLezioniPage extends JFrame {
 
@@ -103,6 +104,7 @@ public class GestoreLezioniPage extends JFrame {
 		corsiPanel.add(selezionaCorsoLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -131,6 +133,7 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniPanel.setLayout(null);
 		
 		confermaCorsoButton = new JButton("CONFERMA");
+		confermaCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaCorsoButton.setBackground(Color.WHITE);
 		confermaCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -169,6 +172,7 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniPanel.add(elencoLezioneDelCorsoLabel);
 		
 		panormaicaLezioneButton = new JButton("PANORAMICA");
+		panormaicaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panormaicaLezioneButton.setBackground(Color.WHITE);
 		panormaicaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -187,6 +191,7 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
+		eliminaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eliminaLezioneButton.setForeground(Color.BLACK);
 		eliminaLezioneButton.setBackground(Color.WHITE);
 		eliminaLezioneButton.addMouseListener(new MouseAdapter() {
@@ -224,6 +229,7 @@ public class GestoreLezioniPage extends JFrame {
 		
 		
 		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
+		aggiungiLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		aggiungiLezioneButton.setBackground(Color.WHITE);
 		aggiungiLezioneButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {

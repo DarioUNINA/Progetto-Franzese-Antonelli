@@ -30,6 +30,7 @@ import java.awt.SystemColor;
 
 import dto.DomandeSicurezza;
 import dto.Operatori;
+import java.awt.Cursor;
 
 public class RegistrazionePage extends JFrame {
 
@@ -85,6 +86,7 @@ public class RegistrazionePage extends JFrame {
 		registrazionePanel.setLayout(null);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -149,6 +151,7 @@ public class RegistrazionePage extends JFrame {
 		scegliereDomandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(310, 288, 128, 32);

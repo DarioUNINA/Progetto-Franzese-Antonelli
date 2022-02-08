@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JScrollPane;
 import com.toedter.calendar.JYearChooser;
+import java.awt.Cursor;
 
 public class CreazioneCorsoPage extends JFrame {
 	
@@ -136,6 +137,7 @@ public class CreazioneCorsoPage extends JFrame {
 		creaCorsoPanel.add(terminatoCheckBox);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBounds(10, 273, 121, 23);
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
@@ -175,6 +177,7 @@ public class CreazioneCorsoPage extends JFrame {
 		annoChooser.setLayout(null);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBounds(417, 273, 121, 23);
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {

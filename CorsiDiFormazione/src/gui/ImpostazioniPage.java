@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Cursor;
 
 public class ImpostazioniPage extends JFrame {
 
@@ -67,6 +68,7 @@ public class ImpostazioniPage extends JFrame {
 		impostazioniPanel.setLayout(null);
 		
 		modificaNomeUtenteButton = new JButton("MODIFICA NOME UTENTE");
+		modificaNomeUtenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		modificaNomeUtenteButton.setBackground(Color.WHITE);
 		modificaNomeUtenteButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -80,6 +82,7 @@ public class ImpostazioniPage extends JFrame {
 		impostazioniPanel.add(modificaNomeUtenteButton);
 		
 		modificaPasswordButton = new JButton("MODIFICA PASSWORD");
+		modificaPasswordButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		modificaPasswordButton.setBackground(Color.WHITE);
 		modificaPasswordButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -93,6 +96,7 @@ public class ImpostazioniPage extends JFrame {
 		impostazioniPanel.add(modificaPasswordButton);
 		
 		eliminaProfiloButton = new JButton("ELIMINA PROFILO");
+		eliminaProfiloButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eliminaProfiloButton.setForeground(Color.RED);
 		eliminaProfiloButton.setBackground(Color.WHITE);
 		eliminaProfiloButton.addMouseListener(new MouseAdapter() {
@@ -113,6 +117,7 @@ public class ImpostazioniPage extends JFrame {
 		impostazioniPanel.add(impostazioniLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override

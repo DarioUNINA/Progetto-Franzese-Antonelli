@@ -27,6 +27,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Cursor;
 
 public class RecuperoPassPage extends JFrame {
 
@@ -77,16 +78,17 @@ public class RecuperoPassPage extends JFrame {
 		
 		nomeUtenteLabel = new JLabel("Nome Utente:");
 		nomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		nomeUtenteLabel.setBounds(100, 80, 101, 14);
+		nomeUtenteLabel.setBounds(100, 107, 101, 14);
 		recuperoPanel.add(nomeUtenteLabel);
 		
 		nomeUtenteText = new JTextField();
 		nomeUtenteText.setFont(new Font("Arial", Font.BOLD, 13));
 		nomeUtenteText.setColumns(10);
-		nomeUtenteText.setBounds(211, 78, 121, 20);
+		nomeUtenteText.setBounds(211, 105, 121, 20);
 		recuperoPanel.add(nomeUtenteText);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -123,6 +125,7 @@ public class RecuperoPassPage extends JFrame {
 		recuperoPanel.add(confermaButton);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {

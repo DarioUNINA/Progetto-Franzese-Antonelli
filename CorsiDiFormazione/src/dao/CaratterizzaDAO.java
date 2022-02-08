@@ -5,14 +5,14 @@ import java.sql.Statement;
 import dto.ParoleChiave;
 import dto.Caratterizza;
 
-public class CaretterizzaDAO {
+public class CaratterizzaDAO {
 	
 	private Connessione connessione;
 	private Statement statement;
 	private ResultSet resultSet;
 	
 	
-	public CaretterizzaDAO() {
+	public CaratterizzaDAO() {
 		
 		connessione = Connessione.getConnessione();
 		statement = connessione.getStatement();

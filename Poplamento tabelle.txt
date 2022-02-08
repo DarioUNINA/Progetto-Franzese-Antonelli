@@ -15,6 +15,26 @@ VALUES('algoritmi');
 
 
 
+INSERT INTO parole_chiave
+VALUES('java');
+
+INSERT INTO parole_chiave
+VALUES('algebra relazionale');
+
+INSERT INTO parole_chiave
+VALUES('grafi');
+
+INSERT INTO parole_chiave
+VALUES('fsm');
+
+INSERT INTO parole_chiave
+VALUES('reticoli');
+
+INSERT INTO parole_chiave
+VALUES('funzioni');
+
+
+
 
 INSERT INTO operatori
 VALUES(nextval('sequenza_id_operatore'), 'sergio','password');
@@ -38,28 +58,28 @@ VALUES(nextval('sequenza_id_operatore'), 'giuliano','password');
 
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 1, 'object_orientation', 'corso sul paradigma della programmazione ad oggetti', 10, 80, 'java', '2020');
+VALUES(nextval('sequenza_id_corso'), 1, 'object_orientation', 'corso sul paradigma della programmazione ad oggetti', 10, 80, '2020');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 2, 'basi_dati', 'corso sulla gestione di database', 5, 70, 'algebra relazionale', '2021');
+VALUES(nextval('sequenza_id_corso'), 2, 'basi_dati', 'corso sulla gestione di database', 5, 70, '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 3, 'algoritmi_strutture_dati', 'corso sullo complessita di algoritmi e strutture dati', 10, 100, 'grafi', '2021');
+VALUES(nextval('sequenza_id_corso'), 3, 'algoritmi_strutture_dati', 'corso sullo complessita di algoritmi e strutture dati', 10, 100, '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 4, 'elementi_di_informatica_teorica', 'informatica teorica', 1, 50, 'fsm', '2019');
+VALUES(nextval('sequenza_id_corso'), 4, 'elementi_di_informatica_teorica', 'informatica teorica', 1, 50, '2019');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 6, 'programmazione_1', 'approccio alla programmazione in c++', 5, 100, 'c++', '2020');
+VALUES(nextval('sequenza_id_corso'), 6, 'programmazione_1', 'approccio alla programmazione in c++', 5, 100, '2020');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 5, 'analisi_1', 'teoremi base di analisi matematica', 10, 110, 'funzioni', '2020');
+VALUES(nextval('sequenza_id_corso'), 5, 'analisi_1', 'teoremi base di analisi matematica', 10, 110, '2020');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 1, 'ingegneria_del_software', 'studio dei software', 10, 100, 'software', '2021');
+VALUES(nextval('sequenza_id_corso'), 1, 'ingegneria_del_software', 'studio dei software', 10, 100, '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 2, 'algebra', 'corso algebra lineare e booleana', 5, 90, 'reticoli', '2018');
+VALUES(nextval('sequenza_id_corso'), 2, 'algebra', 'corso algebra lineare e booleana', 5, 90, '2018');
 
 
 
@@ -219,6 +239,29 @@ VALUES('programmazione', 2);
 
 INSERT INTO temi
 VALUES('calcolo', 2);
+
+
+
+INSERT INTO caratterizza
+VALUES('java', 1);
+
+INSERT INTO caratterizza
+VALUES('fsm', 4);
+
+INSERT INTO caratterizza
+VALUES('grafi', 3);
+
+INSERT INTO caratterizza
+VALUES('funzioni', 6);
+
+INSERT INTO caratterizza
+VALUES('reticoli', 8);
+
+INSERT INTO caratterizza
+VALUES('algebra relazionale', 8);
+
+INSERT INTO caratterizza
+VALUES('algebra relazionale', 2);
 
 
 

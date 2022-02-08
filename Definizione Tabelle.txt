@@ -32,6 +32,23 @@ ALTER TABLE IF EXISTS public.aree_tematiche
     OWNER to postgres;
 
 
+-- Table: public.parole_chiave
+
+-- DROP TABLE IF EXISTS public.parole_chiave;
+
+CREATE TABLE IF NOT EXISTS public.parole_chiave
+(
+    parola_chiave character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT parole_chiave_pkey PRIMARY KEY (parola_chiave)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.parole_chiave
+    OWNER to postgres;
+
+
+
 -- Table: public.operatori
 
 -- DROP TABLE IF EXISTS public.operatori;
@@ -65,7 +82,6 @@ CREATE TABLE IF NOT EXISTS public.corsi
     descrizione character varying COLLATE pg_catalog."default" NOT NULL,
     presenze_min integer NOT NULL,
     max_partecipanti integer NOT NULL,
-    parole_chiave character varying COLLATE pg_catalog."default" NOT NULL,
     anno character varying COLLATE pg_catalog."default" NOT NULL,
     terminato boolean NOT NULL DEFAULT false,
 	CONSTRAINT nome_corsi_unique UNIQUE (nome),
@@ -157,6 +173,34 @@ TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.temi
     OWNER to postgres;
+
+
+
+
+-- Table: public.caratterizza
+
+-- DROP TABLE IF EXISTS public.caratterizza;
+
+CREATE TABLE IF NOT EXISTS public.caratterizza
+(
+    parola_chiave character varying COLLATE pg_catalog."default" NOT NULL,
+    id_corso character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT caratterizza_unique UNIQUE (parola_chiave, id_corso),
+    CONSTRAINT caratterizza_fk1 FOREIGN KEY (parola_chiave)
+        REFERENCES public.parole_chiave (parola_chiave) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT caratterizza_fk2 FOREIGN KEY (id_corso)
+        REFERENCES public.corsi (id_corso) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.caratterizza
+    OWNER to postgres;
+
 
 
 

@@ -27,6 +27,15 @@ import javax.swing.JScrollPane;
 import dto.Corsi;
 import dto.Lezioni;
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import com.toedter.calendar.JDayChooser;
+import com.toedter.calendar.JMonthChooser;
+import com.toedter.calendar.JYearChooser;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
+import java.sql.Time;
+import javax.swing.ScrollPaneConstants;
 
 public class GestoreLezioniPage extends JFrame {
 
@@ -54,6 +63,12 @@ public class GestoreLezioniPage extends JFrame {
 	private JButton indietroButton;
 	private JScrollPane corsiScrollPane;
 	private JScrollPane lezioniScrollPane;
+	private JScrollPane temiScrollPane;
+	private JScrollPane mesiScrollPane;
+	private JCheckBoxList mesiList;
+	private JScrollPane giorniScrollPane;
+	private JCheckBoxList giorniList;
+	private JCheckBoxList anniList;
 	
 	public GestoreLezioniPage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -63,6 +78,11 @@ public class GestoreLezioniPage extends JFrame {
 		this.operatore = operatore;
 		corsi = theController.getCorsiOperatore(operatore);
 		corsiList = new JList<Corsi>(corsi);
+		corsiList.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				
+			}
+		});
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -97,6 +117,13 @@ public class GestoreLezioniPage extends JFrame {
 		contentPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
 		
+		lezioniPanel =  new JPanel();
+		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		lezioniPanel.setBounds(242, 71, 545, 335);
+		contentPane.add(lezioniPanel);
+		lezioniPanel.setLayout(null);
+		
+		
 		selezionaCorsoLabel = new JLabel("Seleziona Corso:");
 		selezionaCorsoLabel.setBounds(52, 11, 121, 18);
 		selezionaCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
@@ -123,12 +150,6 @@ public class GestoreLezioniPage extends JFrame {
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 417, 163, 23);
 		contentPane.add(indietroButton);
-		
-		lezioniPanel = new JPanel();
-		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		lezioniPanel.setBounds(242, 71, 545, 335);
-		contentPane.add(lezioniPanel);
-		lezioniPanel.setLayout(null);
 		
 		confermaCorsoButton = new JButton("CONFERMA");
 		confermaCorsoButton.setBackground(Color.WHITE);
@@ -183,10 +204,14 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		panormaicaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		panormaicaLezioneButton.setBounds(314, 212, 179, 37);
+		panormaicaLezioneButton.setBounds(268, 287, 179, 37);
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
+		eliminaLezioneButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		eliminaLezioneButton.setForeground(Color.RED);
 		eliminaLezioneButton.setBackground(Color.WHITE);
 		eliminaLezioneButton.addMouseListener(new MouseAdapter() {
@@ -209,7 +234,7 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		eliminaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		eliminaLezioneButton.setBounds(314, 100, 179, 37);
+		eliminaLezioneButton.setBounds(268, 242, 179, 37);
 		lezioniPanel.add(eliminaLezioneButton);
 		
 		lezioniScrollPane = new JScrollPane();
@@ -222,6 +247,47 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
 		lezioniList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
+		JButton filtraButton = new JButton("filtra");
+		filtraButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		filtraButton.setBounds(446, 209, 89, 23);
+		lezioniPanel.add(filtraButton);
+		
+		JButton btnNewButton_1 = new JButton("Reset");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1.setBounds(457, 249, 89, 23);
+		lezioniPanel.add(btnNewButton_1);
+		
+		mesiScrollPane = new JScrollPane();
+		mesiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		mesiScrollPane.setBounds(310, 84, 203, 62);
+		lezioniPanel.add(mesiScrollPane);
+		
+		mesiList = new JCheckBoxList();
+		Vector<String> mesi = theController.getMesi();
+		mesiList.setModel(theController.setModelCheckBoxString(mesi));
+		mesiScrollPane.setColumnHeaderView(mesiList);
+		mesiList.setFont(new Font("Arial", Font.BOLD, 15));
+		mesiList.setVisibleRowCount(10);
+		mesiList.setVisible(true);
+		
+		giorniScrollPane = new JScrollPane();
+		giorniScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		giorniScrollPane.setBounds(310, 11, 203, 62);
+		lezioniPanel.add(giorniScrollPane);
+		
+		giorniList = new JCheckBoxList();
+		Vector<String> giorni = theController.getGiorni();
+		mesiList.setModel(theController.setModelCheckBoxString(giorni));
+		giorniScrollPane.setViewportView(giorniList);
+		giorniList.setFont(new Font("Arial", Font.BOLD, 15));
+		giorniList.setVisibleRowCount(10);
+		giorniList.setVisible(true);
 		
 		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
 		aggiungiLezioneButton.setBackground(Color.WHITE);
@@ -244,9 +310,6 @@ public class GestoreLezioniPage extends JFrame {
 				}
 			}
 		});
-		aggiungiLezioneButton.setBounds(565, 418, 222, 23);
-		contentPane.add(aggiungiLezioneButton);
-		aggiungiLezioneButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -310,6 +373,4 @@ public class GestoreLezioniPage extends JFrame {
 			JOptionPane.showMessageDialog(this, "Lezione non eliminata.\nCodice d'errore: " + state,"<ERRORE>", JOptionPane.WARNING_MESSAGE);
 		
 	}
-	
-	
 }

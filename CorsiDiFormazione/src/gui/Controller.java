@@ -346,6 +346,56 @@ public class Controller {
 		
 		return vettore;
 	}
+	
+	
+	public Vector<String> getMesi(){
+		
+		Vector<String> vettore = new Vector<String>();
+		
+		vettore.add("Gennaio");
+		vettore.add("Febbraio");
+		vettore.add("Marzo");
+		vettore.add("Aprile");
+		vettore.add("Maggio");
+		vettore.add("Giugno");
+		vettore.add("Luglio");
+		vettore.add("Agosto");
+		vettore.add("Settembre");
+		vettore.add("Ottobre");
+		vettore.add("Novembre");
+		vettore.add("Dicembre");
+		
+		return vettore;
+	}
+	
+	public DefaultListModel <JCheckBox> setModelCheckBoxString(Vector<String> mesi){
+		
+
+		Vector<JCheckBox> checkBoxList = new Vector<JCheckBox>();
+		JCheckBox checkBox;
+		
+		for(String s:mesi) {
+			checkBox = new JCheckBox(s);
+			checkBoxList.add(checkBox);
+		}
+		
+		DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+		model.addAll(checkBoxList);
+		
+		return model;
+		
+	}
+	
+	
+	public Vector<String> getGiorni(){
+		
+		Vector<String> vettore = new Vector<String>();
+		
+		for(int i=1;i<32;i++)
+			vettore.add(String.valueOf(i));
+		
+		return vettore;
+	}
 
 }
 

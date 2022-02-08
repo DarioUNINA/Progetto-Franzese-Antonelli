@@ -187,7 +187,7 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
-		eliminaLezioneButton.setForeground(Color.RED);
+		eliminaLezioneButton.setForeground(Color.BLACK);
 		eliminaLezioneButton.setBackground(Color.WHITE);
 		eliminaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override

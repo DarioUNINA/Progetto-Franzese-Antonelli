@@ -346,6 +346,11 @@ public class Controller {
 		
 		return vettore;
 	}
+	
+public Vector<AreeTematiche> getAllAreeTematiche(){
+		
+		return areeTematicheDAO.getAllAreeTematiche();
+	}
 
 }
 

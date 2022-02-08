@@ -63,7 +63,7 @@ public class CreazioneCorsoPage extends JFrame {
 	private JLabel terminatoLabel;
 	private JLabel descrizioneLabel;
 	private JLabel areaTematicaLabel;
-	private JScrollPane corsiScrollPane;
+	private JScrollPane temiScrollPane;
 	private JCheckBoxList listaTemi;
 	private JYearChooser annoChooser;
 
@@ -156,14 +156,14 @@ public class CreazioneCorsoPage extends JFrame {
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		creaCorsoPanel.add(indietroButton);
 
-		corsiScrollPane = new JScrollPane();
-		corsiScrollPane.setBounds(296, 167, 227, 97);
-		corsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		creaCorsoPanel.add(corsiScrollPane);
+		temiScrollPane = new JScrollPane();
+		temiScrollPane.setBounds(296, 167, 227, 97);
+		temiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		creaCorsoPanel.add(temiScrollPane);
 		
 		listaTemi = new JCheckBoxList();
 		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
-		corsiScrollPane.setViewportView(listaTemi);
+		temiScrollPane.setViewportView(listaTemi);
 		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
 		listaTemi.setVisibleRowCount(10);
 		listaTemi.setVisible(true);

@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import dto.AreeTematiche;
 import dto.Corsi;
 import dto.Operatori;
+import dto.ParoleChiave;
 
 import java.awt.SystemColor;
 import javax.swing.JLabel;
@@ -62,12 +63,11 @@ public class HomePage extends JFrame {
 	private JLabel annoLabel;
 	private JLabel terminatoLabel;
 	private JLabel parolaChiaveLabel;
-	private JLabel areaTematica;
-	private JComboBox<AreeTematiche> areaTematicaComboBox;
+	private JScrollPane temiScrollPane;
+	private JCheckBoxList listaTemi;
 	private JComboBox<String> annoComboBox;
 	private JCheckBox terminatoCheckBoxSi;
 	private JCheckBox terminatoCheckBoxNo;
-	private JTextField paroleChiaveTextField;
 	private JPanel addDeleteCorsi;
 	private JButton aggiungiCorsoButton;
 	private JButton eliminaCorsoButton;
@@ -83,6 +83,7 @@ public class HomePage extends JFrame {
 	private JButton filtraButton;
 	private Vector<AreeTematiche> areeTematiche;
 	private Vector<Corsi> corsi;
+	private Vector<ParoleChiave> paroleChiave;
 	
 
 	public HomePage(Controller cont, Operatori operatore) {
@@ -90,7 +91,10 @@ public class HomePage extends JFrame {
 		theController = cont;
 		this.operatore = operatore;
 		corsi = theController.getCorsiOperatore(operatore);
-		areeTematiche = theController.setAreaTematicaComboBox();
+		areeTematiche = theController.getAllAreeTematiche();
+		areeTematiche.remove(0);
+		paroleChiave = theController.getAllParoleChiave();
+		paroleChiave.remove(0);
 		
 		this.getContentPane().setBackground(Color.BLUE);
 		imageicon = new ImageIcon("napule.png");
@@ -168,7 +172,7 @@ public class HomePage extends JFrame {
 		filtri = new JPanel();
 		filtri.setBorder(new LineBorder(Color.BLACK, 2));
 		filtri.setBackground(SystemColor.control);
-		filtri.setBounds(10, 99, 261, 253);
+		filtri.setBounds(10, 99, 261, 341);
 		sfondoPane.add(filtri);
 		filtri.setLayout(null);
 		
@@ -183,27 +187,23 @@ public class HomePage extends JFrame {
 		filtri.add(areaTematicaLabel);
 		
 		annoLabel = new JLabel("Anno:");
-		annoLabel.setBounds(10, 86, 89, 14);
+		annoLabel.setBounds(10, 151, 89, 14);
 		annoLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		annoLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		filtri.add(annoLabel);
 		
 		terminatoLabel = new JLabel("Terminato:");
-		terminatoLabel.setBounds(10, 128, 89, 14);
+		terminatoLabel.setBounds(10, 185, 89, 14);
 		terminatoLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		filtri.add(terminatoLabel);
 		
 		parolaChiaveLabel = new JLabel("Parola Chiave:");
-		parolaChiaveLabel.setBounds(10, 170, 89, 14);
+		parolaChiaveLabel.setBounds(10, 210, 89, 14);
 		parolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		filtri.add(parolaChiaveLabel);
-		
-		areaTematicaComboBox = new JComboBox<AreeTematiche>(areeTematiche);
-		areaTematicaComboBox.setBounds(117, 43, 134, 22);
-		filtri.add(areaTematicaComboBox);
 				
 		annoComboBox = new JComboBox<String>(theController.setAnnoComboBox());
-		annoComboBox.setBounds(117, 82, 134, 22);
+		annoComboBox.setBounds(105, 147, 134, 22);
 		filtri.add(annoComboBox);
 		
 		terminatoCheckBoxSi = new JCheckBox("SI");
@@ -217,7 +217,7 @@ public class HomePage extends JFrame {
 			}
 		});
 		terminatoCheckBoxSi.setFont(new Font("Arial", Font.BOLD, 15));
-		terminatoCheckBoxSi.setBounds(117, 124, 46, 23);
+		terminatoCheckBoxSi.setBounds(105, 180, 46, 23);
 		filtri.add(terminatoCheckBoxSi);
 		
 		terminatoCheckBoxNo = new JCheckBox("NO");
@@ -232,51 +232,21 @@ public class HomePage extends JFrame {
 			}
 		});
 		terminatoCheckBoxNo.setFont(new Font("Arial", Font.BOLD, 15));
-		terminatoCheckBoxNo.setBounds(202, 124, 49, 23);
+		terminatoCheckBoxNo.setBounds(190, 180, 49, 23);
 		filtri.add(terminatoCheckBoxNo);
 		
-		paroleChiaveTextField = new JTextField();
-		paroleChiaveTextField.setFont(new Font("Arial", Font.BOLD, 13));
-		paroleChiaveTextField.setBounds(117, 167, 134, 20);
-		filtri.add(paroleChiaveTextField);
-		paroleChiaveTextField.setColumns(10);
 		
-		addDeleteCorsi = new JPanel();
-		addDeleteCorsi.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		addDeleteCorsi.setBackground(SystemColor.control);
-		addDeleteCorsi.setBounds(10, 363, 261, 77);
-		sfondoPane.add(addDeleteCorsi);
-		addDeleteCorsi.setLayout(null);
+		temiScrollPane = new JScrollPane();
+		temiScrollPane.setBounds(105, 45, 134, 84);
+		temiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		filtri.add(temiScrollPane);
 		
-		aggiungiCorsoButton = new JButton("AGGIUNGI CORSO");
-		aggiungiCorsoButton.setBackground(Color.WHITE);
-		aggiungiCorsoButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				CreazioneCorsoPage ccp = new CreazioneCorsoPage(theController, operatore);
-				setVisible(false);
-				
-			}
-		});
-		aggiungiCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
-		aggiungiCorsoButton.setBounds(22, 11, 212, 25);
-		addDeleteCorsi.add(aggiungiCorsoButton);
-		
-		eliminaCorsoButton = new JButton("ELIMINA CORSO");
-		eliminaCorsoButton.setBackground(Color.WHITE);
-		eliminaCorsoButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				EliminaCorsoPage ep = new EliminaCorsoPage(theController, operatore);
-				setVisible(false);
-				
-			}
-		});
-		eliminaCorsoButton.setBounds(22, 41, 212, 25);
-		addDeleteCorsi.add(eliminaCorsoButton);
-		eliminaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		listaTemi = new JCheckBoxList();
+		temiScrollPane.setViewportView(listaTemi);
+		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
+		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
+		listaTemi.setVisibleRowCount(10);
+		listaTemi.setVisible(true);
 		
 		corsiPanel = new JPanel();
 		corsiPanel.setBorder(new LineBorder(Color.BLACK, 2));
@@ -356,6 +326,43 @@ public class HomePage extends JFrame {
 		gestioneStudentiButton.setBounds(322, 115, 174, 22);
 		gestione.add(gestioneStudentiButton);
 		
+		addDeleteCorsi = new JPanel();
+		addDeleteCorsi.setBounds(42, 42, 261, 77);
+		gestione.add(addDeleteCorsi);
+		addDeleteCorsi.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		addDeleteCorsi.setBackground(SystemColor.control);
+		addDeleteCorsi.setLayout(null);
+		
+		aggiungiCorsoButton = new JButton("AGGIUNGI CORSO");
+		aggiungiCorsoButton.setBackground(Color.WHITE);
+		aggiungiCorsoButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				CreazioneCorsoPage ccp = new CreazioneCorsoPage(theController, operatore);
+				setVisible(false);
+				
+			}
+		});
+		aggiungiCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		aggiungiCorsoButton.setBounds(22, 11, 212, 25);
+		addDeleteCorsi.add(aggiungiCorsoButton);
+		
+		eliminaCorsoButton = new JButton("ELIMINA CORSO");
+		eliminaCorsoButton.setBackground(Color.WHITE);
+		eliminaCorsoButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				EliminaCorsoPage ep = new EliminaCorsoPage(theController, operatore);
+				setVisible(false);
+				
+			}
+		});
+		eliminaCorsoButton.setBounds(22, 41, 212, 25);
+		addDeleteCorsi.add(eliminaCorsoButton);
+		eliminaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		
 		resetFiltriButton = new JButton("RESET");
 		resetFiltriButton.setBackground(Color.WHITE);
 		resetFiltriButton.addMouseListener(new MouseAdapter() {
@@ -373,7 +380,7 @@ public class HomePage extends JFrame {
 			}
 		});
 		resetFiltriButton.setForeground(Color.RED);
-		resetFiltriButton.setBounds(10, 219, 89, 23);
+		resetFiltriButton.setBounds(10, 307, 89, 23);
 		resetFiltriButton.setFont(new Font("Arial", Font.BOLD, 15));
 		filtri.add(resetFiltriButton);
 		
@@ -410,9 +417,17 @@ public class HomePage extends JFrame {
 			}
 		});
 		filtraButton.setForeground(new Color(65, 105, 225));
-		filtraButton.setBounds(162, 219, 89, 23);
+		filtraButton.setBounds(162, 307, 89, 23);
 		filtraButton.setFont(new Font("Arial", Font.BOLD, 15));
 		filtri.add(filtraButton);
+		
+		JScrollPane paroleChiaveScrollPane_1 = new JScrollPane();
+		paroleChiaveScrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		paroleChiaveScrollPane_1.setBounds(105, 212, 134, 84);
+		filtri.add(paroleChiaveScrollPane_1);
+		
+		JCheckBoxList paroleChiaveListaTemi = new JCheckBoxList();
+		paroleChiaveScrollPane_1.setViewportView(paroleChiaveListaTemi);
 		
 		
 		setLocationRelativeTo(null);

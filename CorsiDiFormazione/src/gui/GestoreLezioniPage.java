@@ -30,6 +30,7 @@ import dto.Lezioni;
 import java.awt.FlowLayout;
 import java.awt.Cursor;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 public class GestoreLezioniPage extends JFrame {
 
@@ -65,8 +66,6 @@ public class GestoreLezioniPage extends JFrame {
 	private JButton eliminaLezioneButton;
 	private JButton aggiungiLezioneButton;
 	private JButton indietroButton;
-	private JRadioButton PartialMatchRadioButton;
-	private JRadioButton FullMatchRadioButton;
 	
 	private JScrollPane corsiScrollPane;
 	private JList<Corsi> corsiList;
@@ -85,6 +84,7 @@ public class GestoreLezioniPage extends JFrame {
 	
 	private JScrollPane mesiScrollPane;
 	private JCheckBoxList mesiList;
+	private JTextField titoloTextField;
 	
 	public GestoreLezioniPage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -286,6 +286,27 @@ public class GestoreLezioniPage extends JFrame {
 		mesiLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		filtraButton = new JButton("FILTRA");
+		filtraButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Vector<String> vettoreGiorni = theController.getGiorniSelezionati(giorniList);
+				Vector<String> vettoreMesi = theController.getMesiSelezionati(mesiList);
+				Vector<Time> vettoreOrario = theController.getOrariSelezionati(orarioList, orario);
+				Vector<Time> vettoreDurate = theController.getDurateSelezionate(durataList, durata);
+				
+				if(corsiList.getSelectedValue()==null)
+					alertNessunCorsoSelezionato();
+				else
+					if(vettoreGiorni.isEmpty() && !vettoreMesi.isEmpty())
+						alertNessunGiornoSelezionato();
+					else
+					{
+						lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText(), corsiList.getSelectedValue().getAnno());
+						lezioniList.setListData(lezioni);
+					}
+			}
+		});
 		filtraButton.setBackground(Color.WHITE);
 		filtraButton.setBounds(172, 335, 84, 23);
 		filtriPanel.add(filtraButton);
@@ -360,30 +381,15 @@ public class GestoreLezioniPage extends JFrame {
 		mesiList.setFont(new Font("Arial", Font.BOLD, 15));
 		mesiList.setVisibleRowCount(10);
 		
-		FullMatchRadioButton = new JRadioButton("Full Match");
-		FullMatchRadioButton.setSelected(true);
-		FullMatchRadioButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			
-			PartialMatchRadioButton.setSelected(false);
-				
-			}
-		});
-		FullMatchRadioButton.setBounds(25, 305, 89, 23);
-		filtriPanel.add(FullMatchRadioButton);
+		titoloTextField = new JTextField();
+		titoloTextField.setBounds(106, 304, 86, 20);
+		filtriPanel.add(titoloTextField);
+		titoloTextField.setColumns(10);
 		
-		PartialMatchRadioButton = new JRadioButton("Partial Match");
-		PartialMatchRadioButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				FullMatchRadioButton.setSelected(false);
-				
-			}
-		});
-		PartialMatchRadioButton.setBounds(174, 305, 104, 23);
-		filtriPanel.add(PartialMatchRadioButton);
+		JLabel titoloLabel = new JLabel("Titolo:");
+		titoloLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		titoloLabel.setBounds(22, 306, 60, 18);
+		filtriPanel.add(titoloLabel);
 
 		
 		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
@@ -418,11 +424,11 @@ public class GestoreLezioniPage extends JFrame {
 	}
 	
 	public void alertNessunaLezioneSelezionata() {
-		JOptionPane.showMessageDialog(this, "Selezionare una lezione per poter visualizzarne la paronamica.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+		JOptionPane.showMessageDialog(this, "Selezionare una lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
 	
 	public void alertNessunCorsoSelezionato() {
-		JOptionPane.showMessageDialog(this, "Selezionare un corso per poter visualizzarne le Lezioni.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+		JOptionPane.showMessageDialog(this, "Selezionare un corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
 	
 	public void alertNessunaLezioneSelezionataElimina() {
@@ -460,6 +466,11 @@ public class GestoreLezioniPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Lezione eliminata correttamente","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
 		lezioni = theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso());
 		lezioniList.setListData(lezioni);
+	}
+	
+	public void alertNessunGiornoSelezionato() {
+		
+		JOptionPane.showMessageDialog(this, "Attenzione, bisogna specificare almeno un giorno del mese","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
 	

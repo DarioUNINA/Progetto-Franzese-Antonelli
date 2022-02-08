@@ -178,4 +178,60 @@ public class LezioniDAO {
 		
 	}
 	
+	public Vector<Lezioni> setLezioniFiltrate(Vector<String> giorni, Vector<String> mesi, Vector<Time> orari, Vector<Time> durate, String idCorso, String titolo, String anno){
+		
+		Vector<Lezioni> lezioni = new Vector<Lezioni>();
+		
+		Lezioni lezione;
+		
+		String query = "SELECT * FROM lezioni l WHERE l.id_corso = '" + idCorso + "' AND (";
+		
+		for(String giorno:giorni) 
+			for(String mese:mesi)
+				query = query + " l.data = '" + giorno + "/" + mese + "/" + anno + "' OR ";
+			
+			
+		query = query + "1=0 ) AND (";
+		
+		for(Time durata:durate)
+			query = query + "l.durata = '" + durata.getTime() + "' OR";
+		
+		query = query + "1=0 ) AND (";
+		
+		for(Time orario:orari)
+			query = query + "l.durata = '" + orario.getTime() + "' OR";
+		
+		query = query + "1=0 )";
+		
+		if(!titolo.equals(""))
+			query = query + "AND l.titolo = '" + titolo + "'";
+			
+		
+		try {
+			ResultSet rs = statement.executeQuery(query);
+			
+			while(rs.next()) {
+				
+				lezione = new Lezioni();
+				lezione.setData(rs.getDate("data"));
+				lezione.setDescrizione(rs.getString("descrizione"));
+				lezione.setDurata(rs.getTime("durata"));
+				lezione.setIdCorso(idCorso);
+				lezione.setIdLezione(rs.getString("id_lezione"));
+				lezione.setOrario(rs.getTime("orario"));
+				lezione.setTitolo(rs.getString("titolo"));
+				
+				lezioni.add(lezione);
+			
+			}
+			
+			return lezioni;
+				
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return lezioni;
+		}
+	}
+	
+	
 }

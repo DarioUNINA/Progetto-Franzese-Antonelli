@@ -374,6 +374,53 @@ public class Controller {
 		return vettore;
 	}
 	
+	public Vector<String> getGiorniSelezionati(JCheckBoxList box){
+		
+		Vector<String> vettore = new Vector<String>();
+		
+		for(int i=0;i<31;i++)
+			if(box.getModel().getElementAt(i).isSelected())
+				vettore.add(String.valueOf(i+1));
+		
+		return vettore;
+	}
+	
+	public Vector<String> getMesiSelezionati(JCheckBoxList box){
+		
+		Vector<String> vettore = new Vector<String>();
+		
+		for(int i=0;i<12;i++)
+			if(box.getModel().getElementAt(i).isSelected())
+				vettore.add(String.valueOf(i+1));
+		
+		return vettore;
+	}
+	
+	public Vector<Time> getOrariSelezionati(JCheckBoxList box, Vector<Time> orari){
+		
+		Vector<Time> vettore = new Vector<Time>();
+		
+		for(int i=0;i<orari.size();i++)
+			if(box.getModel().getElementAt(i).isSelected())
+				vettore.add(orari.get(i));
+		
+		return vettore;
+		
+	}
+	
+	
+	public Vector<Time> getDurateSelezionate(JCheckBoxList box, Vector<Time> durate){
+		
+		Vector<Time> vettore = new Vector<Time>();
+		
+		for(int i=0;i<durate.size();i++)
+			if(box.getModel().getElementAt(i).isSelected())
+				vettore.add(durate.get(i));
+		
+		return vettore;
+		
+	}
+	
 	
 	public Vector<String> getMesi(){
 		
@@ -458,4 +505,40 @@ public class Controller {
 		return vettore;
 	}
 	
+	public String getMese(String mese) {
+		
+		mese = mese.toLowerCase();
+		
+		if(mese == "gennaio")
+			return "01";
+		if(mese == "febbraio")
+			return "02";
+		if(mese == "marzo")
+			return "03";
+		if(mese =="aprile")
+			return "04";
+		if(mese == "maggio")
+			return "05";
+		if(mese == "giugno")
+			return "06";
+		if(mese == "luglio")
+			return "07";
+		if(mese == "agosto")
+			return "08";
+		if(mese == "settembre")
+			return "09";
+		if(mese == "ottobre")
+			return "10";
+		if(mese == "novembre")
+			return "11";
+		if(mese == "dicembre")
+			return "12";
+		
+		return "-1";
+	}
+	
+	public Vector<Lezioni> setLezioniFiltrate(Vector<String> giorni, Vector<String> mesi, Vector<Time> orario, Vector<Time> durate, String idCorso, String titolo, String anno){
+		
+		return lezioniDAO.setLezioniFiltrate(giorni, mesi, orario, durate, idCorso, titolo, anno);
+	}
 }

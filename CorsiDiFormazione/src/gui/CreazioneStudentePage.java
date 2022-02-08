@@ -15,7 +15,7 @@ public class CreazioneStudentePage extends JFrame {
 	private Controller theController;
 
 	
-	public CreazioneStudentePage(Operatori operatore, Controller controller) {
+	public CreazioneStudentePage(Controller controller, Operatori operatore) {
 		
 		this.operatore = operatore;
 		theController = controller;
@@ -24,8 +24,8 @@ public class CreazioneStudentePage extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

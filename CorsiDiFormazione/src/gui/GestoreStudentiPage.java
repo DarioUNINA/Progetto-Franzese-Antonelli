@@ -146,6 +146,13 @@ public class GestoreStudentiPage extends JFrame {
 		selzionaStudentiPanel.add(panoramicaButton);
 		
 		creaStudenteButton = new JButton("CREA STUDENTE");
+		creaStudenteButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				CreazioneStudentePage page = new CreazioneStudentePage(theController, operatore);
+			}
+		});
 		creaStudenteButton.setBackground(Color.WHITE);
 		creaStudenteButton.setFont(new Font("Arial", Font.BOLD, 15));
 		creaStudenteButton.setBounds(370, 273, 168, 23);

@@ -34,10 +34,11 @@ public class GestoreLezioniPage extends JFrame {
 	private Controller theController;
 	private Operatori operatore;
 	private Vector<Corsi> corsi;
-	private JList<Lezioni> lezioniList;
-	private JList<Corsi> corsiList;
+	private Vector<Lezioni> lezioni;
 	
 	private ImageIcon imageicon;
+	private JList<Lezioni> lezioniList;
+	private JList<Corsi> corsiList;
 	private JPanel contentPane;
 	private Component url;
 	private JPanel gestoreLezioniPanel;
@@ -140,9 +141,12 @@ public class GestoreLezioniPage extends JFrame {
 					String id_corso = corsiList.getSelectedValue().getIdCorso();
 					if(theController.setAllLezioniDelCorso(id_corso).isEmpty())
 						alertNessunaLezioneDisponibile();
-					else
-						lezioniList.setListData(theController.setAllLezioniDelCorso(id_corso));
+					else {
+						lezioni = theController.setAllLezioniDelCorso(id_corso);
+						lezioniList.setListData(lezioni);
+					}
 				}
+						
 			}
 		});
 		confermaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
@@ -200,7 +204,7 @@ public class GestoreLezioniPage extends JFrame {
 				if(lezioniList.isSelectionEmpty()) {
 					alertNessunaLezioneSelezionataElimina();
 				}else {
-					alertConfermaEliminazionelezione(lezioniList.getSelectedValue().getIdLezione());
+					alertConfermaEliminazionelezione();
 				}
 			}
 		});
@@ -268,8 +272,8 @@ public class GestoreLezioniPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Selezionare un corso per poter aggiungerne una Lezione.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
 	
-	public void alertConfermaEliminazionelezione(String idLezione) {
-		Object[] opzioni = {"Sì"};
+	public void alertConfermaEliminazionelezione() {
+		Object[] opzioni = {"Sì", "No"};
 		
 		int n = JOptionPane.showOptionDialog(this,
 				"Sei sicuro di voler eliminare la lezione selezionata ?",
@@ -281,25 +285,20 @@ public class GestoreLezioniPage extends JFrame {
 				opzioni[0]);
 		if(n==0) {
 			
-			String state = theController.eliminaLezione(idLezione);
+			String state = theController.eliminaLezione(lezioniList.getSelectedValue().getIdLezione());
 			
 			if(state == "0") {
 				alertEliminazioneEffettuata();
 			}else
 				alertEliminazioneFallita(state);
-			
-				
-			
-			
 		}
 	}
 	
 	public void alertEliminazioneEffettuata() {
 		
 		JOptionPane.showMessageDialog(this, "Lezione eliminata correttamente","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
-		HomePage hp = new HomePage(theController, operatore);
-		setVisible(false);
-		
+		lezioni = theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso());
+		lezioniList.setListData(lezioni);
 	}
 	
 	

@@ -462,9 +462,7 @@ public class HomePage extends JFrame {
 		
 		FullMatchRadioButton = new JRadioButton("Full Match");
 		PartialMatchRadioButton = new JRadioButton("Partial Match");
-		
 		FullMatchRadioButton.setSelected(true);
-		
 		FullMatchRadioButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -473,7 +471,7 @@ public class HomePage extends JFrame {
 				
 			}
 		});
-		FullMatchRadioButton.setBounds(105, 8, 80, 23);
+		FullMatchRadioButton.setBounds(97, 8, 89, 23);
 		filtri.add(FullMatchRadioButton);
 		
 		
@@ -485,7 +483,7 @@ public class HomePage extends JFrame {
 				
 			}
 		});
-		PartialMatchRadioButton.setBounds(190, 8, 96, 23);
+		PartialMatchRadioButton.setBounds(182, 8, 104, 23);
 		filtri.add(PartialMatchRadioButton);
 		
 		setLocationRelativeTo(null);

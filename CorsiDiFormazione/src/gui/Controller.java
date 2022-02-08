@@ -420,6 +420,24 @@ public class Controller {
 	
 	return vettore;
 	}
+	
+	public DefaultListModel <JCheckBox> setModelCheckBoxTime(Vector<Time> durata){
+		
+		Vector<JCheckBox> checkBoxList = new Vector<JCheckBox>();
+	
+		JCheckBox checkBox;
+
+		for(Time s:durata) {
+			checkBox = new JCheckBox(s.toString());
+			checkBoxList.add(checkBox);
+		}
+		
+		DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+		model.addAll(checkBoxList);
+		
+		return model;
+		
+	}
 
 	public Vector<ParoleChiave> getAllParoleChiave(){
 	
@@ -436,5 +454,5 @@ public class Controller {
 		
 		return vettore;
 	}
-
+	
 }

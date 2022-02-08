@@ -115,6 +115,7 @@ public class GestoreStudentiPage extends JFrame {
 		selzionaStudentiPanel.add(studentiComboBox);
 		
 		eliminaStudenteButton = new JButton("ELIMINA STUDENTE");
+		eliminaStudenteButton.setBackground(Color.WHITE);
 		eliminaStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eliminaStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override

@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Time;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,6 +29,7 @@ import dto.Corsi;
 import dto.Lezioni;
 import java.awt.FlowLayout;
 import java.awt.Cursor;
+import javax.swing.JRadioButton;
 
 public class GestoreLezioniPage extends JFrame {
 
@@ -38,32 +40,51 @@ public class GestoreLezioniPage extends JFrame {
 	private Vector<Lezioni> lezioni;
 	private Vector<String> mesi;
 	private Vector<String> giorni;
-	
+	private Vector<Time> orario;
+	private Vector<Time> durata;
 	
 	private ImageIcon imageicon;
-	private JList<Lezioni> lezioniList;
-	private JList<Corsi> corsiList;
-	private JPanel contentPane;
 	private Component url;
+	private JPanel contentPane;
 	private JPanel gestoreLezioniPanel;
 	private JLabel gestoreLezioniLabel;
 	private JPanel corsiPanel;
-	private JLabel selezionaCorsoLabel;
+	private JPanel filtriPanel;
 	private JPanel lezioniPanel;
-	private JButton confermaCorsoButton;
+	private JLabel selezionaCorsoLabel;
 	private JLabel elencoLezioneDelCorsoLabel;
+	private JLabel filtriLabel;
+	private JLabel giorniLabel;
+	private JLabel mesiLabel;
+	private JLabel orarioLabel;
+	private JLabel durataLabel;
+	private JButton filtraButton;
+	private JButton resetButton;
+	private JButton confermaCorsoButton;
 	private JButton panormaicaLezioneButton;
 	private JButton eliminaLezioneButton;
 	private JButton aggiungiLezioneButton;
 	private JButton indietroButton;
+	private JRadioButton PartialMatchRadioButton;
+	private JRadioButton FullMatchRadioButton;
+	
 	private JScrollPane corsiScrollPane;
+	private JList<Corsi> corsiList;
+	
 	private JScrollPane lezioniScrollPane;
-	private JScrollPane temiScrollPane;
-	private JScrollPane mesiScrollPane;
-	private JCheckBoxList mesiList;
+	private JList<Lezioni> lezioniList;
+	
+	private JScrollPane orarioScrollPane;
+	private JCheckBoxList orarioList;
+	
+	private JScrollPane durataScrollPane;
+	private JCheckBoxList durataList;
+	
 	private JScrollPane giorniScrollPane;
 	private JCheckBoxList giorniList;
-	private JCheckBoxList anniList;
+	
+	private JScrollPane mesiScrollPane;
+	private JCheckBoxList mesiList;
 	
 	public GestoreLezioniPage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -71,12 +92,15 @@ public class GestoreLezioniPage extends JFrame {
 		
 		theController = controller;
 		this.operatore = operatore;
+		
 		corsi = theController.getCorsiOperatore(operatore);
 		corsiList = new JList<Corsi>(corsi);
+		
 		mesi = theController.getMesi();
 		giorni = theController.getGiorni();
-		
-		
+		durata = theController.getDurate();
+		orario = theController.getOrario();
+
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -113,10 +137,9 @@ public class GestoreLezioniPage extends JFrame {
 		
 		lezioniPanel =  new JPanel();
 		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		lezioniPanel.setBounds(242, 71, 545, 335);
+		lezioniPanel.setBounds(242, 71, 545, 369);
 		contentPane.add(lezioniPanel);
 		lezioniPanel.setLayout(null);
-		
 		
 		selezionaCorsoLabel = new JLabel("Seleziona Corso:");
 		selezionaCorsoLabel.setBounds(52, 11, 121, 18);
@@ -201,7 +224,7 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		panormaicaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		panormaicaLezioneButton.setBounds(142, 295, 116, 29);
+		panormaicaLezioneButton.setBounds(137, 329, 116, 29);
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
@@ -228,11 +251,11 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		eliminaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		eliminaLezioneButton.setBounds(10, 295, 116, 29);
+		eliminaLezioneButton.setBounds(11, 329, 116, 29);
 		lezioniPanel.add(eliminaLezioneButton);
 		
 		lezioniScrollPane = new JScrollPane();
-		lezioniScrollPane.setBounds(10, 40, 248, 250);
+		lezioniScrollPane.setBounds(10, 40, 235, 286);
 		lezioniPanel.add(lezioniScrollPane);
 		
 		lezioniList = new JList<Lezioni>();
@@ -241,42 +264,55 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
 		lezioniList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel.setBounds(268, 0, 277, 335);
-		lezioniPanel.add(panel);
-		panel.setLayout(null);
+		filtriPanel = new JPanel();
+		filtriPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		filtriPanel.setBounds(258, 0, 287, 369);
+		lezioniPanel.add(filtriPanel);
+		filtriPanel.setLayout(null);
 		
-		JLabel lblFiltri = new JLabel("FILTRI PER LEZIONI");
-		lblFiltri.setBounds(64, 0, 144, 18);
-		lblFiltri.setFont(new Font("Arial", Font.BOLD, 15));
-		panel.add(lblFiltri);
+		filtriLabel = new JLabel("FILTRI PER LEZIONI");
+		filtriLabel.setBounds(64, 0, 144, 18);
+		filtriLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		filtriPanel.add(filtriLabel);
 		
-		JLabel mesiLabel_1 = new JLabel("Giorni:");
-		mesiLabel_1.setBounds(7, 22, 48, 18);
-		panel.add(mesiLabel_1);
-		mesiLabel_1.setFont(new Font("Arial", Font.BOLD, 15));
+		giorniLabel = new JLabel("Giorni:");
+		giorniLabel.setBounds(7, 22, 48, 18);
+		filtriPanel.add(giorniLabel);
+		giorniLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JLabel mesiLabel = new JLabel("Mesi:");
-		mesiLabel.setBounds(148, 22, 38, 18);
-		panel.add(mesiLabel);
+		mesiLabel = new JLabel("Mesi:");
+		mesiLabel.setBounds(158, 22, 38, 18);
+		filtriPanel.add(mesiLabel);
 		mesiLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JButton filtraButton = new JButton("FILTRA");
-		filtraButton.setBounds(172, 301, 84, 23);
-		panel.add(filtraButton);
+		filtraButton = new JButton("FILTRA");
+		filtraButton.setBackground(Color.WHITE);
+		filtraButton.setBounds(172, 335, 84, 23);
+		filtriPanel.add(filtraButton);
 		filtraButton.setForeground(Color.RED);
 		filtraButton.setFont(new Font("Arial", Font.BOLD, 12));
 		
-		JButton resetButton = new JButton("RESET");
-		resetButton.setBounds(24, 301, 84, 23);
-		panel.add(resetButton);
+		resetButton = new JButton("RESET");
+		resetButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				giorniList.setModel(theController.setModelCheckBoxString(giorni));
+				mesiList.setModel(theController.setModelCheckBoxString(mesi));
+				orarioList.setModel(theController.setModelCheckBoxTime(orario));
+				durataList.setModel(theController.setModelCheckBoxTime(durata));
+				
+			}
+		});
+		resetButton.setBackground(Color.WHITE);
+		resetButton.setBounds(25, 335, 84, 23);
+		filtriPanel.add(resetButton);
 		resetButton.setFont(new Font("Arial", Font.BOLD, 12));
 		resetButton.setForeground(new Color(65, 105, 225));
 		
 		giorniScrollPane = new JScrollPane();
-		giorniScrollPane.setBounds(7, 40, 120, 131);
-		panel.add(giorniScrollPane);
+		giorniScrollPane.setBounds(10, 40, 120, 128);
+		filtriPanel.add(giorniScrollPane);
 		
 		giorniList = new JCheckBoxList();
 		giorniScrollPane.setViewportView(giorniList);
@@ -284,17 +320,71 @@ public class GestoreLezioniPage extends JFrame {
 		giorniList.setFont(new Font("Arial", Font.BOLD, 15));
 		giorniList.setVisibleRowCount(10);
 		
+		orarioScrollPane = new JScrollPane();
+		orarioScrollPane.setBounds(12, 198, 118, 92);
+		filtriPanel.add(orarioScrollPane);
+		
+		orarioList = new JCheckBoxList();
+		orarioScrollPane.setColumnHeaderView(orarioList);
+		orarioList.setModel(theController.setModelCheckBoxTime(orario));
+		orarioList.setFont(new Font("Arial", Font.BOLD, 15));
+		orarioList.setVisibleRowCount(10);
+		
+		durataScrollPane = new JScrollPane();
+		durataScrollPane.setBounds(160, 198, 118, 92);
+		filtriPanel.add(durataScrollPane);
+		
+		durataList = new JCheckBoxList();
+		durataScrollPane.setViewportView(durataList);
+		durataList.setModel(theController.setModelCheckBoxTime(durata));
+		durataList.setFont(new Font("Arial", Font.BOLD, 15));
+		durataList.setVisibleRowCount(10);
+		
+		orarioLabel = new JLabel("Orario:");
+		orarioLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		orarioLabel.setBounds(7, 181, 60, 18);
+		filtriPanel.add(orarioLabel);
+		
+		durataLabel = new JLabel("Durata:");
+		durataLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		durataLabel.setBounds(158, 181, 60, 18);
+		filtriPanel.add(durataLabel);
+		
 		mesiScrollPane = new JScrollPane();
-		mesiScrollPane.setBounds(148, 40, 120, 131);
-		panel.add(mesiScrollPane);
+		mesiScrollPane.setBounds(158, 42, 118, 126);
+		filtriPanel.add(mesiScrollPane);
 		
 		mesiList = new JCheckBoxList();
 		mesiScrollPane.setViewportView(mesiList);
 		mesiList.setModel(theController.setModelCheckBoxString(mesi));
 		mesiList.setFont(new Font("Arial", Font.BOLD, 15));
 		mesiList.setVisibleRowCount(10);
-		mesiList.setVisible(true);
-		giorniList.setVisible(true);
+		
+		FullMatchRadioButton = new JRadioButton("Full Match");
+		FullMatchRadioButton.setSelected(true);
+		FullMatchRadioButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+			PartialMatchRadioButton.setSelected(false);
+				
+			}
+		});
+		FullMatchRadioButton.setBounds(25, 305, 89, 23);
+		filtriPanel.add(FullMatchRadioButton);
+		
+		PartialMatchRadioButton = new JRadioButton("Partial Match");
+		PartialMatchRadioButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				FullMatchRadioButton.setSelected(false);
+				
+			}
+		});
+		PartialMatchRadioButton.setBounds(174, 305, 104, 23);
+		filtriPanel.add(PartialMatchRadioButton);
+
 		
 		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
 		aggiungiLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

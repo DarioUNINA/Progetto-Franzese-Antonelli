@@ -14,6 +14,7 @@ import javax.swing.border.LineBorder;
 
 import dto.AreeTematiche;
 import dto.Operatori;
+import dto.ParoleChiave;
 
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
@@ -42,6 +43,7 @@ public class CreazioneCorsoPage extends JFrame {
 	private Controller theController;
 	private Operatori operatore;
 	private Vector<AreeTematiche> areeTematiche;
+	private Vector<ParoleChiave> parole;
 	
 	private ImageIcon imageicon;
 	private Component url;
@@ -49,7 +51,6 @@ public class CreazioneCorsoPage extends JFrame {
 	private JTextField nomeTextField;
 	private JTextField presenzeMinTextField;
 	private JTextField maxPartecipantiTextField;
-	private JTextField paroleChiaveTextBox;
 	private JTextField descrizioneTextField;
 	private JCheckBox terminatoCheckBox;
 	private JButton indietroButton;
@@ -66,6 +67,8 @@ public class CreazioneCorsoPage extends JFrame {
 	private JLabel areaTematicaLabel;
 	private JScrollPane temiScrollPane;
 	private JCheckBoxList listaTemi;
+	private JScrollPane paroleScrollPane;
+	private JCheckBoxList listaParole;
 	private JYearChooser annoChooser;
 
 	
@@ -75,6 +78,7 @@ public class CreazioneCorsoPage extends JFrame {
 		theController = controller;
 		areeTematiche = theController.getAllAreeTematiche();
 		areeTematiche.remove(0);
+		parole = theController.getAllParoleChiave();
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -116,12 +120,6 @@ public class CreazioneCorsoPage extends JFrame {
 		maxPartecipantiTextField.setColumns(10);
 		creaCorsoPanel.add(maxPartecipantiTextField);
 		
-		paroleChiaveTextBox = new JTextField();
-		paroleChiaveTextBox.setBounds(168, 170, 86, 20);
-		paroleChiaveTextBox.setFont(new Font("Arial", Font.BOLD, 11));
-		paroleChiaveTextBox.setColumns(10);
-		creaCorsoPanel.add(paroleChiaveTextBox);
-		
 		terminatoCheckBox = new JCheckBox("SI");
 		terminatoCheckBox.setBounds(383, 99, 39, 23);
 		terminatoCheckBox.addMouseListener(new MouseAdapter() {
@@ -159,7 +157,7 @@ public class CreazioneCorsoPage extends JFrame {
 		creaCorsoPanel.add(indietroButton);
 
 		temiScrollPane = new JScrollPane();
-		temiScrollPane.setBounds(296, 167, 227, 97);
+		temiScrollPane.setBounds(153, 233, 227, 97);
 		temiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		creaCorsoPanel.add(temiScrollPane);
 		
@@ -169,6 +167,18 @@ public class CreazioneCorsoPage extends JFrame {
 		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
 		listaTemi.setVisibleRowCount(10);
 		listaTemi.setVisible(true);
+		
+		paroleScrollPane = new JScrollPane();
+		paroleScrollPane.setBounds(311, 168, 227, 97);
+		paroleScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		creaCorsoPanel.add(paroleScrollPane);
+		
+		listaParole = new JCheckBoxList();
+		listaParole.setModel(theController.setModelCheckBoxParole(parole));
+		paroleScrollPane.setViewportView(listaParole);
+		listaParole.setFont(new Font("Arial", Font.BOLD, 15));
+		listaParole.setVisibleRowCount(10);
+		listaParole.setVisible(true);
 
 		annoChooser = new JYearChooser();
 		annoChooser.setBounds(387, 66, 48, 20);
@@ -195,11 +205,11 @@ public class CreazioneCorsoPage extends JFrame {
 				
 				String nome = nomeTextField.getText().toLowerCase();
 				String descrizione = descrizioneTextField.getText().toLowerCase();
-				String paroleChiave = paroleChiaveTextBox.getText().toLowerCase();
 				String anno = String.valueOf(annoChooser.getYear());
 				String presenzeMin = presenzeMinTextField.getText();
 				String maxPartecipanti = maxPartecipantiTextField.getText();
 				boolean terminato;
+				Vector<ParoleChiave> paroleChiave = theController.getParoleSelezionate(listaParole, parole);
 				Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);
 				
 				if(terminatoCheckBox.isSelected())

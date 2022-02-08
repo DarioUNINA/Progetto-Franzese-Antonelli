@@ -48,6 +48,7 @@ public class Controller {
 		domandeSicurezzaDAO = new DomandeSicurezzaDAO ();
 		domandeOperatoriDAO = new DomandeOperatoriDAO();
 		paroleChiaveDAO = new ParoleChiaveDAO();
+		caratterizzaDAO = new CaratterizzaDAO();
 		
 		logIn = new LogInPage(this);
 
@@ -151,14 +152,16 @@ public class Controller {
 		return operatoriDAO.getOperatoreRecuperoPass(nome);
 	}
 	
-	public String aggiungiCorsoClicked(String nome, String descrizione, String paroleChiave, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idOperatore, Vector<AreeTematiche> areeTematiche) {
+	public String aggiungiCorsoClicked(String nome, String descrizione, Vector<ParoleChiave> paroleChiave, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idOperatore, Vector<AreeTematiche> areeTematiche) {
 		
-		String state = corsiDAO.aggiungiCorso(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, idOperatore);
+		String state = corsiDAO.aggiungiCorso(nome, descrizione, anno, presenzeMin, maxPartecipanti, terminato, idOperatore);
 		
 		if(state.equals("0"))
-			return temiDAO.inserisciTemi(corsiDAO.getIdCorso(nome), areeTematiche);
-		else
-			return state;
+			state = temiDAO.inserisciTemi(corsiDAO.getIdCorso(nome), areeTematiche);
+			if(state.equals("0"))
+				return state = caratterizzaDAO.inserisciCaratterizza(corsiDAO.getIdCorso(nome), paroleChiave);
+			
+		return state;
 			
 			
 	}

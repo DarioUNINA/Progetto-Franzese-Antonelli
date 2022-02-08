@@ -26,9 +26,7 @@ public Vector<ParoleChiave> getAllParoleChiave(){
 		Vector<ParoleChiave> parole = new Vector<ParoleChiave>();
 		ParoleChiave parola;
 		
-		parola = new ParoleChiave();
-		parole.add(parola);
-		
+
 		try {
 			ResultSet rs = statement.executeQuery("SELECT * FROM parole_chiave");
 			
@@ -39,7 +37,7 @@ public Vector<ParoleChiave> getAllParoleChiave(){
 			
 			return parole;
 		}catch(SQLException e) {
-			e.getMessage();
+			e.printStackTrace();
 			return parole;
 		}
 	}

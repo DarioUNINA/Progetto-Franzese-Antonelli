@@ -47,31 +47,34 @@ public class CorsiDAO {
 		
 		Vector<Corsi> corsiFiltrati = new Vector<Corsi>();
 		
-		String query = "SELECT * FROM corsi c ";
+		String query = "SELECT DISTINCT c.id_corso, c.id_operatore, c.nome, c.descrizione, c.presenze_min, c.max_partecipanti, c.anno, c.terminato FROM corsi c ";
 		
 		if(!area.isEmpty())
-			query = query + "JOIN temi te ON c.id_corso = te.id_corso WHERE te.nome_area = '" + area +  "'  AND ";
+			query = query + "JOIN temi te ON c.id_corso = te.id_corso WHERE "; 
 		else
 			query = query + "WHERE";
+		
+		for(AreeTematiche a:area)
+			query = query + "c.id_corso IN (SELECT t.id_corso FROM temi t WHERE t.nome_area = '" + a.getNomeArea() + "' ) AND "; 
 		
 		if(!anno.equals("")) 
 			query = query + " c.anno = '" +  anno + "'  AND ";
 	
-		if(!parolaChiave.equals(""))
-			query = query + " c.parole_chiave = '" + parolaChiave + "' AND ";
+		for(ParoleChiave p:parole)
+			query = query + "c.id_corso IN (SELECT ca.id_corso FROM caratterizza ca WHERE ca.parola_chiave = '" + p.getParolaChiave()+ "' ) AND "; 
 		
 		if(terminatoSi)
 			if(!terminatoNo) 
-
 				query = query + " c.terminato = true AND";
 		
 		if(terminatoNo)
 			if(!terminatoSi)
 
 				query = query + " c.terminato = false AND";
-		
 			
-		query = query + " c.id_operatore = '" + idOperatore + "'";		try {
+		query = query + " c.id_operatore = '" + idOperatore + "'";		
+		
+		try {
 			
 			ResultSet rs = statement.executeQuery(query);
 			

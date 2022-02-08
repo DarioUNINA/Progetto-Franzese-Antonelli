@@ -98,10 +98,8 @@ public class HomePage extends JFrame {
 		corsi = theController.getCorsiOperatore(operatore);
 		
 		areeTematiche = theController.getAllAreeTematiche();
-		areeTematiche.remove(0);
 		paroleChiave = theController.getAllParoleChiave();
-		paroleChiave.remove(0);
-		
+
 		this.getContentPane().setBackground(Color.BLUE);
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -416,7 +414,7 @@ public class HomePage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);					
+				Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);
 				Vector<ParoleChiave> parole = theController.getParoleSelezionate(listaParoleChiave, paroleChiave);
 				
 				String anno = annoComboBox.getSelectedItem().toString();

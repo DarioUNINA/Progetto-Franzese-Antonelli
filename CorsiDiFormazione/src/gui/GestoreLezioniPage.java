@@ -70,11 +70,6 @@ public class GestoreLezioniPage extends JFrame {
 		this.operatore = operatore;
 		corsi = theController.getCorsiOperatore(operatore);
 		corsiList = new JList<Corsi>(corsi);
-	//	corsiList.addListSelectionListener(new ListSelectionListener() {
-	//		public void valueChanged(ListSelectionEvent e) {
-				
-	//		}
-	//	});
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());

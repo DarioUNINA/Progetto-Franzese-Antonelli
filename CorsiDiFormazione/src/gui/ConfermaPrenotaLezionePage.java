@@ -26,6 +26,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Cursor;
 
 public class ConfermaPrenotaLezionePage extends JFrame {
 
@@ -85,6 +86,7 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		confermaPrenotaLezioneStudentiPanel.add(prenotazioneLezioneLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -106,6 +108,7 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		confermaPrenotaLezioneStudentiPanel.add(indietroButton);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {

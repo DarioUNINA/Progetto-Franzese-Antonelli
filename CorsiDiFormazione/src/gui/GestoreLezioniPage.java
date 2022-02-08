@@ -27,15 +27,7 @@ import javax.swing.JScrollPane;
 import dto.Corsi;
 import dto.Lezioni;
 import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import com.toedter.calendar.JDayChooser;
-import com.toedter.calendar.JMonthChooser;
-import com.toedter.calendar.JYearChooser;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
-import java.sql.Time;
-import javax.swing.ScrollPaneConstants;
+import java.awt.Cursor;
 
 public class GestoreLezioniPage extends JFrame {
 
@@ -130,6 +122,7 @@ public class GestoreLezioniPage extends JFrame {
 		corsiPanel.add(selezionaCorsoLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -152,6 +145,7 @@ public class GestoreLezioniPage extends JFrame {
 		contentPane.add(indietroButton);
 		
 		confermaCorsoButton = new JButton("CONFERMA");
+		confermaCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaCorsoButton.setBackground(Color.WHITE);
 		confermaCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -190,6 +184,7 @@ public class GestoreLezioniPage extends JFrame {
 		lezioniPanel.add(elencoLezioneDelCorsoLabel);
 		
 		panormaicaLezioneButton = new JButton("PANORAMICA");
+		panormaicaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panormaicaLezioneButton.setBackground(Color.WHITE);
 		panormaicaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -209,7 +204,9 @@ public class GestoreLezioniPage extends JFrame {
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
 		eliminaLezioneButton.addActionListener(new ActionListener() {
+		eliminaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			public void actionPerformed(ActionEvent e) {
+		eliminaLezioneButton.setForeground(Color.BLACK);
 			}
 		});
 		eliminaLezioneButton.setForeground(Color.RED);
@@ -290,6 +287,7 @@ public class GestoreLezioniPage extends JFrame {
 		giorniList.setVisible(true);
 		
 		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
+		aggiungiLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		aggiungiLezioneButton.setBackground(Color.WHITE);
 		aggiungiLezioneButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {

@@ -23,6 +23,7 @@ import javax.swing.border.LineBorder;
 import dto.Corsi;
 import dto.Operatori;
 import dto.Studenti;
+import java.awt.Cursor;
 
 public class AggiungiStudenteCorsoPage extends JFrame {
 
@@ -82,6 +83,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		prenotaLezioneStudentiPanel.add(aggiungiStudenteAlCorsoLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -103,6 +105,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		prenotaLezioneStudentiPanel.add(indietroButton);
 		
 		aggiungiButton = new JButton("AGGIUGI");
+		aggiungiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		aggiungiButton.setBackground(Color.WHITE);
 		aggiungiButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {

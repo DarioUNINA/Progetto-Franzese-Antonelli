@@ -26,6 +26,7 @@ import java.util.Vector;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 
 public class GestoreStudentiPage extends JFrame {
 	
@@ -82,6 +83,7 @@ public class GestoreStudentiPage extends JFrame {
 		selzionaStudentiPanel.add(selezionaStudenteLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -113,6 +115,7 @@ public class GestoreStudentiPage extends JFrame {
 		selzionaStudentiPanel.add(studentiComboBox);
 		
 		eliminaStudenteButton = new JButton("ELIMINA STUDENTE");
+		eliminaStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eliminaStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -125,6 +128,7 @@ public class GestoreStudentiPage extends JFrame {
 		selzionaStudentiPanel.add(eliminaStudenteButton);
 		
 		panoramicaButton = new JButton("PANORAMICA");
+		panoramicaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panoramicaButton.setBackground(Color.WHITE);
 		panoramicaButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -146,6 +150,7 @@ public class GestoreStudentiPage extends JFrame {
 		selzionaStudentiPanel.add(panoramicaButton);
 		
 		creaStudenteButton = new JButton("CREA STUDENTE");
+		creaStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		creaStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

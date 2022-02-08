@@ -27,6 +27,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import com.toedter.calendar.JCalendar;
+import java.awt.Cursor;
 
 public class CreazioneLezionePage extends JFrame {
 
@@ -121,6 +122,7 @@ public class CreazioneLezionePage extends JFrame {
 		creaLezionePanel.add(descrizioneLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -151,6 +153,7 @@ public class CreazioneLezionePage extends JFrame {
 		creaLezionePanel.add(orarioComboBox);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override

@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 
 public class RecuperoPassDomandaPage extends JFrame {
 
@@ -78,6 +79,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		recuperoPanel.add(rECUPEROPASSWORDLabel);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -106,6 +108,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		recuperoPanel.add(confermaButton);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override

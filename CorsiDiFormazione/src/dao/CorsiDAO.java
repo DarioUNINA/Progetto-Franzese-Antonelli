@@ -3,9 +3,11 @@ package dao;
 import java.sql.*;
 import java.util.Vector;
 
+import dto.AreeTematiche;
 import dto.Corsi;
 import dto.Lezioni;
 import dto.Operatori;
+import dto.ParoleChiave;
 import dto.Studenti;
 
 public class CorsiDAO {
@@ -41,14 +43,14 @@ public class CorsiDAO {
 		}
 	}
 	
-	public Vector<Corsi> addFiltri(String areaTematica, String anno, boolean terminatoSi, boolean terminatoNo, String parolaChiave, String idOperatore) {
+	public Vector<Corsi> addFiltri(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore) {
 		
 		Vector<Corsi> corsiFiltrati = new Vector<Corsi>();
 		
 		String query = "SELECT * FROM corsi c ";
 		
-		if(!areaTematica.equals(""))
-			query = query + "JOIN temi te ON c.id_corso = te.id_corso WHERE te.nome_area = '" + areaTematica +  "'  AND ";
+		if(!area.isEmpty())
+			query = query + "JOIN temi te ON c.id_corso = te.id_corso WHERE te.nome_area = '" + area +  "'  AND ";
 		else
 			query = query + "WHERE";
 		
@@ -83,7 +85,6 @@ public class CorsiDAO {
 				c.setDescrizione(rs.getString("descrizione"));
 				c.setPresenzeMin(rs.getInt("presenze_min"));
 				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
-				c.setParoleChiave(rs.getString("parole_chiave"));
 				c.setAnno(rs.getString("anno"));
 				c.setTerminato(rs.getBoolean("terminato"));
 				
@@ -118,7 +119,6 @@ public class CorsiDAO {
 				c.setIdCorso(rs.getString("id_corso"));
 				c.setIdOperatore(op.getIdOperatore());
 				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
-				c.setParoleChiave(rs.getString("parole_chiave"));
 				c.setPresenzeMin(rs.getInt("presenze_min"));
 				c.setTerminato(rs.getBoolean("terminato"));
 
@@ -191,7 +191,6 @@ public class CorsiDAO {
 				c.setDescrizione(rs.getString("descrizione"));
 				c.setPresenzeMin(rs.getInt("presenze_min"));
 				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
-				c.setParoleChiave(rs.getString("parole_chiave"));
 				c.setAnno(rs.getString("anno"));
 				c.setTerminato(rs.getBoolean("terminato"));
 				
@@ -222,7 +221,6 @@ public class CorsiDAO {
 			corso.setDescrizione(rs.getString("descrizione"));
 			corso.setPresenzeMin(rs.getInt("presenze_min"));
 			corso.setMaxPartecipanti(rs.getInt("max_partecipanti"));
-			corso.setParoleChiave(rs.getString("parole_chiave"));
 			corso.setAnno(rs.getString("anno"));
 			corso.setTerminato(rs.getBoolean("terminato"));
 
@@ -255,7 +253,6 @@ public  Vector<Corsi>setCorsiStudenteDelOperatore(String matricola, String id_op
 				c.setDescrizione(rs.getString("descrizione"));
 				c.setPresenzeMin(rs.getInt("presenze_min"));
 				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
-				c.setParoleChiave(rs.getString("parole_chiave"));
 				c.setAnno(rs.getString("anno"));
 				c.setTerminato(rs.getBoolean("terminato"));
 				

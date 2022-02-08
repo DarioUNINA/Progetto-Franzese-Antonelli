@@ -33,6 +33,7 @@ import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+import java.awt.Cursor;
 
 public class PanoramicaSingoloStudentePage extends JFrame {
 
@@ -141,7 +142,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiPanel.add(elencoCorsiLabel);
 		
 		corsiScrollPane = new JScrollPane();
-		corsiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		corsiScrollPane.setBounds(10, 36, 165, 240);
 		corsiPanel.add(corsiScrollPane);
 		
@@ -150,6 +150,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		confermaButton = new JButton("MOSTRA PRENOTAZIONI");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -184,7 +185,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		lezioniPanel.add(elencoLezioniLabel);
 		
 		lezioniScrollPane = new JScrollPane();
-		lezioniScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		lezioniScrollPane.setBounds(10, 36, 205, 294);
 		lezioniPanel.add(lezioniScrollPane);
 		
@@ -243,6 +243,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessiTable.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
 		iscriviAdUnCorsoButton = new JButton("ISCRIVI AD UN CORSO");
+		iscriviAdUnCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		iscriviAdUnCorsoButton.setBackground(Color.WHITE);
 		iscriviAdUnCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -256,6 +257,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessoPanel.add(iscriviAdUnCorsoButton);
 		
 		disiscriviDaUnCorsoButton = new JButton("DISISCRIVI DA UN CORSO");
+		disiscriviDaUnCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		disiscriviDaUnCorsoButton.setBackground(Color.WHITE);
 		disiscriviDaUnCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -269,6 +271,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessoPanel.add(disiscriviDaUnCorsoButton);
 		
 		prenotaLezioneButton = new JButton("PRENOTA LEZIONE");
+		prenotaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		prenotaLezioneButton.setBackground(Color.WHITE);
 		prenotaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -287,6 +290,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessoPanel.add(prenotaLezioneButton);
 		
 		annullaPrenotazioneButton = new JButton("ANNULLA PRENOTAZIONE");
+		annullaPrenotazioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		annullaPrenotazioneButton.setBackground(Color.WHITE);
 		annullaPrenotazioneButton.addMouseListener(new MouseAdapter() {
 			@Override

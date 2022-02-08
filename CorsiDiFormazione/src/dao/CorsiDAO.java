@@ -52,10 +52,10 @@ public class CorsiDAO {
 		if(!area.isEmpty())
 			query = query + "JOIN temi te ON c.id_corso = te.id_corso WHERE "; 
 		else
-			query = query + "WHERE";
+			query = query + "WHERE ";
 		
 		for(AreeTematiche a:area)
-			query = query + "c.id_corso IN (SELECT t.id_corso FROM temi t WHERE t.nome_area = '" + a.getNomeArea() + "' ) AND "; 
+			query = query + " c.id_corso IN (SELECT t.id_corso FROM temi t WHERE t.nome_area = '" + a.getNomeArea() + "' ) AND "; 
 		
 		if(!anno.equals("")) 
 			query = query + " c.anno = '" +  anno + "'  AND ";
@@ -73,6 +73,66 @@ public class CorsiDAO {
 				query = query + " c.terminato = false AND";
 			
 		query = query + " c.id_operatore = '" + idOperatore + "'";		
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery(query);
+			
+			while(rs.next()) {
+
+				Corsi c = new Corsi();
+				
+				c.setIdCorso(rs.getString("id_corso"));
+				c.setIdOperatore(idOperatore);
+				c.setNome(rs.getString("nome"));
+				c.setDescrizione(rs.getString("descrizione"));
+				c.setPresenzeMin(rs.getInt("presenze_min"));
+				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
+				c.setAnno(rs.getString("anno"));
+				c.setTerminato(rs.getBoolean("terminato"));
+				
+				corsiFiltrati.add(c);
+				
+			}
+				
+			return corsiFiltrati;
+		
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			return corsiFiltrati;
+		}
+	}
+	
+	
+public Vector<Corsi> addFiltriPartialMatch(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore) {
+		
+		Vector<Corsi> corsiFiltrati = new Vector<Corsi>();
+		
+		String query = "SELECT DISTINCT c.id_corso, c.id_operatore, c.nome, c.descrizione, c.presenze_min, c.max_partecipanti, c.anno, c.terminato FROM corsi c ";
+		
+		if(!area.isEmpty())
+			query = query + "JOIN temi te ON c.id_corso = te.id_corso WHERE c.id_operatore = '" + idOperatore + "' AND (";
+		else
+			query = query + "WHERE c.id_operatore = '" + idOperatore + "' AND (";
+		
+		for(AreeTematiche a:area)
+			query = query + " c.id_corso IN (SELECT t.id_corso FROM temi t WHERE t.nome_area = '" + a.getNomeArea() + "' ) OR "; 
+		
+		if(!anno.equals("")) 
+			query = query + " c.anno = '" +  anno + "'  AND (";
+	
+		for(ParoleChiave p:parole)
+			query = query + "c.id_corso IN (SELECT ca.id_corso FROM caratterizza ca WHERE ca.parola_chiave = '" + p.getParolaChiave()+ "' ) OR "; 
+		
+		query = query + " 1926 = 1926 ) ";
+		
+		if(terminatoSi)
+			query = query + " AND c.terminato = true";
+		
+		if(terminatoNo)
+			query = query + "  AND  c.terminato = false";
+			
 		
 		try {
 			

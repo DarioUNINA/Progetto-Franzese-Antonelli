@@ -47,6 +47,7 @@ import com.toedter.components.JLocaleChooser;
 import java.awt.Checkbox;
 import java.awt.Panel;
 import java.awt.Cursor;
+import javax.swing.JRadioButton;
 
 public class HomePage extends JFrame {
 	
@@ -89,6 +90,8 @@ public class HomePage extends JFrame {
 	private Vector<AreeTematiche> areeTematiche;
 	private Vector<Corsi> corsi;
 	private Vector<ParoleChiave> paroleChiave;
+	private JRadioButton FullMatchRadioButton;
+	private JRadioButton PartialMatchRadioButton;
 	
 
 	public HomePage(Controller cont, Operatori operatore) {
@@ -211,9 +214,14 @@ public class HomePage extends JFrame {
 		filtri.add(annoComboBox);
 		
 		terminatoCheckBoxSi = new JCheckBox("SI");
+		terminatoCheckBoxNo = new JCheckBox("NO");
 		terminatoCheckBoxSi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				terminatoCheckBoxNo.setSelected(false);
+				terminatoCheckBoxNo.setForeground(Color.BLACK);
+				
 				if(terminatoCheckBoxSi.getSelectedObjects() != null)
 					terminatoCheckBoxSi.setForeground(Color.GREEN);
 				else
@@ -224,10 +232,14 @@ public class HomePage extends JFrame {
 		terminatoCheckBoxSi.setBounds(105, 171, 46, 23);
 		filtri.add(terminatoCheckBoxSi);
 		
-		terminatoCheckBoxNo = new JCheckBox("NO");
+		
 		terminatoCheckBoxNo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				terminatoCheckBoxSi.setSelected(false);
+				terminatoCheckBoxSi.setForeground(Color.BLACK);
+				
 				if(terminatoCheckBoxNo.getSelectedObjects() != null)
 					terminatoCheckBoxNo.setForeground(Color.RED);
 				else
@@ -400,6 +412,9 @@ public class HomePage extends JFrame {
 				terminatoCheckBoxNo.setForeground(Color.BLACK);		
 				listaParoleChiave.setModel(theController.setModelCheckBoxParole(paroleChiave));
 				
+				corsi = theController.getCorsiOperatore(operatore);
+				corsiList.setListData(corsi);
+				
 			}
 		});
 		resetFiltriButton.setForeground(Color.RED);
@@ -430,8 +445,13 @@ public class HomePage extends JFrame {
 					terminatoNo = true;
 				else
 					terminatoNo = false;
+				
+				if(FullMatchRadioButton.isSelected())
+					corsi = theController.setCorsiFiltrati(aree, anno, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
+				else
+					corsi = theController.setCorsiFiltratiPartialMatch(aree, anno, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
 
-				corsiList.setListData(theController.setCorsiFiltrati(aree, anno, terminatoSi, terminatoNo, parole, operatore.getIdOperatore()));
+				corsiList.setListData(corsi);
 				
 			}
 		});
@@ -439,6 +459,34 @@ public class HomePage extends JFrame {
 		filtraButton.setBounds(193, 307, 89, 23);
 		filtraButton.setFont(new Font("Arial", Font.BOLD, 15));
 		filtri.add(filtraButton);
+		
+		FullMatchRadioButton = new JRadioButton("Full Match");
+		PartialMatchRadioButton = new JRadioButton("Partial Match");
+		
+		FullMatchRadioButton.setSelected(true);
+		
+		FullMatchRadioButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+			PartialMatchRadioButton.setSelected(false);
+				
+			}
+		});
+		FullMatchRadioButton.setBounds(105, 8, 80, 23);
+		filtri.add(FullMatchRadioButton);
+		
+		
+		PartialMatchRadioButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				FullMatchRadioButton.setSelected(false);
+				
+			}
+		});
+		PartialMatchRadioButton.setBounds(190, 8, 96, 23);
+		filtri.add(PartialMatchRadioButton);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

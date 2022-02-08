@@ -36,7 +36,6 @@ public class IscrizioniDAO {
 				c.setIdCorso(rs.getString("id_corso"));
 				c.setIdOperatore(rs.getString("id_operatore"));
 				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
-				c.setParoleChiave(rs.getString("parole_chiave"));
 				c.setPresenzeMin(rs.getInt("presenze_min"));
 				c.setTerminato(rs.getBoolean("terminato"));
 
@@ -70,7 +69,6 @@ public Vector<Corsi> getDisiscrizioneCorsiStudente(String matricola, String id_o
 				c.setIdCorso(rs.getString("id_corso"));
 				c.setIdOperatore(rs.getString("id_operatore"));
 				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
-				c.setParoleChiave(rs.getString("parole_chiave"));
 				c.setPresenzeMin(rs.getInt("presenze_min"));
 				c.setTerminato(rs.getBoolean("terminato"));
 

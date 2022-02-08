@@ -263,13 +263,13 @@ public class GestoreLezioniPage extends JFrame {
 		mesiLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		JButton filtraButton = new JButton("FILTRA");
-		filtraButton.setBounds(172, 301, 71, 23);
+		filtraButton.setBounds(172, 301, 84, 23);
 		panel.add(filtraButton);
 		filtraButton.setForeground(Color.RED);
 		filtraButton.setFont(new Font("Arial", Font.BOLD, 12));
 		
 		JButton resetButton = new JButton("RESET");
-		resetButton.setBounds(30, 301, 69, 23);
+		resetButton.setBounds(24, 301, 84, 23);
 		panel.add(resetButton);
 		resetButton.setFont(new Font("Arial", Font.BOLD, 12));
 		resetButton.setForeground(new Color(65, 105, 225));

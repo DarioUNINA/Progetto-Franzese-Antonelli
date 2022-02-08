@@ -119,6 +119,11 @@ public class Controller {
 		return corsiDAO.addFiltri(area, anno, terminatoSi, terminatoNo, parole, idOperatore);
 	}
 	
+	public Vector<Corsi> setCorsiFiltratiPartialMatch(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore){
+		
+		return corsiDAO.addFiltriPartialMatch(area, anno, terminatoSi, terminatoNo, parole, idOperatore);
+	}
+	
 	Operatori getOperatore(String nome) {
 		
 		return operatoriDAO.getOperatore(nome);

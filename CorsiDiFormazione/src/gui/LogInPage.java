@@ -9,8 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import org.w3c.dom.events.MouseEvent;
-
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,7 +36,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseWheelEvent;
 import javax.swing.border.LineBorder;
+
+
+
 import java.awt.Cursor;
+import java.awt.FlowLayout;
+import java.awt.event.MouseEvent;
 
 public class LogInPage extends JFrame {
 
@@ -57,7 +60,7 @@ public class LogInPage extends JFrame {
 	private JPanel registratiPanel;
 	private JButton registratiButton;
 	private JLabel bENVENUTOLabel;
-	
+	private JButton btnNewButton;
 	public LogInPage(Controller controller) {
 		
 		imageicon = new ImageIcon("napule.png");
@@ -68,7 +71,7 @@ public class LogInPage extends JFrame {
 		setResizable(false);
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 813, 490);
+		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(65, 105, 225));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -77,29 +80,29 @@ public class LogInPage extends JFrame {
 
 		logInPanel = new JPanel();
 		logInPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		logInPanel.setBounds(69, 55, 662, 270);
+		logInPanel.setBounds(61, 55, 764, 394);
 		contentPane.add(logInPanel);
 		logInPanel.setLayout(null);
 
 		nomeUtenteField = new JTextField();
-		nomeUtenteField.setFont(new Font("Arial", Font.BOLD, 11));
-		nomeUtenteField.setBounds(269, 55, 121, 20);
+		nomeUtenteField.setFont(new Font("Arial", Font.BOLD, 20));
+		nomeUtenteField.setBounds(300, 87, 166, 39);
 		logInPanel.add(nomeUtenteField);
 		nomeUtenteField.setColumns(10);
 
 		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Arial", Font.BOLD, 11));
-		passwordField.setBounds(269, 105, 121, 20);
+		passwordField.setFont(new Font("Arial", Font.BOLD, 20));
+		passwordField.setBounds(300, 152, 166, 35);
 		logInPanel.add(passwordField);
 
-		nomeUtenteLabel = new JLabel("Nome Utente:");
-		nomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		nomeUtenteLabel.setBounds(154, 57, 101, 14);
+		nomeUtenteLabel = new JLabel(" Nome Utente:");
+		nomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 32));
+		nomeUtenteLabel.setBounds(68, 89, 234, 37);
 		logInPanel.add(nomeUtenteLabel);
 
 		passwordLabel = new JLabel("      Password:");
-		passwordLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		passwordLabel.setBounds(154, 107, 101, 14);
+		passwordLabel.setFont(new Font("Arial", Font.BOLD, 32));
+		passwordLabel.setBounds(68, 152, 222, 33);
 		logInPanel.add(passwordLabel);
 
 		accediButton = new JButton("ACCEDI");
@@ -138,8 +141,8 @@ public class LogInPage extends JFrame {
 			}	
 		});
 
-		accediButton.setFont(new Font("Arial", Font.BOLD, 15));
-		accediButton.setBounds(269, 151, 121, 27);
+		accediButton.setFont(new Font("Arial", Font.BOLD, 18));
+		accediButton.setBounds(300, 226, 166, 35);
 		logInPanel.add(accediButton);
 
 		passwordDimenticataLabel = new JLabel("Hai dimenticato la Password?");
@@ -152,17 +155,17 @@ public class LogInPage extends JFrame {
 			}
 		});
 		
-		passwordDimenticataLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		passwordDimenticataLabel.setBounds(227, 211, 207, 14);
+		passwordDimenticataLabel.setFont(new Font("Arial", Font.BOLD, 20));
+		passwordDimenticataLabel.setBounds(243, 309, 294, 24);
 		logInPanel.add(passwordDimenticataLabel);
 
 		registratiPanel = new JPanel();
 		registratiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		registratiPanel.setBounds(69, 348, 662, 47);
+		registratiPanel.setBounds(61, 478, 764, 55);
 		contentPane.add(registratiPanel);
-		registratiPanel.setLayout(null);
 
 		registratiButton = new JButton("REGISTRATI");
+		registratiButton.setBounds(304, 11, 156, 31);
 		registratiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		registratiButton.setBackground(Color.WHITE);
 		registratiButton.addActionListener(new ActionListener() {
@@ -186,18 +189,16 @@ public class LogInPage extends JFrame {
 				setVisible(false);
 			}
 		});
-
-		registratiButton.setBounds(262, 11, 137, 27);
-		registratiButton.setFont(new Font("Arial", Font.BOLD, 15));
+		registratiPanel.setLayout(null);
+		registratiButton.setFont(new Font("Arial", Font.BOLD, 18));
 		registratiPanel.add(registratiButton);
 
 		bENVENUTOLabel = new JLabel("BENVENUTO");
 		bENVENUTOLabel.setBackground(new Color(255, 255, 255));
 		bENVENUTOLabel.setForeground(new Color(0, 0, 0));
-		bENVENUTOLabel.setBounds(324, 11, 150, 33);
-		bENVENUTOLabel.setFont(new Font("Arial", Font.BOLD, 22));
+		bENVENUTOLabel.setBounds(346, 11, 200, 33);
+		bENVENUTOLabel.setFont(new Font("Arial", Font.BOLD, 32));
 		contentPane.add(bENVENUTOLabel);
-		
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -214,5 +215,4 @@ public class LogInPage extends JFrame {
 	public void alertPasswordNonInserita() {
 		JOptionPane.showMessageDialog(this, "Password non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
-
 }

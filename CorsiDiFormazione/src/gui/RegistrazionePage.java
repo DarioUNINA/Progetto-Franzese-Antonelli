@@ -70,7 +70,7 @@ public class RegistrazionePage extends JFrame {
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 813, 490);
+		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(65, 105, 225));
 		contentPane.setForeground(Color.DARK_GRAY);
@@ -81,7 +81,7 @@ public class RegistrazionePage extends JFrame {
 		registrazionePanel = new JPanel();
 		registrazionePanel.setBackground(SystemColor.control);
 		registrazionePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		registrazionePanel.setBounds(29, 29, 745, 395);
+		registrazionePanel.setBounds(35, 29, 815, 501);
 		contentPane.add(registrazionePanel);
 		registrazionePanel.setLayout(null);
 		
@@ -104,49 +104,49 @@ public class RegistrazionePage extends JFrame {
 			}
 		});
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(23, 361, 121, 23);
+		indietroButton.setBounds(10, 458, 161, 32);
 		registrazionePanel.add(indietroButton);
 		
 		nomeTextField = new JTextField();
-		nomeTextField.setFont(new Font("Arial", Font.BOLD, 13));
-		nomeTextField.setBounds(46, 110, 297, 32);
+		nomeTextField.setFont(new Font("Arial", Font.BOLD, 15));
+		nomeTextField.setBounds(80, 132, 297, 32);
 		registrazionePanel.add(nomeTextField);
 		nomeTextField.setColumns(10);
 		
 		passwordTextField = new JTextField();
-		passwordTextField.setFont(new Font("Arial", Font.BOLD, 13));
-		passwordTextField.setBounds(403, 110, 297, 32);
+		passwordTextField.setFont(new Font("Arial", Font.BOLD, 15));
+		passwordTextField.setBounds(437, 132, 297, 32);
 		registrazionePanel.add(passwordTextField);
 		passwordTextField.setColumns(10);
 		
-		domandeComboBox.setFont(new Font("Arial", Font.BOLD, 13));
+		domandeComboBox.setFont(new Font("Arial", Font.BOLD, 15));
 		domandeComboBox.setMaximumRowCount(3);
-		domandeComboBox.setBounds(46, 217, 297, 32);
+		domandeComboBox.setBounds(80, 271, 297, 32);
 		registrazionePanel.add(domandeComboBox);
 		
 		rispostaSicurezzaField = new JTextField();
-		rispostaSicurezzaField.setFont(new Font("Arial", Font.BOLD, 13));
-		rispostaSicurezzaField.setBounds(403, 217, 297, 32);
+		rispostaSicurezzaField.setFont(new Font("Arial", Font.BOLD, 15));
+		rispostaSicurezzaField.setBounds(437, 271, 297, 32);
 		registrazionePanel.add(rispostaSicurezzaField);
 		rispostaSicurezzaField.setColumns(10);
 		
 		inserireRispostaLabel = new JLabel("Inserire Risposta");
-		inserireRispostaLabel.setBounds(489, 177, 128, 39);
+		inserireRispostaLabel.setBounds(524, 244, 128, 39);
 		registrazionePanel.add(inserireRispostaLabel);
 		inserireRispostaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		nuovaPasswordLabel = new JLabel("Inserire Password");
-		nuovaPasswordLabel.setBounds(489, 72, 128, 39);
+		nuovaPasswordLabel.setBounds(524, 106, 128, 39);
 		registrazionePanel.add(nuovaPasswordLabel);
 		nuovaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		nuovoNomeUtenteLabel = new JLabel("Inserire Nome Utente");
-		nuovoNomeUtenteLabel.setBounds(120, 72, 161, 39);
+		nuovoNomeUtenteLabel.setBounds(130, 106, 161, 39);
 		registrazionePanel.add(nuovoNomeUtenteLabel);
 		nuovoNomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		scegliereDomandaLabel = new JLabel("Scegliere Domanda di Sicurezza");
-		scegliereDomandaLabel.setBounds(76, 177, 242, 39);
+		scegliereDomandaLabel.setBounds(101, 244, 242, 39);
 		registrazionePanel.add(scegliereDomandaLabel);
 		scegliereDomandaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
@@ -154,24 +154,24 @@ public class RegistrazionePage extends JFrame {
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		confermaButton.setBounds(310, 288, 128, 32);
+		confermaButton.setBounds(338, 360, 161, 39);
 		registrazionePanel.add(confermaButton);
 		
 		promemoriaLabel = new JLabel("La Password deve contenere almeno 6 caratteri!");
 		promemoriaLabel.setForeground(Color.RED);
-		promemoriaLabel.setBounds(413, 141, 287, 14);
+		promemoriaLabel.setBounds(447, 166, 287, 14);
 		registrazionePanel.add(promemoriaLabel);
 		
 		nonCaratteriSpecialiLabel = new JLabel("I Dati non devono contenere caratteri Speciali (!,\",@)");
 		nonCaratteriSpecialiLabel.setForeground(Color.RED);
-		nonCaratteriSpecialiLabel.setBounds(46, 141, 297, 14);
+		nonCaratteriSpecialiLabel.setBounds(90, 166, 297, 14);
 		registrazionePanel.add(nonCaratteriSpecialiLabel);
 		
 		iSCRIVITILabel = new JLabel("ISCRIVITI");
 		iSCRIVITILabel.setForeground(Color.BLACK);
-		iSCRIVITILabel.setFont(new Font("Arial", Font.BOLD, 22));
+		iSCRIVITILabel.setFont(new Font("Arial", Font.BOLD, 32));
 		iSCRIVITILabel.setBackground(Color.WHITE);
-		iSCRIVITILabel.setBounds(325, 11, 97, 33);
+		iSCRIVITILabel.setBounds(338, 11, 161, 33);
 		registrazionePanel.add(iSCRIVITILabel);
 		
 		confermaButton.addMouseListener(new MouseAdapter() {

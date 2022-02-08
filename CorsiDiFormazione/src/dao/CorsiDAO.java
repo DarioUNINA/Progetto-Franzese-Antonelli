@@ -43,7 +43,7 @@ public class CorsiDAO {
 		}
 	}
 	
-	public Vector<Corsi> addFiltri(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore) {
+	public Vector<Corsi> addCorsiFiltrati(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore) {
 		
 		Vector<Corsi> corsiFiltrati = new Vector<Corsi>();
 		

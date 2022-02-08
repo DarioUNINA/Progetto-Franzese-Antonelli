@@ -109,7 +109,7 @@ public class GestoreLezioniPage extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 813, 490);
+		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(65, 105, 225));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));

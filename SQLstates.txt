@@ -20,4 +20,4 @@
 
 10011 eliminazione presenza di lezione terminata
 
-
+10012 creazione di una lezione in contemporanea

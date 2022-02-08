@@ -202,12 +202,12 @@ public Vector<Corsi> addFiltriPartialMatch(Vector<AreeTematiche> area, String an
 		
 	}
 
-	public String aggiungiCorso(String nome, String descrizione, String paroleChiave, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idOperatore) {
+	public String aggiungiCorso(String nome, String descrizione, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idOperatore) {
 		
 		try {
 			
 			if(!statement.execute("INSERT INTO corsi VALUES (nextval('sequenza_id_corso'), '" + idOperatore + "' , '" + nome + "' , '" + descrizione
-					+ "', '" + presenzeMin + "', '" + maxPartecipanti + "' , '" + paroleChiave + "' , '" + anno + "')" ))
+					+ "', '" + presenzeMin + "', '" + maxPartecipanti + "' , '" + anno + "')" ))
 				return "0";
 			else 
 				return "-1";

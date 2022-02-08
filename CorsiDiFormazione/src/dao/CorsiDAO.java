@@ -30,8 +30,6 @@ public class CorsiDAO {
 		try {
 			ResultSet rs = statement.executeQuery("SELECT DISTINCT anno FROM corsi ORDER BY anno");
 			
-			anno.add("");
-			
 			while(rs.next()) {
 				anno.add(rs.getString(1));
 			}

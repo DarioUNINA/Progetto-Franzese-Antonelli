@@ -2,6 +2,7 @@ COSE DA FARE PROGETTO:
 
 LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 
+1)CREARE TRIGGER inserimento automatico in temi  e caratterizzazione (on insert on corsi)
 
 2) CREA STUDENTE ( GestoreStudentiPage ):
    Creare completamente la pagina( da fare assieme per decidere come gestirla),
@@ -12,9 +13,6 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
    Popolare la tabella dei corsi con i vari dettagli dei corsi alla quale
    lo studente è iscritto.
 
-4) ANNULLA PRENOTAZIONE LEZIONE ( PanoramicaSingoloStudentePage ):
-   Dopo aver annullato la prenotazione effettuare il reset della lista lezioni.
-
 5) POPOLAMENTO TABELE HOMEPAGE ( HomePage ):
    Popolamento tabelle( da fare assieme per decidere come gestirla).
 
@@ -24,4 +22,8 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 9)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
    ad esempio ho notato che eliminazione operatore è un motodo String
    
- 10) aggiungere filtri a gestione lezioni
+10) gestione dei filtri della lezione
+
+11) gestione della checkboxlist di anni in homepage
+
+12) ridisegnare homepage

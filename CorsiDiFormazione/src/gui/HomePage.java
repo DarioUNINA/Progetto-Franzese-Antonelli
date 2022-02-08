@@ -90,6 +90,7 @@ public class HomePage extends JFrame {
 	private Vector<AreeTematiche> areeTematiche;
 	private Vector<Corsi> corsi;
 	private Vector<ParoleChiave> paroleChiave;
+	private Vector<String> anni;
 	private JRadioButton FullMatchRadioButton;
 	private JRadioButton PartialMatchRadioButton;
 	
@@ -99,6 +100,7 @@ public class HomePage extends JFrame {
 		theController = cont;
 		this.operatore = operatore;
 		corsi = theController.getCorsiOperatore(operatore);
+		anni = theController.getAllAnni();
 		
 		areeTematiche = theController.getAllAreeTematiche();
 		paroleChiave = theController.getAllParoleChiave();
@@ -209,10 +211,6 @@ public class HomePage extends JFrame {
 		parolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		filtri.add(parolaChiaveLabel);
 				
-		annoComboBox = new JComboBox<String>(theController.setAnnoComboBox());
-		annoComboBox.setBounds(105, 147, 134, 22);
-		filtri.add(annoComboBox);
-		
 		terminatoCheckBoxSi = new JCheckBox("SI");
 		terminatoCheckBoxNo = new JCheckBox("NO");
 		terminatoCheckBoxSi.addMouseListener(new MouseAdapter() {

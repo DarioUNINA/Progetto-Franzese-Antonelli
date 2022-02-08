@@ -110,7 +110,7 @@ public class Controller {
 		return areeTematicheDAO.getAllAreeTematiche();
 	}
 	
-	public Vector<String> setAnnoComboBox(){
+	public Vector<String> getAllAnni(){
 		
 		return corsiDAO.getAnno();
 	}
@@ -141,9 +141,9 @@ public class Controller {
 		return operatoriDAO.modificaNomeUtente(nomeUtente, vecchio);
 	}
 	
-	public void eliminaCorso(String nomeCorso) {
+	public String eliminaCorso(String nomeCorso) {
 		
-		operatoriDAO.eliminaCorsiImpostazioni(nomeCorso);
+		return operatoriDAO.eliminaCorsiImpostazioni(nomeCorso);
 
 	}
 

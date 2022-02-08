@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 
+import dto.Corsi;
 import dto.Operatori;
 import java.awt.EventQueue;
 
@@ -23,6 +24,7 @@ import javax.swing.JComboBox;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
@@ -42,6 +44,7 @@ public class EliminaCorsoPage extends JFrame {
 	private JLabel eliminazioneCorsoLabel;
 	private JButton indietroButton;
 	private JLabel selezionaCorsoLabel;
+	private Vector <Corsi> corsi;
 
 	
 	public EliminaCorsoPage(Controller controller, Operatori operatore) {
@@ -83,7 +86,8 @@ public class EliminaCorsoPage extends JFrame {
 		selezionaCorsoLabel.setBounds(138, 75, 267, 23);
 		eliminaCorsoPanel.add(selezionaCorsoLabel);
 		
-		corsiComboBox = new JComboBox(theController.getCorsiOperatore(operatore));
+		corsi = theController.getCorsiOperatore(operatore);
+		corsiComboBox = new JComboBox(corsi);
 		corsiComboBox.setFont(new Font("Arial", Font.BOLD, 11));
 		corsiComboBox.setBounds(193, 122, 165, 22);
 		eliminaCorsoPanel.add(corsiComboBox);
@@ -151,11 +155,37 @@ public class EliminaCorsoPage extends JFrame {
 				opzioni,
 				opzioni[0]);
 		if(n==0) {
-			theController.eliminaCorso(corso);
-			HomePage hp = new HomePage(theController, operatore);
-			setVisible(false);
-		}
+			String state = theController.eliminaCorso(corso);
+			
+			if(state.equals("0"))
+				alertEliminazioneEffettuata();
+			else
+				alertEliminazioneFallita(state);
+			
 			
 		}
+			
+	}
+	
+	public void alertEliminazioneEffettuata() {
+		
+		JOptionPane.showMessageDialog(this, "Corso eliminato con successo","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
+
+		HomePage hp = new HomePage(theController, operatore);
+		setVisible(false);
+		
+	}
+	
+	public void alertEliminazioneFallita(String state) {
+		
+		if(state.equals("-1"))
+			JOptionPane.showMessageDialog(this, "Impossibile eliminare il corso a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			JOptionPane.showMessageDialog(this, "Impossibile eliminare il corso, codice d'errore: " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+
+	}
+	
+	
 		
 }

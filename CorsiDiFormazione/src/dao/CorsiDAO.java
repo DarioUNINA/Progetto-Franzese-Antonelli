@@ -69,7 +69,6 @@ public class CorsiDAO {
 			
 		query = query + " c.id_operatore = '" + idOperatore + "'";	
 		
-		System.out.println(query);
 		
 		try {
 			

@@ -88,7 +88,6 @@ public class HomePage extends JFrame {
 	private JScrollPane annoScrollPane;
 	private JList<Corsi> corsiList;
 	private JPanel gestione;
-	private JButton gestioneCorsiButton;
 	private JButton gestioneLezioniButton;
 	private JButton gestioneStudentiButton;
 	private JButton resetFiltriButton;
@@ -292,13 +291,6 @@ public class HomePage extends JFrame {
 		gestione.setBounds(386, 331, 488, 219);
 		sfondoPane.add(gestione);
 		gestione.setLayout(null);
-		
-		gestioneCorsiButton = new JButton("GESTIONE CORSI");
-		gestioneCorsiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		gestioneCorsiButton.setBackground(Color.WHITE);
-		gestioneCorsiButton.setFont(new Font("Arial", Font.BOLD, 13));
-		gestioneCorsiButton.setBounds(291, 26, 174, 22);
-		gestione.add(gestioneCorsiButton);
 		
 		gestioneLezioniButton = new JButton("GESTIONE LEZIONI");
 		gestioneLezioniButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

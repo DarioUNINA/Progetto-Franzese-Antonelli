@@ -157,6 +157,7 @@ public class GestoreStudentiPage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				CreazioneStudentePage page = new CreazioneStudentePage(theController, operatore);
+				setVisible(false);
 			}
 		});
 		creaStudenteButton.setBackground(Color.WHITE);

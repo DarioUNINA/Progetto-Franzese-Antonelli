@@ -132,4 +132,24 @@ public Vector<Corsi> getDisiscrizioneCorsiStudente(String matricola, String id_o
 			return false;
 		}
 	}
+	
+	
+	public String inserisciIscrizioni(String matricola, Vector<Corsi> corsi) {
+		
+		String state;
+		
+		try {
+			
+			for(Corsi corso:corsi)
+				statement.execute("INSERT INTO iscrizioni VALUES ('" + matricola + "' , '" + corso.getIdCorso() + "')");
+			
+			return "0";
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+		
+		
+	}
 }

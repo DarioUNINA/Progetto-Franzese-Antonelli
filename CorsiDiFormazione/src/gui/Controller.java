@@ -489,6 +489,25 @@ public class Controller {
 		return model;
 		
 	}
+	
+	
+public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
+		
+		Vector<JCheckBox> checkBoxList = new Vector<JCheckBox>();
+	
+		JCheckBox checkBox;
+
+		for(Corsi c:corsi) {
+			checkBox = new JCheckBox(c.toString());
+			checkBoxList.add(checkBox);
+		}
+		
+		DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+		model.addAll(checkBoxList);
+		
+		return model;
+		
+	}
 
 	public Vector<ParoleChiave> getAllParoleChiave(){
 	
@@ -579,9 +598,35 @@ public class Controller {
 		return vettore;
 	}
 	
+	
+	public Vector<Corsi> getCorsiSelezionati(JCheckBoxList box, Vector<Corsi> corsi){
+		
+		Vector<Corsi> vettore = new Vector<Corsi>();
+		
+		for(int i=0;i<corsi.size();i++)
+			if(box.getModel().getElementAt(i).isSelected())
+				vettore.add(corsi.get(i));
+		
+		return vettore;
+		
+	}
+
+	
 	public String getNumeroLezioni(String id_corso) {
 		return lezioniDAO.getNumeroLezioni(id_corso);
 	}
 
+	public String creaStudente(Studenti studente, Vector<Corsi> corsi) {
+		
+		String state = studentiDAO.creaStudente(studente);
+		
+		if(state.equals("0"))
+			return iscrizioniDAO.inserisciIscrizioni(studentiDAO.getLastStudenteCreato().getMatricola(), corsi);
+		
+		return state;
+		
+	}
+	
+	
 	
 }

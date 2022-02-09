@@ -107,13 +107,12 @@ public class GestoreLezioniPage extends JFrame {
 					String id_corso = corsiList.getSelectedValue().getIdCorso();
 					if(theController.setAllLezioniDelCorso(id_corso).isEmpty())
 						alertNessunaLezioneDisponibile();
-					else {
-						lezioni = theController.setAllLezioniDelCorso(id_corso);
-						lezioniList.setListData(lezioni);
+				
+					lezioni = theController.setAllLezioniDelCorso(id_corso);
+					lezioniList.setListData(lezioni);
 					}
 				}
-				
-			}
+		
 		});
 		
 		mesi = theController.getMesi();
@@ -322,9 +321,6 @@ public class GestoreLezioniPage extends JFrame {
 				setAllGiorniRadioButton.setText("set all");
 				setAllMesiRadioButton.setSelected(false);
 				setAllMesiRadioButton.setText("set all");
-				
-				
-				
 			}
 		});
 		resetButton.setBackground(Color.WHITE);

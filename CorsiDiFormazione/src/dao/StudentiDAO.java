@@ -147,5 +147,41 @@ public class StudentiDAO {
 		}
 	}
 	
+	public String creaStudente(Studenti studente) {
+		
+		try {
+			
+			if(!statement.execute("INSERT INTO studenti VALUES (nextval('sequenza_matricola'),'" + studente.getNome() + "' , '" + studente.getCognome() + "')"))
+				return "0";
+				
+			return "-1";
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+		
+		
+	}
+	
+	public Studenti getLastStudenteCreato() {
+		
+		Studenti studente = new Studenti();
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("select * from studenti s order by  cast( matricola as integer) DESC");
+			rs.next();
+			studente = new Studenti(rs.getString("matricola"), rs.getString("nome"), rs.getString("cognome"));
+			
+			return studente;
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return studente;
+			
+		}
+	}
+	
 	
 }

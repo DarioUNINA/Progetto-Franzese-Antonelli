@@ -192,7 +192,10 @@ public class LezioniDAO {
 					query = query + " l.data = '" + giorno + "/" + mese + "/" + anno + "' OR ";
 			
 			
-		query = query + "1=0 ) AND (";
+		if(giorni.isEmpty())
+			query = query + "1=1 ) AND (";
+		else
+			query = query + "1=0 ) AND (";
 		
 		for(Time durata:durate)
 			query = query + "l.durata = '" + durata.getTime() + "' OR";

@@ -420,7 +420,7 @@ public class HomePage extends JFrame {
 				Vector<ParoleChiave> parole = theController.getParoleSelezionate(listaParoleChiave, paroleChiave);
 				
 				Vector<String> vettoreAnni = theController.getStringheSelezionate(annoList, anni);
-				
+
 				boolean terminatoSi , terminatoNo; 
 				
 				if(terminatoCheckBoxSi.isSelected())
@@ -438,11 +438,11 @@ public class HomePage extends JFrame {
 					if(vettoreAnni.size()>1)
 						alertCorsiFM();
 					else
-						corsi = theController.setCorsiFiltratiFM(aree, anni, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
+						corsi = theController.setCorsiFiltratiFM(aree, vettoreAnni, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
 				}
 					
 				else
-					corsi = theController.setCorsiFiltratiPM(aree, anni, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
+					corsi = theController.setCorsiFiltratiPM(aree, vettoreAnni, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
 
 				corsiList.setListData(corsi);
 				

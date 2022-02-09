@@ -567,4 +567,17 @@ public class Controller {
 	public Boolean getAmmessoAdEsame(String matricola, String id_corso) {
 		return iscrizioniDAO.getAmmessoAdEsame(matricola, id_corso);
 	}
+	
+	Vector<String> getStringheSelezionate(JCheckBoxList box, Vector<String> anni){
+		
+		Vector<String> vettore = new Vector<String>();
+		
+		for(int i=0;i<anni.size();i++)
+			if(box.getModel().getElementAt(i).isSelected())
+				vettore.add(anni.get(i));
+		
+		return vettore;
+	}
+
+	
 }

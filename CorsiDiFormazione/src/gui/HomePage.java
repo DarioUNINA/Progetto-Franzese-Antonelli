@@ -48,6 +48,9 @@ import java.awt.Checkbox;
 import java.awt.Panel;
 import java.awt.Cursor;
 import javax.swing.JRadioButton;
+import javax.swing.JToolBar;
+import javax.swing.JDesktopPane;
+import javax.swing.Icon;
 
 public class HomePage extends JFrame {
 	
@@ -93,6 +96,8 @@ public class HomePage extends JFrame {
 	private Vector<String> anni;
 	private JRadioButton FullMatchRadioButton;
 	private JRadioButton PartialMatchRadioButton;
+	private JPanel panel;
+	private JButton btnNewButton;
 	
 
 	public HomePage(Controller cont, Operatori operatore) {
@@ -114,17 +119,16 @@ public class HomePage extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 813, 490);
+		setBounds(100, 100, 900, 600);
 		sfondoPane = new JPanel();
 		sfondoPane.setBackground(new Color(65, 105, 225));
 		sfondoPane.setBorder(new LineBorder(Color.BLACK));
 		setContentPane(sfondoPane);
 		sfondoPane.setLayout(null);
-		
 		benvenuto = new JPanel();
 		benvenuto.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		benvenuto.setBackground(SystemColor.control);
-		benvenuto.setBounds(10, 11, 777, 77);
+		benvenuto.setBounds(97, 11, 777, 77);
 		sfondoPane.add(benvenuto);
 		benvenuto.setLayout(null);
 		
@@ -181,7 +185,7 @@ public class HomePage extends JFrame {
 		filtri = new JPanel();
 		filtri.setBorder(new LineBorder(Color.BLACK, 2));
 		filtri.setBackground(SystemColor.control);
-		filtri.setBounds(10, 99, 292, 341);
+		filtri.setBounds(97, 101, 292, 341);
 		sfondoPane.add(filtri);
 		filtri.setLayout(null);
 		
@@ -277,7 +281,7 @@ public class HomePage extends JFrame {
 		corsiPanel = new JPanel();
 		corsiPanel.setBorder(new LineBorder(Color.BLACK, 2));
 		corsiPanel.setBackground(SystemColor.control);
-		corsiPanel.setBounds(312, 99, 475, 166);
+		corsiPanel.setBounds(399, 99, 475, 166);
 		sfondoPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
 		
@@ -301,7 +305,7 @@ public class HomePage extends JFrame {
 		gestione = new JPanel();
 		gestione.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		gestione.setBackground(SystemColor.control);
-		gestione.setBounds(312, 274, 475, 166);
+		gestione.setBounds(399, 276, 475, 166);
 		sfondoPane.add(gestione);
 		gestione.setLayout(null);
 		
@@ -421,6 +425,7 @@ public class HomePage extends JFrame {
 		filtri.add(resetFiltriButton);
 		
 		filtraButton = new JButton("FILTRA");
+		filtraButton.setBorder(null);
 		filtraButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		filtraButton.setBackground(Color.WHITE);
 		filtraButton.addMouseListener(new MouseAdapter() {
@@ -483,6 +488,16 @@ public class HomePage extends JFrame {
 		});
 		PartialMatchRadioButton.setBounds(182, 8, 104, 23);
 		filtri.add(PartialMatchRadioButton);
+		
+		panel = new JPanel();
+		panel.setBounds(10, 11, 44, 539);
+		sfondoPane.add(panel);
+		panel.setLayout(null);
+		
+		btnNewButton = new JButton("...");
+		btnNewButton.setBorder(null);
+		btnNewButton.setBounds(0, 0, 44, 23);
+		panel.add(btnNewButton);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

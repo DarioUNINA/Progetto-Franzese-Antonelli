@@ -55,7 +55,7 @@ public class RecuperoPassPage extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 584, 368);
+		setBounds(100, 100, 699, 457);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.orange);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -65,7 +65,7 @@ public class RecuperoPassPage extends JFrame {
 		recuperoPanel = new JPanel();
 		recuperoPanel.setBackground(SystemColor.control);
 		recuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		recuperoPanel.setBounds(10, 11, 548, 307);
+		recuperoPanel.setBounds(10, 11, 663, 396);
 		contentPane.add(recuperoPanel);
 		recuperoPanel.setLayout(null);
 		
@@ -73,18 +73,18 @@ public class RecuperoPassPage extends JFrame {
 		rECUPEROPASSWORDLabel.setForeground(Color.BLACK);
 		rECUPEROPASSWORDLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		rECUPEROPASSWORDLabel.setBackground(Color.WHITE);
-		rECUPEROPASSWORDLabel.setBounds(139, 11, 268, 33);
+		rECUPEROPASSWORDLabel.setBounds(199, 11, 268, 33);
 		recuperoPanel.add(rECUPEROPASSWORDLabel);
 		
 		nomeUtenteLabel = new JLabel("Nome Utente:");
-		nomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		nomeUtenteLabel.setBounds(100, 107, 101, 14);
+		nomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 20));
+		nomeUtenteLabel.setBounds(98, 151, 153, 24);
 		recuperoPanel.add(nomeUtenteLabel);
 		
 		nomeUtenteText = new JTextField();
 		nomeUtenteText.setFont(new Font("Arial", Font.BOLD, 13));
 		nomeUtenteText.setColumns(10);
-		nomeUtenteText.setBounds(211, 105, 121, 20);
+		nomeUtenteText.setBounds(234, 148, 197, 27);
 		recuperoPanel.add(nomeUtenteText);
 		
 		confermaButton = new JButton("CONFERMA");
@@ -121,7 +121,7 @@ public class RecuperoPassPage extends JFrame {
 		});
 		
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		confermaButton.setBounds(211, 148, 121, 27);
+		confermaButton.setBounds(259, 206, 146, 33);
 		recuperoPanel.add(confermaButton);
 		
 		indietroButton = new JButton("INDIETRO");
@@ -143,7 +143,7 @@ public class RecuperoPassPage extends JFrame {
 		});
 		
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(10, 273, 121, 23);
+		indietroButton.setBounds(10, 352, 146, 33);
 		recuperoPanel.add(indietroButton);
 		
 		setLocationRelativeTo(null);

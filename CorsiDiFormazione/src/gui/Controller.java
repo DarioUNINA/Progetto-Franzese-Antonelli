@@ -117,7 +117,7 @@ public class Controller {
 	
 	public Vector<Corsi> setCorsiFiltrati(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore){
 		
-		return corsiDAO.addFiltri(area, anno, terminatoSi, terminatoNo, parole, idOperatore);
+		return corsiDAO.addCorsiFiltrati(area, anno, terminatoSi, terminatoNo, parole, idOperatore);
 	}
 	
 	public Vector<Corsi> setCorsiFiltratiPartialMatch(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore){

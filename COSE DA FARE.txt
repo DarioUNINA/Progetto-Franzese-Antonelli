@@ -5,13 +5,8 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 1)CREARE TRIGGER inserimento automatico in temi  e caratterizzazione (on insert on corsi)
 
 2) CREA STUDENTE ( GestoreStudentiPage ):
-   Creare completamente la pagina( da fare assieme per decidere come gestirla),
-   gestirne la creazione.
-
-<<<<<<< HEAD
-
-=======
->>>>>>> c8cabb01182a431eb3f9a9f60c67dd42f6749c8d
+   curare l'estetica
+   
 5) POPOLAMENTO TABELE HOMEPAGE ( HomePage ):
    Popolamento tabelle( da fare assieme per decidere come gestirla).
 
@@ -26,3 +21,10 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 
 
 14) Creare trigger che setta l'anno della lezione = all'anno del corso (oppure impedire l'inserimento con l'anno del corso sbagliato)
+
+15)unique parola in parole chiave
+
+16)GestoreLezioniPage
+
+quando si filtra, se é selezionato almeno un mese e i giorni non sono selezionati, adesso parte un JOptionPane, 
+invece fare un metdo che restituisce una lista con tutti i giorni (il metodo giá dovrebbe esistere)

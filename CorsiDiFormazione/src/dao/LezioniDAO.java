@@ -252,5 +252,21 @@ public class LezioniDAO {
 		return true;
 	}
 	
+	public String getNumeroLezioni(String id_corso) {
+		
+		String numeroLezioni;
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT COUNT(*) FROM lezioni WHERE id_corso = '" + id_corso + "'");
+			
+			rs.next();
+			numeroLezioni = String.valueOf(rs.getInt(1));
+			return numeroLezioni;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+	}
 	
 }

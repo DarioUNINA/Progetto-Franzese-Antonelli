@@ -72,7 +72,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	private JLabel corsoLabel;
 	private JLabel presenzeLabel;
 	private JLabel ammessoLabel;
-	
+	private JLabel numeroLezioniLabel;
 	
 	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore, Studenti studente) {
 		
@@ -90,11 +90,14 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 				}else{
 					corsoLabel.setText("Corso: " + corsi.get(corsiList.getSelectedIndex()).getNome());
 					presenzeLabel.setText("Presenze: " + theController.getNumeroPresenzeDelCorso(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso()));
-					if(theController.getAmmessoAdEsame(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso())== true)
+					numeroLezioniLabel.setText("Numero Lezioni: " + theController.getNumeroLezioni(corsiList.getSelectedValue().getIdCorso()));
+					if(theController.getAmmessoAdEsame(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso())== true) {
 						ammessoLabel.setText("Ammesso: SI" );
-					else
+						ammessoLabel.setForeground(Color.green);
+					}else {
 						ammessoLabel.setText("Ammesso: NO");
-					
+						ammessoLabel.setForeground(Color.red);
+					}
 					if(theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso()).isEmpty()) {
 						alertNessunaLezioneDisponibile();
 						lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
@@ -170,7 +173,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		elencoCorsiLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		elencoCorsiLabel.setBounds(44, 11, 131, 14);
 		corsiPanel.add(elencoCorsiLabel);
-		
+	
 		corsiScrollPane = new JScrollPane();
 		corsiScrollPane.setBounds(10, 36, 186, 404);
 		corsiPanel.add(corsiScrollPane);
@@ -237,6 +240,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 					GestioneDisiscrizione();
+					
 			}
 		});
 		disiscriviDaUnCorsoButton.setFont(new Font("Arial", Font.BOLD, 12));
@@ -284,47 +288,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		annullaPrenotazioneButton.setBounds(205, 397, 191, 43);
 		corsiAmmessoPanel.add(annullaPrenotazioneButton);
 		
-		tabelCorsiScrollPane = new JScrollPane();
-		tabelCorsiScrollPane.setBounds(10, 181, 386, -128);
-		corsiAmmessoPanel.add(tabelCorsiScrollPane);
-		
-		corsiAmmessiTable = new JTable();
-		tabelCorsiScrollPane.setViewportView(corsiAmmessiTable);
-		corsiAmmessiTable.setBackground(Color.orange);
-		corsiAmmessiTable.setBorder(new LineBorder(new Color(0, 0, 0)));
-		corsiAmmessiTable.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"CORSO", "DESCRIZIONE", "AMMESSO?"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				Object.class, String.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-			boolean[] columnEditables = new boolean[] {
-				true, false, true
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-		corsiAmmessiTable.getColumnModel().getColumn(1).setResizable(false);
-		corsiAmmessiTable.getColumnModel().getColumn(1).setPreferredWidth(100);
-		corsiAmmessiTable.setRowSelectionAllowed(false);
-		corsiAmmessiTable.setFont(new Font("Microsoft YaheiUI", Font.PLAIN, 14));
-		corsiAmmessiTable.setGridColor(Color.GREEN);
-		corsiAmmessiTable.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		corsiAmmessiTable.setModel(new DefaultTableModel(new String[5][3],new String[] {"ciao", "aoo", "asd"}));
-		
 		infoPanel = new JPanel();
 		infoPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		infoPanel.setBackground(Color.LIGHT_GRAY);
@@ -334,18 +297,23 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		corsoLabel = new JLabel("Corso: " );
 		corsoLabel.setFont(new Font("Arial", Font.BOLD, 17));
-		corsoLabel.setBounds(38, 50, 338, 21);
+		corsoLabel.setBounds(38, 39, 338, 21);
 		infoPanel.add(corsoLabel);
 		
 		presenzeLabel = new JLabel("Presenze: ");
 		presenzeLabel.setFont(new Font("Arial", Font.BOLD, 17));
-		presenzeLabel.setBounds(38, 122, 338, 21);
+		presenzeLabel.setBounds(38, 148, 338, 21);
 		infoPanel.add(presenzeLabel);
 		
 		ammessoLabel = new JLabel("Ammesso :");
 		ammessoLabel.setFont(new Font("Arial", Font.BOLD, 17));
-		ammessoLabel.setBounds(38, 195, 338, 21);
+		ammessoLabel.setBounds(38, 201, 338, 21);
 		infoPanel.add(ammessoLabel);
+		
+		numeroLezioniLabel = new JLabel("Numero Lezioni: ");
+		numeroLezioniLabel.setFont(new Font("Arial", Font.BOLD, 17));
+		numeroLezioniLabel.setBounds(38, 95, 338, 21);
+		infoPanel.add(numeroLezioniLabel);
 		
 		
 		setLocationRelativeTo(null);
@@ -392,9 +360,14 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Studente disiscritto correttamente!","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
 		corsi = theController.setCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
 		corsiList.setListData(corsi);
-		lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
 		lezioniList.setListData(lezioni);
-	}
+		
+		corsoLabel.setText("Corso: ");
+		presenzeLabel.setText("Presenze: " );
+		numeroLezioniLabel.setText("Numero Lezioni: ");
+		ammessoLabel.setText("Ammesso:" );
+		}
+		
 	
 	public void alertErroreDisiscrizioneStudente(String state) {
 		if(state=="-1")

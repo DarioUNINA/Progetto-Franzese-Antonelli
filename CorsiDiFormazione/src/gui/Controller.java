@@ -578,6 +578,10 @@ public class Controller {
 		
 		return vettore;
 	}
+	
+	public String getNumeroLezioni(String id_corso) {
+		return lezioniDAO.getNumeroLezioni(id_corso);
+	}
 
 	
 }

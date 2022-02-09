@@ -70,6 +70,8 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		studenti = theController.getAllStudentiIscrittiAllaLezione(lezione.getIdLezione());
 		studentiList = new JList<Studenti>(studenti);
+		if(studenti.isEmpty())
+			alertNonCiSonoStudentiIscritti();
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -209,6 +211,11 @@ public class PanoramicaLezionePage extends JFrame {
 	
 	public void alertNonCiSonoStudenti() {
 		JOptionPane.showMessageDialog(this, "Non ci sono Studenti da poter aggiungere alla lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertNonCiSonoStudentiIscritti(){
+		JOptionPane.showMessageDialog(this, "Non ci sono Studenti iscritti alla lezione!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		
 	}
 }
 

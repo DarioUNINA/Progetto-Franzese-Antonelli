@@ -67,7 +67,9 @@ public class CorsiDAO {
 		if(terminatoNo)
 			query = query + " c.terminato = false AND";
 			
-		query = query + " c.id_operatore = '" + idOperatore + "'";		
+		query = query + " c.id_operatore = '" + idOperatore + "'";	
+		
+		System.out.println(query);
 		
 		try {
 			
@@ -114,17 +116,28 @@ public Vector<Corsi> addCorsiFiltratiPM(Vector<AreeTematiche> area, Vector<Strin
 		for(AreeTematiche a:area)
 			query = query + " c.id_corso IN (SELECT t.id_corso FROM temi t WHERE t.nome_area = '" + a.getNomeArea() + "' ) OR "; 
 		
-		query = query + " 1= 0 AND ("; 
+		if(!area.isEmpty())
+			query = query + " 1= 0 ) AND (";
+		else
+			query = query + " 1 = 1 ) AND (";
+		
 		
 		for(String anno:anni)
 			query = query + " c.anno = '" +  anno + "'  OR ";
 		
-		query = query + " 1= 0 ) AND ("; 
+		if(!anni.isEmpty())
+			query = query + " 1= 0 ) AND ("; 
+		else
+			query = query + " 1 = 1 ) AND ( ";
+		
 	
 		for(ParoleChiave p:parole)
 			query = query + "c.id_corso IN (SELECT ca.id_corso FROM caratterizza ca WHERE ca.parola_chiave = '" + p.getParolaChiave()+ "' ) OR "; 
 		
-		query = query + " 1 = 0 ) ";
+		if(!parole.isEmpty())
+			query = query + " 1 = 0 ) ";
+		else
+			query = query + " 1 = 1 ) ";
 		
 		if(terminatoSi)
 			query = query + " AND c.terminato = true";
@@ -132,7 +145,6 @@ public Vector<Corsi> addCorsiFiltratiPM(Vector<AreeTematiche> area, Vector<Strin
 		if(terminatoNo)
 			query = query + "  AND  c.terminato = false";
 			
-		
 		try {
 			
 			ResultSet rs = statement.executeQuery(query);

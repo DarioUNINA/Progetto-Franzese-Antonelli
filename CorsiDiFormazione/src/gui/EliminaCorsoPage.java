@@ -88,7 +88,7 @@ public class EliminaCorsoPage extends JFrame {
 		
 		corsi = theController.getCorsiOperatore(operatore);
 		corsiComboBox = new JComboBox(corsi);
-		corsiComboBox.setFont(new Font("Arial", Font.BOLD, 11));
+		corsiComboBox.setFont(new Font("Arial", Font.BOLD, 13));
 		corsiComboBox.setBounds(193, 122, 165, 22);
 		eliminaCorsoPanel.add(corsiComboBox);
 		

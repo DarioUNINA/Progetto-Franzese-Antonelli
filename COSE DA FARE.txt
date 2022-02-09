@@ -8,15 +8,10 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
    Creare completamente la pagina( da fare assieme per decidere come gestirla),
    gestirne la creazione.
 
-
-3) PANORAMICA SINGOLO STUDENTE ( PanoramicaSingoloStudentePage ): 
-   Popolare la tabella dei corsi con i vari dettagli dei corsi alla quale
-   lo studente è iscritto.
-
 5) POPOLAMENTO TABELE HOMEPAGE ( HomePage ):
    Popolamento tabelle( da fare assieme per decidere come gestirla).
 
-7) GEESTIONE E CREAZIONE COMPLETA DI (gestore corso):
+7) GEESTIONE COMPLETA DI home pagew = gestore corso):
    Da fare assieme MockUp.
 
 9)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 

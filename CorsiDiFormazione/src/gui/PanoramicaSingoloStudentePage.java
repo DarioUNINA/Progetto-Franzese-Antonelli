@@ -61,7 +61,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	private JLabel elencoLezioniLabel;
 	private JScrollPane lezioniScrollPane;
 	private JPanel corsiAmmessoPanel;
-	private JButton confermaButton;
 	private JLabel corsiAmmessoLabel;
 	private JButton iscriviAdUnCorsoButton;
 	private JButton annullaPrenotazioneButton;
@@ -79,6 +78,23 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		corsi = theController.setCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
 		corsiList = new JList<Corsi> (corsi);
+		corsiList.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(corsiList.isSelectionEmpty()) {
+					alertNessunCorsoSelezionato();
+				}else{
+					if(theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso()).isEmpty()) {
+						alertNessunaLezioneDisponibile();
+						lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
+						lezioniList.setListData(lezioni);
+					}else {
+						lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
+						lezioniList.setListData(lezioni);
+					}
+				}
+			}
+		});
 		corsiList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		imageicon = new ImageIcon("napule.png");
@@ -144,36 +160,12 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiPanel.add(elencoCorsiLabel);
 		
 		corsiScrollPane = new JScrollPane();
-		corsiScrollPane.setBounds(10, 36, 186, 350);
+		corsiScrollPane.setBounds(10, 36, 186, 404);
 		corsiPanel.add(corsiScrollPane);
 		
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setVisibleRowCount(10);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
-		
-		confermaButton = new JButton("MOSTRA PRENOTAZIONI");
-		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		confermaButton.setBackground(Color.WHITE);
-		confermaButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(corsiList.isSelectionEmpty()) {
-					alertNessunCorsoSelezionato();
-				}else{
-					if(theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso()).isEmpty()) {
-						alertNessunaLezioneDisponibile();
-						lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
-						lezioniList.setListData(lezioni);
-					}else {
-						lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
-						lezioniList.setListData(lezioni);
-					}
-				}
-			}
-		});
-		confermaButton.setFont(new Font("Arial", Font.BOLD, 10));
-		confermaButton.setBounds(10, 397, 186, 43);
-		corsiPanel.add(confermaButton);
 		
 		lezioniPanel = new JPanel();
 		lezioniPanel.setLayout(null);

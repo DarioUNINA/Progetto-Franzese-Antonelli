@@ -61,7 +61,6 @@ public class GestoreLezioniPage extends JFrame {
 	private JLabel durataLabel;
 	private JButton filtraButton;
 	private JButton resetButton;
-	private JButton confermaCorsoButton;
 	private JButton panormaicaLezioneButton;
 	private JButton eliminaLezioneButton;
 	private JButton aggiungiLezioneButton;
@@ -99,6 +98,23 @@ public class GestoreLezioniPage extends JFrame {
 		
 		corsi = theController.getCorsiOperatore(operatore);
 		corsiList = new JList<Corsi>(corsi);
+		corsiList.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(corsiList.isSelectionEmpty()) {
+					alertNessunCorsoSelezionato();
+				}else {
+					String id_corso = corsiList.getSelectedValue().getIdCorso();
+					if(theController.setAllLezioniDelCorso(id_corso).isEmpty())
+						alertNessunaLezioneDisponibile();
+					else {
+						lezioni = theController.setAllLezioniDelCorso(id_corso);
+						lezioniList.setListData(lezioni);
+					}
+				}
+				
+			}
+		});
 		
 		mesi = theController.getMesi();
 		giorni = theController.getGiorni();
@@ -123,7 +139,7 @@ public class GestoreLezioniPage extends JFrame {
 		gestoreLezioniPanel = new JPanel();
 		gestoreLezioniPanel.setBackground(SystemColor.control);
 		gestoreLezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		gestoreLezioniPanel.setBounds(10, 11, 777, 49);
+		gestoreLezioniPanel.setBounds(10, 11, 864, 49);
 		contentPane.add(gestoreLezioniPanel);
 		gestoreLezioniPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -135,13 +151,13 @@ public class GestoreLezioniPage extends JFrame {
 		
 		corsiPanel = new JPanel();
 		corsiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		corsiPanel.setBounds(10, 71, 222, 335);
+		corsiPanel.setBounds(10, 71, 222, 445);
 		contentPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
 		
 		lezioniPanel =  new JPanel();
 		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		lezioniPanel.setBounds(242, 71, 545, 369);
+		lezioniPanel.setBounds(242, 71, 632, 445);
 		contentPane.add(lezioniPanel);
 		lezioniPanel.setLayout(null);
 		
@@ -170,35 +186,11 @@ public class GestoreLezioniPage extends JFrame {
 		});
 		
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(10, 417, 163, 23);
+		indietroButton.setBounds(10, 527, 163, 23);
 		contentPane.add(indietroButton);
 		
-		confermaCorsoButton = new JButton("CONFERMA");
-		confermaCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		confermaCorsoButton.setBackground(Color.WHITE);
-		confermaCorsoButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(corsiList.isSelectionEmpty()) {
-					alertNessunCorsoSelezionato();
-				}else {
-					String id_corso = corsiList.getSelectedValue().getIdCorso();
-					if(theController.setAllLezioniDelCorso(id_corso).isEmpty())
-						alertNessunaLezioneDisponibile();
-					else {
-						lezioni = theController.setAllLezioniDelCorso(id_corso);
-						lezioniList.setListData(lezioni);
-					}
-				}
-						
-			}
-		});
-		confermaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
-		confermaCorsoButton.setBounds(52, 301, 121, 23);
-		corsiPanel.add(confermaCorsoButton);
-		
 		corsiScrollPane = new JScrollPane();
-		corsiScrollPane.setBounds(10, 40, 202, 252);
+		corsiScrollPane.setBounds(10, 40, 202, 394);
 		corsiPanel.add(corsiScrollPane);
 		
 		
@@ -209,7 +201,7 @@ public class GestoreLezioniPage extends JFrame {
 		
 		elencoLezioneDelCorsoLabel = new JLabel("Elenco Lezione del Corso:");
 		elencoLezioneDelCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		elencoLezioneDelCorsoLabel.setBounds(43, 11, 203, 18);
+		elencoLezioneDelCorsoLabel.setBounds(59, 11, 203, 18);
 		lezioniPanel.add(elencoLezioneDelCorsoLabel);
 		
 		panormaicaLezioneButton = new JButton("PANORAMICA");
@@ -228,7 +220,7 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		panormaicaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		panormaicaLezioneButton.setBounds(137, 329, 116, 29);
+		panormaicaLezioneButton.setBounds(173, 405, 116, 29);
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
@@ -255,11 +247,11 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		eliminaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		eliminaLezioneButton.setBounds(11, 329, 116, 29);
+		eliminaLezioneButton.setBounds(10, 405, 116, 29);
 		lezioniPanel.add(eliminaLezioneButton);
 		
 		lezioniScrollPane = new JScrollPane();
-		lezioniScrollPane.setBounds(10, 40, 235, 286);
+		lezioniScrollPane.setBounds(11, 40, 278, 354);
 		lezioniPanel.add(lezioniScrollPane);
 		
 		lezioniList = new JList<Lezioni>();
@@ -270,22 +262,22 @@ public class GestoreLezioniPage extends JFrame {
 		
 		filtriPanel = new JPanel();
 		filtriPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		filtriPanel.setBounds(258, 0, 287, 369);
+		filtriPanel.setBounds(306, 0, 326, 445);
 		lezioniPanel.add(filtriPanel);
 		filtriPanel.setLayout(null);
 		
 		filtriLabel = new JLabel("FILTRI PER LEZIONI");
-		filtriLabel.setBounds(64, 0, 144, 18);
+		filtriLabel.setBounds(90, 11, 144, 18);
 		filtriLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		filtriPanel.add(filtriLabel);
 		
 		giorniLabel = new JLabel("Giorni:");
-		giorniLabel.setBounds(7, 22, 48, 18);
+		giorniLabel.setBounds(20, 100, 48, 18);
 		filtriPanel.add(giorniLabel);
 		giorniLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		mesiLabel = new JLabel("Mesi:");
-		mesiLabel.setBounds(158, 22, 38, 18);
+		mesiLabel.setBounds(196, 100, 38, 18);
 		filtriPanel.add(mesiLabel);
 		mesiLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
@@ -306,13 +298,13 @@ public class GestoreLezioniPage extends JFrame {
 						alertNessunGiornoSelezionato();
 					else
 					{
-						lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText(), corsiList.getSelectedValue().getAnno());
+						lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
 						lezioniList.setListData(lezioni);
 					}
 			}
 		});
 		filtraButton.setBackground(Color.WHITE);
-		filtraButton.setBounds(172, 335, 84, 23);
+		filtraButton.setBounds(210, 411, 104, 23);
 		filtriPanel.add(filtraButton);
 		filtraButton.setForeground(Color.RED);
 		filtraButton.setFont(new Font("Arial", Font.BOLD, 12));
@@ -326,17 +318,23 @@ public class GestoreLezioniPage extends JFrame {
 				mesiList.setModel(theController.setModelCheckBoxString(mesi));
 				orarioList.setModel(theController.setModelCheckBoxTime(orario));
 				durataList.setModel(theController.setModelCheckBoxTime(durata));
+				setAllGiorniRadioButton.setSelected(false);
+				setAllGiorniRadioButton.setText("set all");
+				setAllMesiRadioButton.setSelected(false);
+				setAllMesiRadioButton.setText("set all");
+				
+				
 				
 			}
 		});
 		resetButton.setBackground(Color.WHITE);
-		resetButton.setBounds(25, 335, 84, 23);
+		resetButton.setBounds(20, 411, 104, 23);
 		filtriPanel.add(resetButton);
 		resetButton.setFont(new Font("Arial", Font.BOLD, 12));
 		resetButton.setForeground(new Color(65, 105, 225));
 		
 		giorniScrollPane = new JScrollPane();
-		giorniScrollPane.setBounds(10, 40, 120, 128);
+		giorniScrollPane.setBounds(20, 117, 120, 128);
 		filtriPanel.add(giorniScrollPane);
 		
 		giorniList = new JCheckBoxList();
@@ -353,7 +351,7 @@ public class GestoreLezioniPage extends JFrame {
 		giorniList.setVisibleRowCount(10);
 		
 		orarioScrollPane = new JScrollPane();
-		orarioScrollPane.setBounds(12, 198, 118, 92);
+		orarioScrollPane.setBounds(20, 297, 118, 92);
 		filtriPanel.add(orarioScrollPane);
 		
 		orarioList = new JCheckBoxList();
@@ -363,7 +361,7 @@ public class GestoreLezioniPage extends JFrame {
 		orarioList.setVisibleRowCount(10);
 		
 		durataScrollPane = new JScrollPane();
-		durataScrollPane.setBounds(160, 198, 118, 92);
+		durataScrollPane.setBounds(196, 297, 118, 92);
 		filtriPanel.add(durataScrollPane);
 		
 		durataList = new JCheckBoxList();
@@ -374,16 +372,16 @@ public class GestoreLezioniPage extends JFrame {
 		
 		orarioLabel = new JLabel("Orario:");
 		orarioLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		orarioLabel.setBounds(7, 181, 60, 18);
+		orarioLabel.setBounds(20, 281, 60, 18);
 		filtriPanel.add(orarioLabel);
 		
 		durataLabel = new JLabel("Durata:");
 		durataLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		durataLabel.setBounds(158, 181, 60, 18);
+		durataLabel.setBounds(196, 281, 60, 18);
 		filtriPanel.add(durataLabel);
 		
 		mesiScrollPane = new JScrollPane();
-		mesiScrollPane.setBounds(158, 42, 118, 126);
+		mesiScrollPane.setBounds(196, 117, 118, 126);
 		filtriPanel.add(mesiScrollPane);
 		
 		mesiList = new JCheckBoxList();
@@ -402,13 +400,13 @@ public class GestoreLezioniPage extends JFrame {
 		mesiList.setVisibleRowCount(10);
 		
 		titoloTextField = new JTextField();
-		titoloTextField.setBounds(106, 304, 86, 20);
+		titoloTextField.setBounds(126, 53, 86, 20);
 		filtriPanel.add(titoloTextField);
 		titoloTextField.setColumns(10);
 		
 		titoloLabel = new JLabel("Titolo:");
 		titoloLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		titoloLabel.setBounds(22, 306, 60, 18);
+		titoloLabel.setBounds(68, 53, 48, 18);
 		filtriPanel.add(titoloLabel);
 		
 		setAllGiorniRadioButton = new JRadioButton("set all");
@@ -430,7 +428,7 @@ public class GestoreLezioniPage extends JFrame {
 				
 			}
 		});
-		setAllGiorniRadioButton.setBounds(7, 168, 109, 23);
+		setAllGiorniRadioButton.setBounds(20, 243, 109, 23);
 		filtriPanel.add(setAllGiorniRadioButton);
 		
 		setAllMesiRadioButton = new JRadioButton("set all");
@@ -450,33 +448,33 @@ public class GestoreLezioniPage extends JFrame {
 				}
 			}
 		});
-		setAllMesiRadioButton.setBounds(147, 168, 109, 23);
+		setAllMesiRadioButton.setBounds(196, 243, 109, 23);
 		filtriPanel.add(setAllMesiRadioButton);
 		
 				
-				aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
-				aggiungiLezioneButton.setBounds(665, 451, 116, 29);
-				contentPane.add(aggiungiLezioneButton);
-				aggiungiLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				aggiungiLezioneButton.setBackground(Color.WHITE);
+		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
+		aggiungiLezioneButton.setFont(new Font("Arial", Font.BOLD, 15));
+		aggiungiLezioneButton.setBounds(652, 527, 222, 23);			
+		contentPane.add(aggiungiLezioneButton);			
+		aggiungiLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));	
+		aggiungiLezioneButton.setBackground(Color.WHITE);
 		aggiungiLezioneButton.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent e) {
-				aggiungiLezioneButton.setBackground(Color.GREEN);
+		public void mouseEntered(java.awt.event.MouseEvent e) {
+			aggiungiLezioneButton.setBackground(Color.GREEN);
+		}
+		public void mouseExited(java.awt.event.MouseEvent e) {
+			aggiungiLezioneButton.setBackground(Color.WHITE);
+		}
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			if(corsiList.isSelectionEmpty()) {
+				alertNessunCorsoSelezionatoAggiungiLezione();
+			}else {
+				String id_corso = corsiList.getSelectedValue().getIdCorso().toString();		
+				CreazioneLezionePage clp = new CreazioneLezionePage(theController, operatore, theController.getCorso(id_corso));
+				setVisible(false);
 			}
-
-			public void mouseExited(java.awt.event.MouseEvent e) {
-				aggiungiLezioneButton.setBackground(Color.WHITE);
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(corsiList.isSelectionEmpty()) {
-					alertNessunCorsoSelezionatoAggiungiLezione();
-				}else {
-					String id_corso = corsiList.getSelectedValue().getIdCorso().toString();		
-					CreazioneLezionePage clp = new CreazioneLezionePage(theController, operatore, theController.getCorso(id_corso));
-					setVisible(false);
-				}
-			}
+		}
 		});
 		
 		setLocationRelativeTo(null);

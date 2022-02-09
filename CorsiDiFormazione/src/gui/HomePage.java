@@ -159,7 +159,7 @@ public class HomePage extends JFrame {
 			}
 		});
 		impostazioniButton.setFont(new Font("Arial", Font.BOLD, 15));
-		impostazioniButton.setBounds(615, 11, 152, 23);
+		impostazioniButton.setBounds(648, 14, 152, 23);
 		benvenuto.add(impostazioniButton);
 		
 		esciButton = new JButton("ESCI");
@@ -182,7 +182,7 @@ public class HomePage extends JFrame {
 			}
 		});
 		esciButton.setFont(new Font("Arial", Font.BOLD, 15));
-		esciButton.setBounds(615, 43, 152, 23);
+		esciButton.setBounds(648, 43, 152, 23);
 		benvenuto.add(esciButton);
 		
 		filtri = new JPanel();

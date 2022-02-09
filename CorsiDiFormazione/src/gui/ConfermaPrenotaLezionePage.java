@@ -148,17 +148,7 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		setLocationRelativeTo(null);
 		
 		
-		if(lezioniComboBox.getSelectedItem() == null) {
-			alertNonCiSonolezioniDisponibili();
-			PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
-			setVisible(false);
-		}else
-			setVisible(true);
-		
-	}
-	
-	public void alertNonCiSonolezioniDisponibili() {
-		JOptionPane.showMessageDialog(this, "Non ci sono lezioni disponibili"+ corso.getNome().toUpperCase() + "!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		setVisible(true);
 	}
 	
 	public void alertStudenteAggiuntoCorrettamente() {

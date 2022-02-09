@@ -51,6 +51,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JToolBar;
 import javax.swing.JDesktopPane;
 import javax.swing.Icon;
+import javax.swing.border.EtchedBorder;
+import javax.swing.JToggleButton;
 
 public class HomePage extends JFrame {
 	
@@ -75,6 +77,7 @@ public class HomePage extends JFrame {
 	private JCheckBoxList listaParoleChiave;
 	private JCheckBoxList listaTemi;
 	private JComboBox<String> annoComboBox;
+	private JCheckBoxList annoList;
 	private JCheckBox terminatoCheckBoxSi;
 	private JCheckBox terminatoCheckBoxNo;
 	private JPanel addDeleteCorsi;
@@ -82,8 +85,8 @@ public class HomePage extends JFrame {
 	private JButton eliminaCorsoButton;
 	private JPanel corsiPanel;
 	private JScrollPane corsiScrollPane;	
+	private JScrollPane annoScrollPane;
 	private JList<Corsi> corsiList;
-	private JButton selezionaButton;
 	private JPanel gestione;
 	private JButton gestioneCorsiButton;
 	private JButton gestioneLezioniButton;
@@ -98,7 +101,7 @@ public class HomePage extends JFrame {
 	private JRadioButton PartialMatchRadioButton;
 	private JPanel panel;
 	private JButton btnNewButton;
-	
+	private JLabel icona;
 
 	public HomePage(Controller cont, Operatori operatore) {
 
@@ -128,7 +131,7 @@ public class HomePage extends JFrame {
 		benvenuto = new JPanel();
 		benvenuto.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		benvenuto.setBackground(SystemColor.control);
-		benvenuto.setBounds(97, 11, 777, 77);
+		benvenuto.setBounds(64, 11, 810, 77);
 		sfondoPane.add(benvenuto);
 		benvenuto.setLayout(null);
 		
@@ -185,7 +188,7 @@ public class HomePage extends JFrame {
 		filtri = new JPanel();
 		filtri.setBorder(new LineBorder(Color.BLACK, 2));
 		filtri.setBackground(SystemColor.control);
-		filtri.setBounds(97, 101, 292, 341);
+		filtri.setBounds(64, 99, 312, 451);
 		sfondoPane.add(filtri);
 		filtri.setLayout(null);
 		
@@ -195,23 +198,23 @@ public class HomePage extends JFrame {
 		filtriLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		areaTematicaLabel = new JLabel("Area Tematica:");
-		areaTematicaLabel.setBounds(10, 39, 89, 14);
+		areaTematicaLabel.setBounds(10, 179, 89, 14);
 		areaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		filtri.add(areaTematicaLabel);
 		
 		annoLabel = new JLabel("Anno:");
-		annoLabel.setBounds(10, 151, 89, 14);
+		annoLabel.setBounds(10, 39, 89, 14);
 		annoLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		annoLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		filtri.add(annoLabel);
 		
 		terminatoLabel = new JLabel("Terminato:");
-		terminatoLabel.setBounds(10, 176, 89, 14);
+		terminatoLabel.setBounds(10, 154, 89, 14);
 		terminatoLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		filtri.add(terminatoLabel);
 		
 		parolaChiaveLabel = new JLabel("Parola Chiave:");
-		parolaChiaveLabel.setBounds(10, 201, 89, 14);
+		parolaChiaveLabel.setBounds(10, 293, 89, 14);
 		parolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		filtri.add(parolaChiaveLabel);
 				
@@ -231,7 +234,7 @@ public class HomePage extends JFrame {
 			}
 		});
 		terminatoCheckBoxSi.setFont(new Font("Arial", Font.BOLD, 15));
-		terminatoCheckBoxSi.setBounds(105, 171, 46, 23);
+		terminatoCheckBoxSi.setBounds(119, 149, 46, 23);
 		filtri.add(terminatoCheckBoxSi);
 		
 		
@@ -250,62 +253,44 @@ public class HomePage extends JFrame {
 			}
 		});
 		terminatoCheckBoxNo.setFont(new Font("Arial", Font.BOLD, 15));
-		terminatoCheckBoxNo.setBounds(190, 171, 49, 23);
+		terminatoCheckBoxNo.setBounds(206, 149, 49, 23);
 		filtri.add(terminatoCheckBoxNo);
-		
-		
-		temiScrollPane = new JScrollPane();
-		temiScrollPane.setBorder(new LineBorder(Color.BLACK));
-		temiScrollPane.setBounds(105, 34, 177, 108);
-		filtri.add(temiScrollPane);
-		
-		listaTemi = new JCheckBoxList();
-		temiScrollPane.setViewportView(listaTemi);
-		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
-		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
-		listaTemi.setVisibleRowCount(10);
-		listaTemi.setVisible(true);
 		
 		paroleChiaveScrollPane = new JScrollPane();
 		paroleChiaveScrollPane.setBorder(new LineBorder(Color.BLACK));
-		paroleChiaveScrollPane.setBounds(105, 196, 177, 100);
+		paroleChiaveScrollPane.setBounds(109, 288, 177, 100);
 		filtri.add(paroleChiaveScrollPane);
 		
 		listaParoleChiave = new JCheckBoxList();
 		paroleChiaveScrollPane.setViewportView(listaParoleChiave);
 		listaParoleChiave.setModel(theController.setModelCheckBoxParole(paroleChiave));
 		listaParoleChiave.setFont(new Font("Arial", Font.BOLD, 15));
+		listaParoleChiave.setBackground(Color.LIGHT_GRAY);
 		listaParoleChiave.setVisibleRowCount(10);
 		listaParoleChiave.setVisible(true);
 		
 		corsiPanel = new JPanel();
 		corsiPanel.setBorder(new LineBorder(Color.BLACK, 2));
 		corsiPanel.setBackground(SystemColor.control);
-		corsiPanel.setBounds(399, 99, 475, 166);
+		corsiPanel.setBounds(386, 99, 488, 221);
 		sfondoPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
 		
 		corsiScrollPane = new JScrollPane();
 		corsiScrollPane.setBorder(new LineBorder(Color.BLACK));
-		corsiScrollPane.setBounds(10, 11, 222, 114);
+		corsiScrollPane.setBounds(10, 11, 222, 166);
 		corsiPanel.add(corsiScrollPane);
 
 		corsiList = new JList<Corsi>(corsi);
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
+		corsiList.setBackground(Color.LIGHT_GRAY);
 		corsiList.setVisibleRowCount(10);
-	
-		selezionaButton = new JButton("SELEZIONA");
-		selezionaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		selezionaButton.setBackground(Color.WHITE);
-		selezionaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		selezionaButton.setBounds(20, 133, 199, 22);
-		corsiPanel.add(selezionaButton);
 		
 		gestione = new JPanel();
 		gestione.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		gestione.setBackground(SystemColor.control);
-		gestione.setBounds(399, 276, 475, 166);
+		gestione.setBounds(386, 331, 488, 219);
 		sfondoPane.add(gestione);
 		gestione.setLayout(null);
 		
@@ -361,7 +346,7 @@ public class HomePage extends JFrame {
 		gestione.add(gestioneStudentiButton);
 		
 		addDeleteCorsi = new JPanel();
-		addDeleteCorsi.setBounds(10, 26, 261, 77);
+		addDeleteCorsi.setBounds(10, 131, 261, 77);
 		gestione.add(addDeleteCorsi);
 		addDeleteCorsi.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		addDeleteCorsi.setBackground(SystemColor.control);
@@ -407,7 +392,7 @@ public class HomePage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
-				annoComboBox.setSelectedIndex(0);
+				annoList.setModel(theController.setModelCheckBoxString(anni));
 				terminatoCheckBoxSi.setSelected(false);
 				terminatoCheckBoxSi.setForeground(Color.BLACK);
 				terminatoCheckBoxNo.setSelected(false);
@@ -420,7 +405,7 @@ public class HomePage extends JFrame {
 			}
 		});
 		resetFiltriButton.setForeground(Color.RED);
-		resetFiltriButton.setBounds(10, 307, 89, 23);
+		resetFiltriButton.setBounds(10, 415, 89, 23);
 		resetFiltriButton.setFont(new Font("Arial", Font.BOLD, 15));
 		filtri.add(resetFiltriButton);
 		
@@ -459,7 +444,7 @@ public class HomePage extends JFrame {
 			}
 		});
 		filtraButton.setForeground(new Color(65, 105, 225));
-		filtraButton.setBounds(193, 307, 89, 23);
+		filtraButton.setBounds(212, 415, 89, 23);
 		filtraButton.setFont(new Font("Arial", Font.BOLD, 15));
 		filtri.add(filtraButton);
 		
@@ -474,7 +459,7 @@ public class HomePage extends JFrame {
 				
 			}
 		});
-		FullMatchRadioButton.setBounds(97, 8, 89, 23);
+		FullMatchRadioButton.setBounds(106, 8, 89, 23);
 		filtri.add(FullMatchRadioButton);
 		
 		
@@ -486,10 +471,50 @@ public class HomePage extends JFrame {
 				
 			}
 		});
-		PartialMatchRadioButton.setBounds(182, 8, 104, 23);
+		PartialMatchRadioButton.setBounds(197, 8, 104, 23);
 		filtri.add(PartialMatchRadioButton);
 		
+		annoScrollPane = new JScrollPane();
+		annoScrollPane.setBounds(109, 34, 175, 106);
+		annoScrollPane.setBorder(new LineBorder(Color.BLACK));
+		filtri.add(annoScrollPane);
+		
+		annoList = new JCheckBoxList();
+		annoScrollPane.setViewportView(annoList);
+		annoList.setModel(theController.setModelCheckBoxString(anni));
+		annoList.setFont(new Font("Arial", Font.BOLD, 15));
+		annoList.setBackground(Color.LIGHT_GRAY);
+		annoList.setVisibleRowCount(10);
+		
+		
+		temiScrollPane = new JScrollPane();
+		temiScrollPane.setBounds(109, 174, 177, 108);
+		filtri.add(temiScrollPane);
+		temiScrollPane.setBorder(new LineBorder(Color.BLACK));
+		
+		listaTemi = new JCheckBoxList();
+		temiScrollPane.setViewportView(listaTemi);
+		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
+		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
+		listaTemi.setBackground(Color.LIGHT_GRAY);
+		listaTemi.setVisibleRowCount(10);
+		listaTemi.setVisible(true);
+		annoList.setVisible(true);
+		
 		panel = new JPanel();
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel.setBounds(10,11,100,539);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel.setBounds(10,11,44, 539);
+			}
+		});
 		panel.setBounds(10, 11, 44, 539);
 		sfondoPane.add(panel);
 		panel.setLayout(null);
@@ -498,6 +523,7 @@ public class HomePage extends JFrame {
 		btnNewButton.setBorder(null);
 		btnNewButton.setBounds(0, 0, 44, 23);
 		panel.add(btnNewButton);
+
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

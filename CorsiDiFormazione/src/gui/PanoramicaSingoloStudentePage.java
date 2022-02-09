@@ -68,6 +68,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	private JButton disiscriviDaUnCorsoButton;
 	private JButton prenotaLezioneButton;
 	private JTable corsiAmmessiTable;
+	private JScrollPane tabelCorsiScrollPane;
 	
 	
 	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore, Studenti studente) {
@@ -98,7 +99,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		studentePanel = new JPanel();
 		studentePanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		studentePanel.setBackground(SystemColor.control);
-		studentePanel.setBounds(10, 11, 777, 77);
+		studentePanel.setBounds(10, 11, 864, 77);
 		sfondoPane.add(studentePanel);
 		studentePanel.setLayout(null);
 		
@@ -128,7 +129,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		});
 		
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(615, 43, 152, 23);
+		indietroButton.setBounds(702, 43, 152, 23);
 		studentePanel.add(indietroButton);
 		
 		corsiPanel = new JPanel();
@@ -206,12 +207,87 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessoPanel.add(corsiAmmessoLabel);
 		corsiAmmessoLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		corsiAmmessiTable = new JTable();
-		corsiAmmessiTable.setBackground(Color.LIGHT_GRAY);
-		corsiAmmessiTable.setBorder(new LineBorder(new Color(0, 0, 0)));
-		corsiAmmessiTable.setBounds(10, 180, 327, -127);
-		corsiAmmessoPanel.add(corsiAmmessiTable);
+		iscriviAdUnCorsoButton = new JButton("ISCRIVI AD UN CORSO");
+		iscriviAdUnCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		iscriviAdUnCorsoButton.setBackground(Color.WHITE);
+		iscriviAdUnCorsoButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				corsi = theController.setIscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
+				if(corsi.isEmpty())
+					alertNonCiSonoCorsiDisponibili();
+				else {
+					AggiungiStudenteCorsoPage asc = new AggiungiStudenteCorsoPage(theController, operatore, studente);
+					setVisible(false);
+				}
+			}
+		});
+		iscriviAdUnCorsoButton.setFont(new Font("Arial", Font.BOLD, 13));
+		iscriviAdUnCorsoButton.setBounds(10, 331, 191, 43);
+		corsiAmmessoPanel.add(iscriviAdUnCorsoButton);
 		
+		disiscriviDaUnCorsoButton = new JButton("DISISCRIVI DA UN CORSO");
+		disiscriviDaUnCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		disiscriviDaUnCorsoButton.setBackground(Color.WHITE);
+		disiscriviDaUnCorsoButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+					GestioneDisiscrizione();
+			}
+		});
+		disiscriviDaUnCorsoButton.setFont(new Font("Arial", Font.BOLD, 12));
+		disiscriviDaUnCorsoButton.setBounds(205, 331, 191, 43);
+		corsiAmmessoPanel.add(disiscriviDaUnCorsoButton);
+		
+		prenotaLezioneButton = new JButton("PRENOTA LEZIONE");
+		prenotaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		prenotaLezioneButton.setBackground(Color.WHITE);
+		prenotaLezioneButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(corsiList.getSelectedValue() == null)
+					alertNessunCorsoSelezionato();
+				else {
+					lezioni = theController.iscirizioneStudenteLezioniDelCorso(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
+					if(lezioni.isEmpty())
+						alertNonCiSonolezioniDisponibili();
+					else {
+						ConfermaPrenotaLezionePage page = new ConfermaPrenotaLezionePage(theController, operatore, studente, corsiList.getSelectedValue());
+						setVisible(false);
+					}
+				}
+					
+			}
+		});
+		prenotaLezioneButton.setFont(new Font("Arial", Font.BOLD, 13));
+		prenotaLezioneButton.setBounds(10, 397, 191, 43);
+		corsiAmmessoPanel.add(prenotaLezioneButton);
+		
+		annullaPrenotazioneButton = new JButton("ANNULLA PRENOTAZIONE");
+		annullaPrenotazioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		annullaPrenotazioneButton.setBackground(Color.WHITE);
+		annullaPrenotazioneButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(lezioniList.getSelectedValue() == null)
+					alertNessunaLezioneSelezionata();
+				else {
+					alertConfermaAnnullaPrenotazione();
+				}
+			}
+		});
+		annullaPrenotazioneButton.setFont(new Font("Arial", Font.BOLD, 12));
+		annullaPrenotazioneButton.setBounds(205, 397, 191, 43);
+		corsiAmmessoPanel.add(annullaPrenotazioneButton);
+		
+		tabelCorsiScrollPane = new JScrollPane();
+		tabelCorsiScrollPane.setBounds(10, 181, 386, -128);
+		corsiAmmessoPanel.add(tabelCorsiScrollPane);
+		
+		corsiAmmessiTable = new JTable();
+		tabelCorsiScrollPane.setViewportView(corsiAmmessiTable);
+		corsiAmmessiTable.setBackground(Color.orange);
+		corsiAmmessiTable.setBorder(new LineBorder(new Color(0, 0, 0)));
 		corsiAmmessiTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null},
@@ -243,76 +319,23 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		corsiAmmessiTable.setFont(new Font("Microsoft YaheiUI", Font.PLAIN, 14));
 		corsiAmmessiTable.setGridColor(Color.GREEN);
 		corsiAmmessiTable.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		corsiAmmessiTable.setModel(new DefaultTableModel(new String[5][3],new String[] {"ciao", "aoo", "asd"}));
 		
-		iscriviAdUnCorsoButton = new JButton("ISCRIVI AD UN CORSO");
-		iscriviAdUnCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		iscriviAdUnCorsoButton.setBackground(Color.WHITE);
-		iscriviAdUnCorsoButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				AggiungiStudenteCorsoPage asc = new AggiungiStudenteCorsoPage(theController, operatore, studente);
-				setVisible(false);
-			}
-		});
-		iscriviAdUnCorsoButton.setFont(new Font("Arial", Font.BOLD, 13));
-		iscriviAdUnCorsoButton.setBounds(10, 331, 191, 43);
-		corsiAmmessoPanel.add(iscriviAdUnCorsoButton);
-		
-		disiscriviDaUnCorsoButton = new JButton("DISISCRIVI DA UN CORSO");
-		disiscriviDaUnCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		disiscriviDaUnCorsoButton.setBackground(Color.WHITE);
-		disiscriviDaUnCorsoButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-					GestioneDisiscrizione();
-			}
-		});
-		disiscriviDaUnCorsoButton.setFont(new Font("Arial", Font.BOLD, 12));
-		disiscriviDaUnCorsoButton.setBounds(205, 331, 191, 43);
-		corsiAmmessoPanel.add(disiscriviDaUnCorsoButton);
-		
-		prenotaLezioneButton = new JButton("PRENOTA LEZIONE");
-		prenotaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		prenotaLezioneButton.setBackground(Color.WHITE);
-		prenotaLezioneButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(corsiList.getSelectedValue() == null)
-					alertNessunCorsoSelezionato();
-				else {
-					ConfermaPrenotaLezionePage page = new ConfermaPrenotaLezionePage(theController, operatore, studente, corsiList.getSelectedValue());
-					setVisible(false);
-				}
-					
-			}
-		});
-		prenotaLezioneButton.setFont(new Font("Arial", Font.BOLD, 13));
-		prenotaLezioneButton.setBounds(10, 397, 191, 43);
-		corsiAmmessoPanel.add(prenotaLezioneButton);
-		
-		annullaPrenotazioneButton = new JButton("ANNULLA PRENOTAZIONE");
-		annullaPrenotazioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		annullaPrenotazioneButton.setBackground(Color.WHITE);
-		annullaPrenotazioneButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(lezioniList.getSelectedValue() == null)
-					alertNessunaLezioneSelezionata();
-				else {
-					alertConfermaAnnullaPrenotazione();
-				}
-			}
-		});
-		annullaPrenotazioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		annullaPrenotazioneButton.setBounds(205, 397, 191, 43);
-		corsiAmmessoPanel.add(annullaPrenotazioneButton);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
 		if(corsi.isEmpty())
 			alertStudenteSenzaCorsi();
+	}
+	
+	public void alertNonCiSonolezioniDisponibili() {
+		JOptionPane.showMessageDialog(this, "Non ci sono lezioni disponibili per "+ corsiList.getSelectedValue().getNome().toUpperCase() + "!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertNonCiSonoCorsiDisponibili() {
+		
+		JOptionPane.showMessageDialog(this, "Non ci sono corsi disponibili dove poter iscrivere lo studente!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
 	public void alertStudenteSenzaCorsi() {
@@ -343,6 +366,8 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Studente disiscritto correttamente!","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
 		corsi = theController.setCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
 		corsiList.setListData(corsi);
+		lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
+		lezioniList.setListData(lezioni);
 	}
 	
 	public void alertErroreDisiscrizioneStudente(String state) {
@@ -383,7 +408,8 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		JOptionPane.showMessageDialog(this, "Prenotazione annullata correttamente ","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
 		corsi = theController.setCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
-		corsiList.setListData(corsi);
+		lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
+		lezioniList.setListData(lezioni);
 	}
 	
 	
@@ -405,7 +431,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		Object[] opzioni = {"Sì", "No"};
 		
 		int n = JOptionPane.showOptionDialog(this,
-				"Sei sicuro di voler eliminare l'iscrizione al corso " + corsiList.getSelectedValue().getNome() + " ?",
+				"Sei sicuro di voler eliminare l'iscrizione al corso di  " + corsiList.getSelectedValue().getNome().toUpperCase() + " ?",
 				"CONFERMA DI ANNULLAMENTO",
 				JOptionPane.YES_NO_CANCEL_OPTION,
 				JOptionPane.QUESTION_MESSAGE,

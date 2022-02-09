@@ -114,4 +114,22 @@ public Vector<Corsi> getDisiscrizioneCorsiStudente(String matricola, String id_o
 			return e.getSQLState();
 		}
 	}
+	
+	public Boolean getAmmessoAdEsame(String matricola, String id_corso) {
+		
+		Boolean ammesso;
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT ammesso FROM iscrizioni WHERE matricola =  '" + matricola + "' AND id_corso = '" + id_corso + "'" );
+			
+			rs.next();
+			ammesso = rs.getBoolean("ammesso");
+			
+			return ammesso;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

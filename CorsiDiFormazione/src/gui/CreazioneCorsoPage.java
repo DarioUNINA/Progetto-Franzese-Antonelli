@@ -86,7 +86,7 @@ public class CreazioneCorsoPage extends JFrame {
 
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 584, 368);
+		setBounds(100, 100, 900, 600);
 		creazioneCorsiPanel = new JPanel();
 		creazioneCorsiPanel.setBorder(new LineBorder(Color.BLACK));
 		setContentPane(creazioneCorsiPanel);
@@ -94,34 +94,35 @@ public class CreazioneCorsoPage extends JFrame {
 		creazioneCorsiPanel.setLayout(null);
 		
 		creaCorsoPanel = new JPanel();
-		creaCorsoPanel.setBounds(10, 11, 548, 307);
+		creaCorsoPanel.setBounds(10, 11, 864, 539);
 		creaCorsoPanel.setBackground(SystemColor.control);
-		creaCorsoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		creaCorsoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		creazioneCorsiPanel.add(creaCorsoPanel);
 		creaCorsoPanel.setLayout(null);
 		
-		
-		
 		nomeTextField = new JTextField();
-		nomeTextField.setBounds(168, 66, 86, 20);
+		nomeTextField.setBorder(new LineBorder(Color.BLACK));
+		nomeTextField.setBounds(187, 90, 190, 23);
 		nomeTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		nomeTextField.setColumns(10);
 		creaCorsoPanel.add(nomeTextField);
 		
 		presenzeMinTextField = new JTextField();
-		presenzeMinTextField.setBounds(168, 101, 86, 20);
+		presenzeMinTextField.setBorder(new LineBorder(Color.BLACK));
+		presenzeMinTextField.setBounds(187, 153, 189, 25);
 		presenzeMinTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		presenzeMinTextField.setColumns(10);
 		creaCorsoPanel.add(presenzeMinTextField);
 		
 		maxPartecipantiTextField = new JTextField();
-		maxPartecipantiTextField.setBounds(168, 137, 86, 20);
+		maxPartecipantiTextField.setBorder(new LineBorder(Color.BLACK));
+		maxPartecipantiTextField.setBounds(188, 218, 189, 25);
 		maxPartecipantiTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		maxPartecipantiTextField.setColumns(10);
 		creaCorsoPanel.add(maxPartecipantiTextField);
 		
 		terminatoCheckBox = new JCheckBox("SI");
-		terminatoCheckBox.setBounds(383, 99, 39, 23);
+		terminatoCheckBox.setBounds(521, 145, 48, 33);
 		terminatoCheckBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -136,7 +137,7 @@ public class CreazioneCorsoPage extends JFrame {
 		
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		indietroButton.setBounds(10, 273, 121, 23);
+		indietroButton.setBounds(10, 495, 137, 33);
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -157,38 +158,42 @@ public class CreazioneCorsoPage extends JFrame {
 		creaCorsoPanel.add(indietroButton);
 
 		temiScrollPane = new JScrollPane();
-		temiScrollPane.setBounds(153, 233, 227, 97);
-		temiScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		temiScrollPane.setBackground(Color.LIGHT_GRAY);
+		temiScrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		temiScrollPane.setBounds(150, 304, 227, 180);
 		creaCorsoPanel.add(temiScrollPane);
 		
 		listaTemi = new JCheckBoxList();
 		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
 		temiScrollPane.setViewportView(listaTemi);
 		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
+		listaTemi.setBackground(Color.LIGHT_GRAY);
 		listaTemi.setVisibleRowCount(10);
 		listaTemi.setVisible(true);
 		
 		paroleScrollPane = new JScrollPane();
-		paroleScrollPane.setBounds(311, 168, 227, 97);
-		paroleScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		paroleScrollPane.setBorder(new LineBorder(Color.BLACK, 2));
+		paroleScrollPane.setBounds(487, 304, 227, 180);
 		creaCorsoPanel.add(paroleScrollPane);
 		
 		listaParole = new JCheckBoxList();
 		listaParole.setModel(theController.setModelCheckBoxParole(parole));
 		paroleScrollPane.setViewportView(listaParole);
 		listaParole.setFont(new Font("Arial", Font.BOLD, 15));
+		listaParole.setBackground(Color.LIGHT_GRAY);
 		listaParole.setVisibleRowCount(10);
 		listaParole.setVisible(true);
 
 		annoChooser = new JYearChooser();
-		annoChooser.setBounds(387, 66, 48, 20);
-		annoChooser.getSpinner().setBounds(0, 0, 48, 20);
+		annoChooser.setBounds(521, 90, 86, 20);
+		annoChooser.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		annoChooser.getSpinner().setBounds(0, 0, 86, 20);
 		creaCorsoPanel.add(annoChooser);
 		annoChooser.setLayout(null);
 		
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		confermaButton.setBounds(417, 273, 121, 23);
+		confermaButton.setBounds(717, 495, 137, 33);
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -238,54 +243,55 @@ public class CreazioneCorsoPage extends JFrame {
 		creaCorsoPanel.add(confermaButton);
 		
 		creazioneCorsoLabel = new JLabel("CREAZIONE CORSO");
-		creazioneCorsoLabel.setBounds(164, 11, 227, 33);
+		creazioneCorsoLabel.setBounds(311, 11, 250, 33);
 		creazioneCorsoLabel.setForeground(Color.BLACK);
-		creazioneCorsoLabel.setFont(new Font("Arial", Font.BOLD, 22));
+		creazioneCorsoLabel.setFont(new Font("Arial", Font.BOLD, 25));
 		creazioneCorsoLabel.setBackground(Color.WHITE);
 		creaCorsoPanel.add(creazioneCorsoLabel);
 		
 		nomeLabel = new JLabel("Nome:");
-		nomeLabel.setBounds(120, 68, 45, 14);
-		nomeLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		nomeLabel.setBounds(132, 94, 58, 19);
+		nomeLabel.setFont(new Font("Arial", Font.BOLD, 17));
 		creaCorsoPanel.add(nomeLabel);
 		
 		presenzeMinimeLabel = new JLabel("Presenze Minime:");
-		presenzeMinimeLabel.setBounds(38, 104, 127, 14);
-		presenzeMinimeLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		presenzeMinimeLabel.setBounds(44, 153, 146, 19);
+		presenzeMinimeLabel.setFont(new Font("Arial", Font.BOLD, 17));
 		creaCorsoPanel.add(presenzeMinimeLabel);
 		
 		massimoPartecipantiLabel = new JLabel("Massimo Partecipanti:");
-		massimoPartecipantiLabel.setBounds(10, 139, 155, 14);
-		massimoPartecipantiLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		massimoPartecipantiLabel.setBounds(10, 218, 179, 20);
+		massimoPartecipantiLabel.setFont(new Font("Arial", Font.BOLD, 17));
 		creaCorsoPanel.add(massimoPartecipantiLabel);
 		
 		parolaChiaveLabel = new JLabel("Parola Chiave:");
-		parolaChiaveLabel.setBounds(62, 172, 103, 14);
-		parolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		parolaChiaveLabel.setBounds(150, 280, 137, 23);
+		parolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		creaCorsoPanel.add(parolaChiaveLabel);
 		
 		annoLabel = new JLabel("Anno:");
-		annoLabel.setBounds(332, 67, 45, 14);
-		annoLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		annoLabel.setBounds(453, 92, 58, 14);
+		annoLabel.setFont(new Font("Arial", Font.BOLD, 17));
 		creaCorsoPanel.add(annoLabel);
 		
 		terminatoLabel = new JLabel("Terminato?");
-		terminatoLabel.setBounds(296, 103, 81, 14);
-		terminatoLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		terminatoLabel.setBounds(414, 150, 97, 20);
+		terminatoLabel.setFont(new Font("Arial", Font.BOLD, 17));
 		creaCorsoPanel.add(terminatoLabel);
 		
 		descrizioneLabel = new JLabel("  Descrizione:");
-		descrizioneLabel.setBounds(68, 202, 97, 14);
+		descrizioneLabel.setBounds(414, 219, 97, 14);
 		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		creaCorsoPanel.add(descrizioneLabel);
 		
 		areaTematicaLabel = new JLabel("Area Tematica:");
-		areaTematicaLabel.setBounds(344, 138, 104, 14);
-		areaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		areaTematicaLabel.setBounds(488, 280, 137, 23);
+		areaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		creaCorsoPanel.add(areaTematicaLabel);
 		
 		descrizioneTextField = new JTextField();
-		descrizioneTextField.setBounds(168, 201, 86, 20);
+		descrizioneTextField.setBorder(new LineBorder(Color.BLACK));
+		descrizioneTextField.setBounds(521, 218, 193, 25);
 		descrizioneTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		descrizioneTextField.setColumns(10);
 		creaCorsoPanel.add(descrizioneTextField);

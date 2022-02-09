@@ -3,9 +3,6 @@ COSE DA FARE PROGETTO:
 LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 
 1)CREARE TRIGGER inserimento automatico in temi  e caratterizzazione (on insert on corsi)
-
-2) CREA STUDENTE ( GestoreStudentiPage ):
-   curare l'estetica
    
 5) POPOLAMENTO TABELE HOMEPAGE ( HomePage ):
    Popolamento tabelle( da fare assieme per decidere come gestirla).
@@ -28,3 +25,31 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 
 quando si filtra, se é selezionato almeno un mese e i giorni non sono selezionati, adesso parte un JOptionPane, 
 invece fare un metdo che restituisce una lista con tutti i giorni (il metodo giá dovrebbe esistere)
+
+quando tu esegui una ricerca con filtra in gestore lezioni su lezioni, praticamnete fai una ricerca ma se cambi i valori
+ nei filtri la lista la vede come vuota e quindi a schermo non ti fa vedere niente
+
+
+if(giorni.isEmpty())
+			query = query + "1=1 ) AND (";
+		else
+			query = query + "1=0 ) AND (";
+		
+		for(Time durata:durate)
+			query = query + "l.durata = '" + durata.getTime() + "' OR ";
+		
+		if(durate.isEmpty())	
+			query = query + "1=1 ) AND (";
+		else
+			query = query + "1=0 ) AND (";
+		
+		for(Time orario:orari)
+			query = query + "l.orario = '" + orario.getTime() + "' OR ";
+		
+		if(orari.isEmpty())
+			query = query + "1=1 )";
+		else
+			query = query + "1=0 )";
+		
+		if(!titolo.equals(""))
+			query = query + "AND l.titolo = '" + titolo + "'";

@@ -191,22 +191,17 @@ public class LezioniDAO {
 				if(isValid(giorno, mese))
 					query = query + " l.data = '" + giorno + "/" + mese + "/" + anno + "' OR ";
 			
-			
-		if(giorni.isEmpty())
-			query = query + "1=1 ) AND (";
-		else
-			query = query + "1=0 ) AND (";
-		
+
 		for(Time durata:durate)
-			query = query + "l.durata = '" + durata.getTime() + "' OR";
+			query = query + "l.durata = '" + durata.getTime() + "' OR ";
 		
 		if(durate.isEmpty())	
 			query = query + "1=1 ) AND (";
 		else
-			query = query + "1=0 )";
+			query = query + "1=0 ) AND (";
 		
 		for(Time orario:orari)
-			query = query + "l.durata = '" + orario.getTime() + "' OR";
+			query = query + "l.orario = '" + orario.getTime() + "' OR ";
 		
 		if(orari.isEmpty())
 			query = query + "1=1 )";
@@ -215,8 +210,8 @@ public class LezioniDAO {
 		
 		if(!titolo.equals(""))
 			query = query + "AND l.titolo = '" + titolo + "'";
-			
-		
+
+		System.out.println(query);
 		try {
 			ResultSet rs = statement.executeQuery(query);
 			

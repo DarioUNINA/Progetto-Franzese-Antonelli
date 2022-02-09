@@ -293,10 +293,10 @@ public class GestoreLezioniPage extends JFrame {
 				if(corsiList.getSelectedValue()==null)
 					alertNessunCorsoSelezionato();
 				else
-					if(vettoreGiorni.isEmpty() && !vettoreMesi.isEmpty())
-						alertNessunGiornoSelezionato();
-					else
-					{
+					if(vettoreGiorni.isEmpty() && !vettoreMesi.isEmpty()) {
+						vettoreGiorni = theController.getGiorni();
+						lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
+					}else{
 						lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
 						lezioniList.setListData(lezioni);
 					}
@@ -525,12 +525,6 @@ public class GestoreLezioniPage extends JFrame {
 		lezioni = theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso());
 		lezioniList.setListData(lezioni);
 	}
-	
-	public void alertNessunGiornoSelezionato() {
-		
-		JOptionPane.showMessageDialog(this, "Attenzione, bisogna specificare almeno un giorno del mese","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
-	
 	
 	public void alertEliminazioneFallita(String state) {
 		

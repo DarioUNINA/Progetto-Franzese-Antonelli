@@ -30,6 +30,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import java.awt.Cursor;
+import java.awt.FlowLayout;
 
 public class PanoramicaLezionePage extends JFrame {
 
@@ -91,13 +92,12 @@ public class PanoramicaLezionePage extends JFrame {
 		gestoreLezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		gestoreLezioniPanel.setBounds(10, 11, 548, 49);
 		contentPane.add(gestoreLezioniPanel);
-		gestoreLezioniPanel.setLayout(null);
+		gestoreLezioniPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		gestoreLezioniLabel = new JLabel("                        PANORAMICA LEZIONE");
+		gestoreLezioniLabel = new JLabel("PANORAMICA LEZIONE");
 		gestoreLezioniLabel.setForeground(Color.BLACK);
 		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		gestoreLezioniLabel.setBackground(Color.WHITE);
-		gestoreLezioniLabel.setBounds(10, 11, 528, 33);
 		gestoreLezioniPanel.add(gestoreLezioniLabel);
 		
 		studentiPanel = new JPanel();

@@ -131,7 +131,7 @@ public class RegistrazionePage extends JFrame {
 		rispostaSicurezzaField.setColumns(10);
 		
 		inserireRispostaLabel = new JLabel("Inserire Risposta");
-		inserireRispostaLabel.setBounds(524, 244, 128, 39);
+		inserireRispostaLabel.setBounds(534, 244, 128, 39);
 		registrazionePanel.add(inserireRispostaLabel);
 		inserireRispostaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
@@ -141,7 +141,7 @@ public class RegistrazionePage extends JFrame {
 		nuovaPasswordLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		nuovoNomeUtenteLabel = new JLabel("Inserire Nome Utente");
-		nuovoNomeUtenteLabel.setBounds(130, 106, 161, 39);
+		nuovoNomeUtenteLabel.setBounds(150, 106, 161, 39);
 		registrazionePanel.add(nuovoNomeUtenteLabel);
 		nuovoNomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		

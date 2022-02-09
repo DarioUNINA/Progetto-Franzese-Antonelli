@@ -46,4 +46,21 @@ public class PresenzeDAO {
 			return e.getSQLState();
 		}
 	}
+	
+	public String getNumeroPresenzeDelCorso(String matricola, String id_corso) {
+		
+		String presenze;
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT COUNT(*) FROM presenze pre JOIN lezioni l ON pre.id_lezione = l.id_lezione WHERE l.id_corso = '" + id_corso + "' AND pre.matricola = '" + matricola + "'");
+			
+			rs.next();
+			presenze = String.valueOf(rs.getInt(1));
+			return presenze;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+	}
 }

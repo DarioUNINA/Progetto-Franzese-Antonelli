@@ -100,7 +100,6 @@ public class HomePage extends JFrame {
 	private JRadioButton FullMatchRadioButton;
 	private JRadioButton PartialMatchRadioButton;
 	private JPanel panel;
-	private JButton btnNewButton;
 	private JLabel icona;
 
 	public HomePage(Controller cont, Operatori operatore) {
@@ -518,11 +517,6 @@ public class HomePage extends JFrame {
 		panel.setBounds(10, 11, 44, 539);
 		sfondoPane.add(panel);
 		panel.setLayout(null);
-		
-		btnNewButton = new JButton("...");
-		btnNewButton.setBorder(null);
-		btnNewButton.setBounds(0, 0, 44, 23);
-		panel.add(btnNewButton);
 
 		
 		setLocationRelativeTo(null);

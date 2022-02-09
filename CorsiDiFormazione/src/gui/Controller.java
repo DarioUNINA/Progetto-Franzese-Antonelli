@@ -559,4 +559,12 @@ public class Controller {
 		
 		return model;
 	}
+	
+	public String getNumeroPresenzeDelCorso(String matricola, String id_corso) {
+		return presenzeDAO.getNumeroPresenzeDelCorso(matricola, id_corso);
+	}
+	
+	public Boolean getAmmessoAdEsame(String matricola, String id_corso) {
+		return iscrizioniDAO.getAmmessoAdEsame(matricola, id_corso);
+	}
 }

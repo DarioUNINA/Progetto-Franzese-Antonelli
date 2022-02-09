@@ -9,10 +9,6 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
    gestirne la creazione.
 
 
-3) PANORAMICA SINGOLO STUDENTE ( PanoramicaSingoloStudentePage ): 
-   Popolare la tabella dei corsi con i vari dettagli dei corsi alla quale
-   lo studente è iscritto.
-
 5) POPOLAMENTO TABELE HOMEPAGE ( HomePage ):
    Popolamento tabelle( da fare assieme per decidere come gestirla).
 
@@ -22,12 +18,8 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 9)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
    ad esempio ho notato che eliminazione operatore è un motodo String
    
-10) gestione dei filtri della lezione
-
-11) gestione della checkboxlist di anni in homepage
 
 12) ridisegnare homepage
 
-13) ASSOLUTAMENTE porre un vincolo per il quale l'anno di una lezione non puó essere diverso dall'anno del corso, con gestione sia in java che sql
 
 14) Creare trigger che setta l'anno della lezione = all'anno del corso (oppure impedire l'inserimento con l'anno del corso sbagliato)

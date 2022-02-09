@@ -85,6 +85,10 @@ public class GestoreLezioniPage extends JFrame {
 	private JScrollPane mesiScrollPane;
 	private JCheckBoxList mesiList;
 	private JTextField titoloTextField;
+	private JLabel titoloLabel;
+	
+	private JRadioButton setAllGiorniRadioButton;
+	private JRadioButton setAllMesiRadioButton;
 	
 	public GestoreLezioniPage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -336,6 +340,13 @@ public class GestoreLezioniPage extends JFrame {
 		filtriPanel.add(giorniScrollPane);
 		
 		giorniList = new JCheckBoxList();
+		giorniList.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setAllGiorniRadioButton.setSelected(false);
+				setAllGiorniRadioButton.setText("set all");
+			}
+		});
 		giorniScrollPane.setViewportView(giorniList);
 		giorniList.setModel(theController.setModelCheckBoxString(giorni));
 		giorniList.setFont(new Font("Arial", Font.BOLD, 15));
@@ -376,6 +387,15 @@ public class GestoreLezioniPage extends JFrame {
 		filtriPanel.add(mesiScrollPane);
 		
 		mesiList = new JCheckBoxList();
+		mesiList.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				setAllMesiRadioButton.setSelected(false);
+				setAllMesiRadioButton.setText("set all");
+				
+			}
+		});
 		mesiScrollPane.setViewportView(mesiList);
 		mesiList.setModel(theController.setModelCheckBoxString(mesi));
 		mesiList.setFont(new Font("Arial", Font.BOLD, 15));
@@ -386,15 +406,59 @@ public class GestoreLezioniPage extends JFrame {
 		filtriPanel.add(titoloTextField);
 		titoloTextField.setColumns(10);
 		
-		JLabel titoloLabel = new JLabel("Titolo:");
+		titoloLabel = new JLabel("Titolo:");
 		titoloLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		titoloLabel.setBounds(22, 306, 60, 18);
 		filtriPanel.add(titoloLabel);
-
 		
-		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
-		aggiungiLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		aggiungiLezioneButton.setBackground(Color.WHITE);
+		setAllGiorniRadioButton = new JRadioButton("set all");
+		setAllGiorniRadioButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(!setAllGiorniRadioButton.isSelected()) {
+					
+					giorniList.setModel(theController.setNone(giorniList.getModel()));
+					setAllGiorniRadioButton.setText("set All");
+					
+				}else {
+					
+					setAllGiorniRadioButton.setText("set None");
+					giorniList.setModel(theController.setAll(giorniList.getModel()));
+				}
+				
+				
+			}
+		});
+		setAllGiorniRadioButton.setBounds(7, 168, 109, 23);
+		filtriPanel.add(setAllGiorniRadioButton);
+		
+		setAllMesiRadioButton = new JRadioButton("set all");
+		setAllMesiRadioButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(!setAllMesiRadioButton.isSelected()) {
+					
+					mesiList.setModel(theController.setNone(mesiList.getModel()));
+					setAllMesiRadioButton.setText("set All");
+					
+				}else {
+					
+					setAllMesiRadioButton.setText("set None");
+					mesiList.setModel(theController.setAll(mesiList.getModel()));
+				}
+			}
+		});
+		setAllMesiRadioButton.setBounds(147, 168, 109, 23);
+		filtriPanel.add(setAllMesiRadioButton);
+		
+				
+				aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
+				aggiungiLezioneButton.setBounds(665, 451, 116, 29);
+				contentPane.add(aggiungiLezioneButton);
+				aggiungiLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				aggiungiLezioneButton.setBackground(Color.WHITE);
 		aggiungiLezioneButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				aggiungiLezioneButton.setBackground(Color.GREEN);

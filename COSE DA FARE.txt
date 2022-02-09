@@ -29,3 +29,5 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 12) ridisegnare homepage
 
 13) ASSOLUTAMENTE porre un vincolo per il quale l'anno di una lezione non puó essere diverso dall'anno del corso, con gestione sia in java che sql
+
+14) Creare trigger che setta l'anno della lezione = all'anno del corso (oppure impedire l'inserimento con l'anno del corso sbagliato)

@@ -9,6 +9,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 
 import dao.*;
 import dto.*;
@@ -540,5 +541,22 @@ public class Controller {
 	public Vector<Lezioni> setLezioniFiltrate(Vector<String> giorni, Vector<String> mesi, Vector<Time> orario, Vector<Time> durate, String idCorso, String titolo, String anno){
 		
 		return lezioniDAO.setLezioniFiltrate(giorni, mesi, orario, durate, idCorso, titolo, anno);
+	}
+	
+	
+	public ListModel<JCheckBox> setAll(ListModel<JCheckBox> model){
+		
+		for(int i=0;i<model.getSize();i++)
+			model.getElementAt(i).setSelected(true);
+		
+		return model;
+	}
+	
+	public ListModel<JCheckBox> setNone(ListModel<JCheckBox> model){
+		
+		for(int i=0;i<model.getSize();i++)
+			model.getElementAt(i).setSelected(false);
+		
+		return model;
 	}
 }

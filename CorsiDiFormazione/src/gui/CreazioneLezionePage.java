@@ -86,7 +86,9 @@ public class CreazioneLezionePage extends JFrame {
 		creaLezionePanel.setLayout(null);
 		
 		calendario = new JCalendar();
+		calendario.getYearChooser().getSpinner().setEnabled(false);
 		calendario.setBounds(310, 55, 228, 151);
+		calendario.getYearChooser().setYear(Integer.parseInt(corso.getAnno()));
 		creaLezionePanel.add(calendario);
 		
 		creazioneLezioneLabel = new JLabel("CREAZIONE LEZIONE");

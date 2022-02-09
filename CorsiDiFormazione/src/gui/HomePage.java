@@ -23,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -76,7 +77,6 @@ public class HomePage extends JFrame {
 	private JScrollPane paroleChiaveScrollPane;
 	private JCheckBoxList listaParoleChiave;
 	private JCheckBoxList listaTemi;
-	private JComboBox<String> annoComboBox;
 	private JCheckBoxList annoList;
 	private JCheckBox terminatoCheckBoxSi;
 	private JCheckBox terminatoCheckBoxNo;
@@ -420,7 +420,7 @@ public class HomePage extends JFrame {
 				Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);
 				Vector<ParoleChiave> parole = theController.getParoleSelezionate(listaParoleChiave, paroleChiave);
 				
-				String anno = annoComboBox.getSelectedItem().toString();
+				Vector<String> vettoreAnni = theController.getStringheSelezionate(annoList, anni);
 				
 				boolean terminatoSi , terminatoNo; 
 				
@@ -434,10 +434,16 @@ public class HomePage extends JFrame {
 				else
 					terminatoNo = false;
 				
-				if(FullMatchRadioButton.isSelected())
-					corsi = theController.setCorsiFiltrati(aree, anno, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
+				if(FullMatchRadioButton.isSelected()) {
+					
+					if(vettoreAnni.size()>1)
+						alertCorsiFM();
+					else
+						corsi = theController.setCorsiFiltratiFM(aree, anni, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
+				}
+					
 				else
-					corsi = theController.setCorsiFiltratiPartialMatch(aree, anno, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
+					corsi = theController.setCorsiFiltratiPM(aree, anni, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
 
 				corsiList.setListData(corsi);
 				
@@ -547,4 +553,24 @@ public class HomePage extends JFrame {
 		}
 			
 		}
+}
+
+
+public void alertCorsiFM() {
+	
+	
+	JOptionPane.showMessageDialog(this, "Non puoi eserguire un filtraggio Full Match con piu di un anno","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	
+}
+
+
+Vector<String> getStringheSelezionate(JCheckBoxList box, Vector<String> anni){
+	
+	Vector<String> vettore = new Vector<String>();
+	
+	for(int i=0;i<anni.size();i++)
+		if(box.getModel().getElementAt(i).isSelected())
+			vettore.add(anni.get(i));
+	
+	return vettore;
 }

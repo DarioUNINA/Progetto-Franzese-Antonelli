@@ -41,7 +41,7 @@ public class CorsiDAO {
 		}
 	}
 	
-	public Vector<Corsi> addCorsiFiltrati(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore) {
+	public Vector<Corsi> addCorsiFiltratiFM(Vector<AreeTematiche> area, Vector<String> anni, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore) {
 		
 		Vector<Corsi> corsiFiltrati = new Vector<Corsi>();
 		
@@ -55,20 +55,17 @@ public class CorsiDAO {
 		for(AreeTematiche a:area)
 			query = query + " c.id_corso IN (SELECT t.id_corso FROM temi t WHERE t.nome_area = '" + a.getNomeArea() + "' ) AND "; 
 		
-		if(!anno.equals("")) 
+		for(String anno:anni)
 			query = query + " c.anno = '" +  anno + "'  AND ";
 	
 		for(ParoleChiave p:parole)
 			query = query + "c.id_corso IN (SELECT ca.id_corso FROM caratterizza ca WHERE ca.parola_chiave = '" + p.getParolaChiave()+ "' ) AND "; 
 		
 		if(terminatoSi)
-			if(!terminatoNo) 
-				query = query + " c.terminato = true AND";
+			query = query + " c.terminato = true AND";
 		
 		if(terminatoNo)
-			if(!terminatoSi)
-
-				query = query + " c.terminato = false AND";
+			query = query + " c.terminato = false AND";
 			
 		query = query + " c.id_operatore = '" + idOperatore + "'";		
 		
@@ -103,7 +100,7 @@ public class CorsiDAO {
 	}
 	
 	
-public Vector<Corsi> addFiltriPartialMatch(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore) {
+public Vector<Corsi> addCorsiFiltratiPM(Vector<AreeTematiche> area, Vector<String> anni, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore) {
 		
 		Vector<Corsi> corsiFiltrati = new Vector<Corsi>();
 		
@@ -117,13 +114,17 @@ public Vector<Corsi> addFiltriPartialMatch(Vector<AreeTematiche> area, String an
 		for(AreeTematiche a:area)
 			query = query + " c.id_corso IN (SELECT t.id_corso FROM temi t WHERE t.nome_area = '" + a.getNomeArea() + "' ) OR "; 
 		
-		if(!anno.equals("")) 
-			query = query + " c.anno = '" +  anno + "'  AND (";
+		query = query + " 1= 0 AND ("; 
+		
+		for(String anno:anni)
+			query = query + " c.anno = '" +  anno + "'  OR ";
+		
+		query = query + " 1= 0 ) AND ("; 
 	
 		for(ParoleChiave p:parole)
 			query = query + "c.id_corso IN (SELECT ca.id_corso FROM caratterizza ca WHERE ca.parola_chiave = '" + p.getParolaChiave()+ "' ) OR "; 
 		
-		query = query + " 1926 = 1926 ) ";
+		query = query + " 1 = 0 ) ";
 		
 		if(terminatoSi)
 			query = query + " AND c.terminato = true";

@@ -116,14 +116,14 @@ public class Controller {
 		return corsiDAO.getAnno();
 	}
 	
-	public Vector<Corsi> setCorsiFiltrati(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore){
+	public Vector<Corsi> setCorsiFiltratiFM(Vector<AreeTematiche> area, Vector<String> anni, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore){
 		
-		return corsiDAO.addCorsiFiltrati(area, anno, terminatoSi, terminatoNo, parole, idOperatore);
+		return corsiDAO.addCorsiFiltratiFM(area, anni, terminatoSi, terminatoNo, parole, idOperatore);
 	}
 	
-	public Vector<Corsi> setCorsiFiltratiPartialMatch(Vector<AreeTematiche> area, String anno, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore){
+	public Vector<Corsi> setCorsiFiltratiPM(Vector<AreeTematiche> area, Vector<String> anni, boolean terminatoSi, boolean terminatoNo, Vector<ParoleChiave> parole, String idOperatore){
 		
-		return corsiDAO.addFiltriPartialMatch(area, anno, terminatoSi, terminatoNo, parole, idOperatore);
+		return corsiDAO.addCorsiFiltratiPM(area, anni, terminatoSi, terminatoNo, parole, idOperatore);
 	}
 	
 	Operatori getOperatore(String nome) {

@@ -60,12 +60,23 @@ public class LogInPage extends JFrame {
 	private JPanel registratiPanel;
 	private JButton registratiButton;
 	private JLabel bENVENUTOLabel;
-	private JButton btnNewButton;
+	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color grigio;
+	final Color grigioChiaro;
+	
 	public LogInPage(Controller controller) {
+		
 		
 		imageicon = new ImageIcon("napule.png");
 		theController = controller;
 		setIconImage(imageicon.getImage());
+		
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		grigio = new Color(205,205,205);
+		grigioChiaro = new Color(233,233,233);
 		
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setResizable(false);
@@ -73,13 +84,14 @@ public class LogInPage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(65, 105, 225));
+		contentPane.setBackground(azzurro);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		logInPanel = new JPanel();
 		logInPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		logInPanel.setBackground(grigioChiaro);
 		logInPanel.setBounds(61, 55, 764, 394);
 		contentPane.add(logInPanel);
 		logInPanel.setLayout(null);
@@ -161,6 +173,7 @@ public class LogInPage extends JFrame {
 
 		registratiPanel = new JPanel();
 		registratiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		registratiPanel.setBackground(grigioChiaro);
 		registratiPanel.setBounds(61, 478, 764, 55);
 		contentPane.add(registratiPanel);
 

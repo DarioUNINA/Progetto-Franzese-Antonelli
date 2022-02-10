@@ -13,22 +13,13 @@ LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
 9)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
    ad esempio ho notato che eliminazione operatore è un motodo String
    
-
+   
 12) ridisegnare homepage
-
-
-14) Creare trigger che setta l'anno della lezione = all'anno del corso (oppure impedire l'inserimento con l'anno del corso sbagliato)
-
-15)unique parola in parole chiave
 
 16)GestoreLezioniPage
 
-quando si filtra, se é selezionato almeno un mese e i giorni non sono selezionati, adesso parte un JOptionPane, 
-invece fare un metdo che restituisce una lista con tutti i giorni (il metodo giá dovrebbe esistere)
 
 quando tu esegui una ricerca con filtra in gestore lezioni su lezioni, praticamnete fai una ricerca ma se cambi i valori
  nei filtri la lista la vede come vuota e quindi a schermo non ti fa vedere niente
-
-aggiungere gestore per ogni button
 
 

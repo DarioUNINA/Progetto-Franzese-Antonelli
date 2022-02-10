@@ -58,59 +58,59 @@ VALUES(nextval('sequenza_id_operatore'), 'giuliano','password');
 
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 1, 'object_orientation', 'corso sul paradigma della programmazione ad oggetti', 10, 80, '2020');
+VALUES(nextval('sequenza_id_corso'), 1, 'object_orientation', 'corso sul paradigma della programmazione ad oggetti', 10, 80, '2022');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 2, 'basi_dati', 'corso sulla gestione di database', 5, 70, '2021');
+VALUES(nextval('sequenza_id_corso'), 2, 'basi_dati', 'corso sulla gestione di database', 5, 70, '2022');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 3, 'algoritmi_strutture_dati', 'corso sullo complessita di algoritmi e strutture dati', 10, 100, '2021');
+VALUES(nextval('sequenza_id_corso'), 3, 'algoritmi_strutture_dati', 'corso sullo complessita di algoritmi e strutture dati', 10, 100, '2022');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 4, 'elementi_di_informatica_teorica', 'informatica teorica', 1, 50, '2019');
+VALUES(nextval('sequenza_id_corso'), 4, 'elementi_di_informatica_teorica', 'informatica teorica', 1, 50, '2022');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 6, 'programmazione_1', 'approccio alla programmazione in c++', 5, 100, '2020');
+VALUES(nextval('sequenza_id_corso'), 6, 'programmazione_1', 'approccio alla programmazione in c++', 5, 100, '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 5, 'analisi_1', 'teoremi base di analisi matematica', 10, 110, '2020');
+VALUES(nextval('sequenza_id_corso'), 5, 'analisi_1', 'teoremi base di analisi matematica', 10, 110, '2021');
 
 INSERT INTO corsi
 VALUES(nextval('sequenza_id_corso'), 1, 'ingegneria_del_software', 'studio dei software', 10, 100, '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 2, 'algebra', 'corso algebra lineare e booleana', 5, 90, '2018');
+VALUES(nextval('sequenza_id_corso'), 2, 'algebra', 'corso algebra lineare e booleana', 5, 90, '2011');
 
 
 
 
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'polinomi', 'prmimo approccio ai polinomi', '2:00', '06/11/2018', '14:30', 8);
+VALUES(nextval('sequenza_id_lezione'), 'polinomi', 'prmimo approccio ai polinomi', '2:00', '06/11/2021', '14:30', 8);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'sommatorie', 'calcolo delle sommatorie', '2:30', '20/11/2020', '10:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'sommatorie', 'calcolo delle sommatorie', '2:30', '20/11/2021', '10:30', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'algebra relazionale', 'definizione sintassi', '1:30', '28/09/2021', '8:30', 2);
+VALUES(nextval('sequenza_id_lezione'), 'algebra relazionale', 'definizione sintassi', '1:30', '28/09/2022', '8:30', 2);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'array', 'definizione struttura dell array', '2:00', '14/10/2020', '8:30', 5);
+VALUES(nextval('sequenza_id_lezione'), 'array', 'definizione struttura dell array', '2:00', '14/10/2021', '8:30', 5);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'grafi', 'DFS', '3:00', '01/10/2021', '16:30', 3);
+VALUES(nextval('sequenza_id_lezione'), 'grafi', 'DFS', '3:00', '01/10/2022', '16:30', 3);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'alberi', 'calcolo altezza', '1:00', '01/11/2018', '13:00', 8);
+VALUES(nextval('sequenza_id_lezione'), 'alberi', 'calcolo altezza', '1:00', '01/11/2021', '13:00', 8);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'complessita computazionale', 'studio della complessita di un algoritmo', '1:30', '28/09/2021', '8:30', 3);
+VALUES(nextval('sequenza_id_lezione'), 'complessita computazionale', 'studio della complessita di un algoritmo', '1:30', '28/09/2022', '8:30', 3);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'derivate' , 'studio del calcolo differenziale', '1:30', '14/06/2020', '8:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'derivate' , 'studio del calcolo differenziale', '1:30', '14/06/2021', '8:30', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'eccezioni' , 'gestione delle exception', '14:30', '14/06/2023', '8:30', 1);
+VALUES(nextval('sequenza_id_lezione'), 'eccezioni' , 'gestione delle exception', '14:30', '14/06/2022', '8:30', 1);
 
 INSERT into lezioni 
 VALUES(nextval('sequenza_id_lezione'), 'bfs' , 'algoritmo di ricerca in ampiezza', '2:30', '06/11/2018', '15:30', 3);

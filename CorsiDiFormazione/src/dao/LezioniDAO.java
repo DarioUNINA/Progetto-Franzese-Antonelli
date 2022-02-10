@@ -211,8 +211,6 @@ public class LezioniDAO {
 		if(!titolo.equals(""))
 			query = query + "AND l.titolo = '" + titolo + "'";
 		
-		System.out.println(query);
-
 		try {
 			ResultSet rs = statement.executeQuery(query);
 			

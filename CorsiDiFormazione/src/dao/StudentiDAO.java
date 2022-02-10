@@ -55,7 +55,6 @@ public class StudentiDAO {
 			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s WHERE s.matricola = '" + matricola + "'");
 
 			rs.next();
-			//System.out.println(rs.getString("matricola") +rs.getString("nome") + rs.getString("cognome"));
 			studente.setMatricola(rs.getString("matricola"));
 			studente.setNome(rs.getString("nome"));	
 			studente.setCognome(rs.getString("cognome"));

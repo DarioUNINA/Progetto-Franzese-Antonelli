@@ -53,6 +53,10 @@ temi (/nome_area/, /id_corso/)
 
 18) un professore non puó creare lezioni in contemporanea ad altre sue lezioni
 
+19) vista per il numero di partecipanti a un corso
+
+20) data di lezione errata
+
 
 --1)
 	CREATE FUNCTION check_inserimento_in_terminato()
@@ -464,3 +468,40 @@ temi (/nome_area/, /id_corso/)
 	AFTER INSERT ON lezioni
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_creazione_lezione_contemporanea();
+	
+
+--19)
+
+	CREATE VIEW partecipanti(id_corso, partecipanti) AS (	
+	SELECT i.id_corso, count (matricola)
+	from iscrizioni i
+	group by (id_corso)
+)
+
+--20)
+
+	CREATE OR REPLACE FUNCTION check_data_lezione_corso()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE anno VARCHAR(100);
+	BEGIN
+		
+		select c.anno into anno
+		from corsi c
+		where c.id_corso = new.id_corso;
+		
+		IF (CAST(EXTRACT(YEAR FROM data) AS VARCHAR(100)) <> anno) THEN
+			RAISE SQLSTATE '10013';
+			ROLLBACK;
+			RAISE EXCEPTION 'la data della lezione non corrisponde con l anno del corso';
+		END IF;
+		
+		RETURN NEW;
+	END
+	$$ LANGUAGE plpgsql;
+	
+	CREATE OR REPLACE TRIGGER data_lezione_corso
+	AFTER INSERT ON lezioni
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_data_lezione_corso();
+	

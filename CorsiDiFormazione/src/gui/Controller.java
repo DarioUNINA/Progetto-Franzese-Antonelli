@@ -131,6 +131,12 @@ public class Controller {
 		return operatoriDAO.getOperatore(nome);
 	}
 	
+	public Vector<Corsi> getCorsiDisponibiliOperatore(Operatori op){
+		
+		return corsiDAO.getCorsiDisponibiliOperatore(op);		
+	}
+	
+	
 	public Vector<Corsi> getCorsiOperatore(Operatori op){
 		
 		return corsiDAO.getCorsiOperatore(op);		
@@ -558,6 +564,9 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 	}
 	
 	public Vector<Lezioni> setLezioniFiltrate(Vector<String> giorni, Vector<String> mesi, Vector<Time> orario, Vector<Time> durate, String idCorso, String titolo, String anno){
+		
+		if(giorni.isEmpty() && mesi.isEmpty())
+			giorni = getGiorni();
 		
 		return lezioniDAO.setLezioniFiltrate(giorni, mesi, orario, durate, idCorso, titolo, anno);
 	}

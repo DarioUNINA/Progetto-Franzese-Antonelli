@@ -54,7 +54,7 @@ public class CreazioneStudentePage extends JFrame {
 		
 		this.operatore = operatore;
 		theController = controller;
-		corsi = theController.getCorsiOperatore(operatore);
+		corsi = theController.getCorsiDisponibiliOperatore(operatore);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -121,7 +121,10 @@ public class CreazioneStudentePage extends JFrame {
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				gestioneCreazioneStudente();
+				if(nomeTextField.getText().equals("") || cognomeTextField.getText().equals(""))
+					alertNomeCognomeMancante();
+				else
+					gestioneCreazioneStudente();
 				
 			}
 		});
@@ -186,5 +189,12 @@ public class CreazioneStudentePage extends JFrame {
 		else
 			JOptionPane.showMessageDialog(this, "Creazione dello studente fallita.\nCodice d'errore: " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
+	}
+	
+	public void alertNomeCognomeMancante() {
+		
+		JOptionPane.showMessageDialog(this, "Inserire tutti i campi per creare uno studente","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+		
 	}
 }

@@ -208,34 +208,12 @@ public class CreazioneCorsoPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				String nome = nomeTextField.getText().toLowerCase();
-				String descrizione = descrizioneTextField.getText().toLowerCase();
-				String anno = String.valueOf(annoChooser.getYear());
-				String presenzeMin = presenzeMinTextField.getText();
-				String maxPartecipanti = maxPartecipantiTextField.getText();
-				boolean terminato;
-				Vector<ParoleChiave> paroleChiave = theController.getParoleSelezionate(listaParole, parole);
-				Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);
-				
-				if(terminatoCheckBox.isSelected())
-					terminato = true;
+				if(nomeTextField.getText().equals(""))
+					alertNomeNonInserito();
 				else
-					terminato = false;
+					gestoreCreazioneStudente();
 				
-				if(!theController.isDigits(presenzeMin))
-					alertErroreInserimentoPresenzeMin();
-				else
-					if(!theController.isDigits(maxPartecipanti))
-						alertErroreInserimentoMaxPartecipanti();
-					else {
-							
-							String state = theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore(), aree);
-								
-							if(state.equals("0"))
-								alertInserimentoEffettuato();
-							else
-								alertInserimentoNonEffettuato(state);
-					}
+				
 			}	
 			
 		});
@@ -328,5 +306,43 @@ public class CreazioneCorsoPage extends JFrame {
 			else
 				JOptionPane.showMessageDialog(this, "Impossibile creare il corso: codice errore " +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
+	}
+	
+	public void alertNomeNonInserito() {
+		
+		JOptionPane.showMessageDialog(this, "Inserire il nome del corso", "<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+	}
+	
+	public void gestoreCreazioneStudente() {
+		
+		String nome = nomeTextField.getText().toLowerCase();
+		String descrizione = descrizioneTextField.getText().toLowerCase();
+		String anno = String.valueOf(annoChooser.getYear());
+		String presenzeMin = presenzeMinTextField.getText();
+		String maxPartecipanti = maxPartecipantiTextField.getText();
+		boolean terminato;
+		Vector<ParoleChiave> paroleChiave = theController.getParoleSelezionate(listaParole, parole);
+		Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);
+		
+		if(terminatoCheckBox.isSelected())
+			terminato = true;
+		else
+			terminato = false;
+		
+		if(!theController.isDigits(presenzeMin))
+			alertErroreInserimentoPresenzeMin();
+		else
+			if(!theController.isDigits(maxPartecipanti))
+				alertErroreInserimentoMaxPartecipanti();
+			else {
+					
+					String state = theController.aggiungiCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, operatore.getIdOperatore(), aree);
+						
+					if(state.equals("0"))
+						alertInserimentoEffettuato();
+					else
+						alertInserimentoNonEffettuato(state);
+			}
 	}
 }

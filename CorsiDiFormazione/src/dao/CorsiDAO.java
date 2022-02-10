@@ -174,14 +174,15 @@ public Vector<Corsi> addCorsiFiltratiPM(Vector<AreeTematiche> area, Vector<Strin
 		}
 	}
 	
-	public Vector<Corsi> getCorsiOperatore(Operatori op){
+	public Vector<Corsi> getCorsiDisponibiliOperatore(Operatori op){
 		
 		Vector<Corsi> corsi = new Vector<Corsi>();
 		
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT * FROM corsi co  WHERE co.id_operatore = '"+ op.getIdOperatore() + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM corsi co  JOIN partecipanti p ON co.id_corso = p.id_corso"
+					+ " WHERE co.id_operatore = '"+ op.getIdOperatore() + "' AND co.max_partecipanti > p.partecipanti AND co.terminato = false");
 			
 			while(rs.next()) {
 
@@ -196,7 +197,6 @@ public Vector<Corsi> addCorsiFiltratiPM(Vector<AreeTematiche> area, Vector<Strin
 				c.setTerminato(rs.getBoolean("terminato"));
 
 				corsi.add(c);
-				
 			}
 			
 			return corsi;
@@ -206,9 +206,42 @@ public Vector<Corsi> addCorsiFiltratiPM(Vector<AreeTematiche> area, Vector<Strin
 			e.printStackTrace();
 			return corsi;
 		}
+	}		
+
+		
+	
+	
+public Vector<Corsi> getCorsiOperatore(Operatori op){
+		
+		Vector<Corsi> corsi = new Vector<Corsi>();
 		
 		
-		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT * FROM corsi co " + " WHERE co.id_operatore = '"+ op.getIdOperatore()  + "' ");
+			
+			while(rs.next()) {
+
+				Corsi c = new Corsi();
+				c.setNome(rs.getString("nome"));
+				c.setAnno(rs.getString("anno"));
+				c.setDescrizione(rs.getString("descrizione"));
+				c.setIdCorso(rs.getString("id_corso"));
+				c.setIdOperatore(op.getIdOperatore());
+				c.setMaxPartecipanti(rs.getInt("max_partecipanti"));
+				c.setPresenzeMin(rs.getInt("presenze_min"));
+				c.setTerminato(rs.getBoolean("terminato"));
+
+				corsi.add(c);
+			}
+			
+			return corsi;
+			
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return corsi;
+		}
 		
 	}
 

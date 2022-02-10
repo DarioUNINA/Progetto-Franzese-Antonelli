@@ -193,25 +193,26 @@ public class LezioniDAO {
 			
 
 		for(Time durata:durate)
-			query = query + "l.durata = '" + durata.getTime() + "' OR ";
+			query = query + "l.durata = '" + durata.getHours() + ":" + durata.getMinutes() + "' OR ";
 		
 		if(durate.isEmpty())	
-			query = query + "1=1 ) AND (";
+			query = query + "true ) AND (";
 		else
-			query = query + "1=0 ) AND (";
+			query = query + "false ) AND (";
 		
 		for(Time orario:orari)
-			query = query + "l.orario = '" + orario.getTime() + "' OR ";
+			query = query + "l.orario = '" + orario.getHours() + ":" + orario.getMinutes() + "' OR ";
 		
 		if(orari.isEmpty())
-			query = query + "1=1 )";
+			query = query + "true )";
 		else
-			query = query + "1=0 )";
+			query = query + "false )";
 		
 		if(!titolo.equals(""))
 			query = query + "AND l.titolo = '" + titolo + "'";
-
+		
 		System.out.println(query);
+
 		try {
 			ResultSet rs = statement.executeQuery(query);
 			

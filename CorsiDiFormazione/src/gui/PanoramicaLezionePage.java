@@ -71,8 +71,7 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		studenti = theController.getAllStudentiIscrittiAllaLezione(lezione.getIdLezione());
 		studentiList = new JList<Studenti>(studenti);
-		if(studenti.isEmpty())
-			alertNonCiSonoStudentiIscritti();
+		
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -207,6 +206,8 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
+		if(studenti.isEmpty())
+			alertNonCiSonoStudentiIscritti();
 	}
 	
 	public void alertNonCiSonoStudenti() {

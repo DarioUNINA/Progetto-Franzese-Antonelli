@@ -31,6 +31,8 @@ import java.awt.FlowLayout;
 import java.awt.Cursor;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class GestoreLezioniPage extends JFrame {
 
@@ -96,24 +98,33 @@ public class GestoreLezioniPage extends JFrame {
 		theController = controller;
 		this.operatore = operatore;
 		
+		
+		
 		corsi = theController.getCorsiOperatore(operatore);
 		corsiList = new JList<Corsi>(corsi);
-		corsiList.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(corsiList.isSelectionEmpty()) {
-					alertNessunCorsoSelezionato();
-				}else {
-					String id_corso = corsiList.getSelectedValue().getIdCorso();
-					if(theController.setAllLezioniDelCorso(id_corso).isEmpty())
-						alertNessunaLezioneDisponibile();
+		corsiList.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
 				
-					lezioni = theController.setAllLezioniDelCorso(id_corso);
-					lezioniList.setListData(lezioni);
-					}
+				if(e.getValueIsAdjusting()) {
+					
+					if(corsiList.isSelectionEmpty()) {
+						alertNessunCorsoSelezionato();
+					}else {
+						String id_corso = corsiList.getSelectedValue().getIdCorso();
+						if(theController.setAllLezioniDelCorso(id_corso).isEmpty())
+							alertNessunaLezioneDisponibile();
+					
+						lezioni = theController.setAllLezioniDelCorso(id_corso);
+						lezioniList.setListData(lezioni);
+						}
+					
 				}
-		
+					
+			}
+				
+				
 		});
+
 		
 		mesi = theController.getMesi();
 		giorni = theController.getGiorni();
@@ -213,8 +224,9 @@ public class GestoreLezioniPage extends JFrame {
 					alertNessunaLezioneSelezionata();
 				}else {
 					String lezioneSelezionata = lezioniList.getSelectedValue().getTitolo();
-					PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, theController.getLezione(lezioneSelezionata));
 					setVisible(false);
+					PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, theController.getLezione(lezioneSelezionata));
+					
 				}
 			}
 		});
@@ -292,12 +304,12 @@ public class GestoreLezioniPage extends JFrame {
 				
 				if(corsiList.getSelectedValue()==null)
 					alertNessunCorsoSelezionato();
-				else
-					if(vettoreGiorni.isEmpty() && !vettoreMesi.isEmpty()) {
-						vettoreGiorni = theController.getGiorni();
+				else {
+		//			if(vettoreGiorni.isEmpty() && !vettoreMesi.isEmpty()) {
+			//			vettoreGiorni = theController.getGiorni();
 						lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
-					}else{
-						lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
+				//	}else{
+					//	lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
 						lezioniList.setListData(lezioni);
 					}
 			}
@@ -414,13 +426,15 @@ public class GestoreLezioniPage extends JFrame {
 					
 					giorniList.setModel(theController.setNone(giorniList.getModel()));
 					setAllGiorniRadioButton.setText("set All");
+					giorniList.updateUI();
 					
 				}else {
 					
 					setAllGiorniRadioButton.setText("set None");
 					giorniList.setModel(theController.setAll(giorniList.getModel()));
+					giorniList.updateUI();
+
 				}
-				
 				
 			}
 		});
@@ -436,11 +450,13 @@ public class GestoreLezioniPage extends JFrame {
 					
 					mesiList.setModel(theController.setNone(mesiList.getModel()));
 					setAllMesiRadioButton.setText("set All");
+					mesiList.updateUI();
 					
 				}else {
 					
 					setAllMesiRadioButton.setText("set None");
 					mesiList.setModel(theController.setAll(mesiList.getModel()));
+					mesiList.updateUI();
 				}
 			}
 		});

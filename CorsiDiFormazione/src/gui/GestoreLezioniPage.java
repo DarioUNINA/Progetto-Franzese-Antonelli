@@ -47,6 +47,9 @@ public class GestoreLezioniPage extends JFrame {
 	private Vector<Time> durata;
 	
 	private ImageIcon imageicon;
+	private ImageIcon imageImpostazioni;
+	private ImageIcon imageTrattini;
+	private ImageIcon imageEsci;
 	private Component url;
 	private JPanel contentPane;
 	private JPanel gestoreLezioniPanel;
@@ -66,8 +69,6 @@ public class GestoreLezioniPage extends JFrame {
 	private JButton panormaicaLezioneButton;
 	private JButton eliminaLezioneButton;
 	private JButton aggiungiLezioneButton;
-	private JButton indietroButton;
-	
 	private JScrollPane corsiScrollPane;
 	private JList<Corsi> corsiList;
 	
@@ -91,17 +92,401 @@ public class GestoreLezioniPage extends JFrame {
 	private JRadioButton setAllGiorniRadioButton;
 	private JRadioButton setAllMesiRadioButton;
 	
+	private JPanel menuPanelEsteso;
+	private JLabel impostazioniLabelMenuEsteso;
+	private JLabel impostazioniScrittaLabel;
+	private JLabel gestoreCorsiMenuLabel;
+	private JLabel gestoreLezioniMenuLabel;
+	private JLabel gestoreStudentiMenuLabel;
+	private JLabel esciImageMenuEstesoLabel;
+	private JLabel esciLabel;
+	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color grigio;
+	final Color grigioChiaro;
+	private JLabel labelTrattiniMenuEsteso;
+	private JLabel menuEstesoLabel;
+	private JPanel gestoreCorsiOpacoPanel;
+	private JPanel gestoreLezioniOpacoPanel;
+	private JPanel gestoreStudentiOpacoPanel;
+	private JPanel menuPanel;
+	private JLabel labelTrattini;
+	private JLabel impostazioniLabel;
+	private JLabel esciImageLabel;
+	
 	public GestoreLezioniPage(Controller controller, Operatori operatore) {
 		setResizable(false);
 		
 		
 		theController = controller;
 		this.operatore = operatore;
-		
-		
-		
+
 		corsi = theController.getCorsiOperatore(operatore);
 		corsiList = new JList<Corsi>(corsi);
+		
+		mesi = theController.getMesi();
+		giorni = theController.getGiorni();
+		durata = theController.getDurate();
+		orario = theController.getOrario();
+		
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		grigio = new Color(205,205,205);
+		grigioChiaro = new Color(233,233,233);
+	
+
+		imageImpostazioni = new ImageIcon("impostazioni.png");
+		imageicon = new ImageIcon("napule.png");
+		imageTrattini = new ImageIcon("trattini.png");
+		imageEsci = new ImageIcon("esci.png");
+		setIconImage(imageicon.getImage());
+		setTitle("GESTIONE CORSI DI FORMAZIONE");
+		
+		getContentPane().setBackground(Color.LIGHT_GRAY);
+		setTitle("GESTIONE CORSI DI FORMAZIONE");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 900, 600);
+		contentPane = new JPanel();
+		contentPane.setBackground(azzurro);
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		menuPanelEsteso = new JPanel();
+		menuPanelEsteso.setVisible(false);
+		menuPanelEsteso.setBounds(10, 11, 225, 539);
+		menuPanelEsteso.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				menuPanelEsteso.setVisible(false);
+				menuPanel.setVisible(true);
+			}
+		});
+		menuPanelEsteso.setLayout(null);
+		menuPanelEsteso.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		menuPanelEsteso.setBackground(new Color(25, 25, 112));
+		contentPane.add(menuPanelEsteso);
+		
+		impostazioniLabelMenuEsteso = new JLabel(imageImpostazioni);
+		impostazioniLabelMenuEsteso.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		impostazioniLabelMenuEsteso.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				menuPanel.setVisible(false);
+			}
+		});
+		impostazioniLabelMenuEsteso.setBounds(10, 465, 24, 32);
+		menuPanelEsteso.add(impostazioniLabelMenuEsteso);
+		
+		impostazioniScrittaLabel = new JLabel("IMPOSTAZIONI");
+		impostazioniScrittaLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		impostazioniScrittaLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				menuPanel.setVisible(false);
+			}
+		});
+		impostazioniScrittaLabel.setForeground(Color.WHITE);
+		impostazioniScrittaLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		impostazioniScrittaLabel.setBounds(44, 465, 142, 32);
+		menuPanelEsteso.add(impostazioniScrittaLabel);
+		
+		gestoreCorsiMenuLabel = new JLabel("GESTORE CORSI");
+		gestoreCorsiMenuLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				gestoreCorsiOpacoPanel.setBackground(azzurro);
+				gestoreCorsiMenuLabel.setForeground(Color.BLACK);
+				gestoreCorsiMenuLabel.setVisible(true);
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreCorsiOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreCorsiMenuLabel.setForeground(Color.WHITE);
+				menuPanelEsteso.setVisible(true);
+				gestoreCorsiMenuLabel.setVisible(true);
+			}
+		});
+		gestoreCorsiMenuLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		gestoreCorsiMenuLabel.setForeground(Color.WHITE);
+		gestoreCorsiMenuLabel.setFont(new Font("Arial", Font.BOLD, 16));
+		gestoreCorsiMenuLabel.setBounds(44, 66, 171, 22);
+		menuPanelEsteso.add(gestoreCorsiMenuLabel);
+		
+		gestoreLezioniMenuLabel = new JLabel("GESTORE LEZIONI");
+		gestoreLezioniMenuLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				menuPanelEsteso.setVisible(false);
+				menuPanel.setVisible(true);	
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				gestoreLezioniOpacoPanel.setBackground(azzurro);
+				gestoreLezioniMenuLabel.setForeground(Color.BLACK);
+				gestoreLezioniMenuLabel.setVisible(true);
+				menuPanelEsteso.setVisible(true);
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreLezioniMenuLabel.setForeground(Color.WHITE);
+				menuPanelEsteso.setVisible(true);
+				gestoreLezioniMenuLabel.setVisible(true);
+			}
+			
+		});
+		gestoreLezioniMenuLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		gestoreLezioniMenuLabel.setForeground(Color.WHITE);
+		gestoreLezioniMenuLabel.setFont(new Font("Arial", Font.BOLD, 16));
+		gestoreLezioniMenuLabel.setBounds(44, 99, 171, 22);
+		menuPanelEsteso.add(gestoreLezioniMenuLabel);
+		
+		gestoreStudentiMenuLabel = new JLabel("GESTORE STUDENTI");
+		gestoreStudentiMenuLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GestoreStudentiPage gs = new GestoreStudentiPage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				gestoreStudentiOpacoPanel.setBackground(azzurro);
+				gestoreStudentiMenuLabel.setForeground(Color.BLACK);
+				gestoreStudentiMenuLabel.setVisible(true);
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreStudentiOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreStudentiMenuLabel.setForeground(Color.WHITE);
+				menuPanelEsteso.setVisible(true);
+				gestoreStudentiMenuLabel.setVisible(true);
+			}
+		});
+		gestoreStudentiMenuLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		gestoreStudentiMenuLabel.setForeground(Color.WHITE);
+		gestoreStudentiMenuLabel.setFont(new Font("Arial", Font.BOLD, 16));
+		gestoreStudentiMenuLabel.setBounds(44, 132, 171, 22);
+		menuPanelEsteso.add(gestoreStudentiMenuLabel);
+		
+		gestoreCorsiOpacoPanel = new JPanel();
+		gestoreCorsiOpacoPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				gestoreCorsiOpacoPanel.setBackground(azzurro);
+				gestoreCorsiMenuLabel.setForeground(Color.BLACK);
+				gestoreCorsiMenuLabel.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreCorsiOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreCorsiMenuLabel.setForeground(Color.WHITE);
+				gestoreCorsiMenuLabel.setVisible(true);
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		gestoreCorsiOpacoPanel.setBackground(new Color(25, 25, 112));
+		gestoreCorsiOpacoPanel.setBounds(10, 66, 205, 22);
+		menuPanelEsteso.add(gestoreCorsiOpacoPanel);
+		
+		gestoreLezioniOpacoPanel = new JPanel();
+		gestoreLezioniOpacoPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				gestoreLezioniOpacoPanel.setBackground(azzurro);
+				gestoreLezioniMenuLabel.setForeground(Color.BLACK);
+				gestoreLezioniMenuLabel.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreLezioniMenuLabel.setForeground(Color.WHITE);
+				gestoreLezioniMenuLabel.setVisible(true);
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
+		gestoreLezioniOpacoPanel.setBounds(10, 99, 205, 22);
+		menuPanelEsteso.add(gestoreLezioniOpacoPanel);
+		
+		gestoreStudentiOpacoPanel = new JPanel();
+		gestoreStudentiOpacoPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				gestoreStudentiOpacoPanel.setBackground(azzurro);
+				gestoreStudentiMenuLabel.setForeground(Color.BLACK);
+				gestoreStudentiMenuLabel.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreStudentiOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreStudentiMenuLabel.setForeground(Color.WHITE);
+				gestoreStudentiMenuLabel.setVisible(true);
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		gestoreStudentiOpacoPanel.setBackground(new Color(25, 25, 112));
+		gestoreStudentiOpacoPanel.setBounds(10, 132, 205, 22);
+		menuPanelEsteso.add(gestoreStudentiOpacoPanel);
+		
+		esciImageMenuEstesoLabel = new JLabel(imageEsci);
+		esciImageMenuEstesoLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		esciImageMenuEstesoLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {	
+				alertReturnToLogIn();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		esciImageMenuEstesoLabel.setBounds(10, 496, 24, 22);
+		esciImageMenuEstesoLabel.setVisible(true);
+		menuPanelEsteso.add(esciImageMenuEstesoLabel);
+		
+		esciLabel = new JLabel("ESCI");
+		esciLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		esciLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {	
+				alertReturnToLogIn();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		esciLabel.setForeground(Color.WHITE);
+		esciLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		esciLabel.setBounds(44, 496, 142, 32);
+		menuPanelEsteso.add(esciLabel);
+		
+		labelTrattiniMenuEsteso = new JLabel(imageTrattini);
+		labelTrattiniMenuEsteso.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		labelTrattiniMenuEsteso.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		labelTrattiniMenuEsteso.setFont(new Font("Arial", Font.BOLD, 15));
+		labelTrattiniMenuEsteso.setBounds(10, 11, 24, 25);
+		menuPanelEsteso.add(labelTrattiniMenuEsteso);
+		
+		menuEstesoLabel = new JLabel("Menu");
+		menuEstesoLabel.setForeground(Color.WHITE);
+		menuEstesoLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		menuEstesoLabel.setBounds(85, 11, 58, 22);
+		menuPanelEsteso.add(menuEstesoLabel);
+		
+		menuPanel = new JPanel();
+		menuPanel.setLayout(null);
+		menuPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		menuPanel.setBackground(new Color(25, 25, 112));
+		menuPanel.setBounds(10, 11, 44, 539);
+		contentPane.add(menuPanel);
+		
+		labelTrattini = new JLabel(imageTrattini);
+		labelTrattini.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		labelTrattini.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		labelTrattini.setFont(new Font("Arial", Font.BOLD, 15));
+		labelTrattini.setBounds(10, 11, 24, 25);
+		menuPanel.add(labelTrattini);
+		
+		impostazioniLabel = new JLabel(imageImpostazioni);
+		impostazioniLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		impostazioniLabel.addMouseListener(new MouseAdapter() {		
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+			
+		});
+		impostazioniLabel.setBounds(10, 465, 24, 32);
+		menuPanel.add(impostazioniLabel);
+		
+		esciImageLabel = new JLabel(imageEsci);
+		esciImageLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		esciImageLabel.addMouseListener(new MouseAdapter() {		
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+			
+		});
+		esciImageLabel.setBounds(10, 496, 24, 25);
+		menuPanel.add(esciImageLabel);
+		
+		gestoreLezioniPanel = new JPanel();
+		gestoreLezioniPanel.setBackground(grigioChiaro);
+		gestoreLezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		gestoreLezioniPanel.setBounds(64, 11, 810, 49);
+		contentPane.add(gestoreLezioniPanel);
+		gestoreLezioniPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		gestoreLezioniLabel = new JLabel("GESTIONE LEZIONI");
+		gestoreLezioniLabel.setForeground(Color.BLACK);
+		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 22));
+		gestoreLezioniLabel.setBackground(Color.WHITE);
+		gestoreLezioniPanel.add(gestoreLezioniLabel);
+		
+		corsiPanel = new JPanel();
+		corsiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		corsiPanel.setBackground(grigioChiaro);
+		corsiPanel.setBounds(64, 71, 241, 479);
+		contentPane.add(corsiPanel);
+		corsiPanel.setLayout(null);
+		
+		lezioniPanel =  new JPanel();
+		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		lezioniPanel.setBackground(grigioChiaro);
+		lezioniPanel.setBounds(315, 71, 559, 479);
+		contentPane.add(lezioniPanel);
+		lezioniPanel.setLayout(null);
+		
+		selezionaCorsoLabel = new JLabel("Seleziona Corso:");
+		selezionaCorsoLabel.setBounds(52, 11, 121, 18);
+		selezionaCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		corsiPanel.add(selezionaCorsoLabel);
+		
+		corsiScrollPane = new JScrollPane();
+		corsiScrollPane.setBounds(10, 40, 221, 428);
+		corsiPanel.add(corsiScrollPane);
+		
+		
+		corsiScrollPane.setViewportView(corsiList);
 		corsiList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				
@@ -124,94 +509,14 @@ public class GestoreLezioniPage extends JFrame {
 				
 				
 		});
-
-		
-		mesi = theController.getMesi();
-		giorni = theController.getGiorni();
-		durata = theController.getDurate();
-		orario = theController.getOrario();
-
-		
-		imageicon = new ImageIcon("napule.png");
-		setIconImage(imageicon.getImage());
-		setTitle("GESTIONE CORSI DI FORMAZIONE");
-		
-		getContentPane().setBackground(Color.LIGHT_GRAY);
-		setTitle("GESTIONE CORSI DI FORMAZIONE");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 900, 600);
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(65, 105, 225));
-		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		gestoreLezioniPanel = new JPanel();
-		gestoreLezioniPanel.setBackground(SystemColor.control);
-		gestoreLezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		gestoreLezioniPanel.setBounds(10, 11, 864, 49);
-		contentPane.add(gestoreLezioniPanel);
-		gestoreLezioniPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		gestoreLezioniLabel = new JLabel("GESTIONE LEZIONI");
-		gestoreLezioniLabel.setForeground(new Color(65, 105, 225));
-		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 22));
-		gestoreLezioniLabel.setBackground(Color.WHITE);
-		gestoreLezioniPanel.add(gestoreLezioniLabel);
-		
-		corsiPanel = new JPanel();
-		corsiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		corsiPanel.setBounds(10, 71, 222, 445);
-		contentPane.add(corsiPanel);
-		corsiPanel.setLayout(null);
-		
-		lezioniPanel =  new JPanel();
-		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		lezioniPanel.setBounds(242, 71, 632, 445);
-		contentPane.add(lezioniPanel);
-		lezioniPanel.setLayout(null);
-		
-		selezionaCorsoLabel = new JLabel("Seleziona Corso:");
-		selezionaCorsoLabel.setBounds(52, 11, 121, 18);
-		selezionaCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		corsiPanel.add(selezionaCorsoLabel);
-		
-		indietroButton = new JButton("INDIETRO");
-		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		indietroButton.setBackground(Color.WHITE);
-		indietroButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
-				setVisible(false);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				indietroButton.setBackground(Color.ORANGE);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				indietroButton.setBackground(Color.WHITE);
-			}
-		});
-		
-		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(10, 527, 163, 23);
-		contentPane.add(indietroButton);
-		
-		corsiScrollPane = new JScrollPane();
-		corsiScrollPane.setBounds(10, 40, 202, 394);
-		corsiPanel.add(corsiScrollPane);
-		
-		
-		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setVisibleRowCount(10);
-		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
+		corsiList.setBackground(azzurroChiaro);
+		corsiList.setFont(new Font("Arial", Font.BOLD, 17));
 		corsiList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		elencoLezioneDelCorsoLabel = new JLabel("Elenco Lezione del Corso:");
 		elencoLezioneDelCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		elencoLezioneDelCorsoLabel.setBounds(59, 11, 203, 18);
+		elencoLezioneDelCorsoLabel.setBounds(44, 11, 203, 18);
 		lezioniPanel.add(elencoLezioneDelCorsoLabel);
 		
 		panormaicaLezioneButton = new JButton("PANORAMICA");
@@ -231,7 +536,7 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		panormaicaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		panormaicaLezioneButton.setBounds(173, 405, 116, 29);
+		panormaicaLezioneButton.setBounds(146, 405, 116, 29);
 		lezioniPanel.add(panormaicaLezioneButton);
 		
 		eliminaLezioneButton = new JButton("ELIMINA");
@@ -258,37 +563,39 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		eliminaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		eliminaLezioneButton.setBounds(10, 405, 116, 29);
+		eliminaLezioneButton.setBounds(11, 405, 116, 29);
 		lezioniPanel.add(eliminaLezioneButton);
 		
 		lezioniScrollPane = new JScrollPane();
-		lezioniScrollPane.setBounds(11, 40, 278, 354);
+		lezioniScrollPane.setBounds(11, 40, 251, 354);
 		lezioniPanel.add(lezioniScrollPane);
 		
 		lezioniList = new JList<Lezioni>();
 		lezioniScrollPane.setViewportView(lezioniList);
 		lezioniList.setVisibleRowCount(10);
-		lezioniList.setFont(new Font("Arial", Font.BOLD, 15));
+		lezioniList.setBackground(azzurroChiaro);
+		lezioniList.setFont(new Font("Arial", Font.BOLD, 17));
 		lezioniList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		filtriPanel = new JPanel();
 		filtriPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		filtriPanel.setBounds(306, 0, 326, 445);
+		filtriPanel.setBackground(grigioChiaro);
+		filtriPanel.setBounds(272, 0, 287, 479);
 		lezioniPanel.add(filtriPanel);
 		filtriPanel.setLayout(null);
 		
 		filtriLabel = new JLabel("FILTRI PER LEZIONI");
-		filtriLabel.setBounds(90, 11, 144, 18);
+		filtriLabel.setBounds(68, 11, 144, 18);
 		filtriLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		filtriPanel.add(filtriLabel);
 		
 		giorniLabel = new JLabel("Giorni:");
-		giorniLabel.setBounds(20, 100, 48, 18);
+		giorniLabel.setBounds(10, 100, 48, 18);
 		filtriPanel.add(giorniLabel);
 		giorniLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		mesiLabel = new JLabel("Mesi:");
-		mesiLabel.setBounds(196, 100, 38, 18);
+		mesiLabel.setBounds(159, 100, 38, 18);
 		filtriPanel.add(mesiLabel);
 		mesiLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		
@@ -315,7 +622,7 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		filtraButton.setBackground(Color.WHITE);
-		filtraButton.setBounds(210, 411, 104, 23);
+		filtraButton.setBounds(173, 445, 104, 23);
 		filtriPanel.add(filtraButton);
 		filtraButton.setForeground(Color.RED);
 		filtraButton.setFont(new Font("Arial", Font.BOLD, 12));
@@ -336,13 +643,13 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		resetButton.setBackground(Color.WHITE);
-		resetButton.setBounds(20, 411, 104, 23);
+		resetButton.setBounds(10, 445, 104, 23);
 		filtriPanel.add(resetButton);
 		resetButton.setFont(new Font("Arial", Font.BOLD, 12));
 		resetButton.setForeground(new Color(65, 105, 225));
 		
 		giorniScrollPane = new JScrollPane();
-		giorniScrollPane.setBounds(20, 117, 120, 128);
+		giorniScrollPane.setBounds(10, 117, 120, 128);
 		filtriPanel.add(giorniScrollPane);
 		
 		giorniList = new JCheckBoxList();
@@ -354,42 +661,45 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		giorniScrollPane.setViewportView(giorniList);
+		giorniList.setBackground(azzurroChiaro);
 		giorniList.setModel(theController.setModelCheckBoxString(giorni));
 		giorniList.setFont(new Font("Arial", Font.BOLD, 15));
 		giorniList.setVisibleRowCount(10);
 		
 		orarioScrollPane = new JScrollPane();
-		orarioScrollPane.setBounds(20, 297, 118, 92);
+		orarioScrollPane.setBounds(10, 310, 118, 92);
 		filtriPanel.add(orarioScrollPane);
 		
 		orarioList = new JCheckBoxList();
 		orarioScrollPane.setColumnHeaderView(orarioList);
+		orarioList.setBackground(azzurroChiaro);
 		orarioList.setModel(theController.setModelCheckBoxTime(orario));
 		orarioList.setFont(new Font("Arial", Font.BOLD, 15));
 		orarioList.setVisibleRowCount(10);
 		
 		durataScrollPane = new JScrollPane();
-		durataScrollPane.setBounds(196, 297, 118, 92);
+		durataScrollPane.setBounds(159, 310, 118, 92);
 		filtriPanel.add(durataScrollPane);
 		
 		durataList = new JCheckBoxList();
 		durataScrollPane.setViewportView(durataList);
+		durataList.setBackground(azzurroChiaro);
 		durataList.setModel(theController.setModelCheckBoxTime(durata));
 		durataList.setFont(new Font("Arial", Font.BOLD, 15));
 		durataList.setVisibleRowCount(10);
 		
 		orarioLabel = new JLabel("Orario:");
 		orarioLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		orarioLabel.setBounds(20, 281, 60, 18);
+		orarioLabel.setBounds(10, 291, 60, 18);
 		filtriPanel.add(orarioLabel);
 		
 		durataLabel = new JLabel("Durata:");
 		durataLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		durataLabel.setBounds(196, 281, 60, 18);
+		durataLabel.setBounds(159, 291, 60, 18);
 		filtriPanel.add(durataLabel);
 		
 		mesiScrollPane = new JScrollPane();
-		mesiScrollPane.setBounds(196, 117, 118, 126);
+		mesiScrollPane.setBounds(159, 117, 118, 126);
 		filtriPanel.add(mesiScrollPane);
 		
 		mesiList = new JCheckBoxList();
@@ -403,18 +713,19 @@ public class GestoreLezioniPage extends JFrame {
 			}
 		});
 		mesiScrollPane.setViewportView(mesiList);
+		mesiList.setBackground(azzurroChiaro);
 		mesiList.setModel(theController.setModelCheckBoxString(mesi));
 		mesiList.setFont(new Font("Arial", Font.BOLD, 15));
 		mesiList.setVisibleRowCount(10);
 		
 		titoloTextField = new JTextField();
-		titoloTextField.setBounds(126, 53, 86, 20);
+		titoloTextField.setBounds(102, 53, 86, 20);
 		filtriPanel.add(titoloTextField);
 		titoloTextField.setColumns(10);
 		
 		titoloLabel = new JLabel("Titolo:");
 		titoloLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		titoloLabel.setBounds(68, 53, 48, 18);
+		titoloLabel.setBounds(44, 53, 48, 18);
 		filtriPanel.add(titoloLabel);
 		
 		setAllGiorniRadioButton = new JRadioButton("set all");
@@ -438,7 +749,7 @@ public class GestoreLezioniPage extends JFrame {
 				
 			}
 		});
-		setAllGiorniRadioButton.setBounds(20, 243, 109, 23);
+		setAllGiorniRadioButton.setBounds(10, 243, 109, 23);
 		filtriPanel.add(setAllGiorniRadioButton);
 		
 		setAllMesiRadioButton = new JRadioButton("set all");
@@ -460,14 +771,14 @@ public class GestoreLezioniPage extends JFrame {
 				}
 			}
 		});
-		setAllMesiRadioButton.setBounds(196, 243, 109, 23);
+		setAllMesiRadioButton.setBounds(159, 243, 109, 23);
 		filtriPanel.add(setAllMesiRadioButton);
 		
 				
 		aggiungiLezioneButton = new JButton("AGGIUNGI LEZIONE");
+		aggiungiLezioneButton.setBounds(11, 445, 251, 23);
+		lezioniPanel.add(aggiungiLezioneButton);
 		aggiungiLezioneButton.setFont(new Font("Arial", Font.BOLD, 15));
-		aggiungiLezioneButton.setBounds(652, 527, 222, 23);			
-		contentPane.add(aggiungiLezioneButton);			
 		aggiungiLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));	
 		aggiungiLezioneButton.setBackground(Color.WHITE);
 		aggiungiLezioneButton.addMouseListener(new MouseAdapter() {
@@ -549,5 +860,23 @@ public class GestoreLezioniPage extends JFrame {
 		else
 			JOptionPane.showMessageDialog(this, "Lezione non eliminata.\nCodice d'errore: " + state,"<ERRORE>", JOptionPane.WARNING_MESSAGE);
 		
+	}
+	
+	public void alertReturnToLogIn() {
+		Object[] opzioni = {"Sì"};
+		
+		int n = JOptionPane.showOptionDialog(this,
+				"Sei sicuro di voler uscire?",
+				"CONFERMA DI USCITA",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				opzioni,
+				opzioni[0]);
+		if(n==0) {
+			LogInPage LI = new LogInPage(theController);
+			setVisible(false);
+		}
+			
 	}
 }

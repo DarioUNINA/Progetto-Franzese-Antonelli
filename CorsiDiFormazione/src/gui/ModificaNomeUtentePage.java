@@ -40,11 +40,21 @@ public class ModificaNomeUtentePage extends JFrame {
 	private JButton indietroButton;
 	
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color grigio;
+	final Color grigioChiaro;
+	
 	public ModificaNomeUtentePage(Controller controller, Operatori operatore) {
 		setResizable(false);
 		
 		theController = controller;
 		this.operatore = operatore;
+		
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		grigio = new Color(205,205,205);
+		grigioChiaro = new Color(233,233,233);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -53,14 +63,15 @@ public class ModificaNomeUtentePage extends JFrame {
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
+		
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(65, 105, 225));
+		contentPane.setBackground(azzurro);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		modificaNomeUtentePanel = new JPanel();
-		modificaNomeUtentePanel.setBackground(SystemColor.control);
+		modificaNomeUtentePanel.setBackground(grigioChiaro);
 		modificaNomeUtentePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		modificaNomeUtentePanel.setBounds(10, 11, 548, 307);
 		contentPane.add(modificaNomeUtentePanel);

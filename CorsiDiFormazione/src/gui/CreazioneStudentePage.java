@@ -49,12 +49,22 @@ public class CreazioneStudentePage extends JFrame {
 	private Vector<Corsi> corsi;
 	
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color grigio;
+	final Color grigioChiaro;
+	
 	
 	public CreazioneStudentePage(Controller controller, Operatori operatore) {
 		
 		this.operatore = operatore;
 		theController = controller;
 		corsi = theController.getCorsiDisponibiliOperatore(operatore);
+		
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		grigio = new Color(205,205,205);
+		grigioChiaro = new Color(233,233,233);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -64,7 +74,7 @@ public class CreazioneStudentePage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
 		creaStudentePanel = new JPanel();
-		creaStudentePanel.setBackground(new Color(65, 105, 225));
+		creaStudentePanel.setBackground(azzurro);
 		creaStudentePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(creaStudentePanel);
 		creaStudentePanel.setLayout(null);
@@ -72,6 +82,7 @@ public class CreazioneStudentePage extends JFrame {
 		inserisciDatiStudentePanel = new JPanel();
 		inserisciDatiStudentePanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		inserisciDatiStudentePanel.setBounds(10, 11, 548, 307);
+		inserisciDatiStudentePanel.setBackground(grigioChiaro);
 		creaStudentePanel.add(inserisciDatiStudentePanel);
 		inserisciDatiStudentePanel.setLayout(null);
 			
@@ -111,7 +122,7 @@ public class CreazioneStudentePage extends JFrame {
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setModel(theController.setModelCheckBoxCorsi(corsi));
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
-		corsiList.setBackground(Color.LIGHT_GRAY);
+		corsiList.setBackground(azzurroChiaro);
 		corsiList.setVisibleRowCount(10);
 		
 		confermaButton = new JButton("CONFERMA");

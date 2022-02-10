@@ -44,11 +44,14 @@ public class RecuperoPassDomandaPage extends JFrame {
 	private JLabel domandaLabel;
 	private JTextField rispostaDomandaField;
 	
+	final Color grigioChiaro;
 
 	public RecuperoPassDomandaPage(Controller controller, Operatori operatore) {
 		
 		this.operatore = operatore;
 		theController = controller;
+		
+		grigioChiaro = new Color(233,233,233);
 		
 		setResizable(false);
 		imageicon = new ImageIcon("napule.png");
@@ -58,6 +61,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
+		
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.orange);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -65,7 +69,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		contentPane.setLayout(null);
 		
 		recuperoPanel = new JPanel();
-		recuperoPanel.setBackground(SystemColor.control);
+		recuperoPanel.setBackground(grigioChiaro);
 		recuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		recuperoPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(recuperoPanel);

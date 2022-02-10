@@ -46,6 +46,7 @@ public class GestoreStudentiPage extends JFrame {
 	private JButton panoramicaButton;
 	private JButton creaStudenteButton;
 
+	final Color grigioChiaro;
 	
 	public GestoreStudentiPage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -54,11 +55,14 @@ public class GestoreStudentiPage extends JFrame {
 		this.operatore = operatore;
 		studenti = theController.setStudenti();
 		
+		
+		grigioChiaro = new Color(233,233,233);
+		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		
-		
+	
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
@@ -69,7 +73,7 @@ public class GestoreStudentiPage extends JFrame {
 		contentPane.setLayout(null);
 		
 		selzionaStudentiPanel = new JPanel();
-		selzionaStudentiPanel.setBackground(SystemColor.control);
+		selzionaStudentiPanel.setBackground(grigioChiaro);
 		selzionaStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		selzionaStudentiPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(selzionaStudentiPanel);

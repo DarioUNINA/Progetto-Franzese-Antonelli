@@ -42,6 +42,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 	private JLabel studenteLabel;
 	private JButton confermaButton;
 	
+	final Color grigioChiaro;
 	
 	public AggiungiStudenteLezionePage(Controller controller, Operatori operatore, Lezioni lezione) {
 		setResizable(false);
@@ -52,6 +53,8 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		
 		elencoStudenti = theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione());
 		studentiComboBox = new JComboBox<Studenti>(elencoStudenti);
+		
+		grigioChiaro = new Color(233,233,233);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -67,7 +70,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		contentPane.setLayout(null);
 		
 		selzionaStudentiPanel = new JPanel();
-		selzionaStudentiPanel.setBackground(SystemColor.control);
+		selzionaStudentiPanel.setBackground(grigioChiaro);
 		selzionaStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		selzionaStudentiPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(selzionaStudentiPanel);

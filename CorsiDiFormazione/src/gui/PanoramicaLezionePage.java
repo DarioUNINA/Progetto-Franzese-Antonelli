@@ -61,6 +61,11 @@ public class PanoramicaLezionePage extends JFrame {
 	private JButton aggiungiStudenteLezioneButton;
 	
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color grigio;
+	final Color grigioChiaro;
+	
 	public PanoramicaLezionePage(Controller controller, Operatori operatore, Lezioni lezione) {
 		setResizable(false);
 		
@@ -68,6 +73,11 @@ public class PanoramicaLezionePage extends JFrame {
 		theController = controller;
 		this.operatore = operatore;
 		this.lezione = lezione;
+		
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		grigio = new Color(205,205,205);
+		grigioChiaro = new Color(233,233,233);
 		
 		studenti = theController.getAllStudentiIscrittiAllaLezione(lezione.getIdLezione());
 		studentiList = new JList<Studenti>(studenti);
@@ -80,14 +90,15 @@ public class PanoramicaLezionePage extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
+		
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(65, 105, 225));
+		contentPane.setBackground(azzurro);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		gestoreLezioniPanel = new JPanel();
-		gestoreLezioniPanel.setBackground(SystemColor.control);
+		gestoreLezioniPanel.setBackground(grigioChiaro);
 		gestoreLezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		gestoreLezioniPanel.setBounds(10, 11, 548, 49);
 		contentPane.add(gestoreLezioniPanel);
@@ -101,6 +112,7 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		studentiPanel = new JPanel();
 		studentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		studentiPanel.setBackground(grigioChiaro);
 		studentiPanel.setBounds(10, 71, 163, 213);
 		contentPane.add(studentiPanel);
 		studentiPanel.setLayout(null);
@@ -116,10 +128,12 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		studentiScrollPane.setViewportView(studentiList);
 		studentiList.setVisibleRowCount(10);
+		studentiList.setBackground(azzurroChiaro);
 		studentiList.setFont(new Font("Arial", Font.BOLD, 15));
 		studentiList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
 		indietroButton.addMouseListener(new MouseAdapter() {
@@ -144,6 +158,7 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		lezioniPanel = new JPanel();
 		lezioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		lezioniPanel.setBackground(grigioChiaro);
 		lezioniPanel.setBounds(183, 71, 375, 213);
 		contentPane.add(lezioniPanel);
 		lezioniPanel.setLayout(null);
@@ -180,13 +195,14 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		descrizioneTextPane = new JTextPane();
 		descrizioneTextPane.setEditable(false);
-		descrizioneTextPane.setBackground(SystemColor.control);
+		descrizioneTextPane.setBackground(grigioChiaro);
 		descrizioneTextPane.setFont(new Font("Arial", Font.BOLD, 15));
 		descrizioneTextPane.setBounds(102, 133, 263, 69);
 		lezioniPanel.add(descrizioneTextPane);
 		descrizioneTextPane.setText(lezione.getDescrizione());
 		
 		aggiungiStudenteLezioneButton = new JButton("AGGIUNGI STUDENTE ALLA LEZIONE");
+		aggiungiStudenteLezioneButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		aggiungiStudenteLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		aggiungiStudenteLezioneButton.setBackground(Color.WHITE);
 		aggiungiStudenteLezioneButton.addMouseListener(new MouseAdapter() {

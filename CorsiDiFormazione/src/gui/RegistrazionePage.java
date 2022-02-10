@@ -58,6 +58,11 @@ public class RegistrazionePage extends JFrame {
 	private Vector<DomandeSicurezza> domande;
 
 
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color grigio;
+	final Color grigioChiaro;
+	
 	public RegistrazionePage(Controller controller) {
 		
 		
@@ -65,21 +70,27 @@ public class RegistrazionePage extends JFrame {
 		domande = theController.getDomandeSicurezza();
 		domandeComboBox = new JComboBox(domande);
 		
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		grigio = new Color(205,205,205);
+		grigioChiaro = new Color(233,233,233);
+		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
+		
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(65, 105, 225));
+		contentPane.setBackground(azzurro);
 		contentPane.setForeground(Color.DARK_GRAY);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		registrazionePanel = new JPanel();
-		registrazionePanel.setBackground(SystemColor.control);
+		registrazionePanel.setBackground(grigioChiaro);
 		registrazionePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		registrazionePanel.setBounds(35, 29, 815, 501);
 		contentPane.add(registrazionePanel);

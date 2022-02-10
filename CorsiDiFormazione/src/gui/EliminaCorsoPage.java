@@ -46,12 +46,15 @@ public class EliminaCorsoPage extends JFrame {
 	private JLabel selezionaCorsoLabel;
 	private Vector <Corsi> corsi;
 
+	final Color grigioChiaro;
 	
 	public EliminaCorsoPage(Controller controller, Operatori operatore) {
 		setResizable(false);
 		
 		theController = controller;
 		this.operatore = operatore;
+		
+		grigioChiaro = new Color(233,233,233);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -67,7 +70,7 @@ public class EliminaCorsoPage extends JFrame {
 		contentPane.setLayout(null);
 		
 		eliminaCorsoPanel = new JPanel();
-		eliminaCorsoPanel.setBackground(SystemColor.control);
+		eliminaCorsoPanel.setBackground(grigioChiaro);
 		eliminaCorsoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		eliminaCorsoPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(eliminaCorsoPanel);

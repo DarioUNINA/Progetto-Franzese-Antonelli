@@ -44,11 +44,20 @@ public class ModificaPasswordPage extends JFrame {
 	private JLabel confermaPasswordLabel;
 	private JButton indietroButton;
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color grigio;
+	final Color grigioChiaro;
+	
 	public ModificaPasswordPage(Controller controller, Operatori operatore) {
 		
 		theController = controller;
 		this.operatore = operatore;
 		
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		grigio = new Color(205,205,205);
+		grigioChiaro = new Color(233,233,233);
 		
 		setResizable(false);
 		imageicon = new ImageIcon("napule.png");
@@ -58,14 +67,15 @@ public class ModificaPasswordPage extends JFrame {
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
+		
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(65, 105, 225));
+		contentPane.setBackground(azzurro);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		recuperoPanel = new JPanel();
-		recuperoPanel.setBackground(SystemColor.control);
+		recuperoPanel.setBackground(grigioChiaro);
 		recuperoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		recuperoPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(recuperoPanel);

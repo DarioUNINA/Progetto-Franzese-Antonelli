@@ -41,12 +41,16 @@ public class ImpostazioniPage extends JFrame {
 	private JButton indietroButton;
 	
 	
+	final Color grigioChiaro;
+	
 	public ImpostazioniPage(Controller controller, Operatori operatore) {
 		setResizable(false);
 		
 		theController = controller;
 		this.operatore = operatore;
 
+		grigioChiaro = new Color(233,233,233);
+		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
@@ -61,7 +65,7 @@ public class ImpostazioniPage extends JFrame {
 		contentPane.setLayout(null);
 		
 		impostazioniPanel = new JPanel();
-		impostazioniPanel.setBackground(SystemColor.control);
+		impostazioniPanel.setBackground(grigioChiaro);
 		impostazioniPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		impostazioniPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(impostazioniPanel);

@@ -39,6 +39,7 @@ public class ConfermaAnnullaPrenotazionePage extends JFrame {
 	private JLabel selezionareLezioneLabel;
 	private JComboBox lezioniComboBox;
 	
+	final Color grigioChiaro;
 	
 	public ConfermaAnnullaPrenotazionePage(Controller controller, Operatori operatore, Studenti studente) {
 		setResizable(false);
@@ -47,6 +48,8 @@ public class ConfermaAnnullaPrenotazionePage extends JFrame {
 		this.operatore = operatore;
 		this.studente = studente;
 
+		grigioChiaro = new Color(233,233,233);
+		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
@@ -61,7 +64,7 @@ public class ConfermaAnnullaPrenotazionePage extends JFrame {
 		contentPane.setLayout(null);
 		
 		annullaPrenotaLezioneStudentiPanel = new JPanel();
-		annullaPrenotaLezioneStudentiPanel.setBackground(SystemColor.control);
+		annullaPrenotaLezioneStudentiPanel.setBackground(grigioChiaro);
 		annullaPrenotaLezioneStudentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		annullaPrenotaLezioneStudentiPanel.setBounds(10, 11, 548, 307);
 		contentPane.add(annullaPrenotaLezioneStudentiPanel);

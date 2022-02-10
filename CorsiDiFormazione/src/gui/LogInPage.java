@@ -84,14 +84,14 @@ public class LogInPage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel();
-		contentPane.setBackground(azzurro);
+		contentPane.setBackground(new Color(25, 25, 112));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		logInPanel = new JPanel();
 		logInPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		logInPanel.setBackground(grigioChiaro);
+		logInPanel.setBackground(azzurroChiaro);
 		logInPanel.setBounds(61, 55, 764, 394);
 		contentPane.add(logInPanel);
 		logInPanel.setLayout(null);
@@ -173,7 +173,7 @@ public class LogInPage extends JFrame {
 
 		registratiPanel = new JPanel();
 		registratiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		registratiPanel.setBackground(grigioChiaro);
+		registratiPanel.setBackground(azzurroChiaro);
 		registratiPanel.setBounds(61, 478, 764, 55);
 		contentPane.add(registratiPanel);
 
@@ -208,7 +208,7 @@ public class LogInPage extends JFrame {
 
 		bENVENUTOLabel = new JLabel("BENVENUTO");
 		bENVENUTOLabel.setBackground(new Color(255, 255, 255));
-		bENVENUTOLabel.setForeground(new Color(0, 0, 0));
+		bENVENUTOLabel.setForeground(Color.WHITE);
 		bENVENUTOLabel.setBounds(346, 11, 200, 33);
 		bENVENUTOLabel.setFont(new Font("Arial", Font.BOLD, 32));
 		contentPane.add(bENVENUTOLabel);

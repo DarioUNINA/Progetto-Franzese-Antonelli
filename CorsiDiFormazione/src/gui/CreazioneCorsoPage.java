@@ -72,6 +72,11 @@ public class CreazioneCorsoPage extends JFrame {
 	private JYearChooser annoChooser;
 
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color grigio;
+	final Color grigioChiaro;
+	
 	public CreazioneCorsoPage(Controller controller, Operatori operatore) {
 		
 		this.operatore = operatore;
@@ -79,6 +84,11 @@ public class CreazioneCorsoPage extends JFrame {
 		areeTematiche = theController.getAllAreeTematiche();
 		areeTematiche.remove(0);
 		parole = theController.getAllParoleChiave();
+		
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		grigio = new Color(205,205,205);
+		grigioChiaro = new Color(233,233,233);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -89,13 +99,13 @@ public class CreazioneCorsoPage extends JFrame {
 		setBounds(100, 100, 900, 600);
 		creazioneCorsiPanel = new JPanel();
 		creazioneCorsiPanel.setBorder(new LineBorder(Color.BLACK));
+		creazioneCorsiPanel.setBackground(azzurro);
 		setContentPane(creazioneCorsiPanel);
-		getContentPane().setBackground(new Color(65, 105, 225));
 		creazioneCorsiPanel.setLayout(null);
 		
 		creaCorsoPanel = new JPanel();
 		creaCorsoPanel.setBounds(10, 11, 864, 539);
-		creaCorsoPanel.setBackground(SystemColor.control);
+		creaCorsoPanel.setBackground(grigioChiaro);
 		creaCorsoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		creazioneCorsiPanel.add(creaCorsoPanel);
 		creaCorsoPanel.setLayout(null);
@@ -166,8 +176,8 @@ public class CreazioneCorsoPage extends JFrame {
 		listaTemi = new JCheckBoxList();
 		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
 		temiScrollPane.setViewportView(listaTemi);
+		listaTemi.setBackground(azzurroChiaro);
 		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
-		listaTemi.setBackground(Color.LIGHT_GRAY);
 		listaTemi.setVisibleRowCount(10);
 		listaTemi.setVisible(true);
 		
@@ -179,8 +189,8 @@ public class CreazioneCorsoPage extends JFrame {
 		listaParole = new JCheckBoxList();
 		listaParole.setModel(theController.setModelCheckBoxParole(parole));
 		paroleScrollPane.setViewportView(listaParole);
+		listaParole.setBackground(azzurroChiaro);
 		listaParole.setFont(new Font("Arial", Font.BOLD, 15));
-		listaParole.setBackground(Color.LIGHT_GRAY);
 		listaParole.setVisibleRowCount(10);
 		listaParole.setVisible(true);
 

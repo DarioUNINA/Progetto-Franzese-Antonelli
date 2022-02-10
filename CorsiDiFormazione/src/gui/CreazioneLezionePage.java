@@ -55,6 +55,12 @@ public class CreazioneLezionePage extends JFrame {
 	private JCalendar calendario;
 	
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color grigio;
+	final Color grigioChiaro;
+	
+	
 	
 	public CreazioneLezionePage(Controller controller, Operatori operatore, Corsi corso) {
 		setResizable(false);
@@ -63,6 +69,11 @@ public class CreazioneLezionePage extends JFrame {
 		theController = controller;
 		durate = theController.getDurate();
 		orari = theController.getOrario();
+		
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		grigio = new Color(205,205,205);
+		grigioChiaro = new Color(233,233,233);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -73,14 +84,14 @@ public class CreazioneLezionePage extends JFrame {
 		setBounds(100, 100, 584, 368);
 		creazioneLezioniPanel = new JPanel();
 		creazioneLezioniPanel.setBorder(new LineBorder(Color.BLACK));
+		creazioneLezioniPanel.setBackground(azzurro);
 		setContentPane(creazioneLezioniPanel);
-		getContentPane().setBackground(new Color(65, 105, 225));
 		creazioneLezioniPanel.setLayout(null);
 			
 		
 		creaLezionePanel = new JPanel();
 		creaLezionePanel.setBounds(10, 11, 548, 307);
-		creaLezionePanel.setBackground(SystemColor.control);
+		creaLezionePanel.setBackground(grigioChiaro);
 		creaLezionePanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		creazioneLezioniPanel.add(creaLezionePanel);
 		creaLezionePanel.setLayout(null);

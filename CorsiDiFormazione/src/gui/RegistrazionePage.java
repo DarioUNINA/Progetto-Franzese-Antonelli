@@ -232,7 +232,7 @@ public class RegistrazionePage extends JFrame {
 			setVisible(false);	
 		}else {
 			Operatori op = new Operatori (nomeTextField.getText(), passwordTextField.getText());
-			HomePage hp = new HomePage(theController, op);
+			GestoreCorsiPage hp = new GestoreCorsiPage(theController, op);
 		}
 			
 	}

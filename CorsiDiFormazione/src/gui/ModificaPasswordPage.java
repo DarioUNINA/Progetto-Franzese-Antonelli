@@ -177,7 +177,7 @@ public class ModificaPasswordPage extends JFrame {
 		if(operatore.getPassword() == null) { 
 			LogInPage pg = new LogInPage(theController);
 		}else {
-			HomePage hp = new HomePage(theController, operatore);
+			GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
 		}
 		setVisible(false);
 	}

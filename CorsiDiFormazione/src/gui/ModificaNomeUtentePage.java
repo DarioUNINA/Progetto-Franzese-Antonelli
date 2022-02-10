@@ -127,7 +127,7 @@ public class ModificaNomeUtentePage extends JFrame {
 							if(state.equals("0")) {
 								
 								alertNomeUtenteCambiato();
-								HomePage hp = new HomePage(theController, operatore);
+								GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
 								setVisible(false);
 							
 							}else

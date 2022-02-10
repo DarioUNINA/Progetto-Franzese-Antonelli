@@ -55,7 +55,7 @@ import javax.swing.Icon;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JToggleButton;
 
-public class HomePage extends JFrame {
+public class GestoreCorsiPage extends JFrame {
 	
 	private Controller theController;
 	private Operatori operatore;
@@ -121,7 +121,7 @@ public class HomePage extends JFrame {
 	private JPanel gestoreStudentiOpacoPanel;
 	
 
-	public HomePage(Controller cont, Operatori operatore) {
+	public GestoreCorsiPage(Controller cont, Operatori operatore) {
 
 		theController = cont;
 		this.operatore = operatore;
@@ -173,7 +173,7 @@ public class HomePage extends JFrame {
 		});
 		menuPanelEsteso.setLayout(null);
 		menuPanelEsteso.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		menuPanelEsteso.setBackground(new Color(65, 105, 225));
+		menuPanelEsteso.setBackground(new Color(25, 25, 112));
 		menuPanelEsteso.setBounds(10, 11, 225, 539);
 		sfondoPane.add(menuPanelEsteso);
 		

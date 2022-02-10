@@ -122,7 +122,7 @@ public class ImpostazioniPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				HomePage hp = new HomePage(theController, operatore);
+				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
 				setVisible(false);
 			}
 			@Override

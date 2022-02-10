@@ -143,7 +143,7 @@ public class LogInPage extends JFrame {
 							alertLogInFallito();
 						else
 						{			
-							HomePage hp = new HomePage(theController,theController.getOperatore(Nome));
+							GestoreCorsiPage hp = new GestoreCorsiPage(theController,theController.getOperatore(Nome));
 							setVisible(false);
 						}
 					

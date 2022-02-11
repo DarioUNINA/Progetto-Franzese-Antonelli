@@ -673,4 +673,12 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 		return corsiDAO.getPresenzeMedie(idCorso);
 		
 	}
+	
+	public String minimoPresenze(String idCorso) {
+		return corsiDAO.minimoPresenze(idCorso);
+	}
+	
+	public String massimoPresenze(String idCorso) {
+		return corsiDAO.massimoPresenze(idCorso);
+	}
 }

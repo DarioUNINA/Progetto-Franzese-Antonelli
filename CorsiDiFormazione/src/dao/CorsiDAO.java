@@ -387,5 +387,37 @@ public  Vector<Corsi>setCorsiStudenteDelOperatore(String matricola, String id_op
 		}
 		
 	}
+	
+	
+	public String minimoPresenze(String idCorso) {
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT * FROM presenze_studente_corso p JOIN studenti s on s.matricola = p.matricola WHERE  p.id_corso = '"+ idCorso + "' order by (presenze) asc");
+		
+			rs.next();
+			return rs.getString("presenze") + " (" + rs.getString("nome") + " " + rs.getString("cognome") + ")"; 
+			
+		}catch(SQLException e) {
+			
+			return "Errore : " + e.getSQLState();
+		}
+	}
+	
+	
+	public String massimoPresenze(String idCorso) {
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT * FROM presenze_studente_corso p JOIN studenti s on s.matricola = p.matricola WHERE  p.id_corso = '"+ idCorso + "' order by (presenze) desc");
+		
+			rs.next();
+			return rs.getString("presenze") + " (" + rs.getString("nome") + " " + rs.getString("cognome") + ")"; 
+			
+		}catch(SQLException e) {
+			
+			return "Errore : " + e.getSQLState();
+		}
+	}
 
 }

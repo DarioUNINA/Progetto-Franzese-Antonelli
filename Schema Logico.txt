@@ -56,7 +56,8 @@ temi (/nome_area/, /id_corso/)
 19) vista per il numero di partecipanti a un corso
 
 20) data di lezione errata
-23) vista delle presenze del corso di ogni studente
+
+21-23) viste e function per il calcolo delle statistiche del corso
 
 
 --1)

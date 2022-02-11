@@ -100,14 +100,14 @@ public class StatisticheCorsoPage extends JFrame {
 		nomeCorsoLabel.setBounds(60, 103, 412, 24);
 		statistichePanel.add(nomeCorsoLabel);
 		
-		numeroMinPresenzeLezioneLabel = new JLabel("Numero Min di presenze a Lezione:");
+		numeroMinPresenzeLezioneLabel = new JLabel("Numero Min di presenze a Lezione: " + theController.minimoPresenze(corso.getIdCorso()));
 		numeroMinPresenzeLezioneLabel.setFont(new Font("Arial", Font.BOLD, 20));
-		numeroMinPresenzeLezioneLabel.setBounds(60, 219, 347, 24);
+		numeroMinPresenzeLezioneLabel.setBounds(22, 219, 450, 24);
 		statistichePanel.add(numeroMinPresenzeLezioneLabel);
 		
-		numeroMaxPresenzeLezioneLabel = new JLabel("Numero Max di presenze a Lezione:");
+		numeroMaxPresenzeLezioneLabel = new JLabel("Numero Max di presenze a Lezione: " + theController.massimoPresenze(corso.getIdCorso()));
 		numeroMaxPresenzeLezioneLabel.setFont(new Font("Arial", Font.BOLD, 20));
-		numeroMaxPresenzeLezioneLabel.setBounds(60, 160, 372, 24);
+		numeroMaxPresenzeLezioneLabel.setBounds(22, 160, 475, 24);
 		statistichePanel.add(numeroMaxPresenzeLezioneLabel);
 		
 		presenzeMedieLabel = new JLabel("Presenze medie per lezione: " + String.valueOf(theController.getPresenzeMedie(corso.getIdCorso())));

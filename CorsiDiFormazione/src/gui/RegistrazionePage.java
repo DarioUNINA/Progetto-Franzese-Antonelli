@@ -243,7 +243,10 @@ public class RegistrazionePage extends JFrame {
 			setVisible(false);	
 		}else {
 			Operatori op = new Operatori (nomeTextField.getText(), passwordTextField.getText());
+			op.setIdOperatore(theController.getIdOperatore(op));
+			
 			GestoreCorsiPage hp = new GestoreCorsiPage(theController, op);
+			setVisible(false);
 		}
 			
 	}

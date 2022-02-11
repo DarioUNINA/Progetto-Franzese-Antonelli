@@ -88,7 +88,5 @@ public class Corsi {
 	public String toString() {
 		
 		return this.nome;
-	}
-
-	
+	}	
 }

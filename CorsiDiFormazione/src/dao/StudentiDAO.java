@@ -182,5 +182,62 @@ public class StudentiDAO {
 		}
 	}
 	
+	public Vector<Studenti> getStudentiDisponibili(String id_operatore){
+		
+		Vector<Studenti> studente = new Vector<Studenti>();
+		
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s WHERE s.matricola NOT IN "+ 
+												  "(SELECT isc.matricola FROM corsi co  JOIN iscrizioni isc ON co.id_corso = isc.id_corso WHERE co.id_operatore = '" + id_operatore + "')");
+			
+			while(rs.next()) {
+
+				Studenti s = new Studenti();
+				s.setMatricola(rs.getString("matricola"));
+				s.setNome(rs.getString("nome"));	
+				s.setCognome(rs.getString("cognome"));
+
+				studente.add(s);
+				
+			}
+			
+			return studente;
+			
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return studente;
+		}
+	}
 	
+	public Vector<Studenti> setAllStudentiAmmessi(String id_corso){
+		
+		Vector<Studenti> studente = new Vector<Studenti>();
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN  iscrizioni isc  ON s.matricola = isc.matricola WHERE isc.id_corso = '" + id_corso + "' AND isc.ammesso = true");
+			
+			while(rs.next()) {
+
+				Studenti s = new Studenti();
+				s.setMatricola(rs.getString("matricola"));
+				s.setNome(rs.getString("nome"));	
+				s.setCognome(rs.getString("cognome"));
+
+				studente.add(s);
+				
+			}
+			
+			return studente;
+			
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return studente;
+		}
+		
+	}
 }

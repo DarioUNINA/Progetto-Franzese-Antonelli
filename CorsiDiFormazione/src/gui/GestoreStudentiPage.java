@@ -54,7 +54,7 @@ public class GestoreStudentiPage extends JFrame {
 		theController = controller;
 		this.operatore = operatore;
 		studenti = theController.setStudenti();
-		
+		studentiComboBox = new JComboBox<Studenti>(studenti);
 		
 		grigioChiaro = new Color(233,233,233);
 		
@@ -114,7 +114,7 @@ public class GestoreStudentiPage extends JFrame {
 		studenteLabel.setBounds(111, 123, 77, 14);
 		selzionaStudentiPanel.add(studenteLabel);
 		
-		studentiComboBox = new JComboBox<Studenti>(studenti);
+		
 		studentiComboBox.setBounds(198, 120, 157, 22);
 		selzionaStudentiPanel.add(studentiComboBox);
 		

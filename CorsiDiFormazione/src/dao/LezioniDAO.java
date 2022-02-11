@@ -160,6 +160,38 @@ public class LezioniDAO {
 				return lezioni;
 		}
 	}
+	
+	
+	public Vector<Lezioni> getFutureLezioni(String id_corso) {
+		
+		Vector<Lezioni> lezioni = new Vector<Lezioni>();
+		
+		try {
+				
+				ResultSet rs = statement.executeQuery("SELECT * FROM lezioni l WHERE l.id_corso = '" + id_corso + "' AND l.data > CURRENT_DATE");
+				
+				
+				while(rs.next()) {
+
+					Lezioni l = new Lezioni();
+					l.setIdLezione(rs.getString("id_lezione"));
+					l.setTitolo(rs.getString("titolo"));
+					l.setDescrizione(rs.getString("descrizione"));
+					l.setDurata(rs.getTime("durata"));
+					l.setData(rs.getDate("data"));
+					l.setOrario(rs.getTime("orario"));
+					l.setIdCorso(id_corso);
+
+					lezioni.add(l);
+				}
+		
+				return lezioni;
+			}catch(SQLException e) {
+				
+				e.printStackTrace();
+				return lezioni;
+		}
+	}
 
 	
 	public String creaLezione(Lezioni lezione) {

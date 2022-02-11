@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import dto.AreeTematiche;
 import dto.Corsi;
+import dto.Lezioni;
 import dto.Operatori;
 import dto.ParoleChiave;
 
@@ -54,6 +55,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.Icon;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JToggleButton;
+import javax.swing.JTextPane;
 
 public class GestoreCorsiPage extends JFrame {
 	
@@ -81,7 +83,6 @@ public class GestoreCorsiPage extends JFrame {
 	private JCheckBoxList annoList;
 	private JCheckBox terminatoCheckBoxSi;
 	private JCheckBox terminatoCheckBoxNo;
-	private JPanel addDeleteCorsi;
 	private JButton aggiungiCorsoButton;
 	private JButton eliminaCorsoButton;
 	private JPanel corsiPanel;
@@ -120,8 +121,19 @@ public class GestoreCorsiPage extends JFrame {
 	private JLabel labelTrattini;
 	private JLabel impostazioniLabel;
 	private JLabel esciImageLabel;
+	private JLabel corsiLabel;
+	private JLabel nomeCorsoLabel;
+	private JLabel descrizioneLabel;
+	private JLabel presenzeMinLabel;
+	private JLabel maxPartecipantiLabel;
+	private JTextPane descrizioneTextPane;
+	private JLabel panoramicaLabel;
+	private JButton iscriviStudenteButton;
+	private JButton statisticheButton ;
+	private JScrollPane lezioniProgrammateScrollPane;
+	private JList<Lezioni> lezioniProgrammateList;
+	private JLabel lezioniProgrammateLabel;
 	
-
 	public GestoreCorsiPage(Controller cont, Operatori operatore) {
 
 		theController = cont;
@@ -558,14 +570,63 @@ public class GestoreCorsiPage extends JFrame {
 		
 		corsiScrollPane = new JScrollPane();
 		corsiScrollPane.setBorder(new LineBorder(Color.BLACK));
-		corsiScrollPane.setBounds(10, 11, 222, 199);
+		corsiScrollPane.setBounds(10, 31, 222, 179);
 		corsiPanel.add(corsiScrollPane);
 
 		corsiList = new JList<Corsi>(corsi);
+		corsiList.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(corsiList.isSelectionEmpty()) {
+					alertNessunCorsoSelezionato();
+				}else{
+					nomeCorsoLabel.setText("Corso: " + corsi.get(corsiList.getSelectedIndex()).getNome().toUpperCase());
+					presenzeMinLabel.setText("Presenze Min: " + corsi.get(corsiList.getSelectedIndex()).getPresenzeMin());
+					maxPartecipantiLabel.setText("Max Partecipanti: " + corsi.get(corsiList.getSelectedIndex()).getMaxPartecipanti());
+					descrizioneTextPane.setText(corsi.get(corsiList.getSelectedIndex()).getDescrizione());
+				}
+			}
+		});
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		corsiList.setBackground(azzurroChiaro);
 		corsiList.setVisibleRowCount(10);
+		
+		corsiLabel = new JLabel("CORSI");
+		corsiLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		corsiLabel.setBounds(93, 11, 62, 14);
+		corsiPanel.add(corsiLabel);
+		
+		nomeCorsoLabel = new JLabel("Corso:");
+		nomeCorsoLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		nomeCorsoLabel.setBounds(242, 49, 236, 14);
+		corsiPanel.add(nomeCorsoLabel);
+		
+		descrizioneLabel = new JLabel("Descrizione:");
+		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		descrizioneLabel.setBounds(241, 155, 237, 14);
+		corsiPanel.add(descrizioneLabel);
+		
+		presenzeMinLabel = new JLabel("Presenze Min:");
+		presenzeMinLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		presenzeMinLabel.setBounds(242, 85, 236, 14);
+		corsiPanel.add(presenzeMinLabel);
+		
+		maxPartecipantiLabel = new JLabel("Max Martecipanti:");
+		maxPartecipantiLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		maxPartecipantiLabel.setBounds(242, 120, 236, 14);
+		corsiPanel.add(maxPartecipantiLabel);
+		
+		descrizioneTextPane = new JTextPane();
+		descrizioneTextPane.setFont(new Font("Arial", Font.BOLD, 14));
+		descrizioneTextPane.setBackground(grigioChiaro);
+		descrizioneTextPane.setBounds(242, 170, 236, 40);
+		corsiPanel.add(descrizioneTextPane);
+		
+		panoramicaLabel = new JLabel("PANORAMICA");
+		panoramicaLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		panoramicaLabel.setBounds(314, 11, 104, 14);
+		corsiPanel.add(panoramicaLabel);
 		
 		gestione = new JPanel();
 		gestione.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -574,14 +635,9 @@ public class GestoreCorsiPage extends JFrame {
 		sfondoPane.add(gestione);
 		gestione.setLayout(null);
 		
-		addDeleteCorsi = new JPanel();
-		addDeleteCorsi.setBounds(10, 131, 261, 77);
-		gestione.add(addDeleteCorsi);
-		addDeleteCorsi.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		addDeleteCorsi.setBackground(SystemColor.control);
-		addDeleteCorsi.setLayout(null);
-		
 		aggiungiCorsoButton = new JButton("AGGIUNGI CORSO");
+		aggiungiCorsoButton.setBounds(266, 183, 212, 25);
+		gestione.add(aggiungiCorsoButton);
 		aggiungiCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		aggiungiCorsoButton.setBackground(Color.WHITE);
 		aggiungiCorsoButton.addMouseListener(new MouseAdapter() {
@@ -594,10 +650,10 @@ public class GestoreCorsiPage extends JFrame {
 			}
 		});
 		aggiungiCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
-		aggiungiCorsoButton.setBounds(22, 11, 212, 25);
-		addDeleteCorsi.add(aggiungiCorsoButton);
 		
 		eliminaCorsoButton = new JButton("ELIMINA CORSO");
+		eliminaCorsoButton.setBounds(266, 125, 212, 25);
+		gestione.add(eliminaCorsoButton);
 		eliminaCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eliminaCorsoButton.setBackground(Color.WHITE);
 		eliminaCorsoButton.addMouseListener(new MouseAdapter() {
@@ -609,9 +665,35 @@ public class GestoreCorsiPage extends JFrame {
 				
 			}
 		});
-		eliminaCorsoButton.setBounds(22, 41, 212, 25);
-		addDeleteCorsi.add(eliminaCorsoButton);
 		eliminaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		
+		iscriviStudenteButton = new JButton("ISCRIVI STUDENTE");
+		iscriviStudenteButton.setFont(new Font("Arial", Font.BOLD, 15));
+		iscriviStudenteButton.setBackground(Color.WHITE);
+		iscriviStudenteButton.setBounds(266, 68, 212, 25);
+		gestione.add(iscriviStudenteButton);
+		
+		statisticheButton = new JButton("STATISTICHE");
+		statisticheButton.setFont(new Font("Arial", Font.BOLD, 15));
+		statisticheButton.setBackground(Color.WHITE);
+		statisticheButton.setBounds(266, 11, 212, 25);
+		gestione.add(statisticheButton);
+		
+		lezioniProgrammateScrollPane = new JScrollPane();
+		lezioniProgrammateScrollPane.setBorder(new LineBorder(Color.BLACK));
+		lezioniProgrammateScrollPane.setBounds(10, 31, 220, 177);
+		gestione.add(lezioniProgrammateScrollPane);
+		
+		lezioniProgrammateList = new JList<Lezioni>((Vector) null);
+		lezioniProgrammateScrollPane.setViewportView(lezioniProgrammateList);
+		lezioniProgrammateList.setVisibleRowCount(10);
+		lezioniProgrammateList.setFont(new Font("Arial", Font.BOLD, 15));
+		lezioniProgrammateList.setBackground(new Color(136, 187, 214));
+		
+		lezioniProgrammateLabel = new JLabel("LEZIONI PROGRAMMATE");
+		lezioniProgrammateLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		lezioniProgrammateLabel.setBounds(26, 11, 182, 14);
+		gestione.add(lezioniProgrammateLabel);
 		
 		resetFiltriButton = new JButton("RESET");
 		resetFiltriButton.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -766,5 +848,9 @@ public class GestoreCorsiPage extends JFrame {
 	public void alertCorsiFM() {
 		
 		JOptionPane.showMessageDialog(this, "Non puoi eserguire un filtraggio Full Match con piu di un anno","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertNessunCorsoSelezionato() {
+		JOptionPane.showMessageDialog(this, "Selezionare un corso.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
 }

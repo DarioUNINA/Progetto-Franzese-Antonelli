@@ -684,7 +684,7 @@ public class GestoreCorsiPage extends JFrame {
 		lezioniProgrammateScrollPane.setBounds(10, 31, 220, 177);
 		gestione.add(lezioniProgrammateScrollPane);
 		
-		lezioniProgrammateList = new JList<Lezioni>((Vector) null);
+		lezioniProgrammateList = new JList<Lezioni>();
 		lezioniProgrammateScrollPane.setViewportView(lezioniProgrammateList);
 		lezioniProgrammateList.setVisibleRowCount(10);
 		lezioniProgrammateList.setFont(new Font("Arial", Font.BOLD, 15));

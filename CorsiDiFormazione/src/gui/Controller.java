@@ -649,6 +649,10 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 		
 	}
 	
+	public Vector<Lezioni> getFutureLezioni(String id_corso){
+		return lezioniDAO.getFutureLezioni(id_corso);
+	}
+	
 	
 	
 }

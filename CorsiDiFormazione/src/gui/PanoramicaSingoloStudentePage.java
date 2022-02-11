@@ -471,15 +471,13 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 						ammessoLabel.setText("Ammesso: NO");
 						ammessoLabel.setForeground(Color.red);
 					}
-					if(theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso()).isEmpty()) {
+					
+					if(theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso()).isEmpty())
 						alertNessunaLezioneDisponibile();
-						lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
-						lezioniList.setListData(lezioni);
-					}else {
-						lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
-						lezioniList.setListData(lezioni);
+					
+					lezioni = theController.getPresenzeStudente(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso());
+					lezioniList.setListData(lezioni);
 						
-					}
 				}
 			}
 		});

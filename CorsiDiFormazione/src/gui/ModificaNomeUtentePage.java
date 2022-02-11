@@ -153,7 +153,7 @@ public class ModificaNomeUtentePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 2, null);
 				setVisible(false);
 			}
 			@Override

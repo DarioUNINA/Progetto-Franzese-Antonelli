@@ -133,7 +133,7 @@ public class ModificaPasswordPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage hp = new ImpostazioniPage(theController, operatore);
+				ImpostazioniPage hp = new ImpostazioniPage(theController, operatore, 3, null);
 				setVisible(false);
 			}
 		});

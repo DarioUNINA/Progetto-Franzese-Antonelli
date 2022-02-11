@@ -173,7 +173,7 @@ public class GestoreLezioniPage extends JFrame {
 		impostazioniLabelMenuEsteso.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 2, null);
 				setVisible(false);
 			}
 			@Override
@@ -190,7 +190,7 @@ public class GestoreLezioniPage extends JFrame {
 		impostazioniScrittaLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 2, null);
 				setVisible(false);
 			}
 			@Override

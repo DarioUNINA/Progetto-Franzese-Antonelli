@@ -14,6 +14,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Operatori;
+import dto.Studenti;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -37,15 +39,17 @@ public class ImpostazioniPage extends JFrame {
 	private JButton modificaNomeUtenteButton;
 	private JButton modificaPasswordButton;
 	private JButton eliminaProfiloButton;
+	private int flag;
 	private JLabel impostazioniLabel;
 	private JButton indietroButton;
 	
 	
 	final Color grigioChiaro;
 	
-	public ImpostazioniPage(Controller controller, Operatori operatore) {
+	public ImpostazioniPage(Controller controller, Operatori operatore, int flag, Studenti studente) {
 		setResizable(false);
 		
+		this.flag = flag;
 		theController = controller;
 		this.operatore = operatore;
 
@@ -126,8 +130,29 @@ public class ImpostazioniPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
-				setVisible(false);
+				if(flag==0) {
+					
+					GestoreCorsiPage page = new GestoreCorsiPage(theController, operatore);
+					setVisible(false);
+				}else
+					if(flag == 1) {
+						
+						PanoramicaSingoloStudentePage page = new PanoramicaSingoloStudentePage(theController, operatore, studente);
+						setVisible(false);
+					}else
+						if(flag == 2){
+							
+							GestoreLezioniPage page = new GestoreLezioniPage(theController, operatore);
+							setVisible(false);
+						}else
+							if(flag == 3) {
+								ModificaNomeUtentePage page = new ModificaNomeUtentePage(theController, operatore);
+								setVisible(false);
+							}else {
+								ModificaPasswordPage page = new ModificaPasswordPage(theController, operatore);
+								setVisible(false);
+							}
+				
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {

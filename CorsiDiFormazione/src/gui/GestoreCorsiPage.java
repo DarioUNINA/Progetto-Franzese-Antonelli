@@ -136,9 +136,9 @@ public class GestoreCorsiPage extends JFrame {
 	private JLabel lezioniProgrammateLabel;
 	private JTextPane nomeCorsoTextPane;
 	
-	public GestoreCorsiPage(Controller cont, Operatori operatore) {
+	public GestoreCorsiPage(Controller controller, Operatori operatore) {
 
-		theController = cont;
+		theController = controller;
 		this.operatore = operatore;
 		corsi = theController.getCorsiOperatore(operatore);
 		anni = theController.getAllAnni();
@@ -191,7 +191,7 @@ public class GestoreCorsiPage extends JFrame {
 		impostazioniLabelMenuEsteso.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 0, null);
 				setVisible(false);
 			}
 			@Override
@@ -208,7 +208,7 @@ public class GestoreCorsiPage extends JFrame {
 		impostazioniScrittaLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 0, null);
 				setVisible(false);
 			}
 			@Override

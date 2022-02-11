@@ -149,7 +149,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		impostazioniLabelMenuEsteso.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 1, studente);
 				setVisible(false);
 			}
 			@Override
@@ -166,7 +166,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		impostazioniScrittaLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore);
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 1, studente);
 				setVisible(false);
 			}
 			@Override

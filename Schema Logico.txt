@@ -505,3 +505,37 @@ temi (/nome_area/, /id_corso/)
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_data_lezione_corso();
 	
+	
+--21)
+
+	CREATE VIEW presenze_totali(presenze, id_corso) AS(
+		SELECT COUNT(matricola), co.id_corso
+		FROM (presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione) JOIN corsi co ON l.id_corso = co.id_corso
+		GROUP BY co.id_corso
+	)
+	
+--22) 
+	CREATE OR REPLACE FUNCTION presenze_medie(idcorso VARCHAR(100))
+	RETURNS DOUBLE AS
+	$$
+	DECLARE n_lezioni DOUBLE;
+			risultato DOUBLE;
+			n_presenze DOUBLE;
+	BEGIN
+	
+		SELECT count(l.id_corso) INTO n_lezioni
+		FROM lezioni l
+		WHERE l.id_corso = idcorso
+		GROUP BY(l.id_corso);
+
+		SELECT pt.presenze into n_presenze
+		FROM presenze_totali pt
+		WHERE pt.id_corso = idcorso;		
+		
+		risultato := n_presenze/n_lezioni;
+		
+		RETURN risultato;
+	END
+	$$ LANGUAGE plpgsql;
+
+	

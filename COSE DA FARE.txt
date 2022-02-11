@@ -1,31 +1,6 @@
-COSE DA FARE PROGETTO: 
-
-LEGENDA [svolto ma bisogna gestire gli state  o altre cose]
-
-1)CREARE TRIGGER inserimento automatico in temi  e caratterizzazione (on insert on corsi)
-   
-2) POPOLAMENTO TABELE HOMEPAGE ( HomePage ):
-   Popolamento tabelle( da fare assieme per decidere come gestirla).
-
-3) GEESTIONE COMPLETA DI home pagew = gestore corso):
-   Da fare assieme MockUp.
-
-4)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
+1)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
    ad esempio ho notato che eliminazione operatore è un motodo String
-     
-5) ridisegnare homepage
+   
+2) creazione di ModificaCorsoPage
 
-6)GestoreLezioniPage
-
-7) gestire il button indietro di impostazioni page per tornare alla page corretta
-
-8) verifica nella pagina gestore lezioni da riga 612 a 620
-
-9)gestire aggiungi lezione perchè è priva di option pane e la lezione la crea anche senza dati
-
-10)In CorsiDAO riga 184 modifica la query perchè hai scirtto la tabella partecipanti che non abbiamo
-   credo tu volessi scirvere iscrizioni e testare bene crea studente poichè la quey vieni chiamata lì
-
-11)quando facciamo la creazione del corso dobbiamo fare un trigger in SQL anche perchè è abbastanza semplice
-   come cosa, ovvero che le presenze minime devono essere MINORI rispetto a Massimo PArtecipanti, il corso te lo 
-   crea a prescindere, gestire.
+3) popolare il database

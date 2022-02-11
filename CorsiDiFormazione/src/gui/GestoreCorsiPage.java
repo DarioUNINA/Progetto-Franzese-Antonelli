@@ -214,7 +214,15 @@ public class GestoreCorsiPage extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				menuPanelEsteso.setVisible(true);
+				impostazioniScrittaLabel.setForeground(Color.ORANGE);
 				menuPanel.setVisible(false);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				impostazioniScrittaLabel.setForeground(Color.WHITE);
+				menuPanel.setVisible(false);
+
 			}
 		});
 		impostazioniScrittaLabel.setForeground(Color.WHITE);
@@ -222,7 +230,8 @@ public class GestoreCorsiPage extends JFrame {
 		impostazioniScrittaLabel.setBounds(44, 465, 142, 32);
 		menuPanelEsteso.add(impostazioniScrittaLabel);
 		
-		gestoreCorsiLabel = new JLabel("GESTORE CORSI");
+		gestoreCorsiLabel = new JLabel("           GESTORE CORSI");
+		gestoreCorsiLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		gestoreCorsiLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -248,10 +257,11 @@ public class GestoreCorsiPage extends JFrame {
 		gestoreCorsiLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gestoreCorsiLabel.setForeground(Color.WHITE);
 		gestoreCorsiLabel.setFont(new Font("Arial", Font.BOLD, 16));
-		gestoreCorsiLabel.setBounds(44, 66, 171, 22);
+		gestoreCorsiLabel.setBounds(0, 66, 225, 22);
 		menuPanelEsteso.add(gestoreCorsiLabel);
 		
-		gestoreLezioniLabel = new JLabel("GESTORE LEZIONI");
+		gestoreLezioniLabel = new JLabel("           GESTORE LEZIONI");
+		gestoreLezioniLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		gestoreLezioniLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -279,10 +289,11 @@ public class GestoreCorsiPage extends JFrame {
 		gestoreLezioniLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gestoreLezioniLabel.setForeground(Color.WHITE);
 		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 16));
-		gestoreLezioniLabel.setBounds(44, 99, 171, 22);
+		gestoreLezioniLabel.setBounds(0, 99, 225, 22);
 		menuPanelEsteso.add(gestoreLezioniLabel);
 		
-		gestoreStudentiLabel = new JLabel("GESTORE STUDENTI");
+		gestoreStudentiLabel = new JLabel("        GESTORE STUDENTI");
+		gestoreStudentiLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		gestoreStudentiLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -308,7 +319,7 @@ public class GestoreCorsiPage extends JFrame {
 		gestoreStudentiLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gestoreStudentiLabel.setForeground(Color.WHITE);
 		gestoreStudentiLabel.setFont(new Font("Arial", Font.BOLD, 16));
-		gestoreStudentiLabel.setBounds(44, 132, 171, 22);
+		gestoreStudentiLabel.setBounds(0, 132, 225, 22);
 		menuPanelEsteso.add(gestoreStudentiLabel);
 		
 		gestoreCorsiOpacoPanel = new JPanel();
@@ -329,7 +340,7 @@ public class GestoreCorsiPage extends JFrame {
 			}
 		});
 		gestoreCorsiOpacoPanel.setBackground(new Color(25, 25, 112));
-		gestoreCorsiOpacoPanel.setBounds(10, 66, 205, 22);
+		gestoreCorsiOpacoPanel.setBounds(0, 66, 225, 22);
 		menuPanelEsteso.add(gestoreCorsiOpacoPanel);
 		
 		gestoreLezioniOpacoPanel = new JPanel();
@@ -344,13 +355,13 @@ public class GestoreCorsiPage extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
+				menuPanelEsteso.setVisible(true);
 				gestoreLezioniLabel.setForeground(Color.WHITE);
 				gestoreLezioniLabel.setVisible(true);
-				menuPanelEsteso.setVisible(true);
 			}
 		});
 		gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
-		gestoreLezioniOpacoPanel.setBounds(10, 99, 205, 22);
+		gestoreLezioniOpacoPanel.setBounds(0, 99, 225, 22);
 		menuPanelEsteso.add(gestoreLezioniOpacoPanel);
 		
 		gestoreStudentiOpacoPanel = new JPanel();
@@ -371,7 +382,7 @@ public class GestoreCorsiPage extends JFrame {
 			}
 		});
 		gestoreStudentiOpacoPanel.setBackground(new Color(25, 25, 112));
-		gestoreStudentiOpacoPanel.setBounds(10, 132, 205, 22);
+		gestoreStudentiOpacoPanel.setBounds(0, 132, 225, 22);
 		menuPanelEsteso.add(gestoreStudentiOpacoPanel);
 		
 		esciImageMenuEstesoLabel = new JLabel(imageEsci);
@@ -399,7 +410,15 @@ public class GestoreCorsiPage extends JFrame {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				esciLabel.setForeground(Color.RED);
 				menuPanelEsteso.setVisible(true);
+				menuPanel.setVisible(false);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				esciLabel.setForeground(Color.WHITE);
+				menuPanelEsteso.setVisible(true);
+				menuPanel.setVisible(false);
 			}
 		});
 		esciLabel.setForeground(Color.WHITE);
@@ -648,7 +667,7 @@ public class GestoreCorsiPage extends JFrame {
 		nomeCorsoTextPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		nomeCorsoTextPane.setFont(new Font("Arial", Font.BOLD, 14));
 		nomeCorsoTextPane.setBackground(new Color(233, 233, 233));
-		nomeCorsoTextPane.setBounds(251, 63, 196, 40);
+		nomeCorsoTextPane.setBounds(251, 63, 227, 40);
 		nomeCorsoTextPane.setVisible(false);
 		corsiPanel.add(nomeCorsoTextPane);
 		

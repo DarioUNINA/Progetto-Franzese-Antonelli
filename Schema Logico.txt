@@ -56,6 +56,7 @@ temi (/nome_area/, /id_corso/)
 19) vista per il numero di partecipanti a un corso
 
 20) data di lezione errata
+23) vista delle presenze del corso di ogni studente
 
 
 --1)
@@ -516,11 +517,11 @@ temi (/nome_area/, /id_corso/)
 	
 --22) 
 	CREATE OR REPLACE FUNCTION presenze_medie(idcorso VARCHAR(100))
-	RETURNS DOUBLE AS
+	RETURNS FLOAT AS
 	$$
-	DECLARE n_lezioni DOUBLE;
-			risultato DOUBLE;
-			n_presenze DOUBLE;
+	DECLARE n_lezioni FLOAT;
+			risultato FLOAT;
+			n_presenze FLOAT;
 	BEGIN
 	
 		SELECT count(l.id_corso) INTO n_lezioni
@@ -538,4 +539,11 @@ temi (/nome_area/, /id_corso/)
 	END
 	$$ LANGUAGE plpgsql;
 
+--23)
+
+	CREATE VIEW presenze_studente_corso(matricola, id_corso, presenze) AS(
+		SELECT p.matricola, l.id_corso, COUNT(p.matricola)
+		FROM presenze p join lezioni l on p.id_lezione = l.id_lezione
+		GROUP BY p.matricola, l.id_corso
+	)
 	

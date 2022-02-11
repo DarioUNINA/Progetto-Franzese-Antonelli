@@ -40,7 +40,7 @@ public class StatisticheCorsoPage extends JFrame {
 	private JLabel nomeCorsoLabel;
 	private JLabel numeroMinPresenzeLezioneLabel;
 	private JLabel numeroMaxPresenzeLezioneLabel;
-	private JLabel percentualeRiempimentoLabel;
+	private JLabel presenzeMedieLabel;
 	private JLabel studentiAmmessiLabel;
 	private JScrollPane studentiAmmessiScrollPane;
 	private JList<Studenti> studentiList;
@@ -110,10 +110,10 @@ public class StatisticheCorsoPage extends JFrame {
 		numeroMaxPresenzeLezioneLabel.setBounds(60, 160, 372, 24);
 		statistichePanel.add(numeroMaxPresenzeLezioneLabel);
 		
-		percentualeRiempimentoLabel = new JLabel("Percentuale Riempimento Lezioni:");
-		percentualeRiempimentoLabel.setFont(new Font("Arial", Font.BOLD, 20));
-		percentualeRiempimentoLabel.setBounds(60, 280, 346, 24);
-		statistichePanel.add(percentualeRiempimentoLabel);
+		presenzeMedieLabel = new JLabel("Presenze medie per lezione: " + String.valueOf(theController.getPresenzeMedie(corso.getIdCorso())));
+		presenzeMedieLabel.setFont(new Font("Arial", Font.BOLD, 20));
+		presenzeMedieLabel.setBounds(60, 280, 346, 24);
+		statistichePanel.add(presenzeMedieLabel);
 		
 		studentiAmmessiLabel = new JLabel("Studenti Ammessi:");
 		studentiAmmessiLabel.setFont(new Font("Arial", Font.BOLD, 20));
@@ -150,6 +150,11 @@ public class StatisticheCorsoPage extends JFrame {
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 501, 127, 27);
 		statistichePanel.add(indietroButton);
+		
+		JLabel percentualeRiempimentoLabel_1 = new JLabel("Percentuale Riempimento Lezioni:");
+		percentualeRiempimentoLabel_1.setFont(new Font("Arial", Font.BOLD, 20));
+		percentualeRiempimentoLabel_1.setBounds(60, 338, 346, 24);
+		statistichePanel.add(percentualeRiempimentoLabel_1);
 
 		setLocationRelativeTo(null);
 		setVisible(true);

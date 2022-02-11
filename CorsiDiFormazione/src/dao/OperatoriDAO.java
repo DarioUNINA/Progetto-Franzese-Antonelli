@@ -56,7 +56,7 @@ public class OperatoriDAO {
 		
 		try {
 			statement.execute("INSERT INTO operatori VALUES (nextval('sequenza_id_operatore'), '" + op.getNomeUtente() +  
-							"', '" +  op.getPassword()+ "');");
+							"', '" +  op.getPassword() + "');");
 			return "0";
 		
 		}catch(SQLException e) {

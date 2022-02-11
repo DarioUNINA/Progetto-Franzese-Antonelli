@@ -573,7 +573,7 @@ public class GestoreCorsiPage extends JFrame {
 		
 		corsiScrollPane = new JScrollPane();
 		corsiScrollPane.setBorder(new LineBorder(Color.BLACK));
-		corsiScrollPane.setBounds(10, 31, 222, 214);
+		corsiScrollPane.setBounds(10, 31, 232, 214);
 		corsiPanel.add(corsiScrollPane);
 
 		corsiList = new JList<Corsi>(corsi);
@@ -584,9 +584,11 @@ public class GestoreCorsiPage extends JFrame {
 					alertNessunCorsoSelezionato();
 				}else{
 					nomeCorsoTextPane.setText(corsi.get(corsiList.getSelectedIndex()).getNome().toUpperCase());
+					nomeCorsoTextPane.setVisible(true);
 					presenzeMinLabel.setText("Presenze Min: " + corsi.get(corsiList.getSelectedIndex()).getPresenzeMin());
 					maxPartecipantiLabel.setText("Max Partecipanti: " + corsi.get(corsiList.getSelectedIndex()).getMaxPartecipanti());
 					descrizioneTextPane.setText(corsi.get(corsiList.getSelectedIndex()).getDescrizione());
+					descrizioneTextPane.setVisible(true);
 				}
 				
 				if(theController.getFutureLezioni(corsi.get(corsiList.getSelectedIndex()).getIdCorso()).isEmpty()) 
@@ -611,29 +613,30 @@ public class GestoreCorsiPage extends JFrame {
 		
 		nomeCorsoLabel = new JLabel("Corso:");
 		nomeCorsoLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		nomeCorsoLabel.setBounds(242, 49, 236, 14);
+		nomeCorsoLabel.setBounds(252, 48, 62, 14);
 		corsiPanel.add(nomeCorsoLabel);
 		
 		descrizioneLabel = new JLabel("Descrizione:");
 		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		descrizioneLabel.setBounds(242, 190, 237, 14);
+		descrizioneLabel.setBounds(252, 190, 146, 14);
 		corsiPanel.add(descrizioneLabel);
 		
 		presenzeMinLabel = new JLabel("Presenze Min:");
 		presenzeMinLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		presenzeMinLabel.setBounds(242, 114, 236, 14);
+		presenzeMinLabel.setBounds(252, 114, 226, 14);
 		corsiPanel.add(presenzeMinLabel);
 		
 		maxPartecipantiLabel = new JLabel("Max Martecipanti:");
 		maxPartecipantiLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		maxPartecipantiLabel.setBounds(242, 151, 236, 14);
+		maxPartecipantiLabel.setBounds(252, 149, 222, 14);
 		corsiPanel.add(maxPartecipantiLabel);
 		
 		descrizioneTextPane = new JTextPane();
 		descrizioneTextPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		descrizioneTextPane.setFont(new Font("Arial", Font.BOLD, 14));
 		descrizioneTextPane.setBackground(grigioChiaro);
-		descrizioneTextPane.setBounds(242, 205, 236, 40);
+		descrizioneTextPane.setBounds(252, 205, 222, 40);
+		descrizioneTextPane.setVisible(false);
 		corsiPanel.add(descrizioneTextPane);
 		
 		panoramicaLabel = new JLabel("PANORAMICA");
@@ -645,7 +648,8 @@ public class GestoreCorsiPage extends JFrame {
 		nomeCorsoTextPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		nomeCorsoTextPane.setFont(new Font("Arial", Font.BOLD, 14));
 		nomeCorsoTextPane.setBackground(new Color(233, 233, 233));
-		nomeCorsoTextPane.setBounds(242, 63, 185, 40);
+		nomeCorsoTextPane.setBounds(251, 63, 196, 40);
+		nomeCorsoTextPane.setVisible(false);
 		corsiPanel.add(nomeCorsoTextPane);
 		
 		gestione = new JPanel();
@@ -675,11 +679,12 @@ public class GestoreCorsiPage extends JFrame {
 		iscriviStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			//	AggiungiStudenteCorsoPage ascp = new AggiungiStudenteCorsoPage(theController, operatore)
-			}
-		});
-		iscriviStudenteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+				if(corsiList.isSelectionEmpty()) {
+					alertNessunCorsoSelezionato();
+				}else {
+					IscriviStudenteGestoreCorsoPage isgcp = new IscriviStudenteGestoreCorsoPage(theController, operatore, corsiList.getSelectedValue());
+					setVisible(false);
+				}			
 			}
 		});
 		iscriviStudenteButton.setFont(new Font("Arial", Font.BOLD, 15));
@@ -687,7 +692,18 @@ public class GestoreCorsiPage extends JFrame {
 		iscriviStudenteButton.setBounds(266, 57, 212, 25);
 		gestione.add(iscriviStudenteButton);
 		
-		statisticheButton = new JButton("STATISTICHE");
+		statisticheButton = new JButton("STATISTICHE CORSO");
+		statisticheButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(corsiList.getSelectedValue() == null) {
+					alertNessunCorsoSelezionato();
+				}else {
+					StatisticheCorsoPage scp = new StatisticheCorsoPage(theController, operatore, corsiList.getSelectedValue());
+					setVisible(false);
+				}
+			}
+		});
 		statisticheButton.setFont(new Font("Arial", Font.BOLD, 15));
 		statisticheButton.setBackground(Color.WHITE);
 		statisticheButton.setBounds(266, 11, 212, 25);

@@ -653,6 +653,17 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 		return lezioniDAO.getFutureLezioni(id_corso);
 	}
 	
+	public Vector<Studenti> getStudentiDisponibili(String id_operatore){
+		
+		return studentiDAO.getStudentiDisponibili(id_operatore);
+	}
 	
+	public String getIdOperatore(Operatori op) {
+		return operatoriDAO.getIdOperatore(op);
+	}
 	
+	public Vector<Studenti> setAllStudentiAmmessi(String id_corso){
+		
+		return studentiDAO.setAllStudentiAmmessi(id_corso);
+	}
 }

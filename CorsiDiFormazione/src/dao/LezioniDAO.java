@@ -190,7 +190,8 @@ public class LezioniDAO {
 			for(String mese:mesi)
 				if(isValid(giorno, mese))
 					query = query + " l.data = '" + giorno + "/" + mese + "/" + anno + "' OR ";
-			
+
+		query = query + "false ) AND (";	
 
 		for(Time durata:durate)
 			query = query + "l.durata = '" + durata.getHours() + ":" + durata.getMinutes() + "' OR ";
@@ -210,6 +211,8 @@ public class LezioniDAO {
 		
 		if(!titolo.equals(""))
 			query = query + "AND l.titolo = '" + titolo + "'";
+		
+		System.out.println(query);
 		
 		try {
 			ResultSet rs = statement.executeQuery(query);
@@ -243,7 +246,7 @@ public class LezioniDAO {
 		if(Integer.parseInt(giorno)>28 && Integer.parseInt(mese) == 2)
 			return false;
 		
-		if(giorno.equals("31") && ((mese.equals("11") || mese.equals("4") || mese.equals("7") || mese.equals("9"))))
+		if(giorno.equals("31") && ((mese.equals("11") || mese.equals("4") || mese.equals("6") || mese.equals("9"))))
 			return false;
 		
 		return true;

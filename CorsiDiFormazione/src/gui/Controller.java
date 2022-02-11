@@ -531,6 +531,16 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 		return vettore;
 	}
 	
+	public Vector<String> getAllMesi(){
+		
+		Vector<String> vettore = new Vector<String>();
+		
+		for(int i=1;i<13;i++)
+			vettore.add(String.valueOf(i));
+		
+		return vettore;
+	}
+	
 	public String getMese(String mese) {
 		
 		mese = mese.toLowerCase();
@@ -565,8 +575,11 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 	
 	public Vector<Lezioni> setLezioniFiltrate(Vector<String> giorni, Vector<String> mesi, Vector<Time> orario, Vector<Time> durate, String idCorso, String titolo, String anno){
 		
-		if(giorni.isEmpty() && mesi.isEmpty())
+		if(giorni.isEmpty())
 			giorni = getGiorni();
+		
+		if(mesi.isEmpty())
+			mesi = getAllMesi();
 		
 		return lezioniDAO.setLezioniFiltrate(giorni, mesi, orario, durate, idCorso, titolo, anno);
 	}

@@ -52,6 +52,7 @@ public class CreazioneLezionePage extends JFrame {
 	private JComboBox<Time> orarioComboBox;
 	private Vector<Time> durate;
 	private Vector<Time> orari;
+	private Corsi corso;
 	private JCalendar calendario;
 	
 	
@@ -69,6 +70,8 @@ public class CreazioneLezionePage extends JFrame {
 		theController = controller;
 		durate = theController.getDurate();
 		orari = theController.getOrario();
+		this.corso = corso;
+		
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
@@ -180,18 +183,8 @@ public class CreazioneLezionePage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				String titolo = titoloTextField.getText().toLowerCase();
-				String descrizione = descrizioneTextField.getText().toLowerCase();
-				Time orarioLezione = (Time)orarioComboBox.getSelectedItem();
-				Time durataLezione = (Time)durataComboBox.getSelectedItem();
-				Date data = calendario.getDate();
+				gestoreInserimentoLezione();
 				
-				String state = theController.creaLezione(titolo, descrizione, orarioLezione, durataLezione, data, corso.getIdCorso());
-				
-				if(state.equals("0"))
-					alertInserimentoEffettuato();
-				else
-					alertInserimentoFallito(state);
 			}
 		});	
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
@@ -235,4 +228,36 @@ public class CreazioneLezionePage extends JFrame {
 				JOptionPane.showMessageDialog(this, "Impossibile creare la lezione a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
 	}
+	
+	
+	public void alertTitoloNonInserito() {
+		
+		JOptionPane.showMessageDialog(this, "Inserire il titolo della lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	
+	public void gestoreInserimentoLezione() {
+		
+		String titolo = titoloTextField.getText().toLowerCase();
+		
+		
+		if(titolo.equals(""))
+			alertTitoloNonInserito();
+		else {
+			
+			String descrizione = descrizioneTextField.getText().toLowerCase();
+			Time orarioLezione = (Time)orarioComboBox.getSelectedItem();
+			Time durataLezione = (Time)durataComboBox.getSelectedItem();
+			Date data = calendario.getDate();
+			
+			String state = theController.creaLezione(titolo, descrizione, orarioLezione, durataLezione, data, corso.getIdCorso());
+			
+			if(state.equals("0"))
+				alertInserimentoEffettuato();
+			else
+				alertInserimentoFallito(state);
+		}
+		
+	}
+	
 }

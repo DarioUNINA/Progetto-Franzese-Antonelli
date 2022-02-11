@@ -612,11 +612,7 @@ public class GestoreLezioniPage extends JFrame {
 				if(corsiList.getSelectedValue()==null)
 					alertNessunCorsoSelezionato();
 				else {
-		//			if(vettoreGiorni.isEmpty() && !vettoreMesi.isEmpty()) {
-			//			vettoreGiorni = theController.getGiorni();
 						lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
-				//	}else{
-					//	lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
 						lezioniList.setListData(lezioni);
 					}
 			}

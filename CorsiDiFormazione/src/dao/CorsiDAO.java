@@ -420,4 +420,20 @@ public  Vector<Corsi>setCorsiStudenteDelOperatore(String matricola, String id_op
 		}
 	}
 
+	
+	public int getNumeroStudentiAmmessi(String idCorso) {
+		
+		try {
+			
+			ResultSet rs = statement.executeQuery("select count(ammesso) from iscrizioni i where i.ammesso = true and i.id_corso = '" + idCorso + "'");
+			
+			rs.next();
+			
+			return rs.getInt("count");
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 }

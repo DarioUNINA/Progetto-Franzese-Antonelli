@@ -662,7 +662,7 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 		return operatoriDAO.getIdOperatore(op);
 	}
 	
-	public Vector<Studenti> setAllStudentiAmmessi(String id_corso){
+	public Vector<String> setAllStudentiAmmessi(String id_corso){
 		
 		return studentiDAO.setAllStudentiAmmessi(id_corso);
 	}
@@ -680,5 +680,11 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 	
 	public String massimoPresenze(String idCorso) {
 		return corsiDAO.massimoPresenze(idCorso);
+	}
+	
+	public int getNumeroStudentiAmmessi(String idCorso) {
+	
+		return corsiDAO.getNumeroStudentiAmmessi(idCorso);
+		
 	}
 }

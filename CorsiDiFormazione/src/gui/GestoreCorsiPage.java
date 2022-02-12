@@ -496,7 +496,7 @@ public class GestoreCorsiPage extends JFrame {
 		
 		benvenutoLabel = new JLabel("Benvenuto, " + operatore.getNomeUtente().toUpperCase());
 		benvenutoLabel.setFont(new Font("Arial", Font.BOLD, 30));
-		benvenutoLabel.setBounds(10, 14, 352, 44);
+		benvenutoLabel.setBounds(10, 14, 665, 44);
 		benvenuto.add(benvenutoLabel);
 		
 		filtri = new JPanel();
@@ -637,24 +637,25 @@ public class GestoreCorsiPage extends JFrame {
 		
 		descrizioneLabel = new JLabel("Descrizione:");
 		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		descrizioneLabel.setBounds(252, 190, 146, 14);
+		descrizioneLabel.setBounds(252, 160, 146, 14);
 		corsiPanel.add(descrizioneLabel);
 		
-		presenzeMinLabel = new JLabel("Presenze Min:");
+		presenzeMinLabel = new JLabel("Presenze Mininime:");
 		presenzeMinLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		presenzeMinLabel.setBounds(252, 114, 226, 14);
+		presenzeMinLabel.setBounds(252, 101, 226, 14);
 		corsiPanel.add(presenzeMinLabel);
 		
-		maxPartecipantiLabel = new JLabel("Max Martecipanti:");
+		maxPartecipantiLabel = new JLabel("Massimo Martecipanti:");
 		maxPartecipantiLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		maxPartecipantiLabel.setBounds(252, 149, 222, 14);
+		maxPartecipantiLabel.setBounds(252, 126, 222, 14);
 		corsiPanel.add(maxPartecipantiLabel);
 		
 		descrizioneTextPane = new JTextPane();
+		descrizioneTextPane.setEditable(false);
 		descrizioneTextPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		descrizioneTextPane.setFont(new Font("Arial", Font.BOLD, 14));
 		descrizioneTextPane.setBackground(grigioChiaro);
-		descrizioneTextPane.setBounds(252, 205, 222, 40);
+		descrizioneTextPane.setBounds(252, 185, 222, 53);
 		descrizioneTextPane.setVisible(false);
 		corsiPanel.add(descrizioneTextPane);
 		
@@ -664,10 +665,11 @@ public class GestoreCorsiPage extends JFrame {
 		corsiPanel.add(panoramicaLabel);
 		
 		nomeCorsoTextPane = new JTextPane();
+		nomeCorsoTextPane.setEditable(false);
 		nomeCorsoTextPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		nomeCorsoTextPane.setFont(new Font("Arial", Font.BOLD, 14));
 		nomeCorsoTextPane.setBackground(new Color(233, 233, 233));
-		nomeCorsoTextPane.setBounds(251, 63, 227, 40);
+		nomeCorsoTextPane.setBounds(251, 63, 227, 27);
 		nomeCorsoTextPane.setVisible(false);
 		corsiPanel.add(nomeCorsoTextPane);
 		

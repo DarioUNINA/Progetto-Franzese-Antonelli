@@ -464,7 +464,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 					corsoLabel.setText("Corso: " + corsi.get(corsiList.getSelectedIndex()).getNome());
 					presenzeLabel.setText("Presenze: " + theController.getNumeroPresenzeDelCorso(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso()));
 					numeroLezioniLabel.setText("Numero Lezioni: " + theController.getNumeroLezioni(corsiList.getSelectedValue().getIdCorso()));
-					if(theController.getAmmessoAdEsame(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso())== true) {
+					if(theController.getAmmessoAdEsame(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso())) {
 						ammessoLabel.setText("Ammesso: SI" );
 						ammessoLabel.setForeground(Color.green);
 					}else {

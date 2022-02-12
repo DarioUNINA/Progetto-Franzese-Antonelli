@@ -212,31 +212,33 @@ public class StudentiDAO {
 		}
 	}
 	
-	public Vector<Studenti> setAllStudentiAmmessi(String id_corso){
+	public Vector<String> setAllStudentiAmmessi(String id_corso){
 		
-		Vector<Studenti> studente = new Vector<Studenti>();
+		Vector<String> studenti = new Vector<String>();
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN  iscrizioni isc  ON s.matricola = isc.matricola WHERE isc.id_corso = '" + id_corso + "' AND isc.ammesso = true");
+			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN  iscrizioni isc  ON s.matricola = isc.matricola WHERE isc.id_corso = '" + id_corso + "'");
 			
 			while(rs.next()) {
 
-				Studenti s = new Studenti();
-				s.setMatricola(rs.getString("matricola"));
-				s.setNome(rs.getString("nome"));	
-				s.setCognome(rs.getString("cognome"));
+				String ammesso;
+				
+				if(rs.getBoolean("ammesso"))
+					ammesso = "ammesso";
+				else
+					ammesso = "NON ammesso";
 
-				studente.add(s);
+				studenti.add(rs.getString("nome") + " "+ rs.getString("cognome") +" "+ ammesso);
 				
 			}
 			
-			return studente;
+			return studenti;
 			
 		}catch(SQLException e) {
 			
 			e.printStackTrace();
-			return studente;
+			return studenti;
 		}
 		
 	}

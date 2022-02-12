@@ -72,12 +72,6 @@ public class DomandeSicurezzaDAO {
 			e.printStackTrace();
 			return domande;
 		}
-
-		
-		
 		
 	}
-
-	
-	
 }

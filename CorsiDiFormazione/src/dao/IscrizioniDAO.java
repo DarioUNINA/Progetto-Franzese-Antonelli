@@ -24,7 +24,7 @@ public class IscrizioniDAO {
 		Vector<Corsi> corsi = new Vector<Corsi>();
 		
 		try {
-			ResultSet rs = statement.executeQuery("SELECT * FROM corsi con WHERE con.id_operatore = '" + id_operatore + "' AND co.terminato = false AND con.nome NOT IN "
+			ResultSet rs = statement.executeQuery("SELECT * FROM corsi con WHERE con.id_operatore = '" + id_operatore + "' AND con.terminato = false AND con.nome NOT IN "
 												+ "(SELECT co.nome FROM corsi co JOIN iscrizioni i ON co.id_corso = i.id_corso WHERE i.matricola = '"+ matricola + "')");
 			
 			while(rs.next()) {

@@ -46,6 +46,4 @@ public class Operatori {
 		this.password = password;
 	}
 
-	
-
 }

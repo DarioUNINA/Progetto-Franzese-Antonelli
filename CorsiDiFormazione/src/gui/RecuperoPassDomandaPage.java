@@ -162,10 +162,5 @@ public class RecuperoPassDomandaPage extends JFrame {
 		else
 			JOptionPane.showMessageDialog(this, "E\' stato riscontarto un errore","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
-
-		
-		
-	}
-	
-	
+	}	
 }

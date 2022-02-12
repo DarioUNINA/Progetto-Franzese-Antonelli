@@ -28,6 +28,4 @@ public class Presenze {
 		this.idLezione = idLezione;
 	}
 
-
-	
 }

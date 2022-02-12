@@ -27,6 +27,4 @@ public class Temi {
 		this.idCorso = idCorso;
 	}
 
-	
-
 }

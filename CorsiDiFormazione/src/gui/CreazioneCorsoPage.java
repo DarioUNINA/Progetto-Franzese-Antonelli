@@ -133,6 +133,7 @@ public class CreazioneCorsoPage extends JFrame {
 		
 		terminatoCheckBox = new JCheckBox("SI");
 		terminatoCheckBox.setBounds(521, 145, 48, 33);
+		terminatoCheckBox.setBackground(grigioChiaro);
 		terminatoCheckBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -268,7 +269,7 @@ public class CreazioneCorsoPage extends JFrame {
 		creaCorsoPanel.add(terminatoLabel);
 		
 		descrizioneLabel = new JLabel("  Descrizione:");
-		descrizioneLabel.setBounds(414, 219, 97, 14);
+		descrizioneLabel.setBounds(414, 222, 97, 14);
 		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		creaCorsoPanel.add(descrizioneLabel);
 		

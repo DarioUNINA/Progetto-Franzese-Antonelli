@@ -24,7 +24,11 @@ import dto.Studenti;
 import java.util.Vector;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+<<<<<<< HEAD
 import javax.swing.JToolBar;
+=======
+import java.awt.Cursor;
+>>>>>>> 8e287ba3cf6df823ec0e5be8060f44583e162134
 
 public class StatisticheCorsoPage extends JFrame {
 	
@@ -136,6 +140,7 @@ public class StatisticheCorsoPage extends JFrame {
 		studentiList.setBackground(new Color(136, 187, 214));
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

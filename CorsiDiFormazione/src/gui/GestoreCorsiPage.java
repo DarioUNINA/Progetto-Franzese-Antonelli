@@ -490,7 +490,7 @@ public class GestoreCorsiPage extends JFrame {
 		benvenuto = new JPanel();
 		benvenuto.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		benvenuto.setBackground(grigioChiaro);
-		benvenuto.setBounds(64, 11, 810, 77);
+		benvenuto.setBounds(64, 11, 810, 64);
 		sfondoPane.add(benvenuto);
 		benvenuto.setLayout(null);
 		
@@ -502,7 +502,7 @@ public class GestoreCorsiPage extends JFrame {
 		filtri = new JPanel();
 		filtri.setBorder(new LineBorder(Color.BLACK, 2));
 		filtri.setBackground(grigioChiaro);
-		filtri.setBounds(64, 99, 312, 451);
+		filtri.setBounds(64, 86, 312, 464);
 		sfondoPane.add(filtri);
 		filtri.setLayout(null);
 		
@@ -586,13 +586,13 @@ public class GestoreCorsiPage extends JFrame {
 		corsiPanel = new JPanel();
 		corsiPanel.setBorder(new LineBorder(Color.BLACK, 2));
 		corsiPanel.setBackground(grigioChiaro);
-		corsiPanel.setBounds(386, 99, 488, 256);
+		corsiPanel.setBounds(386, 86, 488, 269);
 		sfondoPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
 		
 		corsiScrollPane = new JScrollPane();
 		corsiScrollPane.setBorder(new LineBorder(Color.BLACK));
-		corsiScrollPane.setBounds(10, 31, 232, 214);
+		corsiScrollPane.setBounds(10, 31, 232, 212);
 		corsiPanel.add(corsiScrollPane);
 
 		corsiList = new JList<Corsi>(corsi);
@@ -697,6 +697,7 @@ public class GestoreCorsiPage extends JFrame {
 		eliminaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		iscriviStudenteButton = new JButton("ISCRIVI STUDENTE");
+		iscriviStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		iscriviStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -714,6 +715,7 @@ public class GestoreCorsiPage extends JFrame {
 		gestione.add(iscriviStudenteButton);
 		
 		statisticheButton = new JButton("STATISTICHE CORSO");
+		statisticheButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		statisticheButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

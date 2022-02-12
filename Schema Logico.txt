@@ -472,13 +472,6 @@ temi (/nome_area/, /id_corso/)
 	EXECUTE PROCEDURE check_creazione_lezione_contemporanea();
 	
 
---19)
-
-	CREATE VIEW partecipanti(id_corso, partecipanti) AS (	
-	SELECT i.id_corso, count (matricola)
-	from iscrizioni i
-	group by (id_corso)
-)
 
 --20)
 
@@ -508,14 +501,8 @@ temi (/nome_area/, /id_corso/)
 	EXECUTE PROCEDURE check_data_lezione_corso();
 	
 	
---21)
 
-	CREATE VIEW presenze_totali(presenze, id_corso) AS(
-		SELECT COUNT(matricola), co.id_corso
-		FROM (presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione) JOIN corsi co ON l.id_corso = co.id_corso
-		GROUP BY co.id_corso
-	)
-	
+
 --22) 
 	CREATE OR REPLACE FUNCTION presenze_medie(idcorso VARCHAR(100))
 	RETURNS FLOAT AS
@@ -547,4 +534,18 @@ temi (/nome_area/, /id_corso/)
 		FROM presenze p join lezioni l on p.id_lezione = l.id_lezione
 		GROUP BY p.matricola, l.id_corso
 	)
+	--21)
+
+	CREATE VIEW presenze_totali(presenze, id_corso) AS(
+		SELECT COUNT(matricola), co.id_corso
+		FROM (presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione) JOIN corsi co ON l.id_corso = co.id_corso
+		GROUP BY co.id_corso
+	)
 	
+--19)
+
+	CREATE VIEW partecipanti(id_corso, partecipanti) AS (	
+	SELECT i.id_corso, count (matricola)
+	from iscrizioni i
+	group by (id_corso)
+)

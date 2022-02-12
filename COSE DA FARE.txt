@@ -8,3 +8,5 @@
 5)alert modifica anno del corso
 
 6) all'interno di modifica corso page settare le parole chiave e aree tematiche predefinite quelle del corso e gestire la conferma delle modifiche
+
+7) modifiche anno popolamento tabelle 

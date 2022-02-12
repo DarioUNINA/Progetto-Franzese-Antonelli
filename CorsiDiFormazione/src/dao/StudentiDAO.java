@@ -218,7 +218,7 @@ public class StudentiDAO {
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN  iscrizioni isc  ON s.matricola = isc.matricola WHERE isc.id_corso = '" + id_corso + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN  iscrizioni isc  ON s.matricola = isc.matricola WHERE isc.id_corso = '" + id_corso + "' ORDER BY isc.ammesso DESC");
 			
 			while(rs.next()) {
 

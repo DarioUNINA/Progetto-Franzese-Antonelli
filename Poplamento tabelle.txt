@@ -113,7 +113,7 @@ INSERT INTO corsi
 VALUES(nextval('sequenza_id_corso'), 6, 'programmazione_1', 'approccio alla programmazione in c++', 2, 25, '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 1, 'analisi_1', 'teoremi base di analisi matematica', 10, 2, '2023');
+VALUES(nextval('sequenza_id_corso'), 1, 'analisi_1', 'teoremi base di analisi matematica', 10, 2, '2021');
 
 INSERT INTO corsi
 VALUES(nextval('sequenza_id_corso'), 1, 'ingegneria_del_software', 'studio dei software', 10, 1, '2021');
@@ -192,31 +192,31 @@ INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'stack', 'approccio a struttua dati stack', '1:30', '29/09/2021', '8:30', 5);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'successione limitata', 'studio e applicazione sulle successioni', '1:30', '27/11/2023', '10:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'successione limitata', 'studio e applicazione sulle successioni', '1:30', '27/11/2021', '10:30', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'serie' , 'serie geometrica', '2:00', '14/10/2023', '8:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'serie' , 'serie geometrica', '2:00', '14/10/2021', '8:30', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'insiemi', 'teoria degli insiemi ', '2:00', '16/10/2023', '14:00', 6);
+VALUES(nextval('sequenza_id_lezione'), 'insiemi', 'teoria degli insiemi ', '2:00', '16/10/2021', '14:00', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'calcolo differenziale', 'regolo di derivazione', '2:00', '01/12/2023', '11:00', 6);
+VALUES(nextval('sequenza_id_lezione'), 'calcolo differenziale', 'regolo di derivazione', '2:00', '01/12/2021', '11:00', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'estremi relaviti', 'teorema di lagrange', '2:00', '30/09/2023', '8:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'estremi relaviti', 'teorema di lagrange', '2:00', '30/09/2021', '8:30', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'numeri reali', 'estremo superiore', '2:00', '5/10/2023', '8:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'numeri reali', 'estremo superiore', '2:00', '5/10/2021', '8:30', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'calcolo intregale', 'funzioni continue', '2:00', '10/12/2023', '16:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'calcolo intregale', 'funzioni continue', '2:00', '10/12/2021', '16:30', 6);
 
 INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'uml', 'linguaggio di modellazione e specifica', '1:30', '06/3/2021', '11:00', 7);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'anelli', 'struttura algebrica', '1:30', '01/12/2019', '13:00', 8);
+VALUES(nextval('sequenza_id_lezione'), 'anelli', 'struttura algebrica', '1:30', '01/12/2029', '13:00', 8);
 
 INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'corrispondenze', 'relazioni binarie e applicazioni', '1:00', '20/10/2019', '8:30', 8);
@@ -312,7 +312,7 @@ INSERT INTO iscrizioni
 VALUES(6, 15);
 
 INSERT INTO iscrizioni
-VALUES(3, 3, true);
+VALUES(3, 7, true);
 
 INSERT INTO iscrizioni
 VALUES(8, 13);

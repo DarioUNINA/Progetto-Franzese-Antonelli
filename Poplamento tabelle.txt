@@ -312,7 +312,7 @@ INSERT INTO iscrizioni
 VALUES(6, 15);
 
 INSERT INTO iscrizioni
-VALUES(3, , true);
+VALUES(3, 7, true);
 
 INSERT INTO iscrizioni
 VALUES(8, 13);

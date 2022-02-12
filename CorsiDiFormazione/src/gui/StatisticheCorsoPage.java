@@ -51,7 +51,6 @@ public class StatisticheCorsoPage extends JFrame {
 	private JProgressBar mediaRiempimentoProgressBar;
 	private Vector<String> studenti;
 
-	
 	final Color azzurro;
 	final Color azzurroChiaro;
 	final Color grigio;
@@ -175,7 +174,7 @@ public class StatisticheCorsoPage extends JFrame {
 		mediaRiempimentoProgressBar.setFont(new Font("Microsoft YaHei UI", Font.BOLD | Font.ITALIC, 13));
 		mediaRiempimentoProgressBar.setStringPainted(true);
 		mediaRiempimentoProgressBar.setBounds(32, 380, 302, 20);
-		mediaRiempimentoProgressBar.setValue((int)theController.getPresenzeMedie(corso.getIdCorso())/corso.getMaxPartecipanti());
+		mediaRiempimentoProgressBar.setValue((int)theController.getPresenzeMedie(corso.getIdCorso())/studenti.size());
 		statistichePanel.add(mediaRiempimentoProgressBar);
 		
 		JLabel studentiIscrittiLabel = new JLabel("Studenti Iscritti (" + String.valueOf(studenti.size())  + ")");

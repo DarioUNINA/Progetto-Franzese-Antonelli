@@ -237,17 +237,12 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
-		if(studenti.isEmpty())
-			alertNonCiSonoStudentiIscritti();
+
 	}
 	
 	public void alertNonCiSonoStudenti() {
 		JOptionPane.showMessageDialog(this, "Non ci sono Studenti da poter aggiungere alla lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void alertNonCiSonoStudentiIscritti(){
-		JOptionPane.showMessageDialog(this, "Non ci sono Studenti iscritti alla lezione!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-		
-	}
 }
 

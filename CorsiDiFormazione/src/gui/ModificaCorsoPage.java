@@ -195,12 +195,28 @@ public class ModificaCorsoPage extends JFrame {
 		listaParole.setFont(new Font("Arial", Font.BOLD, 15));
 		listaParole.setVisibleRowCount(10);
 		listaParole.setVisible(true);
+		
+		alertLabel = new JLabel("Non \u00E8 possibile modificare l'anno");
+		alertLabel.setForeground(Color.RED);
+		alertLabel.setBounds(521, 109, 287, 14);
+		creaCorsoPanel.add(alertLabel);
+		
+		alertLabel2 = new JLabel("se ci sono lezioni programmate!");
+		alertLabel2.setForeground(Color.RED);
+		alertLabel2.setBounds(521, 121, 287, 14);
+		creaCorsoPanel.add(alertLabel2);
 
 		annoChooser = new JYearChooser();
-		if(!theController.modificaAnnoCorso(corso.getIdCorso()))
+		
+		if(!theController.modificaAnnoCorso(corso.getIdCorso())) {
 			annoChooser.getSpinner().setEnabled(true);
-		else
+			alertLabel.setVisible(false);
+			alertLabel2.setVisible(false);
+		}else {
 			annoChooser.getSpinner().setEnabled(false);
+			
+		}
+			
 		annoChooser.setBounds(521, 90, 86, 20);
 		annoChooser.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		annoChooser.getSpinner().setBounds(0, 0, 86, 20);
@@ -288,17 +304,6 @@ public class ModificaCorsoPage extends JFrame {
 		descrizioneTextField.setFont(new Font("Arial", Font.BOLD, 13));
 		descrizioneTextField.setColumns(10);
 		creaCorsoPanel.add(descrizioneTextField);
-		
-		alertLabel = new JLabel("Non \u00E8 possibile modificare l'anno");
-		alertLabel.setForeground(Color.RED);
-		alertLabel.setBounds(521, 109, 168, 14);
-		creaCorsoPanel.add(alertLabel);
-		
-		alertLabel2 = new JLabel("se ci sono lezioni programmate!");
-		alertLabel2.setForeground(Color.RED);
-		alertLabel2.setBounds(521, 121, 168, 14);
-		creaCorsoPanel.add(alertLabel2);
-		
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

@@ -70,7 +70,6 @@ public class CreazioneStudentePage extends JFrame {
 		setIconImage(imageicon.getImage());
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
 		creaStudentePanel = new JPanel();
@@ -171,6 +170,8 @@ public class CreazioneStudentePage extends JFrame {
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
+		if(corsi.isEmpty())
+			alertNessunCorsoDisponibile();
 	}
 	
 	
@@ -204,8 +205,10 @@ public class CreazioneStudentePage extends JFrame {
 	
 	public void alertNomeCognomeMancante() {
 		
-		JOptionPane.showMessageDialog(this, "Inserire tutti i campi per creare uno studente","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-
-		
+		JOptionPane.showMessageDialog(this, "Inserire tutti i campi per creare uno studente","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+	}
+	
+	public void alertNessunCorsoDisponibile() {
+		JOptionPane.showMessageDialog(this, "Non ci sono Corsi disponibili.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);		
 	}
 }

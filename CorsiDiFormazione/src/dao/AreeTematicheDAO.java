@@ -37,7 +37,4 @@ public class AreeTematicheDAO {
 			return aree;
 		}
 	}
-	
-	
-	
 }

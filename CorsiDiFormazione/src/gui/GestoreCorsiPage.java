@@ -107,6 +107,7 @@ public class GestoreCorsiPage extends JFrame {
 	private JLabel gestoreStudentiLabel;
 	private JLabel esciImageMenuEstesoLabel;
 	private JLabel esciLabel;
+	private JButton modificaCorsoButton;
 	
 	final Color azzurro;
 	final Color azzurroChiaro;
@@ -534,6 +535,8 @@ public class GestoreCorsiPage extends JFrame {
 				
 		terminatoCheckBoxSi = new JCheckBox("SI");
 		terminatoCheckBoxNo = new JCheckBox("NO");
+		terminatoCheckBoxSi.setBackground(grigioChiaro);
+		terminatoCheckBoxNo.setBackground(grigioChiaro);
 		terminatoCheckBoxSi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -586,7 +589,7 @@ public class GestoreCorsiPage extends JFrame {
 		corsiPanel = new JPanel();
 		corsiPanel.setBorder(new LineBorder(Color.BLACK, 2));
 		corsiPanel.setBackground(grigioChiaro);
-		corsiPanel.setBounds(386, 86, 488, 269);
+		corsiPanel.setBounds(386, 86, 488, 250);
 		sfondoPane.add(corsiPanel);
 		corsiPanel.setLayout(null);
 		
@@ -609,9 +612,6 @@ public class GestoreCorsiPage extends JFrame {
 					descrizioneTextPane.setText(corsi.get(corsiList.getSelectedIndex()).getDescrizione());
 					descrizioneTextPane.setVisible(true);
 				}
-				
-				if(theController.getFutureLezioni(corsi.get(corsiList.getSelectedIndex()).getIdCorso()).isEmpty()) 
-					alertNessunaLezioneProgrammataDisponibile();
 					
 				lezioni = theController.getFutureLezioni(corsi.get(corsiList.getSelectedIndex()).getIdCorso());
 				lezioniProgrammateList.setListData(lezioni);
@@ -676,12 +676,12 @@ public class GestoreCorsiPage extends JFrame {
 		gestione = new JPanel();
 		gestione.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		gestione.setBackground(grigioChiaro);
-		gestione.setBounds(386, 366, 488, 184);
+		gestione.setBounds(386, 347, 488, 203);
 		sfondoPane.add(gestione);
 		gestione.setLayout(null);
 		
 		eliminaCorsoButton = new JButton("ELIMINA CORSO");
-		eliminaCorsoButton.setBounds(266, 104, 212, 25);
+		eliminaCorsoButton.setBounds(266, 131, 212, 25);
 		gestione.add(eliminaCorsoButton);
 		eliminaCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eliminaCorsoButton.setBackground(Color.WHITE);
@@ -703,15 +703,18 @@ public class GestoreCorsiPage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if(corsiList.isSelectionEmpty()) {
 					alertNessunCorsoSelezionato();
-				}else {
-					IscriviStudenteGestoreCorsoPage isgcp = new IscriviStudenteGestoreCorsoPage(theController, operatore, corsiList.getSelectedValue());
-					setVisible(false);
+				}else
+					if(corsiList.getSelectedValue().isTerminato())
+						alertCorsoTerminato();
+					else{
+						IscriviStudenteGestoreCorsoPage isgcp = new IscriviStudenteGestoreCorsoPage(theController, operatore, corsiList.getSelectedValue());
+						setVisible(false);
 				}			
 			}
 		});
 		iscriviStudenteButton.setFont(new Font("Arial", Font.BOLD, 15));
 		iscriviStudenteButton.setBackground(Color.WHITE);
-		iscriviStudenteButton.setBounds(266, 57, 212, 25);
+		iscriviStudenteButton.setBounds(266, 95, 212, 25);
 		gestione.add(iscriviStudenteButton);
 		
 		statisticheButton = new JButton("STATISTICHE CORSO");
@@ -729,12 +732,12 @@ public class GestoreCorsiPage extends JFrame {
 		});
 		statisticheButton.setFont(new Font("Arial", Font.BOLD, 15));
 		statisticheButton.setBackground(Color.WHITE);
-		statisticheButton.setBounds(266, 11, 212, 25);
+		statisticheButton.setBounds(266, 23, 212, 25);
 		gestione.add(statisticheButton);
 		
 		lezioniProgrammateScrollPane = new JScrollPane();
 		lezioniProgrammateScrollPane.setBorder(new LineBorder(Color.BLACK));
-		lezioniProgrammateScrollPane.setBounds(10, 31, 220, 142);
+		lezioniProgrammateScrollPane.setBounds(10, 31, 220, 161);
 		gestione.add(lezioniProgrammateScrollPane);
 		
 		lezioniProgrammateList = new JList<Lezioni>();
@@ -749,7 +752,7 @@ public class GestoreCorsiPage extends JFrame {
 		gestione.add(lezioniProgrammateLabel);
 		
 		aggiungiCorsoButton = new JButton("AGGIUNGI CORSO");
-		aggiungiCorsoButton.setBounds(266, 148, 212, 25);
+		aggiungiCorsoButton.setBounds(266, 167, 212, 25);
 		gestione.add(aggiungiCorsoButton);
 		aggiungiCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		aggiungiCorsoButton.setBackground(Color.WHITE);
@@ -763,6 +766,24 @@ public class GestoreCorsiPage extends JFrame {
 			}
 		});
 		aggiungiCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		
+		modificaCorsoButton = new JButton("MODIFICA CORSO");
+		modificaCorsoButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(corsiList.getSelectedValue() == null) {
+					alertNessunCorsoSelezionato();
+				}else {
+					ModificheCorsoPage mmcp = new ModificheCorsoPage(theController, operatore, corsiList.getSelectedValue());
+					setVisible(false);
+				}
+			}
+		});
+		modificaCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		modificaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		modificaCorsoButton.setBackground(Color.WHITE);
+		modificaCorsoButton.setBounds(266, 59, 212, 25);
+		gestione.add(modificaCorsoButton);
 		
 		resetFiltriButton = new JButton("RESET");
 		resetFiltriButton.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -837,6 +858,8 @@ public class GestoreCorsiPage extends JFrame {
 		
 		FullMatchRadioButton = new JRadioButton("Full Match");
 		PartialMatchRadioButton = new JRadioButton("Partial Match");
+		FullMatchRadioButton.setBackground(grigioChiaro);
+		PartialMatchRadioButton.setBackground(grigioChiaro);
 		FullMatchRadioButton.setSelected(true);
 		FullMatchRadioButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -922,7 +945,9 @@ public class GestoreCorsiPage extends JFrame {
 	public void alertNessunCorsoSelezionato() {
 		JOptionPane.showMessageDialog(this, "Selezionare un corso.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
-	public void alertNessunaLezioneProgrammataDisponibile() {
-		JOptionPane.showMessageDialog(this, "Non ci sono lezioni Programmate per il Corso selezionato.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);		
+	
+	public void alertCorsoTerminato() {
+		JOptionPane.showMessageDialog(this, "Non è possibile iscrivere studenti a Corsi terminati.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);		
 	}
+	
 }

@@ -188,7 +188,5 @@ public class EliminaCorsoPage extends JFrame {
 
 
 	}
-	
-	
-		
+
 }

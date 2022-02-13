@@ -140,6 +140,7 @@ public class StatisticheCorsoPage extends JFrame {
 		percentualeRiempimentoLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		
 		mediaRiempimentoProgressBar = new JProgressBar();
+		mediaRiempimentoProgressBar.setBorder(new LineBorder(new Color(0, 0, 0)));
 		mediaRiempimentoProgressBar.setBounds(75, 453, 418, 20);		
 		mediaRiempimentoProgressBar.setBackground(Color.WHITE);
 		mediaRiempimentoProgressBar.setForeground(Color.GREEN);

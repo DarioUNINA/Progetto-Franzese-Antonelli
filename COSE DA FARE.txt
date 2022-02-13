@@ -1,8 +1,6 @@
 1)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
    ad esempio ho notato che eliminazione operatore è un motodo String
-   
-2)interno di modifica corso page settare le parole chiave e aree tematiche predefinite quelle del corso 
-   e gestire la conferma delle modifiche
 
-5) modifiche anno popolamento tabelle 
+4) all'interno di modifica corso page settare le parole chiave e aree tematiche predefinite quelle del corso 
+   e gestire la conferma delle modifiche
 

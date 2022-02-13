@@ -182,7 +182,7 @@ public class StudentiDAO {
 		}
 	}
 	
-	public Vector<Studenti> getStudentiDisponibili(String id_operatore){
+	public Vector<Studenti> getStudentiDisponibili(String id_corso){
 		
 		Vector<Studenti> studente = new Vector<Studenti>();
 		
@@ -190,7 +190,7 @@ public class StudentiDAO {
 		try {
 			
 			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s WHERE s.matricola NOT IN "+ 
-												  "(SELECT isc.matricola FROM corsi co  JOIN iscrizioni isc ON co.id_corso = isc.id_corso WHERE co.id_operatore = '" + id_operatore + "')");
+												  "(SELECT isc.matricola FROM corsi co  JOIN iscrizioni isc ON co.id_corso = isc.id_corso WHERE isc.id_corso =  '" + id_corso +"')");
 			
 			while(rs.next()) {
 

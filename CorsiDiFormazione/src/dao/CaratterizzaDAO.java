@@ -23,8 +23,6 @@ public class CaratterizzaDAO {
 	
 	public String inserisciCaratterizza(String idCorso, Vector<ParoleChiave> parole) {
 		
-		String state = new String();
-		
 		try {
 			
 			for(ParoleChiave parola:parole)
@@ -35,5 +33,23 @@ public class CaratterizzaDAO {
 			e.printStackTrace();
 			return e.getSQLState();
 		}
+	}
+	
+	
+	public String eliminaCaratterizza(String idCorso) {
+		try {
+			
+			if(!statement.execute("DELETE FROM caratterizza c WHERE c.id_corso = '" + idCorso + "'"))
+				return "0";
+			else
+				return "1";
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+		
+		
+		
 	}
 }

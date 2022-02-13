@@ -746,10 +746,13 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 		String state = corsiDAO.modificaCorso(nome, descrizione, anno, presenzeMin, maxPartecipanti, terminato, idCorso, idOperatore);
 		
 		if(state.equals("0"))
-			state = temiDAO.inserisciTemi(corsiDAO.getIdCorso(nome), areeTematiche);
+			state = temiDAO.eliminaTemi(idCorso);
 			if(state.equals("0"))
-				return state = caratterizzaDAO.inserisciCaratterizza(corsiDAO.getIdCorso(nome), paroleChiave);
-			
+				state = temiDAO.inserisciTemi(corsiDAO.getIdCorso(nome), areeTematiche);
+				if(state.equals("0"))
+					state = caratterizzaDAO.eliminaCaratterizza(idCorso);
+					if(state.equals("0"))
+						state = caratterizzaDAO.inserisciCaratterizza(corsiDAO.getIdCorso(nome), paroleChiave);
 		return state;
 			
 			

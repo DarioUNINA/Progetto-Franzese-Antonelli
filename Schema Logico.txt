@@ -485,7 +485,7 @@ temi (/nome_area/, /id_corso/)
 		from corsi c
 		where c.id_corso = new.id_corso;
 		
-		IF (CAST(EXTRACT(YEAR FROM data) AS VARCHAR(100)) <> anno) THEN
+		IF (CAST(EXTRACT(YEAR FROM new.data) AS VARCHAR(100)) <> anno) THEN
 			RAISE SQLSTATE '10013';
 			ROLLBACK;
 			RAISE EXCEPTION 'la data della lezione non corrisponde con l anno del corso';

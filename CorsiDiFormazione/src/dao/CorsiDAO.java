@@ -440,4 +440,37 @@ public  Vector<Corsi>setCorsiStudenteDelOperatore(String matricola, String id_op
 			return -1;
 		}
 	}
+	
+	
+	public boolean modificaAnnoCorso(String id_corso) {
+	
+		try {
+			
+			ResultSet rs = statement.executeQuery("select * FROM lezioni l WHERE l.id_corso = '" + id_corso + "'");
+
+			return rs.next();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public String modificaCorso(String nome, String descrizione, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idCorso, String idOperatore) {
+		
+		try {
+			
+			if(!statement.execute("UPDATE  corsi  SET   nome = '" + nome + "' , descrizione = '" + descrizione + "', presenze_min = " + presenzeMin + ", max_partecipanti =  " + maxPartecipanti + " , anno ='" + anno + "' WHERE id_corso = '" + idCorso + "'" ))
+				return "0";
+			else 
+				return "-1";
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+		
+	}
+
 }

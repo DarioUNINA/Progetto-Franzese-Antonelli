@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -47,6 +48,8 @@ public class ModificheCorsoPage extends JFrame {
 	private JButton indietroButton;
 	private JButton confermaButton;
 	private JPanel creaCorsoPanel;
+	private JLabel alertLabel2;
+	private JLabel alertLabel;
 	private JLabel modificaCorsoLabel;
 	private JLabel nomeLabel;
 	private JLabel presenzeMinimeLabel;
@@ -195,7 +198,10 @@ public class ModificheCorsoPage extends JFrame {
 		listaParole.setVisible(true);
 
 		annoChooser = new JYearChooser();
-		annoChooser.getSpinner().setEnabled(false);
+		if(!theController.modificaAnnoCorso(corso.getIdCorso()))
+			annoChooser.getSpinner().setEnabled(true);
+		else
+			annoChooser.getSpinner().setEnabled(false);
 		annoChooser.setBounds(521, 90, 86, 20);
 		annoChooser.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		annoChooser.getSpinner().setBounds(0, 0, 86, 20);
@@ -231,8 +237,8 @@ public class ModificheCorsoPage extends JFrame {
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		creaCorsoPanel.add(confermaButton);
 		
-		modificaCorsoLabel = new JLabel("MODIFICA CORSO");
-		modificaCorsoLabel.setBounds(320, 11, 227, 33);
+		modificaCorsoLabel = new JLabel("MODIFICHE CORSO");
+		modificaCorsoLabel.setBounds(315, 11, 238, 33);
 		modificaCorsoLabel.setForeground(Color.BLACK);
 		modificaCorsoLabel.setFont(new Font("Arial", Font.BOLD, 25));
 		modificaCorsoLabel.setBackground(Color.WHITE);
@@ -286,10 +292,79 @@ public class ModificheCorsoPage extends JFrame {
 		descrizioneTextField.setColumns(10);
 		creaCorsoPanel.add(descrizioneTextField);
 		
+		alertLabel = new JLabel("Non \u00E8 possibile modificare l'anno");
+		alertLabel.setForeground(Color.RED);
+		alertLabel.setBounds(521, 109, 168, 14);
+		creaCorsoPanel.add(alertLabel);
+		
+		alertLabel2 = new JLabel("se ci sono lezioni programmate!");
+		alertLabel2.setForeground(Color.RED);
+		alertLabel2.setBounds(521, 121, 168, 14);
+		creaCorsoPanel.add(alertLabel2);
+		
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
 	}
+	
+	public void alertErroreInserimentoMaxPartecipanti() {
+		JOptionPane.showMessageDialog(this, "Il massimo numero di partecipanti inserito non e' valido","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertErroreInserimentoPresenzeMin() {
+		JOptionPane.showMessageDialog(this, "Le presenze minime inserite non sono valide","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertInserimentoEffettuato() {
+		
+		JOptionPane.showMessageDialog(this, "Corso modificato correttamente","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
 
+		GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+		setVisible(false);
+	}
+	
+	public void alertInserimentoNonEffettuato(String state) {
+
+		if(state.equals("-1")) 
+			JOptionPane.showMessageDialog(this, "Errore sconosciuto, impossibile creare il corso ","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else 
+			if(state.equals("23505"))
+				JOptionPane.showMessageDialog(this, "Impossibile modificare il corso, esiste gia' un corso con lo stesso nome" +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+			else
+				JOptionPane.showMessageDialog(this, "Impossibile creare il corso: codice errore " +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+	}
+
+	public void gestoreCreazioneStudente() {
+		
+		String nome = nomeTextField.getText().toLowerCase();
+		String descrizione = descrizioneTextField.getText().toLowerCase();
+		String anno = String.valueOf(annoChooser.getYear());
+		String presenzeMin = presenzeMinTextField.getText();
+		String maxPartecipanti = maxPartecipantiTextField.getText();
+		boolean terminato;
+		Vector<ParoleChiave> paroleChiave = theController.getParoleSelezionate(listaParole, parole);
+		Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);
+		
+		if(terminatoCheckBox.isSelected())
+			terminato = true;
+		else
+			terminato = false;
+		
+		if(!theController.isDigits(presenzeMin))
+			alertErroreInserimentoPresenzeMin();
+		else
+			if(!theController.isDigits(maxPartecipanti))
+				alertErroreInserimentoMaxPartecipanti();
+			else {
+					
+					String state = theController.modificaCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, corso.getIdCorso(), operatore.getIdOperatore() , aree);
+						
+					if(state.equals("0"))
+						alertInserimentoEffettuato();
+					else
+						alertInserimentoNonEffettuato(state);
+			}
+	}
 }

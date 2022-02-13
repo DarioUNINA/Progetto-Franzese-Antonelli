@@ -5,8 +5,6 @@
 
 3) effettuare prove con corso e operatore creati al momento
 
-4)alert modifica anno del corso
-
 4) all'interno di modifica corso page settare le parole chiave e aree tematiche predefinite quelle del corso 
    e gestire la conferma delle modifiche
 

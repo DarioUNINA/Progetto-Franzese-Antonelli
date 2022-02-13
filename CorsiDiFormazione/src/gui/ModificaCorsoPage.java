@@ -305,6 +305,20 @@ public class ModificaCorsoPage extends JFrame {
 		descrizioneTextField.setColumns(10);
 		creaCorsoPanel.add(descrizioneTextField);
 		
+<<<<<<< HEAD
+=======
+		alertLabel = new JLabel("Non \u00E8 possibile modificare l'anno");
+		alertLabel.setForeground(Color.RED);
+		alertLabel.setBounds(521, 109, 204, 14);
+		creaCorsoPanel.add(alertLabel);
+		
+		alertLabel2 = new JLabel("se ci sono lezioni programmate!");
+		alertLabel2.setForeground(Color.RED);
+		alertLabel2.setBounds(521, 121, 204, 14);
+		creaCorsoPanel.add(alertLabel2);
+		
+		
+>>>>>>> 482079066dadb97ed86a790227b21a47f5370bb3
 		setLocationRelativeTo(null);
 		setVisible(true);
 		

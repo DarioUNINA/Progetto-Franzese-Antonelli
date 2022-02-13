@@ -125,7 +125,6 @@ public class GestoreCorsiPage extends JFrame {
 	private JLabel impostazioniLabel;
 	private JLabel esciImageLabel;
 	private JLabel corsiLabel;
-	private JLabel nomeCorsoLabel;
 	private JLabel descrizioneLabel;
 	private JLabel presenzeMinLabel;
 	private JLabel maxPartecipantiLabel;
@@ -136,7 +135,6 @@ public class GestoreCorsiPage extends JFrame {
 	private JScrollPane lezioniProgrammateScrollPane;
 	private JList<Lezioni> lezioniProgrammateList;
 	private JLabel lezioniProgrammateLabel;
-	private JTextPane nomeCorsoTextPane;
 	
 	public GestoreCorsiPage(Controller controller, Operatori operatore) {
 
@@ -596,7 +594,7 @@ public class GestoreCorsiPage extends JFrame {
 		
 		corsiScrollPane = new JScrollPane();
 		corsiScrollPane.setBorder(new LineBorder(Color.BLACK));
-		corsiScrollPane.setBounds(10, 31, 232, 212);
+		corsiScrollPane.setBounds(10, 31, 232, 135);
 		corsiPanel.add(corsiScrollPane);
 
 		corsiList = new JList<Corsi>(corsi);
@@ -606,8 +604,6 @@ public class GestoreCorsiPage extends JFrame {
 				if(corsiList.isSelectionEmpty()) {
 					alertNessunCorsoSelezionato();
 				}else{
-					nomeCorsoTextPane.setText(corsi.get(corsiList.getSelectedIndex()).getNome().toUpperCase());
-					nomeCorsoTextPane.setVisible(true);
 					presenzeMinLabel.setText("Presenze Min: " + corsi.get(corsiList.getSelectedIndex()).getPresenzeMin());
 					maxPartecipantiLabel.setText("Max Partecipanti: " + corsi.get(corsiList.getSelectedIndex()).getMaxPartecipanti());
 					descrizioneTextPane.setText(corsi.get(corsiList.getSelectedIndex()).getDescrizione());
@@ -632,24 +628,19 @@ public class GestoreCorsiPage extends JFrame {
 		corsiLabel.setBounds(93, 11, 62, 14);
 		corsiPanel.add(corsiLabel);
 		
-		nomeCorsoLabel = new JLabel("Corso:");
-		nomeCorsoLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		nomeCorsoLabel.setBounds(252, 48, 62, 14);
-		corsiPanel.add(nomeCorsoLabel);
-		
 		descrizioneLabel = new JLabel("Descrizione:");
 		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		descrizioneLabel.setBounds(252, 169, 146, 14);
+		descrizioneLabel.setBounds(10, 174, 146, 14);
 		corsiPanel.add(descrizioneLabel);
 		
 		presenzeMinLabel = new JLabel("Presenze Mininime:");
 		presenzeMinLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		presenzeMinLabel.setBounds(252, 101, 226, 14);
+		presenzeMinLabel.setBounds(252, 60, 226, 14);
 		corsiPanel.add(presenzeMinLabel);
 		
 		maxPartecipantiLabel = new JLabel("Massimo Martecipanti:");
 		maxPartecipantiLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		maxPartecipantiLabel.setBounds(252, 126, 222, 14);
+		maxPartecipantiLabel.setBounds(252, 85, 222, 14);
 		corsiPanel.add(maxPartecipantiLabel);
 		
 		descrizioneTextPane = new JTextPane();
@@ -657,7 +648,7 @@ public class GestoreCorsiPage extends JFrame {
 		descrizioneTextPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		descrizioneTextPane.setFont(new Font("Arial", Font.BOLD, 14));
 		descrizioneTextPane.setBackground(grigioChiaro);
-		descrizioneTextPane.setBounds(252, 185, 222, 53);
+		descrizioneTextPane.setBounds(10, 186, 232, 53);
 		descrizioneTextPane.setVisible(false);
 		corsiPanel.add(descrizioneTextPane);
 		
@@ -666,18 +657,9 @@ public class GestoreCorsiPage extends JFrame {
 		panoramicaLabel.setBounds(314, 11, 104, 14);
 		corsiPanel.add(panoramicaLabel);
 		
-		nomeCorsoTextPane = new JTextPane();
-		nomeCorsoTextPane.setEditable(false);
-		nomeCorsoTextPane.setBorder(new LineBorder(new Color(0, 0, 0)));
-		nomeCorsoTextPane.setFont(new Font("Arial", Font.BOLD, 14));
-		nomeCorsoTextPane.setBackground(new Color(233, 233, 233));
-		nomeCorsoTextPane.setBounds(251, 63, 227, 27);
-		nomeCorsoTextPane.setVisible(false);
-		corsiPanel.add(nomeCorsoTextPane);
-		
 		annoPanoramicaLabel = new JLabel("Anno: ");
 		annoPanoramicaLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		annoPanoramicaLabel.setBounds(252, 151, 222, 14);
+		annoPanoramicaLabel.setBounds(252, 35, 222, 14);
 		corsiPanel.add(annoPanoramicaLabel);
 		
 		gestione = new JPanel();

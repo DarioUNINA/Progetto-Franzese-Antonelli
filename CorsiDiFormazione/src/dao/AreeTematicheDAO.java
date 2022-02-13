@@ -37,4 +37,24 @@ public class AreeTematicheDAO {
 			return aree;
 		}
 	}
+	
+	public Vector<AreeTematiche> getAreeSelezionate(String idCorso){
+		
+		Vector<AreeTematiche> aree = new Vector<AreeTematiche>();
+		AreeTematiche area;
+		
+		try {
+			ResultSet rs = statement.executeQuery("SELECT t.nome_area FROM temi t WHERE t.id_corso = '" + idCorso + "'");
+			
+			while(rs.next()) {
+				area = new AreeTematiche(rs.getString(1));
+				aree.add(area);
+			}
+			
+			return aree;
+		}catch(SQLException e) {
+			e.getMessage();
+			return aree;
+		}
+	}
 }

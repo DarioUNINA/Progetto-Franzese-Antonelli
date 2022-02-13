@@ -21,7 +21,7 @@ public class ParoleChiaveDAO {
 		statement = connessione.getStatement();
 	}
 	
-public Vector<ParoleChiave> getAllParoleChiave(){
+	public Vector<ParoleChiave> getAllParoleChiave(){
 		
 		Vector<ParoleChiave> parole = new Vector<ParoleChiave>();
 		ParoleChiave parola;
@@ -29,6 +29,27 @@ public Vector<ParoleChiave> getAllParoleChiave(){
 
 		try {
 			ResultSet rs = statement.executeQuery("SELECT * FROM parole_chiave");
+			
+			while(rs.next()) {
+				parola = new ParoleChiave(rs.getString(1));
+				parole.add(parola);
+			}
+			
+			return parole;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return parole;
+		}
+	}
+	
+	public Vector<ParoleChiave> getParoleSelezionate(String idCorso){
+		
+		Vector<ParoleChiave> parole = new Vector<ParoleChiave>();
+		ParoleChiave parola;
+		
+
+		try {
+			ResultSet rs = statement.executeQuery("SELECT c.parola_chiave FROM caratterizza c WHERE c.id_corso = '" + idCorso + "'");
 			
 			while(rs.next()) {
 				parola = new ParoleChiave(rs.getString(1));

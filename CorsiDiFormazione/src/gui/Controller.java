@@ -232,6 +232,7 @@ public class Controller {
 		return areeTematicheDAO.getAllAreeTematiche();
 	}
 	
+	
 	public Vector<Studenti> getAllStudentiIscrittiAllaLezione(String id_lezione) {
 		
 		return studentiDAO.getAllStudentiIscrittiAllaLezione(id_lezione);
@@ -261,6 +262,52 @@ public class Controller {
 		
 		for(AreeTematiche area:areeTematiche) {
 			checkBox = new JCheckBox(area.getNomeArea());
+			checkBoxList.add(checkBox);
+		}
+		
+		DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+		model.addAll(checkBoxList);
+		
+		return model;
+		
+	}
+	
+	public DefaultListModel <JCheckBox> setModelCheckBox(Vector<AreeTematiche> areeTematiche, String idCorso){
+		
+		Vector<JCheckBox> checkBoxList = new Vector<JCheckBox>();
+		Vector<AreeTematiche> areeSelezionate = areeTematicheDAO.getAreeSelezionate(idCorso);
+		JCheckBox checkBox;
+		
+		for(AreeTematiche area:areeTematiche) {
+			checkBox = new JCheckBox(area.getNomeArea());
+			
+			for(AreeTematiche a:areeSelezionate)
+				if(area.getNomeArea().equals(a.getNomeArea()))
+					checkBox.setSelected(true);
+			
+			checkBoxList.add(checkBox);
+		}
+		
+		DefaultListModel<JCheckBox> model = new DefaultListModel<JCheckBox>();
+		model.addAll(checkBoxList);
+		
+		return model;
+		
+	}
+	
+	public DefaultListModel <JCheckBox> setModelCheckBoxParole (Vector<ParoleChiave> paroleChiave, String idCorso){
+		
+		Vector<JCheckBox> checkBoxList = new Vector<JCheckBox>();
+		Vector<ParoleChiave> paroleSelezionate = paroleChiaveDAO.getParoleSelezionate(idCorso);
+		
+		JCheckBox checkBox;
+		
+		for(ParoleChiave parola:paroleChiave) {
+			checkBox = new JCheckBox(parola.getParolaChiave());
+			for(ParoleChiave p:paroleSelezionate)
+				if(parola.getParolaChiave().equals(p.getParolaChiave()))
+					checkBox.setSelected(true);
+			
 			checkBoxList.add(checkBox);
 		}
 		

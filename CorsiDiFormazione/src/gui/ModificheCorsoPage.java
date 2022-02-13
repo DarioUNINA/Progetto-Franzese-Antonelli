@@ -76,7 +76,6 @@ public class ModificheCorsoPage extends JFrame {
 		this.operatore = operatore;
 		this.corso = corso;
 		areeTematiche = theController.getAllAreeTematiche();
-		areeTematiche.remove(0);
 		parole = theController.getAllParoleChiave();
 		
 		azzurro = new Color(153,211,223);
@@ -177,7 +176,7 @@ public class ModificheCorsoPage extends JFrame {
 		creaCorsoPanel.add(temiScrollPane);
 		
 		listaTemi = new JCheckBoxList();
-		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
+		listaTemi.setModel(theController.setModelCheckBox(areeTematiche, corso.getIdCorso()));
 		temiScrollPane.setViewportView(listaTemi);
 		listaTemi.setBackground(azzurroChiaro);
 		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
@@ -190,7 +189,7 @@ public class ModificheCorsoPage extends JFrame {
 		creaCorsoPanel.add(paroleScrollPane);
 		
 		listaParole = new JCheckBoxList();
-		listaParole.setModel(theController.setModelCheckBoxParole(parole));
+		listaParole.setModel(theController.setModelCheckBoxParole(parole, corso.getIdCorso()));
 		paroleScrollPane.setViewportView(listaParole);
 		listaParole.setBackground(azzurroChiaro);
 		listaParole.setFont(new Font("Arial", Font.BOLD, 15));
@@ -224,13 +223,11 @@ public class ModificheCorsoPage extends JFrame {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				
-//				if(nomeTextField.getText().equals(""))
-//					alertNomeNonInserito();
-//				else
-//					gestoreCreazioneStudente();
 				
-				
+				if(nomeTextField.getText().equals(""))
+					alertNomeNonValido();
+				else
+					gestoreModificaCorso();
 			}	
 			
 		});
@@ -260,7 +257,7 @@ public class ModificheCorsoPage extends JFrame {
 		creaCorsoPanel.add(massimoPartecipantiLabel);
 		
 		parolaChiaveLabel = new JLabel("Parola Chiave:");
-		parolaChiaveLabel.setBounds(150, 280, 137, 23);
+		parolaChiaveLabel.setBounds(487, 281, 137, 23);
 		parolaChiaveLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		creaCorsoPanel.add(parolaChiaveLabel);
 		
@@ -280,7 +277,7 @@ public class ModificheCorsoPage extends JFrame {
 		creaCorsoPanel.add(descrizioneLabel);
 		
 		areaTematicaLabel = new JLabel("Area Tematica:");
-		areaTematicaLabel.setBounds(488, 280, 137, 23);
+		areaTematicaLabel.setBounds(150, 281, 137, 23);
 		areaTematicaLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		creaCorsoPanel.add(areaTematicaLabel);
 		
@@ -308,6 +305,14 @@ public class ModificheCorsoPage extends JFrame {
 		
 	}
 	
+	
+	public void alertNomeNonValido() {
+		
+		JOptionPane.showMessageDialog(this, "Non \u00E8 possibile lasciare il nome del corso vuoto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+	}
+	
+	
 	public void alertErroreInserimentoMaxPartecipanti() {
 		JOptionPane.showMessageDialog(this, "Il massimo numero di partecipanti inserito non e' valido","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
@@ -327,16 +332,16 @@ public class ModificheCorsoPage extends JFrame {
 	public void alertInserimentoNonEffettuato(String state) {
 
 		if(state.equals("-1")) 
-			JOptionPane.showMessageDialog(this, "Errore sconosciuto, impossibile creare il corso ","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Errore sconosciuto, impossibile modificare il corso ","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 		else 
 			if(state.equals("23505"))
-				JOptionPane.showMessageDialog(this, "Impossibile modificare il corso, esiste gia' un corso con lo stesso nome" +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Impossibile modificare il corso, esiste gia' un corso con lo stesso nome","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 			else
-				JOptionPane.showMessageDialog(this, "Impossibile creare il corso: codice errore " +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Impossibile modificare il corso: codice errore " +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
 	}
 
-	public void gestoreCreazioneStudente() {
+	public void gestoreModificaCorso() {
 		
 		String nome = nomeTextField.getText().toLowerCase();
 		String descrizione = descrizioneTextField.getText().toLowerCase();

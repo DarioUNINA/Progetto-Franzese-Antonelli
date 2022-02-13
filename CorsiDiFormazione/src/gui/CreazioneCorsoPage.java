@@ -84,7 +84,6 @@ public class CreazioneCorsoPage extends JFrame {
 		this.operatore = operatore;
 		theController = controller;
 		areeTematiche = theController.getAllAreeTematiche();
-		areeTematiche.remove(0);
 		parole = theController.getAllParoleChiave();
 		
 		azzurro = new Color(153,211,223);
@@ -230,9 +229,7 @@ public class CreazioneCorsoPage extends JFrame {
 					if(nomeTextField.getText().equals(""))
 						alertNomeNonInserito();
 					else
-						gestoreCreazioneStudente();
-				
-				
+						gestoreCreazioneCorso();
 			}	
 			
 		});
@@ -333,7 +330,7 @@ public class CreazioneCorsoPage extends JFrame {
 
 	}
 	
-	public void gestoreCreazioneStudente() {
+	public void gestoreCreazioneCorso() {
 		
 		String nome = nomeTextField.getText().toLowerCase();
 		String descrizione = descrizioneTextField.getText().toLowerCase();

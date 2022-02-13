@@ -1,17 +1,8 @@
 1)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
    ad esempio ho notato che eliminazione operatore è un motodo String
    
-2) gestione di statistiche page barra di percentuale riempimento
-
-3) effettuare prove con corso e operatore creati al momento
-
-4)alert modifica anno del corso
-
-4) all'interno di modifica corso page settare le parole chiave e aree tematiche predefinite quelle del corso 
+2)interno di modifica corso page settare le parole chiave e aree tematiche predefinite quelle del corso 
    e gestire la conferma delle modifiche
 
 5) modifiche anno popolamento tabelle 
 
-6) gestire in statistiche il java.lang.ArithmeticException: / by zero   
-   ad esempio se creo un corso e vado su statistiche mi tira l'errore giustamente
- 

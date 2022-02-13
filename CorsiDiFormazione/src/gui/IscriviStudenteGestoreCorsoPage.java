@@ -58,7 +58,7 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 		studenti = theController.getStudentiDisponibili(corso.getIdCorso());
 		studentiComboBox = new JComboBox<Studenti>(studenti);
 		
-		grigioChiaro = new Color(233,233,233);
+		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());

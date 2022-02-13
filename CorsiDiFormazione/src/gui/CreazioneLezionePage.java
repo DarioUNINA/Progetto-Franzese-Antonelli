@@ -58,7 +58,7 @@ public class CreazioneLezionePage extends JFrame {
 	
 	final Color azzurro;
 	final Color azzurroChiaro;
-	final Color grigio;
+	final Color blu;
 	final Color grigioChiaro;
 	
 	
@@ -75,8 +75,8 @@ public class CreazioneLezionePage extends JFrame {
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
-		grigio = new Color(205,205,205);
-		grigioChiaro = new Color(233,233,233);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -87,7 +87,7 @@ public class CreazioneLezionePage extends JFrame {
 		setBounds(100, 100, 584, 368);
 		creazioneLezioniPanel = new JPanel();
 		creazioneLezioniPanel.setBorder(new LineBorder(Color.BLACK));
-		creazioneLezioniPanel.setBackground(azzurro);
+		creazioneLezioniPanel.setBackground(blu);
 		setContentPane(creazioneLezioniPanel);
 		creazioneLezioniPanel.setLayout(null);
 			

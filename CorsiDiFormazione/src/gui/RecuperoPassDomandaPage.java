@@ -44,6 +44,9 @@ public class RecuperoPassDomandaPage extends JFrame {
 	private JLabel domandaLabel;
 	private JTextField rispostaDomandaField;
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color blu;
 	final Color grigioChiaro;
 
 	public RecuperoPassDomandaPage(Controller controller, Operatori operatore) {
@@ -51,7 +54,10 @@ public class RecuperoPassDomandaPage extends JFrame {
 		this.operatore = operatore;
 		theController = controller;
 		
-		grigioChiaro = new Color(233,233,233);
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		setResizable(false);
 		imageicon = new ImageIcon("napule.png");

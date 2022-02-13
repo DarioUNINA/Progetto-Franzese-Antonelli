@@ -52,8 +52,8 @@ public class ImpostazioniPage extends JFrame {
 		this.flag = flag;
 		theController = controller;
 		this.operatore = operatore;
-
-		grigioChiaro = new Color(233,233,233);
+		
+		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());

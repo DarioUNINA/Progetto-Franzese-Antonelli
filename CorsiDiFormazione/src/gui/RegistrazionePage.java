@@ -36,6 +36,7 @@ public class RegistrazionePage extends JFrame {
 
 	
 	private Controller theController;
+	private Vector<DomandeSicurezza> domande;
 	
 	private ImageIcon imageicon;
 	private JPanel contentPane;
@@ -53,14 +54,10 @@ public class RegistrazionePage extends JFrame {
 	private JLabel promemoriaLabel;
 	private JLabel nonCaratteriSpecialiLabel;
 	private JLabel iSCRIVITILabel;
-	
-	
-	private Vector<DomandeSicurezza> domande;
-
 
 	final Color azzurro;
 	final Color azzurroChiaro;
-	final Color grigio;
+	final Color blu;
 	final Color grigioChiaro;
 	
 	public RegistrazionePage(Controller controller) {
@@ -72,8 +69,8 @@ public class RegistrazionePage extends JFrame {
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
-		grigio = new Color(205,205,205);
-		grigioChiaro = new Color(233,233,233);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -83,7 +80,7 @@ public class RegistrazionePage extends JFrame {
 		setBounds(100, 100, 900, 600);
 		
 		contentPane = new JPanel();
-		contentPane.setBackground(azzurro);
+		contentPane.setBackground(blu);
 		contentPane.setForeground(Color.DARK_GRAY);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);

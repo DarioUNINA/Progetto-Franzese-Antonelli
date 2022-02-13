@@ -50,7 +50,7 @@ public class ModificaStudentePage extends JFrame {
 	
 	final Color azzurro;
 	final Color azzurroChiaro;
-	final Color grigio;
+	final Color blu;
 	final Color grigioChiaro;
 	
 	public ModificaStudentePage(Controller controller, Operatori operatore, Studenti studente) {
@@ -62,8 +62,8 @@ public class ModificaStudentePage extends JFrame {
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
-		grigio = new Color(205,205,205);
-		grigioChiaro = new Color(233,233,233);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -72,7 +72,7 @@ public class ModificaStudentePage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 368);
 		creaStudentePanel = new JPanel();
-		creaStudentePanel.setBackground(azzurro);
+		creaStudentePanel.setBackground(blu);
 		creaStudentePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(creaStudentePanel);
 		creaStudentePanel.setLayout(null);

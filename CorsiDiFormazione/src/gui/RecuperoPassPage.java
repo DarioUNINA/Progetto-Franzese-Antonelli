@@ -43,6 +43,9 @@ public class RecuperoPassPage extends JFrame {
 	private JButton confermaButton;
 	private JButton indietroButton;	
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color blu;
 	final Color grigioChiaro;
 	
 	public RecuperoPassPage(Controller co) {
@@ -50,7 +53,10 @@ public class RecuperoPassPage extends JFrame {
 		setResizable(false);
 		
 		
-		grigioChiaro = new Color(233,233,233);
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
 		theController = co;

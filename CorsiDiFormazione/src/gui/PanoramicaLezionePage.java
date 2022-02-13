@@ -59,11 +59,11 @@ public class PanoramicaLezionePage extends JFrame {
 	private JLabel orarioLabel;
 	private JTextPane descrizioneTextPane;
 	private JButton aggiungiStudenteLezioneButton;
-	
+	private JButton modificaLezioneButton;
 	
 	final Color azzurro;
 	final Color azzurroChiaro;
-	final Color grigio;
+	final Color blu;
 	final Color grigioChiaro;
 	
 	public PanoramicaLezionePage(Controller controller, Operatori operatore, Lezioni lezione) {
@@ -76,8 +76,8 @@ public class PanoramicaLezionePage extends JFrame {
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
-		grigio = new Color(205,205,205);
-		grigioChiaro = new Color(233,233,233);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		studenti = theController.getAllStudentiIscrittiAllaLezione(lezione.getIdLezione());
 		studentiList = new JList<Studenti>(studenti);
@@ -92,7 +92,7 @@ public class PanoramicaLezionePage extends JFrame {
 		setBounds(100, 100, 584, 368);
 		
 		contentPane = new JPanel();
-		contentPane.setBackground(azzurro);
+		contentPane.setBackground(blu);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -220,20 +220,20 @@ public class PanoramicaLezionePage extends JFrame {
 		contentPane.add(aggiungiStudenteLezioneButton);
 		aggiungiStudenteLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
 		
-		JButton btnModificaLezione = new JButton("MODIFICA LEZIONE");
-		btnModificaLezione.addMouseListener(new MouseAdapter() {
+		modificaLezioneButton = new JButton("MODIFICA LEZIONE");
+		modificaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ModificaLezionePage mlp = new ModificaLezionePage(theController, operatore, lezione);
 				setVisible(false);
 			}
 		});
-		btnModificaLezione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnModificaLezione.setFont(new Font("Arial", Font.BOLD, 12));
-		btnModificaLezione.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnModificaLezione.setBackground(Color.WHITE);
-		btnModificaLezione.setBounds(183, 296, 152, 22);
-		contentPane.add(btnModificaLezione);
+		modificaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		modificaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
+		modificaLezioneButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		modificaLezioneButton.setBackground(Color.WHITE);
+		modificaLezioneButton.setBounds(183, 296, 152, 22);
+		contentPane.add(modificaLezioneButton);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

@@ -101,10 +101,6 @@ public class GestoreLezioniPage extends JFrame {
 	private JLabel esciImageMenuEstesoLabel;
 	private JLabel esciLabel;
 	
-	final Color azzurro;
-	final Color azzurroChiaro;
-	final Color grigio;
-	final Color grigioChiaro;
 	private JLabel labelTrattiniMenuEsteso;
 	private JLabel menuEstesoLabel;
 	private JPanel gestoreCorsiOpacoPanel;
@@ -114,6 +110,11 @@ public class GestoreLezioniPage extends JFrame {
 	private JLabel labelTrattini;
 	private JLabel impostazioniLabel;
 	private JLabel esciImageLabel;
+	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color blu;
+	final Color grigioChiaro;
 	
 	public GestoreLezioniPage(Controller controller, Operatori operatore) {
 		setResizable(false);
@@ -130,10 +131,11 @@ public class GestoreLezioniPage extends JFrame {
 		durata = theController.getDurate();
 		orario = theController.getOrario();
 		
+
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
-		grigio = new Color(205,205,205);
-		grigioChiaro = new Color(233,233,233);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 	
 
 		imageImpostazioni = new ImageIcon("impostazioni.png");
@@ -148,7 +150,7 @@ public class GestoreLezioniPage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel();
-		contentPane.setBackground(azzurro);
+		contentPane.setBackground(blu);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

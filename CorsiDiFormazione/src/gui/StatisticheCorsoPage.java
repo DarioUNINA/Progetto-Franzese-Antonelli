@@ -54,15 +54,15 @@ public class StatisticheCorsoPage extends JFrame {
 	private JLabel numeroLezioniLabel;
 	private JButton indietroButton;
 	
-	final Color azzurro;
-	final Color azzurroChiaro;
-	final Color grigio;
-	final Color grigioChiaro;
 	private JList<String> studentiList;
 	private JScrollPane studenitAmmessiScrollPane;
 	private JLabel terminatoLabel;
 	private JLabel terminatoValueLabel;
-	private JLabel terminatoNoLabel;
+	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color blu;
+	final Color grigioChiaro;
 	
 	public StatisticheCorsoPage(Controller cont, Operatori operatore, Corsi corso) {
 		
@@ -74,21 +74,21 @@ public class StatisticheCorsoPage extends JFrame {
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
-		grigio = new Color(205,205,205);
-		grigioChiaro = new Color(233,233,233);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 
 		setResizable(false);
 		
-		getContentPane().setBackground(grigio);
+		getContentPane().setBackground(grigioChiaro);
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		
 		sfondoPane = new JPanel();
-		sfondoPane.setBackground(azzurro);
+		sfondoPane.setBackground(blu);
 		sfondoPane.setBorder(new LineBorder(Color.BLACK));
 		setContentPane(sfondoPane);
 		sfondoPane.setLayout(null);

@@ -46,7 +46,7 @@ public class ModificaPasswordPage extends JFrame {
 	
 	final Color azzurro;
 	final Color azzurroChiaro;
-	final Color grigio;
+	final Color blu;
 	final Color grigioChiaro;
 	
 	public ModificaPasswordPage(Controller controller, Operatori operatore) {
@@ -56,8 +56,8 @@ public class ModificaPasswordPage extends JFrame {
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
-		grigio = new Color(205,205,205);
-		grigioChiaro = new Color(233,233,233);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		setResizable(false);
 		imageicon = new ImageIcon("napule.png");
@@ -69,7 +69,7 @@ public class ModificaPasswordPage extends JFrame {
 		setBounds(100, 100, 584, 368);
 		
 		contentPane = new JPanel();
-		contentPane.setBackground(azzurro);
+		contentPane.setBackground(blu);
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

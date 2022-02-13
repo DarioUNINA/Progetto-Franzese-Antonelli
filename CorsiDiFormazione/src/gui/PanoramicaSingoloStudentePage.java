@@ -89,15 +89,16 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	private JPanel gestoreStudentiOpacoPanel;
 	private JLabel ammessoValueLabel;
 	
-	final Color azzurro;
-	final Color azzurroChiaro;
-	final Color grigio;
-	final Color grigioChiaro;
 	private JPanel menuPanel;
 	private JLabel esciImageLabel;
 	private JLabel labelTrattini;
 	private JLabel impostazioniLabel;
 	private JButton modificaStudenteButton;
+	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color blu;
+	final Color grigioChiaro;
 	
 	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore, Studenti studente) {
 		
@@ -110,8 +111,8 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
-		grigio = new Color(205,205,205);
-		grigioChiaro = new Color(233,233,233);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		imageImpostazioni = new ImageIcon("impostazioni.png");
 		imageicon = new ImageIcon("napule.png");
@@ -125,7 +126,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		sfondoPane = new JPanel();
-		sfondoPane.setBackground(azzurro);
+		sfondoPane.setBackground(blu);
 		sfondoPane.setBorder(new LineBorder(Color.BLACK));
 		setContentPane(sfondoPane);
 		sfondoPane.setLayout(null);
@@ -453,7 +454,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		sfondoPane.add(studentePanel);
 		studentePanel.setLayout(null);
 		
-		studenteLabel = new JLabel("STUDENTE: " + studente.getMatricola() +", " + studente.getCognome().toUpperCase());
+		studenteLabel = new JLabel("STUDENTE: " + studente.getMatricola() +" " + studente.getCognome().toUpperCase());
 		studenteLabel.setFont(new Font("Arial", Font.BOLD, 30));
 		studenteLabel.setBounds(10, 0, 528, 44);
 		studentePanel.add(studenteLabel);

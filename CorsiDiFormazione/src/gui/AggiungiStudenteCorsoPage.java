@@ -43,7 +43,11 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 	private JLabel selezionareCorsoLabel;
 	private JLabel datiStudenteLabel;
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color blu;
 	final Color grigioChiaro;
+	
 
 	
 	public AggiungiStudenteCorsoPage(Controller controller, Operatori operatore, Studenti studente) {
@@ -56,7 +60,10 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		corsi = theController.setIscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
 		corsiComboBox = new JComboBox<Corsi>(corsi);
 		
-		grigioChiaro = new Color(233,233,233);
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());

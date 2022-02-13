@@ -113,12 +113,7 @@ public class GestoreCorsiPage extends JFrame {
 	private JTextPane paroleChiaveTextPane;
 	private JLabel areetematicheLabel;
 	private JTextPane areeTematicheTextPane ;
-	
-	final Color azzurro;
-	final Color azzurroChiaro;
-	final Color grigio;
-	final Color grigioChiaro;
-	
+		
 	private JLabel labelTrattiniMenuEsteso;
 	private JLabel menuEstesoLabel;
 	private JPanel gestoreCorsiOpacoPanel;
@@ -139,6 +134,11 @@ public class GestoreCorsiPage extends JFrame {
 	private JScrollPane lezioniProgrammateScrollPane;
 	private JList<Lezioni> lezioniProgrammateList;
 	private JLabel lezioniProgrammateLabel;
+
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color blu;
+	final Color grigioChiaro;
 	
 	public GestoreCorsiPage(Controller controller, Operatori operatore) {
 
@@ -149,8 +149,9 @@ public class GestoreCorsiPage extends JFrame {
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
-		grigio = new Color(205,205,205);
-		grigioChiaro = new Color(233,233,233);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
+		
 		
 		areeTematiche = theController.getAllAreeTematiche();
 		paroleChiave = theController.getAllParoleChiave();
@@ -164,13 +165,13 @@ public class GestoreCorsiPage extends JFrame {
 
 		setResizable(false);
 		
-		getContentPane().setBackground(grigio);
+		getContentPane().setBackground(azzurroChiaro);
 		setTitle("GESTIONE CORSI DI FORMAZIONE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		
 		sfondoPane = new JPanel();
-		sfondoPane.setBackground(azzurro);
+		sfondoPane.setBackground(blu);
 		sfondoPane.setBorder(new LineBorder(Color.BLACK));
 		setContentPane(sfondoPane);
 		sfondoPane.setLayout(null);
@@ -769,8 +770,8 @@ public class GestoreCorsiPage extends JFrame {
 		lezioniProgrammateList = new JList<Lezioni>();
 		lezioniProgrammateScrollPane.setViewportView(lezioniProgrammateList);
 		lezioniProgrammateList.setVisibleRowCount(10);
+		lezioniProgrammateList.setBackground(azzurroChiaro);
 		lezioniProgrammateList.setFont(new Font("Arial", Font.BOLD, 15));
-		lezioniProgrammateList.setBackground(new Color(136, 187, 214));
 		
 		lezioniProgrammateLabel = new JLabel("LEZIONI PROGRAMMATE");
 		lezioniProgrammateLabel.setFont(new Font("Arial", Font.BOLD, 15));

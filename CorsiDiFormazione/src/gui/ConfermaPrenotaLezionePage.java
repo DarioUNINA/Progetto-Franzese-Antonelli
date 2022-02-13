@@ -47,6 +47,9 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 	private JButton confermaButton;
 	private JLabel selezionareLezioneLabel;
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color blu;
 	final Color grigioChiaro;
 	
 	public ConfermaPrenotaLezionePage(Controller controller, Operatori operatore, Studenti studente, Corsi corso) {
@@ -57,7 +60,11 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		this.studente = studente;
 		this.corso = corso;
 		
-		grigioChiaro = new Color(233,233,233);
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
+		
 		
 		lezioni = theController.iscirizioneStudenteLezioniDelCorso(studente.getMatricola(), corso.getIdCorso());
 		lezioniComboBox = new JComboBox<Lezioni>(lezioni);

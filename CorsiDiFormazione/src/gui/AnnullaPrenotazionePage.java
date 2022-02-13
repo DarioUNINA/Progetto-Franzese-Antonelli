@@ -38,6 +38,9 @@ public class AnnullaPrenotazionePage extends JFrame {
 	private JLabel selezionareCorsoLabel;
 	private JComboBox corsiComboBox;
 	
+	final Color azzurro;
+	final Color azzurroChiaro;
+	final Color blu;
 	final Color grigioChiaro;
 	
 	public AnnullaPrenotazionePage(Controller controller, Operatori operatore,Studenti studente) {
@@ -47,7 +50,10 @@ public class AnnullaPrenotazionePage extends JFrame {
 		this.operatore = operatore;
 		this.studente = studente;
 
-		grigioChiaro = new Color(233,233,233);
+		azzurro = new Color(153,211,223);
+		azzurroChiaro = new Color(136,187,214);
+		blu = new Color(0,51,78);
+		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());

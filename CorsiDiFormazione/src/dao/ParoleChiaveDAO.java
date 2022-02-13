@@ -42,7 +42,7 @@ public class ParoleChiaveDAO {
 		}
 	}
 	
-	public Vector<ParoleChiave> getParoleSelezionate(String idCorso){
+	public Vector<ParoleChiave> getParoleChiaveCorso(String idCorso){
 		
 		Vector<ParoleChiave> parole = new Vector<ParoleChiave>();
 		ParoleChiave parola;

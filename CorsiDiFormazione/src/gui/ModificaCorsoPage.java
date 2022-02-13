@@ -29,7 +29,7 @@ import dto.Corsi;
 import dto.Operatori;
 import dto.ParoleChiave;
 
-public class ModificheCorsoPage extends JFrame {
+public class ModificaCorsoPage extends JFrame {
 	
 	private Controller theController;
 	private Operatori operatore;
@@ -70,7 +70,7 @@ public class ModificheCorsoPage extends JFrame {
 	final Color grigio;
 	final Color grigioChiaro;
 	
-	public ModificheCorsoPage(Controller cont, Operatori operatore, Corsi corso) {
+	public ModificaCorsoPage(Controller cont, Operatori operatore, Corsi corso) {
 		
 		theController = cont;
 		this.operatore = operatore;
@@ -309,19 +309,17 @@ public class ModificheCorsoPage extends JFrame {
 	public void alertNomeNonValido() {
 		
 		JOptionPane.showMessageDialog(this, "Non \u00E8 possibile lasciare il nome del corso vuoto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-
 	}
 	
-	
 	public void alertErroreInserimentoMaxPartecipanti() {
-		JOptionPane.showMessageDialog(this, "Il massimo numero di partecipanti inserito non e' valido","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Il massimo numero di partecipanti inserito non \u00E8 valido","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
 	public void alertErroreInserimentoPresenzeMin() {
 		JOptionPane.showMessageDialog(this, "Le presenze minime inserite non sono valide","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void alertInserimentoEffettuato() {
+	public void alertModificaEffettuata() {
 		
 		JOptionPane.showMessageDialog(this, "Corso modificato correttamente","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
 
@@ -329,7 +327,7 @@ public class ModificheCorsoPage extends JFrame {
 		setVisible(false);
 	}
 	
-	public void alertInserimentoNonEffettuato(String state) {
+	public void alertModificaNonEffettuata(String state) {
 
 		if(state.equals("-1")) 
 			JOptionPane.showMessageDialog(this, "Errore sconosciuto, impossibile modificare il corso ","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
@@ -363,13 +361,28 @@ public class ModificheCorsoPage extends JFrame {
 			if(!theController.isDigits(maxPartecipanti))
 				alertErroreInserimentoMaxPartecipanti();
 			else {
-					
-					String state = theController.modificaCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, corso.getIdCorso(), operatore.getIdOperatore() , aree);
-						
-					if(state.equals("0"))
-						alertInserimentoEffettuato();
+					System.out.println(theController.ControlloNumeroStudentiIscritti(corso.getIdCorso()));
+							
+					if(Integer.parseInt(maxPartecipantiTextField.getText())<theController.ControlloNumeroStudentiIscritti(corso.getIdCorso()))
+						alertMaxPartecipanti();
 					else
-						alertInserimentoNonEffettuato(state);
+					{
+						String state = theController.modificaCorsoClicked(nome, descrizione, paroleChiave, anno, presenzeMin, maxPartecipanti, terminato, corso.getIdCorso(), operatore.getIdOperatore() , aree);
+						
+						if(state.equals("0"))
+							alertModificaEffettuata();
+						else
+							alertModificaNonEffettuata(state);
+						
+					}
+					
 			}
+	}
+	
+	public void alertMaxPartecipanti() {
+		
+		JOptionPane.showMessageDialog(this, "Attenzione: attualmente ci sono piu iscritti al corso del numero di massimo partecipanti inserito","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+		
 	}
 }

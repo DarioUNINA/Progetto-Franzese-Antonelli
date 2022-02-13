@@ -45,6 +45,6 @@ public class Studenti {
 	}
 
 	public String toString() {
-		return this.matricola + " " +  this.nome + " " +  this.cognome;
+		return this.nome + " " +  this.cognome;
 	}
 }

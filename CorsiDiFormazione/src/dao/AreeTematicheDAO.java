@@ -38,7 +38,7 @@ public class AreeTematicheDAO {
 		}
 	}
 	
-	public Vector<AreeTematiche> getAreeSelezionate(String idCorso){
+	public Vector<AreeTematiche> getAreetematicheCorso(String idCorso){
 		
 		Vector<AreeTematiche> aree = new Vector<AreeTematiche>();
 		AreeTematiche area;

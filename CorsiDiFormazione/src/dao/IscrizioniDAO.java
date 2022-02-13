@@ -52,7 +52,7 @@ public class IscrizioniDAO {
 		
 	}
 
-public Vector<Corsi> getDisiscrizioneCorsiStudente(String matricola, String id_operatore){
+	public Vector<Corsi> getDisiscrizioneCorsiStudente(String matricola, String id_operatore){
 		
 		Vector<Corsi> corsi = new Vector<Corsi>();
 		
@@ -149,7 +149,19 @@ public Vector<Corsi> getDisiscrizioneCorsiStudente(String matricola, String id_o
 			e.printStackTrace();
 			return e.getSQLState();
 		}
-		
-		
 	}
+		
+		public int getNumeroStudentiIscritti(String idCorso) {
+			
+			try {
+				
+				ResultSet rs = statement.executeQuery("SELECT COUNT (i.matricola), id_corso FROM iscrizioni i WHERE i.id_corso = '"+ idCorso + "' GROUP BY(i.id_corso)");
+				rs.next();
+				return rs.getInt(1);
+			}catch(SQLException e) {
+				e.printStackTrace();
+				return -1;
+			}
+		}
+	
 }

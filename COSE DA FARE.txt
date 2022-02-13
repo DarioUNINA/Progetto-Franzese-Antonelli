@@ -4,3 +4,6 @@
 4) all'interno di modifica corso page settare le parole chiave e aree tematiche predefinite quelle del corso 
    e gestire la conferma delle modifiche
 
+3)creare package controller e connesione
+
+4) creare trigger di update delle lezioni

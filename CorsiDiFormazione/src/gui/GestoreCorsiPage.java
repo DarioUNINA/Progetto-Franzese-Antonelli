@@ -608,16 +608,16 @@ public class GestoreCorsiPage extends JFrame {
 				if(corsiList.isSelectionEmpty()) {
 					alertNessunCorsoSelezionato();
 				}else{
-					presenzeMinLabel.setText("Presenze Min: " + corsi.get(corsiList.getSelectedIndex()).getPresenzeMin());
-					maxPartecipantiLabel.setText("Max Partecipanti: " + corsi.get(corsiList.getSelectedIndex()).getMaxPartecipanti());
-					descrizioneTextPane.setText(corsi.get(corsiList.getSelectedIndex()).getDescrizione());
+					
+					presenzeMinLabel.setText("Presenze Min: " + corsiList.getSelectedValue().getPresenzeMin());
+					maxPartecipantiLabel.setText("Max Partecipanti: " + corsiList.getSelectedValue().getMaxPartecipanti());
+					descrizioneTextPane.setText(corsiList.getSelectedValue().getDescrizione());
 					descrizioneTextPane.setVisible(true);
 					annoPanoramicaLabel.setText("Anno: " + corsiList.getSelectedValue().getAnno());
-//					String prova;
-//					for(ParoleChiave parola:) {
-//						prova = prova + ", " + parola.getParolaChiave(); 
-					//}
-						
+					paroleChiaveTextPane.setText(theController.getParoleChiaveString(corsiList.getSelectedValue().getIdCorso()));
+					paroleChiaveTextPane.setVisible(true);
+					areeTematicheTextPane.setText(theController.getAreeTematicheString(corsiList.getSelectedValue().getIdCorso()));
+					areeTematicheTextPane.setVisible(true);
 				}
 					
 				lezioni = theController.getFutureLezioni(corsi.get(corsiList.getSelectedIndex()).getIdCorso());
@@ -677,6 +677,8 @@ public class GestoreCorsiPage extends JFrame {
 		corsiPanel.add(paroleChiaveLabel);
 		
 		paroleChiaveTextPane = new JTextPane();
+		paroleChiaveTextPane.setEditable(false);
+		paroleChiaveTextPane.setFont(new Font("Arial", Font.BOLD, 12));
 		paroleChiaveTextPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		paroleChiaveTextPane.setBackground(grigioChiaro);
 		paroleChiaveTextPane.setBounds(252, 123, 226, 43);
@@ -689,6 +691,8 @@ public class GestoreCorsiPage extends JFrame {
 		corsiPanel.add(areetematicheLabel);
 		
 		areeTematicheTextPane = new JTextPane();
+		areeTematicheTextPane.setFont(new Font("Arial", Font.BOLD, 12));
+		areeTematicheTextPane.setEditable(false);
 		areeTematicheTextPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		areeTematicheTextPane.setBackground(grigioChiaro);
 		areeTematicheTextPane.setBounds(252, 186, 226, 53);
@@ -796,7 +800,7 @@ public class GestoreCorsiPage extends JFrame {
 				if(corsiList.getSelectedValue() == null) {
 					alertNessunCorsoSelezionato();
 				}else {
-					ModificheCorsoPage mmcp = new ModificheCorsoPage(theController, operatore, corsiList.getSelectedValue());
+					ModificaCorsoPage mmcp = new ModificaCorsoPage(theController, operatore, corsiList.getSelectedValue());
 					setVisible(false);
 				}
 			}

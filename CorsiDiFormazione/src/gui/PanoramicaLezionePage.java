@@ -216,9 +216,24 @@ public class PanoramicaLezionePage extends JFrame {
 				}
 			}
 		});
-		aggiungiStudenteLezioneButton.setBounds(314, 295, 244, 23);
+		aggiungiStudenteLezioneButton.setBounds(342, 295, 216, 23);
 		contentPane.add(aggiungiStudenteLezioneButton);
 		aggiungiStudenteLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
+		
+		JButton btnModificaLezione = new JButton("MODIFICA LEZIONE");
+		btnModificaLezione.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ModificaLezionePage mlp = new ModificaLezionePage(theController, operatore, lezione);
+				setVisible(false);
+			}
+		});
+		btnModificaLezione.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnModificaLezione.setFont(new Font("Arial", Font.BOLD, 12));
+		btnModificaLezione.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnModificaLezione.setBackground(Color.WHITE);
+		btnModificaLezione.setBounds(183, 296, 152, 22);
+		contentPane.add(btnModificaLezione);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

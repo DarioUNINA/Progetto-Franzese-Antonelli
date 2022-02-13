@@ -242,4 +242,22 @@ public class StudentiDAO {
 		}
 		
 	}
+	
+	public String modificaStudente(Studenti studente) {
+
+		try {
+			
+			if(!statement.execute("UPDATE studenti SET nome =  '" + studente.getNome() + "', cognome = '" + studente.getCognome() + "' WHERE matricola = '" + studente.getMatricola() +"'"))
+				return "0";
+				
+			return "-1";
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+		
+		
+	}
+		
 }

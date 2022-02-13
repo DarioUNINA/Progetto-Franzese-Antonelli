@@ -217,9 +217,9 @@ public class Controller {
 		return iscrizioniDAO.getDisiscrizioneCorsiStudente(matricola, id_operatore);
 	}
 	
-	Lezioni getLezione(String titolo) {
+	Lezioni getLezione(String id_lezione) {
 		
-		return lezioniDAO.getLezioni(titolo);
+		return lezioniDAO.getLezioni(id_lezione);
 	}
 	
 	public Vector<Studenti> getStudentiCorso(String id_corso, String id_lezione){
@@ -753,13 +753,30 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 					state = caratterizzaDAO.eliminaCaratterizza(idCorso);
 					if(state.equals("0"))
 						state = caratterizzaDAO.inserisciCaratterizza(corsiDAO.getIdCorso(nome), paroleChiave);
+		return state;		
+	}
+	
+	
+	public String getAnnoLezione(String id_corso) {
+		
+		return lezioniDAO.getAnnoLezione(id_corso);
+	}
+	
+	public String getGiornoLezione(String id_lezione) {
+		
+		return lezioniDAO.getGiornoLezione(id_lezione);
+	}
+	
+	public String modificaLezione(String titolo, String descrizione, Time orario, Time durata, Date data, String id_lezione) {
+		
+		String state = lezioniDAO.modificaLezione(titolo, descrizione, orario, durata, data, id_lezione);
+		
 		return state;
 	}
 	
 	public String getParoleChiaveString(String idCorso) {
 		
 		String stringa = new String();
-		
 		Vector<ParoleChiave> parole = paroleChiaveDAO.getParoleChiaveCorso(idCorso);
 		
 		for(ParoleChiave parola:parole)
@@ -771,7 +788,6 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 	public String getAreeTematicheString(String idCorso) {
 		
 		String stringa = new String();
-		
 		Vector<AreeTematiche> aree = areeTematicheDAO.getAreetematicheCorso(idCorso);
 		
 		for(AreeTematiche area:aree)
@@ -780,9 +796,16 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 		return stringa;
 	}
 	
+	
 	public int ControlloNumeroStudentiIscritti(String idCorso) {
 		
 		return iscrizioniDAO.getNumeroStudentiIscritti(idCorso);
-		
 	}
+
+
+	public String modificaStudente(Studenti studente) {
+
+		return studentiDAO.modificaStudente(studente);
+	}
+	
 }

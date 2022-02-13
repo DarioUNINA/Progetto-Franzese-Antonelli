@@ -33,6 +33,7 @@ public class CreazioneLezionePage extends JFrame {
 
 	private Controller theController;
 	private Operatori operatore;
+	private Corsi corso;
 	
 	private ImageIcon imageicon;
 	private JPanel creazioneLezioniPanel;
@@ -52,7 +53,6 @@ public class CreazioneLezionePage extends JFrame {
 	private JComboBox<Time> orarioComboBox;
 	private Vector<Time> durate;
 	private Vector<Time> orari;
-	private Corsi corso;
 	private JCalendar calendario;
 	
 	

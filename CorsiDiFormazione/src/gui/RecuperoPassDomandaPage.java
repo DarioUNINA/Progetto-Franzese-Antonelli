@@ -83,6 +83,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		recuperoPanel.add(rECUPEROPASSWORDLabel);
 		
 		confermaButton = new JButton("CONFERMA");
+		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

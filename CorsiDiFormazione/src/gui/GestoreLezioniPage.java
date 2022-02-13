@@ -546,9 +546,9 @@ public class GestoreLezioniPage extends JFrame {
 				if(lezioniList.isSelectionEmpty()) {
 					alertNessunaLezioneSelezionata();
 				}else {
-					String lezioneSelezionata = lezioniList.getSelectedValue().getTitolo();
+					PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, theController.getLezione(lezioniList.getSelectedValue().getIdLezione()));
 					setVisible(false);
-					PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, theController.getLezione(lezioneSelezionata));
+					
 					
 				}
 			}

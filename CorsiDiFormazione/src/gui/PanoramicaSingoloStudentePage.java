@@ -97,6 +97,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	private JLabel esciImageLabel;
 	private JLabel labelTrattini;
 	private JLabel impostazioniLabel;
+	private JButton modificaStudenteButton;
 	
 	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore, Studenti studente) {
 		
@@ -454,9 +455,23 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		studenteLabel = new JLabel("STUDENTE: " + studente.getMatricola() +", " + studente.getCognome().toUpperCase());
 		studenteLabel.setFont(new Font("Arial", Font.BOLD, 30));
-		studenteLabel.setBounds(10, 11, 528, 44);
+		studenteLabel.setBounds(10, 0, 528, 44);
 		studentePanel.add(studenteLabel);
 		
+		modificaStudenteButton = new JButton("MODIFICA STUDENTE");
+		modificaStudenteButton.setBackground(Color.WHITE);
+		modificaStudenteButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ModificaStudentePage msp = new ModificaStudentePage(theController, operatore, studente);
+				setVisible(false);
+			}
+		});
+		modificaStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		modificaStudenteButton.setFont(new Font("Arial", Font.BOLD, 15));
+		modificaStudenteButton.setBounds(592, 43, 208, 23);
+		studentePanel.add(modificaStudenteButton);
+
 		corsiPanel = new JPanel();
 		corsiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		corsiPanel.setBackground(grigioChiaro);

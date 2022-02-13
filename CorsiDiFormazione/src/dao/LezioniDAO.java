@@ -53,18 +53,18 @@ public class LezioniDAO {
 		}
 	}
 	
-	public Lezioni getLezioni(String titolo){
+	public Lezioni getLezioni(String id_lezione){
 		
 		Lezioni lezione = new Lezioni();
 		
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT * FROM lezioni le  WHERE le.titolo = '"+  titolo + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM lezioni le  WHERE le.id_lezione= '"+  id_lezione + "'");
 			
 			rs.next();
-			lezione.setIdLezione(rs.getString("id_lezione"));
-			lezione.setTitolo(titolo);
+			lezione.setIdLezione(id_lezione);
+			lezione.setTitolo(rs.getString("titolo"));
 			lezione.setDescrizione(rs.getString("descrizione"));
 			lezione.setDurata(rs.getTime("durata"));
 			lezione.setData(rs.getDate("data"));
@@ -300,5 +300,63 @@ public class LezioniDAO {
 			return e.getSQLState();
 		}
 	}
+	
+	public String getAnnoLezione(String id_corso) {
+	
+	String anno;
+		
+	try {
+		ResultSet rs = statement.executeQuery("SELECT co.anno FROM lezioni l JOIN corsi co ON l.id_corso = co.id_corso WHERE co.id_corso = '" + id_corso + "'");
+		
+		rs.next();
+		anno = String.valueOf(rs.getInt(1));
+		return anno;
+		
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return e.getSQLState();
+
+			}
+	
+	}
+	
+	public String getGiornoLezione(String id_lezione) {
+		
+		String giorno;
+			
+		try {
+			ResultSet rs = statement.executeQuery("SELECT CAST(EXTRACT(DAY FROM l.data) AS INTEGER) FROM lezioni l  WHERE l.id_lezione = '" + id_lezione + "'");
+			
+			rs.next();
+			giorno = String.valueOf(rs.getInt(1));
+			return giorno;
+			
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return e.getSQLState();
+
+				}
+		
+		}
+	
+	public String modificaLezione(String titolo, String descrizione, Time orario, Time durata, Date data, String id_lezione) {
+		
+		try {
+			
+			if(!statement.execute("UPDATE  lezioni  SET   titolo = '" + titolo + "' , descrizione = '" + descrizione + "', orario = '" + orario.getHours() +":"+ orario.getMinutes() 
+					+"' , durata =  '" + durata.getHours() +":"+ durata.getMinutes() + "' , data ='" + data + "' WHERE id_lezione = '" + id_lezione + "'" ))
+				return "0";
+			else 
+				return "-1";
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			return e.getSQLState();
+		}
+		
+	}
+	
 	
 }

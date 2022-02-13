@@ -615,9 +615,17 @@ public class GestoreCorsiPage extends JFrame {
 					descrizioneTextPane.setText(corsiList.getSelectedValue().getDescrizione());
 					descrizioneTextPane.setVisible(true);
 					annoPanoramicaLabel.setText("Anno: " + corsiList.getSelectedValue().getAnno());
-					paroleChiaveTextPane.setText(theController.getParoleChiaveString(corsiList.getSelectedValue().getIdCorso()));
+					
+					String paroleChiave = theController.getParoleChiaveString(corsiList.getSelectedValue().getIdCorso());
+					if(!paroleChiave.equals(""))
+						paroleChiave = paroleChiave.substring(0, paroleChiave.length()-2);
+					paroleChiaveTextPane.setText(paroleChiave);
 					paroleChiaveTextPane.setVisible(true);
-					areeTematicheTextPane.setText(theController.getAreeTematicheString(corsiList.getSelectedValue().getIdCorso()));
+					
+					String areeTematiche = theController.getAreeTematicheString(corsiList.getSelectedValue().getIdCorso());
+					if(!areeTematiche.equals(""))
+						areeTematiche = areeTematiche.substring(0, areeTematiche.length()-2);
+					areeTematicheTextPane.setText(areeTematiche);
 					areeTematicheTextPane.setVisible(true);
 				}
 					
@@ -656,7 +664,7 @@ public class GestoreCorsiPage extends JFrame {
 		descrizioneTextPane = new JTextPane();
 		descrizioneTextPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		descrizioneTextPane.setEditable(false);
-		descrizioneTextPane.setFont(new Font("Arial", Font.BOLD, 14));
+		descrizioneTextPane.setFont(new Font("Arial", Font.BOLD, 12));
 		descrizioneTextPane.setBackground(grigioChiaro);
 		descrizioneTextPane.setBounds(10, 186, 232, 53);
 		descrizioneTextPane.setVisible(false);

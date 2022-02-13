@@ -59,6 +59,10 @@ temi (/nome_area/, /id_corso/)
 
 21-23) viste e function per il calcolo delle statistiche del corso
 
+24) update per modifica corso
+
+25) trigger per l'update di ammesso da modifica corso
+
 
 --1)
 	CREATE FUNCTION check_inserimento_in_terminato()
@@ -92,25 +96,25 @@ temi (/nome_area/, /id_corso/)
 	$$
 	DECLARE p_min INTEGER;
 			p_studente INTEGER;
-			nome_corso VARCHAR(100);
+			codice_corso VARCHAR(100);
 	
 	BEGIN
 	
-		SELECT l.id_corso INTO nome_corso
+		SELECT l.id_corso INTO codice_corso
 		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
 		WHERE p.id_lezione = NEW.id_lezione;
 	
 		SELECT COUNT(*) INTO p_studente
 		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
 		WHERE p.matricola = NEW.matricola
-		AND l.id_corso = nome_corso;
+		AND l.id_corso = codice_corso;
 	
 		SELECT presenze_min INTO p_min
 		FROM corsi c
-		WHERE c.id_corso = nome_corso;
+		WHERE c.id_corso = codice_corso;
 	
 		IF( p_studente >= p_min ) THEN
-			UPDATE iscrizioni i SET ammesso = TRUE WHERE i.matricola = NEW.matricola AND i.id_corso =  nome_corso;
+			UPDATE iscrizioni i SET ammesso = TRUE WHERE i.matricola = NEW.matricola AND i.id_corso =  codice_corso;
 		END IF;
 		RETURN NEW;
 	
@@ -162,8 +166,8 @@ temi (/nome_area/, /id_corso/)
 	DECLARE data_lezione DATE;
 	BEGIN
 		SELECT data INTO data_lezione
-		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
-		WHERE p.id_lezione = NEW.id_lezione;
+		FROM lezioni l
+		WHERE l.id_lezione = NEW.id_lezione;
 		
 		IF (data_lezione < CURRENT_DATE) THEN 
 			RAISE SQLSTATE '10007';
@@ -178,7 +182,6 @@ temi (/nome_area/, /id_corso/)
 	AFTER INSERT ON presenze
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_data_lezione();
-	
 	
 --8) 
 	
@@ -470,8 +473,14 @@ temi (/nome_area/, /id_corso/)
 	AFTER INSERT ON lezioni
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_creazione_lezione_contemporanea();
-	
 
+--19)
+
+	CREATE VIEW partecipanti(id_corso, partecipanti) AS (	
+	SELECT i.id_corso, count (matricola)
+	from iscrizioni i
+	group by (id_corso)
+)
 
 --20)
 
@@ -500,7 +509,13 @@ temi (/nome_area/, /id_corso/)
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_data_lezione_corso();
 	
-	
+--21)
+
+	CREATE VIEW presenze_totali(presenze, id_corso) AS(
+		SELECT COUNT(matricola), co.id_corso
+		FROM (presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione) JOIN corsi co ON l.id_corso = co.id_corso
+		GROUP BY co.id_corso
+	)
 
 
 --22) 
@@ -534,18 +549,39 @@ temi (/nome_area/, /id_corso/)
 		FROM presenze p join lezioni l on p.id_lezione = l.id_lezione
 		GROUP BY p.matricola, l.id_corso
 	)
-	--21)
 
-	CREATE VIEW presenze_totali(presenze, id_corso) AS(
-		SELECT COUNT(matricola), co.id_corso
-		FROM (presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione) JOIN corsi co ON l.id_corso = co.id_corso
-		GROUP BY co.id_corso
-	)
+--24)
+
+	CREATE OR REPLACE TRIGGER update_data_lezioni
+	AFTER UPDATE ON lezioni
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_data_lezione();
 	
---19)
+	CREATE TRIGGER update_lezione_contemporanea
+	AFTER UPDATE ON lezioni
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_creazione_lezione_contemporanea();
+	
+--25)
+	CREATE OR REPLACE FUNCTION check_update_ammissione()
+	RETURNS TRIGGER AS 
+	$$
+	DECLARE cursore cursor for (select * from presenze_studente_corso p where p.id_corso = 
+	
+	BEGIN
+	
+		IF( p_studente >= p_min ) THEN
+			UPDATE iscrizioni i SET ammesso = TRUE WHERE i.matricola = --- AND i.id_corso =  new.id_corso;
+		END IF;
+		RETURN NEW;
+	
+	END
 
-	CREATE VIEW partecipanti(id_corso, partecipanti) AS (	
-	SELECT i.id_corso, count (matricola)
-	from iscrizioni i
-	group by (id_corso)
-)
+	$$ LANGUAGE plpgsql;
+
+	CREATE OR REPLACE TRIGGER update_ammissione
+	AFTER UPDATE ON corsi
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_update_ammissione();
+	
+	

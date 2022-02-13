@@ -134,9 +134,11 @@ public class AggiungiStudenteLezionePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				theController.aggiungiStudenteLezioneClicked(elencoStudenti.get((studentiComboBox.getSelectedIndex())).getMatricola() ,lezione.getIdLezione());
-				alertStudenteAggiuntoCorrettamente();
-				PanoramicaLezionePage  plp = new PanoramicaLezionePage(controller, operatore, lezione);
+				String state = theController.aggiungiStudenteLezioneClicked(elencoStudenti.get((studentiComboBox.getSelectedIndex())).getMatricola() ,lezione.getIdLezione());
+				if(state.equals("0"))
+					alertStudenteAggiuntoCorrettamente();
+				else
+					alertAggiuntaFallita(state);
 			}
 			
 		});
@@ -149,7 +151,16 @@ public class AggiungiStudenteLezionePage extends JFrame {
 	}
 	
 	public void alertStudenteAggiuntoCorrettamente() {
-		JOptionPane.showMessageDialog(this, "Studente aggiunto correttamente alle lezione.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Studente aggiunto correttamente alle lezione.","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
+		PanoramicaLezionePage  plp = new PanoramicaLezionePage(theController, operatore, lezione);
 	}
-
+	
+	public void alertAggiuntaFallita(String state) {
+		
+		if(state.equals("10007"))
+			JOptionPane.showMessageDialog(this, "Attenzione: non é possibile iscrivere studenti a lezioni concluse","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			if(state.equals("10008"))
+				JOptionPane.showMessageDialog(this, "Attenzione: lo studente e' gia' iscritto a lezioni in contemporanea a quella selezionata","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
 }

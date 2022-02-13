@@ -10,6 +10,3 @@
 
 5) modifiche anno popolamento tabelle 
 
-6) gestire in statistiche il java.lang.ArithmeticException: / by zero   
-   ad esempio se creo un corso e vado su statistiche mi tira l'errore giustamente
- 

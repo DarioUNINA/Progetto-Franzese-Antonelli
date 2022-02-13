@@ -687,4 +687,24 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 		return corsiDAO.getNumeroStudentiAmmessi(idCorso);
 		
 	}
+	
+	public Boolean modificaAnnoCorso(String id_corso) {
+		
+		return corsiDAO.modificaAnnoCorso(id_corso);
+	
+	}
+	
+	public String modificaCorsoClicked(String nome, String descrizione, Vector<ParoleChiave> paroleChiave, String anno, String presenzeMin, String maxPartecipanti, boolean terminato, String idCorso, String idOperatore, Vector<AreeTematiche> areeTematiche) {
+		
+		String state = corsiDAO.modificaCorso(nome, descrizione, anno, presenzeMin, maxPartecipanti, terminato, idCorso, idOperatore);
+		
+		if(state.equals("0"))
+			state = temiDAO.inserisciTemi(corsiDAO.getIdCorso(nome), areeTematiche);
+			if(state.equals("0"))
+				return state = caratterizzaDAO.inserisciCaratterizza(corsiDAO.getIdCorso(nome), paroleChiave);
+			
+		return state;
+			
+			
+	}
 }

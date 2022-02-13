@@ -108,6 +108,7 @@ public class GestoreCorsiPage extends JFrame {
 	private JLabel esciImageMenuEstesoLabel;
 	private JLabel esciLabel;
 	private JButton modificaCorsoButton;
+	private JLabel annoPanoramicaLabel;
 	
 	final Color azzurro;
 	final Color azzurroChiaro;
@@ -611,6 +612,7 @@ public class GestoreCorsiPage extends JFrame {
 					maxPartecipantiLabel.setText("Max Partecipanti: " + corsi.get(corsiList.getSelectedIndex()).getMaxPartecipanti());
 					descrizioneTextPane.setText(corsi.get(corsiList.getSelectedIndex()).getDescrizione());
 					descrizioneTextPane.setVisible(true);
+					annoPanoramicaLabel.setText("Anno: " + corsiList.getSelectedValue().getAnno());
 				}
 					
 				lezioni = theController.getFutureLezioni(corsi.get(corsiList.getSelectedIndex()).getIdCorso());
@@ -637,7 +639,7 @@ public class GestoreCorsiPage extends JFrame {
 		
 		descrizioneLabel = new JLabel("Descrizione:");
 		descrizioneLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		descrizioneLabel.setBounds(252, 160, 146, 14);
+		descrizioneLabel.setBounds(252, 169, 146, 14);
 		corsiPanel.add(descrizioneLabel);
 		
 		presenzeMinLabel = new JLabel("Presenze Mininime:");
@@ -672,6 +674,11 @@ public class GestoreCorsiPage extends JFrame {
 		nomeCorsoTextPane.setBounds(251, 63, 227, 27);
 		nomeCorsoTextPane.setVisible(false);
 		corsiPanel.add(nomeCorsoTextPane);
+		
+		annoPanoramicaLabel = new JLabel("Anno: ");
+		annoPanoramicaLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		annoPanoramicaLabel.setBounds(252, 151, 222, 14);
+		corsiPanel.add(annoPanoramicaLabel);
 		
 		gestione = new JPanel();
 		gestione.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -949,5 +956,4 @@ public class GestoreCorsiPage extends JFrame {
 	public void alertCorsoTerminato() {
 		JOptionPane.showMessageDialog(this, "Non è possibile iscrivere studenti a Corsi terminati.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);		
 	}
-	
 }

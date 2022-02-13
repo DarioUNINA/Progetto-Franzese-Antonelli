@@ -37,6 +37,8 @@ import java.util.Vector;
 import javax.swing.JScrollPane;
 import com.toedter.calendar.JYearChooser;
 import java.awt.Cursor;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
 
 public class CreazioneCorsoPage extends JFrame {
 	
@@ -195,7 +197,10 @@ public class CreazioneCorsoPage extends JFrame {
 		listaParole.setVisibleRowCount(10);
 		listaParole.setVisible(true);
 
+		
 		annoChooser = new JYearChooser();
+		annoChooser.setStartYear(2022);
+		annoChooser.setMinimum(0);
 		annoChooser.setBounds(521, 90, 86, 20);
 		annoChooser.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		annoChooser.getSpinner().setBounds(0, 0, 86, 20);
@@ -219,10 +224,13 @@ public class CreazioneCorsoPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				if(nomeTextField.getText().equals(""))
-					alertNomeNonInserito();
+				if((annoChooser.getYear()<2022))
+						alertAnnoNonValido();
 				else
-					gestoreCreazioneStudente();
+					if(nomeTextField.getText().equals(""))
+						alertNomeNonInserito();
+					else
+						gestoreCreazioneStudente();
 				
 				
 			}	
@@ -355,5 +363,11 @@ public class CreazioneCorsoPage extends JFrame {
 					else
 						alertInserimentoNonEffettuato(state);
 			}
+	}
+	
+	public void alertAnnoNonValido() {
+		
+		JOptionPane.showMessageDialog(this, "Non e' possibile creare corsi in anni passati", "<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
 	}
 }

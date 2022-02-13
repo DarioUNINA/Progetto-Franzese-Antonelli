@@ -142,10 +142,13 @@ public class StatisticheCorsoPage extends JFrame {
 		mediaRiempimentoProgressBar = new JProgressBar();
 		mediaRiempimentoProgressBar.setBounds(75, 453, 418, 20);		
 		mediaRiempimentoProgressBar.setBackground(Color.WHITE);
-		mediaRiempimentoProgressBar.setForeground(Color.BLACK);
+		mediaRiempimentoProgressBar.setForeground(Color.GREEN);
 		mediaRiempimentoProgressBar.setFont(new Font("Microsoft YaHei UI", Font.BOLD | Font.ITALIC, 13));
 		mediaRiempimentoProgressBar.setStringPainted(true);
-		mediaRiempimentoProgressBar.setValue((int)theController.getPresenzeMedie(corso.getIdCorso())/studenti.size());
+		if(studenti.size()==0)
+			mediaRiempimentoProgressBar.setValue(0);
+		else
+			mediaRiempimentoProgressBar.setValue((int)theController.getPresenzeMedie(corso.getIdCorso())/studenti.size()*100);
 		infoPanel.add(mediaRiempimentoProgressBar);
 		
 		terminatoLabel = new JLabel("Terminato: " );
@@ -153,18 +156,17 @@ public class StatisticheCorsoPage extends JFrame {
 		terminatoLabel.setBounds(10, 86, 109, 24);
 		infoPanel.add(terminatoLabel);
 		
-		terminatoValueLabel = new JLabel("SI");
-		terminatoValueLabel.setForeground(Color.RED);
+		terminatoValueLabel = new JLabel();
 		terminatoValueLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		terminatoValueLabel.setBounds(140, 86, 30, 24);
 		infoPanel.add(terminatoValueLabel);
 		
 		if(corso.isTerminato()) {
 			terminatoValueLabel.setText("SI");
-			terminatoValueLabel.setForeground(Color.RED);
+			terminatoValueLabel.setForeground(Color.GREEN);
 		}else {
 			terminatoValueLabel.setText("NO");
-			terminatoValueLabel.setForeground(Color.GREEN);
+			terminatoValueLabel.setForeground(Color.RED);
 		}
 		
 		studentiPanel = new JPanel();
@@ -199,6 +201,14 @@ public class StatisticheCorsoPage extends JFrame {
 		studentiPanel.add(numeroLezioniLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GestoreCorsiPage page = new GestoreCorsiPage(theController, operatore);
+				setVisible(false);
+			}
+		});
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBounds(10, 446, 292, 27);
 		studentiPanel.add(indietroButton);
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));

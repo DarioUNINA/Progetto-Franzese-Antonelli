@@ -28,7 +28,7 @@ public class StudentiDAO {
 		Vector<Studenti> studenti = new Vector<Studenti>();
 		
 		try {
-			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s");
+			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s ORDER BY s.matricola");
 			
 
 			while(rs.next()) {
@@ -79,7 +79,7 @@ public class StudentiDAO {
 		try {
 			
 			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN iscrizioni i ON s.matricola = i.matricola WHERE i.id_corso =  '" + id_corso + "' AND s. matricola NOT IN "+ 
-												  "(SELECT stu.matricola FROM studenti stu  JOIN presenze pre ON stu.matricola = pre.matricola WHERE  pre.id_lezione = '" + id_lezione + "')");
+												  "(SELECT stu.matricola FROM studenti stu  JOIN presenze pre ON stu.matricola = pre.matricola WHERE  pre.id_lezione = '" + id_lezione + "') ORDER BY s.matricola");
 			
 			while(rs.next()) {
 
@@ -108,7 +108,7 @@ public class StudentiDAO {
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN presenze pre ON s.matricola = pre.matricola WHERE pre.id_lezione = '" + id_lezione + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s  JOIN presenze pre ON s.matricola = pre.matricola WHERE pre.id_lezione = '" + id_lezione + "' ORDER BY s.matricola");
 			
 			while(rs.next()) {
 
@@ -169,7 +169,7 @@ public class StudentiDAO {
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("select * from studenti s order by  cast( matricola as integer) DESC");
+			ResultSet rs = statement.executeQuery("SELECT  * FROM studenti s ORDER BY  cast( matricola as integer) DESC");
 			rs.next();
 			studente = new Studenti(rs.getString("matricola"), rs.getString("nome"), rs.getString("cognome"));
 			
@@ -190,7 +190,7 @@ public class StudentiDAO {
 		try {
 			
 			ResultSet rs = statement.executeQuery("SELECT * FROM studenti s WHERE s.matricola NOT IN "+ 
-												  "(SELECT isc.matricola FROM corsi co  JOIN iscrizioni isc ON co.id_corso = isc.id_corso WHERE isc.id_corso =  '" + id_corso +"')");
+												  "(SELECT isc.matricola FROM corsi co  JOIN iscrizioni isc ON co.id_corso = isc.id_corso WHERE isc.id_corso =  '" + id_corso +"') ORDER BY s.matricola");
 			
 			while(rs.next()) {
 

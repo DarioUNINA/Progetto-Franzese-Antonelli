@@ -26,11 +26,27 @@ public class TemiDAO {
 			
 			for(AreeTematiche area:areeTematiche) 
 				statement.execute("INSERT INTO temi VALUES('"+ area.getNomeArea() + "','" + idCorso + "')");
+			
 			return "0";
 
 		}catch(SQLException e) {
 			
 			e.printStackTrace();
+			return e.getSQLState();
+		}
+		
+	}
+	
+	public String eliminaTemi(String idCorso) {
+		
+		try {
+			
+			if(!statement.execute("DELETE FROM temi t WHERE t.id_corso = '" + idCorso + "'"))
+				return "0";
+			else
+				return "-1";
+			
+		}catch(SQLException e) {
 			return e.getSQLState();
 		}
 		

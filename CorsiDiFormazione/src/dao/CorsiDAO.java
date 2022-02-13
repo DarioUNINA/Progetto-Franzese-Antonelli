@@ -67,7 +67,7 @@ public class CorsiDAO {
 		if(terminatoNo)
 			query = query + " c.terminato = false AND";
 			
-		query = query + " c.id_operatore = '" + idOperatore + "'";	
+		query = query + " c.id_operatore = '" + idOperatore + "' ORDER BY c.anno";	
 		
 		
 		try {
@@ -211,14 +211,14 @@ public Vector<Corsi> addCorsiFiltratiPM(Vector<AreeTematiche> area, Vector<Strin
 		
 	
 	
-public Vector<Corsi> getCorsiOperatore(Operatori op){
+	public Vector<Corsi> getCorsiOperatore(Operatori op){
 		
 		Vector<Corsi> corsi = new Vector<Corsi>();
 		
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT * FROM corsi co " + " WHERE co.id_operatore = '"+ op.getIdOperatore()  + "' ");
+			ResultSet rs = statement.executeQuery("SELECT * FROM corsi co " + " WHERE co.id_operatore = '"+ op.getIdOperatore()  + "' ORDER BY co.anno");
 			
 			while(rs.next()) {
 
@@ -347,7 +347,7 @@ public  Vector<Corsi>setCorsiStudenteDelOperatore(String matricola, String id_op
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT * FROM corsi co JOIN iscrizioni i ON co.id_corso = i.id_corso WHERE id_operatore = '" + id_operatore + "' AND i.matricola = '" + matricola + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM corsi co JOIN iscrizioni i ON co.id_corso = i.id_corso WHERE id_operatore = '" + id_operatore + "' AND i.matricola = '" + matricola + "' ORDER BY co.anno");
 			
 			
 			while(rs.next()) {

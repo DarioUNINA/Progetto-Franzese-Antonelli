@@ -55,7 +55,7 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 		theController = cont;
 		this.operatore = operatore;
 		this.corso = corso;
-		studenti = theController.getStudentiDisponibili(operatore.getIdOperatore());
+		studenti = theController.getStudentiDisponibili(corso.getIdCorso());
 		studentiComboBox = new JComboBox<Studenti>(studenti);
 		
 		grigioChiaro = new Color(233,233,233);

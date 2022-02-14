@@ -203,7 +203,7 @@ public class CreazioneCorsoPage extends JFrame {
 		
 		annoChooser = new JYearChooser();
 		annoChooser.setStartYear(2022);
-		annoChooser.setMinimum(0);
+		annoChooser.setMinimum(2022);
 		annoChooser.setBounds(521, 90, 86, 20);
 		annoChooser.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		annoChooser.getSpinner().setBounds(0, 0, 86, 20);

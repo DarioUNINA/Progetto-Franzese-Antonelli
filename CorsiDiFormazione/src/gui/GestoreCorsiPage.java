@@ -614,6 +614,11 @@ public class GestoreCorsiPage extends JFrame {
 					alertNessunCorsoSelezionato();
 				}else{
 					
+					if(corsiList.getSelectedValue().isTerminato())
+						iscriviStudenteButton.setEnabled(false);
+					else
+						iscriviStudenteButton.setEnabled(true);
+					
 					presenzeMinLabel.setText("Presenze Min: " + corsiList.getSelectedValue().getPresenzeMin());
 					maxPartecipantiLabel.setText("Max Partecipanti: " + corsiList.getSelectedValue().getMaxPartecipanti());
 					descrizioneTextPane.setText(corsiList.getSelectedValue().getDescrizione());
@@ -740,14 +745,12 @@ public class GestoreCorsiPage extends JFrame {
 		iscriviStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(corsiList.isSelectionEmpty()) {
+				if(corsiList.isSelectionEmpty()) 
 					alertNessunCorsoSelezionato();
-				}else
-					if(corsiList.getSelectedValue().isTerminato())
-						alertCorsoTerminato();
-					else{
-						IscriviStudenteGestoreCorsoPage isgcp = new IscriviStudenteGestoreCorsoPage(theController, operatore, corsiList.getSelectedValue());
-						setVisible(false);
+				else {
+					
+					IscriviStudenteGestoreCorsoPage page = new IscriviStudenteGestoreCorsoPage(theController, operatore, corsiList.getSelectedValue());
+					setVisible(false);
 				}			
 			}
 		});
@@ -958,7 +961,7 @@ public class GestoreCorsiPage extends JFrame {
 	
 	
 	public void alertReturnToLogIn() {
-		Object[] opzioni = {"Sì"};
+		Object[] opzioni = {"Sì", "No"};
 		
 		int n = JOptionPane.showOptionDialog(this,
 				"Sei sicuro di voler uscire?",
@@ -983,9 +986,5 @@ public class GestoreCorsiPage extends JFrame {
 	
 	public void alertNessunCorsoSelezionato() {
 		JOptionPane.showMessageDialog(this, "Selezionare un corso.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
-	}
-	
-	public void alertCorsoTerminato() {
-		JOptionPane.showMessageDialog(this, "Non è possibile iscrivere studenti a Corsi terminati.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);		
 	}
 }

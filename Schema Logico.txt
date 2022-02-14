@@ -585,4 +585,22 @@ temi (/nome_area/, /id_corso/)
 	FOR EACH ROW
 	EXECUTE PROCEDURE check_update_ammissione();
 	
+--26)
+
+	CREATE OR REPLACE FUNCTION update_lezioni_terminato()
+	RETURNS TRIGGER AS 
+	$$
+	BEGIN
+		IF new.terminato THEN
+			DELETE from lezioni l where l.id_corso = new.id_corso AND l.data > CURRENT_DATE;
+		END IF;
+	RETURN NEW;
+	END
+	$$ LANGUAGE plpgsql;
+
+	CREATE OR REPLACE TRIGGER check_update_lezioni_terminato
+	AFTER UPDATE ON corsi
+	FOR EACH ROW
+	EXECUTE PROCEDURE update_lezioni_terminato();
+		
 	

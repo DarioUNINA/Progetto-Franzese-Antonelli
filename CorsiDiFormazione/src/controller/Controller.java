@@ -54,7 +54,6 @@ public class Controller {
 		caratterizzaDAO = new CaratterizzaDAO();
 		
 		logIn = new LogInPage(this);
-
 	}
 	
 	public boolean logInClicked(String user, String pass) {
@@ -546,7 +545,7 @@ public class Controller {
 	}
 	
 	
-public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
+	public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 		
 		Vector<JCheckBox> checkBoxList = new Vector<JCheckBox>();
 	

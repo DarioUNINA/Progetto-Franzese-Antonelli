@@ -160,8 +160,8 @@ public class IscrizioniDAO {
 				rs.next();
 				return rs.getInt(1);
 			}catch(SQLException e) {
-				e.printStackTrace();
-				return -1;
+			//	e.printStackTrace();
+				return 0;
 			}
 		}
 	

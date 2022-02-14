@@ -412,7 +412,7 @@ public  Vector<Corsi>setCorsiStudenteDelOperatore(String matricola, String id_op
 		
 		try {
 			
-			ResultSet rs = statement.executeQuery("SELECT * FROM presenze_studente_corso p JOIN studenti s on s.matricola = p.matricola WHERE  p.id_corso = '"+ idCorso + "' order by (presenze) desc");
+			ResultSet rs = statement.executeQuery("SELECT * FROM presenze_studente_corso p JOIN studenti s on s.matricola = p.matricola where p.id_corso = '" + idCorso + "' order by p.presenze DESC");
 		
 			if(rs.next())
 				return rs.getString("presenze") + " (" + rs.getString("nome") + " " + rs.getString("cognome") + ")";
@@ -462,7 +462,7 @@ public  Vector<Corsi>setCorsiStudenteDelOperatore(String matricola, String id_op
 		
 		try {
 			
-			if(!statement.execute("UPDATE  corsi  SET   nome = '" + nome + "' , descrizione = '" + descrizione + "', presenze_min = " + presenzeMin + ", max_partecipanti =  " + maxPartecipanti + " , anno ='" + anno + "' WHERE id_corso = '" + idCorso + "'" ))
+			if(!statement.execute("UPDATE  corsi  SET   nome = '" + nome + "' , descrizione = '" + descrizione + "', presenze_min = " + presenzeMin + ", max_partecipanti =  " + maxPartecipanti + " , anno ='" + anno  + "' , terminato = " + terminato + " WHERE id_corso = '" + idCorso +  "'"))
 				return "0";
 			else 
 				return "-1";

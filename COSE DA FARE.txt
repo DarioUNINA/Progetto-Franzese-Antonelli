@@ -1,6 +1,1 @@
-1)CONTROLLO COMPLETO SUI METODI DEL CONTROLLER 
-   ad esempio ho notato che eliminazione operatore è un motodo String
-
-3)creare package controller e connesione
-
-4) creare trigger di update di ammesso da update di lezioni
+1) gestione associazioni in java

@@ -185,7 +185,7 @@ public class GestoreStudentiPage extends JFrame {
 	}
 	
 	public void alertSeiSicuroDiVolerEliminareStudente() {
-		Object[] opzioni = {"Sì"};
+		Object[] opzioni = {"Sì", "No"};
 		
 		int n = JOptionPane.showOptionDialog(this,
 				"Sei sicuro di voler eliminare lo studente ?",

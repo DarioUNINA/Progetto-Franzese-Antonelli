@@ -146,13 +146,7 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {	
 				
-				String state = theController.aggiungiStudenteCorso(studenti.get(studentiComboBox.getSelectedIndex()).getMatricola(), corso.getIdCorso());
-				
-				if(state.equals("0")) {
-					alertStudenteIscrittoCorrettamente();
-					
-				}else
-					alertErroreIscrizioneStudente(state);
+				aggiungiStudenteCorso();
 			}
 		});
 		
@@ -180,4 +174,13 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 				JOptionPane.showMessageDialog(this, "Errore sconsciuto durante l'iscrizione al corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
+	public void aggiungiStudenteCorso() {
+		String state = theController.aggiungiStudenteCorso(studenti.get(studentiComboBox.getSelectedIndex()).getMatricola(), corso.getIdCorso());
+		
+		if(state.equals("0")) {
+			alertStudenteIscrittoCorrettamente();
+			
+		}else
+			alertErroreIscrizioneStudente(state);
+	}
 }

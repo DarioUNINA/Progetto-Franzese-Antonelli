@@ -164,25 +164,7 @@ public class LogInPage extends JFrame {
 			}
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				
-				String Nome = nomeUtenteField.getText().toLowerCase();
-				String Pass = passwordField.getText().toLowerCase();
-				
-				if(Nome.isEmpty())
-					alertNomeUtenteNonInserito();
-				else 
-					if(Pass.isEmpty())
-						alertPasswordNonInserita();
-					else
-						if(!controller.logInClicked(Nome, Pass))
-							alertLogInFallito();
-						else
-						{			
-							GestoreCorsiPage hp = new GestoreCorsiPage(theController,theController.getOperatore(Nome));
-							setVisible(false);
-						}
-					
-				nomeUtenteField.setText("");
-				passwordField.setText("");
+				creazioneStudente();
 	
 			}	
 		});
@@ -236,5 +218,28 @@ public class LogInPage extends JFrame {
 
 	public void alertPasswordNonInserita() {
 		JOptionPane.showMessageDialog(this, "Password non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void creazioneStudente() {
+		
+		String Nome = nomeUtenteField.getText().toLowerCase();
+		String Pass = passwordField.getText().toLowerCase();
+		
+		if(Nome.isEmpty())
+			alertNomeUtenteNonInserito();
+		else 
+			if(Pass.isEmpty())
+				alertPasswordNonInserita();
+			else
+				if(theController.logInClicked(Nome, Pass)) {
+					GestoreCorsiPage hp = new GestoreCorsiPage(theController,theController.getOperatore(Nome));
+					setVisible(false);
+				}else
+					alertLogInFallito();
+					
+				
+			
+		nomeUtenteField.setText("");
+		passwordField.setText("");
 	}
 }

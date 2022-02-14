@@ -134,12 +134,6 @@ public class ModificaCorsoPage extends JFrame {
 		
 		terminatoCheckBox = new JCheckBox("SI");	
 		terminatoCheckBox.setBounds(521, 145, 48, 33);
-		
-		if(corso.isTerminato()) {
-			terminatoCheckBox.setSelected(true);
-			terminatoCheckBox.setForeground(Color.GREEN);
-		}
-		
 		terminatoCheckBox.setFont(new Font("Arial", Font.BOLD, 15));
 		terminatoCheckBox.setBackground(grigioChiaro);
 		creaCorsoPanel.add(terminatoCheckBox);
@@ -179,23 +173,6 @@ public class ModificaCorsoPage extends JFrame {
 		listaParole.setVisible(true);
 		
 		annoChooser = new JYearChooser();
-		if(theController.modificaAnnoCorso(corso.getIdCorso())) {
-			
-			annoChooser.getSpinner().setEnabled(false);
-			
-			alertLabel = new JLabel("Non \u00E8 possibile modificare l'anno");
-			alertLabel.setForeground(Color.RED);
-			alertLabel.setBounds(521, 109, 204, 14);
-			creaCorsoPanel.add(alertLabel);
-			
-			alertLabel2 = new JLabel("se ci sono lezioni programmate!");
-			alertLabel2.setForeground(Color.RED);
-			alertLabel2.setBounds(521, 121, 204, 14);
-			creaCorsoPanel.add(alertLabel2);
-		
-		}else {
-			annoChooser.getSpinner().setEnabled(true);
-		}	
 		annoChooser.setBounds(521, 90, 86, 20);
 		annoChooser.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		annoChooser.getSpinner().setBounds(0, 0, 86, 20);
@@ -317,6 +294,14 @@ public class ModificaCorsoPage extends JFrame {
 		});
 		
 		
+		checkModificaAnno();	
+
+		
+		if(corso.isTerminato()) {
+			terminatoCheckBox.setSelected(true);
+			terminatoCheckBox.setForeground(Color.GREEN);
+		}
+		
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
@@ -398,5 +383,25 @@ public class ModificaCorsoPage extends JFrame {
 	public void alertMaxPartecipanti() {
 		
 		JOptionPane.showMessageDialog(this, "Attenzione: attualmente ci sono piu iscritti al corso del numero di massimo partecipanti inserito","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void checkModificaAnno() {
+		if(theController.modificaAnnoCorso(corso.getIdCorso())) {
+			
+			annoChooser.getSpinner().setEnabled(false);
+			
+			alertLabel = new JLabel("Non \u00E8 possibile modificare l'anno");
+			alertLabel.setForeground(Color.RED);
+			alertLabel.setBounds(521, 109, 204, 14);
+			creaCorsoPanel.add(alertLabel);
+			
+			alertLabel2 = new JLabel("se ci sono lezioni programmate!");
+			alertLabel2.setForeground(Color.RED);
+			alertLabel2.setBounds(521, 121, 204, 14);
+			creaCorsoPanel.add(alertLabel2);
+		
+		}else {
+			annoChooser.getSpinner().setEnabled(true);
+		}
 	}
 }

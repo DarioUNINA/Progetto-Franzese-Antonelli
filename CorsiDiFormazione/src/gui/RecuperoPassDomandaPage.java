@@ -126,14 +126,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText().toLowerCase(), operatore);
-
-				if(state.equals("0")) {
-					ModificaPasswordPage pg = new ModificaPasswordPage(theController, operatore);
-					setVisible(false);
-				}else
-					alertRispostaNonValida(state);
+				gestoreConfermaRisposta();
 			}
 
 			public void mouseEntered(MouseEvent e) {
@@ -175,4 +168,14 @@ public class RecuperoPassDomandaPage extends JFrame {
 			JOptionPane.showMessageDialog(this, "E\' stato riscontarto un errore","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
 	}	
+	
+	public void gestoreConfermaRisposta() {
+		String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText().toLowerCase(), operatore);
+
+		if(state.equals("0")) {
+			ModificaPasswordPage pg = new ModificaPasswordPage(theController, operatore);
+			setVisible(false);
+		}else
+			alertRispostaNonValida(state);
+	}
 }

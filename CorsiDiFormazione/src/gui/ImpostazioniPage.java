@@ -32,6 +32,7 @@ public class ImpostazioniPage extends JFrame {
 
 	private Controller theController;
 	private Operatori operatore;
+	private Studenti studente;
 	
 	private Component url;
 	private ImageIcon imageicon;
@@ -53,6 +54,7 @@ public class ImpostazioniPage extends JFrame {
 		this.flag = flag;
 		theController = controller;
 		this.operatore = operatore;
+		this.studente = studente;
 		
 		grigioChiaro = new Color(219,235,250);
 		
@@ -144,28 +146,7 @@ public class ImpostazioniPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(flag==0) {
-					
-					GestoreCorsiPage page = new GestoreCorsiPage(theController, operatore);
-					setVisible(false);
-				}else
-					if(flag == 1) {
-						
-						PanoramicaSingoloStudentePage page = new PanoramicaSingoloStudentePage(theController, operatore, studente);
-						setVisible(false);
-					}else
-						if(flag == 2){
-							
-							GestoreLezioniPage page = new GestoreLezioniPage(theController, operatore);
-							setVisible(false);
-						}else
-							if(flag == 3) {
-								ModificaNomeUtentePage page = new ModificaNomeUtentePage(theController, operatore);
-								setVisible(false);
-							}else {
-								ModificaPasswordPage page = new ModificaPasswordPage(theController, operatore);
-								setVisible(false);
-							}
+				checkPageDiRitorno();
 				
 			}
 			@Override
@@ -237,6 +218,32 @@ public class ImpostazioniPage extends JFrame {
 			JOptionPane.showMessageDialog(this, "Impossibile eliminare l'operatore.\nErrore sconosciuto " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 		else
 			JOptionPane.showMessageDialog(this, "Impossibile eliminare l'operatore.\nCodice d'errore " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void checkPageDiRitorno() {
+		if(flag==0) {
+			
+			GestoreCorsiPage page = new GestoreCorsiPage(theController, operatore);
+			setVisible(false);
+		}else
+			if(flag == 1) {
+				
+				PanoramicaSingoloStudentePage page = new PanoramicaSingoloStudentePage(theController, operatore, studente);
+				setVisible(false);
+			}else
+				if(flag == 2){
+					
+					GestoreLezioniPage page = new GestoreLezioniPage(theController, operatore);
+					setVisible(false);
+				}else
+					if(flag == 3) {
+						ModificaNomeUtentePage page = new ModificaNomeUtentePage(theController, operatore);
+						setVisible(false);
+					}else {
+						ModificaPasswordPage page = new ModificaPasswordPage(theController, operatore);
+						setVisible(false);
+					}
+		
 	}
 }
 

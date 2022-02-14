@@ -57,6 +57,8 @@ public class StatisticheCorsoPage extends JFrame {
 	private JScrollPane studenitAmmessiScrollPane;
 	private JLabel terminatoLabel;
 	private JLabel terminatoValueLabel;
+	private JLabel numeroMinPresenzeLezioneRisultatoLabel;
+	private JLabel numeroMaxPresenzeLezioneRisultatoLabel;
 	
 	final Color azzurro;
 	final Color azzurroChiaro;
@@ -118,15 +120,25 @@ public class StatisticheCorsoPage extends JFrame {
 		nomeCorsoLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		infoPanel.add(nomeCorsoLabel);
 		
-		numeroMinPresenzeLezioneLabel = new JLabel("Numero Min di presenze a Lezione: " + theController.minimoPresenze(corso.getIdCorso()));
+		numeroMinPresenzeLezioneLabel = new JLabel("Numero Min di presenze a Lezione: ");
 		numeroMinPresenzeLezioneLabel.setBounds(10, 167, 522, 24);
 		numeroMinPresenzeLezioneLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		infoPanel.add(numeroMinPresenzeLezioneLabel);
+		
+		numeroMinPresenzeLezioneRisultatoLabel = new JLabel(theController.minimoPresenze(corso.getIdCorso()));
+		numeroMinPresenzeLezioneRisultatoLabel.setFont(new Font("Arial", Font.BOLD, 20));
+		numeroMinPresenzeLezioneRisultatoLabel.setBounds(10, 193, 522, 24);
+		infoPanel.add(numeroMinPresenzeLezioneRisultatoLabel);
 				
-		numeroMaxPresenzeLezioneLabel = new JLabel("Numero Max di presenze a Lezione: " + theController.massimoPresenze(corso.getIdCorso()));
+		numeroMaxPresenzeLezioneLabel = new JLabel("Numero Max di presenze a Lezione: ");
 		numeroMaxPresenzeLezioneLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		numeroMaxPresenzeLezioneLabel.setBounds(10, 256, 522, 24);
 		infoPanel.add(numeroMaxPresenzeLezioneLabel);
+		
+		numeroMaxPresenzeLezioneRisultatoLabel = new JLabel( theController.massimoPresenze(corso.getIdCorso()));
+		numeroMaxPresenzeLezioneRisultatoLabel.setFont(new Font("Arial", Font.BOLD, 20));
+		numeroMaxPresenzeLezioneRisultatoLabel.setBounds(10, 282, 522, 24);
+		infoPanel.add(numeroMaxPresenzeLezioneRisultatoLabel);
 		
 		presenzeMedieLabel = new JLabel("Presenze medie per lezione: " + String.valueOf(theController.getPresenzeMedie(corso.getIdCorso())));
 		presenzeMedieLabel.setBounds(10, 337, 329, 24);

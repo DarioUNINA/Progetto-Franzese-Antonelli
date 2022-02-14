@@ -193,28 +193,7 @@ public class RegistrazionePage extends JFrame {
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String NomeU = nomeTextField.getText().toLowerCase();
-				String Pass = passwordTextField.getText().toLowerCase();
-				String DomandaSicurezza = domandeComboBox.getSelectedItem().toString();
-				String RispostaSicurezza = rispostaSicurezzaField.getText().toLowerCase();
-				
-				if(NomeU.isEmpty())
-					alertNomeUtenteNonInserito();
-				else 
-					if(Pass.isEmpty())
-						alertPasswordNonInserita();
-						else
-							if(RispostaSicurezza.isEmpty())
-								alertRispostaNonInserita();
-							else
-							{
-								String state = theController.registrazioneClicked(NomeU, Pass, DomandaSicurezza, RispostaSicurezza);
-								
-								if(state.equals("0"))
-									alertConfermaRegistrazione();
-								else
-									alertErroreRegsistrazione(state);
-							}
+				gestoreNuovoUtente();
 									
 			}
 			
@@ -288,5 +267,30 @@ public class RegistrazionePage extends JFrame {
 							JOptionPane.showMessageDialog(this, "Il nome utente gia esiste, riprova","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 						else
 							JOptionPane.showMessageDialog(this, "Errore durante la registrazione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void gestoreNuovoUtente() {
+		String NomeU = nomeTextField.getText().toLowerCase();
+		String Pass = passwordTextField.getText().toLowerCase();
+		String DomandaSicurezza = domandeComboBox.getSelectedItem().toString();
+		String RispostaSicurezza = rispostaSicurezzaField.getText().toLowerCase();
+		
+		if(NomeU.isEmpty())
+			alertNomeUtenteNonInserito();
+		else 
+			if(Pass.isEmpty())
+				alertPasswordNonInserita();
+				else
+					if(RispostaSicurezza.isEmpty())
+						alertRispostaNonInserita();
+					else
+					{
+						String state = theController.registrazioneClicked(NomeU, Pass, DomandaSicurezza, RispostaSicurezza);
+						
+						if(state.equals("0"))
+							alertConfermaRegistrazione();
+						else
+							alertErroreRegsistrazione(state);
+					}
 	}
 }

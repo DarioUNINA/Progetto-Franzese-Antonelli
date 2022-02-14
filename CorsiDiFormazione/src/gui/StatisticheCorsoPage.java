@@ -100,8 +100,7 @@ public class StatisticheCorsoPage extends JFrame {
 		statistichePanel.setBounds(10, 11, 864, 44);
 		statistichePanel.setLayout(null);
 		sfondoPane.add(statistichePanel);
-		
-		
+
 		statisticheCorsoLabel = new JLabel("STATISTICHE CORSO");
 		statisticheCorsoLabel.setBounds(315, 7, 234, 26);
 		statisticheCorsoLabel.setForeground(Color.BLACK);
@@ -148,10 +147,6 @@ public class StatisticheCorsoPage extends JFrame {
 		mediaRiempimentoProgressBar.setForeground(Color.GREEN);
 		mediaRiempimentoProgressBar.setFont(new Font("Microsoft YaHei UI", Font.BOLD | Font.ITALIC, 13));
 		mediaRiempimentoProgressBar.setStringPainted(true);
-		if(studenti.size()==0)
-			mediaRiempimentoProgressBar.setValue(0);
-		else
-			mediaRiempimentoProgressBar.setValue((int)theController.getPresenzeMedie(corso.getIdCorso())/studenti.size()*100);
 		infoPanel.add(mediaRiempimentoProgressBar);
 		
 		terminatoLabel = new JLabel("Terminato: " );
@@ -163,14 +158,6 @@ public class StatisticheCorsoPage extends JFrame {
 		terminatoValueLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		terminatoValueLabel.setBounds(140, 86, 30, 24);
 		infoPanel.add(terminatoValueLabel);
-		
-		if(corso.isTerminato()) {
-			terminatoValueLabel.setText("SI");
-			terminatoValueLabel.setForeground(Color.GREEN);
-		}else {
-			terminatoValueLabel.setText("NO");
-			terminatoValueLabel.setForeground(Color.RED);
-		}
 		
 		studentiPanel = new JPanel();
 		studentiPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -212,6 +199,22 @@ public class StatisticheCorsoPage extends JFrame {
 
 		
 		//LISTNER 
+		
+		if(studenti.size()==0)
+			mediaRiempimentoProgressBar.setValue(0);
+		else
+			mediaRiempimentoProgressBar.setValue((int)theController.getPresenzeMedie(corso.getIdCorso())/studenti.size()*100);
+		
+		
+
+		if(corso.isTerminato()) {
+			terminatoValueLabel.setText("SI");
+			terminatoValueLabel.setForeground(Color.GREEN);
+		}else {
+			terminatoValueLabel.setText("NO");
+			terminatoValueLabel.setForeground(Color.RED);
+		}
+		
 		
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override

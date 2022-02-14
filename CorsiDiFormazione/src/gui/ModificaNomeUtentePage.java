@@ -135,27 +135,7 @@ public class ModificaNomeUtentePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String nomeU = nuovoNomeUtenteTextField.getText().toLowerCase();
-				String confermaNomeU = confermaNuovoNomeUtenteTextField.getText().toLowerCase();
-				
-				if(!nomeU.equals(confermaNomeU))
-					alertNomeUtenteNonCorrispondenti();
-				else 
-					if (nomeU.isEmpty())
-						alertInserireNomeUtente();
-					else {
-						
-							String state = theController.confermaCambioNomeUtente(nomeU, operatore);
-							
-							if(state.equals("0")) {
-								
-								alertNomeUtenteCambiato();
-								GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
-								setVisible(false);
-							
-							}else
-								alertErroreCambioNomeUtente(state);
-					}
+				modificaDati();
 			}
 		});
 		
@@ -205,4 +185,28 @@ public class ModificaNomeUtentePage extends JFrame {
 				else
 					JOptionPane.showMessageDialog(this, "Errore durante la modifica del Nome Utente","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}	
+	
+	public void modificaDati() {
+		String nomeU = nuovoNomeUtenteTextField.getText().toLowerCase();
+		String confermaNomeU = confermaNuovoNomeUtenteTextField.getText().toLowerCase();
+		
+		if(!nomeU.equals(confermaNomeU))
+			alertNomeUtenteNonCorrispondenti();
+		else 
+			if (nomeU.isEmpty())
+				alertInserireNomeUtente();
+			else {
+				
+					String state = theController.confermaCambioNomeUtente(nomeU, operatore);
+					
+					if(state.equals("0")) {
+						
+						alertNomeUtenteCambiato();
+						GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+						setVisible(false);
+					
+					}else
+						alertErroreCambioNomeUtente(state);
+			}
+	}
 }

@@ -156,13 +156,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {	
 				
-				String state = theController.aggiungiStudenteCorso(studente.getMatricola(), corsi.get(corsiComboBox.getSelectedIndex()).getIdCorso());
-				
-				if(state.equals("0")) {
-					alertStudenteIscrittoCorrettamente();
-					
-				}else
-					alertErroreIscrizioneStudente(state);
+				aggiungiStudente();
 			}
 		});
 		
@@ -193,5 +187,15 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 				JOptionPane.showMessageDialog(this, "Non e stato possibile effettuare l'iscrizione perche'e' stato raggiunto il numero massimo di partecipanti ammessi al corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 			else
 				JOptionPane.showMessageDialog(this, "Errore sconsciuto durante l'iscrizione al corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void aggiungiStudente() {
+		String state = theController.aggiungiStudenteCorso(studente.getMatricola(), corsi.get(corsiComboBox.getSelectedIndex()).getIdCorso());
+		
+		if(state.equals("0")) {
+			alertStudenteIscrittoCorrettamente();
+			
+		}else
+			alertErroreIscrizioneStudente(state);
 	}
 }

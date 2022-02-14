@@ -129,22 +129,9 @@ public class RecuperoPassPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				String Nome = nomeUtenteText.getText().toLowerCase();
-				
-				if(Nome.isEmpty()) 
-					alertNomeUtenteNonInserito();
-				else {
-						String state = theController.CheckNomeClicked(Nome.toLowerCase());
-						
-						if(state.equals("0")) {
-							
-							RecuperoPassDomandaPage rpd = new RecuperoPassDomandaPage(theController, theController.getOperatoreRecuperoPass(Nome));
-							setVisible(false);
-						}else
-							alertUtenteNonTrovato();
+				gestoreCheckNome();
 				}
 					
-			}
 		});
 		
 		
@@ -178,5 +165,22 @@ public class RecuperoPassPage extends JFrame {
 	public void alertUtenteNonTrovato() {
 		JOptionPane.showMessageDialog(this, "Utente non trovato, riprova","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
+	}
+	
+	public void gestoreCheckNome() {
+		String Nome = nomeUtenteText.getText().toLowerCase();
+		
+		if(Nome.isEmpty()) 
+			alertNomeUtenteNonInserito();
+		else {
+				String state = theController.CheckNomeClicked(Nome.toLowerCase());
+				
+				if(state.equals("0")) {
+					
+					RecuperoPassDomandaPage rpd = new RecuperoPassDomandaPage(theController, theController.getOperatoreRecuperoPass(Nome));
+					setVisible(false);
+				}else
+					alertUtenteNonTrovato();
+		}
 	}
 }

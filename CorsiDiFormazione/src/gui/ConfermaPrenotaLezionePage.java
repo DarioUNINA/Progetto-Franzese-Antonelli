@@ -150,15 +150,7 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				String state = theController.aggiungiStudenteLezioneClicked(studente.getMatricola(), lezioni.get(lezioniComboBox.getSelectedIndex()).getIdLezione());
-				
-				if(state.equals("0")) {
-					alertStudenteAggiuntoCorrettamente();
-					PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
-					setVisible(false);
-				}else
-					alertErroreIscrizioneAllaLezione(state);
-				
+				aggiungiStudenteLezione();
 			}
 		});
 		
@@ -182,8 +174,17 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 				else
 					JOptionPane.showMessageDialog(this, "Errore durante l'iscrizione alla lezione.\nCodice d'errore "+ state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
-				
-	
 	}
-
+	
+	public void aggiungiStudenteLezione() {
+		String state = theController.aggiungiStudenteLezioneClicked(studente.getMatricola(), lezioni.get(lezioniComboBox.getSelectedIndex()).getIdLezione());
+		
+		if(state.equals("0")) {
+			alertStudenteAggiuntoCorrettamente();
+			PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+			setVisible(false);
+		}else
+			alertErroreIscrizioneAllaLezione(state);
+		
+	}
 }

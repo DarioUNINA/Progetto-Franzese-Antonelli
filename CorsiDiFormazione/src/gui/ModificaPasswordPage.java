@@ -136,24 +136,7 @@ public class ModificaPasswordPage extends JFrame {
 		
 		confermaButton.addMouseListener(new MouseAdapter() {
 			public void actionPerformed(ActionEvent e) {
-				
-				String pass = passwordField.getText().toLowerCase();
-				String cpass = confermaPasswordField.getText().toLowerCase();
-				
-				if(!pass.equals(cpass))
-					alertPasswordNonCorrispondenti();
-				else 
-					if (pass.isEmpty())
-						alertInserirePassword();
-					else {
-							
-							String state = theController.confermaCambioPassword(operatore, pass);
-														
-								if(state.equals("0"))
-									alertPasswordCambiata();
-								else
-									alertErroreCambioPassword(state);
-						}
+				gestoreModificaPassword();
 				
 			}
 			@Override
@@ -212,6 +195,28 @@ public class ModificaPasswordPage extends JFrame {
 					else
 						JOptionPane.showMessageDialog(this, "Errore durante la modifica della password","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 		}		
+	
+	public void gestoreModificaPassword() {
+
+		String pass = passwordField.getText().toLowerCase();
+		String cpass = confermaPasswordField.getText().toLowerCase();
+		
+		if(!pass.equals(cpass))
+			alertPasswordNonCorrispondenti();
+		else 
+			if (pass.isEmpty())
+				alertInserirePassword();
+			else {
+					
+					String state = theController.confermaCambioPassword(operatore, pass);
+												
+						if(state.equals("0"))
+							alertPasswordCambiata();
+						else
+							alertErroreCambioPassword(state);
+				}
+		
+	}
 }
 
 	

@@ -1,1 +1,5 @@
-1) gestione associazioni in java
+1) verifica barra  percentuale in statistiche
+
+2) class diagram obj
+
+3) documentazione

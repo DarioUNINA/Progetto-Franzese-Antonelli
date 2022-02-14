@@ -290,7 +290,7 @@ public class GestoreCorsiPage extends JFrame {
 		sfondoPane.add(benvenuto);
 		benvenuto.setLayout(null);
 		
-		benvenutoLabel = new JLabel("Benvenuto, " + operatore.getNomeUtente().toUpperCase());
+		benvenutoLabel = new JLabel("Benvenuto " + operatore.getNomeUtente().toUpperCase());
 		benvenutoLabel.setFont(new Font("Arial", Font.BOLD, 30));
 		benvenutoLabel.setBounds(10, 0, 665, 44);
 		benvenuto.add(benvenutoLabel);

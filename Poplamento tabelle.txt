@@ -113,7 +113,7 @@ INSERT INTO corsi
 VALUES(nextval('sequenza_id_corso'), 6, 'programmazione_1', 'approccio alla programmazione in c++', 2, 5, '2021');
 
 INSERT INTO corsi
-VALUES(nextval('sequenza_id_corso'), 1, 'analisi_1', 'teoremi base di analisi matematica', 2, 10, '2023');
+VALUES(nextval('sequenza_id_corso'), 1, 'analisi_1', 'teoremi base di analisi matematica', 2, 10, '2019');
 
 INSERT INTO corsi
 VALUES(nextval('sequenza_id_corso'), 1, 'ingegneria_del_software', 'studio dei software', 1, 5, '2021');
@@ -162,6 +162,18 @@ INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'jframe', 'design su java', '2:00', '18/10/2023', '8:30', 1);
 
 INSERT INTO lezioni
+VALUES(nextval('sequenza_id_lezione'), 'sequence diagram', 'come scrivere un sequence diagram', '1:00', '26/09/2023', '16:30', 1);
+
+INSERT INTO lezioni
+VALUES(nextval('sequenza_id_lezione'), 'array list', 'struttura dati array list', '1:00', '10/11/2023', '14:00', 1);
+
+INSERT INTO lezioni
+VALUES(nextval('sequenza_id_lezione'), 'database', 'colleggamento database', '1:30', '8/12/2023', '11:00', 1);
+
+INSERT INTO lezioni
+VALUES(nextval('sequenza_id_lezione'), 'associazioni', 'associazioni bidimensionali', '2:00', '3/11/2023', '16:30', 1);
+
+INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'algebra relazionale', 'definizione sintassi', '1:30', '28/09/2022', '8:30', 2);
 
 INSERT INTO lezioni
@@ -192,31 +204,34 @@ INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'stack', 'approccio a struttua dati stack', '1:30', '29/09/2021', '8:30', 5);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'successione limitata', 'studio e applicazione sulle successioni', '1:30', '27/11/2023', '10:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'successione limitata', 'studio e applicazione sulle successioni', '1:30', '27/11/2019', '10:30', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'serie' , 'serie geometrica', '2:00', '14/10/2023', '8:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'serie' , 'serie geometrica', '2:00', '14/10/2019', '8:30', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'insiemi', 'teoria degli insiemi ', '2:00', '16/10/2023', '14:00', 6);
+VALUES(nextval('sequenza_id_lezione'), 'insiemi', 'teoria degli insiemi ', '2:00', '16/10/2019', '14:00', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'calcolo differenziale', 'regolo di derivazione', '2:00', '01/12/2023', '11:00', 6);
+VALUES(nextval('sequenza_id_lezione'), 'calcolo differenziale', 'regolo di derivazione', '2:00', '01/12/2019', '11:00', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'estremi relaviti', 'teorema di lagrange', '2:00', '30/09/2023', '8:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'estremi relaviti', 'teorema di lagrange', '2:00', '30/09/2019', '8:30', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'numeri reali', 'estremo superiore', '2:00', '5/10/2023', '8:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'numeri reali', 'estremo superiore', '2:00', '5/10/20219', '8:30', 6);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'calcolo intregale', 'funzioni continue', '2:00', '10/12/2023', '16:30', 6);
+VALUES(nextval('sequenza_id_lezione'), 'calcolo intregale', 'funzioni continue', '2:00', '10/12/2019', '16:30', 6);
+
+INSERT INTO lezioni
+VALUES(nextval('sequenza_id_lezione'), 'derivate', 'calcolo della derivata ', '1:00', '07/12/2019', '14:00', 6);
 
 INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'uml', 'linguaggio di modellazione e specifica', '1:30', '06/3/2021', '11:00', 7);
 
 INSERT INTO lezioni
-VALUES(nextval('sequenza_id_lezione'), 'anelli', 'struttura algebrica', '1:30', '01/12/2029', '13:00', 8);
+VALUES(nextval('sequenza_id_lezione'), 'anelli', 'struttura algebrica', '1:30', '01/12/2019', '13:00', 8);
 
 INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'corrispondenze', 'relazioni binarie e applicazioni', '1:00', '20/10/2019', '8:30', 8);
@@ -229,6 +244,9 @@ VALUES(nextval('sequenza_id_lezione'), 'principi della termofluidodinamica', 'pr
 
 INSERT INTO lezioni
 VALUES(nextval('sequenza_id_lezione'), 'calcolo proposizionale', 'teorema di completezza ed applicazioni', '2:00', '20/4/2022', '10:30', 16);
+
+
+
 
 
 
@@ -356,67 +374,100 @@ VALUES(1, 5);
 
 
 INSERT INTO presenze
-VALUES(1, 6);
+VALUES(1, 14);
 
 INSERT INTO presenze
-VALUES(2, 2);
+VALUES(1, 16);
 
 INSERT INTO presenze
-VALUES(2, 8);
+VALUES(1, 19);
 
 INSERT INTO presenze
-VALUES(6, 2);
+VALUES(1, 20);
 
 INSERT INTO presenze
-VALUES(7, 6);
+VALUES(1, 25);
 
 INSERT INTO presenze
-VALUES(7, 16);
+VALUES(1, 26);
 
 INSERT INTO presenze
-VALUES(7, 21);
+VALUES(2, 14);
 
 INSERT INTO presenze
-VALUES(5, 8);
+VALUES(2, 15);
 
 INSERT INTO presenze
-VALUES(6, 20);
+VALUES(2, 16);
+
+INSERT INTO presenze
+VALUES(2, 17);
+
+INSERT INTO presenze
+VALUES(2, 20);
+
+INSERT INTO presenze
+VALUES(2, 25);
+
+INSERT INTO presenze
+VALUES(2, 26);
+
+INSERT INTO presenze
+VALUES(3, 9);
+
+INSERT INTO presenze
+VALUES(3, 28);
+
+INSERT INTO presenze
+VALUES(3, 29);
 
 INSERT INTO presenze
 VALUES(3, 24);
 
 INSERT INTO presenze
-VALUES(9, 23);
-
-INSERT INTO presenze
-VALUES(1, 15);
-
-INSERT INTO presenze
-VALUES(1, 17);
-
-INSERT INTO presenze
-VALUES(5, 17);
-
-INSERT INTO presenze
-VALUES(5, 20);
-
-INSERT INTO presenze
-VALUES(4, 16);
-
-INSERT INTO presenze
 VALUES(4, 21);
 
 INSERT INTO presenze
-VALUES(10, 17);
+VALUES(4, 23);
 
 INSERT INTO presenze
-VALUES(10, 19);
+VALUES(4, 24);
 
 INSERT INTO presenze
-VALUES(2, 18);
+VALUES(4, 25);
 
 INSERT INTO presenze
-VALUES(10, 3);
+VALUES(5, 8);
+
+INSERT INTO presenze
+VALUES(5, 23);
+
+INSERT INTO presenze
+VALUES(5, 24);
+
+INSERT INTO presenze
+VALUES(5, 26);
+
+INSERT INTO presenze
+VALUES(6, 2);
+
+INSERT INTO presenze
+VALUES(6, 20);
+
+INSERT INTO presenze
+VALUES(6, 21);
+
+INSERT INTO presenze
+VALUES(6, 23);
+
+INSERT INTO presenze
+VALUES(7, 9);
+
+INSERT INTO presenze
+VALUES(7, 21);
+
+INSERT INTO presenze
+VALUES(7, 24);
 
 INSERT INTO presenze
 VALUES(9, 1);
@@ -425,16 +476,42 @@ INSERT INTO presenze
 VALUES(9, 4);
 
 INSERT INTO presenze
-VALUES(2, 4);
+VALUES(9, 6);
+
+INSERT INTO presenze
+VALUES(9, 28);
+
+INSERT INTO presenze
+VALUES(9, 29);
+
+INSERT INTO presenze
+VALUES(10, 3);
 
 INSERT INTO presenze
 VALUES(10, 4);
 
 INSERT INTO presenze
-VALUES(2, 25);
+VALUES(10, 5);
 
 INSERT INTO presenze
-VALUES(6, 15);
+VALUES(10, 8);
+
+INSERT INTO presenze
+VALUES(10, 18);
+
+INSERT INTO presenze
+VALUES(10, 19);
+
+INSERT INTO presenze
+VALUES(10, 20);
+
+INSERT INTO presenze
+VALUES(10, 24);
+
+INSERT INTO presenze
+VALUES(10, 25);
+
+
 
 
 INSERT INTO temi

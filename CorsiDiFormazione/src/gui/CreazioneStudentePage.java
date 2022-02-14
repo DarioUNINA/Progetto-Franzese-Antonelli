@@ -133,16 +133,6 @@ public class CreazioneStudentePage extends JFrame {
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		confermaButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if(nomeTextField.getText().equals("") || cognomeTextField.getText().equals(""))
-					alertNomeCognomeMancante();
-				else
-					gestioneCreazioneStudente();
-				
-			}
-		});
 		confermaButton.setBounds(412, 273, 126, 23);
 		inserisciDatiStudentePanel.add(confermaButton);
 		
@@ -155,6 +145,22 @@ public class CreazioneStudentePage extends JFrame {
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBackground(Color.WHITE);
+		indietroButton.setBounds(10, 273, 126, 23);
+		inserisciDatiStudentePanel.add(indietroButton);
+		
+		
+		//LISTNER
+		confermaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(nomeTextField.getText().equals("") || cognomeTextField.getText().equals(""))
+					alertNomeCognomeMancante();
+				else
+					gestioneCreazioneStudente();
+				
+			}
+		});
+		
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -170,8 +176,6 @@ public class CreazioneStudentePage extends JFrame {
 				setVisible(false);
 			}
 		});
-		indietroButton.setBounds(10, 273, 126, 23);
-		inserisciDatiStudentePanel.add(indietroButton);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

@@ -136,23 +136,7 @@ public class PanoramicaLezionePage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		indietroButton.setBackground(Color.WHITE);
-		indietroButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				GestoreLezioniPage gl = new GestoreLezioniPage(theController, operatore);
-				setVisible(false);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				indietroButton.setBackground(Color.ORANGE);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				indietroButton.setBackground(Color.WHITE);
-			}
-		});
-		
+		indietroButton.setBackground(Color.WHITE);	
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 295, 163, 23);
 		contentPane.add(indietroButton);
@@ -206,6 +190,38 @@ public class PanoramicaLezionePage extends JFrame {
 		aggiungiStudenteLezioneButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		aggiungiStudenteLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		aggiungiStudenteLezioneButton.setBackground(Color.WHITE);
+		aggiungiStudenteLezioneButton.setBounds(342, 295, 216, 23);
+		contentPane.add(aggiungiStudenteLezioneButton);
+		aggiungiStudenteLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
+		
+		modificaLezioneButton = new JButton("MODIFICA LEZIONE");
+		modificaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		modificaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
+		modificaLezioneButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		modificaLezioneButton.setBackground(Color.WHITE);
+		modificaLezioneButton.setBounds(183, 296, 152, 22);
+		contentPane.add(modificaLezioneButton);
+		
+		
+		//LISTNER
+		
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GestoreLezioniPage gl = new GestoreLezioniPage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				indietroButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				indietroButton.setBackground(Color.WHITE);
+			}
+		});
+		
+		
 		aggiungiStudenteLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -217,11 +233,8 @@ public class PanoramicaLezionePage extends JFrame {
 				}
 			}
 		});
-		aggiungiStudenteLezioneButton.setBounds(342, 295, 216, 23);
-		contentPane.add(aggiungiStudenteLezioneButton);
-		aggiungiStudenteLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
 		
-		modificaLezioneButton = new JButton("MODIFICA LEZIONE");
+		
 		modificaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -229,18 +242,14 @@ public class PanoramicaLezionePage extends JFrame {
 				setVisible(false);
 			}
 		});
-		modificaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		modificaLezioneButton.setFont(new Font("Arial", Font.BOLD, 12));
-		modificaLezioneButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		modificaLezioneButton.setBackground(Color.WHITE);
-		modificaLezioneButton.setBounds(183, 296, 152, 22);
-		contentPane.add(modificaLezioneButton);
+		
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 
 	}
 	
+	//ALERT
 	public void alertNonCiSonoStudenti() {
 		JOptionPane.showMessageDialog(this, "Non ci sono Studenti da poter aggiungere alla lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}

@@ -96,6 +96,39 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(10, 273, 121, 23);
+		prenotaLezioneStudentiPanel.add(indietroButton);
+		
+		aggiungiButton = new JButton("AGGIUGI");
+		aggiungiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		aggiungiButton.setBackground(Color.WHITE);
+		aggiungiButton.setFont(new Font("Arial", Font.BOLD, 15));
+		aggiungiButton.setBounds(417, 274, 121, 23);
+		prenotaLezioneStudentiPanel.add(aggiungiButton);
+		
+		selezionareCorsoLabel = new JLabel("Selezionare corso:");
+		selezionareCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		selezionareCorsoLabel.setBounds(51, 131, 136, 23);
+		prenotaLezioneStudentiPanel.add(selezionareCorsoLabel);
+		
+		
+		corsiComboBox.setBounds(193, 132, 163, 22);
+		prenotaLezioneStudentiPanel.add(corsiComboBox);
+		
+		datiStudenteLabel = new JLabel("STUDENTE:  " + studente.getMatricola() + ",  " + studente.getCognome().toUpperCase() + ",  " + studente.getNome().toUpperCase());
+		datiStudenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		datiStudenteLabel.setBounds(51, 106, 414, 14);
+		prenotaLezioneStudentiPanel.add(datiStudenteLabel);
+		
+		if(corsiComboBox.getSelectedItem() == null) {
+			alertNonCiSonoCorsiDisponibili();
+			PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+			setVisible(false);
+		}
+		
+		// LISTNER
+		
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -111,13 +144,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 				indietroButton.setBackground(Color.WHITE);
 			}
 		});
-		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(10, 273, 121, 23);
-		prenotaLezioneStudentiPanel.add(indietroButton);
 		
-		aggiungiButton = new JButton("AGGIUGI");
-		aggiungiButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		aggiungiButton.setBackground(Color.WHITE);
 		aggiungiButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				aggiungiButton.setBackground(Color.GREEN);
@@ -138,34 +165,12 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 					alertErroreIscrizioneStudente(state);
 			}
 		});
-		aggiungiButton.setFont(new Font("Arial", Font.BOLD, 15));
-		aggiungiButton.setBounds(417, 274, 121, 23);
-		prenotaLezioneStudentiPanel.add(aggiungiButton);
-		
-		selezionareCorsoLabel = new JLabel("Selezionare corso:");
-		selezionareCorsoLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		selezionareCorsoLabel.setBounds(51, 131, 136, 23);
-		prenotaLezioneStudentiPanel.add(selezionareCorsoLabel);
-		
-		
-		corsiComboBox.setBounds(193, 132, 163, 22);
-		prenotaLezioneStudentiPanel.add(corsiComboBox);
-		
-		datiStudenteLabel = new JLabel("STUDENTE:  " + studente.getMatricola() + ",  " + studente.getCognome().toUpperCase() + ",  " + studente.getNome().toUpperCase());
-		datiStudenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		datiStudenteLabel.setBounds(51, 106, 414, 14);
-		prenotaLezioneStudentiPanel.add(datiStudenteLabel);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
-		
-		if(corsiComboBox.getSelectedItem() == null) {
-			alertNonCiSonoCorsiDisponibili();
-			PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
-			setVisible(false);
-		}
 	}
 	
+	// ALERT
 	public void alertNonCiSonoCorsiDisponibili() {
 	
 		JOptionPane.showMessageDialog(this, "Non ci sono corsi disponibili dove poter iscrivere lo studente!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);

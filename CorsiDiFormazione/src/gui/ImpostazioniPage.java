@@ -79,13 +79,6 @@ public class ImpostazioniPage extends JFrame {
 		modificaNomeUtenteButton = new JButton("MODIFICA NOME UTENTE");
 		modificaNomeUtenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		modificaNomeUtenteButton.setBackground(Color.WHITE);
-		modificaNomeUtenteButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ModificaNomeUtentePage mnu = new ModificaNomeUtentePage(theController, operatore);
-				setVisible(false);
-			}
-		});
 		modificaNomeUtenteButton.setFont(new Font("Arial", Font.BOLD, 15));
 		modificaNomeUtenteButton.setBounds(152, 71, 237, 30);
 		impostazioniPanel.add(modificaNomeUtenteButton);
@@ -93,13 +86,6 @@ public class ImpostazioniPage extends JFrame {
 		modificaPasswordButton = new JButton("MODIFICA PASSWORD");
 		modificaPasswordButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		modificaPasswordButton.setBackground(Color.WHITE);
-		modificaPasswordButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ModificaPasswordPage mpp = new ModificaPasswordPage(theController, operatore);
-				setVisible(false);
-			}
-		});
 		modificaPasswordButton.setFont(new Font("Arial", Font.BOLD, 15));
 		modificaPasswordButton.setBounds(152, 143, 237, 30);
 		impostazioniPanel.add(modificaPasswordButton);
@@ -108,12 +94,6 @@ public class ImpostazioniPage extends JFrame {
 		eliminaProfiloButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eliminaProfiloButton.setForeground(Color.RED);
 		eliminaProfiloButton.setBackground(Color.WHITE);
-		eliminaProfiloButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				alertConfermaEliminaProfilo();
-			}
-		});
 		eliminaProfiloButton.setFont(new Font("Arial", Font.BOLD, 15));
 		eliminaProfiloButton.setBounds(155, 218, 234, 30);
 		impostazioniPanel.add(eliminaProfiloButton);
@@ -128,6 +108,39 @@ public class ImpostazioniPage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(10, 273, 121, 23);
+		impostazioniPanel.add(indietroButton);
+		
+		
+		//LISTNER
+		
+		modificaNomeUtenteButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ModificaNomeUtentePage mnu = new ModificaNomeUtentePage(theController, operatore);
+				setVisible(false);
+			}
+		});
+		
+		
+		modificaPasswordButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ModificaPasswordPage mpp = new ModificaPasswordPage(theController, operatore);
+				setVisible(false);
+			}
+		});
+		
+		
+		eliminaProfiloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				alertConfermaEliminaProfilo();
+			}
+		});
+		
+		
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -164,9 +177,7 @@ public class ImpostazioniPage extends JFrame {
 				indietroButton.setBackground(Color.WHITE);
 			}
 		});
-		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(10, 273, 121, 23);
-		impostazioniPanel.add(indietroButton);
+		
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

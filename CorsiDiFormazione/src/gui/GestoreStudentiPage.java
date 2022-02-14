@@ -96,6 +96,42 @@ public class GestoreStudentiPage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(10, 273, 168, 23);
+		selzionaStudentiPanel.add(indietroButton);
+		
+		studenteLabel = new JLabel("Studente:");
+		studenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		studenteLabel.setBounds(111, 123, 77, 14);
+		selzionaStudentiPanel.add(studenteLabel);
+		
+		studentiComboBox.setBounds(198, 120, 157, 22);
+		selzionaStudentiPanel.add(studentiComboBox);
+		
+		eliminaStudenteButton = new JButton("ELIMINA STUDENTE");
+		eliminaStudenteButton.setBackground(Color.WHITE);
+		eliminaStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		eliminaStudenteButton.setForeground(Color.RED);
+		eliminaStudenteButton.setFont(new Font("Arial", Font.BOLD, 11));
+		eliminaStudenteButton.setBounds(290, 169, 140, 33);
+		selzionaStudentiPanel.add(eliminaStudenteButton);
+		
+		panoramicaButton = new JButton("PANORAMICA");
+		panoramicaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panoramicaButton.setBackground(Color.WHITE);
+		panoramicaButton.setFont(new Font("Arial", Font.BOLD, 11));
+		panoramicaButton.setBounds(120, 169, 140, 33);
+		selzionaStudentiPanel.add(panoramicaButton);
+		
+		creaStudenteButton = new JButton("CREA STUDENTE");
+		creaStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		creaStudenteButton.setBackground(Color.WHITE);
+		creaStudenteButton.setFont(new Font("Arial", Font.BOLD, 15));
+		creaStudenteButton.setBounds(370, 273, 168, 23);
+		selzionaStudentiPanel.add(creaStudenteButton);
+		
+		
+		//LISTNER
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -111,37 +147,16 @@ public class GestoreStudentiPage extends JFrame {
 				indietroButton.setBackground(Color.WHITE);
 			}
 		});
-
-		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(10, 273, 168, 23);
-		selzionaStudentiPanel.add(indietroButton);
-		
-		studenteLabel = new JLabel("Studente:");
-		studenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		studenteLabel.setBounds(111, 123, 77, 14);
-		selzionaStudentiPanel.add(studenteLabel);
 		
 		
-		studentiComboBox.setBounds(198, 120, 157, 22);
-		selzionaStudentiPanel.add(studentiComboBox);
-		
-		eliminaStudenteButton = new JButton("ELIMINA STUDENTE");
-		eliminaStudenteButton.setBackground(Color.WHITE);
-		eliminaStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eliminaStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 					alertSeiSicuroDiVolerEliminareStudente();
 			}
 		});
-		eliminaStudenteButton.setForeground(Color.RED);
-		eliminaStudenteButton.setFont(new Font("Arial", Font.BOLD, 11));
-		eliminaStudenteButton.setBounds(290, 169, 140, 33);
-		selzionaStudentiPanel.add(eliminaStudenteButton);
 		
-		panoramicaButton = new JButton("PANORAMICA");
-		panoramicaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panoramicaButton.setBackground(Color.WHITE);
+		
 		panoramicaButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				panoramicaButton.setBackground(Color.GREEN);
@@ -157,12 +172,8 @@ public class GestoreStudentiPage extends JFrame {
 				setVisible(false);
 			}
 		});
-		panoramicaButton.setFont(new Font("Arial", Font.BOLD, 11));
-		panoramicaButton.setBounds(120, 169, 140, 33);
-		selzionaStudentiPanel.add(panoramicaButton);
 		
-		creaStudenteButton = new JButton("CREA STUDENTE");
-		creaStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
 		creaStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -171,11 +182,8 @@ public class GestoreStudentiPage extends JFrame {
 				setVisible(false);
 			}
 		});
-		creaStudenteButton.setBackground(Color.WHITE);
-		creaStudenteButton.setFont(new Font("Arial", Font.BOLD, 15));
-		creaStudenteButton.setBounds(370, 273, 168, 23);
-		selzionaStudentiPanel.add(creaStudenteButton);
 		
+
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}

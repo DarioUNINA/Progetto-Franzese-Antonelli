@@ -183,13 +183,6 @@ public class GestoreCorsiPage extends JFrame {
 		menuPanelEsteso = new JPanel();
 		menuPanelEsteso.setVisible(false);
 		menuPanelEsteso.setBounds(10, 11, 225, 539);
-		menuPanelEsteso.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseExited(MouseEvent e) {
-				menuPanelEsteso.setVisible(false);
-				menuPanel.setVisible(true);
-			}
-		});
 		menuPanelEsteso.setLayout(null);
 		menuPanelEsteso.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		menuPanelEsteso.setBackground(new Color(25, 25, 112));
@@ -197,43 +190,11 @@ public class GestoreCorsiPage extends JFrame {
 		
 		impostazioniLabelMenuEsteso = new JLabel(imageImpostazioni);
 		impostazioniLabelMenuEsteso.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		impostazioniLabelMenuEsteso.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 0, null);
-				setVisible(false);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-				menuPanel.setVisible(false);
-			}
-		});
 		impostazioniLabelMenuEsteso.setBounds(10, 465, 24, 32);
 		menuPanelEsteso.add(impostazioniLabelMenuEsteso);
 		
 		impostazioniScrittaLabel = new JLabel("IMPOSTAZIONI");
 		impostazioniScrittaLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		impostazioniScrittaLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 0, null);
-				setVisible(false);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-				impostazioniScrittaLabel.setForeground(Color.ORANGE);
-				menuPanel.setVisible(false);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-				impostazioniScrittaLabel.setForeground(Color.WHITE);
-				menuPanel.setVisible(false);
-
-			}
-		});
 		impostazioniScrittaLabel.setForeground(Color.WHITE);
 		impostazioniScrittaLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		impostazioniScrittaLabel.setBounds(44, 465, 142, 32);
@@ -241,28 +202,6 @@ public class GestoreCorsiPage extends JFrame {
 		
 		gestoreCorsiLabel = new JLabel("           GESTORE CORSI");
 		gestoreCorsiLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		gestoreCorsiLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				menuPanelEsteso.setVisible(false);
-				menuPanel.setVisible(true);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-				gestoreCorsiOpacoPanel.setBackground(azzurro);
-				gestoreCorsiLabel.setForeground(Color.BLACK);
-				gestoreCorsiLabel.setVisible(true);
-				
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				gestoreCorsiOpacoPanel.setBackground(new Color(25, 25, 112));
-				gestoreCorsiLabel.setForeground(Color.WHITE);
-				menuPanelEsteso.setVisible(true);
-				gestoreCorsiLabel.setVisible(true);
-			}
-		});
 		gestoreCorsiLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gestoreCorsiLabel.setForeground(Color.WHITE);
 		gestoreCorsiLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -271,30 +210,6 @@ public class GestoreCorsiPage extends JFrame {
 		
 		gestoreLezioniLabel = new JLabel("           GESTORE LEZIONI");
 		gestoreLezioniLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		gestoreLezioniLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				GestoreLezioniPage gs = new GestoreLezioniPage(theController, operatore);
-				setVisible(false);
-				
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				gestoreLezioniOpacoPanel.setBackground(azzurro);
-				gestoreLezioniLabel.setForeground(Color.BLACK);
-				gestoreLezioniLabel.setVisible(true);
-				menuPanelEsteso.setVisible(true);
-				
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
-				gestoreLezioniLabel.setForeground(Color.WHITE);
-				menuPanelEsteso.setVisible(true);
-				gestoreLezioniLabel.setVisible(true);
-			}
-			
-		});
 		gestoreLezioniLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gestoreLezioniLabel.setForeground(Color.WHITE);
 		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -303,28 +218,6 @@ public class GestoreCorsiPage extends JFrame {
 		
 		gestoreStudentiLabel = new JLabel("        GESTORE STUDENTI");
 		gestoreStudentiLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		gestoreStudentiLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				GestoreStudentiPage gs = new GestoreStudentiPage(theController, operatore);
-				setVisible(false);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-				gestoreStudentiOpacoPanel.setBackground(azzurro);
-				gestoreStudentiLabel.setForeground(Color.BLACK);
-				gestoreStudentiLabel.setVisible(true);
-				
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				gestoreStudentiOpacoPanel.setBackground(new Color(25, 25, 112));
-				gestoreStudentiLabel.setForeground(Color.WHITE);
-				menuPanelEsteso.setVisible(true);
-				gestoreStudentiLabel.setVisible(true);
-			}
-		});
 		gestoreStudentiLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gestoreStudentiLabel.setForeground(Color.WHITE);
 		gestoreStudentiLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -332,104 +225,28 @@ public class GestoreCorsiPage extends JFrame {
 		menuPanelEsteso.add(gestoreStudentiLabel);
 		
 		gestoreCorsiOpacoPanel = new JPanel();
-		gestoreCorsiOpacoPanel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-				gestoreCorsiOpacoPanel.setBackground(azzurro);
-				gestoreCorsiLabel.setForeground(Color.BLACK);
-				gestoreCorsiLabel.setVisible(true);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				gestoreCorsiOpacoPanel.setBackground(new Color(25, 25, 112));
-				gestoreCorsiLabel.setForeground(Color.WHITE);
-				gestoreCorsiLabel.setVisible(true);
-				menuPanelEsteso.setVisible(true);
-			}
-		});
 		gestoreCorsiOpacoPanel.setBackground(new Color(25, 25, 112));
 		gestoreCorsiOpacoPanel.setBounds(0, 66, 225, 22);
 		menuPanelEsteso.add(gestoreCorsiOpacoPanel);
 		
 		gestoreLezioniOpacoPanel = new JPanel();
-		gestoreLezioniOpacoPanel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-				gestoreLezioniOpacoPanel.setBackground(azzurro);
-				gestoreLezioniLabel.setForeground(Color.BLACK);
-				gestoreLezioniLabel.setVisible(true);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
-				menuPanelEsteso.setVisible(true);
-				gestoreLezioniLabel.setForeground(Color.WHITE);
-				gestoreLezioniLabel.setVisible(true);
-			}
-		});
 		gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
 		gestoreLezioniOpacoPanel.setBounds(0, 99, 225, 22);
 		menuPanelEsteso.add(gestoreLezioniOpacoPanel);
 		
 		gestoreStudentiOpacoPanel = new JPanel();
-		gestoreStudentiOpacoPanel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-				gestoreStudentiOpacoPanel.setBackground(azzurro);
-				gestoreStudentiLabel.setForeground(Color.BLACK);
-				gestoreStudentiLabel.setVisible(true);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				gestoreStudentiOpacoPanel.setBackground(new Color(25, 25, 112));
-				gestoreStudentiLabel.setForeground(Color.WHITE);
-				gestoreStudentiLabel.setVisible(true);
-				menuPanelEsteso.setVisible(true);
-			}
-		});
 		gestoreStudentiOpacoPanel.setBackground(new Color(25, 25, 112));
 		gestoreStudentiOpacoPanel.setBounds(0, 132, 225, 22);
 		menuPanelEsteso.add(gestoreStudentiOpacoPanel);
 		
 		esciImageMenuEstesoLabel = new JLabel(imageEsci);
 		esciImageMenuEstesoLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		esciImageMenuEstesoLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {	
-				alertReturnToLogIn();
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-			}
-		});
 		esciImageMenuEstesoLabel.setBounds(10, 496, 24, 22);
 		esciImageMenuEstesoLabel.setVisible(true);
 		menuPanelEsteso.add(esciImageMenuEstesoLabel);
 		
 		esciLabel = new JLabel("ESCI");
 		esciLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		esciLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {	
-				alertReturnToLogIn();
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				esciLabel.setForeground(Color.RED);
-				menuPanelEsteso.setVisible(true);
-				menuPanel.setVisible(false);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				esciLabel.setForeground(Color.WHITE);
-				menuPanelEsteso.setVisible(true);
-				menuPanel.setVisible(false);
-			}
-		});
 		esciLabel.setForeground(Color.WHITE);
 		esciLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		esciLabel.setBounds(44, 496, 142, 32);
@@ -437,12 +254,6 @@ public class GestoreCorsiPage extends JFrame {
 		
 		labelTrattiniMenuEsteso = new JLabel(imageTrattini);
 		labelTrattiniMenuEsteso.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		labelTrattiniMenuEsteso.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-			}
-		});
 		labelTrattiniMenuEsteso.setFont(new Font("Arial", Font.BOLD, 15));
 		labelTrattiniMenuEsteso.setBounds(10, 11, 24, 25);
 		menuPanelEsteso.add(labelTrattiniMenuEsteso);
@@ -462,37 +273,17 @@ public class GestoreCorsiPage extends JFrame {
 		
 		labelTrattini = new JLabel(imageTrattini);
 		labelTrattini.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		labelTrattini.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-			}
-		});
 		labelTrattini.setFont(new Font("Arial", Font.BOLD, 15));
 		labelTrattini.setBounds(10, 11, 24, 25);
 		menuPanel.add(labelTrattini);
 		
 		impostazioniLabel = new JLabel(imageImpostazioni);
 		impostazioniLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		impostazioniLabel.addMouseListener(new MouseAdapter() {		
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-			}
-			
-		});
 		impostazioniLabel.setBounds(10, 465, 24, 32);
 		menuPanel.add(impostazioniLabel);
 		
 		esciImageLabel = new JLabel(imageEsci);
 		esciImageLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		esciImageLabel.addMouseListener(new MouseAdapter() {		
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				menuPanelEsteso.setVisible(true);
-			}
-			
-		});
 		esciImageLabel.setBounds(10, 496, 24, 25);
 		menuPanel.add(esciImageLabel);
 		
@@ -542,41 +333,13 @@ public class GestoreCorsiPage extends JFrame {
 		filtri.add(parolaChiaveLabel);
 				
 		terminatoCheckBoxSi = new JCheckBox("SI");
-		terminatoCheckBoxNo = new JCheckBox("NO");
 		terminatoCheckBoxSi.setBackground(grigioChiaro);
-		terminatoCheckBoxNo.setBackground(grigioChiaro);
-		terminatoCheckBoxSi.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				terminatoCheckBoxNo.setSelected(false);
-				terminatoCheckBoxNo.setForeground(Color.BLACK);
-				
-				if(terminatoCheckBoxSi.getSelectedObjects() != null)
-					terminatoCheckBoxSi.setForeground(Color.GREEN);
-				else
-					terminatoCheckBoxSi.setForeground(Color.BLACK);
-			}
-		});
 		terminatoCheckBoxSi.setFont(new Font("Arial", Font.BOLD, 15));
 		terminatoCheckBoxSi.setBounds(119, 149, 46, 23);
 		filtri.add(terminatoCheckBoxSi);
 		
-		
-		terminatoCheckBoxNo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				terminatoCheckBoxSi.setSelected(false);
-				terminatoCheckBoxSi.setForeground(Color.BLACK);
-				
-				if(terminatoCheckBoxNo.getSelectedObjects() != null)
-					terminatoCheckBoxNo.setForeground(Color.RED);
-				else
-					terminatoCheckBoxNo.setForeground(Color.BLACK);
-				
-			}
-		});
+		terminatoCheckBoxNo = new JCheckBox("NO");
+		terminatoCheckBoxNo.setBackground(grigioChiaro);
 		terminatoCheckBoxNo.setFont(new Font("Arial", Font.BOLD, 15));
 		terminatoCheckBoxNo.setBounds(206, 149, 49, 23);
 		filtri.add(terminatoCheckBoxNo);
@@ -607,44 +370,6 @@ public class GestoreCorsiPage extends JFrame {
 		corsiPanel.add(corsiScrollPane);
 
 		corsiList = new JList<Corsi>(corsi);
-		corsiList.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(corsiList.isSelectionEmpty()) {
-					alertNessunCorsoSelezionato();
-				}else{
-					
-					if(corsiList.getSelectedValue().isTerminato())
-						iscriviStudenteButton.setEnabled(false);
-					else
-						iscriviStudenteButton.setEnabled(true);
-					
-					presenzeMinLabel.setText("Presenze Min: " + corsiList.getSelectedValue().getPresenzeMin());
-					maxPartecipantiLabel.setText("Max Partecipanti: " + corsiList.getSelectedValue().getMaxPartecipanti());
-					descrizioneTextPane.setText(corsiList.getSelectedValue().getDescrizione());
-					descrizioneTextPane.setVisible(true);
-					annoPanoramicaLabel.setText("Anno: " + corsiList.getSelectedValue().getAnno());
-					
-					String paroleChiave = theController.getParoleChiaveString(corsiList.getSelectedValue().getIdCorso());
-					if(!paroleChiave.equals(""))
-						paroleChiave = paroleChiave.substring(0, paroleChiave.length()-2);
-					paroleChiaveTextPane.setText(paroleChiave);
-					paroleChiaveTextPane.setVisible(true);
-					
-					String areeTematiche = theController.getAreeTematicheString(corsiList.getSelectedValue().getIdCorso());
-					if(!areeTematiche.equals(""))
-						areeTematiche = areeTematiche.substring(0, areeTematiche.length()-2);
-					areeTematicheTextPane.setText(areeTematiche);
-					areeTematicheTextPane.setVisible(true);
-				}
-					
-				lezioni = theController.getFutureLezioni(corsi.get(corsiList.getSelectedIndex()).getIdCorso());
-				lezioniProgrammateList.setListData(lezioni);
-					
-				
-				
-			}
-		});
 		corsiScrollPane.setViewportView(corsiList);
 		corsiList.setFont(new Font("Arial", Font.BOLD, 15));
 		corsiList.setBackground(azzurroChiaro);
@@ -721,39 +446,18 @@ public class GestoreCorsiPage extends JFrame {
 		gestione.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		gestione.setBackground(grigioChiaro);
 		gestione.setBounds(386, 347, 488, 203);
-		sfondoPane.add(gestione);
 		gestione.setLayout(null);
+		sfondoPane.add(gestione);
 		
 		eliminaCorsoButton = new JButton("ELIMINA CORSO");
 		eliminaCorsoButton.setBounds(266, 131, 212, 25);
-		gestione.add(eliminaCorsoButton);
 		eliminaCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eliminaCorsoButton.setBackground(Color.WHITE);
-		eliminaCorsoButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				EliminaCorsoPage ep = new EliminaCorsoPage(theController, operatore);
-				setVisible(false);
-				
-			}
-		});
 		eliminaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		gestione.add(eliminaCorsoButton);
 		
 		iscriviStudenteButton = new JButton("ISCRIVI STUDENTE");
 		iscriviStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		iscriviStudenteButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(corsiList.isSelectionEmpty()) 
-					alertNessunCorsoSelezionato();
-				else {
-					
-					IscriviStudenteGestoreCorsoPage page = new IscriviStudenteGestoreCorsoPage(theController, operatore, corsiList.getSelectedValue());
-					setVisible(false);
-				}			
-			}
-		});
 		iscriviStudenteButton.setFont(new Font("Arial", Font.BOLD, 15));
 		iscriviStudenteButton.setBackground(Color.WHITE);
 		iscriviStudenteButton.setBounds(266, 95, 212, 25);
@@ -761,17 +465,6 @@ public class GestoreCorsiPage extends JFrame {
 		
 		statisticheButton = new JButton("STATISTICHE CORSO");
 		statisticheButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		statisticheButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(corsiList.getSelectedValue() == null) {
-					alertNessunCorsoSelezionato();
-				}else {
-					StatisticheCorsoPage scp = new StatisticheCorsoPage(theController, operatore, corsiList.getSelectedValue());
-					setVisible(false);
-				}
-			}
-		});
 		statisticheButton.setFont(new Font("Arial", Font.BOLD, 15));
 		statisticheButton.setBackground(Color.WHITE);
 		statisticheButton.setBounds(266, 23, 212, 25);
@@ -795,9 +488,426 @@ public class GestoreCorsiPage extends JFrame {
 		
 		aggiungiCorsoButton = new JButton("AGGIUNGI CORSO");
 		aggiungiCorsoButton.setBounds(266, 167, 212, 25);
-		gestione.add(aggiungiCorsoButton);
 		aggiungiCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		aggiungiCorsoButton.setBackground(Color.WHITE);
+		aggiungiCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		gestione.add(aggiungiCorsoButton);
+		
+		modificaCorsoButton = new JButton("MODIFICA CORSO");
+		modificaCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		modificaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
+		modificaCorsoButton.setBackground(Color.WHITE);
+		modificaCorsoButton.setBounds(266, 59, 212, 25);
+		gestione.add(modificaCorsoButton);
+		
+		resetFiltriButton = new JButton("RESET");
+		resetFiltriButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		resetFiltriButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		resetFiltriButton.setBackground(Color.WHITE);
+		resetFiltriButton.setForeground(Color.RED);
+		resetFiltriButton.setBounds(10, 415, 89, 23);
+		resetFiltriButton.setFont(new Font("Arial", Font.BOLD, 15));
+		filtri.add(resetFiltriButton);
+		
+		filtraButton = new JButton("FILTRA");
+		filtraButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+		filtraButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		filtraButton.setBackground(Color.WHITE);
+		filtraButton.setForeground(new Color(65, 105, 225));
+		filtraButton.setBounds(212, 415, 89, 23);
+		filtraButton.setFont(new Font("Arial", Font.BOLD, 15));
+		filtri.add(filtraButton);
+		
+		FullMatchRadioButton = new JRadioButton("Full Match");
+		FullMatchRadioButton.setBackground(grigioChiaro);
+		FullMatchRadioButton.setSelected(true);
+		FullMatchRadioButton.setBounds(106, 8, 89, 23);
+		filtri.add(FullMatchRadioButton);
+		
+		PartialMatchRadioButton = new JRadioButton("Partial Match");
+		PartialMatchRadioButton.setBackground(grigioChiaro);
+		PartialMatchRadioButton.setBounds(197, 8, 104, 23);
+		filtri.add(PartialMatchRadioButton);
+		
+		annoScrollPane = new JScrollPane();
+		annoScrollPane.setBounds(109, 34, 175, 106);
+		annoScrollPane.setBorder(new LineBorder(Color.BLACK));
+		filtri.add(annoScrollPane);
+		
+		annoList = new JCheckBoxList();
+		annoScrollPane.setViewportView(annoList);
+		annoList.setModel(theController.setModelCheckBoxString(anni));
+		annoList.setFont(new Font("Arial", Font.BOLD, 15));
+		annoList.setBackground(azzurroChiaro);
+		annoList.setVisibleRowCount(10);
+		
+		temiScrollPane = new JScrollPane();
+		temiScrollPane.setBounds(109, 174, 177, 108);
+		filtri.add(temiScrollPane);
+		temiScrollPane.setBorder(new LineBorder(Color.BLACK));
+		
+		listaTemi = new JCheckBoxList();
+		temiScrollPane.setViewportView(listaTemi);
+		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
+		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
+		listaTemi.setBackground(azzurroChiaro);
+		listaTemi.setVisibleRowCount(10);
+		
+		listaTemi.setVisible(true);
+		annoList.setVisible(true);
+
+		
+		
+		//LISTNER 
+		
+		menuPanelEsteso.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				menuPanelEsteso.setVisible(false);
+				menuPanel.setVisible(true);
+			}
+		});
+		
+		
+		impostazioniLabelMenuEsteso.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 0, null);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				menuPanel.setVisible(false);
+			}
+		});
+		
+		
+		impostazioniScrittaLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 0, null);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				impostazioniScrittaLabel.setForeground(Color.ORANGE);
+				menuPanel.setVisible(false);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				impostazioniScrittaLabel.setForeground(Color.WHITE);
+				menuPanel.setVisible(false);
+
+			}
+		});
+		
+		
+		gestoreCorsiLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				menuPanelEsteso.setVisible(false);
+				menuPanel.setVisible(true);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				gestoreCorsiOpacoPanel.setBackground(azzurro);
+				gestoreCorsiLabel.setForeground(Color.BLACK);
+				gestoreCorsiLabel.setVisible(true);
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreCorsiOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreCorsiLabel.setForeground(Color.WHITE);
+				menuPanelEsteso.setVisible(true);
+				gestoreCorsiLabel.setVisible(true);
+			}
+		});
+		
+		
+		gestoreLezioniLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GestoreLezioniPage gs = new GestoreLezioniPage(theController, operatore);
+				setVisible(false);
+				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				gestoreLezioniOpacoPanel.setBackground(azzurro);
+				gestoreLezioniLabel.setForeground(Color.BLACK);
+				gestoreLezioniLabel.setVisible(true);
+				menuPanelEsteso.setVisible(true);
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreLezioniLabel.setForeground(Color.WHITE);
+				menuPanelEsteso.setVisible(true);
+				gestoreLezioniLabel.setVisible(true);
+			}
+			
+		});
+		
+		
+		gestoreStudentiLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GestoreStudentiPage gs = new GestoreStudentiPage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				gestoreStudentiOpacoPanel.setBackground(azzurro);
+				gestoreStudentiLabel.setForeground(Color.BLACK);
+				gestoreStudentiLabel.setVisible(true);
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreStudentiOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreStudentiLabel.setForeground(Color.WHITE);
+				menuPanelEsteso.setVisible(true);
+				gestoreStudentiLabel.setVisible(true);
+			}
+		});
+		
+		
+		gestoreCorsiOpacoPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				gestoreCorsiOpacoPanel.setBackground(azzurro);
+				gestoreCorsiLabel.setForeground(Color.BLACK);
+				gestoreCorsiLabel.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreCorsiOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreCorsiLabel.setForeground(Color.WHITE);
+				gestoreCorsiLabel.setVisible(true);
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		
+		
+		gestoreLezioniOpacoPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				gestoreLezioniOpacoPanel.setBackground(azzurro);
+				gestoreLezioniLabel.setForeground(Color.BLACK);
+				gestoreLezioniLabel.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
+				menuPanelEsteso.setVisible(true);
+				gestoreLezioniLabel.setForeground(Color.WHITE);
+				gestoreLezioniLabel.setVisible(true);
+			}
+		});
+		
+		
+		gestoreStudentiOpacoPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+				gestoreStudentiOpacoPanel.setBackground(azzurro);
+				gestoreStudentiLabel.setForeground(Color.BLACK);
+				gestoreStudentiLabel.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				gestoreStudentiOpacoPanel.setBackground(new Color(25, 25, 112));
+				gestoreStudentiLabel.setForeground(Color.WHITE);
+				gestoreStudentiLabel.setVisible(true);
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		
+		
+		esciImageMenuEstesoLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {	
+				alertReturnToLogIn();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		
+		
+		esciLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {	
+				alertReturnToLogIn();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				esciLabel.setForeground(Color.RED);
+				menuPanelEsteso.setVisible(true);
+				menuPanel.setVisible(false);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				esciLabel.setForeground(Color.WHITE);
+				menuPanelEsteso.setVisible(true);
+				menuPanel.setVisible(false);
+			}
+		});
+		
+		
+		labelTrattiniMenuEsteso.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		
+		
+		labelTrattini.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+		});
+		
+		
+		impostazioniLabel.addMouseListener(new MouseAdapter() {		
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+			
+		});
+		
+		
+		esciImageLabel.addMouseListener(new MouseAdapter() {		
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				menuPanelEsteso.setVisible(true);
+			}
+			
+		});
+		
+		
+		terminatoCheckBoxSi.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				terminatoCheckBoxNo.setSelected(false);
+				terminatoCheckBoxNo.setForeground(Color.BLACK);
+				
+				if(terminatoCheckBoxSi.getSelectedObjects() != null)
+					terminatoCheckBoxSi.setForeground(Color.GREEN);
+				else
+					terminatoCheckBoxSi.setForeground(Color.BLACK);
+			}
+		});
+		
+		
+		terminatoCheckBoxNo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				terminatoCheckBoxSi.setSelected(false);
+				terminatoCheckBoxSi.setForeground(Color.BLACK);
+				
+				if(terminatoCheckBoxNo.getSelectedObjects() != null)
+					terminatoCheckBoxNo.setForeground(Color.RED);
+				else
+					terminatoCheckBoxNo.setForeground(Color.BLACK);
+				
+			}
+		});
+		
+		
+		corsiList.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(corsiList.isSelectionEmpty()) {
+					alertNessunCorsoSelezionato();
+				}else{
+					
+					if(corsiList.getSelectedValue().isTerminato())
+						iscriviStudenteButton.setEnabled(false);
+					else
+						iscriviStudenteButton.setEnabled(true);
+					
+					presenzeMinLabel.setText("Presenze Min: " + corsiList.getSelectedValue().getPresenzeMin());
+					maxPartecipantiLabel.setText("Max Partecipanti: " + corsiList.getSelectedValue().getMaxPartecipanti());
+					descrizioneTextPane.setText(corsiList.getSelectedValue().getDescrizione());
+					descrizioneTextPane.setVisible(true);
+					annoPanoramicaLabel.setText("Anno: " + corsiList.getSelectedValue().getAnno());
+					
+					String paroleChiave = theController.getParoleChiaveString(corsiList.getSelectedValue().getIdCorso());
+					if(!paroleChiave.equals(""))
+						paroleChiave = paroleChiave.substring(0, paroleChiave.length()-2);
+					paroleChiaveTextPane.setText(paroleChiave);
+					paroleChiaveTextPane.setVisible(true);
+					
+					String areeTematiche = theController.getAreeTematicheString(corsiList.getSelectedValue().getIdCorso());
+					if(!areeTematiche.equals(""))
+						areeTematiche = areeTematiche.substring(0, areeTematiche.length()-2);
+					areeTematicheTextPane.setText(areeTematiche);
+					areeTematicheTextPane.setVisible(true);
+				}
+					
+				lezioni = theController.getFutureLezioni(corsi.get(corsiList.getSelectedIndex()).getIdCorso());
+				lezioniProgrammateList.setListData(lezioni);
+					
+				
+				
+			}
+		});
+		
+		
+		eliminaCorsoButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				EliminaCorsoPage ep = new EliminaCorsoPage(theController, operatore);
+				setVisible(false);
+				
+			}
+		});
+		
+		
+		iscriviStudenteButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(corsiList.isSelectionEmpty()) 
+					alertNessunCorsoSelezionato();
+				else {
+					
+					IscriviStudenteGestoreCorsoPage page = new IscriviStudenteGestoreCorsoPage(theController, operatore, corsiList.getSelectedValue());
+					setVisible(false);
+				}			
+			}
+		});
+		
+		
+		statisticheButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(corsiList.getSelectedValue() == null) {
+					alertNessunCorsoSelezionato();
+				}else {
+					StatisticheCorsoPage scp = new StatisticheCorsoPage(theController, operatore, corsiList.getSelectedValue());
+					setVisible(false);
+				}
+			}
+		});
+		
+		
 		aggiungiCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -807,9 +917,8 @@ public class GestoreCorsiPage extends JFrame {
 				
 			}
 		});
-		aggiungiCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		modificaCorsoButton = new JButton("MODIFICA CORSO");
+		
 		modificaCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -821,16 +930,8 @@ public class GestoreCorsiPage extends JFrame {
 				}
 			}
 		});
-		modificaCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		modificaCorsoButton.setFont(new Font("Arial", Font.BOLD, 15));
-		modificaCorsoButton.setBackground(Color.WHITE);
-		modificaCorsoButton.setBounds(266, 59, 212, 25);
-		gestione.add(modificaCorsoButton);
 		
-		resetFiltriButton = new JButton("RESET");
-		resetFiltriButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		resetFiltriButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		resetFiltriButton.setBackground(Color.WHITE);
+		
 		resetFiltriButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -848,15 +949,8 @@ public class GestoreCorsiPage extends JFrame {
 				
 			}
 		});
-		resetFiltriButton.setForeground(Color.RED);
-		resetFiltriButton.setBounds(10, 415, 89, 23);
-		resetFiltriButton.setFont(new Font("Arial", Font.BOLD, 15));
-		filtri.add(resetFiltriButton);
 		
-		filtraButton = new JButton("FILTRA");
-		filtraButton.setBorder(new LineBorder(new Color(0, 0, 0)));
-		filtraButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		filtraButton.setBackground(Color.WHITE);
+		
 		filtraButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -893,16 +987,8 @@ public class GestoreCorsiPage extends JFrame {
 				
 			}
 		});
-		filtraButton.setForeground(new Color(65, 105, 225));
-		filtraButton.setBounds(212, 415, 89, 23);
-		filtraButton.setFont(new Font("Arial", Font.BOLD, 15));
-		filtri.add(filtraButton);
 		
-		FullMatchRadioButton = new JRadioButton("Full Match");
-		PartialMatchRadioButton = new JRadioButton("Partial Match");
-		FullMatchRadioButton.setBackground(grigioChiaro);
-		PartialMatchRadioButton.setBackground(grigioChiaro);
-		FullMatchRadioButton.setSelected(true);
+		
 		FullMatchRadioButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -911,8 +997,6 @@ public class GestoreCorsiPage extends JFrame {
 				
 			}
 		});
-		FullMatchRadioButton.setBounds(106, 8, 89, 23);
-		filtri.add(FullMatchRadioButton);
 		
 		
 		PartialMatchRadioButton.addMouseListener(new MouseAdapter() {
@@ -923,43 +1007,14 @@ public class GestoreCorsiPage extends JFrame {
 				
 			}
 		});
-		PartialMatchRadioButton.setBounds(197, 8, 104, 23);
-		filtri.add(PartialMatchRadioButton);
 		
-		annoScrollPane = new JScrollPane();
-		annoScrollPane.setBounds(109, 34, 175, 106);
-		annoScrollPane.setBorder(new LineBorder(Color.BLACK));
-		filtri.add(annoScrollPane);
-		
-		annoList = new JCheckBoxList();
-		annoScrollPane.setViewportView(annoList);
-		annoList.setModel(theController.setModelCheckBoxString(anni));
-		annoList.setFont(new Font("Arial", Font.BOLD, 15));
-		annoList.setBackground(azzurroChiaro);
-		annoList.setVisibleRowCount(10);
-		
-		
-		temiScrollPane = new JScrollPane();
-		temiScrollPane.setBounds(109, 174, 177, 108);
-		filtri.add(temiScrollPane);
-		temiScrollPane.setBorder(new LineBorder(Color.BLACK));
-		
-		listaTemi = new JCheckBoxList();
-		temiScrollPane.setViewportView(listaTemi);
-		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
-		listaTemi.setFont(new Font("Arial", Font.BOLD, 15));
-		listaTemi.setBackground(azzurroChiaro);
-		listaTemi.setVisibleRowCount(10);
-		
-		listaTemi.setVisible(true);
-		annoList.setVisible(true);
-
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	
 	
+	//ALERT
 	public void alertReturnToLogIn() {
 		Object[] opzioni = {"Sì", "No"};
 		

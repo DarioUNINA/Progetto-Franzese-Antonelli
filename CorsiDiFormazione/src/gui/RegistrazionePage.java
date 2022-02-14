@@ -99,21 +99,6 @@ public class RegistrazionePage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
-		indietroButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				indietroButton.setBackground(Color.ORANGE);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				indietroButton.setBackground(Color.WHITE);
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				LogInPage LI = new LogInPage(theController);
-				setVisible(false);
-			}
-		});
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 458, 161, 32);
 		registrazionePanel.add(indietroButton);
@@ -185,6 +170,26 @@ public class RegistrazionePage extends JFrame {
 		iSCRIVITILabel.setBounds(338, 11, 161, 33);
 		registrazionePanel.add(iSCRIVITILabel);
 		
+		
+		//LISTNER
+		
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				indietroButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				indietroButton.setBackground(Color.WHITE);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				LogInPage LI = new LogInPage(theController);
+				setVisible(false);
+			}
+		});
+		
+		
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -222,6 +227,7 @@ public class RegistrazionePage extends JFrame {
 				confermaButton.setBackground(Color.WHITE);
 			}
 		});
+		
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

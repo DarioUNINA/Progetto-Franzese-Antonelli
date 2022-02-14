@@ -100,6 +100,28 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(10, 273, 121, 23);
+		confermaPrenotaLezioneStudentiPanel.add(indietroButton);
+		
+		confermaButton = new JButton("CONFERMA");
+		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		confermaButton.setBackground(Color.WHITE);
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaButton.setBounds(417, 274, 121, 23);
+		confermaPrenotaLezioneStudentiPanel.add(confermaButton);
+		
+		selezionareLezioneLabel = new JLabel("Selezionare lezione:");
+		selezionareLezioneLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		selezionareLezioneLabel.setBounds(42, 131, 145, 23);
+		confermaPrenotaLezioneStudentiPanel.add(selezionareLezioneLabel);
+		
+		lezioniComboBox.setBounds(193, 132, 163, 22);
+		confermaPrenotaLezioneStudentiPanel.add(lezioniComboBox);
+		
+		
+		//LISTNER
+		
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -115,13 +137,7 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 				indietroButton.setBackground(Color.WHITE);
 			}
 		});
-		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(10, 273, 121, 23);
-		confermaPrenotaLezioneStudentiPanel.add(indietroButton);
 		
-		confermaButton = new JButton("CONFERMA");
-		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		confermaButton.setBackground(Color.WHITE);
 		confermaButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				confermaButton.setBackground(Color.GREEN);
@@ -145,21 +161,8 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 				
 			}
 		});
-		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		confermaButton.setBounds(417, 274, 121, 23);
-		confermaPrenotaLezioneStudentiPanel.add(confermaButton);
-		
-		selezionareLezioneLabel = new JLabel("Selezionare lezione:");
-		selezionareLezioneLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		selezionareLezioneLabel.setBounds(42, 131, 145, 23);
-		confermaPrenotaLezioneStudentiPanel.add(selezionareLezioneLabel);
-		
-		lezioniComboBox.setBounds(193, 132, 163, 22);
-		confermaPrenotaLezioneStudentiPanel.add(lezioniComboBox);
 		
 		setLocationRelativeTo(null);
-		
-		
 		setVisible(true);
 	}
 	

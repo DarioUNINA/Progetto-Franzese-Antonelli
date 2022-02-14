@@ -135,7 +135,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		menuPanelEsteso = new JPanel();
 		menuPanelEsteso.setVisible(false);
 		menuPanelEsteso.setBounds(10, 11, 225, 539);
-		
 		menuPanelEsteso.setLayout(null);
 		menuPanelEsteso.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		menuPanelEsteso.setBackground(new Color(25, 25, 112));
@@ -146,7 +145,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		impostazioniLabelMenuEsteso.setBounds(10, 465, 24, 32);
 		menuPanelEsteso.add(impostazioniLabelMenuEsteso);
-		
 		impostazioniScrittaLabel = new JLabel("IMPOSTAZIONI");
 		impostazioniScrittaLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
@@ -157,7 +155,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		gestoreCorsiLabel = new JLabel("           GESTORE CORSI");
 		gestoreCorsiLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
 		gestoreCorsiLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gestoreCorsiLabel.setForeground(Color.WHITE);
 		gestoreCorsiLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -166,7 +163,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		gestoreLezioniLabel = new JLabel("           GESTORE LEZIONI");
 		gestoreLezioniLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
 		gestoreLezioniLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gestoreLezioniLabel.setForeground(Color.WHITE);
 		gestoreLezioniLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -174,8 +170,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		menuPanelEsteso.add(gestoreLezioniLabel);
 		
 		gestoreStudentiLabel = new JLabel("        GESTORE STUDENTI");
-		gestoreStudentiLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
+		gestoreStudentiLabel.setBorder(new LineBorder(new Color(0, 0, 0)));	
 		gestoreStudentiLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gestoreStudentiLabel.setForeground(Color.WHITE);
 		gestoreStudentiLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -183,33 +178,28 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		menuPanelEsteso.add(gestoreStudentiLabel);
 		
 		gestoreCorsiOpacoPanel = new JPanel();
-		
 		gestoreCorsiOpacoPanel.setBackground(new Color(25, 25, 112));
 		gestoreCorsiOpacoPanel.setBounds(0, 66, 225, 22);
 		menuPanelEsteso.add(gestoreCorsiOpacoPanel);
 		
 		gestoreLezioniOpacoPanel = new JPanel();
-	
 		gestoreLezioniOpacoPanel.setBackground(new Color(25, 25, 112));
 		gestoreLezioniOpacoPanel.setBounds(0, 99, 225, 22);
 		menuPanelEsteso.add(gestoreLezioniOpacoPanel);
 		
 		gestoreStudentiOpacoPanel = new JPanel();
-		
 		gestoreStudentiOpacoPanel.setBackground(new Color(25, 25, 112));
 		gestoreStudentiOpacoPanel.setBounds(0, 132, 225, 22);
 		menuPanelEsteso.add(gestoreStudentiOpacoPanel);
 		
 		esciImageMenuEstesoLabel = new JLabel(imageEsci);
 		esciImageMenuEstesoLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		
 		esciImageMenuEstesoLabel.setBounds(10, 496, 24, 22);
 		esciImageMenuEstesoLabel.setVisible(true);
 		menuPanelEsteso.add(esciImageMenuEstesoLabel);
 		
 		esciLabel = new JLabel("ESCI");
 		esciLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		
 		esciLabel.setForeground(Color.WHITE);
 		esciLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		esciLabel.setBounds(44, 496, 142, 32);
@@ -217,7 +207,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		labelTrattiniMenuEsteso = new JLabel(imageTrattini);
 		labelTrattiniMenuEsteso.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		
 		labelTrattiniMenuEsteso.setFont(new Font("Arial", Font.BOLD, 15));
 		labelTrattiniMenuEsteso.setBounds(10, 11, 24, 25);
 		menuPanelEsteso.add(labelTrattiniMenuEsteso);
@@ -237,20 +226,17 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		labelTrattini = new JLabel(imageTrattini);
 		labelTrattini.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		
 		labelTrattini.setFont(new Font("Arial", Font.BOLD, 15));
 		labelTrattini.setBounds(10, 11, 24, 25);
 		menuPanel.add(labelTrattini);
 		
 		impostazioniLabel = new JLabel(imageImpostazioni);
-		impostazioniLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-	
+		impostazioniLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));	
 		impostazioniLabel.setBounds(10, 465, 24, 32);
 		menuPanel.add(impostazioniLabel);
 		
 		esciImageLabel = new JLabel(imageEsci);
 		esciImageLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		
 		esciImageLabel.setBounds(10, 496, 24, 25);
 		menuPanel.add(esciImageLabel);
 		
@@ -268,7 +254,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 		modificaStudenteButton = new JButton("MODIFICA STUDENTE");
 		modificaStudenteButton.setBackground(Color.WHITE);
-		
 		modificaStudenteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		modificaStudenteButton.setFont(new Font("Arial", Font.BOLD, 15));
 		modificaStudenteButton.setBounds(592, 43, 208, 23);
@@ -335,7 +320,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		iscriviAdUnCorsoButton = new JButton("ISCRIVI AD UN CORSO");
 		iscriviAdUnCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		iscriviAdUnCorsoButton.setBackground(Color.WHITE);
-		
 		iscriviAdUnCorsoButton.setFont(new Font("Arial", Font.BOLD, 11));
 		iscriviAdUnCorsoButton.setBounds(10, 331, 174, 43);
 		corsiAmmessoPanel.add(iscriviAdUnCorsoButton);
@@ -343,7 +327,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		disiscriviDaUnCorsoButton = new JButton("DISISCRIVI DA UN CORSO");
 		disiscriviDaUnCorsoButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		disiscriviDaUnCorsoButton.setBackground(Color.WHITE);
-		
 		disiscriviDaUnCorsoButton.setFont(new Font("Arial", Font.BOLD, 11));
 		disiscriviDaUnCorsoButton.setBounds(205, 331, 174, 43);
 		corsiAmmessoPanel.add(disiscriviDaUnCorsoButton);
@@ -351,7 +334,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		prenotaLezioneButton = new JButton("PRENOTA LEZIONE");
 		prenotaLezioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		prenotaLezioneButton.setBackground(Color.WHITE);
-		
 		prenotaLezioneButton.setFont(new Font("Arial", Font.BOLD, 11));
 		prenotaLezioneButton.setBounds(10, 397, 174, 43);
 		corsiAmmessoPanel.add(prenotaLezioneButton);
@@ -359,7 +341,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		annullaPrenotazioneButton = new JButton("ANNULLA PRENOTAZIONE");
 		annullaPrenotazioneButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		annullaPrenotazioneButton.setBackground(Color.WHITE);
-		
 		annullaPrenotazioneButton.setFont(new Font("Arial", Font.BOLD, 11));
 		annullaPrenotazioneButton.setBounds(205, 397, 174, 43);
 		corsiAmmessoPanel.add(annullaPrenotazioneButton);

@@ -44,6 +44,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 	private JButton indietroButton;
 	private JLabel domandaLabel;
 	private JTextField rispostaDomandaField;
+	private JLabel rispostaLabel;
 	
 	final Color azzurro;
 	final Color azzurroChiaro;
@@ -92,29 +93,6 @@ public class RecuperoPassDomandaPage extends JFrame {
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		confermaButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText().toLowerCase(), operatore);
-
-				if(state.equals("0")) {
-					ModificaPasswordPage pg = new ModificaPasswordPage(theController, operatore);
-					setVisible(false);
-				}else
-					alertRispostaNonValida(state);
-			}
-		});
-
-			confermaButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				confermaButton.setBackground(Color.GREEN);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				confermaButton.setBackground(Color.WHITE);
-			}
-			});
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(212, 171, 121, 27);
 		recuperoPanel.add(confermaButton);
@@ -122,21 +100,6 @@ public class RecuperoPassDomandaPage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
-		indietroButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				indietroButton.setBackground(Color.ORANGE);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				indietroButton.setBackground(Color.WHITE);
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				RecuperoPassPage rpp = new RecuperoPassPage(theController);
-				setVisible(false);
-			}
-		});
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 273, 121, 23);
 		recuperoPanel.add(indietroButton);
@@ -153,16 +116,57 @@ public class RecuperoPassDomandaPage extends JFrame {
 		recuperoPanel.add(rispostaDomandaField);
 		rispostaDomandaField.setColumns(10);
 		
-		JLabel rispostaLabel = new JLabel("Inserire Risposta:");
+		rispostaLabel = new JLabel("Inserire Risposta:");
 		rispostaLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		rispostaLabel.setBounds(73, 143, 131, 14);
 		recuperoPanel.add(rispostaLabel);
+		
+		
+		//LISTNER
+		
+		confermaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText().toLowerCase(), operatore);
+
+				if(state.equals("0")) {
+					ModificaPasswordPage pg = new ModificaPasswordPage(theController, operatore);
+					setVisible(false);
+				}else
+					alertRispostaNonValida(state);
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				confermaButton.setBackground(Color.GREEN);
+			}
+			public void mouseExited(MouseEvent e) {
+				confermaButton.setBackground(Color.WHITE);
+			}
+		});
+		
+		
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				indietroButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				indietroButton.setBackground(Color.WHITE);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				RecuperoPassPage rpp = new RecuperoPassPage(theController);
+				setVisible(false);
+			}
+		});
+		
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	
-	
+	//ALERT
 	public void alertRispostaNonValida(String state) {
 		
 		if(state.equals("-1"))

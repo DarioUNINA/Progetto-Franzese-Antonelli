@@ -116,6 +116,19 @@ public class ModificaStudentePage extends JFrame {
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaButton.setBounds(412, 273, 126, 23);
+		inserisciDatiStudentePanel.add(confermaButton);
+		
+		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBackground(Color.WHITE);
+		indietroButton.setBounds(10, 273, 126, 23);
+		inserisciDatiStudentePanel.add(indietroButton);
+		
+		
+		//LISTNER
+		
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -126,13 +139,8 @@ public class ModificaStudentePage extends JFrame {
 				
 			}
 		});
-		confermaButton.setBounds(412, 273, 126, 23);
-		inserisciDatiStudentePanel.add(confermaButton);
 		
-		indietroButton = new JButton("INDIETRO");
-		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBackground(Color.WHITE);
+		
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -148,8 +156,7 @@ public class ModificaStudentePage extends JFrame {
 				setVisible(false);
 			}
 		});
-		indietroButton.setBounds(10, 273, 126, 23);
-		inserisciDatiStudentePanel.add(indietroButton);
+		
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -157,7 +164,7 @@ public class ModificaStudentePage extends JFrame {
 			alertNessunCorsoDisponibile();
 	}
 	
-	
+	//ALERT
 	public void gestioneModificaStudente() {
 		
 		Studenti studenteNuovo = new Studenti(studente.getMatricola(), nomeTextField.getText(), cognomeTextField.getText());

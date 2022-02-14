@@ -139,15 +139,6 @@ public class CreazioneCorsoPage extends JFrame {
 		terminatoCheckBox = new JCheckBox("SI");
 		terminatoCheckBox.setBounds(521, 145, 48, 33);
 		terminatoCheckBox.setBackground(grigioChiaro);
-		terminatoCheckBox.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(terminatoCheckBox.getSelectedObjects() != null)
-					terminatoCheckBox.setForeground(Color.GREEN);
-				else
-					terminatoCheckBox.setForeground(Color.BLACK);
-			}
-		});
 		terminatoCheckBox.setFont(new Font("Arial", Font.BOLD, 15));
 		creaCorsoPanel.add(terminatoCheckBox);
 		
@@ -155,21 +146,6 @@ public class CreazioneCorsoPage extends JFrame {
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBounds(10, 495, 137, 33);
 		indietroButton.setBackground(Color.WHITE);
-		indietroButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
-				setVisible(false);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				indietroButton.setBackground(Color.ORANGE);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				indietroButton.setBackground(Color.WHITE);
-			}
-		});
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		creaCorsoPanel.add(indietroButton);
 
@@ -214,29 +190,6 @@ public class CreazioneCorsoPage extends JFrame {
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBounds(717, 495, 137, 33);
 		confermaButton.setBackground(Color.WHITE);
-		confermaButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				confermaButton.setBackground(Color.GREEN);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				confermaButton.setBackground(Color.WHITE);
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				if((annoChooser.getYear()<2022))
-						alertAnnoNonValido();
-				else
-					if(nomeTextField.getText().equals(""))
-						alertNomeNonInserito();
-					else
-						gestoreCreazioneCorso();
-			}	
-			
-		});
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		creaCorsoPanel.add(confermaButton);
 		
@@ -293,6 +246,59 @@ public class CreazioneCorsoPage extends JFrame {
 		descrizioneTextField.setFont(new Font("Arial", Font.BOLD, 11));
 		descrizioneTextField.setColumns(10);
 		creaCorsoPanel.add(descrizioneTextField);
+		
+		
+		//LISTNER
+		
+		terminatoCheckBox.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(terminatoCheckBox.getSelectedObjects() != null)
+					terminatoCheckBox.setForeground(Color.GREEN);
+				else
+					terminatoCheckBox.setForeground(Color.BLACK);
+			}
+		});
+		
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				indietroButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				indietroButton.setBackground(Color.WHITE);
+			}
+		});
+		
+		confermaButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				confermaButton.setBackground(Color.GREEN);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				confermaButton.setBackground(Color.WHITE);
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if((annoChooser.getYear()<2022))
+						alertAnnoNonValido();
+				else
+					if(nomeTextField.getText().equals(""))
+						alertNomeNonInserito();
+					else
+						gestoreCreazioneCorso();
+			}	
+			
+		});
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

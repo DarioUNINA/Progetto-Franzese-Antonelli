@@ -93,22 +93,6 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
-		indietroButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, lezione);
-				setVisible(false);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				indietroButton.setBackground(Color.ORANGE);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				indietroButton.setBackground(Color.WHITE);
-			}
-		});
-
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 273, 168, 23);
 		selzionaStudentiPanel.add(indietroButton);
@@ -125,6 +109,28 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaButton.setBounds(370, 273, 168, 23);
+		selzionaStudentiPanel.add(confermaButton);
+		
+		//LISTNER
+		
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, lezione);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				indietroButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				indietroButton.setBackground(Color.WHITE);
+			}
+		});
+		
 		confermaButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				confermaButton.setBackground(Color.GREEN);
@@ -143,13 +149,12 @@ public class AggiungiStudenteLezionePage extends JFrame {
 			}
 			
 		});
-		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		confermaButton.setBounds(370, 273, 168, 23);
-		selzionaStudentiPanel.add(confermaButton);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
+	
+	//ALERT
 	
 	public void alertStudenteAggiuntoCorrettamente() {
 		JOptionPane.showMessageDialog(this, "Studente aggiunto correttamente alle lezione.","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);

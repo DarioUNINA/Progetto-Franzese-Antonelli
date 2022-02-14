@@ -91,16 +91,6 @@ public class ModificaPasswordPage extends JFrame {
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
-		confermaButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				confermaButton.setBackground(Color.GREEN);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				confermaButton.setBackground(Color.WHITE);
-			}
-		});
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(195, 175, 162, 31);
 		recuperoPanel.add(confermaButton);
@@ -131,25 +121,20 @@ public class ModificaPasswordPage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
-		indietroButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage hp = new ImpostazioniPage(theController, operatore, 3, null);
-				setVisible(false);
-			}
-		});
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		indietroButton.setBounds(10, 265, 123, 31);
 		recuperoPanel.add(indietroButton);
 		
 		if(operatore.getPassword() == null)
 			indietroButton.setVisible(false);
 			
-		confermaButton.addActionListener(new ActionListener() {
+		
+			
+		
+		
+		//LISTNER
+		
+		confermaButton.addMouseListener(new MouseAdapter() {
 			public void actionPerformed(ActionEvent e) {
 				
 				String pass = passwordField.getText().toLowerCase();
@@ -171,6 +156,26 @@ public class ModificaPasswordPage extends JFrame {
 						}
 				
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				confermaButton.setBackground(Color.GREEN);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				confermaButton.setBackground(Color.WHITE);
+			}
+		});
+		
+		
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ImpostazioniPage hp = new ImpostazioniPage(theController, operatore, 3, null);
+				setVisible(false);
+			}
+			public void actionPerformed(ActionEvent e) {
+			}
+			
 		});
 		
 		

@@ -98,8 +98,9 @@ public class StatisticheCorsoPage extends JFrame {
 		statistichePanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		statistichePanel.setBackground(grigioChiaro);
 		statistichePanel.setBounds(10, 11, 864, 44);
-		sfondoPane.add(statistichePanel);
 		statistichePanel.setLayout(null);
+		sfondoPane.add(statistichePanel);
+		
 		
 		statisticheCorsoLabel = new JLabel("STATISTICHE CORSO");
 		statisticheCorsoLabel.setBounds(315, 7, 234, 26);
@@ -112,19 +113,19 @@ public class StatisticheCorsoPage extends JFrame {
 		infoPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		infoPanel.setBackground(grigioChiaro);
 		infoPanel.setBounds(332, 66, 542, 484);
-		sfondoPane.add(infoPanel);
 		infoPanel.setLayout(null);
+		sfondoPane.add(infoPanel);
 		
 		nomeCorsoLabel = new JLabel("Corso: " + corso.getNome().toUpperCase());
 		nomeCorsoLabel.setBounds(10, 11, 522, 24);
-		infoPanel.add(nomeCorsoLabel);
 		nomeCorsoLabel.setFont(new Font("Arial", Font.BOLD, 20));
+		infoPanel.add(nomeCorsoLabel);
 		
 		numeroMinPresenzeLezioneLabel = new JLabel("Numero Min di presenze a Lezione: " + theController.minimoPresenze(corso.getIdCorso()));
 		numeroMinPresenzeLezioneLabel.setBounds(10, 167, 522, 24);
-		infoPanel.add(numeroMinPresenzeLezioneLabel);
 		numeroMinPresenzeLezioneLabel.setFont(new Font("Arial", Font.BOLD, 20));
-		
+		infoPanel.add(numeroMinPresenzeLezioneLabel);
+				
 		numeroMaxPresenzeLezioneLabel = new JLabel("Numero Max di presenze a Lezione: " + theController.massimoPresenze(corso.getIdCorso()));
 		numeroMaxPresenzeLezioneLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		numeroMaxPresenzeLezioneLabel.setBounds(10, 256, 522, 24);
@@ -132,13 +133,13 @@ public class StatisticheCorsoPage extends JFrame {
 		
 		presenzeMedieLabel = new JLabel("Presenze medie per lezione: " + String.valueOf(theController.getPresenzeMedie(corso.getIdCorso())));
 		presenzeMedieLabel.setBounds(10, 337, 329, 24);
-		infoPanel.add(presenzeMedieLabel);
 		presenzeMedieLabel.setFont(new Font("Arial", Font.BOLD, 20));
-		
+		infoPanel.add(presenzeMedieLabel);
+			
 		percentualeRiempimentoLabel = new JLabel("Percentuale Riempimento Lezioni:");
 		percentualeRiempimentoLabel.setBounds(118, 418, 346, 24);
-		infoPanel.add(percentualeRiempimentoLabel);
 		percentualeRiempimentoLabel.setFont(new Font("Arial", Font.BOLD, 20));
+		infoPanel.add(percentualeRiempimentoLabel);
 		
 		mediaRiempimentoProgressBar = new JProgressBar();
 		mediaRiempimentoProgressBar.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -203,6 +204,15 @@ public class StatisticheCorsoPage extends JFrame {
 		studentiPanel.add(numeroLezioniLabel);
 		
 		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		indietroButton.setBounds(10, 446, 292, 27);
+		studentiPanel.add(indietroButton);
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBackground(Color.WHITE);
+
+		
+		//LISTNER 
+		
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -210,12 +220,7 @@ public class StatisticheCorsoPage extends JFrame {
 				setVisible(false);
 			}
 		});
-		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		indietroButton.setBounds(10, 446, 292, 27);
-		studentiPanel.add(indietroButton);
-		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBackground(Color.WHITE);
-
+		
 		setLocationRelativeTo(null);
 		setVisible(true);
 		

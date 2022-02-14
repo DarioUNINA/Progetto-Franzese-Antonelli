@@ -108,6 +108,19 @@ public class EliminaCorsoPage extends JFrame {
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaButton.setBounds(193, 170, 165, 33);
+		eliminaCorsoPanel.add(confermaButton);
+
+		indietroButton = new JButton("INDIETRO");
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		indietroButton.setBackground(Color.WHITE);
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(10, 273, 121, 23);
+		eliminaCorsoPanel.add(indietroButton);
+		
+		//LISTNER
+		
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -120,13 +133,7 @@ public class EliminaCorsoPage extends JFrame {
 				
 			}
 		});
-		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		confermaButton.setBounds(193, 170, 165, 33);
-		eliminaCorsoPanel.add(confermaButton);
-
-		indietroButton = new JButton("INDIETRO");
-		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		indietroButton.setBackground(Color.WHITE);
+		
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -142,9 +149,6 @@ public class EliminaCorsoPage extends JFrame {
 				indietroButton.setBackground(Color.WHITE);
 			}
 		});
-		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(10, 273, 121, 23);
-		eliminaCorsoPanel.add(indietroButton);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

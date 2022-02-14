@@ -143,21 +143,6 @@ public class CreazioneLezionePage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
-		indietroButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				GestoreLezioniPage glp = new GestoreLezioniPage(theController, operatore);
-				setVisible(false);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				indietroButton.setBackground(Color.ORANGE);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				indietroButton.setBackground(Color.WHITE);
-			}
-		});
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 273, 121, 23);
 		creaLezionePanel.add(indietroButton);
@@ -174,22 +159,6 @@ public class CreazioneLezionePage extends JFrame {
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
-		confermaButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				confermaButton.setBackground(Color.GREEN);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				confermaButton.setBackground(Color.WHITE);
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				gestoreInserimentoLezione();
-				
-			}
-		});	
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(417, 274, 121, 23);
 		creaLezionePanel.add(confermaButton);
@@ -206,6 +175,40 @@ public class CreazioneLezionePage extends JFrame {
 		descrizioneTextField.setBounds(105, 186, 170, 20);
 		creaLezionePanel.add(descrizioneTextField);
 	
+		//LISTNER
+		
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GestoreLezioniPage glp = new GestoreLezioniPage(theController, operatore);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				indietroButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				indietroButton.setBackground(Color.WHITE);
+			}
+		});
+		
+		confermaButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				confermaButton.setBackground(Color.GREEN);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				confermaButton.setBackground(Color.WHITE);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				gestoreInserimentoLezione();
+				
+			}
+		});	
 		
 		setLocationRelativeTo(null);
 		setVisible(true);

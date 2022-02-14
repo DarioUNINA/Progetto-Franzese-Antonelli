@@ -103,6 +103,20 @@ public class RecuperoPassPage extends JFrame {
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
+		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
+		confermaButton.setBounds(201, 154, 135, 24);
+		recuperoPanel.add(confermaButton);
+		
+		indietroButton = new JButton("INDIETRO");
+		indietroButton.setBackground(Color.WHITE);
+		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
+		indietroButton.setBounds(10, 272, 135, 24);
+		recuperoPanel.add(indietroButton);
+		
+		
+		//LISTNER
+		
 		confermaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -133,13 +147,7 @@ public class RecuperoPassPage extends JFrame {
 			}
 		});
 		
-		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
-		confermaButton.setBounds(201, 154, 135, 24);
-		recuperoPanel.add(confermaButton);
 		
-		indietroButton = new JButton("INDIETRO");
-		indietroButton.setBackground(Color.WHITE);
-		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -156,14 +164,13 @@ public class RecuperoPassPage extends JFrame {
 			}
 		});
 		
-		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
-		indietroButton.setBounds(10, 272, 135, 24);
-		recuperoPanel.add(indietroButton);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	
+	
+	//ALERT
 	public void alertNomeUtenteNonInserito() {
 		JOptionPane.showMessageDialog(this, "Nome Utente non inserito!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}

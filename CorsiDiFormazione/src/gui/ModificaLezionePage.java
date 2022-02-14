@@ -90,7 +90,6 @@ public class ModificaLezionePage extends JFrame {
 		setContentPane(creazioneLezioniPanel);
 		creazioneLezioniPanel.setLayout(null);
 			
-		
 		modificheLezionePanel = new JPanel();
 		modificheLezionePanel.setBounds(10, 11, 548, 307);
 		modificheLezionePanel.setBackground(grigioChiaro);
@@ -142,21 +141,6 @@ public class ModificaLezionePage extends JFrame {
 		indietroButton = new JButton("INDIETRO");
 		indietroButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		indietroButton.setBackground(Color.WHITE);
-		indietroButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				PanoramicaLezionePage plp = new PanoramicaLezionePage(theController, operatore, lezione);
-				setVisible(false);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				indietroButton.setBackground(Color.ORANGE);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				indietroButton.setBackground(Color.WHITE);
-			}
-		});
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 273, 121, 23);
 		modificheLezionePanel.add(indietroButton);
@@ -175,22 +159,6 @@ public class ModificaLezionePage extends JFrame {
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		confermaButton.setBackground(Color.WHITE);
-		confermaButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				confermaButton.setBackground(Color.GREEN);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				confermaButton.setBackground(Color.WHITE);
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				gestoreModificaLezione();
-				
-			}
-		});	
 		confermaButton.setFont(new Font("Arial", Font.BOLD, 15));
 		confermaButton.setBounds(417, 274, 121, 23);
 		modificheLezionePanel.add(confermaButton);
@@ -210,10 +178,49 @@ public class ModificaLezionePage extends JFrame {
 		modificheLezionePanel.add(descrizioneTextField);
 	
 		
+		
+		//LISTNER
+		
+		indietroButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				PanoramicaLezionePage plp = new PanoramicaLezionePage(theController, operatore, lezione);
+				setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				indietroButton.setBackground(Color.ORANGE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				indietroButton.setBackground(Color.WHITE);
+			}
+		});
+		
+		
+		confermaButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				confermaButton.setBackground(Color.GREEN);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				confermaButton.setBackground(Color.WHITE);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				gestoreModificaLezione();
+				
+			}
+		});	
+		
+		
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	
+	//ALERT
 	public void alertModificaEffettuata() {
 		
 		JOptionPane.showMessageDialog(this, "Lezione modificata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);

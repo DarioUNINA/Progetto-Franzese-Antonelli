@@ -1,5 +1,7 @@
 package dto;
 
+import java.util.Vector;
+
 public class Corsi {
 
 	private String nome;

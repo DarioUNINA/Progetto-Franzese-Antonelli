@@ -700,18 +700,9 @@ public class GestoreLezioniPage extends JFrame {
 		
 		corsiList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
-				
 				if(e.getValueIsAdjusting()) {
-					
-					if(corsiList.isSelectionEmpty()) {
-						alertNessunCorsoSelezionato();
-					}else {
-						String id_corso = corsiList.getSelectedValue().getIdCorso();
-						lezioni = theController.setAllLezioniDelCorso(id_corso);
-						lezioniList.setListData(lezioni);
-						}
+					setLezioni();
 				}
-					
 			}
 				
 				
@@ -726,7 +717,6 @@ public class GestoreLezioniPage extends JFrame {
 				}else {
 					PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, theController.getLezione(lezioniList.getSelectedValue().getIdLezione()));
 					setVisible(false);
-					
 					
 				}
 			}
@@ -758,17 +748,7 @@ public class GestoreLezioniPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				Vector<String> vettoreGiorni = theController.getGiorniSelezionati(giorniList);
-				Vector<String> vettoreMesi = theController.getMesiSelezionati(mesiList);
-				Vector<Time> vettoreOrario = theController.getOrariSelezionati(orarioList, orario);
-				Vector<Time> vettoreDurate = theController.getDurateSelezionate(durataList, durata);
-				
-				if(corsiList.getSelectedValue()==null)
-					alertNessunCorsoSelezionato();
-				else {
-						lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
-						lezioniList.setListData(lezioni);
-					}
+				filtriLezioni();
 			}
 		});
 		
@@ -777,16 +757,7 @@ public class GestoreLezioniPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				giorniList.setModel(theController.setModelCheckBoxString(giorni));
-				mesiList.setModel(theController.setModelCheckBoxString(mesi));
-				orarioList.setModel(theController.setModelCheckBoxTime(orario));
-				durataList.setModel(theController.setModelCheckBoxTime(durata));
-				setAllGiorniRadioButton.setSelected(false);
-				setAllGiorniRadioButton.setText("set all");
-				setAllMesiRadioButton.setSelected(false);
-				setAllMesiRadioButton.setText("set all");
-				lezioni = theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso());
-				lezioniList.setListData(lezioni);
+				resetFiltri();
 			}
 		});
 		
@@ -948,5 +919,44 @@ public class GestoreLezioniPage extends JFrame {
 			setVisible(false);
 		}
 			
+	}
+	
+	public void setLezioni() {
+			
+			if(corsiList.isSelectionEmpty()) {
+				alertNessunCorsoSelezionato();
+			}else {
+				String id_corso = corsiList.getSelectedValue().getIdCorso();
+				lezioni = theController.setAllLezioniDelCorso(id_corso);
+				lezioniList.setListData(lezioni);
+				}	
+	}
+	
+	public void filtriLezioni() {
+		Vector<String> vettoreGiorni = theController.getGiorniSelezionati(giorniList);
+		Vector<String> vettoreMesi = theController.getMesiSelezionati(mesiList);
+		Vector<Time> vettoreOrario = theController.getOrariSelezionati(orarioList, orario);
+		Vector<Time> vettoreDurate = theController.getDurateSelezionate(durataList, durata);
+		
+		if(corsiList.getSelectedValue()==null)
+			alertNessunCorsoSelezionato();
+		else {
+				lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
+				lezioniList.setListData(lezioni);
+			}
+	}
+	
+	public void resetFiltri() {
+		Vector<String> vettoreGiorni = theController.getGiorniSelezionati(giorniList);
+		Vector<String> vettoreMesi = theController.getMesiSelezionati(mesiList);
+		Vector<Time> vettoreOrario = theController.getOrariSelezionati(orarioList, orario);
+		Vector<Time> vettoreDurate = theController.getDurateSelezionate(durataList, durata);
+		
+		if(corsiList.getSelectedValue()==null)
+			alertNessunCorsoSelezionato();
+		else {
+				lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
+				lezioniList.setListData(lezioni);
+			}
 	}
 }

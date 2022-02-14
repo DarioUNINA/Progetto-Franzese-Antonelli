@@ -4,6 +4,7 @@ import java.sql.*;
 
 import javax.swing.JOptionPane;
 
+import connection.Connessione;
 import dto.Operatori;
 
 public class OperatoriDAO {

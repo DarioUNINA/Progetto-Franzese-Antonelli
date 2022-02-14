@@ -1,6 +1,8 @@
 package dao;
 
 import java.sql.*;
+
+import connection.Connessione;
 import dto.Presenze;
 
 public class PresenzeDAO {

@@ -27,6 +27,9 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import com.toedter.calendar.JCalendar;
+
+import controller.Controller;
+
 import java.awt.Cursor;
 
 public class CreazioneLezionePage extends JFrame {

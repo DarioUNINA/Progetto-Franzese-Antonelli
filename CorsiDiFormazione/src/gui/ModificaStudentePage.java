@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import controller.Controller;
 import dto.Corsi;
 import dto.Operatori;
 import dto.Studenti;

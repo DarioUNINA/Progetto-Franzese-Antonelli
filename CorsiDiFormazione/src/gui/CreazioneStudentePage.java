@@ -2,6 +2,7 @@ package gui;
 
 import dto.Operatori;
 import dto.Studenti;
+import utilities.JCheckBoxList;
 import dto.Corsi;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,6 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import controller.Controller;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

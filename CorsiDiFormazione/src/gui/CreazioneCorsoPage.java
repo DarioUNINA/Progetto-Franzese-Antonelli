@@ -15,6 +15,7 @@ import javax.swing.border.LineBorder;
 import dto.AreeTematiche;
 import dto.Operatori;
 import dto.ParoleChiave;
+import utilities.JCheckBoxList;
 
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
@@ -36,6 +37,9 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JScrollPane;
 import com.toedter.calendar.JYearChooser;
+
+import controller.Controller;
+
 import java.awt.Cursor;
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;

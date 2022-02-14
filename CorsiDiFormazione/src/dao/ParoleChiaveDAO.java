@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import connection.Connessione;
 import dto.AreeTematiche;
 import dto.ParoleChiave;
 

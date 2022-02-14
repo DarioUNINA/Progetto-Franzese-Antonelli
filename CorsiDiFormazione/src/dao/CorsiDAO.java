@@ -3,6 +3,7 @@ package dao;
 import java.sql.*;
 import java.util.Vector;
 
+import connection.Connessione;
 import dto.AreeTematiche;
 import dto.Corsi;
 import dto.Lezioni;

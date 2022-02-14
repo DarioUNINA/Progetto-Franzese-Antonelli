@@ -37,7 +37,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseWheelEvent;
 import javax.swing.border.LineBorder;
 
-
+import controller.Controller;
 
 import java.awt.Cursor;
 import java.awt.FlowLayout;

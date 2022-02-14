@@ -25,6 +25,7 @@ import javax.swing.border.LineBorder;
 
 import com.toedter.calendar.JCalendar;
 
+import controller.Controller;
 import dto.Corsi;
 import dto.Lezioni;
 import dto.Operatori;

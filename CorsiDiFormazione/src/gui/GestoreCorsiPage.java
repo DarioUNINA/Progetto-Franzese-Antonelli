@@ -15,6 +15,7 @@ import dto.Corsi;
 import dto.Lezioni;
 import dto.Operatori;
 import dto.ParoleChiave;
+import utilities.JCheckBoxList;
 
 import java.awt.SystemColor;
 import javax.swing.JLabel;
@@ -46,6 +47,9 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.ListSelectionModel;
 import com.toedter.components.JLocaleChooser;
+
+import controller.Controller;
+
 import java.awt.Checkbox;
 import java.awt.Panel;
 import java.awt.Cursor;

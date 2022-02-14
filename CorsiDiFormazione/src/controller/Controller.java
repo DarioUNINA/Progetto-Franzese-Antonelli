@@ -1,4 +1,4 @@
-package gui;
+package controller;
 
 import java.sql.Time;
 import java.util.Vector;
@@ -13,6 +13,8 @@ import javax.swing.ListModel;
 
 import dao.*;
 import dto.*;
+import gui.LogInPage;
+import utilities.JCheckBoxList;
 
 public class Controller {
 
@@ -126,7 +128,7 @@ public class Controller {
 		return corsiDAO.addCorsiFiltratiPM(area, anni, terminatoSi, terminatoNo, parole, idOperatore);
 	}
 	
-	Operatori getOperatore(String nome) {
+	public Operatori getOperatore(String nome) {
 		
 		return operatoriDAO.getOperatore(nome);
 	}
@@ -217,7 +219,7 @@ public class Controller {
 		return iscrizioniDAO.getDisiscrizioneCorsiStudente(matricola, id_operatore);
 	}
 	
-	Lezioni getLezione(String id_lezione) {
+	public Lezioni getLezione(String id_lezione) {
 		
 		return lezioniDAO.getLezioni(id_lezione);
 	}
@@ -250,7 +252,7 @@ public class Controller {
 		return lezioniDAO.eliminaLezioneGestoreLezioni(idLezione);
 	}
 	
-	Corsi getCorso(String id_corso) {
+	public Corsi getCorso(String id_corso) {
 		
 		return corsiDAO.getCorso(id_corso);
 	}
@@ -656,7 +658,7 @@ public DefaultListModel <JCheckBox> setModelCheckBoxCorsi(Vector<Corsi> corsi){
 		return iscrizioniDAO.getAmmessoAdEsame(matricola, id_corso);
 	}
 	
-	Vector<String> getStringheSelezionate(JCheckBoxList box, Vector<String> anni){
+	public Vector<String> getStringheSelezionate(JCheckBoxList box, Vector<String> anni){
 		
 		Vector<String> vettore = new Vector<String>();
 		

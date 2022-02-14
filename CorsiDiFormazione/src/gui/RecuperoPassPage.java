@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import controller.Controller;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;

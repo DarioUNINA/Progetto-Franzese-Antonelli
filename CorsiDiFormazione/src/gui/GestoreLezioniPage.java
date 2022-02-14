@@ -20,6 +20,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import dto.Operatori;
+import utilities.JCheckBoxList;
+
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
@@ -32,6 +34,9 @@ import java.awt.Cursor;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
+
+import controller.Controller;
+
 import javax.swing.event.ListSelectionEvent;
 
 public class GestoreLezioniPage extends JFrame {
@@ -517,9 +522,6 @@ public class GestoreLezioniPage extends JFrame {
 						alertNessunCorsoSelezionato();
 					}else {
 						String id_corso = corsiList.getSelectedValue().getIdCorso();
-						if(theController.setAllLezioniDelCorso(id_corso).isEmpty())
-							alertNessunaLezioneDisponibile();
-					
 						lezioni = theController.setAllLezioniDelCorso(id_corso);
 						lezioniList.setListData(lezioni);
 						}
@@ -822,9 +824,6 @@ public class GestoreLezioniPage extends JFrame {
 		setVisible(true);
 	}
 	
-	public void alertNessunaLezioneDisponibile() {
-		JOptionPane.showMessageDialog(this, "Non ci sono lezioni per il Corso selezionato.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
-	}
 	
 	public void alertNessunaLezioneSelezionata() {
 		JOptionPane.showMessageDialog(this, "Selezionare una lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	

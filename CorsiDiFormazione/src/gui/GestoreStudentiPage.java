@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import controller.Controller;
 import dto.Operatori;
 import dto.Studenti;
 import javax.swing.JLabel;

@@ -566,17 +566,18 @@ temi (/nome_area/, /id_corso/)
 	CREATE OR REPLACE FUNCTION check_update_ammissione()
 	RETURNS TRIGGER AS 
 	$$
-	DECLARE cursore cursor for (select * from presenze_studente_corso p where p.id_corso = 
-	
+	DECLARE cursore cursor for (select * from presenze_studente_corso p where p.id_corso = new.id_corso);
 	BEGIN
-	
-		IF( p_studente >= p_min ) THEN
-			UPDATE iscrizioni i SET ammesso = TRUE WHERE i.matricola = --- AND i.id_corso =  new.id_corso;
-		END IF;
+		FOR a IN cursore
+		LOOP
+			IF a.presenze < new.presenze_min THEN
+				UPDATE iscrizioni set ammesso = false WHERE matricola = a.matricola;
+			ELSE
+				UPDATE iscrizioni set ammesso = true WHERE matricola = a.matricola;
+			END IF;
+		END LOOP;
 		RETURN NEW;
-	
 	END
-
 	$$ LANGUAGE plpgsql;
 
 	CREATE OR REPLACE TRIGGER update_ammissione

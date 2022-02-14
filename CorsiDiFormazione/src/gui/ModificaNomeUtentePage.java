@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import controller.Controller;
 import dto.Operatori;
 import javax.swing.JTextField;
 import javax.swing.JButton;

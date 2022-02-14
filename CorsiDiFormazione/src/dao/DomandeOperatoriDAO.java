@@ -2,6 +2,8 @@ package dao;
 
 
 import java.sql.*;
+
+import connection.Connessione;
 import dto.DomandeOperatori;
 import dto.Operatori;
 

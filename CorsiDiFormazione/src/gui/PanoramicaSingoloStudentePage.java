@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controller.Controller;
 import dto.Corsi;
 import dto.Lezioni;
 import dto.Operatori;

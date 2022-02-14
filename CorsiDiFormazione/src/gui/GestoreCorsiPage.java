@@ -833,7 +833,7 @@ public class GestoreCorsiPage extends JFrame {
 		corsiList.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				setInfo();
+				gestorePanoramica();
 				
 			}
 		});
@@ -905,7 +905,7 @@ public class GestoreCorsiPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				resetFiltri();
+				gestoreResetFiltri();
 				
 			}
 		});
@@ -915,7 +915,7 @@ public class GestoreCorsiPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				filtriCorsi();
+				gestoreFiltri();
 				
 			}
 		});
@@ -946,36 +946,9 @@ public class GestoreCorsiPage extends JFrame {
 	}
 	
 	
-	//ALERT
-	public void alertReturnToLogIn() {
-		Object[] opzioni = {"Sì", "No"};
-		
-		int n = JOptionPane.showOptionDialog(this,
-				"Sei sicuro di voler uscire?",
-				"CONFERMA DI USCITA",
-				JOptionPane.YES_NO_CANCEL_OPTION,
-				JOptionPane.QUESTION_MESSAGE,
-				null,
-				opzioni,
-				opzioni[0]);
-		if(n==0) {
-			LogInPage LI = new LogInPage(theController);
-			setVisible(false);
-		}
-			
-	}
-
-
-	public void alertCorsiFM() {
-		
-		JOptionPane.showMessageDialog(this, "Non puoi eserguire un filtraggio Full Match con piu di un anno","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-	}
+	//GESTORI
 	
-	public void alertNessunCorsoSelezionato() {
-		JOptionPane.showMessageDialog(this, "Selezionare un corso.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
-	}
-	
-	public void filtriCorsi() {
+	public void gestoreFiltri() {
 		
 		Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);
 		Vector<ParoleChiave> parole = theController.getParoleSelezionate(listaParoleChiave, paroleChiave);
@@ -1008,8 +981,9 @@ public class GestoreCorsiPage extends JFrame {
 		corsiList.setListData(corsi);
 	}
 	
-	public void resetFiltri() {
-		
+	
+	public void gestoreResetFiltri() {
+	
 		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
 		annoList.setModel(theController.setModelCheckBoxString(anni));
 		terminatoCheckBoxSi.setSelected(false);
@@ -1023,7 +997,8 @@ public class GestoreCorsiPage extends JFrame {
 		
 	}
 	
-	public void setInfo() {
+	
+	public void gestorePanoramica() {
 		if(corsiList.isSelectionEmpty()) {
 			alertNessunCorsoSelezionato();
 		}else{
@@ -1057,4 +1032,36 @@ public class GestoreCorsiPage extends JFrame {
 			
 		
 	}
+	
+	
+	//ALERT
+	
+	public void alertReturnToLogIn() {
+		Object[] opzioni = {"Sì", "No"};
+		
+		int n = JOptionPane.showOptionDialog(this,
+				"Sei sicuro di voler uscire?",
+				"CONFERMA DI USCITA",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				opzioni,
+				opzioni[0]);
+		if(n==0) {
+			LogInPage LI = new LogInPage(theController);
+			setVisible(false);
+		}
+			
+	}
+
+
+	public void alertCorsiFM() {
+		
+		JOptionPane.showMessageDialog(this, "Non puoi eserguire un filtraggio Full Match con piu di un anno","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void alertNessunCorsoSelezionato() {
+		JOptionPane.showMessageDialog(this, "Selezionare un corso.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
+	}
+	
 }

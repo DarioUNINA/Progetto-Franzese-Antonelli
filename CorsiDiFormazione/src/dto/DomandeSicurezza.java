@@ -1,10 +1,13 @@
 package dto;
 
+import java.util.Vector;
+
 public class DomandeSicurezza {
 	
 	private String idDomanda;
 	private String domanda;
-
+	private Vector<DomandeOperatori> domandaSicurezza;
+	
 	public String getIdDomanda() {
 		return idDomanda;
 	}

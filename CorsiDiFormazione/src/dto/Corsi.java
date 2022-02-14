@@ -14,6 +14,7 @@ public class Corsi {
 	private boolean terminato;
 	private String idOperatore;
 	private Vector<Lezioni> lezioni;
+	private Operatori operatore;
 	
 	
 	

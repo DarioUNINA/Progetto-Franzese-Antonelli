@@ -188,6 +188,10 @@ public class GestoreStudentiPage extends JFrame {
 		setVisible(true);
 	}
 	
+	
+	
+	//ALERT
+	
 	public void alertStudenteNonSelezionato() {
 		JOptionPane.showMessageDialog(this, "Studente Non Selezionato.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
@@ -221,7 +225,5 @@ public class GestoreStudentiPage extends JFrame {
 		
 		for(Studenti s:studenti) 
 			studentiComboBox.addItem(s);
-		
-		
 	}
 }

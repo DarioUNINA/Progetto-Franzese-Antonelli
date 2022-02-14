@@ -34,10 +34,10 @@ public class CreazioneStudentePage extends JFrame {
 
 	private Operatori operatore;
 	private Controller theController;
-	private Component url;
 	private ImageIcon imageicon;
+	private Vector<Corsi> corsi;
 	
-	
+	private Component url;
 	private JPanel creaStudentePanel;
 	private JPanel inserisciDatiStudentePanel;
 	private JLabel inserireDatiStudenteLabel;
@@ -50,8 +50,6 @@ public class CreazioneStudentePage extends JFrame {
 	private JCheckBoxList corsiList;
 	private JButton confermaButton;
 	private JButton indietroButton;
-	private Vector<Corsi> corsi;
-	
 	
 	final Color azzurro;
 	final Color azzurroChiaro;
@@ -156,7 +154,7 @@ public class CreazioneStudentePage extends JFrame {
 				if(nomeTextField.getText().equals("") || cognomeTextField.getText().equals(""))
 					alertNomeCognomeMancante();
 				else
-					gestioneCreazioneStudente();
+					gestoreCreazioneStudente();
 				
 			}
 		});
@@ -184,17 +182,7 @@ public class CreazioneStudentePage extends JFrame {
 	}
 	
 	
-	public void gestioneCreazioneStudente() {
-		
-		Studenti studente = new Studenti(nomeTextField.getText(), cognomeTextField.getText());
-		Vector<Corsi> vettoreCorsi = theController.getCorsiSelezionati(corsiList, corsi);
-		String state = theController.creaStudente(studente, corsi);
-		
-		if(state.equals("0"))
-			alertCreazioneEffettuata();
-		else
-			alertCreazioneFallita(state);
-	}
+	//ALERT
 	
 	public void alertCreazioneEffettuata() {
 		
@@ -220,4 +208,20 @@ public class CreazioneStudentePage extends JFrame {
 	public void alertNessunCorsoDisponibile() {
 		JOptionPane.showMessageDialog(this, "Non ci sono Corsi disponibili.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);		
 	}
+	
+	
+	//GESTORI
+	
+	public void gestoreCreazioneStudente() {
+		
+		Studenti studente = new Studenti(nomeTextField.getText(), cognomeTextField.getText());
+		Vector<Corsi> vettoreCorsi = theController.getCorsiSelezionati(corsiList, corsi);
+		String state = theController.creaStudente(studente, corsi);
+		
+		if(state.equals("0"))
+			alertCreazioneEffettuata();
+		else
+			alertCreazioneFallita(state);
+	}
+
 }

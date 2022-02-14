@@ -35,7 +35,6 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 	private Studenti studente;
 	private Corsi corso;
 	private Controller theController;
-	
 	private JComboBox<Lezioni> lezioniComboBox;
 	private Vector <Lezioni> lezioni;
 	
@@ -60,15 +59,14 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		this.operatore = operatore;
 		this.studente = studente;
 		this.corso = corso;
+
+		lezioni = theController.iscirizioneStudenteLezioniDelCorso(studente.getMatricola(), corso.getIdCorso());
+		lezioniComboBox = new JComboBox<Lezioni>(lezioni);
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
 		blu = new Color(0,51,78);
 		grigioChiaro = new Color(219,235,250);
-		
-		
-		lezioni = theController.iscirizioneStudenteLezioniDelCorso(studente.getMatricola(), corso.getIdCorso());
-		lezioniComboBox = new JComboBox<Lezioni>(lezioni);
 
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -150,13 +148,16 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				aggiungiStudenteLezione();
+				gestoreAggiungiStudenteLezione();
 			}
 		});
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
+	
+	
+	//ALERT
 	
 	public void alertStudenteAggiuntoCorrettamente() {
 		JOptionPane.showMessageDialog(this, "Studente aggiunto correttamente alla lezione.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
@@ -176,7 +177,10 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 
 	}
 	
-	public void aggiungiStudenteLezione() {
+	
+	//GESTORI
+	
+	public void gestoreAggiungiStudenteLezione() {
 		String state = theController.aggiungiStudenteLezioneClicked(studente.getMatricola(), lezioni.get(lezioniComboBox.getSelectedIndex()).getIdLezione());
 		
 		if(state.equals("0")) {

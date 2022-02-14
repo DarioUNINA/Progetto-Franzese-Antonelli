@@ -33,9 +33,7 @@ public class ModificaStudentePage extends JFrame {
 	private Operatori operatore;
 	private Controller theController;
 	private Studenti studente;
-	private Component url;
-	private ImageIcon imageicon;
-	
+	private Vector<Corsi> corsi;
 	
 	private JPanel creaStudentePanel;
 	private JPanel inserisciDatiStudentePanel;
@@ -46,8 +44,8 @@ public class ModificaStudentePage extends JFrame {
 	private JTextField cognomeTextField;
 	private JButton confermaButton;
 	private JButton indietroButton;
-	private Vector<Corsi> corsi;
-	
+	private Component url;
+	private ImageIcon imageicon;
 	
 	final Color azzurro;
 	final Color azzurroChiaro;
@@ -164,17 +162,8 @@ public class ModificaStudentePage extends JFrame {
 			alertNessunCorsoDisponibile();
 	}
 	
+	
 	//ALERT
-	public void gestioneModificaStudente() {
-		
-		Studenti studenteNuovo = new Studenti(studente.getMatricola(), nomeTextField.getText(), cognomeTextField.getText());
-		String state = theController.modificaStudente(studenteNuovo);
-		
-		if(state.equals("0"))
-			alertModificaEffettuata();
-		else
-			alertCreazioneFallita(state);
-	}
 	
 	public void alertModificaEffettuata() {
 		
@@ -201,5 +190,19 @@ public class ModificaStudentePage extends JFrame {
 	
 	public void alertNessunCorsoDisponibile() {
 		JOptionPane.showMessageDialog(this, "Non ci sono Corsi disponibili.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);		
+	}
+	
+	
+	//GESTORI
+	
+	public void gestioneModificaStudente() {
+		
+		Studenti studenteNuovo = new Studenti(studente.getMatricola(), nomeTextField.getText(), cognomeTextField.getText());
+		String state = theController.modificaStudente(studenteNuovo);
+		
+		if(state.equals("0"))
+			alertModificaEffettuata();
+		else
+			alertCreazioneFallita(state);
 	}
 }

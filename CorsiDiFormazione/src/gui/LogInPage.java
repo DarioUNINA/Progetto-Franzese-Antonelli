@@ -68,9 +68,9 @@ public class LogInPage extends JFrame {
 	
 	public LogInPage(Controller controller) {
 		
+		theController = controller;
 		
 		imageicon = new ImageIcon("napule.png");
-		theController = controller;
 		setIconImage(imageicon.getImage());
 		
 		azzurro = new Color(153,211,223);
@@ -164,7 +164,7 @@ public class LogInPage extends JFrame {
 			}
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				
-				creazioneStudente();
+				gestoreCreazioneStudente();
 	
 			}	
 		});
@@ -220,7 +220,10 @@ public class LogInPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Password non inserita!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void creazioneStudente() {
+	
+	//GESTORI
+	
+	public void gestoreCreazioneStudente() {
 		
 		String Nome = nomeUtenteField.getText().toLowerCase();
 		String Pass = passwordField.getText().toLowerCase();
@@ -236,9 +239,7 @@ public class LogInPage extends JFrame {
 					setVisible(false);
 				}else
 					alertLogInFallito();
-					
-				
-			
+
 		nomeUtenteField.setText("");
 		passwordField.setText("");
 	}

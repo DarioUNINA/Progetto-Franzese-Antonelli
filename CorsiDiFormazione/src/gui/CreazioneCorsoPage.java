@@ -304,6 +304,7 @@ public class CreazioneCorsoPage extends JFrame {
 		setVisible(true);
 	}
 	
+	//ALERT
 	
 	public void alertErroreInserimentoPresenzeMin() {
 		JOptionPane.showMessageDialog(this, "Le presenze minime inserite non sono valide","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
@@ -340,6 +341,14 @@ public class CreazioneCorsoPage extends JFrame {
 
 	}
 	
+	public void alertAnnoNonValido() {
+		
+		JOptionPane.showMessageDialog(this, "Non e' possibile creare corsi in anni passati", "<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+	}
+	
+	//GESTORI
+	
 	public void gestoreCreazioneCorso() {
 		
 		String nome = nomeTextField.getText().toLowerCase();
@@ -372,9 +381,5 @@ public class CreazioneCorsoPage extends JFrame {
 			}
 	}
 	
-	public void alertAnnoNonValido() {
-		
-		JOptionPane.showMessageDialog(this, "Non e' possibile creare corsi in anni passati", "<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-
-	}
+	
 }

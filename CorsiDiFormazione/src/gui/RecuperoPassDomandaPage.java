@@ -169,6 +169,8 @@ public class RecuperoPassDomandaPage extends JFrame {
 
 	}	
 	
+	//GESTORI
+	
 	public void gestoreConfermaRisposta() {
 		String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText().toLowerCase(), operatore);
 

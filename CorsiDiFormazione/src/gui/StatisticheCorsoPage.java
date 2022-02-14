@@ -33,7 +33,7 @@ public class StatisticheCorsoPage extends JFrame {
 	private Controller theController;
 	private Operatori operatore;
 	private Corsi corso;
-
+	private Vector<String> studenti;
 	
 	private Component url;
 	private ImageIcon imageicon;
@@ -49,12 +49,10 @@ public class StatisticheCorsoPage extends JFrame {
 	private JLabel percentualeRiempimentoLabel;
 	private JLabel presenzeMedieLabel;
 	private JProgressBar mediaRiempimentoProgressBar;
-	private Vector<String> studenti;
 	private JLabel studentiIscrittiLabel;
 	private JLabel studentiAmmessiLabel;
 	private JLabel numeroLezioniLabel;
 	private JButton indietroButton;
-	
 	private JList<String> studentiList;
 	private JScrollPane studenitAmmessiScrollPane;
 	private JLabel terminatoLabel;
@@ -71,8 +69,8 @@ public class StatisticheCorsoPage extends JFrame {
 		this.operatore = operatore;
 		this.corso = corso;
 		studenti = theController.setAllStudentiAmmessi(corso.getIdCorso());
-		studentiList = new JList<String>(studenti);
 		
+		studentiList = new JList<String>(studenti);
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
 		blu = new Color(0,51,78);
@@ -197,24 +195,12 @@ public class StatisticheCorsoPage extends JFrame {
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBackground(Color.WHITE);
 
+		gestoreProgressBar();
 		
-		//LISTNER 
-		
-		if(studenti.size()==0)
-			mediaRiempimentoProgressBar.setValue(0);
-		else
-			mediaRiempimentoProgressBar.setValue((int)theController.getPresenzeMedie(corso.getIdCorso())/studenti.size()*100);
+		gestoreTerminato();
 		
 		
-
-		if(corso.isTerminato()) {
-			terminatoValueLabel.setText("SI");
-			terminatoValueLabel.setForeground(Color.GREEN);
-		}else {
-			terminatoValueLabel.setText("NO");
-			terminatoValueLabel.setForeground(Color.RED);
-		}
-		
+		//LISTENER
 		
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -227,5 +213,27 @@ public class StatisticheCorsoPage extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
+	}
+	
+	//GESTORI
+	
+	public void gestoreProgressBar() {
+		
+		if(studenti.size()==0)
+			mediaRiempimentoProgressBar.setValue(0);
+		else
+			mediaRiempimentoProgressBar.setValue((int)theController.getPresenzeMedie(corso.getIdCorso())/studenti.size()*100);
+	}
+	
+	
+	public void gestoreTerminato() {
+		
+		if(corso.isTerminato()) {
+			terminatoValueLabel.setText("SI");
+			terminatoValueLabel.setForeground(Color.GREEN);
+		}else {
+			terminatoValueLabel.setText("NO");
+			terminatoValueLabel.setForeground(Color.RED);
+		}
 	}
 }

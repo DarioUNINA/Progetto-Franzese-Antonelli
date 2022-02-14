@@ -5,7 +5,8 @@ public class Iscrizioni {
 	private boolean ammesso;
 	private String matricola;
 	private String idCorso;
-	
+	private Corsi corso;
+	private Studenti studente;
 	
 	public Iscrizioni(boolean ammesso, String matricola, String idCorso) {
 		this.ammesso = ammesso;

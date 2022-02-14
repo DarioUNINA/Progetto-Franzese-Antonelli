@@ -1,8 +1,11 @@
 package dto;
 
+import java.util.Vector;
+
 public class AreeTematiche {
 
 	private String nomeArea;
+	private Vector<Temi> temi;
 
 	public AreeTematiche() {
 	}

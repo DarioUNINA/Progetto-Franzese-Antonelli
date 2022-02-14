@@ -4,6 +4,8 @@ public class Temi {
 
 	private String nomeArea;
 	private String idCorso;
+	private Corsi corso;
+	private AreeTematiche areaTematica;
 	
 		public Temi(String nomeArea, String idCorso) {
 		this.nomeArea = nomeArea;

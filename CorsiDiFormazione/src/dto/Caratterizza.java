@@ -4,6 +4,8 @@ public class Caratterizza {
 
 	private String parolaChiave;
 	private String idCorso;
+	private Corsi corso;
+	private ParoleChiave paroleChiave;
 	
 	
 	public Caratterizza(String parolaChiave, String idCorso) {

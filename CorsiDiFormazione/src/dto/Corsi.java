@@ -14,7 +14,10 @@ public class Corsi {
 	private boolean terminato;
 	private String idOperatore;
 	private Vector<Lezioni> lezioni;
+	private Vector<Iscrizioni> iscrizioni;
 	private Operatori operatore;
+	private Vector<Caratterizza> caratterizza;
+	private Vector<Temi> temi;
 	
 	
 	

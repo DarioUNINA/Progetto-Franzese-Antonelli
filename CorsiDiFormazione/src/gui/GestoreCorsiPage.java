@@ -849,13 +849,17 @@ public class GestoreCorsiPage extends JFrame {
 		iscriviStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(corsiList.isSelectionEmpty()) 
-					alertNessunCorsoSelezionato();
-				else {
+				if(iscriviStudenteButton.isEnabled()) {
 					
-					IscriviStudenteGestoreCorsoPage page = new IscriviStudenteGestoreCorsoPage(theController, operatore, corsiList.getSelectedValue());
-					setVisible(false);
-				}			
+					if(corsiList.isSelectionEmpty()) 
+						alertNessunCorsoSelezionato();
+					else {
+						
+						IscriviStudenteGestoreCorsoPage page = new IscriviStudenteGestoreCorsoPage(theController, operatore, corsiList.getSelectedValue());
+						setVisible(false);
+					}		
+				}
+					
 			}
 		});
 		

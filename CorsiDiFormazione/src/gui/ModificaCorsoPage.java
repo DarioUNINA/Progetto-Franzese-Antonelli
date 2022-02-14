@@ -290,13 +290,10 @@ public class ModificaCorsoPage extends JFrame {
 				if(nomeTextField.getText().equals(""))
 					alertNomeNonValido();
 				else
-					gestoreModificaCorso();
+					alertTerminato();
 			}	
 			
 		});
-		
-		
-		
 		
 		
 		setLocationRelativeTo(null);
@@ -343,6 +340,22 @@ public class ModificaCorsoPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Attenzione: attualmente ci sono piu iscritti al corso del numero di massimo partecipanti inserito","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
+	public void alertTerminato() {
+		
+		Object[] opzioni = {"Sì", "No"};
+		
+		int n = JOptionPane.showOptionDialog(this,
+				"Sei sicuro di voler terminato il corso ? Tutte le lezioni future verranno annullate",
+				"CONFERMA DI ELIMINAZIONE",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				opzioni,
+				opzioni[0]);
+		if(n==0)
+			gestoreModificaCorso();
+	}
+	
 	
 	//GESTORI
 
@@ -368,8 +381,6 @@ public class ModificaCorsoPage extends JFrame {
 			if(!theController.isDigits(maxPartecipanti))
 				alertErroreInserimentoMaxPartecipanti();
 			else {
-					System.out.println(theController.ControlloNumeroStudentiIscritti(corso.getIdCorso()));
-							
 					if(Integer.parseInt(maxPartecipantiTextField.getText())<theController.ControlloNumeroStudentiIscritti(corso.getIdCorso()))
 						alertMaxPartecipanti();
 					else
@@ -403,7 +414,7 @@ public class ModificaCorsoPage extends JFrame {
 			alertLabel.setBounds(521, 109, 204, 14);
 			creaCorsoPanel.add(alertLabel);
 			
-			alertLabel2 = new JLabel("se ci sono lezioni programmate!");
+			alertLabel2 = new JLabel("se ci sono lezioni svolte o programmate");
 			alertLabel2.setForeground(Color.RED);
 			alertLabel2.setBounds(521, 121, 204, 14);
 			creaCorsoPanel.add(alertLabel2);

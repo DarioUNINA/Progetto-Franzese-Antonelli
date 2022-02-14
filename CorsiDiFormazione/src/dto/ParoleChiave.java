@@ -1,7 +1,11 @@
 package dto;
 
+import java.util.Vector;
+
 public class ParoleChiave {
+	
 	private String parolaChiave;
+	private Vector<Caratterizza> caratterizza;
 
 	
 	public ParoleChiave() {

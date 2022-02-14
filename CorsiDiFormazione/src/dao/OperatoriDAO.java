@@ -48,7 +48,7 @@ public class OperatoriDAO {
 		
 		}catch(SQLException e) {
 			
-			System.out.println(e);
+			e.printStackTrace();
 			return "";
 		}
 	}

@@ -120,12 +120,12 @@ public class GestoreLezioniPage extends JFrame {
 		theController = controller;
 		this.operatore = operatore;
 		corsi = theController.getCorsiOperatore(operatore);
-		corsiList = new JList<Corsi>(corsi);
 		mesi = theController.getMesi();
 		giorni = theController.getGiorni();
 		durata = theController.getDurate();
 		orario = theController.getOrario();
 		
+		corsiList = new JList<Corsi>(corsi);
 
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
@@ -459,6 +459,13 @@ public class GestoreLezioniPage extends JFrame {
 		});
 		
 		
+		corsiList.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+					gestoreSetLezioni();
+			}
+		});
+		
 		impostazioniLabelMenuEsteso.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -688,17 +695,6 @@ public class GestoreLezioniPage extends JFrame {
 		});
 		
 		
-		corsiList.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-				if(e.getValueIsAdjusting()) {
-					gestoreSetLezioni();
-				}
-			}
-				
-				
-		});
-		
-		
 		panormaicaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -816,20 +812,29 @@ public class GestoreLezioniPage extends JFrame {
 		
 		aggiungiLezioneButton.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent e) {
-				aggiungiLezioneButton.setBackground(Color.GREEN);
+				
+				if(aggiungiLezioneButton.isEnabled())
+					aggiungiLezioneButton.setBackground(Color.GREEN);
 			}
 			public void mouseExited(java.awt.event.MouseEvent e) {
-				aggiungiLezioneButton.setBackground(Color.WHITE);
+				
+				if(aggiungiLezioneButton.isEnabled())
+					aggiungiLezioneButton.setBackground(Color.WHITE);
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(corsiList.isSelectionEmpty()) {
-					alertNessunCorsoSelezionatoAggiungiLezione();
-				}else {
-					String id_corso = corsiList.getSelectedValue().getIdCorso().toString();		
-					CreazioneLezionePage clp = new CreazioneLezionePage(theController, operatore, theController.getCorso(id_corso));
-					setVisible(false);
+				
+				if(aggiungiLezioneButton.isEnabled()) {
+					
+					if(corsiList.isSelectionEmpty()) {
+						alertNessunCorsoSelezionatoAggiungiLezione();
+					}else {
+						String id_corso = corsiList.getSelectedValue().getIdCorso().toString();		
+						CreazioneLezionePage clp = new CreazioneLezionePage(theController, operatore, theController.getCorso(id_corso));
+						setVisible(false);
+					}
 				}
+				
 			}
 			});
 		
@@ -925,6 +930,11 @@ public class GestoreLezioniPage extends JFrame {
 				String id_corso = corsiList.getSelectedValue().getIdCorso();
 				lezioni = theController.setAllLezioniDelCorso(id_corso);
 				lezioniList.setListData(lezioni);
+				
+				if(corsiList.getSelectedValue().isTerminato())
+					aggiungiLezioneButton.setEnabled(false);
+				else
+					aggiungiLezioneButton.setEnabled(true);
 				}	
 	}
 	

@@ -1,10 +1,13 @@
 package dto;
 
+import java.util.Vector;
+
 public class Studenti {
 
 	private String matricola;
 	private String nome;
 	private String cognome;
+	private Vector<Iscrizioni> iscrizioni;
 	
 	public Studenti() {
 		

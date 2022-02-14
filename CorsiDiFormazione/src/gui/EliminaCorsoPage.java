@@ -161,7 +161,7 @@ public class EliminaCorsoPage extends JFrame {
 	
 	
 	public void alertConfermaEliminazioneCorso(String corso) {
-		Object[] opzioni = {"Sì"};
+		Object[] opzioni = {"Sì", "No"};
 		
 		int n = JOptionPane.showOptionDialog(this,
 				"Sei sicuro di voler eliminare il corso " + corso + " ?",

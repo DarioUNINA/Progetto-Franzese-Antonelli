@@ -141,7 +141,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				aggiungiStudenteLezione();
+				gestoreAggiungiStudenteLezione();
 			}
 			
 		});
@@ -166,7 +166,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 				JOptionPane.showMessageDialog(this, "Attenzione: lo studente e' gia' iscritto a lezioni in contemporanea a quella selezionata","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void aggiungiStudenteLezione() {
+	public void gestoreAggiungiStudenteLezione() {
 		String state = theController.aggiungiStudenteLezioneClicked(elencoStudenti.get((studentiComboBox.getSelectedIndex())).getMatricola() ,lezione.getIdLezione());
 		
 		if(state.equals("0"))

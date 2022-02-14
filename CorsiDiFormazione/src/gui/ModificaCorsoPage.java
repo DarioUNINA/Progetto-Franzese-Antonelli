@@ -73,9 +73,9 @@ public class ModificaCorsoPage extends JFrame {
 	final Color blu;
 	final Color grigioChiaro;
 	
-	public ModificaCorsoPage(Controller cont, Operatori operatore, Corsi corso) {
+	public ModificaCorsoPage(Controller controller, Operatori operatore, Corsi corso) {
 		
-		theController = cont;
+		theController = controller;
 		this.operatore = operatore;
 		this.corso = corso;
 		areeTematiche = theController.getAllAreeTematiche();
@@ -85,7 +85,6 @@ public class ModificaCorsoPage extends JFrame {
 		azzurroChiaro = new Color(136,187,214);
 		blu = new Color(0,51,78);
 		grigioChiaro = new Color(219,235,250);
-		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
 		
@@ -241,6 +240,9 @@ public class ModificaCorsoPage extends JFrame {
 		descrizioneTextField.setColumns(10);
 		creaCorsoPanel.add(descrizioneTextField);
 		
+		gestoreModificaAnno();	
+		gestoreTerminato();
+		
 		
 		//LISTNER
 		
@@ -294,19 +296,15 @@ public class ModificaCorsoPage extends JFrame {
 		});
 		
 		
-		checkModificaAnno();	
-
 		
-		if(corso.isTerminato()) {
-			terminatoCheckBox.setSelected(true);
-			terminatoCheckBox.setForeground(Color.GREEN);
-		}
+		
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
 	}
 	
+	//ALERT
 	
 	public void alertNomeNonValido() {
 		
@@ -338,8 +336,15 @@ public class ModificaCorsoPage extends JFrame {
 				JOptionPane.showMessageDialog(this, "Impossibile modificare il corso, esiste gia' un corso con lo stesso nome","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 			else
 				JOptionPane.showMessageDialog(this, "Impossibile modificare il corso: codice errore " +  state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-
 	}
+	
+	public void alertMaxPartecipanti() {
+		
+		JOptionPane.showMessageDialog(this, "Attenzione: attualmente ci sono piu iscritti al corso del numero di massimo partecipanti inserito","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	
+	//GESTORI
 
 	public void gestoreModificaCorso() {
 		
@@ -380,12 +385,15 @@ public class ModificaCorsoPage extends JFrame {
 			}
 	}
 	
-	public void alertMaxPartecipanti() {
+	public void gestoreTerminato() {
 		
-		JOptionPane.showMessageDialog(this, "Attenzione: attualmente ci sono piu iscritti al corso del numero di massimo partecipanti inserito","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		if(corso.isTerminato()) {
+			terminatoCheckBox.setSelected(true);
+			terminatoCheckBox.setForeground(Color.GREEN);
+		}
 	}
 	
-	public void checkModificaAnno() {
+	public void gestoreModificaAnno() {
 		if(theController.modificaAnnoCorso(corso.getIdCorso())) {
 			
 			annoChooser.getSpinner().setEnabled(false);

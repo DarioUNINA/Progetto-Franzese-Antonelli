@@ -65,6 +65,11 @@ public class GestoreCorsiPage extends JFrame {
 	
 	private Controller theController;
 	private Operatori operatore;
+	private Vector<AreeTematiche> areeTematiche;
+	private Vector<Corsi> corsi;
+	private Vector<ParoleChiave> paroleChiave;
+	private Vector<String> anni;
+	private Vector<Lezioni> lezioni;
 	
 	private Component url;
 	private ImageIcon imageicon;
@@ -96,11 +101,6 @@ public class GestoreCorsiPage extends JFrame {
 	private JPanel gestione;
 	private JButton resetFiltriButton;
 	private JButton filtraButton;
-	private Vector<AreeTematiche> areeTematiche;
-	private Vector<Corsi> corsi;
-	private Vector<ParoleChiave> paroleChiave;
-	private Vector<String> anni;
-	private Vector<Lezioni> lezioni;
 	private JRadioButton FullMatchRadioButton;
 	private JRadioButton PartialMatchRadioButton;
 	private JPanel menuPanelEsteso;
@@ -117,7 +117,6 @@ public class GestoreCorsiPage extends JFrame {
 	private JTextPane paroleChiaveTextPane;
 	private JLabel areetematicheLabel;
 	private JTextPane areeTematicheTextPane ;
-		
 	private JLabel labelTrattiniMenuEsteso;
 	private JLabel menuEstesoLabel;
 	private JPanel gestoreCorsiOpacoPanel;
@@ -150,16 +149,13 @@ public class GestoreCorsiPage extends JFrame {
 		this.operatore = operatore;
 		corsi = theController.getCorsiOperatore(operatore);
 		anni = theController.getAllAnni();
+		areeTematiche = theController.getAllAreeTematiche();
+		paroleChiave = theController.getAllParoleChiave();
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
 		blu = new Color(0,51,78);
 		grigioChiaro = new Color(219,235,250);
-		
-		
-		areeTematiche = theController.getAllAreeTematiche();
-		paroleChiave = theController.getAllParoleChiave();
-	
 		
 		imageImpostazioni = new ImageIcon("impostazioni.png");
 		imageicon = new ImageIcon("napule.png");
@@ -946,94 +942,6 @@ public class GestoreCorsiPage extends JFrame {
 	}
 	
 	
-	//GESTORI
-	
-	public void gestoreFiltri() {
-		
-		Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);
-		Vector<ParoleChiave> parole = theController.getParoleSelezionate(listaParoleChiave, paroleChiave);
-		
-		Vector<String> vettoreAnni = theController.getStringheSelezionate(annoList, anni);
-
-		boolean terminatoSi , terminatoNo; 
-		
-		if(terminatoCheckBoxSi.isSelected())
-			terminatoSi = true;
-		else
-			terminatoSi = false;
-		
-		if(terminatoCheckBoxNo.isSelected())
-			terminatoNo = true;
-		else
-			terminatoNo = false;
-		
-		if(FullMatchRadioButton.isSelected()) {
-			
-			if(vettoreAnni.size()>1)
-				alertCorsiFM();
-			else
-				corsi = theController.setCorsiFiltratiFM(aree, vettoreAnni, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
-		}
-			
-		else
-			corsi = theController.setCorsiFiltratiPM(aree, vettoreAnni, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
-
-		corsiList.setListData(corsi);
-	}
-	
-	
-	public void gestoreResetFiltri() {
-	
-		listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
-		annoList.setModel(theController.setModelCheckBoxString(anni));
-		terminatoCheckBoxSi.setSelected(false);
-		terminatoCheckBoxSi.setForeground(Color.BLACK);
-		terminatoCheckBoxNo.setSelected(false);
-		terminatoCheckBoxNo.setForeground(Color.BLACK);		
-		listaParoleChiave.setModel(theController.setModelCheckBoxParole(paroleChiave));
-		
-		corsi = theController.getCorsiOperatore(operatore);
-		corsiList.setListData(corsi);
-		
-	}
-	
-	
-	public void gestorePanoramica() {
-		if(corsiList.isSelectionEmpty()) {
-			alertNessunCorsoSelezionato();
-		}else{
-			
-			if(corsiList.getSelectedValue().isTerminato())
-				iscriviStudenteButton.setEnabled(false);
-			else
-				iscriviStudenteButton.setEnabled(true);
-			
-			presenzeMinLabel.setText("Presenze Min: " + corsiList.getSelectedValue().getPresenzeMin());
-			maxPartecipantiLabel.setText("Max Partecipanti: " + corsiList.getSelectedValue().getMaxPartecipanti());
-			descrizioneTextPane.setText(corsiList.getSelectedValue().getDescrizione());
-			descrizioneTextPane.setVisible(true);
-			annoPanoramicaLabel.setText("Anno: " + corsiList.getSelectedValue().getAnno());
-			
-			String paroleChiave = theController.getParoleChiaveString(corsiList.getSelectedValue().getIdCorso());
-			if(!paroleChiave.equals(""))
-				paroleChiave = paroleChiave.substring(0, paroleChiave.length()-2);
-			paroleChiaveTextPane.setText(paroleChiave);
-			paroleChiaveTextPane.setVisible(true);
-			
-			String areeTematiche = theController.getAreeTematicheString(corsiList.getSelectedValue().getIdCorso());
-			if(!areeTematiche.equals(""))
-				areeTematiche = areeTematiche.substring(0, areeTematiche.length()-2);
-			areeTematicheTextPane.setText(areeTematiche);
-			areeTematicheTextPane.setVisible(true);
-		}
-			
-		lezioni = theController.getFutureLezioni(corsi.get(corsiList.getSelectedIndex()).getIdCorso());
-		lezioniProgrammateList.setListData(lezioni);
-			
-		
-	}
-	
-	
 	//ALERT
 	
 	public void alertReturnToLogIn() {
@@ -1063,5 +971,93 @@ public class GestoreCorsiPage extends JFrame {
 	public void alertNessunCorsoSelezionato() {
 		JOptionPane.showMessageDialog(this, "Selezionare un corso.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
+	
+	
+	//GESTORI
+	
+		public void gestoreFiltri() {
+			
+			Vector<AreeTematiche> aree = theController.getAreeSelezionate(listaTemi, areeTematiche);
+			Vector<ParoleChiave> parole = theController.getParoleSelezionate(listaParoleChiave, paroleChiave);
+			
+			Vector<String> vettoreAnni = theController.getStringheSelezionate(annoList, anni);
+
+			boolean terminatoSi , terminatoNo; 
+			
+			if(terminatoCheckBoxSi.isSelected())
+				terminatoSi = true;
+			else
+				terminatoSi = false;
+			
+			if(terminatoCheckBoxNo.isSelected())
+				terminatoNo = true;
+			else
+				terminatoNo = false;
+			
+			if(FullMatchRadioButton.isSelected()) {
+				
+				if(vettoreAnni.size()>1)
+					alertCorsiFM();
+				else
+					corsi = theController.setCorsiFiltratiFM(aree, vettoreAnni, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
+			}
+				
+			else
+				corsi = theController.setCorsiFiltratiPM(aree, vettoreAnni, terminatoSi, terminatoNo, parole, operatore.getIdOperatore());
+
+			corsiList.setListData(corsi);
+		}
+		
+		
+		public void gestoreResetFiltri() {
+		
+			listaTemi.setModel(theController.setModelCheckBox(areeTematiche));
+			annoList.setModel(theController.setModelCheckBoxString(anni));
+			terminatoCheckBoxSi.setSelected(false);
+			terminatoCheckBoxSi.setForeground(Color.BLACK);
+			terminatoCheckBoxNo.setSelected(false);
+			terminatoCheckBoxNo.setForeground(Color.BLACK);		
+			listaParoleChiave.setModel(theController.setModelCheckBoxParole(paroleChiave));
+			
+			corsi = theController.getCorsiOperatore(operatore);
+			corsiList.setListData(corsi);
+			
+		}
+		
+		
+		public void gestorePanoramica() {
+			if(corsiList.isSelectionEmpty()) {
+				alertNessunCorsoSelezionato();
+			}else{
+				
+				if(corsiList.getSelectedValue().isTerminato())
+					iscriviStudenteButton.setEnabled(false);
+				else
+					iscriviStudenteButton.setEnabled(true);
+				
+				presenzeMinLabel.setText("Presenze Min: " + corsiList.getSelectedValue().getPresenzeMin());
+				maxPartecipantiLabel.setText("Max Partecipanti: " + corsiList.getSelectedValue().getMaxPartecipanti());
+				descrizioneTextPane.setText(corsiList.getSelectedValue().getDescrizione());
+				descrizioneTextPane.setVisible(true);
+				annoPanoramicaLabel.setText("Anno: " + corsiList.getSelectedValue().getAnno());
+				
+				String paroleChiave = theController.getParoleChiaveString(corsiList.getSelectedValue().getIdCorso());
+				if(!paroleChiave.equals(""))
+					paroleChiave = paroleChiave.substring(0, paroleChiave.length()-2);
+				paroleChiaveTextPane.setText(paroleChiave);
+				paroleChiaveTextPane.setVisible(true);
+				
+				String areeTematiche = theController.getAreeTematicheString(corsiList.getSelectedValue().getIdCorso());
+				if(!areeTematiche.equals(""))
+					areeTematiche = areeTematiche.substring(0, areeTematiche.length()-2);
+				areeTematicheTextPane.setText(areeTematiche);
+				areeTematicheTextPane.setVisible(true);
+			}
+				
+			lezioni = theController.getFutureLezioni(corsi.get(corsiList.getSelectedIndex()).getIdCorso());
+			lezioniProgrammateList.setListData(lezioni);
+				
+			
+		}
 	
 }

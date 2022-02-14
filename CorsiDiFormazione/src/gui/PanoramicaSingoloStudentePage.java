@@ -106,7 +106,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		theController = cont;
 		this.operatore = operatore;
 		this.studente = studente;
-		
 		corsi = theController.setCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
 		corsiList = new JList<Corsi> (corsi);
 		
@@ -660,29 +659,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		
 	}
 	
-	//GESTORI
-	
-	public void gestoreIscrizioneCorso() {
-		
-		corsi = theController.setIscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
-		if(corsi.isEmpty())
-			alertNonCiSonoCorsiDisponibili();
-		else {
-			AggiungiStudenteCorsoPage asc = new AggiungiStudenteCorsoPage(theController, operatore, studente);
-			setVisible(false);
-		}
-	}
-	
-	
-	public void gestoreDisiscrizione() {
-		
-		if(corsiList.isSelectionEmpty())
-			alertNessunCorsoSelezionato();
-		else 
-			alertConfermaEliminazioneIscrizione();
-	}
-	
-	
 	
 	//ALERT
 	
@@ -699,7 +675,6 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	public void alertNessunCorsoSelezionato() {
 		JOptionPane.showMessageDialog(this, "Selezionare un corso.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
-	
 	
 	
 	public void alertStudenteDisiscrittoCorrettamente() {
@@ -848,7 +823,29 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 			
 
 	}
-
 	
+	
+	//GESTORI
+	
+	public void gestoreIscrizioneCorso() {
+			
+		corsi = theController.setIscrizioneCorsiStudente(studente.getMatricola(), operatore.getIdOperatore());
+		if(corsi.isEmpty())
+			alertNonCiSonoCorsiDisponibili();
+		else {
+			AggiungiStudenteCorsoPage asc = new AggiungiStudenteCorsoPage(theController, operatore, studente);
+			setVisible(false);
+		}
+	}
+		
+		
+	public void gestoreDisiscrizione() {
+			
+		if(corsiList.isSelectionEmpty())
+			alertNessunCorsoSelezionato();
+		else 
+			alertConfermaEliminazioneIscrizione();
+	}
+
 	
 }

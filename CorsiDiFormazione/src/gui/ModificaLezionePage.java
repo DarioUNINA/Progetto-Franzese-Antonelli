@@ -35,6 +35,8 @@ public class ModificaLezionePage extends JFrame {
 	private Controller theController;
 	private Operatori operatore;
 	private Lezioni lezione;
+	private Vector<Time> durate;
+	private Vector<Time> orari;
 	
 	private ImageIcon imageicon;
 	private JPanel creazioneLezioniPanel;
@@ -52,8 +54,6 @@ public class ModificaLezionePage extends JFrame {
 	private JButton confermaButton;
 	private JComboBox<Time> durataComboBox;
 	private JComboBox<Time> orarioComboBox;
-	private Vector<Time> durate;
-	private Vector<Time> orari;
 	private JCalendar calendario;
 	
 	final Color azzurro;
@@ -63,15 +63,13 @@ public class ModificaLezionePage extends JFrame {
 	
 	public ModificaLezionePage(Controller controller, Operatori operatore, Lezioni lezione) {
 		
-		setResizable(false);
-		
 		this.operatore = operatore;
 		theController = controller;
 		durate = theController.getDurate();
 		orari = theController.getOrario();
 		this.lezione = lezione;
 		
-		
+		setResizable(false);
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
 		blu = new Color(0,51,78);
@@ -176,8 +174,7 @@ public class ModificaLezionePage extends JFrame {
 		descrizioneTextField.setBounds(105, 186, 170, 20);
 		descrizioneTextField.setText(lezione.getDescrizione());
 		modificheLezionePanel.add(descrizioneTextField);
-	
-		
+
 		
 		//LISTNER
 		
@@ -220,6 +217,7 @@ public class ModificaLezionePage extends JFrame {
 		setVisible(true);
 	}
 	
+	
 	//ALERT
 	public void alertModificaEffettuata() {
 		
@@ -251,6 +249,8 @@ public class ModificaLezionePage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Inserire il titolo della lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
+	
+	//GESTORI
 	
 	public void gestoreModificaLezione() {
 		

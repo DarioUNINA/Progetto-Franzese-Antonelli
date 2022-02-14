@@ -65,11 +65,10 @@ public class RegistrazionePage extends JFrame {
 	
 	public RegistrazionePage(Controller controller) {
 		
-		
 		theController = controller;
 		domande = theController.getDomandeSicurezza();
-		domandeComboBox = new JComboBox(domande);
 		
+		domandeComboBox = new JComboBox(domande);
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
 		blu = new Color(0,51,78);
@@ -268,6 +267,8 @@ public class RegistrazionePage extends JFrame {
 						else
 							JOptionPane.showMessageDialog(this, "Errore durante la registrazione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
+	
+	//GESTORI
 	
 	public void gestoreNuovoUtente() {
 		String NomeU = nomeTextField.getText().toLowerCase();

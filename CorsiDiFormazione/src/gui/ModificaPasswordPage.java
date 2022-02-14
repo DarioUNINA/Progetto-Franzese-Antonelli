@@ -125,13 +125,8 @@ public class ModificaPasswordPage extends JFrame {
 		indietroButton.setBounds(10, 265, 123, 31);
 		recuperoPanel.add(indietroButton);
 		
-		if(operatore.getPassword() == null)
-			indietroButton.setVisible(false);
+		gestoreIndietro();
 			
-		
-			
-		
-		
 		//LISTNER
 		
 		confermaButton.addMouseListener(new MouseAdapter() {
@@ -166,9 +161,12 @@ public class ModificaPasswordPage extends JFrame {
 		setVisible(true);
 	}
 	
+	//ALERT
+	
 	public void alertPasswordNonCorrispondenti() {
 		JOptionPane.showMessageDialog(this, "Password non corrispondenti, riprova.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 		}
+	
 	
 	public void alertPasswordCambiata() {
 		JOptionPane.showMessageDialog(this, "Password modificata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
@@ -180,6 +178,7 @@ public class ModificaPasswordPage extends JFrame {
 		}
 		setVisible(false);
 	}
+	
 	
 	public void alertInserirePassword() {
 		JOptionPane.showMessageDialog(this, "Inserire una password","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
@@ -195,6 +194,8 @@ public class ModificaPasswordPage extends JFrame {
 					else
 						JOptionPane.showMessageDialog(this, "Errore durante la modifica della password","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 		}		
+	
+	//GESTORI
 	
 	public void gestoreModificaPassword() {
 
@@ -215,7 +216,12 @@ public class ModificaPasswordPage extends JFrame {
 						else
 							alertErroreCambioPassword(state);
 				}
-		
+	}
+	
+	
+	public void gestoreIndietro() {
+		if(operatore.getPassword() == null)
+			indietroButton.setVisible(false);
 	}
 }
 

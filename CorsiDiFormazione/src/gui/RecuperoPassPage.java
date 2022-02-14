@@ -40,9 +40,9 @@ public class RecuperoPassPage extends JFrame {
 	private ImageIcon imageicon;
 	private JPanel contentPane;
 	private JPanel recuperoPanel;
-	private JLabel rECUPEROPASSWORDLabel;
+	private JLabel recuperoPasswordLabel;
 	private JLabel nomeUtenteLabel;
-	private JTextField nomeUtenteText;
+	private JTextField nomeUtenteTextField;
 	private JButton confermaButton;
 	private JButton indietroButton;	
 	
@@ -51,10 +51,11 @@ public class RecuperoPassPage extends JFrame {
 	final Color blu;
 	final Color grigioChiaro;
 	
-	public RecuperoPassPage(Controller co) {
+	public RecuperoPassPage(Controller controller) {
+		
+		theController = controller;
 		
 		setResizable(false);
-		
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
@@ -62,7 +63,6 @@ public class RecuperoPassPage extends JFrame {
 		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
-		theController = co;
 		setIconImage(imageicon.getImage());
 
 		getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -82,23 +82,23 @@ public class RecuperoPassPage extends JFrame {
 		contentPane.add(recuperoPanel);
 		recuperoPanel.setLayout(null);
 		
-		rECUPEROPASSWORDLabel = new JLabel("RECUPERO PASSWORD");
-		rECUPEROPASSWORDLabel.setForeground(Color.BLACK);
-		rECUPEROPASSWORDLabel.setFont(new Font("Arial", Font.BOLD, 22));
-		rECUPEROPASSWORDLabel.setBackground(Color.WHITE);
-		rECUPEROPASSWORDLabel.setBounds(143, 11, 268, 33);
-		recuperoPanel.add(rECUPEROPASSWORDLabel);
+		recuperoPasswordLabel = new JLabel("RECUPERO PASSWORD");
+		recuperoPasswordLabel.setForeground(Color.BLACK);
+		recuperoPasswordLabel.setFont(new Font("Arial", Font.BOLD, 22));
+		recuperoPasswordLabel.setBackground(Color.WHITE);
+		recuperoPasswordLabel.setBounds(143, 11, 268, 33);
+		recuperoPanel.add(recuperoPasswordLabel);
 		
 		nomeUtenteLabel = new JLabel("Nome Utente:");
 		nomeUtenteLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		nomeUtenteLabel.setBounds(31, 113, 153, 24);
 		recuperoPanel.add(nomeUtenteLabel);
 		
-		nomeUtenteText = new JTextField();
-		nomeUtenteText.setFont(new Font("Arial", Font.BOLD, 13));
-		nomeUtenteText.setColumns(10);
-		nomeUtenteText.setBounds(171, 113, 197, 27);
-		recuperoPanel.add(nomeUtenteText);
+		nomeUtenteTextField = new JTextField();
+		nomeUtenteTextField.setFont(new Font("Arial", Font.BOLD, 13));
+		nomeUtenteTextField.setColumns(10);
+		nomeUtenteTextField.setBounds(171, 113, 197, 27);
+		recuperoPanel.add(nomeUtenteTextField);
 		
 		confermaButton = new JButton("CONFERMA");
 		confermaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -167,8 +167,10 @@ public class RecuperoPassPage extends JFrame {
 
 	}
 	
+	//GESTORI
+	
 	public void gestoreCheckNome() {
-		String Nome = nomeUtenteText.getText().toLowerCase();
+		String Nome = nomeUtenteTextField.getText().toLowerCase();
 		
 		if(Nome.isEmpty()) 
 			alertNomeUtenteNonInserito();

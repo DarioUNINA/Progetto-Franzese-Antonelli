@@ -47,11 +47,11 @@ public class ModificaNomeUtentePage extends JFrame {
 	final Color grigioChiaro;
 	
 	public ModificaNomeUtentePage(Controller controller, Operatori operatore) {
-		setResizable(false);
 		
 		theController = controller;
 		this.operatore = operatore;
 		
+		setResizable(false);
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
 		blu = new Color(0,51,78);
@@ -135,7 +135,7 @@ public class ModificaNomeUtentePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				modificaDati();
+				gestoreModificaDati();
 			}
 		});
 		
@@ -186,7 +186,10 @@ public class ModificaNomeUtentePage extends JFrame {
 					JOptionPane.showMessageDialog(this, "Errore durante la modifica del Nome Utente","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}	
 	
-	public void modificaDati() {
+	
+	//GESTORI
+	
+	public void gestoreModificaDati() {
 		String nomeU = nuovoNomeUtenteTextField.getText().toLowerCase();
 		String confermaNomeU = confermaNuovoNomeUtenteTextField.getText().toLowerCase();
 		

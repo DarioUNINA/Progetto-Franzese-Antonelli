@@ -37,6 +37,7 @@ public class EliminaCorsoPage extends JFrame {
 	
 	private Controller theController;
 	private Operatori operatore;
+	private Vector <Corsi> corsi;
 	
 	private ImageIcon imageicon;
 	private Component url;
@@ -47,8 +48,7 @@ public class EliminaCorsoPage extends JFrame {
 	private JLabel eliminazioneCorsoLabel;
 	private JButton indietroButton;
 	private JLabel selezionaCorsoLabel;
-	private Vector <Corsi> corsi;
-
+	
 	final Color azzurro;
 	final Color azzurroChiaro;
 	final Color blu;
@@ -59,6 +59,7 @@ public class EliminaCorsoPage extends JFrame {
 		
 		theController = controller;
 		this.operatore = operatore;
+		corsi = theController.getCorsiOperatore(operatore);
 		
 
 		azzurro = new Color(153,211,223);
@@ -99,7 +100,6 @@ public class EliminaCorsoPage extends JFrame {
 		selezionaCorsoLabel.setBounds(138, 75, 267, 23);
 		eliminaCorsoPanel.add(selezionaCorsoLabel);
 		
-		corsi = theController.getCorsiOperatore(operatore);
 		corsiComboBox = new JComboBox(corsi);
 		corsiComboBox.setFont(new Font("Arial", Font.BOLD, 13));
 		corsiComboBox.setBounds(193, 122, 165, 22);
@@ -129,8 +129,6 @@ public class EliminaCorsoPage extends JFrame {
 					alertCorsoNonSelezionato();
 				else
 					alertConfermaEliminazioneCorso(corsiComboBox.getSelectedItem().toString());
-					
-				
 			}
 		});
 		
@@ -154,6 +152,8 @@ public class EliminaCorsoPage extends JFrame {
 		setVisible(true);
 	}
 	
+	
+	//ALERT
 	
 	public void alertCorsoNonSelezionato() {
 		JOptionPane.showMessageDialog(this, "Selezionare un corso!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);

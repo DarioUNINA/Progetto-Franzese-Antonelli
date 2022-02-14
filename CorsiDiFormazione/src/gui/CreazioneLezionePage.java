@@ -37,6 +37,8 @@ public class CreazioneLezionePage extends JFrame {
 	private Controller theController;
 	private Operatori operatore;
 	private Corsi corso;
+	private Vector<Time> durate;
+	private Vector<Time> orari;
 	
 	private ImageIcon imageicon;
 	private JPanel creazioneLezioniPanel;
@@ -54,8 +56,6 @@ public class CreazioneLezionePage extends JFrame {
 	private JButton confermaButton;
 	private JComboBox<Time> durataComboBox;
 	private JComboBox<Time> orarioComboBox;
-	private Vector<Time> durate;
-	private Vector<Time> orari;
 	private JCalendar calendario;
 	
 	
@@ -146,7 +146,6 @@ public class CreazioneLezionePage extends JFrame {
 		indietroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		indietroButton.setBounds(10, 273, 121, 23);
 		creaLezionePanel.add(indietroButton);
-		
 
 		durataComboBox = new JComboBox<Time>(durate);
 		durataComboBox.setBounds(71, 139, 103, 22);
@@ -214,6 +213,8 @@ public class CreazioneLezionePage extends JFrame {
 		setVisible(true);
 	}
 	
+	//ALERT
+	
 	public void alertInserimentoEffettuato() {
 		
 		JOptionPane.showMessageDialog(this, "Lezione creata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
@@ -241,6 +242,8 @@ public class CreazioneLezionePage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Inserire il titolo della lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
+	
+	//GESTORI
 	
 	public void gestoreInserimentoLezione() {
 		

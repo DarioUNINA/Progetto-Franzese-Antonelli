@@ -3,6 +3,7 @@ package connection;
 import java.sql.*;
 
 public class Connessione {
+	
 	private static Connection connection;
 	private static Connessione istanza;
 	private Statement statement;

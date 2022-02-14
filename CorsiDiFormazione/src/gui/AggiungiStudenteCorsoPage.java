@@ -156,7 +156,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {	
 				
-				aggiungiStudente();
+				gestoreAggiungiStudente();
 			}
 		});
 		
@@ -164,7 +164,11 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		setVisible(true);
 	}
 	
+	
+	
+	
 	// ALERT
+	
 	public void alertNonCiSonoCorsiDisponibili() {
 	
 		JOptionPane.showMessageDialog(this, "Non ci sono corsi disponibili dove poter iscrivere lo studente!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
@@ -189,7 +193,11 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 				JOptionPane.showMessageDialog(this, "Errore sconsciuto durante l'iscrizione al corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void aggiungiStudente() {
+	
+	
+	//GESTORI
+	
+	public void gestoreAggiungiStudente() {
 		String state = theController.aggiungiStudenteCorso(studente.getMatricola(), corsi.get(corsiComboBox.getSelectedIndex()).getIdCorso());
 		
 		if(state.equals("0")) {

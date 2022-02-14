@@ -37,7 +37,6 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 	
 	private Component url;
 	private ImageIcon imageicon;
-	
 	private JPanel contentPane;
 	private JPanel aggiungiStudentiPanel;
 	private JLabel aggiungiStudenteAlCorsoLabel;
@@ -45,7 +44,6 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 	private JLabel selezionareStudenteLabel;
 	private JButton indietroButton;
 	private JButton aggiungiButton;
-
 	private JComboBox<Studenti> studentiComboBox;
 	
 	final Color grigioChiaro;
@@ -57,8 +55,8 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 		this.operatore = operatore;
 		this.corso = corso;
 		studenti = theController.getStudentiDisponibili(corso.getIdCorso());
-		studentiComboBox = new JComboBox<Studenti>(studenti);
 		
+		studentiComboBox = new JComboBox<Studenti>(studenti);
 		grigioChiaro = new Color(219,235,250);
 		
 		imageicon = new ImageIcon("napule.png");
@@ -146,7 +144,7 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {	
 				
-				aggiungiStudenteCorso();
+				gestoreAggiungiStudenteCorso();
 			}
 		});
 		
@@ -174,7 +172,9 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 				JOptionPane.showMessageDialog(this, "Errore sconsciuto durante l'iscrizione al corso","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void aggiungiStudenteCorso() {
+	//GESTORI
+	
+	public void gestoreAggiungiStudenteCorso() {
 		String state = theController.aggiungiStudenteCorso(studenti.get(studentiComboBox.getSelectedIndex()).getMatricola(), corso.getIdCorso());
 		
 		if(state.equals("0")) {

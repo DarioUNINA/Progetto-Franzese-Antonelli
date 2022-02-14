@@ -40,8 +40,8 @@ public class PanoramicaLezionePage extends JFrame {
 	private Operatori operatore;
 	private Lezioni lezione;
 	private Vector<Studenti> studenti;
-	private JList<Studenti> studentiList;
 	
+	private JList<Studenti> studentiList;
 	private Component url;
 	private ImageIcon imageicon;
 	private JPanel contentPane;
@@ -74,15 +74,14 @@ public class PanoramicaLezionePage extends JFrame {
 		theController = controller;
 		this.operatore = operatore;
 		this.lezione = lezione;
+		studenti = theController.getAllStudentiIscrittiAllaLezione(lezione.getIdLezione());
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
 		blu = new Color(0,51,78);
 		grigioChiaro = new Color(219,235,250);
 		
-		studenti = theController.getAllStudentiIscrittiAllaLezione(lezione.getIdLezione());
 		studentiList = new JList<Studenti>(studenti);
-		
 		
 		imageicon = new ImageIcon("napule.png");
 		setIconImage(imageicon.getImage());
@@ -225,12 +224,8 @@ public class PanoramicaLezionePage extends JFrame {
 		aggiungiStudenteLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione()).isEmpty()) {
-					alertNonCiSonoStudenti();
-				}else {
-					AggiungiStudenteLezionePage asl = new AggiungiStudenteLezionePage(theController, operatore, lezione);
-					setVisible(false);
-				}
+				gestoreAggiungiStudente();
+				
 			}
 		});
 		
@@ -254,5 +249,17 @@ public class PanoramicaLezionePage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Non ci sono Studenti da poter aggiungere alla lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
+	
+	//GESTORI
+	
+	public void gestoreAggiungiStudente() {
+		
+		if(theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione()).isEmpty()) {
+			alertNonCiSonoStudenti();
+		}else {
+			AggiungiStudenteLezionePage asl = new AggiungiStudenteLezionePage(theController, operatore, lezione);
+			setVisible(false);
+		}
+	}
 }
 

@@ -33,6 +33,7 @@ public class ImpostazioniPage extends JFrame {
 	private Controller theController;
 	private Operatori operatore;
 	private Studenti studente;
+	private int flag;
 	
 	private Component url;
 	private ImageIcon imageicon;
@@ -41,10 +42,8 @@ public class ImpostazioniPage extends JFrame {
 	private JButton modificaNomeUtenteButton;
 	private JButton modificaPasswordButton;
 	private JButton eliminaProfiloButton;
-	private int flag;
 	private JLabel impostazioniLabel;
 	private JButton indietroButton;
-	
 	
 	final Color grigioChiaro;
 	
@@ -146,7 +145,7 @@ public class ImpostazioniPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				checkPageDiRitorno();
+				gestoreIndietro();
 				
 			}
 			@Override
@@ -163,6 +162,9 @@ public class ImpostazioniPage extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
+	
+	
+	//ALERT
 			
 	public void alertConfermaEliminaProfilo() {
 		
@@ -220,7 +222,10 @@ public class ImpostazioniPage extends JFrame {
 			JOptionPane.showMessageDialog(this, "Impossibile eliminare l'operatore.\nCodice d'errore " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void checkPageDiRitorno() {
+	
+	//GESTORI
+	
+	public void gestoreIndietro() {
 		if(flag==0) {
 			
 			GestoreCorsiPage page = new GestoreCorsiPage(theController, operatore);

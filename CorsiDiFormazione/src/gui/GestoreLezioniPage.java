@@ -76,27 +76,20 @@ public class GestoreLezioniPage extends JFrame {
 	private JButton aggiungiLezioneButton;
 	private JScrollPane corsiScrollPane;
 	private JList<Corsi> corsiList;
-	
 	private JScrollPane lezioniScrollPane;
 	private JList<Lezioni> lezioniList;
-	
 	private JScrollPane orarioScrollPane;
 	private JCheckBoxList orarioList;
-	
 	private JScrollPane durataScrollPane;
 	private JCheckBoxList durataList;
-	
 	private JScrollPane giorniScrollPane;
 	private JCheckBoxList giorniList;
-	
 	private JScrollPane mesiScrollPane;
 	private JCheckBoxList mesiList;
 	private JTextField titoloTextField;
 	private JLabel titoloLabel;
-	
 	private JRadioButton setAllGiorniRadioButton;
 	private JRadioButton setAllMesiRadioButton;
-	
 	private JPanel menuPanelEsteso;
 	private JLabel impostazioniLabelMenuEsteso;
 	private JLabel impostazioniScrittaLabel;
@@ -105,7 +98,6 @@ public class GestoreLezioniPage extends JFrame {
 	private JLabel gestoreStudentiMenuLabel;
 	private JLabel esciImageMenuEstesoLabel;
 	private JLabel esciLabel;
-	
 	private JLabel labelTrattiniMenuEsteso;
 	private JLabel menuEstesoLabel;
 	private JPanel gestoreCorsiOpacoPanel;
@@ -127,10 +119,8 @@ public class GestoreLezioniPage extends JFrame {
 		
 		theController = controller;
 		this.operatore = operatore;
-
 		corsi = theController.getCorsiOperatore(operatore);
 		corsiList = new JList<Corsi>(corsi);
-		
 		mesi = theController.getMesi();
 		giorni = theController.getGiorni();
 		durata = theController.getDurate();
@@ -701,7 +691,7 @@ public class GestoreLezioniPage extends JFrame {
 		corsiList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				if(e.getValueIsAdjusting()) {
-					setLezioni();
+					gestoreSetLezioni();
 				}
 			}
 				
@@ -748,7 +738,7 @@ public class GestoreLezioniPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				filtriLezioni();
+				gestoreFiltriLezioni();
 			}
 		});
 		
@@ -757,7 +747,7 @@ public class GestoreLezioniPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				resetFiltri();
+				gestoreResetFiltri();
 			}
 		});
 		
@@ -849,6 +839,8 @@ public class GestoreLezioniPage extends JFrame {
 	}
 	
 	
+	//ALERT
+	
 	public void alertNessunaLezioneSelezionata() {
 		JOptionPane.showMessageDialog(this, "Selezionare una lezione","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);	
 	}
@@ -921,7 +913,11 @@ public class GestoreLezioniPage extends JFrame {
 			
 	}
 	
-	public void setLezioni() {
+	
+	
+	//GESTORI
+	
+	public void gestoreSetLezioni() {
 			
 			if(corsiList.isSelectionEmpty()) {
 				alertNessunCorsoSelezionato();
@@ -932,7 +928,8 @@ public class GestoreLezioniPage extends JFrame {
 				}	
 	}
 	
-	public void filtriLezioni() {
+	public void gestoreFiltriLezioni() {
+		
 		Vector<String> vettoreGiorni = theController.getGiorniSelezionati(giorniList);
 		Vector<String> vettoreMesi = theController.getMesiSelezionati(mesiList);
 		Vector<Time> vettoreOrario = theController.getOrariSelezionati(orarioList, orario);
@@ -946,7 +943,8 @@ public class GestoreLezioniPage extends JFrame {
 			}
 	}
 	
-	public void resetFiltri() {
+	public void gestoreResetFiltri() {
+		
 		Vector<String> vettoreGiorni = theController.getGiorniSelezionati(giorniList);
 		Vector<String> vettoreMesi = theController.getMesiSelezionati(mesiList);
 		Vector<Time> vettoreOrario = theController.getOrariSelezionati(orarioList, orario);

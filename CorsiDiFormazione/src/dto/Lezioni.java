@@ -12,6 +12,7 @@ public class Lezioni {
 	private String idCorso;
 	private String idLezione;
 	private Date data;
+	private Corsi corso;
 	
 	public Lezioni() {
 	}

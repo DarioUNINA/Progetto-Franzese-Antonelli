@@ -1,11 +1,14 @@
 package dto;
 
+import java.util.Vector;
+
 public class Operatori {
 
 	private String idOperatore;
 	private String nomeUtente;
 	private String password;
-	
+	private Vector<Corsi> corsi;
+	private DomandeOperatori domandeOperatore;
 	
 	public Operatori(String idOperatore, String nomeUtente, String password) {
 		this.idOperatore = idOperatore;

@@ -5,7 +5,8 @@ public class DomandeOperatori {
 	private String idDomanda;
 	private String idOperatore;
 	private String risposta;
-	
+	private Operatori operatore;
+	private DomandeSicurezza domandeSicurezza;
 	
 
 	public String getIdDomanda() {

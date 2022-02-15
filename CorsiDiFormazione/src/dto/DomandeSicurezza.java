@@ -8,6 +8,22 @@ public class DomandeSicurezza {
 	private String domanda;
 	private Vector<DomandeOperatori> domandaSicurezza;
 	
+	
+	public DomandeSicurezza() {}
+	
+	public DomandeSicurezza(String idDomanda) {
+		this.idDomanda = idDomanda;
+	}
+	
+	
+	public Vector<DomandeOperatori> getDomandaSicurezza() {
+		return domandaSicurezza;
+	}
+
+	public void setDomandaSicurezza(Vector<DomandeOperatori> domandaSicurezza) {
+		this.domandaSicurezza = domandaSicurezza;
+	}
+
 	public String getIdDomanda() {
 		return idDomanda;
 	}
@@ -16,9 +32,6 @@ public class DomandeSicurezza {
 		this.idDomanda = idDomanda;
 	}
 	
-	public DomandeSicurezza(String idDomanda) {
-		this.idDomanda = idDomanda;
-	}
 	
 	public String getDomanda() {
 		return domanda;
@@ -28,8 +41,6 @@ public class DomandeSicurezza {
 		this.domanda = domanda;
 	}
 
-	public DomandeSicurezza() {}
-	
 	public String toString() {
 		return this.getDomanda();
 	}

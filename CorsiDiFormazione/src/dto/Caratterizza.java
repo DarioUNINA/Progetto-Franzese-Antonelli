@@ -13,6 +13,26 @@ public class Caratterizza {
 		this.idCorso = idCorso;
 	}
 
+	public Corsi getCorso() {
+		return corso;
+	}
+
+
+	public void setCorso(Corsi corso) {
+		this.corso = corso;
+	}
+
+
+	public ParoleChiave getParoleChiave() {
+		return paroleChiave;
+	}
+
+
+	public void setParoleChiave(ParoleChiave paroleChiave) {
+		this.paroleChiave = paroleChiave;
+	}
+
+
 
 	public String getParolaChiave() {
 		return parolaChiave;

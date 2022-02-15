@@ -25,6 +25,22 @@ public class Operatori {
 		this.nomeUtente = nomeUtente;
 	}
 	
+	public Vector<Corsi> getCorsi() {
+		return corsi;
+	}
+
+	public void setCorsi(Vector<Corsi> corsi) {
+		this.corsi = corsi;
+	}
+
+	public DomandeOperatori getDomandeOperatore() {
+		return domandeOperatore;
+	}
+
+	public void setDomandeOperatore(DomandeOperatori domandeOperatore) {
+		this.domandeOperatore = domandeOperatore;
+	}
+	
 	public String getIdOperatore() {
 		return idOperatore;
 	}

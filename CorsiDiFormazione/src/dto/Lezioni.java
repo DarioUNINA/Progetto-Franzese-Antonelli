@@ -1,6 +1,7 @@
 package dto;
 
 import java.util.Date;
+import java.util.Vector;
 import java.sql.Time;
 
 public class Lezioni {
@@ -13,6 +14,7 @@ public class Lezioni {
 	private String idLezione;
 	private Date data;
 	private Corsi corso;
+	private Vector<Presenze> presenze;
 	
 	public Lezioni() {
 	}
@@ -95,6 +97,22 @@ public class Lezioni {
 		this.data = data;
 	}
 	
+	public Corsi getCorso() {
+		return corso;
+	}
+
+	public void setCorso(Corsi corso) {
+		this.corso = corso;
+	}
+
+	public Vector<Presenze> getPresenze() {
+		return presenze;
+	}
+
+	public void setPresenze(Vector<Presenze> presenze) {
+		this.presenze = presenze;
+	}
+
 	public String toString() {
 		return this.titolo;
 

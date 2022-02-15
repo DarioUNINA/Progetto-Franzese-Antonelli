@@ -22,6 +22,14 @@ public class AreeTematiche {
 		this.nomeArea = nomeArea;
 	}
 
+	public Vector<Temi> getTemi() {
+		return temi;
+	}
+
+	public void setTemi(Vector<Temi> temi) {
+		this.temi = temi;
+	}
+
 	public String toString() {
 		return nomeArea;
 		

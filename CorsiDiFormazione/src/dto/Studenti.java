@@ -8,6 +8,7 @@ public class Studenti {
 	private String nome;
 	private String cognome;
 	private Vector<Iscrizioni> iscrizioni;
+	private Vector<Presenze> presenze;
 	
 	public Studenti() {
 		
@@ -47,6 +48,18 @@ public class Studenti {
 		this.cognome = cognome;
 	}
 
+	public Vector<Iscrizioni> getIscrizioni() {
+		return iscrizioni;
+	}
+	public void setIscrizioni(Vector<Iscrizioni> iscrizioni) {
+		this.iscrizioni = iscrizioni;
+	}
+	public Vector<Presenze> getPresenze() {
+		return presenze;
+	}
+	public void setPresenze(Vector<Presenze> presenze) {
+		this.presenze = presenze;
+	}
 	public String toString() {
 		return this.nome + " " +  this.cognome;
 	}

@@ -92,6 +92,46 @@ public class Corsi {
 		this.idOperatore = idOperatore;
 	}
 	
+	public Vector<Lezioni> getLezioni() {
+		return lezioni;
+	}
+
+	public void setLezioni(Vector<Lezioni> lezioni) {
+		this.lezioni = lezioni;
+	}
+
+	public Vector<Iscrizioni> getIscrizioni() {
+		return iscrizioni;
+	}
+
+	public void setIscrizioni(Vector<Iscrizioni> iscrizioni) {
+		this.iscrizioni = iscrizioni;
+	}
+
+	public Operatori getOperatore() {
+		return operatore;
+	}
+
+	public void setOperatore(Operatori operatore) {
+		this.operatore = operatore;
+	}
+
+	public Vector<Caratterizza> getCaratterizza() {
+		return caratterizza;
+	}
+
+	public void setCaratterizza(Vector<Caratterizza> caratterizza) {
+		this.caratterizza = caratterizza;
+	}
+
+	public Vector<Temi> getTemi() {
+		return temi;
+	}
+
+	public void setTemi(Vector<Temi> temi) {
+		this.temi = temi;
+	}
+
 	public String toString() {
 		
 		return this.nome;

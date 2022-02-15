@@ -7,6 +7,7 @@ public class Temi {
 	private Corsi corso;
 	private AreeTematiche areaTematica;
 	
+	
 		public Temi(String nomeArea, String idCorso) {
 		this.nomeArea = nomeArea;
 		this.idCorso = idCorso;
@@ -27,6 +28,26 @@ public class Temi {
 
 	public void setIdCorso(String idCorso) {
 		this.idCorso = idCorso;
+	}
+
+
+	public Corsi getCorso() {
+		return corso;
+	}
+
+
+	public void setCorso(Corsi corso) {
+		this.corso = corso;
+	}
+
+
+	public AreeTematiche getAreaTematica() {
+		return areaTematica;
+	}
+
+
+	public void setAreaTematica(AreeTematiche areaTematica) {
+		this.areaTematica = areaTematica;
 	}
 
 }

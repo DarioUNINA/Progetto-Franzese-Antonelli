@@ -38,5 +38,21 @@ public class Iscrizioni {
 		this.idCorso = idCorso;
 	}
 
+	public Corsi getCorso() {
+		return corso;
+	}
+
+	public void setCorso(Corsi corso) {
+		this.corso = corso;
+	}
+
+	public Studenti getStudente() {
+		return studente;
+	}
+
+	public void setStudente(Studenti studente) {
+		this.studente = studente;
+	}
+
 	
 }

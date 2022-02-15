@@ -4,6 +4,8 @@ public class Presenze {
 
 	private String matricola;
 	private String idLezione;
+	private Studenti studente;
+	private Lezioni lezione;
 	
 	
 	public Presenze(String matricola, String idLezione) {
@@ -26,6 +28,26 @@ public class Presenze {
 
 	public void setIdLezione(String idLezione) {
 		this.idLezione = idLezione;
+	}
+
+
+	public Studenti getStudente() {
+		return studente;
+	}
+
+
+	public void setStudente(Studenti studente) {
+		this.studente = studente;
+	}
+
+
+	public Lezioni getLezione() {
+		return lezione;
+	}
+
+
+	public void setLezione(Lezioni lezione) {
+		this.lezione = lezione;
 	}
 
 }

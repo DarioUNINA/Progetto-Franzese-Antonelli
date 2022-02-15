@@ -23,6 +23,14 @@ public class ParoleChiave {
 		this.parolaChiave = parolaChiave;
 	}
 	
+	public Vector<Caratterizza> getCaratterizza() {
+		return caratterizza;
+	}
+
+	public void setCaratterizza(Vector<Caratterizza> caratterizza) {
+		this.caratterizza = caratterizza;
+	}
+
 	public String toString() {
 		return parolaChiave;
 		

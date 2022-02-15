@@ -8,6 +8,39 @@ public class DomandeOperatori {
 	private Operatori operatore;
 	private DomandeSicurezza domandeSicurezza;
 	
+	
+	public DomandeOperatori(String idDomanda, String idOperatore, String risposta) {
+		this.idDomanda = idDomanda;
+		this.idOperatore = idOperatore;
+		this.risposta = risposta;
+	}
+	
+	public DomandeOperatori(String idDomanda, String idOperatore) {
+		this.idDomanda = idDomanda;
+		this.idOperatore = idOperatore;
+	}
+	
+	
+	
+	public Operatori getOperatore() {
+		return operatore;
+	}
+
+	public void setOperatore(Operatori operatore) {
+		this.operatore = operatore;
+	}
+
+	public DomandeSicurezza getDomandeSicurezza() {
+		return domandeSicurezza;
+	}
+
+	public void setDomandeSicurezza(DomandeSicurezza domandeSicurezza) {
+		this.domandeSicurezza = domandeSicurezza;
+	}
+
+	public void setIdDomanda(String idDomanda) {
+		this.idDomanda = idDomanda;
+	}
 
 	public String getIdDomanda() {
 		return idDomanda;
@@ -33,15 +66,6 @@ public class DomandeOperatori {
 		this.risposta = risposta;
 	}
 
-	public DomandeOperatori(String idDomanda, String idOperatore, String risposta) {
-		this.idDomanda = idDomanda;
-		this.idOperatore = idOperatore;
-		this.risposta = risposta;
-	}
 	
-	public DomandeOperatori(String idDomanda, String idOperatore) {
-		this.idDomanda = idDomanda;
-		this.idOperatore = idOperatore;
-	}
 	
 }

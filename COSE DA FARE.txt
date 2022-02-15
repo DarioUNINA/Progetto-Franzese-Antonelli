@@ -3,3 +3,5 @@
 2) class diagram obj
 
 3) documentazione
+
+4) iscrivi studente corso page modifica query di poplamento combo box

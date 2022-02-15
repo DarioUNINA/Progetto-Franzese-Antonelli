@@ -1834,7 +1834,7 @@
 										"$ref": "AAAAAAF+DVi1cPBMfD8="
 									},
 									"edgePosition": 1,
-									"text": "+Propietari"
+									"text": "+Proprietari"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -4263,7 +4263,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF92bf94leyIKI="
 							},
-							"name": "Propietari",
+							"name": "Proprietari",
 							"end1": {
 								"_type": "UMLAssociationEnd",
 								"_id": "AAAAAAF+DVi1b/BJfv4=",

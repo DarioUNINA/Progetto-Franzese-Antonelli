@@ -142,6 +142,11 @@ public class ModificaPasswordPage extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				confermaButton.setBackground(Color.WHITE);
 			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				gestoreModificaPassword();
+				
+			}
 		});
 		
 		

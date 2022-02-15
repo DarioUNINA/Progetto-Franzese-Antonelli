@@ -260,7 +260,7 @@ public class ModificaCorsoPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+				theController.gestoreCorsiPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -320,7 +320,7 @@ public class ModificaCorsoPage extends JFrame {
 		
 		JOptionPane.showMessageDialog(this, "Corso modificato correttamente","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
 
-		GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+		theController.gestoreCorsiPage(operatore);
 		setVisible(false);
 	}
 	

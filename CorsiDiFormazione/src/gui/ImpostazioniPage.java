@@ -119,7 +119,7 @@ public class ImpostazioniPage extends JFrame {
 		modificaNomeUtenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ModificaNomeUtentePage mnu = new ModificaNomeUtentePage(theController, operatore);
+				theController.modificaNomeUtentePage(operatore, flag, studente);
 				setVisible(false);
 			}
 		});
@@ -128,7 +128,7 @@ public class ImpostazioniPage extends JFrame {
 		modificaPasswordButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ModificaPasswordPage mpp = new ModificaPasswordPage(theController, operatore);
+				theController.modificaPasswordPage(operatore, flag, studente);
 				setVisible(false);
 			}
 		});
@@ -198,7 +198,7 @@ public class ImpostazioniPage extends JFrame {
 				
 		if(state.equals("0")) {
 			JOptionPane.showMessageDialog(this, "Account eliminato con successo","<CONFERMA>", JOptionPane.WARNING_MESSAGE);
-			LogInPage lip = new LogInPage(theController);
+			theController.logIn();
 			setVisible(false);
 		}
 			
@@ -228,27 +228,19 @@ public class ImpostazioniPage extends JFrame {
 	public void gestoreIndietro() {
 		if(flag==0) {
 			
-			GestoreCorsiPage page = new GestoreCorsiPage(theController, operatore);
+			theController.gestoreCorsiPage(operatore);
 			setVisible(false);
 		}else
 			if(flag == 1) {
 				
-				PanoramicaSingoloStudentePage page = new PanoramicaSingoloStudentePage(theController, operatore, studente);
+				theController.panoramicaSingoloStudentePage(operatore, studente);
 				setVisible(false);
 			}else
 				if(flag == 2){
 					
-					GestoreLezioniPage page = new GestoreLezioniPage(theController, operatore);
+					theController.gestoreLezioniPage(operatore);
 					setVisible(false);
-				}else
-					if(flag == 3) {
-						ModificaNomeUtentePage page = new ModificaNomeUtentePage(theController, operatore);
-						setVisible(false);
-					}else {
-						ModificaPasswordPage page = new ModificaPasswordPage(theController, operatore);
-						setVisible(false);
-					}
-		
+				}
 	}
 }
 

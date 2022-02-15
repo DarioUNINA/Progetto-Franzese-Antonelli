@@ -146,7 +146,7 @@ public class RecuperoPassPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				LogInPage LI = new LogInPage(theController);
+				theController.logIn();
 				setVisible(false);
 			}
 		});
@@ -179,7 +179,7 @@ public class RecuperoPassPage extends JFrame {
 				
 				if(state.equals("0")) {
 					
-					RecuperoPassDomandaPage rpd = new RecuperoPassDomandaPage(theController, theController.getOperatoreRecuperoPass(Nome));
+					theController.recuperoPassDomandaPage(theController.getOperatoreRecuperoPass(Nome));
 					setVisible(false);
 				}else
 					alertUtenteNonTrovato();

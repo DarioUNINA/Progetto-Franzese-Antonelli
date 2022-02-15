@@ -135,7 +135,7 @@ public class EliminaCorsoPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+				theController.gestoreCorsiPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -188,7 +188,7 @@ public class EliminaCorsoPage extends JFrame {
 		
 		JOptionPane.showMessageDialog(this, "Corso eliminato con successo","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
 
-		GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+		theController.gestoreCorsiPage(operatore);
 		setVisible(false);
 		
 	}

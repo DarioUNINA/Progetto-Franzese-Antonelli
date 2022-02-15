@@ -179,7 +179,7 @@ public class CreazioneLezionePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreLezioniPage glp = new GestoreLezioniPage(theController, operatore);
+				theController.gestoreLezioniPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -219,7 +219,7 @@ public class CreazioneLezionePage extends JFrame {
 		
 		JOptionPane.showMessageDialog(this, "Lezione creata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
 	
-		GestoreLezioniPage page = new GestoreLezioniPage(theController, operatore);
+		theController.gestoreLezioniPage(operatore);
 		setVisible(false);
 		
 	}

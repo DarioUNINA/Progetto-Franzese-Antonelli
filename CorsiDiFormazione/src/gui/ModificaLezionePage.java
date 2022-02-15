@@ -181,7 +181,7 @@ public class ModificaLezionePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaLezionePage plp = new PanoramicaLezionePage(theController, operatore, lezione);
+				theController.panoramicaLezionePage(operatore, lezione);
 				setVisible(false);
 			}
 			@Override
@@ -223,7 +223,7 @@ public class ModificaLezionePage extends JFrame {
 		
 		JOptionPane.showMessageDialog(this, "Lezione modificata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
 		
-		PanoramicaLezionePage plp = new PanoramicaLezionePage(theController, operatore, theController.getLezione(lezione.getIdLezione()));
+		theController.panoramicaLezionePage(operatore, theController.getLezione(lezione.getIdLezione())); 
 		setVisible(false);
 		
 	}

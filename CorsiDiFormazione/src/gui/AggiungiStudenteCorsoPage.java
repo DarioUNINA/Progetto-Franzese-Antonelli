@@ -123,7 +123,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		
 		if(corsiComboBox.getSelectedItem() == null) {
 			alertNonCiSonoCorsiDisponibili();
-			PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+			theController.panoramicaSingoloStudentePage(operatore,studente);
 			setVisible(false);
 		}
 		
@@ -132,7 +132,7 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore, studente);
+				theController.panoramicaSingoloStudentePage(operatore,studente);
 				setVisible(false);
 			}
 			@Override
@@ -172,13 +172,13 @@ public class AggiungiStudenteCorsoPage extends JFrame {
 	public void alertNonCiSonoCorsiDisponibili() {
 	
 		JOptionPane.showMessageDialog(this, "Non ci sono corsi disponibili dove poter iscrivere lo studente!","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-		PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+		theController.panoramicaSingoloStudentePage(operatore,studente);
 		setVisible(false);
 	}
 	
 	public void alertStudenteIscrittoCorrettamente() {
 		JOptionPane.showMessageDialog(this, "Studente iscritto correttamente!","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
-		PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+		theController.panoramicaSingoloStudentePage(operatore,studente);
 		setVisible(false);
 	}
 	

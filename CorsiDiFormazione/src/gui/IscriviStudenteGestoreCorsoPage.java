@@ -119,7 +119,7 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage gcp = new GestoreCorsiPage(theController, operatore);
+				theController.gestoreCorsiPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -157,7 +157,7 @@ public class IscriviStudenteGestoreCorsoPage extends JFrame {
 	//ALERT
 	public void alertStudenteIscrittoCorrettamente() {
 		JOptionPane.showMessageDialog(this, "Studente iscritto correttamente!","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
-		GestoreCorsiPage gcp = new GestoreCorsiPage(theController, operatore);
+		theController.gestoreCorsiPage(operatore);
 		setVisible(false);
 	}
 	

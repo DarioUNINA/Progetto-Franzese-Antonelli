@@ -118,7 +118,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, lezione);
+				theController.panoramicaLezionePage(operatore, lezione);
 				setVisible(false);
 			}
 			@Override
@@ -154,7 +154,7 @@ public class AggiungiStudenteLezionePage extends JFrame {
 	
 	public void alertStudenteAggiuntoCorrettamente() {
 		JOptionPane.showMessageDialog(this, "Studente aggiunto correttamente alle lezione.","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
-		PanoramicaLezionePage  plp = new PanoramicaLezionePage(theController, operatore, lezione);
+		theController.panoramicaLezionePage(operatore, lezione);
 	}
 	
 	public void alertAggiuntaFallita(String state) {

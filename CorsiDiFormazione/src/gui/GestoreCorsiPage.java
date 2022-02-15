@@ -568,7 +568,7 @@ public class GestoreCorsiPage extends JFrame {
 		impostazioniLabelMenuEsteso.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 0, null);
+				theController.impostazioniPage(operatore, 0, null);
 				setVisible(false);
 			}
 			@Override
@@ -582,7 +582,7 @@ public class GestoreCorsiPage extends JFrame {
 		impostazioniScrittaLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 0, null);
+				theController.impostazioniPage(operatore, 0, null);
 				setVisible(false);
 			}
 			@Override
@@ -628,7 +628,7 @@ public class GestoreCorsiPage extends JFrame {
 		gestoreLezioniLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreLezioniPage gs = new GestoreLezioniPage(theController, operatore);
+				theController.gestoreLezioniPage(operatore);
 				setVisible(false);
 				
 			}
@@ -654,7 +654,7 @@ public class GestoreCorsiPage extends JFrame {
 		gestoreStudentiLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreStudentiPage gs = new GestoreStudentiPage(theController, operatore);
+				theController.gestoreStudentiPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -839,7 +839,7 @@ public class GestoreCorsiPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				EliminaCorsoPage ep = new EliminaCorsoPage(theController, operatore);
+				theController.eliminaCorsoPage(operatore);
 				setVisible(false);
 				
 			}
@@ -855,7 +855,7 @@ public class GestoreCorsiPage extends JFrame {
 						alertNessunCorsoSelezionato();
 					else {
 						
-						IscriviStudenteGestoreCorsoPage page = new IscriviStudenteGestoreCorsoPage(theController, operatore, corsiList.getSelectedValue());
+						theController.iscriviStudenteCorsoPage(operatore, corsiList.getSelectedValue());
 						setVisible(false);
 					}		
 				}
@@ -870,7 +870,7 @@ public class GestoreCorsiPage extends JFrame {
 				if(corsiList.getSelectedValue() == null) {
 					alertNessunCorsoSelezionato();
 				}else {
-					StatisticheCorsoPage scp = new StatisticheCorsoPage(theController, operatore, corsiList.getSelectedValue());
+					theController.statisticheCorsoPage(operatore, corsiList.getSelectedValue());
 					setVisible(false);
 				}
 			}
@@ -880,8 +880,7 @@ public class GestoreCorsiPage extends JFrame {
 		aggiungiCorsoButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				CreazioneCorsoPage ccp = new CreazioneCorsoPage(theController, operatore);
+				theController.creazioneCorsoPage(operatore);	
 				setVisible(false);
 				
 			}
@@ -894,7 +893,8 @@ public class GestoreCorsiPage extends JFrame {
 				if(corsiList.getSelectedValue() == null) {
 					alertNessunCorsoSelezionato();
 				}else {
-					ModificaCorsoPage mmcp = new ModificaCorsoPage(theController, operatore, corsiList.getSelectedValue());
+					
+					theController.modificaCorsoPage(operatore, corsiList.getSelectedValue());
 					setVisible(false);
 				}
 			}
@@ -960,7 +960,7 @@ public class GestoreCorsiPage extends JFrame {
 				opzioni,
 				opzioni[0]);
 		if(n==0) {
-			LogInPage LI = new LogInPage(theController);
+			theController.logIn();
 			setVisible(false);
 		}
 			

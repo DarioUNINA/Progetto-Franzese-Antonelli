@@ -19,6 +19,8 @@ import javax.swing.border.LineBorder;
 
 import controller.Controller;
 import dto.Operatori;
+import dto.Studenti;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Cursor;
@@ -27,6 +29,8 @@ public class ModificaNomeUtentePage extends JFrame {
 
 	private Controller theController;
 	private Operatori operatore;
+	private int flag;
+	private Studenti studente;
 	
 	private Component url;
 	private ImageIcon imageicon;
@@ -46,10 +50,12 @@ public class ModificaNomeUtentePage extends JFrame {
 	final Color blu;
 	final Color grigioChiaro;
 	
-	public ModificaNomeUtentePage(Controller controller, Operatori operatore) {
+	public ModificaNomeUtentePage(Controller controller, Operatori operatore, int flag, Studenti studente) {
 		
 		theController = controller;
 		this.operatore = operatore;
+		this.flag = flag;
+		this.studente = studente;
 		
 		setResizable(false);
 		azzurro = new Color(153,211,223);
@@ -143,7 +149,7 @@ public class ModificaNomeUtentePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 2, null);
+				theController.impostazioniPage(operatore, flag, null);
 				setVisible(false);
 			}
 			@Override
@@ -205,7 +211,7 @@ public class ModificaNomeUtentePage extends JFrame {
 					if(state.equals("0")) {
 						
 						alertNomeUtenteCambiato();
-						GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+						theController.gestoreCorsiPage(operatore);
 						setVisible(false);
 					
 					}else

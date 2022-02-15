@@ -217,7 +217,7 @@ public class StatisticheCorsoPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage page = new GestoreCorsiPage(theController, operatore);
+				theController.gestoreCorsiPage(operatore);
 				setVisible(false);
 			}
 		});

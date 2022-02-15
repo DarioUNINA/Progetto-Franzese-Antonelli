@@ -13,7 +13,30 @@ import javax.swing.ListModel;
 
 import dao.*;
 import dto.*;
+import gui.AggiungiStudenteCorsoPage;
+import gui.AggiungiStudenteLezionePage;
+import gui.ConfermaPrenotaLezionePage;
+import gui.CreazioneCorsoPage;
+import gui.CreazioneLezionePage;
+import gui.CreazioneStudentePage;
+import gui.EliminaCorsoPage;
+import gui.GestoreCorsiPage;
+import gui.GestoreLezioniPage;
+import gui.GestoreStudentiPage;
+import gui.ImpostazioniPage;
+import gui.IscriviStudenteGestoreCorsoPage;
 import gui.LogInPage;
+import gui.ModificaCorsoPage;
+import gui.ModificaLezionePage;
+import gui.ModificaNomeUtentePage;
+import gui.ModificaPasswordPage;
+import gui.ModificaStudentePage;
+import gui.PanoramicaLezionePage;
+import gui.PanoramicaStudentePage;
+import gui.RecuperoPassDomandaPage;
+import gui.RecuperoPassPage;
+import gui.RegistrazionePage;
+import gui.StatisticheCorsoPage;
 import utilities.JCheckBoxList;
 
 public class Controller {
@@ -809,4 +832,100 @@ public class Controller {
 		return studentiDAO.modificaStudente(studente);
 	}
 	
+	public void panoramicaSingoloStudentePage(Operatori operatore, Studenti studente) {
+		PanoramicaStudentePage pssp = new  PanoramicaStudentePage(this,operatore, studente);
+	}
+	
+	public void panoramicaLezionePage(Operatori operatore, Lezioni lezione) {
+		PanoramicaLezionePage pl = new PanoramicaLezionePage(this, operatore, lezione);
+	}
+	
+	public void gestoreCorsiPage(Operatori operatore) {
+		GestoreCorsiPage hp = new GestoreCorsiPage(this, operatore);
+	}
+	
+	public void gestoreLezioniPage(Operatori operatore) {
+		GestoreLezioniPage glp = new GestoreLezioniPage(this, operatore);
+	}
+	
+	public void creazioneStudentePage(Operatori operatore) {
+		CreazioneStudentePage page = new CreazioneStudentePage(this, operatore);
+	}
+	
+	public void modificaPasswordPage(Operatori operatore,  int flag, Studenti studente) {
+		ModificaPasswordPage page = new ModificaPasswordPage(this, operatore, flag, studente);
+	}
+	
+	public void modificaNomeUtentePage(Operatori operatore, int flag, Studenti studente) {
+		ModificaNomeUtentePage mnu = new ModificaNomeUtentePage(this, operatore, flag, studente);
+	}
+	
+	public void logIn() {
+		LogInPage lip = new LogInPage(this);
+	}
+	
+	public void recuperoPassPage() {
+		RecuperoPassPage rpp = new RecuperoPassPage(this);
+	}
+	
+	public void registrazionePage() {
+		RegistrazionePage rp = new RegistrazionePage(this);
+	}
+	
+	public void modificaLezionePage(Operatori operatore, Lezioni lezione) {
+		ModificaLezionePage mlp = new ModificaLezionePage(this, operatore, lezione);
+	}
+	
+	public void aggiungiStudenteLezionePage(Operatori operatore, Lezioni lezione) {
+		AggiungiStudenteLezionePage asl = new AggiungiStudenteLezionePage(this, operatore, lezione);
+	}
+	
+	public void gestoreStudentiPage(Operatori operatore) {
+		GestoreStudentiPage gs = new GestoreStudentiPage(this, operatore);
+		
+	}
+	
+	public void modificaStudentePage(Operatori operatore, Studenti studente) {
+		ModificaStudentePage msp = new ModificaStudentePage(this, operatore, studente);
+	}
+	
+	public void aggiungiStudenteCorsoPage(Operatori operatore, Studenti studente) {
+		AggiungiStudenteCorsoPage asc = new AggiungiStudenteCorsoPage(this, operatore, studente);
+	}
+	
+	public void confermaPrenotaLezionePage(Operatori operatore, Studenti studente, Corsi corso) {
+		ConfermaPrenotaLezionePage page = new ConfermaPrenotaLezionePage(this, operatore, studente, corso);
+	}
+	
+	public void recuperoPassDomandaPage(Operatori operatore) {
+		RecuperoPassDomandaPage rpd = new RecuperoPassDomandaPage(this, operatore);
+	}
+	
+	public void eliminaCorsoPage(Operatori operatore) {
+		EliminaCorsoPage ep = new EliminaCorsoPage(this, operatore);
+	}
+	
+	public void iscriviStudenteCorsoPage(Operatori operatore, Corsi corso) {
+		IscriviStudenteGestoreCorsoPage page = new IscriviStudenteGestoreCorsoPage(this, operatore, corso);
+	}
+	
+	public void statisticheCorsoPage(Operatori operatore, Corsi corso) {
+		StatisticheCorsoPage scp = new StatisticheCorsoPage(this, operatore, corso);
+	}
+	
+	public void creazioneCorsoPage(Operatori operatore) {
+		CreazioneCorsoPage ccp = new CreazioneCorsoPage(this, operatore);
+	}
+	
+	public void modificaCorsoPage(Operatori operatore, Corsi corso) {
+		ModificaCorsoPage mmcp = new ModificaCorsoPage(this, operatore, corso);
+	}
+	
+	public void creazioneLezionePage(Operatori operatore, Corsi corso) {
+		CreazioneLezionePage clp = new CreazioneLezionePage(this, operatore, corso);
+	}
+
+	public void impostazioniPage( Operatori operatore, int flag, Studenti studente) {
+		ImpostazioniPage imp = new ImpostazioniPage(this, operatore, flag, studente);
+	}
 }

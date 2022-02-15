@@ -21,6 +21,7 @@ import javax.swing.border.LineBorder;
 
 import controller.Controller;
 import dto.Operatori;
+import dto.Studenti;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -128,7 +129,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				gestoreConfermaRisposta();
 			}
-
+			
 			public void mouseEntered(MouseEvent e) {
 				confermaButton.setBackground(Color.GREEN);
 			}
@@ -149,7 +150,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				RecuperoPassPage rpp = new RecuperoPassPage(theController);
+				theController.recuperoPassPage();
 				setVisible(false);
 			}
 		});
@@ -175,7 +176,7 @@ public class RecuperoPassDomandaPage extends JFrame {
 		String state  = theController.confermaRispostaSicurezzaClicked(rispostaDomandaField.getText().toLowerCase(), operatore);
 
 		if(state.equals("0")) {
-			ModificaPasswordPage pg = new ModificaPasswordPage(theController, operatore);
+			theController.modificaPasswordPage(operatore, -1, null);
 			setVisible(false);
 		}else
 			alertRispostaNonValida(state);

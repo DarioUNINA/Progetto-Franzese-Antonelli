@@ -469,7 +469,7 @@ public class GestoreLezioniPage extends JFrame {
 		impostazioniLabelMenuEsteso.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 2, null);
+				theController.impostazioniPage(operatore, 2, null);
 				setVisible(false);
 			}
 			@Override
@@ -483,7 +483,7 @@ public class GestoreLezioniPage extends JFrame {
 		impostazioniScrittaLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 2, null);
+			theController.impostazioniPage(operatore, 2, null);
 				setVisible(false);
 			}
 			@Override
@@ -505,7 +505,7 @@ public class GestoreLezioniPage extends JFrame {
 		gestoreCorsiMenuLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+				theController.gestoreCorsiPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -554,7 +554,7 @@ public class GestoreLezioniPage extends JFrame {
 		gestoreStudentiMenuLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreStudentiPage gs = new GestoreStudentiPage(theController, operatore);
+				theController.gestoreStudentiPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -701,7 +701,7 @@ public class GestoreLezioniPage extends JFrame {
 				if(lezioniList.isSelectionEmpty()) {
 					alertNessunaLezioneSelezionata();
 				}else {
-					PanoramicaLezionePage pl = new PanoramicaLezionePage(theController, operatore, theController.getLezione(lezioniList.getSelectedValue().getIdLezione()));
+					theController.panoramicaLezionePage(operatore, theController.getLezione(lezioniList.getSelectedValue().getIdLezione()));
 					setVisible(false);
 					
 				}
@@ -829,8 +829,8 @@ public class GestoreLezioniPage extends JFrame {
 					if(corsiList.isSelectionEmpty()) {
 						alertNessunCorsoSelezionatoAggiungiLezione();
 					}else {
-						String id_corso = corsiList.getSelectedValue().getIdCorso().toString();		
-						CreazioneLezionePage clp = new CreazioneLezionePage(theController, operatore, theController.getCorso(id_corso));
+						String id_corso = corsiList.getSelectedValue().getIdCorso().toString();	
+						theController.creazioneLezionePage(operatore, theController.getCorso(id_corso));
 						setVisible(false);
 					}
 				}
@@ -912,7 +912,7 @@ public class GestoreLezioniPage extends JFrame {
 				opzioni,
 				opzioni[0]);
 		if(n==0) {
-			LogInPage LI = new LogInPage(theController);
+			theController.logIn();
 			setVisible(false);
 		}
 			

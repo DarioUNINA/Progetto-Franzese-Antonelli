@@ -123,7 +123,7 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaSingoloStudentePage page = new PanoramicaSingoloStudentePage(theController, operatore, studente);
+				theController.panoramicaSingoloStudentePage(operatore, studente);
 				setVisible(false);
 			}
 			@Override
@@ -185,7 +185,7 @@ public class ConfermaPrenotaLezionePage extends JFrame {
 		
 		if(state.equals("0")) {
 			alertStudenteAggiuntoCorrettamente();
-			PanoramicaSingoloStudentePage pssp = new  PanoramicaSingoloStudentePage(theController, operatore, studente);
+			theController.panoramicaSingoloStudentePage(operatore, studente);
 			setVisible(false);
 		}else
 			alertErroreIscrizioneAllaLezione(state);

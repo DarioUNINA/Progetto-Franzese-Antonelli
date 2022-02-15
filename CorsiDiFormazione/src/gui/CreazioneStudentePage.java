@@ -170,7 +170,7 @@ public class CreazioneStudentePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreStudentiPage gsp = new GestoreStudentiPage(theController, operatore);
+				theController.gestoreStudentiPage(operatore);
 				setVisible(false);
 			}
 		});
@@ -187,7 +187,7 @@ public class CreazioneStudentePage extends JFrame {
 	public void alertCreazioneEffettuata() {
 		
 		JOptionPane.showMessageDialog(this, "Studente creato con successo","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
-		GestoreStudentiPage page = new GestoreStudentiPage(theController, operatore);
+		theController.gestoreStudentiPage(operatore);
 		setVisible(false);
 	}
 	

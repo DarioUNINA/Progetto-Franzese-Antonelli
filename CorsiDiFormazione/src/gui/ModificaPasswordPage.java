@@ -15,6 +15,7 @@ import javax.swing.border.LineBorder;
 
 import controller.Controller;
 import dto.Operatori;
+import dto.Studenti;
 
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
@@ -32,6 +33,8 @@ public class ModificaPasswordPage extends JFrame {
 	
 	private Controller theController;
 	private Operatori operatore;
+	private int flag;
+	private Studenti studente;
 	
 	private ImageIcon imageicon;
 	private Component url;
@@ -50,10 +53,12 @@ public class ModificaPasswordPage extends JFrame {
 	final Color blu;
 	final Color grigioChiaro;
 	
-	public ModificaPasswordPage(Controller controller, Operatori operatore) {
+	public ModificaPasswordPage(Controller controller, Operatori operatore, int flag, Studenti studente) {
 		
 		theController = controller;
 		this.operatore = operatore;
+		this.flag = flag;
+		this.studente = studente;
 		
 		azzurro = new Color(153,211,223);
 		azzurroChiaro = new Color(136,187,214);
@@ -130,10 +135,6 @@ public class ModificaPasswordPage extends JFrame {
 		//LISTNER
 		
 		confermaButton.addMouseListener(new MouseAdapter() {
-			public void actionPerformed(ActionEvent e) {
-				gestoreModificaPassword();
-				
-			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				confermaButton.setBackground(Color.GREEN);
@@ -153,10 +154,8 @@ public class ModificaPasswordPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage hp = new ImpostazioniPage(theController, operatore, 3, null);
+				theController.impostazioniPage(operatore, flag, studente);
 				setVisible(false);
-			}
-			public void actionPerformed(ActionEvent e) {
 			}
 			
 		});
@@ -177,9 +176,9 @@ public class ModificaPasswordPage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Password modificata con successo","CONFERMA", JOptionPane.INFORMATION_MESSAGE);
 		
 		if(operatore.getPassword() == null) { 
-			LogInPage pg = new LogInPage(theController);
+			theController.logIn();
 		}else {
-			GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+			theController.gestoreCorsiPage(operatore);
 		}
 		setVisible(false);
 	}

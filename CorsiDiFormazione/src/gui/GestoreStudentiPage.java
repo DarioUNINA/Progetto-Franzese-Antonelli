@@ -135,7 +135,7 @@ public class GestoreStudentiPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+				theController.gestoreCorsiPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -167,8 +167,7 @@ public class GestoreStudentiPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				PanoramicaSingoloStudentePage gss = new PanoramicaSingoloStudentePage(theController, operatore, studenti.get(studentiComboBox.getSelectedIndex()));
+				theController.panoramicaSingoloStudentePage(operatore, studenti.get(studentiComboBox.getSelectedIndex()));
 				setVisible(false);
 			}
 		});
@@ -178,7 +177,7 @@ public class GestoreStudentiPage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				CreazioneStudentePage page = new CreazioneStudentePage(theController, operatore);
+				theController.creazioneStudentePage(operatore);
 				setVisible(false);
 			}
 		});

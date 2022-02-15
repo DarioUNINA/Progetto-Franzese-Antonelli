@@ -37,7 +37,7 @@ import javax.swing.SwingConstants;
 import java.awt.Cursor;
 import javax.swing.Icon;
 
-public class PanoramicaSingoloStudentePage extends JFrame {
+public class PanoramicaStudentePage extends JFrame {
 
 	
 	private Controller theController;
@@ -101,7 +101,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 	final Color blu;
 	final Color grigioChiaro;
 	
-	public PanoramicaSingoloStudentePage(Controller cont, Operatori operatore, Studenti studente) {
+	public PanoramicaStudentePage(Controller cont, Operatori operatore, Studenti studente) {
 		
 		theController = cont;
 		this.operatore = operatore;
@@ -390,7 +390,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		impostazioniLabelMenuEsteso.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 1, studente);
+				theController.impostazioniPage(operatore, 1, studente);
 				setVisible(false);
 			}
 			@Override
@@ -403,7 +403,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		impostazioniScrittaLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ImpostazioniPage imp = new ImpostazioniPage(theController, operatore, 1, studente);
+				theController.impostazioniPage(operatore, 1, studente);
 				setVisible(false);
 			}
 			@Override
@@ -424,7 +424,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		gestoreCorsiLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage gcp = new GestoreCorsiPage(theController, operatore);
+				theController.gestoreCorsiPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -447,7 +447,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		gestoreLezioniLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreLezioniPage gs = new GestoreLezioniPage(theController, operatore);
+				theController.gestoreLezioniPage(operatore);
 				setVisible(false);
 				
 			}
@@ -472,7 +472,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		gestoreStudentiLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreStudentiPage gs = new GestoreStudentiPage(theController, operatore);
+				theController.gestoreStudentiPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -596,7 +596,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		modificaStudenteButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ModificaStudentePage msp = new ModificaStudentePage(theController, operatore, studente);
+				theController.modificaStudentePage(operatore, studente);
 				setVisible(false);
 			}
 		});
@@ -779,7 +779,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 				opzioni,
 				opzioni[0]);
 		if(n==0) {
-			LogInPage LI = new LogInPage(theController);
+			theController.logIn();
 			setVisible(false);
 		}
 			
@@ -816,7 +816,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 			if(lezioni.isEmpty())
 				alertNonCiSonolezioniDisponibili();
 			else {
-				ConfermaPrenotaLezionePage page = new ConfermaPrenotaLezionePage(theController, operatore, studente, corsiList.getSelectedValue());
+				theController.confermaPrenotaLezionePage(operatore, studente, corsiList.getSelectedValue());
 				setVisible(false);
 			}
 		}
@@ -833,7 +833,7 @@ public class PanoramicaSingoloStudentePage extends JFrame {
 		if(corsi.isEmpty())
 			alertNonCiSonoCorsiDisponibili();
 		else {
-			AggiungiStudenteCorsoPage asc = new AggiungiStudenteCorsoPage(theController, operatore, studente);
+			theController.aggiungiStudenteCorsoPage(operatore, studente);
 			setVisible(false);
 		}
 	}

@@ -150,7 +150,7 @@ public class ModificaStudentePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanoramicaSingoloStudentePage pssp = new PanoramicaSingoloStudentePage(theController, operatore, studente);
+				theController.panoramicaSingoloStudentePage(operatore, studente);
 				setVisible(false);
 			}
 		});
@@ -170,7 +170,7 @@ public class ModificaStudentePage extends JFrame {
 		JOptionPane.showMessageDialog(this, "Studente modificato con successo","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
 		studente.setNome(nomeTextField.getText());
 		studente.setCognome(cognomeTextField.getText());
-		PanoramicaSingoloStudentePage pssp = new PanoramicaSingoloStudentePage(theController, operatore, studente);
+		theController.panoramicaSingoloStudentePage(operatore, studente);
 		setVisible(false);
 	}
 	

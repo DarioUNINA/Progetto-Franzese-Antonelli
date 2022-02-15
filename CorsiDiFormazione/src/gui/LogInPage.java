@@ -173,16 +173,12 @@ public class LogInPage extends JFrame {
 		passwordDimenticataLabel.addMouseListener(new MouseAdapter() {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				RecuperoPassPage rpp = new RecuperoPassPage(theController);
+				theController.recuperoPassPage();
 				setVisible(false);
 			}
 		});
 		
 		
-		registratiButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		registratiButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -196,7 +192,7 @@ public class LogInPage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				RegistrazionePage rp = new RegistrazionePage(theController);
+				theController.registrazionePage();
 				setVisible(false);
 			}
 		});
@@ -235,7 +231,7 @@ public class LogInPage extends JFrame {
 				alertPasswordNonInserita();
 			else
 				if(theController.logInClicked(Nome, Pass)) {
-					GestoreCorsiPage hp = new GestoreCorsiPage(theController,theController.getOperatore(Nome));
+					theController.gestoreCorsiPage(theController.getOperatore(Nome));
 					setVisible(false);
 				}else
 					alertLogInFallito();

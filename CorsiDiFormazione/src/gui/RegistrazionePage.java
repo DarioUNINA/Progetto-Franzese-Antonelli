@@ -183,7 +183,7 @@ public class RegistrazionePage extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				LogInPage LI = new LogInPage(theController);
+				theController.logIn();
 				setVisible(false);
 			}
 		});
@@ -223,13 +223,13 @@ public class RegistrazionePage extends JFrame {
 					opzioni[0]); //titolo del pulsante 
 		
 		if(n==0) {
-			LogInPage HP = new LogInPage(theController);
+			theController.logIn();
 			setVisible(false);	
 		}else {
 			Operatori op = new Operatori (nomeTextField.getText(), passwordTextField.getText());
 			op.setIdOperatore(theController.getIdOperatore(op));
 			
-			GestoreCorsiPage hp = new GestoreCorsiPage(theController, op);
+			theController.gestoreCorsiPage(op);
 			setVisible(false);
 		}
 			

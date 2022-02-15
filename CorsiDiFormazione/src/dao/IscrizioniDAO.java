@@ -26,7 +26,8 @@ public class IscrizioniDAO {
 		
 		try {
 			ResultSet rs = statement.executeQuery("SELECT * FROM corsi con WHERE con.id_operatore = '" + id_operatore + "' AND con.terminato = false AND con.nome NOT IN "
-												+ "(SELECT co.nome FROM corsi co JOIN iscrizioni i ON co.id_corso = i.id_corso WHERE i.matricola = '"+ matricola + "')");
+												+ "(SELECT co.nome FROM corsi co JOIN iscrizioni i ON co.id_corso = i.id_corso WHERE i.matricola = '"+ matricola + "')"
+												+ " AND con.max_partecipanti > (SELECT par.partecipanti FROM partecipanti par WHERE par.id_corso = con.id_corso)");
 			
 			while(rs.next()) {
 
@@ -59,7 +60,7 @@ public class IscrizioniDAO {
 		
 		try {
 			ResultSet rs = statement.executeQuery("SELECT * FROM corsi con WHERE con.id_operatore = '" + id_operatore + "' AND con.nome IN "
-												+ "(SELECT co.nome FROM corsi co JOIN iscrizioni i ON co.id_corso = i.id_corso WHERE i.matricola = '"+ matricola + "')");
+												+ "(SELECT co.nome FROM corsi co JOIN iscrizioni i ON co.id_corso = i.id_corso WHERE i.matricola = '"+ matricola + "') ");
 			
 			while(rs.next()) {
 

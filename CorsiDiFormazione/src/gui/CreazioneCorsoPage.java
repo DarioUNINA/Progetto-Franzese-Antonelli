@@ -263,7 +263,7 @@ public class CreazioneCorsoPage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+				theController.gestoreCorsiPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -314,7 +314,7 @@ public class CreazioneCorsoPage extends JFrame {
 		
 		JOptionPane.showMessageDialog(this, "Corso aggiunto correttamente","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
 
-		GestoreCorsiPage hp = new GestoreCorsiPage(theController, operatore);
+		theController.gestoreCorsiPage(operatore);
 		setVisible(false);
 	}
 	

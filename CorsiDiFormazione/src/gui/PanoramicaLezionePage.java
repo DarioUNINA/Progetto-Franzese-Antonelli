@@ -207,7 +207,7 @@ public class PanoramicaLezionePage extends JFrame {
 		indietroButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GestoreLezioniPage gl = new GestoreLezioniPage(theController, operatore);
+				theController.gestoreLezioniPage(operatore);
 				setVisible(false);
 			}
 			@Override
@@ -233,7 +233,7 @@ public class PanoramicaLezionePage extends JFrame {
 		modificaLezioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ModificaLezionePage mlp = new ModificaLezionePage(theController, operatore, lezione);
+				theController.modificaLezionePage(operatore, lezione);
 				setVisible(false);
 			}
 		});
@@ -257,7 +257,7 @@ public class PanoramicaLezionePage extends JFrame {
 		if(theController.getStudentiCorso(lezione.getIdCorso(), lezione.getIdLezione()).isEmpty()) {
 			alertNonCiSonoStudenti();
 		}else {
-			AggiungiStudenteLezionePage asl = new AggiungiStudenteLezionePage(theController, operatore, lezione);
+			theController.aggiungiStudenteLezionePage(operatore, lezione);
 			setVisible(false);
 		}
 	}

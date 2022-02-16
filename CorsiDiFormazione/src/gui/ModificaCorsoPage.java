@@ -290,7 +290,10 @@ public class ModificaCorsoPage extends JFrame {
 				if(nomeTextField.getText().equals(""))
 					alertNomeNonValido();
 				else
-					alertTerminato();
+					if(!terminatoCheckBox.isSelected())
+						alertTerminato();
+					else
+						gestoreModificaCorso();
 			}	
 			
 		});

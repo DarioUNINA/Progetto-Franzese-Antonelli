@@ -115,7 +115,6 @@ CREATE TABLE IF NOT EXISTS public.lezioni
     orario time NOT NULL,
     id_corso character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT "Lezioni_pkey" PRIMARY KEY (id_lezione),
-	CONSTRAINT lezioni_contemporanee UNIQUE (id_corso, orario, data),
 	CONSTRAINT titolo_corso UNIQUE (id_corso, titolo),
     CONSTRAINT lezioni_fk1 FOREIGN KEY (id_corso)
         REFERENCES public.corsi (id_corso) MATCH SIMPLE

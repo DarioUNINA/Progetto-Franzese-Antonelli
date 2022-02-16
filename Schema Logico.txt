@@ -4,17 +4,18 @@
 -classi-
 
 aree_tematiche (-nome_area-)
-corsi (nome, descrizione, presenze_min, max_partetcipanti, -id_corso-, parole_chiave, terminato, /id_operatore/, anno)
-lezioni (durata, titolo, descrizione, data, orario, -id_lezione-, /id_corso/)
+corsi (-id_corso-, nome, descrizione, presenze_min, max_partetcipanti,anno, terminato, /id_operatore/, anno)
+lezioni (-id_lezione-, titolo, descrizione, durata, data, orario, /id_corso/)
 studenti (-matricola-, nome, cognome)
-operatori (-id_operatore-, nome_utente, Password)
-domande_operatori(/id_operatore/, /id_domanda/, risposta)
+operatori (-id_operatore-, nome_utente, password)
 domande_sicurezza(-id_domanda-, domanda)
+parole_chiave(-parola_chiave-)
 
-
+domande_operatori(/id_operatore/, /id_domanda/, risposta)
 presenze (/matricola/, /id_lezione/)
-iscrizioni (ammesso, /matricola/, /id_corso/)  //classe d'associazione
+iscrizioni ( /matricola/, /id_corso/, ammesso)  //classe d'associazione
 temi (/nome_area/, /id_corso/)
+caratterizza(/parola_chiave/, /id_corso/)
 
 -vincoli-
 

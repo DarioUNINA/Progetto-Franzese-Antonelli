@@ -929,6 +929,9 @@ public class GestoreLezioniPage extends JFrame {
 			if(corsiList.isSelectionEmpty()) {
 				alertNessunCorsoSelezionato();
 			}else {
+				if(corsiList.getSelectedValue().isTerminato() || Integer.parseInt(corsiList.getSelectedValue().getAnno())<2022)
+					aggiungiLezioneButton.setEnabled(false);
+				
 				String id_corso = corsiList.getSelectedValue().getIdCorso();
 				lezioni = theController.setAllLezioniDelCorso(id_corso);
 				lezioniList.setListData(lezioni);

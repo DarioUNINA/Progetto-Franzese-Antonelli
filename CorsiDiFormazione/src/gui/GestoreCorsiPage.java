@@ -1034,7 +1034,7 @@ public class GestoreCorsiPage extends JFrame {
 				alertNessunCorsoSelezionato();
 			}else{
 				
-				if(corsiList.getSelectedValue().isTerminato())
+				if(corsiList.getSelectedValue().isTerminato() || Integer.parseInt(corsiList.getSelectedValue().getAnno())<2022)
 					iscriviStudenteButton.setEnabled(false);
 				else
 					iscriviStudenteButton.setEnabled(true);

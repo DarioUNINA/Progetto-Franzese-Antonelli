@@ -298,7 +298,6 @@ public class ModificaCorsoPage extends JFrame {
 			
 		});
 		
-		
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
@@ -419,7 +418,7 @@ public class ModificaCorsoPage extends JFrame {
 			
 			alertLabel2 = new JLabel("se ci sono lezioni svolte o programmate");
 			alertLabel2.setForeground(Color.RED);
-			alertLabel2.setBounds(521, 121, 204, 14);
+			alertLabel2.setBounds(521, 121, 266, 14);
 			creaCorsoPanel.add(alertLabel2);
 		
 		}else {

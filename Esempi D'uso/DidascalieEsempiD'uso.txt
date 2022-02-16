@@ -1,0 +1,57 @@
+1) registrazione utente
+	*Dalla schermata di LogIn selezionare "REGISTRATI".
+	*Inserire nella nuova pagina i valori del nuovo operatore.
+	*Selezionare "CONFERMA".
+	*Creazione Operatore effettuata correttamente!
+	
+2)Crea corso
+	*Dalla Schermata GestoreCorsi selezionare "CREA CORSO".
+	*Inserire nella nuova pagine tutti i valori del nuovo corso.
+	*Selezionare "CONFERMA".
+	*Corso creato con successo!
+
+3)Crea Lezione
+	*Dopo aver selezionato il Corso in GestoreLezioni cliccare "AGGIUNGI LEZIONE".
+	*Inserire i valori nella nuova pagine.
+	*Selezionare "CONFERMA".
+	*Lezione aggiunta con successo!
+	
+4)Crea Studente 
+	*Selezionare "CREA STUDENTE" dalla pagina GestoreStudenti.
+	*Inserire i valori del nuovo studente.
+	*Selezionare "CONFERMA"
+	*Studente creato con successo!
+	
+5)Modifica Corso
+	*Dalla Schermata GestoreCorsi cliccare "MODIFCA CORSO".
+	*Inserire nella nuova pagine tutti i valori che eventualmente si vogliono modificare del Corso.
+	*Selezionare "CONFERMA".
+	*Corso modificato correttamente!
+	
+6)Modifica Lezione
+	*Dalla Schermata PanoramicaLezione cliccare "MODIFCA LEZIONE".
+	*Inserire nella nuova pagine tutti i valori che eventualmente si vogliono modificare della Lezione.
+	*Selezionare "CONFERMA".
+	*Lezione modificata correttamente!
+	
+7)Modifica Studente
+	*Dalla Schermata PanoramicaStudente cliccare "MODIFCA STUDENTE".
+	*Inserire nella nuova pagine tutti i valori che eventualmente si vogliono modificare dello Studente.
+	*Selezionare "CONFERMA".
+	*Studente modificato correttamente!
+	
+8)StatisticheCorso
+	*Dopo aver selezionato il Corso dalla schermata GestoreCorsi cliccare "STATISTICHE CORSO".
+	*Nella nuova pagine appariranno tutte le statistiche del corso. 
+	*Selezionare "INDIETRO" per poter tornare alla pagina precedente.
+
+
+9)StatisticheLezione
+	*Dopo aver selezionato la Lezione dalla schermata GestoreLezioni cliccare "PANORAMICA".
+	*Nella nuova pagine appariranno tutte le informazioni della lezione. 
+	*Selezionare "INDIETRO" per poter tornare alla pagina precedente.
+
+10)StatisticheStudente
+	*Dopo aver selezionato lo studente dalla schermata GestoreStudenti cliccare "PANORAMICA".
+	*Nella nuova pagine appariranno tutte le informazioni dello studente selezionato. 
+	*Selezionare "INDIETRO" per poter tornare alla pagina precedente.

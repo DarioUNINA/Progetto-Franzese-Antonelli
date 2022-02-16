@@ -433,10 +433,12 @@ public class GestoreLezioniPage extends JFrame {
 		
 		setAllGiorniRadioButton = new JRadioButton("set all");
 		setAllGiorniRadioButton.setBounds(10, 243, 109, 23);
+		setAllGiorniRadioButton.setBackground(grigioChiaro);
 		filtriPanel.add(setAllGiorniRadioButton);
 		
 		setAllMesiRadioButton = new JRadioButton("set all");
 		setAllMesiRadioButton.setBounds(159, 243, 109, 23);
+		setAllMesiRadioButton.setBackground(grigioChiaro);
 		filtriPanel.add(setAllMesiRadioButton);
 		
 				

@@ -378,12 +378,13 @@ public  Vector<Corsi>setCorsiStudenteDelOperatore(String matricola, String id_op
 	public double getPresenzeMedie(String idCorso) {
 		
 		try {
-			ResultSet rs = statement.executeQuery("SELECT presenze_medie('" + idCorso + "')" );
+			ResultSet rs = statement.executeQuery("SELECT presenze_medie('"+ idCorso+ "')");
 			
 			rs.next();
 			return rs.getDouble(1);
 
 			}catch(SQLException e) {
+				e.printStackTrace();
 				return 0.0d;
 		}
 		

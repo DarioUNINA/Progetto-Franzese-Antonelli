@@ -234,7 +234,7 @@ public class StatisticheCorsoPage extends JFrame {
 		if(studenti.size()==0)
 			mediaRiempimentoProgressBar.setValue(0);
 		else
-			mediaRiempimentoProgressBar.setValue((int)theController.getPresenzeMedie(corso.getIdCorso())/studenti.size()*100);
+			mediaRiempimentoProgressBar.setValue((int)(theController.getPresenzeMedie(corso.getIdCorso())/studenti.size()*100));
 	}
 	
 	

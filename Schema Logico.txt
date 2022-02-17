@@ -4,18 +4,45 @@
 -classi-
 
 aree_tematiche (-nome_area-)
-corsi (-id_corso-, nome, descrizione, presenze_min, max_partetcipanti,anno, terminato, /id_operatore/, anno)
-lezioni (-id_lezione-, titolo, descrizione, durata, data, orario, /id_corso/)
-studenti (-matricola-, nome, cognome)
-operatori (-id_operatore-, nome_utente, password)
-domande_sicurezza(-id_domanda-, domanda)
+
 parole_chiave(-parola_chiave-)
 
-domande_operatori(/id_operatore/, /id_domanda/, risposta)
+operatori (-id_operatore-, nome_utente, password)
+
+corsi (-id_corso-, nome, descrizione, presenze_min, max_partetcipanti,anno, terminato, anno, /id_operatore/)
+	id_operatore -> operatori.id_operatore
+
+lezioni (-id_lezione-, titolo, descrizione, durata, data, orario, /id_corso/)
+	id_corso -> corsi.id_corso
+
+studenti (-matricola-, nome, cognome)
+
+iscrizioni ( /matricola/, /id_corso/, ammesso)
+	matricola -> studenti.matricola
+	id_corso -> corsi.id_corso
+
 presenze (/matricola/, /id_lezione/)
-iscrizioni ( /matricola/, /id_corso/, ammesso)  //classe d'associazione
+	matricola -> studenti.matricola
+	id_lezione -> lezioni.id_lezione
+		
 temi (/nome_area/, /id_corso/)
+	nome_area -> aree_tematiche.nome_area
+	id_corso -> corsi.id_corso
+
 caratterizza(/parola_chiave/, /id_corso/)
+	parola_chiave -> parole_chiave.parola_chiave
+	id_corso -> corsi.id_corso
+
+
+domande_sicurezza(-id_domanda-, domanda)
+
+domande_operatori(/id_operatore/, /id_domanda/, risposta)
+	id_operatore -> operatori.id_operatore
+	id_domanda -> domande_sicurezza.id_domanda
+
+  //classe d'associazione
+
+
 
 -vincoli-
 

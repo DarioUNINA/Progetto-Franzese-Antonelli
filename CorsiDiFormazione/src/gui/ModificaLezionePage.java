@@ -212,6 +212,7 @@ public class ModificaLezionePage extends JFrame {
 			}
 		});	
 		
+		gestoreCalendario();
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -236,10 +237,13 @@ public class ModificaLezionePage extends JFrame {
 			if(state.equals("23505"))
 				JOptionPane.showMessageDialog(this, "Attenzione, esiste gia una lezione con lo stesso titolo.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 			else
-				if(state.equals("10012"))
-					JOptionPane.showMessageDialog(this, "Attenzione, hai programmato una lezione in contemporanea all'orario indicato","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
-					else
-						JOptionPane.showMessageDialog(this, "Impossibile creare la lezione a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+				if(state.equals("10007"))
+					JOptionPane.showMessageDialog(this, "Attenzione non e' possibile programmare lezioni al passato.","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+				else
+					if(state.equals("10012"))
+						JOptionPane.showMessageDialog(this, "Attenzione, hai programmato una lezione in contemporanea all'orario indicato","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+						else
+							JOptionPane.showMessageDialog(this, "Impossibile creare la lezione a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 
 	}
 	
@@ -274,6 +278,11 @@ public class ModificaLezionePage extends JFrame {
 				alertModificaFallita(state);
 		}
 		
+	}
+	
+	public void gestoreCalendario() {
+		if(calendario.getYearChooser().getYear()<2022)
+			calendario.setEnabled(false);
 	}
 	
 }

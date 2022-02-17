@@ -106,7 +106,7 @@ public class LezioniDAO {
 		
 		try {
 				
-				ResultSet rs = statement.executeQuery("SELECT * FROM lezioni l WHERE l.id_corso = '" + id_corso + "' AND l.id_lezione NOT IN " 
+				ResultSet rs = statement.executeQuery("SELECT * FROM lezioni l WHERE l.id_corso = '" + id_corso + "' AND l.data > CURRENT_DATE AND l.id_lezione NOT IN " 
 													 + "( SELECT pre.id_lezione FROM presenze pre WHERE matricola = '" + matricola + "')");
 				
 				

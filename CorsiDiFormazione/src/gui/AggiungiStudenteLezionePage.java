@@ -164,6 +164,13 @@ public class AggiungiStudenteLezionePage extends JFrame {
 		else
 			if(state.equals("10008"))
 				JOptionPane.showMessageDialog(this, "Attenzione: lo studente e' gia' iscritto a lezioni in contemporanea a quella selezionata","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+			else
+				if(state.equals("10013"))
+					JOptionPane.showMessageDialog(this, "Attenzione il corso selezionato e' terminato","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+				else
+					JOptionPane.showMessageDialog(this, "Non e'stato possibile inserire lo studente a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+					
 	}
 	
 	public void gestoreAggiungiStudenteLezione() {

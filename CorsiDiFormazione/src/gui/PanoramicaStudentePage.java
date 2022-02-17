@@ -626,10 +626,13 @@ public class PanoramicaStudentePage extends JFrame {
 		annullaPrenotazioneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(lezioniList.getSelectedValue() == null)
-					alertNessunaLezioneSelezionata();
-				else {
-					alertConfermaAnnullaPrenotazione();
+				if(prenotaLezioneButton.isEnabled()) {
+					
+					if(lezioniList.getSelectedValue() == null)
+						alertNessunaLezioneSelezionata();
+					else {
+						alertConfermaAnnullaPrenotazione();
+					}
 				}
 			}
 		});
@@ -638,7 +641,10 @@ public class PanoramicaStudentePage extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				gestorePrenotaLezione();
+				if(prenotaLezioneButton.isEnabled()) {
+					gestorePrenotaLezione();
+			
+				}
 			}
 		});
 
@@ -790,6 +796,14 @@ public class PanoramicaStudentePage extends JFrame {
 		if(corsiList.isSelectionEmpty()) {
 			alertNessunCorsoSelezionato();
 		}else{
+			if(corsiList.getSelectedValue().isTerminato() || Integer.parseInt((corsiList.getSelectedValue().getAnno()))<2022) {
+				prenotaLezioneButton.setEnabled(false);
+				annullaPrenotazioneButton.setEnabled(false);
+			}else {
+				prenotaLezioneButton.setEnabled(true);
+				annullaPrenotazioneButton.setEnabled(true);
+			}
+			
 			corsoLabel.setText("Corso: " + corsi.get(corsiList.getSelectedIndex()).getNome());
 			presenzeLabel.setText("Presenze: " + theController.getNumeroPresenzeDelCorso(studente.getMatricola(), corsiList.getSelectedValue().getIdCorso()));
 			numeroLezioniLabel.setText("Numero Lezioni: " + theController.getNumeroLezioni(corsiList.getSelectedValue().getIdCorso()));
@@ -818,9 +832,8 @@ public class PanoramicaStudentePage extends JFrame {
 			else {
 				theController.confermaPrenotaLezionePage(operatore, studente, corsiList.getSelectedValue());
 				setVisible(false);
-			}
+				}
 		}
-			
 
 	}
 	

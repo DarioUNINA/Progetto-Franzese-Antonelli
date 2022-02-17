@@ -290,7 +290,7 @@ public class ModificaCorsoPage extends JFrame {
 				if(nomeTextField.getText().equals(""))
 					alertNomeNonValido();
 				else
-					if(!terminatoCheckBox.isSelected())
+					if(terminatoCheckBox.isSelected())
 						alertTerminato();
 					else
 						gestoreModificaCorso();
@@ -349,7 +349,7 @@ public class ModificaCorsoPage extends JFrame {
 		
 		int n = JOptionPane.showOptionDialog(this,
 				"Sei sicuro di voler terminato il corso ? Tutte le lezioni future verranno annullate",
-				"CONFERMA DI ELIMINAZIONE",
+				"CONFERMA DI TERMINAZIONE",
 				JOptionPane.YES_NO_CANCEL_OPTION,
 				JOptionPane.QUESTION_MESSAGE,
 				null,

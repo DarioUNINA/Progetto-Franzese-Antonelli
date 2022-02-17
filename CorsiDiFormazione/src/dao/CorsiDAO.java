@@ -109,9 +109,9 @@ public Vector<Corsi> addCorsiFiltratiPM(Vector<AreeTematiche> area, Vector<Strin
 		String query = "SELECT DISTINCT c.id_corso, c.id_operatore, c.nome, c.descrizione, c.presenze_min, c.max_partecipanti, c.anno, c.terminato FROM corsi c ";
 		
 		if(!area.isEmpty())
-			query = query + "JOIN temi te ON c.id_corso = te.id_corso WHERE c.id_operatore = '" + idOperatore + "' AND (";
+			query = query + "JOIN temi te ON c.id_corso = te.id_corso WHERE c.id_operatore = '" + idOperatore + "' AND ((";
 		else
-			query = query + "WHERE c.id_operatore = '" + idOperatore + "' AND (";
+			query = query + "WHERE c.id_operatore = '" + idOperatore + "' AND ((";
 		
 		for(AreeTematiche a:area)
 			query = query + " c.id_corso IN (SELECT t.id_corso FROM temi t WHERE t.nome_area = '" + a.getNomeArea() + "' ) OR "; 
@@ -140,10 +140,13 @@ public Vector<Corsi> addCorsiFiltratiPM(Vector<AreeTematiche> area, Vector<Strin
 			query = query + " 1 = 1 ) ";
 		
 		if(terminatoSi)
-			query = query + " AND c.terminato = true";
+			query = query + " OR c.terminato = true";
 		
 		if(terminatoNo)
-			query = query + "  AND  c.terminato = false";
+			query = query + "  OR  c.terminato = false";
+		
+		query = query + ")";
+		
 			
 		try {
 			

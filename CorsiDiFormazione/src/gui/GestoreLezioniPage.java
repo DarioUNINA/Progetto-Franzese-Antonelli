@@ -925,22 +925,19 @@ public class GestoreLezioniPage extends JFrame {
 	//GESTORI
 	
 	public void gestoreSetLezioni() {
-			
+		
 			if(corsiList.isSelectionEmpty()) {
 				alertNessunCorsoSelezionato();
 			}else {
 				if(corsiList.getSelectedValue().isTerminato() || Integer.parseInt(corsiList.getSelectedValue().getAnno())<2022)
 					aggiungiLezioneButton.setEnabled(false);
+				else
+					aggiungiLezioneButton.setEnabled(true);
 				
 				String id_corso = corsiList.getSelectedValue().getIdCorso();
 				lezioni = theController.setAllLezioniDelCorso(id_corso);
 				lezioniList.setListData(lezioni);
-				
-				if(corsiList.getSelectedValue().isTerminato())
-					aggiungiLezioneButton.setEnabled(false);
-				else
-					aggiungiLezioneButton.setEnabled(true);
-				}	
+			}	
 	}
 	
 	public void gestoreFiltriLezioni() {

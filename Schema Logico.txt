@@ -64,6 +64,8 @@ caratterizza(/parola_chiave/, /id_corso/)
 
 25) trigger per l'update di ammesso da modifica corso
 
+26)Non é possibile iscriversi a lezioni di corsi terminati
+
 
 --1)
 	CREATE FUNCTION check_inserimento_in_terminato()
@@ -604,4 +606,34 @@ caratterizza(/parola_chiave/, /id_corso/)
 	FOR EACH ROW
 	EXECUTE PROCEDURE update_lezioni_terminato();
 		
+	
+--27)
+	
+	CREATE FUNCTION check_lezione_corso_terminato()
+	RETURNS TRIGGER AS
+	$$
+	DECLARE violazione BOOLEAN;
+	BEGIN
+		SELECT co.terminato INTO violazione
+		FROM corsi co JOIN lezioni l on co.id_corso = l.id_corso
+		WHERE l.id_lezione = new.id_lezione;
+		
+		IF (violazione) THEN
+			RAISE SQLSTATE '10013';
+			ROLLBACK;
+			RAISE EXCEPTION 'ATTENZIONE : il corso della lezione che hai scelto e termianto';
+		END IF;
+		RETURN NEW;
+	END
+	$$ LANGUAGE plpgsql;
+
+	CREATE TRIGGER lezione_corso_terminato
+	AFTER INSERT ON presenze
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_lezione_corso_terminato();
+	
+	CREATE TRIGGER update_lezione_corso_terminato
+	AFTER UPDATE ON presenze
+	FOR EACH ROW
+	EXECUTE PROCEDURE check_lezione_corso_terminato();
 	

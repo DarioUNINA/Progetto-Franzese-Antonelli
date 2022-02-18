@@ -325,7 +325,7 @@ domande_operatori(/id_operatore/, /id_domanda/, risposta)
 		IF(stringa = '')THEN
 			RAISE SQLSTATE '10001';
 			ROLLBACK;
-			RAISE EXCEPTION 'La password deve contentere almeno 8 caratteri';
+			RAISE EXCEPTION 'La password deve contentere almeno 6 caratteri';
 		END IF;
 		RETURN NEW;
 	END
@@ -353,7 +353,7 @@ domande_operatori(/id_operatore/, /id_domanda/, risposta)
 		IF(stringa = '')THEN
 			RAISE SQLSTATE '10002';
 			ROLLBACK;
-			RAISE EXCEPTION 'Il nome utente deve contentere almeno 8 caratteri';
+			RAISE EXCEPTION 'Il nome utente deve contentere almeno 4 caratteri';
 		END IF;
 		RETURN NEW;
 	END
@@ -361,7 +361,7 @@ domande_operatori(/id_operatore/, /id_domanda/, risposta)
 
 	CREATE TRIGGER lunghezza_nome_utente_violata
 	AFTER INSERT ON operatori
-	FOR EACH ROW
+	FOR EACH ROW#
 	EXECUTE PROCEDURE check_lunghezza_nome_utente();
 	
 --15)

@@ -38,8 +38,8 @@ public class ModificaStudentePage extends JFrame {
 	private JPanel creaStudentePanel;
 	private JPanel inserisciDatiStudentePanel;
 	private JLabel inserireDatiStudenteLabel;
-	private JLabel inserireNomeStudenteLabel;
-	private JLabel inserireCognomeStudenteLabel;
+	private JLabel NomeStudenteLabel;
+	private JLabel CognomeStudenteLabel;
 	private JTextField nomeTextField;
 	private JTextField cognomeTextField;
 	private JButton confermaButton;
@@ -83,22 +83,22 @@ public class ModificaStudentePage extends JFrame {
 		creaStudentePanel.add(inserisciDatiStudentePanel);
 		inserisciDatiStudentePanel.setLayout(null);
 			
-		inserireNomeStudenteLabel = new JLabel("Inserire Nome Studente:");
-		inserireNomeStudenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		inserireNomeStudenteLabel.setBounds(59, 111, 183, 39);
-		inserisciDatiStudentePanel.add(inserireNomeStudenteLabel);
+		NomeStudenteLabel = new JLabel("Nome Studente:");
+		NomeStudenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		NomeStudenteLabel.setBounds(59, 111, 183, 39);
+		inserisciDatiStudentePanel.add(NomeStudenteLabel);
 		
-		nomeTextField = new JTextField();
+		nomeTextField = new JTextField(studente.getNome());
 		nomeTextField.setBounds(59, 142, 191, 20);
 		nomeTextField.setColumns(10);
 		inserisciDatiStudentePanel.add(nomeTextField);
 		
-		inserireCognomeStudenteLabel = new JLabel("Inserire cognome Studente:");
-		inserireCognomeStudenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		inserireCognomeStudenteLabel.setBounds(296, 111, 203, 39);
-		inserisciDatiStudentePanel.add(inserireCognomeStudenteLabel);
+		CognomeStudenteLabel = new JLabel("Cognome Studente:");
+		CognomeStudenteLabel.setFont(new Font("Arial", Font.BOLD, 15));
+		CognomeStudenteLabel.setBounds(296, 111, 203, 39);
+		inserisciDatiStudentePanel.add(CognomeStudenteLabel);
 		
-		cognomeTextField = new JTextField();
+		cognomeTextField = new JTextField(studente.getCognome());
 		cognomeTextField.setBounds(296, 142, 191, 20);
 		inserisciDatiStudentePanel.add(cognomeTextField);
 		cognomeTextField.setColumns(10);

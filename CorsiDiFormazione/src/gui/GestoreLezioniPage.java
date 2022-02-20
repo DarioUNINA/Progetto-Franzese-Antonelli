@@ -946,7 +946,7 @@ public class GestoreLezioniPage extends JFrame {
 		Vector<String> vettoreMesi = theController.getMesiSelezionati(mesiList);
 		Vector<Time> vettoreOrario = theController.getOrariSelezionati(orarioList, orario);
 		Vector<Time> vettoreDurate = theController.getDurateSelezionate(durataList, durata);
-		
+				
 		if(corsiList.getSelectedValue()==null)
 			alertNessunCorsoSelezionato();
 		else {
@@ -957,16 +957,17 @@ public class GestoreLezioniPage extends JFrame {
 	
 	public void gestoreResetFiltri() {
 		
-		Vector<String> vettoreGiorni = theController.getGiorniSelezionati(giorniList);
-		Vector<String> vettoreMesi = theController.getMesiSelezionati(mesiList);
-		Vector<Time> vettoreOrario = theController.getOrariSelezionati(orarioList, orario);
-		Vector<Time> vettoreDurate = theController.getDurateSelezionate(durataList, durata);
+		Vector<String> vettoreGiorni = theController.getGiorni();
+		Vector<String> vettoreMesi = theController.getMesi();
+		Vector<Time> vettoreOrario = theController.getOrario();
+		Vector<Time> vettoreDurate = theController.getDurate();
 		
-		if(corsiList.getSelectedValue()==null)
-			alertNessunCorsoSelezionato();
-		else {
-				lezioni = theController.setLezioniFiltrate(vettoreGiorni, vettoreMesi, vettoreOrario, vettoreDurate, corsiList.getSelectedValue().getIdCorso(), titoloTextField.getText().toLowerCase(), corsiList.getSelectedValue().getAnno());
-				lezioniList.setListData(lezioni);
-			}
+		giorniList.setModel(theController.setModelCheckBoxString(giorni));
+		mesiList.setModel(theController.setModelCheckBoxString(mesi));
+		orarioList.setModel(theController.setModelCheckBoxTime(orario));
+		durataList.setModel(theController.setModelCheckBoxTime(durata));
+		
+		lezioni = theController.setAllLezioniDelCorso(corsiList.getSelectedValue().getIdCorso());
+		lezioniList.setListData(lezioni);
 	}
 }

@@ -365,9 +365,9 @@ public class Controller {
 		
 	}
 	
-	public void eliminaStudente(String matricola) {
+	public String eliminaStudente(String matricola) {
 		
-		studentiDAO.eliminaStudente(matricola);
+		return studentiDAO.eliminaStudente(matricola);
 	}
 	
 	public String aggiungiStudenteCorso(String matricola, String id_corso) {

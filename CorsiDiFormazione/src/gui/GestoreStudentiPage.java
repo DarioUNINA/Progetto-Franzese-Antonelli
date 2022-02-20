@@ -218,9 +218,10 @@ public class GestoreStudentiPage extends JFrame {
 	public void alertEliminazioneStudenteEffettuata() {
 		
 		JOptionPane.showMessageDialog(this, "Studente eliminato con successo","<CONFERMA>", JOptionPane.INFORMATION_MESSAGE);
-		studenti = theController.setStudenti();
-
+		
 		studentiComboBox.removeAllItems();
+		
+		studenti = theController.setStudenti();
 		
 		for(Studenti s:studenti) 
 			studentiComboBox.addItem(s);

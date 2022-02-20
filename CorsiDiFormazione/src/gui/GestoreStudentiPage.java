@@ -218,7 +218,7 @@ public class GestoreStudentiPage extends JFrame {
 		
 		String state = theController.eliminaStudente(studenti.get(studentiComboBox.getSelectedIndex()).getMatricola());
 		
-		if(state.equals(0))
+		if(state.equals("0"))
 			alertEliminazioneStudenteEffettuata();
 		else
 			alertEliminazioneFallita(state);
@@ -239,7 +239,7 @@ public class GestoreStudentiPage extends JFrame {
 	
 	public void alertEliminazioneFallita(String state) {
 		
-		if(state.equals(-1))
+		if(state.equals("-1"))
 			JOptionPane.showMessageDialog(this, "Eliminazione studente fallita a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
 		else
 			JOptionPane.showMessageDialog(this, "Eliminazione studente fallita: \n Codice d'errore : " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);

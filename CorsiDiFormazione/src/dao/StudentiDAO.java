@@ -143,6 +143,7 @@ public class StudentiDAO {
 				
 		} catch (SQLException e) {
 			
+			e.printStackTrace();
 			return e.getSQLState();
 		}
 	}

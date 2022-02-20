@@ -208,11 +208,21 @@ public class GestoreStudentiPage extends JFrame {
 				opzioni[0]);
 		if(n==0) {
 			
-			theController.eliminaStudente(studenti.get(studentiComboBox.getSelectedIndex()).getMatricola());
-			alertEliminazioneStudenteEffettuata();
+			gestoreEliminazione();
 			
 		}
 			
+	}
+	
+	public void gestoreEliminazione() {
+		
+		String state = theController.eliminaStudente(studenti.get(studentiComboBox.getSelectedIndex()).getMatricola());
+		
+		if(state.equals(0))
+			alertEliminazioneStudenteEffettuata();
+		else
+			alertEliminazioneFallita(state);
+		
 	}
 	
 	public void alertEliminazioneStudenteEffettuata() {
@@ -226,4 +236,13 @@ public class GestoreStudentiPage extends JFrame {
 		for(Studenti s:studenti) 
 			studentiComboBox.addItem(s);
 	}
-}
+	
+	public void alertEliminazioneFallita(String state) {
+		
+		if(state.equals(-1))
+			JOptionPane.showMessageDialog(this, "Eliminazione studente fallita a causa di un errore sconosciuto","<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+		else
+			JOptionPane.showMessageDialog(this, "Eliminazione studente fallita: \n Codice d'errore : " + state,"<ATTENZIONE>", JOptionPane.WARNING_MESSAGE);
+
+		}
+	}

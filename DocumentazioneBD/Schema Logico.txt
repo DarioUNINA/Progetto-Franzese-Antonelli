@@ -448,10 +448,12 @@ domande_operatori(/id_operatore/, /id_domanda/, risposta)
 		FROM presenze p JOIN lezioni l ON p.id_lezione = l.id_lezione
 		WHERE p.id_lezione = OLD.id_lezione;
 		
-		IF (data_lezione < CURRENT_DATE) THEN 
-			RAISE SQLSTATE '10011';
-			ROLLBACK;
-			RAISE EXCEPTION 'La lezione si e gia conclusa';
+		IF(EXISTS (SELECT * FROM studenti WHERE matricola = old.matricola)) THEN
+			IF (data_lezione < CURRENT_DATE) THEN 
+				RAISE SQLSTATE '10011';
+				ROLLBACK;
+				RAISE EXCEPTION 'La lezione si e gia conclusa';
+			END IF;
 		END IF;
 		RETURN OLD;
 	END

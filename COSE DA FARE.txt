@@ -1,9 +1,1 @@
-1) verifica barra  percentuale in statistiche
-
-2) class diagram obj
-
-3) documentazione
-
-4) iscrivi studente corso page modifica query di poplamento combo box
-
-5) bloccare la creazione di un corso passato o sbloccare l'iscrizione a un corso passato (da decidere)
+1) documentazione BD

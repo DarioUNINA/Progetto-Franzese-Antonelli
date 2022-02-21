@@ -1,4 +1,4 @@
--PK
+A-PK
 / FK
 
 -classi-
@@ -9,7 +9,7 @@ parole_chiave(-parola_chiave-)
 
 operatori (-id_operatore-, nome_utente, password)
 
-corsi (-id_corso-, nome, descrizione, presenze_min, max_partetcipanti,anno, terminato, anno, /id_operatore/)
+corsi (-id_corso-, nome, descrizione, presenze_min, max_partetcipanti, anno, terminato, /id_operatore/)
 	id_operatore -> operatori.id_operatore
 
 lezioni (-id_lezione-, titolo, descrizione, durata, data, orario, /id_corso/)

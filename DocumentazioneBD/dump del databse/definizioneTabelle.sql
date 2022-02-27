@@ -1,0 +1,285 @@
+
+-- Table: public.aree_tematiche
+
+-- DROP TABLE IF EXISTS public.aree_tematiche;
+
+CREATE TABLE IF NOT EXISTS public.aree_tematiche
+(
+    nome_area character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "AreeTematiche_pkey" PRIMARY KEY (nome_area)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.aree_tematiche
+    OWNER to postgres;
+
+
+-- Table: public.parole_chiave
+
+-- DROP TABLE IF EXISTS public.parole_chiave;
+
+CREATE TABLE IF NOT EXISTS public.parole_chiave
+(
+    parola_chiave character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT parole_chiave_pkey PRIMARY KEY (parola_chiave)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.parole_chiave
+    OWNER to postgres;
+
+
+
+-- Table: public.operatori
+
+-- DROP TABLE IF EXISTS public.operatori;
+
+CREATE TABLE IF NOT EXISTS public.operatori
+(
+    id_operatore character varying COLLATE pg_catalog."default" NOT NULL,
+    nome_utente character varying COLLATE pg_catalog."default" NOT NULL,
+    password character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "Operatori_pkey" PRIMARY KEY (id_operatore),
+	CONSTRAINT nome_utene_unique UNIQUE (nome_utente)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.operatori
+    OWNER to postgres;
+
+
+
+
+-- Table: public.corsi
+
+-- DROP TABLE IF EXISTS public.corsi;
+
+CREATE TABLE IF NOT EXISTS public.corsi
+(
+    id_corso character varying COLLATE pg_catalog."default" NOT NULL,
+    id_operatore character varying COLLATE pg_catalog."default" NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    descrizione character varying COLLATE pg_catalog."default" NOT NULL,
+    presenze_min integer NOT NULL,
+    max_partecipanti integer NOT NULL,
+    anno character varying COLLATE pg_catalog."default" NOT NULL,
+    terminato boolean NOT NULL DEFAULT false,
+	CONSTRAINT nome_corsi_unique UNIQUE (nome),
+    CONSTRAINT "Corsi_pkey" PRIMARY KEY (id_corso),
+	CONSTRAINT caratteri_anno CHECK (anno SIMILAR TO '[1-2][0-9][0-9][0-9]'),
+    CONSTRAINT corsi_fk1 FOREIGN KEY (id_operatore)
+        REFERENCES public.operatori (id_operatore) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.corsi
+    OWNER to postgres;
+
+
+
+-- Table: public.lezioni
+
+-- DROP TABLE IF EXISTS public.lezioni;
+
+CREATE TABLE IF NOT EXISTS public.lezioni
+(
+    id_lezione character varying COLLATE pg_catalog."default" NOT NULL,
+    titolo character varying COLLATE pg_catalog."default" NOT NULL,
+    descrizione character varying COLLATE pg_catalog."default" NOT NULL,
+    durata interval NOT NULL,
+    data date NOT NULL,
+    orario time NOT NULL,
+    id_corso character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "Lezioni_pkey" PRIMARY KEY (id_lezione),
+	CONSTRAINT titolo_corso UNIQUE (id_corso, titolo),
+    CONSTRAINT lezioni_fk1 FOREIGN KEY (id_corso)
+        REFERENCES public.corsi (id_corso) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.lezioni
+    OWNER to postgres;
+
+
+
+
+-- Table: public.studenti
+
+-- DROP TABLE IF EXISTS public.studenti;
+
+CREATE TABLE IF NOT EXISTS public.studenti
+(
+    matricola character varying COLLATE pg_catalog."default" NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    cognome character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "Studenti_pkey" PRIMARY KEY (matricola)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.studenti
+    OWNER to postgres;
+
+
+
+-- Table: public.temi
+
+-- DROP TABLE IF EXISTS public.temi;
+
+CREATE TABLE IF NOT EXISTS public.temi
+(
+    nome_area character varying COLLATE pg_catalog."default" NOT NULL,
+    id_corso character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT temi_unique UNIQUE (nome_area, id_corso),
+    CONSTRAINT temi_fk1 FOREIGN KEY (nome_area)
+        REFERENCES public.aree_tematiche (nome_area) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT temi_fk2 FOREIGN KEY (id_corso)
+        REFERENCES public.corsi (id_corso) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.temi
+    OWNER to postgres;
+
+
+
+
+-- Table: public.caratterizza
+
+-- DROP TABLE IF EXISTS public.caratterizza;
+
+CREATE TABLE IF NOT EXISTS public.caratterizza
+(
+    parola_chiave character varying COLLATE pg_catalog."default" NOT NULL,
+    id_corso character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT caratterizza_unique UNIQUE (parola_chiave, id_corso),
+    CONSTRAINT caratterizza_fk1 FOREIGN KEY (parola_chiave)
+        REFERENCES public.parole_chiave (parola_chiave) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT caratterizza_fk2 FOREIGN KEY (id_corso)
+        REFERENCES public.corsi (id_corso) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.caratterizza
+    OWNER to postgres;
+
+
+
+
+-- Table: public.presenze
+
+-- DROP TABLE IF EXISTS public.presenze;
+
+CREATE TABLE IF NOT EXISTS public.presenze
+(
+    matricola character varying COLLATE pg_catalog."default" NOT NULL,
+    id_lezione character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT presenze_unique UNIQUE (matricola, id_lezione),
+    CONSTRAINT presenze_fk1 FOREIGN KEY (matricola)
+        REFERENCES public.studenti (matricola) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT presenze_fk2 FOREIGN KEY (id_lezione)
+        REFERENCES public.lezioni (id_lezione) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.presenze
+    OWNER to postgres;
+
+
+-- Table: public.iscrizioni
+
+-- DROP TABLE IF EXISTS public.iscrizioni;
+
+CREATE TABLE IF NOT EXISTS public.iscrizioni
+(
+    matricola character varying COLLATE pg_catalog."default" NOT NULL,
+    id_corso character varying COLLATE pg_catalog."default" NOT NULL,
+    ammesso boolean NOT NULL DEFAULT false,
+    CONSTRAINT iscrizioni_unique UNIQUE (matricola, id_corso),
+    CONSTRAINT iscrizioni_fk1 FOREIGN KEY (id_corso)
+        REFERENCES public.corsi (id_corso) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT iscrizioni_fk2 FOREIGN KEY (matricola)
+        REFERENCES public.studenti (matricola) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.iscrizioni
+    OWNER to postgres;
+
+
+
+
+-- Table: public.domande_sicurezza
+
+-- DROP TABLE IF EXISTS public.domande_sicurezza;
+
+CREATE TABLE IF NOT EXISTS public.domande_sicurezza
+(
+    domanda character varying COLLATE pg_catalog."default" NOT NULL,
+    id_domanda character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT domande_sicurezza_pkey PRIMARY KEY (id_domanda)
+	
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.domande_sicurezza
+    OWNER to postgres;
+	
+	
+	
+-- Table: public.domande_operatori
+
+-- DROP TABLE IF EXISTS public.domande_operatori;
+
+CREATE TABLE IF NOT EXISTS public.domande_operatori
+(
+    risposta character varying COLLATE pg_catalog."default" NOT NULL,
+    id_domanda character varying COLLATE pg_catalog."default" NOT NULL,
+	id_operatore character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT domande_operatori_pkey PRIMARY KEY (id_domanda, id_operatore, risposta),
+	CONSTRAINT domande_operatori_fk1 FOREIGN KEY (id_operatore)
+        REFERENCES public.operatori (id_operatore) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	CONSTRAINT domande_operatori_fk2 FOREIGN KEY (id_domanda)
+        REFERENCES public.domande_sicurezza (id_domanda) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.domande_operatori
+    OWNER to postgres;
+	

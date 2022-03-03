@@ -361,7 +361,7 @@ domande_operatori(/id_operatore/, /id_domanda/, risposta)
 
 	CREATE TRIGGER lunghezza_nome_utente_violata
 	AFTER INSERT ON operatori
-	FOR EACH ROW#
+	FOR EACH ROW
 	EXECUTE PROCEDURE check_lunghezza_nome_utente();
 	
 --15)
